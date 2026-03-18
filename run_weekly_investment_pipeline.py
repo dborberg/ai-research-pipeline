@@ -21,15 +21,39 @@ def generate_weekly_digest(content):
     prompt = f"""
 You are a senior AI research analyst.
 
-Create a weekly investment digest using the structure below.
+Produce a weekly digest with exactly these sections:
 
 TOP 5 STORIES THIS WEEK
+Provide five numbered items, one per story, each two to three sentences. Include the source publication. Focus on relevance to financial advisors.
+
 BEYOND THE MAG 7
+Provide two to three companies, sectors, or themes outside major AI infrastructure. Include why each matters.
+
 WHAT IS BEING DISRUPTED
+Provide three industries showing measurable AI disruption. One sentence each.
+
 REGULATORY RADAR
+Provide two to three policy developments relevant to advisors.
+
 READY TO USE SOUNDBITES
+Provide five plain English statements that can be used verbatim. No jargon.
+
 QUESTIONS TO BRING TO YOUR CLIENTS
+Provide three questions framed as opportunities.
+
 AI PRACTICE TIP OF THE WEEK
+What: one sentence
+Why: two sentences
+How to: three numbered steps
+Copy prompt: one usable prompt
+Guardrail: one sentence on reviewing outputs and avoiding sensitive data
+
+Formatting rules:
+- Plain text only
+- No markdown
+- No symbols or bullets
+- Use line breaks between sections
+- Keep spacing consistent and readable
 
 Content:
 {content}
