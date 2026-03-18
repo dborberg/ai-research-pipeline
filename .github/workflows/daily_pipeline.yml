@@ -14,6 +14,7 @@ jobs:
       EMAIL_USER: ${{ secrets.EMAIL_USER }}
       EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       FEEDLY_TOKEN: ${{ secrets.FEEDLY_TOKEN }}
+      EMAIL_TO: ${{ secrets.EMAIL_TO }}
 
     steps:
       - name: Checkout repo
