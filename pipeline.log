@@ -1,0 +1,20 @@
+2026-03-18 08:30:13,376 - INFO - Pipeline started
+2026-03-18 08:30:13,376 - INFO - Starting ingestion
+2026-03-18 08:30:14,284 - INFO - Ingestion completed
+2026-03-18 08:30:14,284 - INFO - Starting enrichment
+2026-03-18 08:31:18,845 - INFO - Enrichment completed
+2026-03-18 08:31:18,845 - INFO - Starting digest generation
+2026-03-18 08:31:20,170 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2026-03-18 08:31:20,173 - ERROR - Pipeline failed: Error code: 404 - {'error': {'message': 'The model `gpt-5.3` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2026-03-18 08:34:45,405 - INFO - Pipeline started
+2026-03-18 08:34:45,406 - INFO - Starting ingestion
+2026-03-18 08:34:46,147 - INFO - Ingestion completed
+2026-03-18 08:34:46,148 - INFO - Starting enrichment
+2026-03-18 08:35:49,186 - INFO - Enrichment completed
+2026-03-18 08:35:49,186 - INFO - Starting digest generation
+2026-03-18 08:36:16,057 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 08:36:16,073 - INFO - Digest generation completed
+2026-03-18 08:36:16,073 - INFO - Starting email send
+2026-03-18 08:36:42,017 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-18 08:36:43,938 - INFO - Email send completed
+2026-03-18 08:36:43,938 - INFO - Pipeline completed successfully
