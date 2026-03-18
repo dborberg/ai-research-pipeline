@@ -3,7 +3,6 @@ name: Daily AI Pipeline
 on:
  schedule:
   - cron: '30 11 * * *'  # DST
-  - cron: '30 12 * * *'  # Standard time
   workflow_dispatch:
 
 jobs:
