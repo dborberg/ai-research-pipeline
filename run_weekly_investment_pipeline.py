@@ -75,7 +75,13 @@ def send_email(body):
 
     subject = "Weekly Investment AI Digest"
 
-    message = f"Subject: {subject}\nFrom: {sender}\nTo: {to}\n\n{body}"
+    message = f"""Subject: {subject}
+From: {sender}
+To: {to}
+Content-Type: text/plain; charset=utf-8
+
+{body}
+"""
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(sender, password)
