@@ -16,9 +16,8 @@ def send_digest():
     receiver_email = os.environ.get("EMAIL_TO")
     app_password = os.environ.get("EMAIL_PASSWORD")
 
-    if not sender_email or not app_password:
-        raise RuntimeError("EMAIL_USER and EMAIL_PASSWORD environment variables must be set")
-
+    if not sender_email or not app_password or not receiver_email:
+        raise RuntimeError("EMAIL_USER, EMAIL_PASSWORD, and EMAIL_TO must be set")
     subject = "Daily AI Digest"
     body = digest
 
