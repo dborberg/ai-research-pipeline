@@ -1,9 +1,9 @@
 name: Daily AI Pipeline
 
 on:
-  schedule:
-    # Runs daily at 11:00 UTC (6:00 AM ET)
-    - cron: '0 11 * * *'
+ schedule:
+  - cron: '30 11 * * *'  # DST
+  - cron: '30 12 * * *'  # Standard time
   workflow_dispatch:
 
 jobs:
