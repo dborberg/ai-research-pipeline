@@ -27,19 +27,19 @@ TOP 5 STORIES THIS WEEK
 Provide five numbered items, one per story, each two to three sentences. Include the source publication. Focus on relevance to financial advisors.
 
 BEYOND THE MAG 7
-Provide two to three companies, sectors, or themes outside major AI infrastructure. Include why each matters.
+Provide two to three bullet points with companies, sectors, or themes outside major AI infrastructure. Include why each matters.
 
 WHAT IS BEING DISRUPTED
-Provide three industries showing measurable AI disruption. One sentence each.
+Provide three bullet points, one sentence each.
 
 REGULATORY RADAR
-Provide two to three policy developments relevant to advisors.
+Provide two to three bullet points relevant to advisors.
 
 READY TO USE SOUNDBITES
-Provide five plain English statements that can be used verbatim. No jargon.
+Provide five bullet points. Each should be a plain English statement that can be used verbatim.
 
 QUESTIONS TO BRING TO YOUR CLIENTS
-Provide three questions framed as opportunities.
+Provide three bullet points framed as opportunities.
 
 AI PRACTICE TIP OF THE WEEK
 What: one sentence
@@ -49,11 +49,11 @@ Copy prompt: one usable prompt
 Guardrail: one sentence on reviewing outputs and avoiding sensitive data
 
 Formatting rules:
-- Plain text only
-- No markdown
-- No symbols or bullets
-- Use line breaks between sections
-- Keep spacing consistent and readable
+- Plain text email format
+- Use hyphen bullets (- ) for all lists except TOP 5 STORIES (which should be numbered)
+- Use clear spacing between sections
+- Do not use markdown formatting like ** or ###
+- Keep it clean and readable for email
 
 Content:
 {content}
