@@ -1,0 +1,27 @@
+name: Weekly Investment AI Digest
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 11 * * 5'
+
+jobs:
+  run-weekly-investment:
+    runs-on: ubuntu-latest
+
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      EMAIL_USER: ${{ secrets.EMAIL_USER }}
+      EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+      EMAIL_TO: ${{ secrets.EMAIL_TO }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install -r requirements.txt
+
+      - run: python run_weekly_investment_pipeline.py
