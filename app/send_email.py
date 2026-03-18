@@ -13,7 +13,7 @@ def send_digest():
     smtp_server = "smtp.gmail.com"
     smtp_port = 465
     sender_email = os.environ.get("EMAIL_USER")
-    receiver_email = os.environ.get("EMAIL_USER")
+    receiver_email = os.environ.get("EMAIL_TO")
     app_password = os.environ.get("EMAIL_PASSWORD")
 
     if not sender_email or not app_password:
