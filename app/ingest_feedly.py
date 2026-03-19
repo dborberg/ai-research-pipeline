@@ -75,10 +75,10 @@ for entry in items:
         source = entry["origin"].get("title")
 
     cursor.execute("""
-    INSERT OR IGNORE INTO articles
-    (feedly_id, title, article_url, source, published)
+    IINSERT OR IGNORE INTO articles
+    (feedly_id, title, url, source, published)
     VALUES (?, ?, ?, ?, ?)
-    """, (feedly_id, title, url, source, published))
+    """, (feedly_id, title, article_url, source, published))
 
     if cursor.rowcount > 0:
         inserted += 1
