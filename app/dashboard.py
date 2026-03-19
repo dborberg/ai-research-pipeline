@@ -104,20 +104,29 @@ if st.session_state.selected_digest:
 
 # --- Refresh ingestion + enrichment button ----------------------------------
 if st.button("Refresh ingestion"):
-    ingest_path = os.path.join(os.path.dirname(__file__), "ingest_feedly.py")
-    enrich_path = os.path.join(os.path.dirname(__file__), "enrich_articles.py")
-
-    with st.spinner("Refreshing articles from Feedly..."):
-        ingest_result = subprocess.run(
-            [sys.executable, ingest_path],
-            capture_output=True,
-            text=True,
-        )
-
-    if ingest_result.returncode != 0:
-        st.error("Ingestion failed")
-        st.text(ingest_result.stderr)
-    else:
+    from app.fetch_rss_articles import fetch_rss_articles, RSS_FEEDS
+    from sqlalchemy import create_engine, text
+    import time
+    with st.spinner("Refreshing articles from RSS feeds..."):
+        articles = fetch_rss_articles(RSS_FEEDS)
+        engine = create_engine("sqlite:///data/ai_research.db")
+        inserted = 0
+        with engine.connect() as conn:
+            for article in articles:
+                conn.execute(text("""
+                    INSERT OR IGNORE INTO articles (feedly_id, title, source, url, published_at, created_at)
+                    VALUES (:feedly_id, :title, :source, :url, :published_at, :created_at)
+                """), {
+                    'feedly_id': article.get('link'),
+                    'title': article.get('title'),
+                    'source': article.get('source'),
+                    'url': article.get('link'),
+                    'published_at': article.get('published'),
+                    'created_at': datetime.utcnow().isoformat()
+                })
+                inserted += 1
+            conn.commit()
+        st.success(f"Ingestion complete. {inserted} articles inserted.")
         st.success("Ingestion completed")
         st.text(ingest_result.stdout)
 

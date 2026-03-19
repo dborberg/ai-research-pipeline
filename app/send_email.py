@@ -18,7 +18,10 @@ def send_digest():
 
     if not sender_email or not app_password or not receiver_email:
         raise RuntimeError("EMAIL_USER, EMAIL_PASSWORD, and EMAIL_TO must be set")
-    subject = "Daily AI Digest"
+
+    # ✅ Updated subject line
+    subject = "Daily Riffs from the Gen AI Songbook"
+
     body = digest
 
     # Construct raw email message
