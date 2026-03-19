@@ -75,7 +75,7 @@ for entry in items:
         source = entry["origin"].get("title")
 
     cursor.execute("""
-    IINSERT OR IGNORE INTO articles
+    INSERT OR IGNORE INTO articles
     (feedly_id, title, url, source, published)
     VALUES (?, ?, ?, ?, ?)
     """, (feedly_id, title, article_url, source, published))
