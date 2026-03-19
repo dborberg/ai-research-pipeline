@@ -19,16 +19,22 @@ def send_digest():
     if not sender_email or not app_password or not receiver_email:
         raise RuntimeError("EMAIL_USER, EMAIL_PASSWORD, and EMAIL_TO must be set")
 
-    # ✅ Updated subject line
+    # Subject line (unchanged content, just your title)
     subject = "Daily Riffs from the Gen AI Songbook"
 
     body = digest
 
-    # Construct raw email message
-    message = f"Subject: {subject}\nFrom: {sender_email}\nTo: {receiver_email}\n\n{body}"
+    # ✅ Proper email formatting (THIS is what fixes spacing issues)
+    message = f"""Subject: {subject}
+From: {sender_email}
+To: {receiver_email}
+Content-Type: text/plain; charset=utf-8
+
+{body}
+"""
 
     with smtplib.SMTP_SSL(smtp_server, smtp_port) as server:
         server.login(sender_email, app_password)
-        server.sendmail(sender_email, receiver_email, message.encode('utf-8'))
+        server.sendmail(sender_email, receiver_email, message.encode("utf-8"))
 
     print("Email sent successfully.")
