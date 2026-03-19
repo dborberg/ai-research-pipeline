@@ -4,9 +4,6 @@ import requests
 import sqlite3
 from dotenv import load_dotenv
 
-now = int(time.time() * 1000)
-one_day_ago = now - (24 * 60 * 60 * 1000)
-
 load_dotenv()
 
 FEEDLY_TOKEN = os.getenv("FEEDLY_TOKEN")
@@ -34,6 +31,9 @@ headers = {
     "Authorization": f"Bearer {FEEDLY_TOKEN}"
 }
 
+now = int(time.time() * 1000)
+one_day_ago = now - (24 * 60 * 60 * 1000)
+
 url = "https://cloud.feedly.com/v3/streams/contents"
 
 params = {
@@ -52,6 +52,8 @@ data = response.json()
 
 items = data.get("items", [])
 
+print("Articles returned:", len(items))
+
 for a in items[:5]:
     print(a.get("title"), a.get("published"))
 
@@ -62,9 +64,9 @@ for entry in items:
     feedly_id = entry.get("id")
     title = entry.get("title")
 
-    url = None
+    article_url = None
     if entry.get("alternate"):
-        url = entry["alternate"][0].get("href")
+        article_url = entry["alternate"][0].get("href")
 
     published = entry.get("published")
 
@@ -74,7 +76,7 @@ for entry in items:
 
     cursor.execute("""
     INSERT OR IGNORE INTO articles
-    (feedly_id, title, url, source, published)
+    (feedly_id, title, article_url, source, published)
     VALUES (?, ?, ?, ?, ?)
     """, (feedly_id, title, url, source, published))
 
