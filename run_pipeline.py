@@ -33,8 +33,25 @@ logging.basicConfig(
 
 def ingest_articles():
     logging.info("Starting ingestion")
-    subprocess.run([sys.executable, "app/ingest_feedly.py"], check=True)
-    logging.info("Ingestion completed")
+    from app.fetch_rss_articles import fetch_rss_articles, RSS_FEEDS
+    from sqlalchemy import create_engine, text
+    articles = fetch_rss_articles(RSS_FEEDS)
+    engine = create_engine("sqlite:///data/ai_research.db")
+    with engine.connect() as conn:
+        for article in articles:
+            conn.execute(text("""
+                INSERT OR IGNORE INTO articles (feedly_id, title, source, url, published_at, created_at)
+                VALUES (:feedly_id, :title, :source, :url, :published_at, :created_at)
+            """), {
+                'feedly_id': article.get('link'),
+                'title': article.get('title'),
+                'source': article.get('source'),
+                'url': article.get('link'),
+                'published_at': article.get('published'),
+                'created_at': datetime.utcnow().isoformat()
+            })
+        conn.commit()
+    logging.info(f"Ingestion completed: {len(articles)} articles inserted")
 
 
 def enrich_articles():
