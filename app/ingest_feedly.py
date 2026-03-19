@@ -44,6 +44,8 @@ params = {
 
 print("Fetching articles from Feedly...")
 
+print("FEEDLY_TOKEN:", FEEDLY_TOKEN)
+
 response = requests.get(url, headers=headers, params=params)
 
 print("Status code:", response.status_code)
