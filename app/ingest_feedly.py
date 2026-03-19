@@ -1,7 +1,11 @@
+import time
 import os
 import requests
 import sqlite3
 from dotenv import load_dotenv
+
+now = int(time.time() * 1000)
+one_day_ago = now - (24 * 60 * 60 * 1000)
 
 load_dotenv()
 
@@ -30,11 +34,17 @@ headers = {
     "Authorization": f"Bearer {FEEDLY_TOKEN}"
 }
 
-url = f"https://cloud.feedly.com/v3/streams/contents?streamId={STREAM_ID}&count=50"
+url = "https://cloud.feedly.com/v3/streams/contents"
+
+params = {
+    "streamId": STREAM_ID,
+    "count": 50,
+    "newerThan": one_day_ago
+}
 
 print("Fetching articles from Feedly...")
 
-response = requests.get(url, headers=headers)
+response = requests.get(url, headers=headers, params=params)
 
 print("Status code:", response.status_code)
 
@@ -42,7 +52,8 @@ data = response.json()
 
 items = data.get("items", [])
 
-print("Articles returned:", len(items))
+for a in items[:5]:
+    print(a.get("title"), a.get("published"))
 
 inserted = 0
 
