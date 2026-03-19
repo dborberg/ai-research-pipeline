@@ -1,124 +1,94 @@
 import os
-import sqlite3
-from datetime import datetime
-
-from dotenv import load_dotenv
+from datetime import datetime, timedelta
+from sqlalchemy import create_engine, text
 from openai import OpenAI
 
-load_dotenv()
+DB_PATH = "sqlite:///data/ai_research.db"
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-DB_PATH = "data/articles.db"
+
+def get_recent_articles(limit=25):
+    engine = create_engine(DB_PATH)
+
+    cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
+
+    with engine.connect() as conn:
+        result = conn.execute(text("""
+            SELECT title, source, url, published_at, ai_score
+            FROM articles
+            WHERE published_at IS NOT NULL
+              AND published_at >= :cutoff
+            ORDER BY published_at DESC
+            LIMIT :limit
+        """), {"cutoff": cutoff, "limit": limit})
+
+        rows = result.fetchall()
+
+    articles = []
+    for row in rows:
+        articles.append({
+            "title": row[0],
+            "source": row[1],
+            "url": row[2],
+            "published_at": row[3],
+            "ai_score": row[4]
+        })
+
+    return articles
+
+
+def format_articles_for_prompt(articles):
+    lines = []
+    for i, a in enumerate(articles, 1):
+        lines.append(
+            f"{i}. {a['title']} ({a['source']})\n{a['url']}"
+        )
+    return "\n\n".join(lines)
 
 
 def generate_daily_digest():
-    """Generate the daily digest text using OpenAI.
+    articles = get_recent_articles()
 
-    This function reads the top 40 articles by ai_score and builds a prompt
-    that matches the strict formatting rules defined in the project documentation.
-    """
+    if not articles:
+        return "No new articles found in the last 24 hours."
 
-    # Read top 40 articles sorted by ai_score desc
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    cursor.execute(
-        """
-        SELECT title, source, ai_score, coalesce(summary, ''),
-               coalesce(themes, ''), coalesce(companies, ''),
-               coalesce(advisor_relevance, '')
-        FROM articles
-        ORDER BY (ai_score IS NULL), ai_score DESC, id DESC
-        LIMIT 40
-        """
-    )
-    rows = cursor.fetchall()
-    conn.close()
+    article_block = format_articles_for_prompt(articles)
 
-    # Build DATA block
-    data_lines = ["DATA:"]
-    for row in rows:
-        title, source, score, summary, themes, companies, advisor_relevance = row
-        data_lines.append("\nArticle:")
-        data_lines.append(f"Title: {title}")
-        data_lines.append(f"Source: {source}")
-        data_lines.append(f"Score: {score}")
-        data_lines.append(f"Summary: {summary}")
-        data_lines.append(f"Themes: {themes}")
-        data_lines.append(f"Companies: {companies}")
-        data_lines.append(f"Advisor Relevance: {advisor_relevance}")
+    prompt = f"""
+You are a senior AI research analyst creating a concise daily digest for financial advisors.
 
-    data_block = "\n".join(data_lines)
+Use ONLY the articles below.
 
-    system_message = (
-        "You are an AI research analyst producing a daily briefing for financial advisors "
-        "and mutual fund wholesalers. Distill generative AI news into clear, concise, "
-        "professionally written summaries that a non-technical financial professional "
-        "can understand and act on. Present both opportunities and risks where "
-        "appropriate. Ensure emerging physical AI and robotics developments are included "
-        "when strategically meaningful to industrial automation, logistics, defense, or "
-        "public market exposure. If article content appears incomplete or missing, skip "
-        "that article silently and summarize only what was provided. Do not use markdown "
-        "formatting in your response. Use plain text only.\n\n"
-        "Responses must be in bullet point format only. Write concise sound bites suitable "
-        "for sharing directly with sales teams and advisors. Avoid long paragraphs. "
-        "Maintain a professional, forward-looking tone. Cite the source publication for "
-        "each bullet point using parentheses."
-    )
+ARTICLES:
+{article_block}
 
-    user_message = (
-        "CRITICAL INSTRUCTION: Your response must contain EXACTLY these 8 section headers in "
-        "EXACTLY this order. Each header must appear on its own line in ALL CAPS. You are "
-        "forbidden from combining sections, renaming sections, or omitting sections.\n\n"
-        "For each section: write 2–5 bullets when relevant material exists. If and only if there "
-        "are zero relevant items, write exactly: \"Nothing to report today.\" Do not write that "
-        "line if you included any bullets.\n\n"
-        "If the input contains any material related to robotics, physical AI, humanoid systems, "
-        "warehouse automation, autonomous systems, or industrial AI, you MUST include at least "
-        "one substantive bullet under PHYSICAL AI AND ROBOTICS summarizing the most strategically "
-        "meaningful development for investors.\n\n"
-        "TOP STORIES\n"
-        "ENTERPRISE AND LABOR\n"
-        "INFRASTRUCTURE AND POWER\n"
-        "CAPITAL MARKETS AND INVESTMENT\n"
-        "REGULATION AND POLICY\n"
-        "PHYSICAL AI AND ROBOTICS\n"
-        "WHAT TO WATCH\n"
-        "ADVISOR SOUNDBITES\n\n"
-        "Append DATA in this format:\n\n"
-        "DATA:\n\n"
-        f"{data_block}\n"
-        "\nEnsure:\n"
-        "- Output is plain text (no JSON)\n"
-        "- Do not modify formatting\n"
-        "- Return response directly\n"
-    )
+Produce output with these sections:
+
+TOP 5 STORIES
+Provide 5 items, 2–3 sentences each. Include source.
+
+WHAT MATTERS FOR CLIENT PORTFOLIOS
+Provide 3–5 insights linking AI developments to markets, sectors, or companies.
+
+BEYOND THE MAG 7
+Provide 2–3 non-megacap companies or themes worth watching.
+
+RISKS TO WATCH
+Provide 2–3 emerging risks or concerns.
+
+Keep tone professional, concise, and usable in client conversations.
+No fluff. No speculation beyond the articles.
+"""
 
     response = client.chat.completions.create(
-        model="gpt-5.4",
-        messages=[
-            {"role": "system", "content": system_message},
-            {"role": "user", "content": user_message},
-        ],
-        temperature=0.2,
-    )
+    model="gpt-5.4",
+    messages=[
+        {"role": "system", "content": "You are a precise financial AI analyst."},
+        {"role": "user", "content": prompt}
+    ],
+    temperature=0.3,
+    max_completion_tokens=1200,
+)
 
-    # Return raw text response
-    digest_text = response.choices[0].message.content.strip()
-
-    # Persist digest to a file for dashboard access
-    save_daily_digest(digest_text)
-
-    return digest_text
-
-
-def save_daily_digest(digest_text, output_dir="outputs/daily"):
-    """Save the digest text to a dated file."""
-    os.makedirs(output_dir, exist_ok=True)
-    today = datetime.utcnow().date().isoformat()
-    file_path = os.path.join(output_dir, f"{today}.txt")
-
-    with open(file_path, "w", encoding="utf-8") as f:
-        f.write(digest_text)
-
-    return file_path
+    return response.choices[0].message.content

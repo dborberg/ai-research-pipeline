@@ -18,3 +18,28 @@
 2026-03-18 08:36:42,017 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2026-03-18 08:36:43,938 - INFO - Email send completed
 2026-03-18 08:36:43,938 - INFO - Pipeline completed successfully
+2026-03-19 15:44:31,940 - INFO - Pipeline started
+2026-03-19 15:44:31,940 - INFO - Starting ingestion
+2026-03-19 15:44:36,859 - INFO - Ingestion completed: 572 articles processed
+2026-03-19 15:44:36,859 - INFO - Starting enrichment
+2026-03-19 15:44:37,327 - ERROR - Pipeline failed: Command '['/Users/davidborberg/ai-research-pipeline/venv/bin/python', 'app/enrich_articles.py']' returned non-zero exit status 1.
+2026-03-19 15:51:26,139 - INFO - Pipeline started
+2026-03-19 15:51:26,139 - INFO - Starting ingestion
+2026-03-19 15:51:31,212 - INFO - Ingestion completed: 572 articles processed
+2026-03-19 15:51:31,212 - INFO - Starting enrichment
+2026-03-19 15:52:17,585 - INFO - Enrichment completed
+2026-03-19 15:52:17,585 - INFO - Starting digest generation
+2026-03-19 15:52:18,244 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-03-19 15:52:18,245 - ERROR - Pipeline failed: Error code: 400 - {'error': {'message': "Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}
+2026-03-19 15:55:03,926 - INFO - Pipeline started
+2026-03-19 15:55:03,926 - INFO - Starting ingestion
+2026-03-19 15:55:08,391 - INFO - Ingestion completed: 488 articles processed
+2026-03-19 15:55:08,391 - INFO - Starting enrichment
+2026-03-19 15:55:50,978 - INFO - Enrichment completed
+2026-03-19 15:55:50,979 - INFO - Starting digest generation
+2026-03-19 15:56:15,050 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-19 15:56:15,061 - INFO - Digest generation completed
+2026-03-19 15:56:15,061 - INFO - Starting digest generation
+2026-03-19 15:56:40,238 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-19 15:56:40,242 - INFO - Digest generation completed
+2026-03-19 15:56:40,243 - INFO - Pipeline completed successfully

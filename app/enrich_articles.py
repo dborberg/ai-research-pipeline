@@ -2,6 +2,7 @@ import json
 import sqlite3
 import os
 import time
+import datetime
 from dotenv import load_dotenv
 from openai import OpenAI
 
@@ -9,15 +10,57 @@ load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-DB_PATH = "data/articles.db"
+DB_PATH = "data/ai_research.db"
+
+# Ensure DB exists
+if not os.path.exists("data"):
+    os.makedirs("data")
 
 conn = sqlite3.connect(DB_PATH)
 cursor = conn.cursor()
 
+# Ensure table + columns exist
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS articles (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    feedly_id TEXT UNIQUE,
+    title TEXT,
+    source TEXT,
+    url TEXT,
+    published_at TEXT,
+    created_at TEXT,
+    summary TEXT,
+    themes TEXT,
+    companies TEXT,
+    advisor_relevance TEXT,
+    ai_score INTEGER
+)
+""")
+
+# Add missing columns safely (for existing DBs)
+def add_column_if_missing(column_name, column_type):
+    cursor.execute("PRAGMA table_info(articles)")
+    columns = [col[1] for col in cursor.fetchall()]
+    if column_name not in columns:
+        cursor.execute(f"ALTER TABLE articles ADD COLUMN {column_name} {column_type}")
+
+add_column_if_missing("summary", "TEXT")
+add_column_if_missing("themes", "TEXT")
+add_column_if_missing("companies", "TEXT")
+add_column_if_missing("advisor_relevance", "TEXT")
+add_column_if_missing("ai_score", "INTEGER")
+
+conn.commit()
+
+# Fetch articles needing enrichment
 cursor.execute("""
 SELECT rowid, title
 FROM articles
-WHERE themes IS NULL OR companies IS NULL OR advisor_relevance IS NULL OR ai_score IS NULL
+WHERE summary IS NULL
+   OR themes IS NULL
+   OR companies IS NULL
+   OR advisor_relevance IS NULL
+   OR ai_score IS NULL
 LIMIT 10
 """)
 
@@ -27,44 +70,27 @@ print(f"Articles to enrich: {len(articles)}")
 
 for rowid, title in articles:
 
-    system_message = """You are a senior AI research analyst writing for mutual fund wholesalers. Your job is to analyze AI-related news and produce structured insights that are directly usable in advisor conversations. Keep language clear, factual, and practical. Be consistent across articles in structure and level of detail. Do not repeat section headers inside the content fields."""
+    system_message = """You are a senior AI research analyst writing for mutual fund wholesalers. 
+Your job is to analyze AI-related news and produce structured insights usable in advisor conversations. 
+Keep language clear, factual, and consistent."""
 
     user_message = f"""Article title: {title}
 
-Produce structured output with exactly these sections:
-
-SUMMARY
-2–3 sentences, clear and factual
-
-THEMES
-3–5 bullet points capturing the most important underlying trends
-
-COMPANIES
-List specific companies mentioned or clearly implied
-
-ADVISOR RELEVANCE
-2–3 sentences explaining why this matters for financial advisors and their clients
-
-AI IMPORTANCE SCORE
-Score from 1–10 based on:
-- Market impact
-- Relevance to portfolios
-- Strategic importance
-
-Return ONLY valid JSON in this format:
+Produce structured output with exactly these fields:
 
 {{
-  "summary": "string",
-  "themes": ["string"],
-  "companies": ["string"],
-  "advisor_relevance": "string",
-  "ai_score": number
+  "summary": "2-3 sentence summary",
+  "themes": ["3-5 key themes"],
+  "companies": ["companies mentioned"],
+  "advisor_relevance": "why this matters",
+  "ai_score": number between 1 and 10
 }}
 
-Do not include any additional text. Do not include section labels like 'Summary:' or 'Themes:' inside the field values."""
+Return ONLY valid JSON. No extra text.
+"""
 
-    response_text = None
     parsed = None
+    response_text = None
 
     for attempt in range(2):
         try:
@@ -74,95 +100,83 @@ Do not include any additional text. Do not include section labels like 'Summary:
                     {"role": "system", "content": system_message},
                     {"role": "user", "content": user_message}
                 ],
+                temperature=0.3,
             )
 
             response_text = response.choices[0].message.content.strip()
 
             try:
                 parsed = json.loads(response_text)
-            except Exception as e:
-                print(f"Attempt {attempt + 1} parse failed: {e}")
+            except:
+                # try to extract JSON block
                 start = response_text.find("{")
                 end = response_text.rfind("}")
-                if start != -1 and end != -1 and end > start:
+                if start != -1 and end != -1:
                     try:
-                        parsed = json.loads(response_text[start : end + 1])
-                    except Exception:
+                        parsed = json.loads(response_text[start:end+1])
+                    except:
                         pass
 
             if parsed:
                 break
 
-            if attempt == 0:
-                time.sleep(1)
+            time.sleep(1)
 
         except Exception as e:
-            print(f"API call failed on attempt {attempt + 1}: {e}")
-            if attempt == 0:
-                time.sleep(1)
+            print(f"API error: {e}")
+            time.sleep(1)
 
     if not parsed:
-        print(f"❌ Failed to parse JSON for: {title}")
-        print(f"   Response: {response_text[:200] if response_text else 'No response'}")
+        print(f"❌ Failed: {title}")
         continue
 
-    # Validate and extract fields
     try:
-        summary = (parsed.get("summary") or "").strip()
+        summary = parsed.get("summary")
         themes = parsed.get("themes") or []
         companies = parsed.get("companies") or []
-        advisor_relevance = (parsed.get("advisor_relevance") or "").strip()
+        advisor_relevance = parsed.get("advisor_relevance")
         ai_score = parsed.get("ai_score")
 
-        # Ensure lists
+        # Normalize lists
         if isinstance(themes, str):
-            themes = [t.strip() for t in themes.split("\n") if t.strip()]
+            themes = [themes]
         if isinstance(companies, str):
-            companies = [c.strip() for c in companies.split("\n") if c.strip()]
+            companies = [companies]
 
-        themes = [t for t in themes if t]  # Filter empty strings
-        companies = [c for c in companies if c]  # Filter empty strings
-
-        # Convert score to int
+        # Validate score
         try:
             ai_score = int(ai_score)
-            if not (1 <= ai_score <= 10):
-                print(f"⚠️  AI score out of range for {title}: {ai_score}")
+            if ai_score < 1 or ai_score > 10:
                 ai_score = None
-        except Exception:
-            print(f"⚠️  Could not convert ai_score to int for {title}: {ai_score}")
+        except:
             ai_score = None
 
-        # Write to database
         cursor.execute("""
         UPDATE articles
         SET summary = ?, themes = ?, companies = ?, advisor_relevance = ?, ai_score = ?
         WHERE rowid = ?
         """,
         (
-            summary if summary else None,
-            json.dumps(themes) if themes else None,
-            json.dumps(companies) if companies else None,
-            advisor_relevance if advisor_relevance else None,
+            summary,
+            json.dumps(themes),
+            json.dumps(companies),
+            advisor_relevance,
             ai_score,
             rowid,
-        ),
-        )
+        ))
 
-        print(f"✓ Enriched: {title[:70]}")
+        print(f"✓ Enriched: {title[:60]}")
 
     except Exception as e:
         print(f"❌ Error processing {title}: {e}")
-        continue
 
 conn.commit()
 conn.close()
 
-print("Enrichment complete")
-
-# Write timestamp of last enrichment
-import datetime
+# Save timestamp
 timestamp = datetime.datetime.now().isoformat()
 with open("data/.last_refresh", "w") as f:
     f.write(timestamp)
+
+print("Enrichment complete")
 print(f"Timestamp saved: {timestamp}")
