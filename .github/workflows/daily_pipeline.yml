@@ -2,18 +2,20 @@ name: Daily Riffs from the Gen AI Pipeline
 
 on:
   schedule:
-    - cron: '30 11 * * *'
+    - cron: '30 11 * * *'   # 6:30 AM Central
   workflow_dispatch:
 
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
+
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       EMAIL_USER: ${{ secrets.EMAIL_USER }}
       EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-      FEEDLY_TOKEN: ${{ secrets.FEEDLY_TOKEN }}
       EMAIL_TO: ${{ secrets.EMAIL_TO }}
+      FEEDLY_TOKEN: ${{ secrets.FEEDLY_TOKEN }}
+      FEEDLY_API_KEY: ${{ secrets.FEEDLY_API_KEY }}
 
     steps:
       - name: Checkout repo
@@ -29,6 +31,20 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run pipeline
+      # ✅ NEW: visibility into your exact issue
+      - name: Debug environment variables
         run: |
-          python run_pipeline.py
+          echo "Checking environment variables..."
+          if [ -z "$OPENAI_API_KEY" ]; then echo "OPENAI MISSING"; else echo "OPENAI OK"; fi
+          if [ -z "$EMAIL_USER" ]; then echo "EMAIL USER MISSING"; else echo "EMAIL USER OK"; fi
+          if [ -z "$EMAIL_PASSWORD" ]; then echo "EMAIL PASSWORD MISSING"; else echo "EMAIL PASSWORD OK"; fi
+          if [ -z "$EMAIL_TO" ]; then echo "EMAIL TO MISSING"; else echo "EMAIL TO OK"; fi
+
+      # ✅ Optional but helpful for debugging paths
+      - name: Show working directory
+        run: |
+          pwd
+          ls -la
+
+      - name: Run pipeline
+        run: python run_pipeline.py
