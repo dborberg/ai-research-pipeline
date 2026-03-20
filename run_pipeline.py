@@ -115,17 +115,13 @@ def send_digest(digest_text=None, dry_run=False):
         print(digest_text)
         return
 
-    # ✅ Optional safety: skip email in GitHub Actions if needed
-    if os.getenv("GITHUB_ACTIONS") == "true":
-        print("Skipping email send in GitHub Actions (safety mode)")
-        logging.info("Email skipped in GitHub Actions")
-        return
-
     logging.info("Starting email send")
     print("Sending email...")
 
     from app.send_email import send_digest as _send
-    _send()
+
+    # ✅ Always send email (GitHub + local)
+    _send(digest_text)
 
     logging.info("Email send completed")
 
