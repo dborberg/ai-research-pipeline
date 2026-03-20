@@ -1,98 +1,94 @@
+import argparse
 import os
-from pathlib import Path
-from openai import OpenAI
-import smtplib
 
-OUTPUT_DIR = Path("outputs/daily")
+from dotenv import load_dotenv
 
-
-def get_last_n_files(n=7):
-    files = sorted(OUTPUT_DIR.glob("*.txt"), key=lambda p: p.stat().st_mtime, reverse=True)
-    return files[:n]
+from app.db import fetch_weekly_digests, init_db
+from app.reporting import get_openai_client, get_week_start
+from app.send_email import send_report
+from run_weekly_pipeline import _generate_and_store_weekly_reports
 
 
-def load_content(files):
-    return "\n\n".join([f.read_text(encoding="utf-8") for f in files])
+WHOLESALER_TYPE = "wholesaler"
+THEMATIC_TYPE = "thematic"
+SIGNAL_TYPE = "signal_command_brief"
 
 
-def generate_weekly_digest(content):
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-    prompt = f"""
-You are a senior AI research analyst.
-
-Produce a weekly digest with exactly these sections:
-
-TOP 5 STORIES THIS WEEK
-Provide five numbered items, one per story, each two to three sentences. Include the source publication. Focus on relevance to financial advisors.
-
-BEYOND THE MAG 7
-Provide two to three bullet points with companies, sectors, or themes outside major AI infrastructure. Include why each matters.
-
-WHAT IS BEING DISRUPTED
-Provide three bullet points, one sentence each.
-
-REGULATORY RADAR
-Provide two to three bullet points relevant to advisors.
-
-READY TO USE SOUNDBITES
-Provide five bullet points. Each should be a plain English statement that can be used verbatim.
-
-QUESTIONS TO BRING TO YOUR CLIENTS
-Provide three bullet points framed as opportunities.
-
-AI PRACTICE TIP OF THE WEEK
-What: one sentence
-Why: two sentences
-How to: three numbered steps
-Copy prompt: one usable prompt
-Guardrail: one sentence on reviewing outputs and avoiding sensitive data
-
-Formatting rules:
-- Plain text email format
-- Use hyphen bullets (- ) for all lists except TOP 5 STORIES (which should be numbered)
-- Use clear spacing between sections
-- Do not use markdown formatting like ** or ###
-- Keep it clean and readable for email
-
-Content:
-{content}
-"""
-
-    response = client.chat.completions.create(
-        model="gpt-5.4",
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.3,
-    )
-
-    return response.choices[0].message.content
+def _get_stored_weekly_digest_content(week_start, digest_type):
+    rows = fetch_weekly_digests(digest_type=digest_type, limit=12)
+    for row in rows:
+        if str(row["week_start"]) == week_start.isoformat():
+            return row["content"]
+    return None
 
 
-def send_email(body):
-    sender = os.getenv("EMAIL_USER")
-    to = os.getenv("EMAIL_TO")
-    password = os.getenv("EMAIL_PASSWORD")
+def _load_or_generate_reports(mode, week_start):
+    digest_type_map = {
+        "WHOLESALER": WHOLESALER_TYPE,
+        "THEMATIC": THEMATIC_TYPE,
+        "SIGNAL": SIGNAL_TYPE,
+    }
 
-    subject = "Weekly Investment AI Digest"
+    stored_reports = {
+        WHOLESALER_TYPE: _get_stored_weekly_digest_content(week_start, WHOLESALER_TYPE),
+        THEMATIC_TYPE: _get_stored_weekly_digest_content(week_start, THEMATIC_TYPE),
+        SIGNAL_TYPE: _get_stored_weekly_digest_content(week_start, SIGNAL_TYPE),
+    }
 
-    message = f"""Subject: {subject}
-From: {sender}
-To: {to}
-Content-Type: text/plain; charset=utf-8
+    if mode == "WHOLESALER" and all(stored_reports.values()):
+        return {
+            "wholesaler": stored_reports[WHOLESALER_TYPE],
+            "thematic": stored_reports[THEMATIC_TYPE],
+            "signal": stored_reports[SIGNAL_TYPE],
+        }
 
-{body}
-"""
+    if mode != "WHOLESALER" and stored_reports[digest_type_map[mode]]:
+        return {
+            "wholesaler": stored_reports[WHOLESALER_TYPE],
+            "thematic": stored_reports[THEMATIC_TYPE],
+            "signal": stored_reports[SIGNAL_TYPE],
+        }
 
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login(sender, password)
-        server.sendmail(sender, to, message.encode("utf-8"))
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise RuntimeError("OPENAI_API_KEY must be set")
+
+    client = get_openai_client(api_key)
+    generated = _generate_and_store_weekly_reports(client, week_start)
+    return {
+        "wholesaler": generated[WHOLESALER_TYPE],
+        "thematic": generated[THEMATIC_TYPE],
+        "signal": generated[SIGNAL_TYPE],
+    }
 
 
 def main():
-    files = get_last_n_files(7)
-    content = load_content(files)
-    digest = generate_weekly_digest(content)
-    send_email(digest)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--mode", required=True)
+    args = parser.parse_args()
+
+    load_dotenv()
+    init_db()
+
+    week_start = get_week_start()
+
+    if args.mode not in {"WHOLESALER", "THEMATIC", "SIGNAL"}:
+        raise RuntimeError("--mode must be one of WHOLESALER, THEMATIC, SIGNAL")
+
+    reports = _load_or_generate_reports(args.mode, week_start)
+
+    subject_map = {
+        "WHOLESALER": f"[WEEKLY - WHOLESALER] Week of {week_start.isoformat()}",
+        "THEMATIC": f"[WEEKLY - THEMATIC] Week of {week_start.isoformat()}",
+        "SIGNAL": f"[WEEKLY - SIGNAL] AI Signal Command Brief - Week of {week_start.isoformat()}",
+    }
+    content_map = {
+        "WHOLESALER": reports["wholesaler"],
+        "THEMATIC": reports["thematic"],
+        "SIGNAL": reports["signal"],
+    }
+
+    send_report(subject_map[args.mode], content_map[args.mode])
 
 
 if __name__ == "__main__":

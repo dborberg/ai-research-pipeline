@@ -1,0 +1,43 @@
+name: Monthly Digest
+
+on:
+  schedule:
+    - cron: "0 15 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  monthly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENAI_API_KEY: "REPLACE"
+      EMAIL_USER: "REPLACE"
+      EMAIL_PASSWORD: "REPLACE"
+      EMAIL_TO: "REPLACE"
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - run: pip install -r requirements.txt
+
+      - name: Run monthly pipeline
+        run: |
+          python run_monthly_pipeline.py
+
+      - name: Persist database
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add data/*.db || true
+          git commit -m "Update DB (automated)" || true
+          git push
