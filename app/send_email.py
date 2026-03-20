@@ -3,8 +3,6 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from app.generate_digest import generate_daily_digest
-
 
 def format_as_html(text):
     """Convert plain text digest into clean HTML email format."""
@@ -37,7 +35,7 @@ def format_as_html(text):
                 in_list = False
             html.append("<br>")
 
-        # Regular text (title/date)
+        # Regular text
         else:
             if in_list:
                 html.append("</ul>")
@@ -56,10 +54,8 @@ def format_as_html(text):
     """
 
 
-def send_digest():
-    """Generate the daily digest and send it via email."""
-
-    digest = generate_daily_digest()
+def send_digest(digest_text):
+    """Send the provided digest via email."""
 
     # Email settings
     smtp_server = "smtp.gmail.com"
@@ -80,10 +76,10 @@ def send_digest():
     msg["To"] = receiver_email
 
     # Convert content
-    html_body = format_as_html(digest)
+    html_body = format_as_html(digest_text)
 
     # Attach both plain + HTML
-    msg.attach(MIMEText(digest, "plain", "utf-8"))
+    msg.attach(MIMEText(digest_text, "plain", "utf-8"))
     msg.attach(MIMEText(html_body, "html", "utf-8"))
 
     # Send email
