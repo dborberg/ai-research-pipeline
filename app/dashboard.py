@@ -104,7 +104,7 @@ if st.session_state.selected_digest:
 
 # --- Refresh ingestion + enrichment button ----------------------------------
 if st.button("Refresh ingestion"):
-    from app.fetch_rss_articles import fetch_rss_articles, RSS_FEEDS
+    from fetch_rss_articles import fetch_rss_articles, RSS_FEEDS
     from sqlalchemy import create_engine, text
     import time
     with st.spinner("Refreshing articles from RSS feeds..."):
@@ -127,8 +127,6 @@ if st.button("Refresh ingestion"):
                 inserted += 1
             conn.commit()
         st.success(f"Ingestion complete. {inserted} articles inserted.")
-        st.success("Ingestion completed")
-        st.text(ingest_result.stdout)
 
         with st.spinner("Enriching articles (AI summaries + metadata)..."):
             enrich_result = subprocess.run(
