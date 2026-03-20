@@ -1,4 +1,5 @@
-"""Pipeline runner for daily AI research digest.
+"""
+Pipeline runner for daily AI research digest.
 
 Scheduling instructions (cron):
 
@@ -16,6 +17,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 
+# ✅ Load environment variables (works locally + GitHub Actions)
 load_dotenv()
 
 
@@ -102,18 +104,29 @@ def generate_daily_digest():
     return digest
 
 
-def send_digest(dry_run=False):
+def send_digest(digest_text=None, dry_run=False):
+    # ✅ DRY RUN (no email)
     if dry_run:
-        digest = generate_daily_digest()
+        if digest_text is None:
+            digest_text = generate_daily_digest()
+
         print("\nDRY RUN: Digest generated (not sent)")
         print("=" * 60)
-        print(digest)
+        print(digest_text)
+        return
+
+    # ✅ Optional safety: skip email in GitHub Actions if needed
+    if os.getenv("GITHUB_ACTIONS") == "true":
+        print("Skipping email send in GitHub Actions (safety mode)")
+        logging.info("Email skipped in GitHub Actions")
         return
 
     logging.info("Starting email send")
     print("Sending email...")
+
     from app.send_email import send_digest as _send
     _send()
+
     logging.info("Email send completed")
 
 
@@ -124,10 +137,10 @@ def run(dry_run=False):
         ingest_articles()
         enrich_articles()
 
-        # Generate once
+        # ✅ Generate ONCE and reuse
         digest_text = generate_daily_digest()
 
-        send_digest(dry_run=dry_run)
+        send_digest(digest_text=digest_text, dry_run=dry_run)
 
         logging.info("Pipeline completed successfully")
 
