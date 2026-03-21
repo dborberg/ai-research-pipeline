@@ -1,32 +1,494 @@
+import json
+import os
+from datetime import date, datetime, timedelta
+
 from sqlalchemy import create_engine, text
 
-engine = create_engine("sqlite:///data/ai_research.db")
+DB_URL = "sqlite:///data/ai_research.db"
+
+
+def get_engine():
+    os.makedirs("data", exist_ok=True)
+    return create_engine(DB_URL)
+
+
+engine = get_engine()
+
+
+def _get_columns(conn, table_name):
+    rows = conn.execute(text(f"PRAGMA table_info({table_name})")).fetchall()
+    return [row[1] for row in rows]
+
+
+def _add_column_if_missing(conn, table_name, column_name, column_type):
+    if column_name not in _get_columns(conn, table_name):
+        conn.execute(text(f"ALTER TABLE {table_name} ADD COLUMN {column_name} {column_type}"))
+
 
 def init_db():
+    with engine.begin() as conn:
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS articles (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                feedly_id TEXT UNIQUE,
+                title TEXT,
+                source TEXT,
+                url TEXT,
+                published_at TEXT,
+                raw_text TEXT,
+                cleaned_text TEXT,
+                created_at TEXT
+            )
+        """))
+
+        for column_name, column_type in [
+            ("summary", "TEXT"),
+            ("themes", "TEXT"),
+            ("companies", "TEXT"),
+            ("advisor_relevance", "TEXT"),
+            ("ai_score", "INTEGER"),
+        ]:
+            _add_column_if_missing(conn, "articles", column_name, column_type)
+
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS article_summaries (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                article_id INTEGER,
+                summary_text TEXT,
+                created_at TEXT
+            )
+        """))
+
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS daily_digests (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                date TEXT NOT NULL UNIQUE,
+                content TEXT NOT NULL,
+                created_at TEXT NOT NULL
+            )
+        """))
+
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS weekly_digests (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                week_start TEXT NOT NULL,
+                type TEXT NOT NULL,
+                content TEXT NOT NULL,
+                created_at TEXT NOT NULL,
+                UNIQUE(week_start, type)
+            )
+        """))
+
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS monthly_reports (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                month TEXT NOT NULL UNIQUE,
+                content TEXT NOT NULL,
+                created_at TEXT NOT NULL
+            )
+        """))
+
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS weekly_clusters (
+                week_start TEXT,
+                theme_id TEXT,
+                theme_name TEXT,
+                avg_score REAL,
+                article_count INTEGER,
+                high_signal_ratio REAL,
+                cluster_strength REAL,
+                investment_relevance TEXT,
+                article_ids TEXT
+            )
+        """))
+
+        for column_name, column_type in [
+            ("theme_id", "TEXT"),
+            ("article_ids", "TEXT"),
+        ]:
+            _add_column_if_missing(conn, "weekly_clusters", column_name, column_type)
+
+
+def _normalize_date(value):
+    if isinstance(value, datetime):
+        return value.date().isoformat()
+    if isinstance(value, date):
+        return value.isoformat()
+    return str(value)
+
+
+def upsert_daily_digest(digest_date, content):
+    init_db()
+    digest_date = _normalize_date(digest_date)
+    created_at = datetime.utcnow().isoformat()
+
+    with engine.begin() as conn:
+        existing = conn.execute(
+            text("SELECT id FROM daily_digests WHERE date = :date"),
+            {"date": digest_date},
+        ).fetchone()
+
+        if existing:
+            conn.execute(
+                text("""
+                    UPDATE daily_digests
+                    SET content = :content,
+                        created_at = :created_at
+                    WHERE date = :date
+                """),
+                {
+                    "date": digest_date,
+                    "content": content,
+                    "created_at": created_at,
+                },
+            )
+        else:
+            conn.execute(
+                text("""
+                    INSERT INTO daily_digests (date, content, created_at)
+                    VALUES (:date, :content, :created_at)
+                """),
+                {
+                    "date": digest_date,
+                    "content": content,
+                    "created_at": created_at,
+                },
+            )
+
+
+def upsert_weekly_digest(week_start, digest_type, content):
+    init_db()
+    week_start = _normalize_date(week_start)
+    created_at = datetime.utcnow().isoformat()
+
+    with engine.begin() as conn:
+        existing = conn.execute(
+            text("""
+                SELECT id
+                FROM weekly_digests
+                WHERE week_start = :week_start AND type = :type
+            """),
+            {"week_start": week_start, "type": digest_type},
+        ).fetchone()
+
+        if existing:
+            conn.execute(
+                text("""
+                    UPDATE weekly_digests
+                    SET content = :content,
+                        created_at = :created_at
+                    WHERE week_start = :week_start
+                      AND type = :type
+                """),
+                {
+                    "week_start": week_start,
+                    "type": digest_type,
+                    "content": content,
+                    "created_at": created_at,
+                },
+            )
+        else:
+            conn.execute(
+                text("""
+                    INSERT INTO weekly_digests (week_start, type, content, created_at)
+                    VALUES (:week_start, :type, :content, :created_at)
+                """),
+                {
+                    "week_start": week_start,
+                    "type": digest_type,
+                    "content": content,
+                    "created_at": created_at,
+                },
+            )
+
+
+def upsert_monthly_report(report_month, content):
+    init_db()
+    report_month = str(report_month)
+    created_at = datetime.utcnow().isoformat()
+
+    with engine.begin() as conn:
+        existing = conn.execute(
+            text("SELECT id FROM monthly_reports WHERE month = :month"),
+            {"month": report_month},
+        ).fetchone()
+
+        if existing:
+            conn.execute(
+                text("""
+                    UPDATE monthly_reports
+                    SET content = :content,
+                        created_at = :created_at
+                    WHERE month = :month
+                """),
+                {
+                    "month": report_month,
+                    "content": content,
+                    "created_at": created_at,
+                },
+            )
+        else:
+            conn.execute(
+                text("""
+                    INSERT INTO monthly_reports (month, content, created_at)
+                    VALUES (:month, :content, :created_at)
+                """),
+                {
+                    "month": report_month,
+                    "content": content,
+                    "created_at": created_at,
+                },
+            )
+
+
+def save_weekly_clusters(week_start, clusters):
+    init_db()
+    week_start = _normalize_date(week_start)
+
+    rows = []
+    for cluster in clusters:
+        avg_score = float(cluster.get("avg_score") or 0)
+        article_count = int(cluster.get("article_count") or len(cluster.get("articles", [])))
+        high_signal_ratio = float(cluster.get("high_signal_ratio") or 0)
+        article_ids = json.dumps([
+            article.get("id")
+            for article in cluster.get("articles", [])[:5]
+        ])
+        cluster_strength = (
+            (0.5 * avg_score) +
+            (0.3 * high_signal_ratio * 10) +
+            (0.2 * article_count)
+        )
+
+        rows.append(
+            {
+                "week_start": week_start,
+                "theme_id": str(cluster.get("theme_id") or "").strip(),
+                "theme_name": str(cluster.get("theme_name") or "Untitled Theme").strip(),
+                "avg_score": round(avg_score, 2),
+                "article_count": article_count,
+                "high_signal_ratio": round(high_signal_ratio, 2),
+                "cluster_strength": round(cluster_strength, 2),
+                "investment_relevance": str(cluster.get("investment_relevance") or "").strip(),
+                "article_ids": article_ids,
+            }
+        )
+
+    with engine.begin() as conn:
+        conn.execute(
+            text("DELETE FROM weekly_clusters WHERE week_start = :week_start"),
+            {"week_start": week_start},
+        )
+
+        if rows:
+            conn.execute(
+                text("""
+                    INSERT INTO weekly_clusters (
+                        week_start,
+                        theme_id,
+                        theme_name,
+                        avg_score,
+                        article_count,
+                        high_signal_ratio,
+                        cluster_strength,
+                        investment_relevance,
+                        article_ids
+                    )
+                    VALUES (
+                        :week_start,
+                        :theme_id,
+                        :theme_name,
+                        :avg_score,
+                        :article_count,
+                        :high_signal_ratio,
+                        :cluster_strength,
+                        :investment_relevance,
+                        :article_ids
+                    )
+                """),
+                rows,
+            )
+
+
+def get_weekly_clusters(week_start):
+    init_db()
+    week_start = _normalize_date(week_start)
 
     with engine.connect() as conn:
+        rows = conn.execute(
+            text("""
+                SELECT
+                    week_start,
+                    theme_id,
+                    theme_name,
+                    avg_score,
+                    article_count,
+                    high_signal_ratio,
+                    cluster_strength,
+                    investment_relevance,
+                    article_ids
+                FROM weekly_clusters
+                WHERE week_start = :week_start
+                ORDER BY cluster_strength DESC, avg_score DESC, article_count DESC, theme_name ASC
+            """),
+            {"week_start": week_start},
+        ).mappings().all()
 
-        conn.execute(text("""
-        CREATE TABLE IF NOT EXISTS articles (
-            id INTEGER PRIMARY KEY,
-            feedly_id TEXT,
-            title TEXT,
-            source TEXT,
-            url TEXT,
-            published_at TEXT,
-            raw_text TEXT,
-            cleaned_text TEXT,
-            created_at TEXT
-        )
-        """))
+    parsed_rows = []
+    for row in rows:
+        parsed_row = dict(row)
+        parsed_row["article_ids"] = json.loads(parsed_row["article_ids"]) if parsed_row.get("article_ids") else []
+        parsed_rows.append(parsed_row)
+    return parsed_rows
 
-        conn.execute(text("""
-        CREATE TABLE IF NOT EXISTS article_summaries (
-            id INTEGER PRIMARY KEY,
-            article_id INTEGER,
-            summary_text TEXT,
-            created_at TEXT
-        )
-        """))
 
-        conn.commit()
+def get_cluster_history(theme_id, limit=12):
+    init_db()
+
+    with engine.connect() as conn:
+        return conn.execute(
+            text("""
+                SELECT week_start, article_count, avg_score, high_signal_ratio
+                FROM weekly_clusters
+                WHERE theme_id = :theme_id
+                ORDER BY week_start DESC
+                LIMIT :limit
+            """),
+            {"theme_id": theme_id, "limit": limit},
+        ).mappings().all()
+
+
+def get_articles_by_ids(article_ids):
+    init_db()
+    normalized_ids = []
+    for article_id in article_ids:
+        try:
+            normalized_ids.append(int(article_id))
+        except (TypeError, ValueError):
+            continue
+
+    if not normalized_ids:
+        return []
+
+    placeholders = ", ".join([f":id_{index}" for index in range(len(normalized_ids))])
+    params = {f"id_{index}": article_id for index, article_id in enumerate(normalized_ids)}
+
+    with engine.connect() as conn:
+        rows = conn.execute(
+            text(f"""
+                SELECT
+                    id,
+                    title,
+                    source,
+                    url,
+                    published_at,
+                    summary,
+                    advisor_relevance,
+                    ai_score
+                FROM articles
+                WHERE id IN ({placeholders})
+            """),
+            params,
+        ).mappings().all()
+
+    article_map = {row["id"]: dict(row) for row in rows}
+    return [article_map[article_id] for article_id in normalized_ids if article_id in article_map]
+
+
+def fetch_daily_digests(days=None, limit=None):
+    init_db()
+    query = """
+        SELECT id, date, content, created_at
+        FROM daily_digests
+    """
+    params = {}
+
+    if days is not None:
+        cutoff = (datetime.utcnow().date() - timedelta(days=days - 1)).isoformat()
+        query += " WHERE date >= :cutoff"
+        params["cutoff"] = cutoff
+
+    query += " ORDER BY date DESC"
+
+    if limit is not None:
+        query += " LIMIT :limit"
+        params["limit"] = limit
+
+    with engine.connect() as conn:
+        return conn.execute(text(query), params).mappings().all()
+
+
+def fetch_weekly_digests(weeks=None, digest_type=None, limit=None):
+    init_db()
+    query = """
+        SELECT id, week_start, type, content, created_at
+        FROM weekly_digests
+    """
+    params = {}
+    conditions = []
+
+    if weeks is not None:
+        cutoff = (datetime.utcnow().date() - timedelta(weeks=weeks - 1)).isoformat()
+        conditions.append("week_start >= :cutoff")
+        params["cutoff"] = cutoff
+
+    if digest_type:
+        conditions.append("type = :type")
+        params["type"] = digest_type
+
+    if conditions:
+        query += " WHERE " + " AND ".join(conditions)
+
+    query += " ORDER BY week_start DESC, type ASC"
+
+    if limit is not None:
+        query += " LIMIT :limit"
+        params["limit"] = limit
+
+    with engine.connect() as conn:
+        return conn.execute(text(query), params).mappings().all()
+
+
+def fetch_monthly_reports(limit=None):
+    init_db()
+    query = """
+        SELECT id, month, content, created_at
+        FROM monthly_reports
+        ORDER BY month DESC
+    """
+    params = {}
+
+    if limit is not None:
+        query += " LIMIT :limit"
+        params["limit"] = limit
+
+    with engine.connect() as conn:
+        return conn.execute(text(query), params).mappings().all()
+
+
+def fetch_top_articles(days=7, limit=25):
+    init_db()
+    cutoff = (datetime.utcnow() - timedelta(days=days)).isoformat()
+
+    with engine.connect() as conn:
+        return conn.execute(
+            text("""
+                SELECT
+                    id,
+                    title,
+                    source,
+                    url,
+                    published_at,
+                    summary,
+                    advisor_relevance,
+                    ai_score
+                FROM articles
+                WHERE published_at >= :cutoff
+                ORDER BY
+                    CASE WHEN ai_score IS NULL THEN 1 ELSE 0 END,
+                    ai_score DESC,
+                    published_at DESC
+                LIMIT :limit
+            """),
+            {"cutoff": cutoff, "limit": limit},
+        ).mappings().all()

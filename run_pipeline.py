@@ -12,10 +12,13 @@ import sys
 import argparse
 import logging
 import os
+from pathlib import Path
 from datetime import datetime
 
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
+
+from app.db import init_db, upsert_daily_digest
 
 # ✅ Load environment variables (works locally + GitHub Actions)
 load_dotenv()
@@ -30,6 +33,7 @@ logging.basicConfig(
 
 
 DB_PATH = "sqlite:///data/ai_research.db"
+DAILY_OUTPUT_DIR = Path("outputs/daily")
 
 
 def ingest_articles():
@@ -104,6 +108,19 @@ def generate_daily_digest():
     return digest
 
 
+def save_daily_digest(digest_text):
+    logging.info("Saving daily digest")
+    print("Saving digest...")
+
+    DAILY_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    output_path = DAILY_OUTPUT_DIR / f"{datetime.utcnow().date().isoformat()}.txt"
+
+    output_path.write_text(digest_text, encoding="utf-8")
+
+    logging.info(f"Daily digest saved to {output_path}")
+    return output_path
+
+
 def send_digest(digest_text=None, dry_run=False):
     # ✅ DRY RUN (no email)
     if dry_run:
@@ -130,11 +147,14 @@ def run(dry_run=False):
     try:
         logging.info("Pipeline started")
 
+        init_db()
         ingest_articles()
         enrich_articles()
 
         # ✅ Generate ONCE and reuse
         digest_text = generate_daily_digest()
+        save_daily_digest(digest_text)
+        upsert_daily_digest(datetime.utcnow().date(), digest_text)
 
         send_digest(digest_text=digest_text, dry_run=dry_run)
 

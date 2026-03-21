@@ -54,10 +54,9 @@ def format_as_html(text):
     """
 
 
-def send_digest(digest_text):
-    """Send the provided digest via email."""
+def send_report(subject, body_text):
+    """Send the provided report via email using the shared HTML formatter."""
 
-    # Email settings
     smtp_server = "smtp.gmail.com"
     smtp_port = 465
     sender_email = os.environ.get("EMAIL_USER")
@@ -75,14 +74,11 @@ def send_digest(digest_text):
     msg["From"] = sender_email
     msg["To"] = receiver_email
 
-    # Convert content
-    html_body = format_as_html(digest_text)
+    html_body = format_as_html(body_text)
 
-    # Attach both plain + HTML
-    msg.attach(MIMEText(digest_text, "plain", "utf-8"))
+    msg.attach(MIMEText(body_text, "plain", "utf-8"))
     msg.attach(MIMEText(html_body, "html", "utf-8"))
 
-    # ✅ SEND BLOCK WITH FULL DEBUG VISIBILITY
     try:
         print("Connecting to SMTP server...")
         with smtplib.SMTP_SSL(smtp_server, smtp_port) as server:
@@ -96,3 +92,9 @@ def send_digest(digest_text):
     except Exception as e:
         print(f"EMAIL ERROR: {e}")
         raise
+
+
+def send_digest(digest_text):
+    """Send the provided daily digest via email."""
+
+    send_report("Daily Riffs from the Gen AI Songbook", digest_text)

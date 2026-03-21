@@ -4,4 +4,6 @@ __pycache__/
 *.pyc
 pipeline.log
 outputs/
+data/*.db__pycache__/
+*.pyc
 data/*.db

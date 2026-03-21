@@ -4,3 +4,5 @@ sqlalchemy
 requests
 python-dotenv
 feedparser
+newspaper3k
+streamlit
