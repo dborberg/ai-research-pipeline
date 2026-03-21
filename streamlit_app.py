@@ -103,6 +103,17 @@ def _render_strength_badge(column, cluster_strength):
         column.info(label)
 
 
+def _ensure_display_fields(cluster_df):
+    if cluster_df is None or cluster_df.empty:
+        return cluster_df
+
+    cluster_df = cluster_df.copy()
+    if "persistence" not in cluster_df.columns:
+        cluster_df["persistence"] = 1
+    cluster_df["persistence"] = cluster_df["persistence"].fillna(1).astype(int)
+    return cluster_df
+
+
 @st.cache_data
 def load_articles(week_start):
     _ = week_start
@@ -288,7 +299,7 @@ def apply_velocity_metrics(cluster_df, velocity_df):
 
 
 def render_top_clusters(cluster_df, velocity_df):
-    st.subheader("Signal Command Center")
+    st.subheader("Top Themes By Conviction")
 
     if cluster_df.empty:
         st.info("No clusters were generated for the selected week.")
@@ -303,6 +314,7 @@ def render_top_clusters(cluster_df, velocity_df):
         delta_text = f"{_get_velocity_symbol(velocity)} {velocity:+d} vs prior week"
         column.metric("Cluster Strength", f"{row['cluster_strength']:.2f}", delta_text)
         column.markdown(f"**{row['theme_name']}**")
+        column.caption(f"Persistence: {int(row.get('persistence', 1))} weeks")
         column.caption(f"Signal Quality: {row['signal_quality']:.2f}")
         column.caption(f"Avg Score: {row['avg_score']:.2f}")
         column.caption(f"Articles: {int(row['article_count'])}")
@@ -334,8 +346,42 @@ def render_attention_section(cluster_df, velocity_df):
         st.caption(
             f"Conviction: {row['conviction_score']:.2f} | "
             f"Velocity: {int(row['velocity']):+d} | "
+            f"Persistence: {int(row.get('persistence', 1))} weeks | "
             f"Strength: {row['cluster_strength']:.2f}"
         )
+
+
+def render_signal_buckets(cluster_df):
+    if cluster_df.empty:
+        return
+
+    conviction_median = cluster_df["conviction_score"].median()
+    structural = cluster_df[
+        (cluster_df["persistence"] >= 3) &
+        (cluster_df["conviction_score"] >= conviction_median)
+    ].head(3)
+    rising = cluster_df[cluster_df["velocity"] > 0].head(3)
+    breaking_down = cluster_df[cluster_df["velocity"] < 0].sort_values("velocity").head(3)
+
+    bucket_columns = st.columns(3)
+    buckets = [
+        ("Structural Winners", structural, "No structural winners are standing out yet."),
+        ("Rising Themes", rising, "No rising themes are breaking out yet."),
+        ("Breaking Down", breaking_down, "No themes are clearly breaking down this week."),
+    ]
+
+    for column, (title, bucket_df, empty_message) in zip(bucket_columns, buckets):
+        column.markdown(f"**{title}**")
+        if bucket_df.empty:
+            column.caption(empty_message)
+            continue
+        for _, row in bucket_df.iterrows():
+            column.markdown(f"**{row['theme_name']}**")
+            column.caption(
+                f"Conviction {row['conviction_score']:.2f} | "
+                f"{_get_velocity_symbol(int(row['velocity']))} {int(row['velocity']):+d} | "
+                f"{int(row.get('persistence', 1))} weeks"
+            )
 
 
 def render_theme_explorer(cluster_df, velocity_df):
@@ -353,8 +399,8 @@ def render_theme_explorer(cluster_df, velocity_df):
     metric_columns = st.columns(4)
     metric_columns[0].metric("Average Score", f"{selected_row['avg_score']:.2f}")
     metric_columns[1].metric("Article Count", int(selected_row["article_count"]))
-    metric_columns[2].metric("High Signal Ratio", f"{selected_row['high_signal_ratio']:.0%}")
-    metric_columns[3].metric("Signal Quality", f"{selected_row['signal_quality']:.2f}", f"{velocity:+d} velocity")
+    metric_columns[2].metric("Persistence", f"{int(selected_row.get('persistence', 1))} weeks")
+    metric_columns[3].metric("Signal Quality", f"{selected_row['signal_quality']:.2f}", f"{_get_velocity_symbol(velocity)} {velocity:+d}")
 
     st.markdown("**Investment Relevance**")
     st.write(selected_row["investment_relevance"] or "No investment relevance summary was generated.")
@@ -468,6 +514,7 @@ def main():
     velocity_df = compute_velocity(cluster_df, previous_cluster_df)
     print("Normalized columns:", list(cluster_df.columns))
     cluster_df = apply_velocity_metrics(cluster_df, velocity_df)
+    cluster_df = _ensure_display_fields(cluster_df)
     cluster_df["theme"] = cluster_df.apply(lambda row: _get_theme_key(row), axis=1)
     cluster_df = cluster_df.sort_values(
         ["conviction_score", "velocity", "cluster_strength"],
@@ -532,6 +579,8 @@ def main():
         st.plotly_chart(fig, use_container_width=True)
         st.divider()
     render_top_clusters(cluster_df, velocity_df)
+    st.divider()
+    render_signal_buckets(cluster_df)
     st.divider()
     render_attention_section(cluster_df, velocity_df)
     st.divider()

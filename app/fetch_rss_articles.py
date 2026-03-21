@@ -37,6 +37,15 @@ HIGH_QUALITY_SOURCES = {
     "The Verge": 2,
     "arXiv": 2,
 }
+SOURCE_WEIGHT_ALIASES = {
+    "ft.com": 3,
+    "economist": 3,
+    "reuters": 3,
+    "techcrunch": 2,
+    "venturebeat": 2,
+    "the verge": 2,
+    "arxiv": 2,
+}
 
 
 def fetch_full_article(url):
@@ -109,10 +118,25 @@ def _compute_priority_score(title: str, summary: str) -> int:
 
 
 def _get_source_weight(source_name: str) -> int:
+    normalized_source = (source_name or "").lower()
     for source_key, weight in HIGH_QUALITY_SOURCES.items():
-        if source_key.lower() in (source_name or "").lower():
+        if source_key.lower() in normalized_source:
+            return weight
+    for alias, weight in SOURCE_WEIGHT_ALIASES.items():
+        if alias in normalized_source:
             return weight
     return 1
+
+
+def _compute_signal_score(article: Dict[str, Any]) -> float:
+    signal_score = (
+        article["priority_score"] * 0.5 +
+        article["source_weight"] * 1.0 +
+        (article["content_quality"] / 1000)
+    )
+    if len(article.get("text", "")) > 2000:
+        signal_score += 1
+    return round(signal_score, 2)
 
 
 def _normalize_title(title: str) -> str:
@@ -279,13 +303,7 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
             count_enriched += 1
 
     for article in articles.values():
-        article["signal_score"] = (
-            article["priority_score"] * 0.5 +
-            article["source_weight"] * 1.0 +
-            (article["content_quality"] / 1000)
-        )
-        if len(article.get("text", "")) > 2000:
-            article["signal_score"] += 1
+        article["signal_score"] = _compute_signal_score(article)
 
     filtered_articles = []
     for article in articles.values():
@@ -298,7 +316,13 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
 
     sorted_articles = sorted(
         filtered_articles,
-        key=lambda article: article.get("signal_score", 0),
+        key=lambda article: (
+            article.get("signal_score", 0),
+            article.get("priority_score", 0),
+            article.get("source_weight", 0),
+            article.get("content_quality", 0),
+            article.get("published", ""),
+        ),
         reverse=True,
     )
     sorted_articles = _dedupe_similar_titles(sorted_articles)

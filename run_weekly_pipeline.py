@@ -2,6 +2,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 from datetime import datetime, timedelta
 
 from dotenv import load_dotenv
@@ -27,6 +28,11 @@ DEFAULT_SCORE_THRESHOLD = 6
 HIGH_SIGNAL_LIMIT = 25
 MEDIUM_SIGNAL_LIMIT = 15
 MAX_CLUSTERS = 10
+GENERIC_THEME_TERMS = {
+    "ai", "artificial", "intelligence", "theme", "themes", "trend", "trends",
+    "innovation", "innovations", "technology", "technologies", "market", "markets",
+    "signal", "signals", "weekly", "development", "developments", "update", "updates",
+}
 
 
 def _compute_cluster_strength(cluster):
@@ -48,7 +54,78 @@ def _generate_theme_id(theme_name, representative_summary=None):
     return hashlib.md5(hash_input.encode()).hexdigest()[:10]
 
 
+def _extract_theme_terms(articles):
+    token_counts = {}
+    for article in articles:
+        title = article.get("title") or ""
+        for token in re.findall(r"[A-Za-z][A-Za-z0-9\-]+", title.lower()):
+            if len(token) < 3 or token in GENERIC_THEME_TERMS:
+                continue
+            token_counts[token] = token_counts.get(token, 0) + 1
+    ranked_tokens = sorted(token_counts.items(), key=lambda item: (-item[1], item[0]))
+    return [token.title() for token, _ in ranked_tokens[:4]]
+
+
+def _derive_theme_name(raw_name, articles):
+    raw_name = str(raw_name or "").strip()
+    cleaned_words = [word for word in re.findall(r"[A-Za-z0-9&\-]+", raw_name) if word.lower() not in GENERIC_THEME_TERMS]
+    if 2 <= len(cleaned_words) <= 6:
+        return " ".join(cleaned_words[:6])
+
+    theme_terms = _extract_theme_terms(articles)
+    if theme_terms:
+        return " ".join(theme_terms[:4])
+
+    top_article = max(articles, key=lambda article: article.get("signal_score", 0), default={})
+    title_words = [
+        word for word in re.findall(r"[A-Za-z0-9&\-]+", top_article.get("title") or "")
+        if word.lower() not in GENERIC_THEME_TERMS
+    ]
+    if title_words:
+        return " ".join(title_words[:4])
+
+    return "High Signal Cluster"
+
+
+def _dedupe_and_relabel_clusters(clusters):
+    deduped_clusters = []
+    seen_names = set()
+    seen_article_sets = []
+
+    for cluster in clusters:
+        articles = cluster.get("articles", [])
+        article_ids = {article.get("id") for article in articles if article.get("id") is not None}
+        if not article_ids:
+            continue
+
+        duplicate = False
+        for prior_ids in seen_article_sets:
+            overlap = len(article_ids & prior_ids) / max(1, min(len(article_ids), len(prior_ids)))
+            if overlap >= 0.6:
+                duplicate = True
+                break
+        if duplicate:
+            continue
+
+        cluster["theme_name"] = _derive_theme_name(cluster.get("theme_name"), articles)
+        normalized_name = cluster["theme_name"].lower()
+        if normalized_name in seen_names:
+            differentiators = _extract_theme_terms(articles)
+            if differentiators:
+                cluster["theme_name"] = f"{cluster['theme_name']} {differentiators[0]}"
+            else:
+                cluster["theme_name"] = f"{cluster['theme_name']} {len(deduped_clusters) + 1}"
+            normalized_name = cluster["theme_name"].lower()
+
+        seen_names.add(normalized_name)
+        seen_article_sets.append(article_ids)
+        deduped_clusters.append(cluster)
+
+    return deduped_clusters
+
+
 def _enrich_clusters(clusters):
+    clusters = _dedupe_and_relabel_clusters(clusters)
     for cluster in clusters:
         cluster["theme_id"] = _generate_theme_id(
             cluster.get("theme_name"),
@@ -430,6 +507,8 @@ ARTICLES:
         clusters.append(cluster)
         assigned_ids.update(article_ids)
 
+    clusters = _dedupe_and_relabel_clusters(clusters)
+
     if not clusters:
         sorted_articles = sorted(
             articles,
@@ -455,7 +534,7 @@ ARTICLES:
             avg_score = sum(article.get("ai_score") or 0 for article in cluster_slice) / article_count
             fallback_clusters.append(
                 {
-                    "theme_name": f"Theme {len(fallback_clusters) + 1}",
+                    "theme_name": _derive_theme_name("", cluster_slice),
                     "articles": cluster_slice,
                     "representative_summary": "Fallback cluster built from the strongest nearby weekly signals.",
                     "key_companies": _dedupe_preserve_order(
@@ -473,7 +552,7 @@ ARTICLES:
                 }
             )
             index += 2
-        clusters = fallback_clusters
+        clusters = _dedupe_and_relabel_clusters(fallback_clusters)
 
     clusters = clusters[:MAX_CLUSTERS]
 

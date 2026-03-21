@@ -34,6 +34,7 @@ def normalize_cluster_df(df):
         "signal_quality": 0.0,
         "cluster_strength": 0.0,
         "velocity": 0,
+        "previous_article_count": 0,
         "velocity_pct": 0.0,
         "conviction_score": 0.0,
     })
