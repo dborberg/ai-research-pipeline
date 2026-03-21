@@ -25,10 +25,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      OPENAI_API_KEY: "REPLACE"
-      EMAIL_USER: "REPLACE"
-      EMAIL_PASSWORD: "REPLACE"
-      EMAIL_TO: "REPLACE"
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      EMAIL_USER: ${{ secrets.EMAIL_USER }}
+      EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+      EMAIL_TO: ${{ secrets.EMAIL_TO }}
 
     steps:
       - uses: actions/checkout@v4
