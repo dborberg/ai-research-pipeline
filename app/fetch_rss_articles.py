@@ -40,7 +40,11 @@ HIGH_QUALITY_SOURCES = {
 
 
 def fetch_full_article(url):
-    from newspaper import Article
+    try:
+        from newspaper import Article
+    except ImportError as e:
+        print("WARNING: newspaper3k dependency issue:", e)
+        return ""
 
     try:
         article = Article(url)

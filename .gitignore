@@ -7,3 +7,4 @@ outputs/
 data/*.db__pycache__/
 *.pyc
 data/*.db
+data/ai_research.db
