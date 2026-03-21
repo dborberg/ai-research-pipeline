@@ -22,8 +22,6 @@ RSS_FEEDS = [
     "https://www.ft.com/companies?format=rss",
     "https://www.economist.com/science-and-technology/rss.xml",
     "https://www.economist.com/business/rss.xml",
-    "https://www.wsj.com/xml/rss/3_7455.xml",
-    "https://www.wsj.com/xml/rss/3_7031.xml",
 ]
 
 MAX_ENRICHED_ARTICLES = 20
@@ -171,6 +169,8 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
     articles = {}
     scraped_urls = set()
     enrichment_candidates = []
+    total_feeds = len(feed_urls)
+    successful_feeds = 0
     now = datetime.utcnow()
     cutoff = now - timedelta(hours=24)
 
@@ -180,59 +180,74 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
     for url in feed_urls:
         print(f"\nParsing feed: {url}")
 
-        try:
-            parsed = feedparser.parse(url)
+        parsed = None
+        for attempt in range(2):
+            try:
+                parsed = feedparser.parse(url)
+                break
+            except Exception as e:
+                if attempt == 1:
+                    print(f"ERROR: Failed to parse {url}: {e}")
+                else:
+                    time.sleep(1)
 
-            if not parsed.entries:
-                print("  → No entries found")
+        if parsed is None:
+            continue
+
+        if not parsed.entries:
+            print(f"WARNING: No entries found for {url}")
+            continue
+
+        successful_feeds += 1
+        source = parsed.feed.get("title", url)
+        print(f"  → Feed title: {source}")
+        print(f"  → Entries found: {len(parsed.entries)}")
+
+        for entry in parsed.entries:
+            link = entry.get("link")
+
+            if not link or link in articles:
                 continue
 
-            source = parsed.feed.get("title", url)
-            print(f"  → Feed title: {source}")
-            print(f"  → Entries found: {len(parsed.entries)}")
+            # Handle published date safely
+            published = entry.get("published_parsed")
 
-            for entry in parsed.entries:
-                link = entry.get("link")
+            if published:
+                published_dt = datetime(*published[:6])
+            else:
+                published_dt = now
 
-                if not link or link in articles:
-                    continue
+            # Filter for last 24 hours
+            if published_dt < cutoff:
+                continue
 
-                # Handle published date safely
-                published = entry.get("published_parsed")
+            title = entry.get("title", "")
+            summary = _extract_summary(entry)
+            priority_score = _compute_priority_score(title, summary)
 
-                if published:
-                    published_dt = datetime(*published[:6])
-                else:
-                    published_dt = now
+            article = {
+                "title": title,
+                "link": link,
+                "published": published_dt.isoformat(),
+                "summary": summary,
+                "content": "",
+                "text": summary,
+                "source": source,
+                "source_weight": _get_source_weight(source),
+                "priority_score": priority_score,
+                "content_quality": len(summary),
+                "signal_score": 0.0,
+            }
 
-                # Filter for last 24 hours
-                if published_dt < cutoff:
-                    continue
+            articles[link] = article
+            if priority_score >= 1:
+                enrichment_candidates.append(article)
 
-                title = entry.get("title", "")
-                summary = _extract_summary(entry)
-                priority_score = _compute_priority_score(title, summary)
+    print(f"Feed health: {successful_feeds}/{total_feeds} feeds returned data")
 
-                article = {
-                    "title": title,
-                    "link": link,
-                    "published": published_dt.isoformat(),
-                    "summary": summary,
-                    "content": "",
-                    "text": summary,
-                    "source": source,
-                    "source_weight": _get_source_weight(source),
-                    "priority_score": priority_score,
-                    "content_quality": len(summary),
-                    "signal_score": 0.0,
-                }
-
-                articles[link] = article
-                if priority_score >= 1:
-                    enrichment_candidates.append(article)
-
-        except Exception as e:
-            logging.error(f"Error parsing feed {url}: {e}")
+    if len(articles) == 0:
+        print("CRITICAL WARNING: No articles fetched across all feeds")
+        return []
 
     sorted_candidates = sorted(
         enrichment_candidates,
@@ -273,6 +288,9 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
         if len(article.get("text", "")) < 200:
             continue
         filtered_articles.append(article)
+
+    if len(filtered_articles) < 5:
+        print("WARNING: Low article count — proceeding but signal may be weak")
 
     sorted_articles = sorted(
         filtered_articles,

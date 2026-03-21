@@ -90,6 +90,7 @@ def ingest_articles():
 
     logging.info(f"Ingestion completed: {inserted} articles processed")
     print(f"Ingested {inserted} articles")
+    return articles
 
 
 def enrich_articles():
@@ -148,7 +149,11 @@ def run(dry_run=False):
         logging.info("Pipeline started")
 
         init_db()
-        ingest_articles()
+        articles = ingest_articles()
+        if not articles:
+            print("No articles available — skipping digest generation safely")
+            logging.warning("No articles available — skipping digest generation safely")
+            return
         enrich_articles()
 
         # ✅ Generate ONCE and reuse
