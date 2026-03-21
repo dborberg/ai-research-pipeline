@@ -1,4 +1,5 @@
 import feedparser
+from collections import Counter
 from datetime import datetime, timedelta
 from typing import List, Dict, Any
 import logging
@@ -132,10 +133,12 @@ def _compute_signal_score(article: Dict[str, Any]) -> float:
     signal_score = (
         article["priority_score"] * 0.5 +
         article["source_weight"] * 1.0 +
-        (article["content_quality"] / 1000)
+        min(article["content_quality"] / 1000, 2)
     )
     if len(article.get("text", "")) > 2000:
         signal_score += 1
+    if "arxiv" in article.get("source", "").lower():
+        signal_score *= 0.75
     return round(signal_score, 2)
 
 
@@ -327,12 +330,26 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
     )
     sorted_articles = _dedupe_similar_titles(sorted_articles)
 
+    MAX_PER_SOURCE = 5
+    source_buckets = {}
+    source_diversified_articles = []
+
+    for article in sorted_articles:
+        source = article.get("source", "unknown")
+
+        if source not in source_buckets:
+            source_buckets[source] = []
+
+        if len(source_buckets[source]) < MAX_PER_SOURCE:
+            source_buckets[source].append(article)
+            source_diversified_articles.append(article)
+
     MAX_PER_THEME = 5
 
     theme_buckets = {}
     diversified_articles = []
 
-    for article in sorted_articles:
+    for article in source_diversified_articles:
         theme = _get_theme_key(article)
 
         if theme not in theme_buckets:
@@ -343,9 +360,14 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
             diversified_articles.append(article)
 
     diversified_articles = diversified_articles[:MAX_RETURNED_ARTICLES]
+    sources = set(a["source"] for a in diversified_articles)
+    if len(sources) < 3:
+        print("WARNING: Low source diversity")
 
     print(f"Enriched articles: {count_enriched}")
     print(f"Total articles: {len(diversified_articles)}")
+    print("Source distribution:")
+    print(Counter(a["source"] for a in diversified_articles))
     print("Top 10 articles by signal_score:")
     for article in diversified_articles[:10]:
         print(article["title"], round(article["signal_score"], 2), article["source"])
