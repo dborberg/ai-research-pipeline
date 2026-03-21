@@ -261,6 +261,11 @@ def apply_velocity_metrics(cluster_df, velocity_df):
         how="left",
         suffixes=("", "_velocity"),
     )
+    if "signal_quality" not in merged.columns:
+        if "avg_score" in merged.columns:
+            merged["signal_quality"] = merged["avg_score"]
+        else:
+            merged["signal_quality"] = 0.0
     if "velocity_velocity" in merged.columns and "velocity" in merged.columns:
         merged["velocity"] = merged["velocity_velocity"].fillna(merged["velocity"]).fillna(0).astype(int)
     elif "velocity_velocity" in merged.columns:
@@ -463,6 +468,12 @@ def main():
         st.stop()
 
     velocity_df = compute_velocity(cluster_df, previous_cluster_df)
+    if "signal_quality" not in cluster_df.columns:
+        if "avg_score" in cluster_df.columns:
+            cluster_df["signal_quality"] = cluster_df["avg_score"]
+        else:
+            cluster_df["signal_quality"] = 0.0
+    print("Columns available:", list(cluster_df.columns))
     cluster_df = apply_velocity_metrics(cluster_df, velocity_df)
     cluster_df["theme"] = cluster_df.apply(lambda row: _get_theme_key(row), axis=1)
     cluster_df = cluster_df.sort_values(
