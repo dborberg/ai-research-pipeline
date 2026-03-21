@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 import pandas as pd
 from dotenv import load_dotenv
 
+from app.cluster_schema import normalize_cluster_df
 from app.db import get_weekly_clusters, init_db, upsert_weekly_digest
 from app.reporting import call_chat_model, get_openai_client, get_week_start, save_text_output
 from app.send_email import send_report
@@ -21,7 +22,7 @@ def _load_recent_cluster_history(weeks=5):
             row_dict["week_start"] = week_start.isoformat()
             rows.append(row_dict)
 
-    return pd.DataFrame(rows)
+    return normalize_cluster_df(pd.DataFrame(rows))
 
 
 def classify_regime(row):
@@ -72,9 +73,10 @@ def _compute_theme_summary(history_df):
         bins=[-1, 4, 7, 100],
         labels=["LOW", "MEDIUM", "HIGH"],
     )
+    summary_df = normalize_cluster_df(summary_df)
 
     return summary_df.sort_values(
-        ["conviction_score", "latest_strength", "avg_velocity"],
+        ["persistence", "conviction_score", "avg_velocity"],
         ascending=[False, False, False],
     ).reset_index(drop=True)
 
@@ -179,90 +181,99 @@ DATA:
 
 
 def generate_monthly_brief(summary_df, report_month, client):
-    top_three = summary_df.head(3)
-    high_conviction = summary_df[summary_df["priority"] == "HIGH"].head(5)
-    emerging = summary_df[
-        (summary_df["avg_velocity"] > 0) &
-        (summary_df["persistence"] < 3)
+    if summary_df.empty:
+        return "\n".join([
+            "AI SIGNAL COMMAND REVIEW - MONTHLY",
+            f"Month: {report_month}",
+            "",
+            "No monthly theme data is available yet.",
+        ]).strip()
+
+    summary_df = normalize_cluster_df(summary_df)
+    conviction_median = summary_df["conviction_score"].median()
+
+    structural = summary_df[
+        (summary_df["persistence"] >= 3) &
+        (summary_df["conviction_score"] > conviction_median)
+    ].sort_values(
+        ["conviction_score", "persistence", "avg_velocity"],
+        ascending=[False, False, False],
+    ).head(5)
+
+    rising = summary_df[
+        ((summary_df["velocity"] if "velocity" in summary_df.columns else 0) > 0) |
+        (summary_df["avg_velocity"] > 0) |
+        (summary_df["conviction_score"] > conviction_median)
+    ].sort_values(
+        ["avg_velocity", "conviction_score", "persistence"],
+        ascending=[False, False, False],
+    ).head(5)
+
+    breaking_down = summary_df[
+        ((summary_df["velocity"] if "velocity" in summary_df.columns else 0) < 0) |
+        (summary_df["avg_velocity"] < 0) |
+        (summary_df["conviction_score"] < conviction_median)
     ].sort_values(
         ["avg_velocity", "conviction_score"],
-        ascending=[False, False],
-    ).head(4)
-    fading = summary_df[summary_df["avg_velocity"] < 0].sort_values(
-        ["avg_velocity", "conviction_score"],
         ascending=[True, False],
-    ).head(4)
+    ).head(5)
 
-    executive_summary = _generate_executive_summary(client, summary_df, report_month)
-    portfolio_implications = _generate_portfolio_implications(client, summary_df)
+    def _fallback_relevance(row):
+        relevance = str(row.get("latest_relevance") or "").strip()
+        if relevance:
+            return relevance
+        return (
+            f"{row['theme_name']} remains relevant because conviction and persistence indicate "
+            "the theme is still shaping AI-related capital allocation."
+        )
+
+    def _render_theme_block(row):
+        pm_take = _generate_pm_take(client, row).strip()
+        why_it_matters = _fallback_relevance(row)
+        return [
+            str(row["theme_name"]),
+            "",
+            f"Conviction: {float(row['conviction_score']):.1f}",
+            f"Velocity: {float(row.get('avg_velocity', 0.0)):+.1f}",
+            f"Persistence: {int(row['persistence'])} weeks",
+            "",
+            "Why It Matters:",
+            why_it_matters,
+            "",
+            "PM Takeaway:",
+            pm_take or "Sustained AI infrastructure buildout supports utilities, grid equipment, and power semis exposure.",
+            "",
+        ]
 
     lines = [
         "AI SIGNAL COMMAND REVIEW - MONTHLY",
         f"Month: {report_month}",
         "",
-        "EXECUTIVE SUMMARY",
+        "STRUCTURAL WINNERS",
         "",
-        "Top Themes By Conviction:",
     ]
 
-    for _, row in top_three.iterrows():
-        lines.append(
-            f"{row['theme_name']} | Conviction {row['conviction_score']:.2f} | Regime {row['regime']}"
-        )
-
-    lines.extend(["", executive_summary.strip(), "", "HIGH CONVICTION THEMES", ""])
-
-    if high_conviction.empty:
-        lines.append("No themes qualified for the high-conviction tier this month.")
-        lines.append("")
+    if structural.empty:
+        lines.extend(["No structural winners cleared the conviction threshold this month.", ""])
     else:
-        for _, row in high_conviction.iterrows():
-            pm_take = _generate_pm_take(client, row)
-            lines.extend(
-                [
-                    str(row["theme_name"]),
-                    f"Conviction Score: {row['conviction_score']:.2f}",
-                    f"Regime: {row['regime']}",
-                    f"Why It Matters: {row['latest_relevance'] or 'No relevance summary available.'}",
-                    f"PM Take: {pm_take.strip()}",
-                    "",
-                ]
-            )
+        for _, row in structural.iterrows():
+            lines.extend(_render_theme_block(row))
 
-    lines.extend(["EMERGING THEMES", ""])
-    if emerging.empty:
-        lines.append("No emerging themes stood out beyond the established leaders.")
-        lines.append("")
+    lines.extend(["RISING THEMES", ""])
+    if rising.empty:
+        lines.extend(["No rising themes stood out this month.", ""])
     else:
-        for _, row in emerging.iterrows():
-            lines.extend(
-                [
-                    str(row["theme_name"]),
-                    f"Conviction Score: {row['conviction_score']:.2f}",
-                    f"Regime: {row['regime']}",
-                    f"Why It Matters: {row['latest_relevance'] or 'Momentum is building from a smaller base.'}",
-                    "",
-                ]
-            )
+        for _, row in rising.iterrows():
+            lines.extend(_render_theme_block(row))
 
-    lines.extend(["THEMES LOSING MOMENTUM", ""])
-    if fading.empty:
-        lines.append("No themes showed meaningful loss of momentum this month.")
-        lines.append("")
+    lines.extend(["BREAKING DOWN", ""])
+    if breaking_down.empty:
+        lines.extend(["No themes showed a meaningful breakdown in momentum.", ""])
     else:
-        for _, row in fading.iterrows():
-            lines.extend(
-                [
-                    str(row["theme_name"]),
-                    f"Conviction Score: {row['conviction_score']:.2f}",
-                    f"Regime: {row['regime']}",
-                    f"Why It Matters: {row['latest_relevance'] or 'Interest is fading or being displaced by adjacent themes.'}",
-                    "",
-                ]
-            )
+        for _, row in breaking_down.iterrows():
+            lines.extend(_render_theme_block(row))
 
-    lines.extend(["PORTFOLIO IMPLICATIONS", "", portfolio_implications.strip()])
-    return "\n".join(lines).strip()
+    return "\n".join(str(line) for line in lines if line is not None).strip()
 
 
 def main():

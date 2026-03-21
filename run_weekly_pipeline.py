@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 import pandas as pd
 from sqlalchemy import text
 
+from app.cluster_schema import normalize_cluster_df
 from app.db import fetch_daily_digests, fetch_weekly_digests, get_engine, get_weekly_clusters, init_db, save_weekly_clusters, upsert_weekly_digest
 from app.reporting import (
     WEEKLY_THEMATIC_TEMPERATURE,
@@ -977,13 +978,13 @@ def _generate_and_store_weekly_reports(client, week_start):
 
     current_cluster_rows = get_weekly_clusters(week_start)
     previous_cluster_rows = get_weekly_clusters(week_start - timedelta(days=7))
-    current_cluster_df = pd.DataFrame(current_cluster_rows)
-    previous_cluster_df = pd.DataFrame(previous_cluster_rows)
+    current_cluster_df = normalize_cluster_df(pd.DataFrame(current_cluster_rows))
+    previous_cluster_df = normalize_cluster_df(pd.DataFrame(previous_cluster_rows))
 
     from streamlit_app import apply_velocity_metrics, compute_velocity
 
     velocity_df = compute_velocity(current_cluster_df, previous_cluster_df)
-    current_cluster_df = apply_velocity_metrics(current_cluster_df, velocity_df)
+    current_cluster_df = normalize_cluster_df(apply_velocity_metrics(current_cluster_df, velocity_df))
     signal_command_brief = generate_signal_command_brief(current_cluster_df, week_start)
 
     upsert_weekly_digest(week_start, WHOLESALER_TYPE, wholesaler_content)
