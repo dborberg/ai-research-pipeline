@@ -1,0 +1,43 @@
+Daily Riffs from the Gen AI Songbook
+March 22, 2026
+
+TOP STORIES
+- AI infrastructure remains the clearest near-term investment theme, with Goldman Sachs projecting roughly $700 billion in AI capex this year, reinforcing demand for chips, servers, networking, and data center buildout rather than just end-user software winners (The Motley Fool).
+- Taiwan Semiconductor continues to stand out as a foundational AI exposure because it sits at the center of advanced chip manufacturing for multiple AI leaders, giving advisors a way to discuss picks-and-shovels exposure beyond single-platform risk (The Motley Fool).
+- Recent stock-picking commentary highlighting outsized gains in AI infrastructure names versus Oracle underscores that market leadership is still concentrated in hardware and systems providers, but elevated valuations raise execution and multiple-compression risk for clients entering late (The Motley Fool).
+
+ENTERPRISE AND LABOR
+- A new framework for uncertainty-aware LLM systems points to the next phase of enterprise AI adoption: tools that can estimate confidence, self-check outputs, and trigger web research when needed, which could improve trust in higher-stakes workflows (MarkTechPost).
+- For white-collar employers, the practical takeaway is that AI adoption is shifting from simple content generation toward reliability and workflow integration, potentially supporting productivity gains in research, compliance support, and client service functions if governance is strong (MarkTechPost).
+- Government use of AI to help process public records requests shows how administrative work is being automated in knowledge-heavy environments, but it also highlights risks around accuracy, accountability, and whether AI summaries distort underlying information (Detroit Free Press).
+
+INFRASTRUCTURE AND POWER
+- Goldman Sachs’ $700 billion AI capex estimate signals continued strength for the full infrastructure stack, including semiconductors, servers, networking gear, and data center expansion, with second-order implications for utilities and power equipment suppliers (The Motley Fool).
+- Taiwan Semiconductor’s strategic importance reinforces that leading-edge foundry capacity remains a bottleneck asset in AI, making semiconductor manufacturing scale and process leadership critical to sustaining the current investment cycle (The Motley Fool).
+- Commentary on top AI stock ideas and infrastructure winners suggests enterprise spending is still flowing first into compute capacity and enabling hardware, supporting the case for continued investment in data center and chip ecosystems before broader software monetization fully matures (The Globe and Mail).
+
+CAPITAL MARKETS AND INVESTMENT
+- Investor enthusiasm remains strongest around AI infrastructure equities, with one highlighted name up 115% over the past year, showing how capital markets continue to reward companies tied directly to AI workload growth more than legacy enterprise tech incumbents (The Motley Fool).
+- TSMC is being framed as a core AI holding because it offers broad exposure across customers and use cases, which may appeal to investors seeking diversified participation in AI growth without betting on a single application layer winner (The Motley Fool).
+- Stock-selection pieces emphasizing three AI names and a preferred capex beneficiary suggest opportunity is broadening across semis, platforms, and software, but advisors should balance upside narratives against concentration risk and stretched valuations in crowded trades (The Globe and Mail).
+- The current setup still favors picks-and-shovels beneficiaries over speculative application stories, which may matter for portfolio construction as clients ask for AI exposure beyond the Magnificent Seven (The Motley Fool).
+
+REGULATION AND POLICY
+- State agency use of AI in public records workflows highlights a growing policy tension: AI can improve speed and reduce administrative burden, but it may also create legal and reputational risk if disclosures are incomplete, biased, or hard to audit (Detroit Free Press).
+- For investors, the broader implication is that public-sector AI adoption may accelerate demand for workflow automation tools, while also increasing scrutiny around transparency, explainability, and human oversight standards in regulated settings (Detroit Free Press).
+
+PHYSICAL AI AND ROBOTICS
+- Nothing to report today.
+
+WHAT TO WATCH
+- Watch whether AI capex guidance from major tech and semiconductor companies continues to support the Goldman Sachs view of a $700 billion spending year; any slowdown would likely ripple quickly through infrastructure valuations (The Motley Fool).
+- Monitor foundry capacity, advanced packaging, and supply-chain commentary around Taiwan Semiconductor, as these remain key indicators of whether AI demand can translate into sustained hardware revenue growth (The Motley Fool).
+- Track whether enterprise buyers begin prioritizing reliability features such as confidence scoring and self-evaluation in LLM deployments, which would signal a shift from experimentation to mission-critical adoption (MarkTechPost).
+- Watch for more government and regulated-industry use cases where AI intermediates access to information, as these deployments could become flashpoints for new disclosure, audit, and accountability rules (Detroit Free Press).
+
+ADVISOR SOUNDBITES
+- The AI story is still being led by the companies selling the chips, servers, and infrastructure, not just the apps people use every day. (The Motley Fool)
+- TSMC remains one of the cleanest ways to invest in AI because it supplies many of the winners rather than depending on just one. (The Motley Fool)
+- AI spending is getting big enough to matter not only for tech, but also for utilities, power equipment, and data center real estate. (The Motley Fool)
+- The next phase of enterprise AI is about trust and accuracy, not just speed, which should favor companies that can make AI outputs more reliable. (MarkTechPost)
+- Clients should be excited about AI growth, but disciplined on valuation because some of the biggest winners have already had enormous runs. (The Motley Fool)
