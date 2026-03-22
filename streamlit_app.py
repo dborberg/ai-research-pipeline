@@ -1,9 +1,11 @@
+
 import hashlib
 import os
 from datetime import timedelta
 
 import pandas as pd
 import streamlit as st
+from streamlit_autorefresh import st_autorefresh
 from dotenv import load_dotenv
 
 from app.cluster_schema import normalize_cluster_df
@@ -490,6 +492,8 @@ def render_signal_velocity(velocity_df):
 
 
 def main():
+        # Auto-refresh every 5 minutes (300,000 ms)
+        st_autorefresh(interval=300000, key="auto-refresh")
     load_dotenv()
 
     st.title("AI Signal Command Center")
