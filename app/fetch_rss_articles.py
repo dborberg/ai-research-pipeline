@@ -23,10 +23,24 @@ RSS_FEEDS = [
     "https://www.ft.com/companies?format=rss",
     "https://www.economist.com/science-and-technology/rss.xml",
     "https://www.economist.com/business/rss.xml",
+    "https://www.therobotreport.com/feed/",
+    "https://spectrum.ieee.org/rss/robotics/fulltext",
+    "https://www.automate.org/rss",
+    "https://roboticsandautomationnews.com/feed/",
+    "https://www.designnews.com/rss.xml",
+    "https://www.eetimes.com/feed/",
+    "https://www.semiconductors.org/feed/",
 ]
 
 MAX_ENRICHED_ARTICLES = 20
 MAX_RETURNED_ARTICLES = 40
+REQUIRED_THEMES = [
+    "infrastructure",
+    "enterprise",
+    "capital_markets",
+    "policy",
+    "physical_ai",
+]
 HIGH_QUALITY_SOURCES = {
     "Bloomberg": 3,
     "Reuters": 3,
@@ -115,6 +129,13 @@ def _compute_priority_score(title: str, summary: str) -> int:
     if any(keyword in text for keyword in ["utility", "energy demand", "nuclear", "grid capacity"]):
         score += 2
 
+    if any(k in text for k in [
+        "robot", "robotics", "autonomous", "humanoid",
+        "factory automation", "industrial automation",
+        "embodied ai", "edge ai", "sensor", "uav", "drone"
+    ]):
+        score += 2
+
     return score
 
 
@@ -147,7 +168,14 @@ def _normalize_title(title: str) -> str:
 
 
 def _get_theme_key(article):
+    title = (article.get("title", "") or "").lower()
     text = f"{article.get('title','')} {article.get('summary','')}".lower()
+
+    if any(k in title for k in [
+        "robot", "robotics", "autonomous", "humanoid",
+        "embodied ai", "drone", "uav", "factory automation"
+    ]):
+        return "physical_ai"
 
     if any(k in text for k in ["nvidia", "gpu", "chip", "semiconductor"]):
         return "semis"
@@ -158,11 +186,17 @@ def _get_theme_key(article):
     if any(k in text for k in ["enterprise", "software", "roi", "productivity", "automation"]):
         return "enterprise"
 
+    if any(k in text for k in ["capex", "spending", "investment", "buildout", "markets", "valuation"]):
+        return "capital_markets"
+
     if any(k in text for k in ["regulation", "policy", "government", "compliance"]):
         return "policy"
 
     if any(k in text for k in ["labor", "jobs", "hiring", "workforce"]):
         return "labor"
+
+    if any(k in text for k in ["startup", "emerging", "agent", "foundation model", "launch"]):
+        return "emerging"
 
     return "other"
 
@@ -330,11 +364,40 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
     )
     sorted_articles = _dedupe_similar_titles(sorted_articles)
 
-    MAX_PER_SOURCE = 5
-    source_buckets = {}
-    source_diversified_articles = []
-
+    theme_dict = {}
     for article in sorted_articles:
+        theme = _get_theme_key(article)
+        theme_dict.setdefault(theme, []).append(article)
+
+    theme_scores = {}
+    for theme, theme_articles in theme_dict.items():
+        avg_signal_score = sum(article.get("signal_score", 0) for article in theme_articles) / max(len(theme_articles), 1)
+        unique_sources = len({article.get("source", "unknown") for article in theme_articles})
+        theme_scores[theme] = avg_signal_score + unique_sources * 0.5
+
+    ordered_themes = [theme for theme in REQUIRED_THEMES if theme in theme_dict]
+    ordered_themes.extend(
+        theme for theme, _ in sorted(
+            theme_scores.items(),
+            key=lambda item: item[1],
+            reverse=True,
+        ) if theme not in ordered_themes
+    )
+
+    selected_articles = []
+    for theme in ordered_themes:
+        theme_articles = sorted(
+            theme_dict.get(theme, []),
+            key=lambda article: article.get("signal_score", 0),
+            reverse=True,
+        )
+        selected_articles.extend(theme_articles[:2])
+
+    MAX_PER_SOURCE = 3
+    source_buckets = {}
+    diversified_articles = []
+
+    for article in selected_articles:
         source = article.get("source", "unknown")
 
         if source not in source_buckets:
@@ -342,28 +405,17 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
 
         if len(source_buckets[source]) < MAX_PER_SOURCE:
             source_buckets[source].append(article)
-            source_diversified_articles.append(article)
-
-    MAX_PER_THEME = 5
-
-    theme_buckets = {}
-    diversified_articles = []
-
-    for article in source_diversified_articles:
-        theme = _get_theme_key(article)
-
-        if theme not in theme_buckets:
-            theme_buckets[theme] = []
-
-        if len(theme_buckets[theme]) < MAX_PER_THEME:
-            theme_buckets[theme].append(article)
             diversified_articles.append(article)
-
-    diversified_articles = diversified_articles[:MAX_RETURNED_ARTICLES]
     sources = set(a["source"] for a in diversified_articles)
     if len(sources) < 3:
         print("WARNING: Low source diversity")
 
+    print("Themes selected:", list(theme_dict.keys()))
+    print("Physical AI present:", "physical_ai" in theme_dict)
+    if "physical_ai" not in theme_dict:
+        print("No physical AI signals today")
+    print("Articles per theme:")
+    print({k: len(v) for k, v in theme_dict.items()})
     print(f"Enriched articles: {count_enriched}")
     print(f"Total articles: {len(diversified_articles)}")
     print("Source distribution:")
