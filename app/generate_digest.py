@@ -1,8 +1,8 @@
 def generate_daily_digest():
     import os
     from datetime import datetime, timedelta
+    import re
     from sqlalchemy import create_engine, text
-    from collections import Counter
 
     from app.fetch_rss_articles import _get_theme_key
 
@@ -48,51 +48,87 @@ def generate_daily_digest():
 
         return articles
 
+    def _short_anchor(text, limit=8):
+        words = [word for word in re.split(r"\s+", str(text or "").strip()) if word]
+        return " ".join(words[:limit]).strip(" ,:-")
+
+    def _extract_anchor_events(theme_name, articles):
+        anchor_events = []
+        for article in articles[:3]:
+            title = article.get("title", "")
+            summary = article.get("summary", "")
+            proper_nouns = re.findall(r"\b(?:[A-Z][a-zA-Z0-9&\-]+(?:\s+[A-Z][a-zA-Z0-9&\-]+)*)", title)
+            anchor = proper_nouns[0] if proper_nouns else _short_anchor(title)
+
+            if theme_name == "physical_ai":
+                physical_terms = re.findall(
+                    r"(robotics|robot|autonomous|humanoid|factory automation|industrial automation|uav|drone|vehicle)",
+                    f"{title} {summary}",
+                    flags=re.IGNORECASE,
+                )
+                if physical_terms:
+                    anchor = f"{anchor} {physical_terms[0]}".strip()
+
+            if anchor and anchor not in anchor_events:
+                anchor_events.append(anchor)
+            if len(anchor_events) >= 3:
+                break
+        return anchor_events
+
     def synthesize_theme(theme_name, articles):
         sources = sorted({article["source"] for article in articles if article.get("source")})
         source_label = f"(Sources: {', '.join(sources[:4])})" if sources else "(Sources: Mixed)"
         confirmation_word = "reinforces" if len(sources) >= 2 else "suggests"
+        anchors = _extract_anchor_events(theme_name, articles)
+        anchor_text = ", ".join(anchors[:2]) if anchors else _short_anchor(articles[0].get("title", "AI catalyst"))
 
         templates = {
             "physical_ai": (
-                f"Physical AI is moving closer to real-world deployment, with robotics, autonomous systems, and industrial automation signals {confirmation_word} a broader shift beyond software-only AI. "
-                "This matters because AI demand is extending into sensors, embedded compute, controls, and automation platforms tied to factories, logistics, and defense. "
+                f"{anchor_text} put physical AI into a concrete deployment context, and those developments {confirmation_word} that robotics and autonomous systems are moving into real operating environments. "
+                "The theme is broadening beyond software into sensors, embedded compute, controls, and industrial automation platforms tied to factories, logistics, vehicles, and defense. "
+                "That makes physical AI a real ecosystem buildout rather than a concept narrative. "
                 "The investment implication is broader exposure across robotics enablers, industrial automation vendors, edge compute, and component suppliers. "
                 f"{source_label}"
             ),
             "infrastructure": (
-                f"AI infrastructure demand {confirmation_word} continued pressure on power, data center, and hardware capacity. "
-                "This matters because AI scaling is increasingly constrained by physical infrastructure rather than model ambition alone. "
+                f"{anchor_text} highlighted how AI infrastructure demand is colliding with real-world power, data center, and hardware constraints. "
+                "Those developments expand into a broader theme in which AI scaling is increasingly constrained by physical infrastructure rather than model ambition alone. "
+                "Cross-source coverage confirms that bottlenecks are showing up in energy, permitting, cooling, and hardware capacity at the same time. "
                 "The investment implication is sustained demand for utilities, grid equipment, cooling, and compute infrastructure suppliers. "
                 f"{source_label}"
             ),
             "enterprise": (
-                f"Enterprise AI adoption {confirmation_word} a shift from experimentation toward workflow integration, productivity, and operating leverage. "
-                "This matters because software spending is starting to favor practical deployment and measurable return on investment. "
+                f"{anchor_text} showed enterprise AI moving from experimentation toward workflow integration, productivity, and operating leverage. "
+                "That expands into a broader adoption theme in which software spending is starting to favor practical deployment and measurable return on investment. "
+                "Multiple catalysts now point to implementation discipline rather than AI theater. "
                 "The investment implication is stronger support for application software, services, and workflow vendors that can translate AI into revenue or margin impact. "
                 f"{source_label}"
             ),
             "capital_markets": (
-                f"AI-related capital formation and competitive positioning {confirmation_word} continued repricing across public and private markets. "
-                "This matters because investment leadership is broadening beyond model builders into infrastructure, tools, and adjacent beneficiaries. "
+                f"{anchor_text} brought AI capital formation and competitive positioning back into focus across public and private markets. "
+                "That broadens into a wider financing and valuation theme in which leadership is moving beyond model builders into infrastructure, tools, and adjacent beneficiaries. "
+                "Named catalysts in funding, project finance, or strategic buildout now confirm that AI exposure is spreading across the capital stack. "
                 "The investment implication is a wider opportunity set across capital equipment, semis, private funding channels, and second-order AI beneficiaries. "
                 f"{source_label}"
             ),
             "policy": (
-                f"Policy and regulatory developments {confirmation_word} that AI governance is becoming a durable market variable rather than a headline risk. "
-                "This matters because compliance, export controls, and public-sector positioning can shape adoption speed and competitive advantage. "
+                f"{anchor_text} made policy a live catalyst rather than a background risk. "
+                "That expands into a more durable governance theme in which compliance, export controls, standards, and public-sector positioning shape adoption speed and competitive advantage. "
+                "Specific agencies and policy bodies now confirm that regulatory timing matters to commercial winners and losers. "
                 "The investment implication is higher sensitivity around globally exposed AI supply chains, platform providers, and regulated end markets. "
                 f"{source_label}"
             ),
             "labor": (
-                f"AI-driven workforce and productivity signals {confirmation_word} pressure on how enterprises allocate labor, automate processes, and redesign knowledge work. "
-                "This matters because labor leverage is becoming one of the clearest channels through which AI affects margins and operating models. "
+                f"{anchor_text} put workforce change into concrete terms by linking AI adoption to hiring, productivity, and operating model redesign. "
+                "That expands into a broader labor theme in which AI is reshaping how enterprises allocate work and capture efficiency gains. "
+                "Specific catalysts now show that labor leverage is becoming one of the clearest channels through which AI affects margins. "
                 "The investment implication is stronger focus on companies that can convert AI adoption into measurable productivity gains. "
                 f"{source_label}"
             ),
             "other": (
-                f"Cross-market AI developments {confirmation_word} that the theme set is widening beyond a narrow group of model and chip headlines. "
-                "This matters because adjacent suppliers, adopters, and infrastructure players are increasingly relevant to the AI buildout. "
+                f"{anchor_text} showed that AI catalysts are widening beyond a narrow set of model and chip headlines. "
+                "That expands into a broader market theme in which adjacent suppliers, adopters, and infrastructure players are becoming more relevant to the AI buildout. "
+                "The named events in this cluster confirm that real-world adoption is spreading unevenly but meaningfully across the stack. "
                 "The investment implication is a broader and more diversified set of AI-linked beneficiaries. "
                 f"{source_label}"
             ),
@@ -139,15 +175,17 @@ def generate_daily_digest():
         ]
 
         lines = []
+        used_themes = set()
         for section_title, themes in section_map:
             lines.append(section_title)
             section_written = 0
             for theme in themes:
-                if theme not in theme_dict:
+                if theme not in theme_dict or theme in used_themes:
                     continue
                 lines.append(synthesize_theme(theme, theme_dict[theme][:4]))
                 lines.append("")
                 section_written += 1
+                used_themes.add(theme)
             if section_written == 0:
                 lines.append("Nothing to report today.")
                 lines.append("")
