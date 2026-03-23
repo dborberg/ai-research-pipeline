@@ -7,6 +7,13 @@ def generate_daily_digest():
     from app.fetch_rss_articles import _get_theme_key, _get_source_weight
 
     DB_PATH = "sqlite:///data/ai_research.db"
+    COVERAGE_BUCKETS = {
+        "infrastructure": ["data center", "power", "chip", "fab", "grid"],
+        "enterprise": ["enterprise", "software", "workflow", "productivity"],
+        "policy": ["policy", "regulation", "government", "lawmakers"],
+        "capital_markets": ["investment", "ipo", "funding", "valuation"],
+        "physical_ai": ["robot", "robotics", "autonomous", "drone", "factory automation"],
+    }
 
     # -----------------------------
     # GET ARTICLES
@@ -52,6 +59,35 @@ def generate_daily_digest():
         words = [word for word in re.split(r"\s+", str(text or "").strip()) if word]
         return " ".join(words[:limit]).strip(" ,:-")
 
+    def compute_event_priority(article):
+        score = 0
+        text = f"{article['title']} {article['summary']}".lower()
+
+        if any(k in text for k in [
+            "tesla", "nvidia", "microsoft", "amazon",
+            "google", "meta", "openai", "softbank"
+        ]):
+            score += 5
+
+        if any(k in text for k in [
+            "factory", "fab", "data center", "campus",
+            "gigawatt", "power", "grid", "plant"
+        ]):
+            score += 4
+
+        if any(k in text for k in [
+            "white house", "government", "lawmakers",
+            "regulation", "policy", "framework"
+        ]):
+            score += 4
+
+        if any(k in text for k in [
+            "investment", "funding", "ipo", "capex"
+        ]):
+            score += 3
+
+        return score
+
     def _is_high_quality_signal(article):
         title = (article.get("title") or "").lower()
         source_weight = _get_source_weight(article.get("source") or "")
@@ -62,6 +98,16 @@ def generate_daily_digest():
         return (
             source_weight >= 2
             or any(keyword in title for keyword in company_or_event_keywords)
+        )
+
+    def _is_bad_anchor(article):
+        title = article.get("title", "") or ""
+        lowered = title.lower()
+        proper_nouns = re.findall(r"\b(?:[A-Z][a-zA-Z0-9&\-]+(?:\s+[A-Z][a-zA-Z0-9&\-]+)*)", title)
+        return (
+            len(title.split()) < 5
+            or not proper_nouns
+            or any(keyword in lowered for keyword in ["framework", "study", "approach", "model"])
         )
 
     def _coverage_categories(articles):
@@ -140,6 +186,15 @@ def generate_daily_digest():
                 lines.append("Nothing to report today.")
             lines.append("")
         return "\n".join(lines).strip()
+
+    def build_top_stories_output(top_events):
+        lines = ["TOP STORIES"]
+        for article in top_events:
+            lines.append(f"- {article['title']} ({article['source']})")
+        if len(lines) == 1:
+            lines.append("Nothing to report today.")
+        lines.append("")
+        return "\n".join(lines)
 
     def synthesize_theme(theme_name, articles):
         sources = sorted({article["source"] for article in articles if article.get("source")})
@@ -232,7 +287,6 @@ def generate_daily_digest():
         ]
 
         section_map = [
-            ("TOP THEMES", [theme for theme in top_themes[:2]]),
             ("ENTERPRISE AND LABOR", ["enterprise", "labor"]),
             ("INFRASTRUCTURE AND POWER", ["infrastructure", "semis"]),
             ("CAPITAL MARKETS AND INVESTMENT", ["capital_markets"]),
@@ -267,18 +321,60 @@ def generate_daily_digest():
 
 No relevant articles found in the last 24 hours.
 """
-    high_signal_articles = [article for article in articles if _is_high_quality_signal(article)]
+    prepared_articles = []
+    for article in articles:
+        article = article.copy()
+        article["source_weight"] = _get_source_weight(article.get("source") or "")
+        article["event_priority"] = compute_event_priority(article)
+        article["final_score"] = article["ai_score"] + article["event_priority"]
+        prepared_articles.append(article)
+
+    candidate_articles = [
+        article for article in prepared_articles
+        if not _is_bad_anchor(article)
+        and not (article["source_weight"] == 1 and article["event_priority"] == 0)
+    ]
+
+    high_signal_articles = [article for article in candidate_articles if _is_high_quality_signal(article)]
+    top_events = sorted(candidate_articles, key=lambda article: article["final_score"], reverse=True)[:7]
+
+    coverage_status = {}
+    for bucket, keywords in COVERAGE_BUCKETS.items():
+        matched = any(
+            any(keyword in f"{article['title']} {article['summary']}".lower() for keyword in keywords)
+            for article in top_events
+        )
+        if not matched:
+            for article in sorted(candidate_articles, key=lambda article: article["final_score"], reverse=True):
+                text = f"{article['title']} {article['summary']}".lower()
+                if any(keyword in text for keyword in keywords) and article not in top_events:
+                    top_events.append(article)
+                    matched = True
+                    break
+        coverage_status[bucket] = "OK" if matched else "MISSING"
+        if not matched:
+            print("Missing coverage:", bucket)
+
     fallback_triggered = (
         len(high_signal_articles) < 5
         or len(_coverage_categories(high_signal_articles)) < 2
     )
     print("High-quality signals:", len(high_signal_articles))
     print("Fallback triggered:", fallback_triggered)
+    print("Top events selected:")
+    for article in top_events:
+        print(article["title"], article["final_score"])
+    print("Coverage check:")
+    for bucket in COVERAGE_BUCKETS:
+        print(bucket, coverage_status[bucket])
 
     if fallback_triggered:
-        content = build_article_fallback_output(articles)
+        content = build_article_fallback_output(top_events or candidate_articles or articles)
     else:
-        content = build_theme_output(high_signal_articles)
+        content = "\n".join([
+            build_top_stories_output(top_events),
+            build_theme_output(high_signal_articles),
+        ]).strip()
 
     # -----------------------------
     # FINAL OUTPUT
