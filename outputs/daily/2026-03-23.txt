@@ -2,15 +2,15 @@ Daily Riffs from the Gen AI Songbook
 March 23, 2026
 
 TOP THEMES
-Trojan, Warm-Start Flow Matching showed that AI catalysts are widening beyond a narrow set of model and chip headlines. That expands into a broader market theme in which adjacent suppliers, adopters, and infrastructure players are becoming more relevant to the AI buildout. The named events in this cluster confirm that real-world adoption is spreading unevenly but meaningfully across the stack. The investment implication is a broader and more diversified set of AI-linked beneficiaries. (Sources: cs.AI updates on arXiv.org, cs.LG updates on arXiv.org)
+AWS Weekly Roundup showed that AI catalysts are widening beyond a narrow set of model and chip headlines. That expands into a broader market theme in which adjacent suppliers, adopters, and infrastructure players are becoming more relevant to the AI buildout. The named events in this cluster confirm that real-world adoption is spreading unevenly but meaningfully across the stack. The investment implication is a broader and more diversified set of AI-linked beneficiaries. (Sources: AWS News Blog)
 
-PowerLens highlighted how AI infrastructure demand is colliding with real-world power, data center, and hardware constraints. Those developments expand into a broader theme in which AI scaling is increasingly constrained by physical infrastructure rather than model ambition alone. Cross-source coverage confirms that bottlenecks are showing up in energy, permitting, cooling, and hardware capacity at the same time. The investment implication is sustained demand for utilities, grid equipment, cooling, and compute infrastructure suppliers. (Sources: cs.AI updates on arXiv.org)
+Trojan, League showed that AI catalysts are widening beyond a narrow set of model and chip headlines. That expands into a broader market theme in which adjacent suppliers, adopters, and infrastructure players are becoming more relevant to the AI buildout. The named events in this cluster confirm that real-world adoption is spreading unevenly but meaningfully across the stack. The investment implication is a broader and more diversified set of AI-linked beneficiaries. (Sources: Robotics & Automation News, cs.AI updates on arXiv.org)
 
 ENTERPRISE AND LABOR
 Nothing to report today.
 
 INFRASTRUCTURE AND POWER
-Nothing to report today.
+PowerLens highlighted how AI infrastructure demand is colliding with real-world power, data center, and hardware constraints. Those developments expand into a broader theme in which AI scaling is increasingly constrained by physical infrastructure rather than model ambition alone. Cross-source coverage confirms that bottlenecks are showing up in energy, permitting, cooling, and hardware capacity at the same time. The investment implication is sustained demand for utilities, grid equipment, cooling, and compute infrastructure suppliers. (Sources: cs.AI updates on arXiv.org)
 
 CAPITAL MARKETS AND INVESTMENT
 Ontology-Based Knowledge Modeling brought AI capital formation and competitive positioning back into focus across public and private markets. That broadens into a wider financing and valuation theme in which leadership is moving beyond model builders into infrastructure, tools, and adjacent beneficiaries. Named catalysts in funding, project finance, or strategic buildout now confirm that AI exposure is spreading across the capital stack. The investment implication is a wider opportunity set across capital equipment, semis, private funding channels, and second-order AI beneficiaries. (Sources: cs.LG updates on arXiv.org)
@@ -19,4 +19,4 @@ REGULATION AND POLICY
 Nothing to report today.
 
 PHYSICAL AI AND ROBOTICS
-Alstef Group autonomous put physical AI into a concrete deployment context, and those developments suggests that robotics and autonomous systems are moving into real operating environments. The theme is broadening beyond software into sensors, embedded compute, controls, and industrial automation platforms tied to factories, logistics, vehicles, and defense. That makes physical AI a real ecosystem buildout rather than a concept narrative. The investment implication is broader exposure across robotics enablers, industrial automation vendors, edge compute, and component suppliers. (Sources: Robotics & Automation News)
+Carbon Robotics Robotics, Alstef Group autonomous put physical AI into a concrete deployment context, and those developments suggests that robotics and autonomous systems are moving into real operating environments. The theme is broadening beyond software into sensors, embedded compute, controls, and industrial automation platforms tied to factories, logistics, vehicles, and defense. That makes physical AI a real ecosystem buildout rather than a concept narrative. The investment implication is broader exposure across robotics enablers, industrial automation vendors, edge compute, and component suppliers. (Sources: Robotics & Automation News)
