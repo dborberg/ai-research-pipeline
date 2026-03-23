@@ -2,7 +2,8 @@ name: Daily Riffs from the Gen AI Pipeline
 
 on:
   schedule:
-    - cron: '30 11 * * *'   # 6:30 AM Central
+    - cron: '30 11 * 3-10 *'   # 6:30 AM CDT (March-October)
+    - cron: '30 12 * 1-2,11-12 *'   # 6:30 AM CST (January-February, November-December)
   workflow_dispatch:
 
 permissions:
