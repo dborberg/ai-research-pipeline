@@ -1,9 +1,12 @@
 Daily Riffs from the Gen AI Songbook
 March 23, 2026
 
+LOW-CONFIDENCE MODE
+Real-world event coverage was thin today, so this view is article-driven rather than theme-driven.
+
 TOP THEMES
 - Trojan's Whisper: Stealthy Manipulation of OpenClaw through Injected Bootstrapped Guidance (cs.AI updates on arXiv.org)
-- Taiwan’s WBG Momentum Extends from Devices to Power Systems (EE Times)
+- A Subgoal-driven Framework for Improving Long-Horizon LLM Agents (cs.AI updates on arXiv.org)
 
 ENTERPRISE AND LABOR
 Nothing to report today.
@@ -13,7 +16,7 @@ INFRASTRUCTURE AND POWER
 - Taiwan’s WBG Momentum Extends from Devices to Power Systems (EE Times)
 
 CAPITAL MARKETS AND INVESTMENT
-Nothing to report today.
+- Ontology-Based Knowledge Modeling and Uncertainty-Aware Outdoor Air Quality Assessment Using Weighted Interval Type-2 Fuzzy Logic (cs.LG updates on arXiv.org)
 
 REGULATION AND POLICY
 Nothing to report today.
