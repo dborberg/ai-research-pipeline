@@ -24,7 +24,7 @@ def generate_daily_digest():
 
         with engine.connect() as conn:
             result = conn.execute(text("""
-                SELECT title, source, summary, url, ai_score
+                SELECT title, source, summary, url, ai_score, published_at
                 FROM articles
                 WHERE published_at >= :cutoff
                 ORDER BY ai_score DESC, published_at DESC
@@ -40,6 +40,7 @@ def generate_daily_digest():
             summary = row[2] or ""
             url = row[3] or ""
             ai_score = row[4] or 0
+            published_at = row[5] or ""
 
             # Skip empty/incomplete content per your rule
             if not title or not summary:
@@ -51,6 +52,7 @@ def generate_daily_digest():
                 "summary": summary,
                 "url": url,
                 "ai_score": float(ai_score or 0),
+                "published_at": published_at,
             })
 
         return articles
@@ -87,6 +89,25 @@ def generate_daily_digest():
             score += 3
 
         return score
+
+    def classify_article_role(article):
+        text = f"{article['title']} {article['summary']}".lower()
+
+        if any(k in text for k in [
+            "tesla", "nvidia", "microsoft", "amazon",
+            "data center", "factory", "fab", "campus",
+            "policy", "lawmakers", "government",
+            "investment", "funding", "capex",
+            "launch", "build", "deal"
+        ]):
+            return "EVENT"
+
+        if any(k in (article.get("source") or "").lower() for k in [
+            "arxiv", "research", "blog"
+        ]):
+            return "SUPPORTING"
+
+        return "NOISE"
 
     def _is_high_quality_signal(article):
         title = (article.get("title") or "").lower()
@@ -154,7 +175,7 @@ def generate_daily_digest():
                 break
         return anchor_events
 
-    def build_article_fallback_output(articles):
+    def build_article_fallback_output(articles, low_confidence=False):
         section_map = [
             ("TOP THEMES", ["other", "emerging", "semis"]),
             ("ENTERPRISE AND LABOR", ["enterprise", "labor"]),
@@ -169,6 +190,12 @@ def generate_daily_digest():
             theme_dict.setdefault(_get_theme_key(article), []).append(article)
 
         lines = []
+        if low_confidence:
+            lines.extend([
+                "LOW-CONFIDENCE MODE",
+                "Real-world event coverage was thin today, so this view is article-driven rather than theme-driven.",
+                "",
+            ])
         for section_title, themes in section_map:
             lines.append(section_title)
             section_written = 0
@@ -264,7 +291,14 @@ def generate_daily_digest():
             theme_dict.setdefault(theme, []).append(article)
 
         for theme_articles in theme_dict.values():
-            theme_articles.sort(key=lambda article: article.get("ai_score", 0), reverse=True)
+            theme_articles.sort(
+                key=lambda article: (
+                    article.get("role") == "EVENT",
+                    article.get("final_score", article.get("ai_score", 0)),
+                    article.get("published_at", ""),
+                ),
+                reverse=True,
+            )
 
         print("Themes:", list(theme_dict.keys()))
         print("Physical AI present:", "physical_ai" in theme_dict)
@@ -327,16 +361,27 @@ No relevant articles found in the last 24 hours.
         article["source_weight"] = _get_source_weight(article.get("source") or "")
         article["event_priority"] = compute_event_priority(article)
         article["final_score"] = article["ai_score"] + article["event_priority"]
+        article["role"] = classify_article_role(article)
         prepared_articles.append(article)
 
-    candidate_articles = [
+    event_articles = [
         article for article in prepared_articles
-        if not _is_bad_anchor(article)
-        and not (article["source_weight"] == 1 and article["event_priority"] == 0)
+        if article["role"] == "EVENT" and not _is_bad_anchor(article)
     ]
-
-    high_signal_articles = [article for article in candidate_articles if _is_high_quality_signal(article)]
-    top_events = sorted(candidate_articles, key=lambda article: article["final_score"], reverse=True)[:7]
+    supporting_articles = [
+        article for article in prepared_articles
+        if article["role"] == "SUPPORTING"
+    ]
+    thematic_articles = event_articles + supporting_articles
+    high_signal_articles = [article for article in thematic_articles if _is_high_quality_signal(article)]
+    top_events = sorted(
+        event_articles,
+        key=lambda article: (
+            article["final_score"],
+            article.get("published_at", ""),
+        ),
+        reverse=True,
+    )[:8]
 
     coverage_status = {}
     for bucket, keywords in COVERAGE_BUCKETS.items():
@@ -345,7 +390,14 @@ No relevant articles found in the last 24 hours.
             for article in top_events
         )
         if not matched:
-            for article in sorted(candidate_articles, key=lambda article: article["final_score"], reverse=True):
+            for article in sorted(
+                thematic_articles,
+                key=lambda article: (
+                    article["final_score"],
+                    article.get("published_at", ""),
+                ),
+                reverse=True,
+            ):
                 text = f"{article['title']} {article['summary']}".lower()
                 if any(keyword in text for keyword in keywords) and article not in top_events:
                     top_events.append(article)
@@ -356,11 +408,30 @@ No relevant articles found in the last 24 hours.
             print("Missing coverage:", bucket)
 
     fallback_triggered = (
-        len(high_signal_articles) < 5
+        len(event_articles) == 0
+        or all(article.get("role") == "SUPPORTING" for article in top_events)
+        or len(top_events) == 0
+        or len(high_signal_articles) < 5
         or len(_coverage_categories(high_signal_articles)) < 2
     )
+    fallback_articles = sorted(
+        prepared_articles,
+        key=lambda article: (
+            article["final_score"],
+            article.get("published_at", ""),
+        ),
+        reverse=True,
+    )[:15]
+    fallback_low_confidence = (
+        len(high_signal_articles) < 5
+        or len(event_articles) == 0
+        or all(article.get("role") != "EVENT" for article in top_events)
+    )
+    print("Event articles:", len(event_articles))
+    print("Supporting articles:", len(supporting_articles))
     print("High-quality signals:", len(high_signal_articles))
     print("Fallback triggered:", fallback_triggered)
+    print("Top story roles:", [article["role"] for article in top_events or fallback_articles[:8]])
     print("Top events selected:")
     for article in top_events:
         print(article["title"], article["final_score"])
@@ -369,7 +440,7 @@ No relevant articles found in the last 24 hours.
         print(bucket, coverage_status[bucket])
 
     if fallback_triggered:
-        content = build_article_fallback_output(top_events or candidate_articles or articles)
+        content = build_article_fallback_output(fallback_articles, low_confidence=fallback_low_confidence)
     else:
         content = "\n".join([
             build_top_stories_output(top_events),
