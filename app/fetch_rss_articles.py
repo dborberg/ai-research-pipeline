@@ -29,6 +29,12 @@ RSS_FEEDS = [
     "https://roboticsandautomationnews.com/feed/",
     "https://www.designnews.com/rss.xml",
     "https://www.eetimes.com/feed/",
+    # Company blogs
+    "https://aws.amazon.com/blogs/aws/feed/",  # AWS Official Blog
+    "https://blogs.nvidia.com/feed/",          # NVIDIA Blog
+    "https://www.tesla.com/blog/feed",         # Tesla Blog
+    "https://www.spacex.com/updates.xml",      # SpaceX Updates
+    "https://blogs.microsoft.com/feed/",       # Microsoft Official Blog
     "https://www.semiconductors.org/feed/",
 ]
 
