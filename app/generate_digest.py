@@ -4,7 +4,7 @@ def generate_daily_digest():
     import re
     from sqlalchemy import create_engine, text
 
-    from app.fetch_rss_articles import _get_theme_key
+    from app.fetch_rss_articles import _get_theme_key, _get_source_weight
 
     DB_PATH = "sqlite:///data/ai_research.db"
 
@@ -52,6 +52,32 @@ def generate_daily_digest():
         words = [word for word in re.split(r"\s+", str(text or "").strip()) if word]
         return " ".join(words[:limit]).strip(" ,:-")
 
+    def _is_high_quality_signal(article):
+        title = (article.get("title") or "").lower()
+        source_weight = _get_source_weight(article.get("source") or "")
+        company_or_event_keywords = [
+            "tesla", "nvidia", "microsoft", "amazon",
+            "factory", "data center", "policy", "investment",
+        ]
+        return (
+            source_weight >= 2
+            or any(keyword in title for keyword in company_or_event_keywords)
+        )
+
+    def _coverage_categories(articles):
+        categories = set()
+        for article in articles:
+            text = f"{article.get('title', '')} {article.get('summary', '')}".lower()
+            if any(keyword in text for keyword in ["tesla", "nvidia", "microsoft", "amazon", "softbank", "musk"]):
+                categories.add("company_event")
+            if any(keyword in text for keyword in ["factory", "data center", "fab", "power", "grid"]):
+                categories.add("infrastructure_project")
+            if any(keyword in text for keyword in ["policy", "regulation", "white house", "mas", "california"]):
+                categories.add("policy_regulation")
+            if any(keyword in text for keyword in ["investment", "funding", "valuation", "capital", "market"]):
+                categories.add("capital_markets")
+        return categories
+
     def _extract_anchor_events(theme_name, articles):
         anchor_events = []
         for article in articles[:3]:
@@ -59,6 +85,13 @@ def generate_daily_digest():
             summary = article.get("summary", "")
             proper_nouns = re.findall(r"\b(?:[A-Z][a-zA-Z0-9&\-]+(?:\s+[A-Z][a-zA-Z0-9&\-]+)*)", title)
             anchor = proper_nouns[0] if proper_nouns else _short_anchor(title)
+
+            if any(keyword in title.lower() for keyword in ["framework", "model", "study", "approach"]):
+                anchor = ""
+            if anchor and "," in anchor:
+                anchor = ""
+            if anchor and not re.search(r"[A-Z]", anchor):
+                anchor = ""
 
             if theme_name == "physical_ai":
                 physical_terms = re.findall(
@@ -74,6 +107,39 @@ def generate_daily_digest():
             if len(anchor_events) >= 3:
                 break
         return anchor_events
+
+    def build_article_fallback_output(articles):
+        section_map = [
+            ("TOP THEMES", ["other", "emerging", "semis"]),
+            ("ENTERPRISE AND LABOR", ["enterprise", "labor"]),
+            ("INFRASTRUCTURE AND POWER", ["infrastructure", "semis"]),
+            ("CAPITAL MARKETS AND INVESTMENT", ["capital_markets"]),
+            ("REGULATION AND POLICY", ["policy"]),
+            ("PHYSICAL AI AND ROBOTICS", ["physical_ai"]),
+        ]
+
+        theme_dict = {}
+        for article in articles[:15]:
+            theme_dict.setdefault(_get_theme_key(article), []).append(article)
+
+        lines = []
+        for section_title, themes in section_map:
+            lines.append(section_title)
+            section_written = 0
+            for theme in themes:
+                for article in theme_dict.get(theme, [])[:3]:
+                    lines.append(
+                        f"- {article['title']} ({article['source']})"
+                    )
+                    section_written += 1
+                    if section_written >= 2:
+                        break
+                if section_written >= 2:
+                    break
+            if section_written == 0:
+                lines.append("Nothing to report today.")
+            lines.append("")
+        return "\n".join(lines).strip()
 
     def synthesize_theme(theme_name, articles):
         sources = sorted({article["source"] for article in articles if article.get("source")})
@@ -201,7 +267,18 @@ def generate_daily_digest():
 
 No relevant articles found in the last 24 hours.
 """
-    content = build_theme_output(articles)
+    high_signal_articles = [article for article in articles if _is_high_quality_signal(article)]
+    fallback_triggered = (
+        len(high_signal_articles) < 5
+        or len(_coverage_categories(high_signal_articles)) < 2
+    )
+    print("High-quality signals:", len(high_signal_articles))
+    print("Fallback triggered:", fallback_triggered)
+
+    if fallback_triggered:
+        content = build_article_fallback_output(articles)
+    else:
+        content = build_theme_output(high_signal_articles)
 
     # -----------------------------
     # FINAL OUTPUT
