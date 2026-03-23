@@ -2,15 +2,15 @@ Daily Riffs from the Gen AI Songbook
 March 23, 2026
 
 TOP THEMES
-AWS Weekly Roundup showed that AI catalysts are widening beyond a narrow set of model and chip headlines. That expands into a broader market theme in which adjacent suppliers, adopters, and infrastructure players are becoming more relevant to the AI buildout. The named events in this cluster confirm that real-world adoption is spreading unevenly but meaningfully across the stack. The investment implication is a broader and more diversified set of AI-linked beneficiaries. (Sources: AWS News Blog)
-
-Trojan showed that AI catalysts are widening beyond a narrow set of model and chip headlines. That expands into a broader market theme in which adjacent suppliers, adopters, and infrastructure players are becoming more relevant to the AI buildout. The named events in this cluster confirm that real-world adoption is spreading unevenly but meaningfully across the stack. The investment implication is a broader and more diversified set of AI-linked beneficiaries. (Sources: cs.AI updates on arXiv.org, cs.LG updates on arXiv.org)
+- Trojan's Whisper: Stealthy Manipulation of OpenClaw through Injected Bootstrapped Guidance (cs.AI updates on arXiv.org)
+- Taiwan’s WBG Momentum Extends from Devices to Power Systems (EE Times)
 
 ENTERPRISE AND LABOR
 Nothing to report today.
 
 INFRASTRUCTURE AND POWER
-PowerLens highlighted how AI infrastructure demand is colliding with real-world power, data center, and hardware constraints. Those developments expand into a broader theme in which AI scaling is increasingly constrained by physical infrastructure rather than model ambition alone. Cross-source coverage confirms that bottlenecks are showing up in energy, permitting, cooling, and hardware capacity at the same time. The investment implication is sustained demand for utilities, grid equipment, cooling, and compute infrastructure suppliers. (Sources: cs.AI updates on arXiv.org)
+- PowerLens: Taming LLM Agents for Safe and Personalized Mobile Power Management (cs.AI updates on arXiv.org)
+- Taiwan’s WBG Momentum Extends from Devices to Power Systems (EE Times)
 
 CAPITAL MARKETS AND INVESTMENT
 Nothing to report today.
@@ -19,4 +19,4 @@ REGULATION AND POLICY
 Nothing to report today.
 
 PHYSICAL AI AND ROBOTICS
-Nothing to report today.
+- Alstef Group unveils AI-powered autonomous industrial vehicle ahead of LogiMAT (Robotics & Automation News)
