@@ -492,8 +492,9 @@ def render_signal_velocity(velocity_df):
 
 
 def main():
-        # Auto-refresh every 5 minutes (300,000 ms)
-        st_autorefresh(interval=300000, key="auto-refresh")
+
+    # Auto-refresh every 5 minutes (300,000 ms)
+    st_autorefresh(interval=300000, key="auto-refresh")
     load_dotenv()
 
     st.title("AI Signal Command Center")
