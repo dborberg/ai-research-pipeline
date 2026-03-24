@@ -10,6 +10,21 @@ logging.basicConfig(level=logging.INFO)
 # High-signal + higher-frequency feeds (important)
 RSS_FEEDS = [
     "https://news.google.com/rss/search?q=artificial+intelligence",
+    # General AI news aggregation
+    "https://news.google.com/rss/search?q=AI+data+center",
+    "https://news.google.com/rss/search?q=AI+policy",
+    "https://news.google.com/rss/search?q=AI+investment",
+
+    # Business + finance AI
+    "https://news.google.com/rss/search?q=AI+stocks",
+    "https://news.google.com/rss/search?q=AI+capital+spending",
+
+    # Infrastructure + power
+    "https://news.google.com/rss/search?q=data+center+power",
+    "https://news.google.com/rss/search?q=AI+electricity+demand",
+
+    # Robotics / physical AI
+    "https://news.google.com/rss/search?q=robotics+automation+AI",
     "https://techcrunch.com/tag/artificial-intelligence/feed/",
     "https://venturebeat.com/category/ai/feed/",
     "https://www.theverge.com/ai-artificial-intelligence/rss/index.xml",
