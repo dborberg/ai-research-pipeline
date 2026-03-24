@@ -3,8 +3,8 @@ Pipeline runner for daily AI research digest.
 
 Scheduling instructions (cron):
 
-- Example (runs daily at 6:00 AM):
-  0 6 * * * /FULL/PATH/venv/bin/python /FULL/PATH/run_pipeline.py
+- Example (runs daily at 6:30 AM):
+  30 6 * * * /FULL/PATH/venv/bin/python /FULL/PATH/run_pipeline.py
 """
 
 import subprocess
