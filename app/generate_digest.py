@@ -10,6 +10,27 @@ def generate_daily_digest():
     # -----------------------------
     # GET ARTICLES
     # -----------------------------
+    def is_big_story(article):
+        text = f"{article.get('title') or ''} {article.get('summary') or ''}".lower()
+        return any(term in text for term in [
+            "nvidia", "microsoft", "amazon", "google", "tesla", "apple", "openai", "tsmc", "asml",
+            "government", "policy", "regulation", "white house", "lawmakers",
+            "upgrade", "earnings", "index", "investment", "capex", "valuation", "funding",
+            "data center", "power", "grid", "fab", "fabs", "campus", "semiconductor",
+        ])
+
+    def source_quality_hint(article):
+        source = (article.get("source") or "").lower()
+        if any(term in source for term in ["reuters", "financial times", "ft", "economist", "bloomberg", "wsj"]):
+            return "business_financial"
+        if any(term in source for term in ["government", "policy", "regulation"]):
+            return "policy_regulatory"
+        if any(term in source for term in ["eetimes", "semiconductor", "design news", "robot report", "ieee"]):
+            return "industry_technical"
+        if any(term in source for term in ["arxiv", "blog"]):
+            return "research_blog"
+        return "general_news"
+
     def get_recent_articles():
         engine = create_engine(DB_PATH)
         cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
@@ -60,6 +81,8 @@ No relevant articles found in the last 24 hours.
             [
                 f"TITLE: {article['title']}",
                 f"SOURCE: {article['source']}",
+                f"SOURCE_QUALITY_HINT: {source_quality_hint(article)}",
+                f"BIG_STORY_HINT: {'YES' if is_big_story(article) else 'NO'}",
                 f"PUBLISHED_AT: {article['published_at']}",
                 f"SUMMARY: {article['summary']}",
                 f"URL: {article['url']}",
@@ -69,9 +92,9 @@ No relevant articles found in the last 24 hours.
     )
 
     system_prompt = """
-You are an AI research analyst producing a daily briefing for financial advisors and mutual fund wholesalers. Distill generative AI news into clear, concise, professionally written summaries that a non-technical financial professional can understand and act on. Present both opportunities and risks where appropriate. Ensure emerging physical AI and robotics developments are included when strategically meaningful to industrial automation, logistics, defense, or public market exposure. If article content appears incomplete or missing, skip that article silently and summarize only what was provided. Do not use markdown formatting in your response. Use plain text only.
+You are an AI research analyst producing a daily briefing for financial advisors and mutual fund wholesalers. Distill generative AI news into clear, concise, professionally written summaries that a non-technical financial professional can understand and act on. Present both opportunities and risks where appropriate. Ensure emerging physical AI and robotics developments are included when strategically meaningful to industrial automation, logistics, defense, or public market exposure. If article content appears incomplete or missing, skip that article silently and summarize only what was provided.
 
-Responses must be in bullet point format only. Write concise sound bites suitable for sharing directly with sales teams and advisors. Avoid long paragraphs. Maintain a professional, forward-looking tone. Cite the source publication for each bullet point using parentheses.
+Return clean HTML only. Do not use markdown. Use email-friendly spacing and structure.
 
 Prioritize diversity across these domains:
 - infrastructure and power
@@ -85,12 +108,28 @@ Do not allow one source, one publication, or one type of content to dominate the
 If multiple articles say similar things, choose the one with broader market relevance and clearer real-world impact. If the input is dominated by arXiv, EE Times, or other niche technical sources, actively rebalance toward business news, policy coverage, capital markets, and major company developments when those are present.
 
 Prefer coverage over precision. It is better to include multiple distinct real-world developments than to repeat one dominant theme across sections.
+
+If an article is marked BIG_STORY_HINT: YES, treat it as a high-priority candidate for TOP STORIES. If any BIG story exists in the dataset, at least one BIG story must appear in TOP STORIES.
+
+When similar stories exist, prefer sources with SOURCE_QUALITY_HINT of business_financial, policy_regulatory, or industry_technical over research_blog, unless the research_blog source adds unique insight not available elsewhere.
 """
 
     user_prompt = f"""
-CRITICAL INSTRUCTION: Your response must contain EXACTLY these 8 section headers in EXACTLY this order. Each header must appear on its own line in ALL CAPS. You are forbidden from combining sections, renaming sections, or omitting sections.
+CRITICAL INSTRUCTION: Your response must contain EXACTLY these 8 sections in EXACTLY this order. Do not combine, rename, or omit sections.
 
-For each section: write 2–5 bullets when relevant material exists. If and only if there are zero relevant items, write exactly: “Nothing to report today.” Do not write that line if you included any bullets.
+Output format:
+<h2>Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>{today}</strong></p>
+
+Then for each section:
+<h3>SECTION NAME</h3>
+<ul>
+<li><strong>Lead phrase:</strong> Explanation (Source: X)</li>
+</ul>
+
+Use only clean HTML with h2, h3, p, ul, li, and strong tags.
+Do not use markdown.
+Do not use arrows.
 
 If the input contains any material related to robotics, physical AI, humanoid systems, warehouse automation, autonomous systems, or industrial AI, you MUST include at least one substantive bullet under PHYSICAL AI AND ROBOTICS summarizing the most strategically meaningful development for investors.
 
@@ -136,6 +175,7 @@ Selection rules:
 - Once a story appears in TOP STORIES, do not reuse that same underlying development in other sections.
 - Ensure diversity across companies, sectors, geographies, and use cases.
 - If several articles cover the same event, include only one and replace the others with different topics.
+- Each section should re-scan the full dataset independently for relevant stories instead of relying on a single preselected subset.
 
 Minimum coverage targets:
 - TOP STORIES: 3-5 distinct developments
@@ -149,9 +189,12 @@ Critical override:
 - You must include at least one macro, policy, or capital markets signal every day.
 - If none are initially selected, search the input again and promote the strongest available government policy, regulation, capital markets, valuation, funding, stock, or macroeconomic AI story.
 - This override is more important than ranking preferences.
+- If any article is marked BIG_STORY_HINT: YES, at least one BIG story must appear in TOP STORIES.
+- If any article references data centers, power, grid, energy, semiconductors, fabs, networking, optical, cooling, or thermal, at least one such story must appear in INFRASTRUCTURE AND POWER.
 
 Fill rule:
 - If a section looks thin, search again for secondary but still relevant stories before using "Nothing to report today."
+- Avoid using "Nothing to report today." unless absolutely no relevant content exists after a second pass.
 
 ARTICLES:
 {article_block}
@@ -171,8 +214,4 @@ ARTICLES:
     # -----------------------------
     # FINAL OUTPUT
     # -----------------------------
-    return f"""Daily Riffs from the Gen AI Songbook
-{today}
-
-{content}
-"""
+    return content
