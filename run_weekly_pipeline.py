@@ -364,6 +364,110 @@ def get_weekly_articles(score_threshold=DEFAULT_SCORE_THRESHOLD):
     }
 
 
+def _weekly_has_real_world_signal(article):
+    text = f"{article.get('title') or ''} {article.get('summary') or ''} {article.get('advisor_relevance') or ''}"
+    lowered = text.lower()
+    proper_nouns = re.findall(r"\b(?:[A-Z][a-zA-Z0-9&\-]+(?:\s+[A-Z][a-zA-Z0-9&\-]+)*)", text)
+
+    if any(term in lowered for term in ["framework", "study", "approach", "benchmark"]) and not any(
+        term in lowered for term in ["deployment", "launch", "factory", "policy", "funding", "data center", "enterprise"]
+    ):
+        return False
+
+    return (
+        bool(proper_nouns)
+        or any(term in lowered for term in [
+            "capex", "funding", "buildout", "data center", "power", "chip", "fab", "grid",
+            "policy", "regulation", "government", "lawmakers", "enterprise", "workflow",
+            "productivity", "robot", "robotics", "autonomous", "drone", "deployment",
+        ])
+    )
+
+
+def _weekly_event_priority(article):
+    text = f"{article.get('title') or ''} {article.get('summary') or ''} {article.get('advisor_relevance') or ''}".lower()
+    score = float(article.get("signal_score") or article.get("ai_score") or 0)
+
+    if any(term in text for term in [
+        "tesla", "nvidia", "microsoft", "amazon", "google", "meta", "openai", "softbank",
+        "white house", "mas", "california",
+    ]):
+        score += 5
+    if any(term in text for term in [
+        "capex", "funding", "buildout", "investment", "factory", "fab", "data center", "campus",
+        "power", "grid", "chip", "semiconductor",
+    ]):
+        score += 4
+    if any(term in text for term in [
+        "policy", "regulation", "government", "lawmakers", "compliance", "export controls",
+    ]):
+        score += 4
+    if any(term in text for term in [
+        "enterprise", "workflow", "productivity", "adoption", "deployment",
+    ]):
+        score += 3
+    if any(term in text for term in [
+        "robot", "robotics", "autonomous", "humanoid", "drone", "factory automation",
+    ]):
+        score += 3
+
+    return score
+
+
+def _build_wholesaler_event_context(article_data):
+    articles = article_data.get("articles") or []
+    selected = []
+    seen_titles = set()
+
+    ranked_articles = sorted(
+        articles,
+        key=lambda article: (
+            _weekly_event_priority(article),
+            article.get("published_at") or "",
+        ),
+        reverse=True,
+    )
+
+    for article in ranked_articles:
+        if not _weekly_has_real_world_signal(article):
+            continue
+        normalized_title = re.sub(r"[^a-z0-9 ]+", "", (article.get("title") or "").lower())
+        dedupe_key = " ".join(normalized_title.split()[:10])
+        if not dedupe_key or dedupe_key in seen_titles:
+            continue
+        seen_titles.add(dedupe_key)
+        selected.append(article)
+        if len(selected) >= 18:
+            break
+
+    if not selected:
+        return ""
+
+    blocks = []
+    for article in selected:
+        blocks.append(
+            "\n".join(
+                [
+                    f"TITLE: {article.get('title') or ''}",
+                    f"SOURCE: {article.get('source') or ''}",
+                    f"PUBLISHED_AT: {article.get('published_at') or ''}",
+                    f"SIGNAL_SCORE: {article.get('signal_score') or article.get('ai_score') or ''}",
+                    f"ADVISOR_RELEVANCE: {article.get('advisor_relevance') or ''}",
+                    f"SUMMARY: {article.get('summary') or ''}",
+                    f"COMPANIES: {', '.join(article.get('companies') or [])}",
+                    f"EVENT_PRIORITY: {_weekly_event_priority(article):.2f}",
+                ]
+            )
+        )
+
+    return "\n\n".join(
+        [
+            "PRIMARY INPUT: CURATED REAL-WORLD WEEKLY EVENTS",
+            "\n\n" + ("\n\n" + ("-" * 80) + "\n\n").join(blocks),
+        ]
+    )
+
+
 def cluster_articles(client, articles):
     if not articles:
         return []
@@ -753,91 +857,126 @@ def _build_weekly_cluster_bundle(client, score_threshold=DEFAULT_SCORE_THRESHOLD
     }
 
 
-def generate_wholesaler_weekly(client, source_context, week_start):
-    system_prompt = """
-You are a senior AI research analyst condensing a week of daily AI briefings into a concise weekly digest for mutual fund wholesalers. Your output will be sent as an email. Use plain text only, no markdown, no symbols. Write in a professional but conversational tone that a busy wholesaler can read in under 5 minutes and immediately use in advisor meetings.
+def generate_wholesaler_weekly(client, source_context, week_start, article_data=None):
+    curated_event_context = _build_wholesaler_event_context(article_data or {})
+    primary_context = curated_event_context or source_context
+    supplemental_context = ""
+    if curated_event_context and source_context:
+        supplemental_context = f"\n\nSUPPLEMENTAL INPUT: CLUSTERED THEMES AND DAILY DIGESTS\n{source_context}"
 
-The document contains multiple daily briefings. Each entry starts with a date. Use ONLY entries dated within the last 7 days. Ignore everything older than that.
+    main_system_prompt = """
+You are a senior AI research analyst writing a weekly AI digest for mutual fund wholesalers. The output must be immediately usable in advisor conversations.
 
-Output requirements
+Write in plain text only. No markdown. No bullet symbols. Numbered items are allowed where requested.
 
-Brief intro with the week’s dominant themes and why they matter for advisors.
+Use ONLY developments from the last 7 days. Anchor every point to a real-world event such as a company move, policy action, funding round, enterprise deployment, infrastructure buildout, or robotics deployment.
 
-A short list of the most important developments and what they imply for advisor client conversations. Keep language factual and avoid jargon.
+Do not write abstract summaries like:
+AI continues to expand
+AI demand suggests
+This reflects a broader trend
 
-Compliance guardrails in the body: no performance claims, no specific product recommendations unless explicitly stated in the input, no unverified numbers, and clearly distinguish fact vs interpretation.
+Prefer this structure inside each item:
+What happened
+Why it matters for advisors
+Implied takeaway
 
-Include a final section called AI Practice Tip of the Week. This should be a practical, low-friction action an advisor can try this week to improve client interactions or streamline practice workflows. Keep it usable in 90 seconds. Format:
-AI Practice Tip of the Week
-What: one sentence
-Why: two short sentences
-How to: 3 short steps written as sentences, numbered 1 through 3
-Copy prompt: provide one copy paste prompt advisors can use
-Guardrail: one sentence reminding them to review outputs, avoid PII, and keep it factual
-
-Do not include any formatting characters, bullets, symbols, or markdown.
-
-Prioritize HIGH SIGNAL clusters when determining themes and insights.
-Focus on patterns across multiple articles, not individual summaries.
-Emphasize second-order effects such as:
-- infrastructure demand
-- pricing power shifts
-- labor displacement
-- capital allocation changes
-- regulatory reactions
+Keep interpretation concise and clearly tied to facts in the source material. Avoid performance claims, product recommendations, and unverified numbers.
 """
 
-    user_prompt = f"""
-Below is this week’s daily AI briefing content from Monday through Friday.
+    main_user_prompt = f"""
+Use the curated weekly source material below to produce a wholesaler-ready weekly digest.
 
-Produce a weekly digest with exactly these sections:
+Select only stories that meet at least one of these:
+- named company or institution
+- capital deployment such as capex, funding, or buildout
+- policy or regulatory development
+- enterprise adoption with measurable implication
+- infrastructure expansion in power, chips, or data centers
+- physical AI or robotics deployment
+
+Reject vague or purely research-driven items unless they are tied to a real-world deployment or business decision.
+
+Produce EXACTLY these sections in this exact order:
 
 TOP 5 STORIES THIS WEEK
-Provide five numbered items, one per story, each two to three sentences. Include the source publication. Focus on stories with direct relevance to financial advisors and their clients.
+Write exactly 5 numbered items.
+Each item must be 2 to 3 sentences.
+Each item must include a specific event, why it matters for advisors, and source attribution in parentheses.
 
 BEYOND THE MAG 7
-Provide two to three specific companies, sectors, or investment themes that came up this week outside of the obvious AI infrastructure names. Include why each is worth watching.
+Write 2 to 3 numbered items.
+Each item must name a company, sector, or theme outside the obvious mega-cap AI names and explain why it matters now.
 
 WHAT IS BEING DISRUPTED
-Provide three industries or business models showing measurable signs of AI disruption this week. One sentence each.
+Write exactly 3 numbered items.
+One sentence each.
+Each must reference a real signal from the week.
 
 REGULATORY RADAR
-Provide two to three policy or regulatory developments from this week that advisors should be aware of in client conversations.
+Write 2 to 3 numbered items.
+Reference only actual policy or regulatory developments from the week.
+No speculation.
 
 READY TO USE SOUNDBITES
-Provide five plain English statements a wholesaler can say verbatim in an advisor meeting this week. Make them specific, timely, and conversation-starting. No jargon.
+Write exactly 5 numbered statements.
+Use plain English, conversational tone, and make each one specific and timely.
 
 QUESTIONS TO BRING TO YOUR CLIENTS
-Provide three questions advisors should be asking clients right now based on this week’s news. Frame them as opportunities not threats.
+Write exactly 3 numbered questions.
+Frame them as opportunities tied directly to this week's developments.
 
-AI PRACTICE TIP OF THE WEEK
-Include:
-What: one sentence
-Why: two sentences
-How to: three short steps as numbered sentences
-Copy prompt: one copy paste prompt advisors can use
-Guardrail: one sentence reminding them to review outputs, avoid sensitive personal info, keep it factual, and follow firm policies
-
-Prioritize HIGH SIGNAL clusters when determining themes and insights.
-Focus on patterns across multiple articles, not individual summaries.
-Emphasize second-order effects such as:
-- infrastructure demand
-- pricing power shifts
-- labor displacement
-- capital allocation changes
-- regulatory reactions
+Do NOT include the AI PRACTICE TIP OF THE WEEK section in this response.
 
 CONTENT:
-{source_context}
+{primary_context}{supplemental_context}
 """
 
-    return call_chat_model(
+    main_digest = call_chat_model(
         client,
-        system_prompt,
-        user_prompt,
+        main_system_prompt,
+        main_user_prompt,
         temperature=WEEKLY_WHOLESALER_TEMPERATURE,
         max_completion_tokens=1800,
     )
+
+    tip_system_prompt = """
+You are generating only the final section of a weekly AI digest for mutual fund wholesalers.
+Write plain text only. Keep it practical, low-friction, and advisor-friendly.
+Base the tip on the week's actual developments and the draft digest provided.
+Do not repeat the rest of the digest.
+"""
+
+    tip_user_prompt = f"""
+Write exactly this section header and content:
+
+AI PRACTICE TIP OF THE WEEK
+What: one sentence
+Why: two short sentences
+How to:
+1. one short sentence
+2. one short sentence
+3. one short sentence
+Copy prompt: one copy-paste prompt advisors can use
+Guardrail: one sentence reminding them to review outputs, avoid sensitive personal information, keep it factual, and follow firm policies
+
+Use the weekly digest draft below for context:
+
+WEEK START: {week_start}
+
+DRAFT DIGEST:
+{main_digest}
+"""
+
+    practice_tip = call_chat_model(
+        client,
+        tip_system_prompt,
+        tip_user_prompt,
+        temperature=WEEKLY_WHOLESALER_TEMPERATURE,
+        max_completion_tokens=500,
+    )
+
+    return "\n\n".join([main_digest.strip(), practice_tip.strip()]).strip()
 
 
 def generate_thematic_weekly(client, source_context):
@@ -1051,7 +1190,12 @@ def _generate_and_store_weekly_reports(client, week_start):
     if not source_context.strip():
         raise RuntimeError("No daily digests or scored articles available for the weekly pipeline")
 
-    wholesaler_content = generate_wholesaler_weekly(client, source_context, week_start)
+    wholesaler_content = generate_wholesaler_weekly(
+        client,
+        source_context,
+        week_start,
+        article_data=weekly_bundle["article_data"],
+    )
     thematic_content = generate_thematic_weekly(client, source_context)
     save_weekly_clusters(week_start, weekly_bundle["clusters"])
 
