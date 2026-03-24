@@ -207,9 +207,16 @@ ARTICLES:
             {"role": "user", "content": user_prompt.strip()}
         ],
         temperature=0.2,
-        max_completion_tokens=1800,
+        max_completion_tokens=4000,
     )
-    content = response.choices[0].message.content.strip()
+    choice = response.choices[0]
+    content = (choice.message.content or "").strip()
+
+    if not content:
+        raise ValueError(
+            f"LLM returned empty digest content "
+            f"(finish_reason={choice.finish_reason})"
+        )
 
     # -----------------------------
     # FINAL OUTPUT
