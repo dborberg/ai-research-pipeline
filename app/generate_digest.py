@@ -83,6 +83,8 @@ Prioritize diversity across these domains:
 Do not allow one source, one publication, or one type of content to dominate the output. Prefer real-world developments such as company announcements, policy changes, infrastructure projects, enterprise deployments, capital allocation, and robotics deployments over technical research. Use technical or research sources only when they add unique insight or when no stronger real-world coverage exists for that section.
 
 If multiple articles say similar things, choose the one with broader market relevance and clearer real-world impact. If the input is dominated by arXiv, EE Times, or other niche technical sources, actively rebalance toward business news, policy coverage, capital markets, and major company developments when those are present.
+
+Prefer coverage over precision. It is better to include multiple distinct real-world developments than to repeat one dominant theme across sections.
 """
 
     user_prompt = f"""
@@ -130,6 +132,26 @@ Selection rules:
 - If multiple articles are similar, keep the one with clearer business or market impact.
 - Before writing "Nothing to report today." for any section, check whether relevant stories exist elsewhere in the input and include at least one meaningful item if possible.
 - Keep bullets specific, event-driven, and concise.
+- Each section should include multiple distinct topics rather than repeating one underlying narrative.
+- Once a story appears in TOP STORIES, do not reuse that same underlying development in other sections.
+- Ensure diversity across companies, sectors, geographies, and use cases.
+- If several articles cover the same event, include only one and replace the others with different topics.
+
+Minimum coverage targets:
+- TOP STORIES: 3-5 distinct developments
+- ENTERPRISE AND LABOR: 3-4 distinct developments
+- INFRASTRUCTURE AND POWER: 3-5 distinct developments
+- CAPITAL MARKETS AND INVESTMENT: 3-5 distinct developments
+- REGULATION AND POLICY: 2-3 distinct developments
+- PHYSICAL AI AND ROBOTICS: 1-3 distinct developments
+
+Critical override:
+- You must include at least one macro, policy, or capital markets signal every day.
+- If none are initially selected, search the input again and promote the strongest available government policy, regulation, capital markets, valuation, funding, stock, or macroeconomic AI story.
+- This override is more important than ranking preferences.
+
+Fill rule:
+- If a section looks thin, search again for secondary but still relevant stories before using "Nothing to report today."
 
 ARTICLES:
 {article_block}
