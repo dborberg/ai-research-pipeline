@@ -1,0 +1,27 @@
+Daily Riffs from the Gen AI Songbook
+March 24, 2026
+
+TOP STORIES
+• PowerLens: Taming LLM Agents for Safe and Personalized Mobile Power Management
+→ PowerLens presents a framework for using large language model agents to manage smartphone power consumption in a way that is both personalized and safety-aware (Source: cs.AI updates on arXiv.org)
+• Alstef Group unveils AI-powered autonomous industrial vehicle ahead of LogiMAT
+→ Alstef Group introduced an AI-powered autonomous industrial vehicle ahead of the LogiMAT trade show, highlighting its push into smarter warehouse and logistics automation (Source: Robotics & Automation News)
+• Trojan's Whisper: Stealthy Manipulation of OpenClaw through Injected Bootstrapped Guidance
+→ The article appears to describe a security vulnerability in OpenClaw, where stealthy manipulation is achieved through injected bootstrapped guidance (Source: cs.AI updates on arXiv.org)
+
+ENTERPRISE AND LABOR
+Nothing to report today.
+
+INFRASTRUCTURE AND POWER
+• PowerLens: Taming LLM Agents for Safe and Personalized Mobile Power Management
+→ PowerLens presents a framework for using large language model agents to manage smartphone power consumption in a way that is both personalized and safety-aware (Source: cs.AI updates on arXiv.org)
+
+CAPITAL MARKETS AND INVESTMENT
+Nothing to report today.
+
+REGULATION AND POLICY
+Nothing to report today.
+
+PHYSICAL AI AND ROBOTICS
+• Alstef Group unveils AI-powered autonomous industrial vehicle ahead of LogiMAT
+→ Alstef Group introduced an AI-powered autonomous industrial vehicle ahead of the LogiMAT trade show, highlighting its push into smarter warehouse and logistics automation (Source: Robotics & Automation News)
