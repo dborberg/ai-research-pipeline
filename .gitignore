@@ -3,5 +3,6 @@ venv/
 __pycache__/
 *.pyc
 pipeline.log
+logs/
 data/*.db
 data/ai_research.db
