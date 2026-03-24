@@ -131,53 +131,73 @@ def generate_daily_digest():
             or any(keyword in lowered for keyword in ["framework", "study", "approach", "model"])
         )
 
-    def _coverage_categories(articles):
-        categories = set()
+    def _article_has_specificity(article):
+        text = f"{article.get('title', '')} {article.get('summary', '')}"
+        proper_nouns = re.findall(r"\b(?:[A-Z][a-zA-Z0-9&\-]+(?:\s+[A-Z][a-zA-Z0-9&\-]+)*)", text)
+        return bool(proper_nouns)
+
+    def _article_sort_key(article):
+        return (
+            article.get("final_score", article.get("ai_score", 0)),
+            article.get("published_at", ""),
+        )
+
+    def _dedupe_articles(articles):
+        deduped = []
+        seen = set()
         for article in articles:
-            text = f"{article.get('title', '')} {article.get('summary', '')}".lower()
-            if any(keyword in text for keyword in ["tesla", "nvidia", "microsoft", "amazon", "softbank", "musk"]):
-                categories.add("company_event")
-            if any(keyword in text for keyword in ["factory", "data center", "fab", "power", "grid"]):
-                categories.add("infrastructure_project")
-            if any(keyword in text for keyword in ["policy", "regulation", "white house", "mas", "california"]):
-                categories.add("policy_regulation")
-            if any(keyword in text for keyword in ["investment", "funding", "valuation", "capital", "market"]):
-                categories.add("capital_markets")
-        return categories
+            title = re.sub(r"[^a-z0-9 ]+", "", (article.get("title") or "").lower())
+            key = " ".join(title.split()[:10])
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            deduped.append(article)
+        return deduped
 
-    def _extract_anchor_events(theme_name, articles):
-        anchor_events = []
-        for article in articles[:3]:
-            title = article.get("title", "")
-            summary = article.get("summary", "")
-            proper_nouns = re.findall(r"\b(?:[A-Z][a-zA-Z0-9&\-]+(?:\s+[A-Z][a-zA-Z0-9&\-]+)*)", title)
-            anchor = proper_nouns[0] if proper_nouns else _short_anchor(title)
+    def _rewrite_article_bullet(article):
+        title = (article.get("title") or "").strip().rstrip(".")
+        summary = (article.get("summary") or "").strip()
+        source = article.get("source") or "Unknown"
+        sentences = re.split(r"(?<=[.!?])\s+", summary)
+        detail = ""
+        banned_phrases = [
+            "ai demand suggests",
+            "ai continues to",
+            "ai developments indicate",
+            "this reflects a broader trend",
+        ]
+        for sentence in sentences:
+            cleaned = sentence.strip()
+            lowered = cleaned.lower()
+            if not cleaned:
+                continue
+            if any(phrase in lowered for phrase in banned_phrases):
+                continue
+            detail = cleaned.rstrip(".")
+            break
+        if not detail:
+            detail = "This matters because the development creates a tangible AI-linked catalyst for investors"
+        return f"• {title}\n→ {detail} (Source: {source})"
 
-            if any(keyword in title.lower() for keyword in ["framework", "model", "study", "approach"]):
-                anchor = ""
-            if anchor and "," in anchor:
-                anchor = ""
-            if anchor and not re.search(r"[A-Z]", anchor):
-                anchor = ""
+    def build_section_output(section_title, articles, min_items=3, max_items=5):
+        lines = [section_title]
+        selected = _dedupe_articles(sorted(articles, key=_article_sort_key, reverse=True))
+        selected = [
+            article for article in selected
+            if _article_has_specificity(article) and not _is_bad_anchor(article)
+        ][:max_items]
+        if len(selected) < 1:
+            lines.append("Nothing to report today.")
+            lines.append("")
+            return "\n".join(lines)
+        for article in selected:
+            lines.append(_rewrite_article_bullet(article))
+        lines.append("")
+        return "\n".join(lines)
 
-            if theme_name == "physical_ai":
-                physical_terms = re.findall(
-                    r"(robotics|robot|autonomous|humanoid|factory automation|industrial automation|uav|drone|vehicle)",
-                    f"{title} {summary}",
-                    flags=re.IGNORECASE,
-                )
-                if physical_terms:
-                    anchor = f"{anchor} {physical_terms[0]}".strip()
-
-            if anchor and anchor not in anchor_events:
-                anchor_events.append(anchor)
-            if len(anchor_events) >= 3:
-                break
-        return anchor_events
-
-    def build_article_fallback_output(articles, low_confidence=False):
+    def build_article_output(articles, low_confidence=False):
         section_map = [
-            ("TOP THEMES", ["other", "emerging", "semis"]),
+            ("TOP STORIES", ["EVENT", "SUPPORTING", "NOISE"]),
             ("ENTERPRISE AND LABOR", ["enterprise", "labor"]),
             ("INFRASTRUCTURE AND POWER", ["infrastructure", "semis"]),
             ("CAPITAL MARKETS AND INVESTMENT", ["capital_markets"]),
@@ -186,164 +206,25 @@ def generate_daily_digest():
         ]
 
         theme_dict = {}
-        for article in articles[:15]:
-            theme_dict.setdefault(_get_theme_key(article), []).append(article)
+        top_story_candidates = []
+        for article in articles[:20]:
+            theme = _get_theme_key(article)
+            theme_dict.setdefault(theme, []).append(article)
+            top_story_candidates.append(article)
 
         lines = []
         if low_confidence:
             lines.extend([
                 "LOW-CONFIDENCE MODE",
-                "Real-world event coverage was thin today, so this view is article-driven rather than theme-driven.",
+                "Real-world event coverage was thin today, so this view is article-driven.",
                 "",
             ])
-        for section_title, themes in section_map:
-            lines.append(section_title)
-            section_written = 0
+        lines.append(build_section_output("TOP STORIES", top_story_candidates[:8], max_items=5))
+        for section_title, themes in section_map[1:]:
+            section_articles = []
             for theme in themes:
-                for article in theme_dict.get(theme, [])[:3]:
-                    lines.append(
-                        f"- {article['title']} ({article['source']})"
-                    )
-                    section_written += 1
-                    if section_written >= 2:
-                        break
-                if section_written >= 2:
-                    break
-            if section_written == 0:
-                lines.append("Nothing to report today.")
-            lines.append("")
-        return "\n".join(lines).strip()
-
-    def build_top_stories_output(top_events):
-        lines = ["TOP STORIES"]
-        for article in top_events:
-            lines.append(f"- {article['title']} ({article['source']})")
-        if len(lines) == 1:
-            lines.append("Nothing to report today.")
-        lines.append("")
-        return "\n".join(lines)
-
-    def synthesize_theme(theme_name, articles):
-        sources = sorted({article["source"] for article in articles if article.get("source")})
-        source_label = f"(Sources: {', '.join(sources[:4])})" if sources else "(Sources: Mixed)"
-        confirmation_word = "reinforces" if len(sources) >= 2 else "suggests"
-        anchors = _extract_anchor_events(theme_name, articles)
-        anchor_text = ", ".join(anchors[:2]) if anchors else _short_anchor(articles[0].get("title", "AI catalyst"))
-
-        templates = {
-            "physical_ai": (
-                f"{anchor_text} put physical AI into a concrete deployment context, and those developments {confirmation_word} that robotics and autonomous systems are moving into real operating environments. "
-                "The theme is broadening beyond software into sensors, embedded compute, controls, and industrial automation platforms tied to factories, logistics, vehicles, and defense. "
-                "That makes physical AI a real ecosystem buildout rather than a concept narrative. "
-                "The investment implication is broader exposure across robotics enablers, industrial automation vendors, edge compute, and component suppliers. "
-                f"{source_label}"
-            ),
-            "infrastructure": (
-                f"{anchor_text} highlighted how AI infrastructure demand is colliding with real-world power, data center, and hardware constraints. "
-                "Those developments expand into a broader theme in which AI scaling is increasingly constrained by physical infrastructure rather than model ambition alone. "
-                "Cross-source coverage confirms that bottlenecks are showing up in energy, permitting, cooling, and hardware capacity at the same time. "
-                "The investment implication is sustained demand for utilities, grid equipment, cooling, and compute infrastructure suppliers. "
-                f"{source_label}"
-            ),
-            "enterprise": (
-                f"{anchor_text} showed enterprise AI moving from experimentation toward workflow integration, productivity, and operating leverage. "
-                "That expands into a broader adoption theme in which software spending is starting to favor practical deployment and measurable return on investment. "
-                "Multiple catalysts now point to implementation discipline rather than AI theater. "
-                "The investment implication is stronger support for application software, services, and workflow vendors that can translate AI into revenue or margin impact. "
-                f"{source_label}"
-            ),
-            "capital_markets": (
-                f"{anchor_text} brought AI capital formation and competitive positioning back into focus across public and private markets. "
-                "That broadens into a wider financing and valuation theme in which leadership is moving beyond model builders into infrastructure, tools, and adjacent beneficiaries. "
-                "Named catalysts in funding, project finance, or strategic buildout now confirm that AI exposure is spreading across the capital stack. "
-                "The investment implication is a wider opportunity set across capital equipment, semis, private funding channels, and second-order AI beneficiaries. "
-                f"{source_label}"
-            ),
-            "policy": (
-                f"{anchor_text} made policy a live catalyst rather than a background risk. "
-                "That expands into a more durable governance theme in which compliance, export controls, standards, and public-sector positioning shape adoption speed and competitive advantage. "
-                "Specific agencies and policy bodies now confirm that regulatory timing matters to commercial winners and losers. "
-                "The investment implication is higher sensitivity around globally exposed AI supply chains, platform providers, and regulated end markets. "
-                f"{source_label}"
-            ),
-            "labor": (
-                f"{anchor_text} put workforce change into concrete terms by linking AI adoption to hiring, productivity, and operating model redesign. "
-                "That expands into a broader labor theme in which AI is reshaping how enterprises allocate work and capture efficiency gains. "
-                "Specific catalysts now show that labor leverage is becoming one of the clearest channels through which AI affects margins. "
-                "The investment implication is stronger focus on companies that can convert AI adoption into measurable productivity gains. "
-                f"{source_label}"
-            ),
-            "other": (
-                f"{anchor_text} showed that AI catalysts are widening beyond a narrow set of model and chip headlines. "
-                "That expands into a broader market theme in which adjacent suppliers, adopters, and infrastructure players are becoming more relevant to the AI buildout. "
-                "The named events in this cluster confirm that real-world adoption is spreading unevenly but meaningfully across the stack. "
-                "The investment implication is a broader and more diversified set of AI-linked beneficiaries. "
-                f"{source_label}"
-            ),
-        }
-
-        return templates.get(theme_name, templates["other"])
-
-    def build_theme_output(articles):
-        theme_dict = {}
-        for article in articles:
-            theme = _get_theme_key(article)
-            theme_dict.setdefault(theme, []).append(article)
-
-        for theme_articles in theme_dict.values():
-            theme_articles.sort(
-                key=lambda article: (
-                    article.get("role") == "EVENT",
-                    article.get("final_score", article.get("ai_score", 0)),
-                    article.get("published_at", ""),
-                ),
-                reverse=True,
-            )
-
-        print("Themes:", list(theme_dict.keys()))
-        print("Physical AI present:", "physical_ai" in theme_dict)
-        print("Articles per theme:", {k: len(v) for k, v in theme_dict.items()})
-        if "physical_ai" not in theme_dict:
-            print("No physical AI signals today")
-
-        theme_scores = {}
-        for theme, theme_articles in theme_dict.items():
-            avg_score = sum(article.get("ai_score", 0) for article in theme_articles) / max(len(theme_articles), 1)
-            unique_sources = len({article.get("source") for article in theme_articles if article.get("source")})
-            theme_scores[theme] = avg_score + unique_sources * 0.5
-
-        top_themes = [
-            theme for theme, _ in sorted(
-                theme_scores.items(),
-                key=lambda item: item[1],
-                reverse=True,
-            )[:8]
-        ]
-
-        section_map = [
-            ("ENTERPRISE AND LABOR", ["enterprise", "labor"]),
-            ("INFRASTRUCTURE AND POWER", ["infrastructure", "semis"]),
-            ("CAPITAL MARKETS AND INVESTMENT", ["capital_markets"]),
-            ("REGULATION AND POLICY", ["policy"]),
-            ("PHYSICAL AI AND ROBOTICS", ["physical_ai"]),
-        ]
-
-        lines = []
-        used_themes = set()
-        for section_title, themes in section_map:
-            lines.append(section_title)
-            section_written = 0
-            for theme in themes:
-                if theme not in theme_dict or theme in used_themes:
-                    continue
-                lines.append(synthesize_theme(theme, theme_dict[theme][:4]))
-                lines.append("")
-                section_written += 1
-                used_themes.add(theme)
-            if section_written == 0:
-                lines.append("Nothing to report today.")
-                lines.append("")
-
+                section_articles.extend(theme_dict.get(theme, []))
+            lines.append(build_section_output(section_title, section_articles))
         return "\n".join(lines).strip()
 
     articles = get_recent_articles()
@@ -372,14 +253,10 @@ No relevant articles found in the last 24 hours.
         article for article in prepared_articles
         if article["role"] == "SUPPORTING"
     ]
-    thematic_articles = event_articles + supporting_articles
-    high_signal_articles = [article for article in thematic_articles if _is_high_quality_signal(article)]
+    candidate_articles = event_articles + supporting_articles
     top_events = sorted(
-        event_articles,
-        key=lambda article: (
-            article["final_score"],
-            article.get("published_at", ""),
-        ),
+        candidate_articles,
+        key=_article_sort_key,
         reverse=True,
     )[:8]
 
@@ -391,11 +268,8 @@ No relevant articles found in the last 24 hours.
         )
         if not matched:
             for article in sorted(
-                thematic_articles,
-                key=lambda article: (
-                    article["final_score"],
-                    article.get("published_at", ""),
-                ),
+                candidate_articles,
+                key=_article_sort_key,
                 reverse=True,
             ):
                 text = f"{article['title']} {article['summary']}".lower()
@@ -411,25 +285,18 @@ No relevant articles found in the last 24 hours.
         len(event_articles) == 0
         or all(article.get("role") == "SUPPORTING" for article in top_events)
         or len(top_events) == 0
-        or len(high_signal_articles) < 5
-        or len(_coverage_categories(high_signal_articles)) < 2
     )
     fallback_articles = sorted(
         prepared_articles,
-        key=lambda article: (
-            article["final_score"],
-            article.get("published_at", ""),
-        ),
+        key=_article_sort_key,
         reverse=True,
     )[:15]
     fallback_low_confidence = (
-        len(high_signal_articles) < 5
-        or len(event_articles) == 0
+        len(event_articles) == 0
         or all(article.get("role") != "EVENT" for article in top_events)
     )
     print("Event articles:", len(event_articles))
     print("Supporting articles:", len(supporting_articles))
-    print("High-quality signals:", len(high_signal_articles))
     print("Fallback triggered:", fallback_triggered)
     print("Top story roles:", [article["role"] for article in top_events or fallback_articles[:8]])
     print("Top events selected:")
@@ -439,13 +306,10 @@ No relevant articles found in the last 24 hours.
     for bucket in COVERAGE_BUCKETS:
         print(bucket, coverage_status[bucket])
 
-    if fallback_triggered:
-        content = build_article_fallback_output(fallback_articles, low_confidence=fallback_low_confidence)
-    else:
-        content = "\n".join([
-            build_top_stories_output(top_events),
-            build_theme_output(high_signal_articles),
-        ]).strip()
+    selected_articles = fallback_articles if fallback_triggered else top_events + [
+        article for article in candidate_articles if article not in top_events
+    ]
+    content = build_article_output(selected_articles, low_confidence=fallback_low_confidence)
 
     # -----------------------------
     # FINAL OUTPUT
