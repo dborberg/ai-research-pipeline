@@ -2,9 +2,20 @@ name: Daily Riffs from the Gen AI Pipeline
 
 on:
   schedule:
-    - cron: '30 11 * 3-10 *'   # 6:30 AM CDT (March-October)
-    - cron: '30 12 * 1-2,11-12 *'   # 6:30 AM CST (January-February, November-December)
+    - cron: '30 11 * 3-10 *'   # 6:30 AM CDT (March-October) — GitHub cron uses UTC
+    - cron: '30 12 * 1-2,11-12 *'   # 6:30 AM CST (January-February, November-December) — GitHub cron uses UTC
   workflow_dispatch:
+
+# Separate concurrency groups for scheduled vs. manual runs so that
+# ad-hoc workflow_dispatch triggers (e.g., debugging sessions) don't queue
+# behind — or delay — the scheduled morning pipeline.
+# With cancel-in-progress: false, in-progress runs are never aborted, but
+# only one pending run per group is allowed — if a newer run arrives while
+# one is already waiting, the older pending run is dropped, preventing a
+# backlog of queued jobs from building up.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -32,21 +43,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      # ✅ NEW: visibility into your exact issue
-      - name: Debug environment variables
-        run: |
-          echo "Checking environment variables..."
-          if [ -z "$OPENAI_API_KEY" ]; then echo "OPENAI MISSING"; else echo "OPENAI OK"; fi
-          if [ -z "$EMAIL_USER" ]; then echo "EMAIL USER MISSING"; else echo "EMAIL USER OK"; fi
-          if [ -z "$EMAIL_PASSWORD" ]; then echo "EMAIL PASSWORD MISSING"; else echo "EMAIL PASSWORD OK"; fi
-          if [ -z "$EMAIL_TO" ]; then echo "EMAIL TO MISSING"; else echo "EMAIL TO OK"; fi
-
-      # ✅ Optional but helpful for debugging paths
-      - name: Show working directory
-        run: |
-          pwd
-          ls -la
 
       - name: Run pipeline
         run: python run_pipeline.py
