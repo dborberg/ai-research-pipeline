@@ -1110,6 +1110,20 @@ DRAFT DIGEST:
     return "\n\n".join([main_digest.strip(), practice_tip.strip()]).strip()
 
 
+def _clean_thematic_output(content):
+    cleaned = str(content or "").strip()
+    replacements = [
+        r"(?im)^\s*theme statement:\s*",
+        r"(?im)^\s*mechanism of change:\s*",
+        r"(?im)^\s*implication for advisors and their clients:\s*",
+        r"(?im)^\s*implication:\s*",
+    ]
+    for pattern in replacements:
+        cleaned = re.sub(pattern, "", cleaned)
+    cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
+    return cleaned.strip()
+
+
 def generate_thematic_weekly(client, source_context):
     system_prompt = """
 You are a senior AI research analyst condensing a week of daily AI briefings into a concise weekly thematic digest for mutual fund wholesalers. Your output will be sent as an email. Use plain text only, no markdown. Do not use bullet symbols such as hyphens, asterisks, or bullet characters. Numbered lists (1, 2, 3) are allowed.
@@ -1173,13 +1187,14 @@ CONTENT:
 {source_context}
 """
 
-    return call_chat_model(
+    response = call_chat_model(
         client,
         system_prompt,
         user_prompt,
         temperature=WEEKLY_THEMATIC_TEMPERATURE,
         max_completion_tokens=2200,
     )
+    return _clean_thematic_output(response)
 
 
 def generate_signal_command_brief(cluster_df, week_start):
