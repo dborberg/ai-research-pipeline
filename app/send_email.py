@@ -10,17 +10,34 @@ def _looks_like_html(text):
     return any(tag in lowered for tag in ["<html", "<body", "<h2", "<h3", "<p", "<ul", "<ol", "<li"])
 
 
+def _is_report_title(text):
+    stripped = (text or "").strip()
+    return stripped in {
+        "Daily Riffs from the Gen AI Songbook",
+        "Weekly Motifs from the Gen AI Songbook",
+        "Weekly Riffs from the Gen AI Songbook",
+    } or stripped.startswith("AI SIGNAL COMMAND")
+
+
 def format_as_html(text):
     """Convert plain text digest into clean HTML email format."""
 
     lines = text.split("\n")
     html = []
     list_mode = None
+    current_item_open = False
     title_rendered = False
     date_rendered = False
 
+    def close_item():
+        nonlocal current_item_open
+        if current_item_open:
+            html.append("</li>")
+            current_item_open = False
+
     def close_list():
         nonlocal list_mode
+        close_item()
         if list_mode == "ul":
             html.append("</ul>")
         elif list_mode == "ol":
@@ -30,8 +47,8 @@ def format_as_html(text):
     for line in lines:
         stripped = line.strip()
 
-        if not title_rendered and stripped and not stripped.isupper():
-            html.append(f"<h2 style='margin-top:0; margin-bottom:6px;'>{stripped}</h2>")
+        if not title_rendered and stripped and _is_report_title(stripped):
+            html.append(f"<h2 style='margin:0 0 4px 0;'>{stripped}</h2>")
             title_rendered = True
             continue
 
@@ -39,47 +56,59 @@ def format_as_html(text):
             stripped.startswith("Week of ") or
             re.match(r"^[A-Z][a-z]+\s+\d{1,2},\s+\d{4}$", stripped)
         ):
-            html.append(f"<p style='margin:0 0 16px 0;'><strong>{stripped}</strong></p>")
+            html.append(f"<p style='margin:0 0 12px 0;'><strong>{stripped}</strong></p>")
             date_rendered = True
             continue
 
         # Section headers (ALL CAPS)
         if stripped.isupper() and len(stripped) > 0:
             close_list()
-            html.append(f"<h2 style='margin-top:20px; margin-bottom:10px;'>{stripped}</h2>")
+            html.append(f"<h3 style='margin:16px 0 8px 0;'>{stripped}</h3>")
 
         # Bullet points
         elif stripped.startswith("•"):
             if list_mode != "ul":
                 close_list()
-                html.append("<ul style='margin-top:0; margin-bottom:10px;'>")
+                html.append("<ul style='margin:0 0 10px 0; padding-left:18px;'>")
                 list_mode = "ul"
-            html.append(f"<li style='margin-bottom:8px;'>{stripped[1:].strip()}</li>")
+            else:
+                close_item()
+            html.append(f"<li style='margin:0 0 6px 0;'>{stripped[1:].strip()}")
+            current_item_open = True
 
         # Numbered items
         elif re.match(r"^\d+\.\s+", stripped):
             if list_mode != "ol":
                 close_list()
-                html.append("<ol style='margin-top:0; margin-bottom:10px; padding-left:20px;'>")
+                html.append("<ol style='margin:0 0 10px 0; padding-left:20px;'>")
                 list_mode = "ol"
+            else:
+                close_item()
             item_text = re.sub(r"^\d+\.\s+", "", stripped)
-            html.append(f"<li style='margin-bottom:8px;'>{item_text}</li>")
+            html.append(f"<li style='margin:0 0 6px 0;'>{item_text}")
+            current_item_open = True
 
         # Blank lines
         elif stripped == "":
-            close_list()
-            html.append("<br>")
+            if current_item_open:
+                html.append("<div style='height:4px;'></div>")
+            else:
+                close_list()
+                html.append("<div style='height:6px;'></div>")
 
         # Regular text
         else:
-            close_list()
-            html.append(f"<p style='margin:0 0 10px 0;'>{stripped}</p>")
+            if current_item_open:
+                html.append(f"<div style='margin:4px 0 0 0;'>{stripped}</div>")
+            else:
+                close_list()
+                html.append(f"<p style='margin:0 0 8px 0;'>{stripped}</p>")
 
     close_list()
 
     return f"""
     <html>
-        <body style="font-family: Arial, sans-serif; font-size:14px; line-height:1.5;">
+        <body style="font-family: Arial, sans-serif; font-size:14px; line-height:1.45; color:#111827;">
             {''.join(html)}
         </body>
     </html>
