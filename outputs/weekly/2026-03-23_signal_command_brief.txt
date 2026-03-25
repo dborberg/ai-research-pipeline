@@ -1,0 +1,57 @@
+AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report
+Week of 2026-03-23
+
+Purpose:
+This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.
+
+TOP CONVICTION SIGNALS
+
+data center capacity and chip competition
+Conviction: 6.78
+Strength: 7.65
+Momentum: 200%
+Velocity: +2 article change
+Why It Matters:
+This matters because AI capex is spreading across semiconductors, cloud, utilities, and data center operators rather than remaining concentrated in a single hardware category. For markets, it supports monitoring second-order beneficiaries and risks tied to power availability, infrastructure constraints, and changing chip share dynamics.
+
+Industrial automation and maintenance productivity
+Conviction: 6.50
+Strength: 7.40
+Momentum: 200%
+Velocity: +2 article change
+Why It Matters:
+This matters because industrial AI adoption can drive spending on robotics, sensors, industrial software, and automation equipment while improving margins for manufacturers. Advisors should view this as a practical deployment theme tied to productivity gains and supply-chain modernization rather than speculative model development.
+
+Low-cost sensing on existing infrastructure
+Conviction: 6.50
+Strength: 7.40
+Momentum: 200%
+Velocity: +2 article change
+Why It Matters:
+This matters because AI value creation is increasingly coming from software layers that unlock new functionality from already-deployed infrastructure. That can benefit edge computing, sensor ecosystems, smart building platforms, and engineering-focused industrial technology providers.
+
+ACCELERATING THEMES (BREAKOUTS)
+
+These themes are accelerating fastest relative to prior week.
+
+data center capacity and chip competition: Momentum 200%, velocity +2. This matters because AI capex is spreading across semiconductors, cloud, utilities, and data center operators rather than remaining concentrated in a single hardware category
+Industrial automation and maintenance productivity: Momentum 200%, velocity +2. This matters because industrial AI adoption can drive spending on robotics, sensors, industrial software, and automation equipment while improving margins for manufacturers
+Low-cost sensing on existing infrastructure: Momentum 200%, velocity +2. This matters because AI value creation is increasingly coming from software layers that unlock new functionality from already-deployed infrastructure
+
+FADING SIGNALS
+
+No major theme showed week-over-week deterioration in this run.
+
+PORTFOLIO IMPLICATIONS
+
+Structural strengthening is concentrated in data center capacity and chip competition, Industrial automation and maintenance productivity, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in lower-strength breakouts, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in data center capacity and chip competition, Industrial automation and maintenance productivity, supported by rising article volume against the prior week.
+Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
+
+BOTTOM LINE
+
+1. Highest conviction theme: data center capacity and chip competition
+2. Most important new signal: data center capacity and chip competition
+3. Biggest acceleration: data center capacity and chip competition
+4. Key risk / fading area: No material fading area
