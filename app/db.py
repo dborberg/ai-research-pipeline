@@ -247,6 +247,9 @@ def save_weekly_clusters(week_start, clusters):
 
     rows = []
     for cluster in clusters:
+        theme_name = str(cluster.get("theme_name") or "").strip()
+        if not theme_name:
+            continue
         avg_score = float(cluster.get("avg_score") or 0)
         article_count = int(cluster.get("article_count") or len(cluster.get("articles", [])))
         high_signal_ratio = float(cluster.get("high_signal_ratio") or 0)
@@ -264,7 +267,7 @@ def save_weekly_clusters(week_start, clusters):
             {
                 "week_start": week_start,
                 "theme_id": str(cluster.get("theme_id") or "").strip(),
-                "theme_name": str(cluster.get("theme_name") or "Untitled Theme").strip(),
+                "theme_name": theme_name,
                 "avg_score": round(avg_score, 2),
                 "article_count": article_count,
                 "high_signal_ratio": round(high_signal_ratio, 2),

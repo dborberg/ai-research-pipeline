@@ -63,20 +63,6 @@ def _prepare_clusters(clusters):
     return clusters
 
 
-def _get_theme_key(row):
-    text = f"{row.get('theme_name', '')} {row.get('investment_relevance', '')}".lower()
-
-    if any(keyword in text for keyword in ["nvidia", "gpu", "chip", "semiconductor", "semis"]):
-        return "semis"
-    if any(keyword in text for keyword in ["data center", "power", "grid", "electricity", "infrastructure"]):
-        return "infrastructure"
-    if any(keyword in text for keyword in ["enterprise", "software", "roi", "productivity", "automation"]):
-        return "enterprise"
-    if any(keyword in text for keyword in ["regulation", "policy", "government", "compliance"]):
-        return "policy"
-    if any(keyword in text for keyword in ["labor", "jobs", "hiring", "workforce"]):
-        return "labor"
-    return "other"
 
 
 def _get_velocity_symbol(value):
@@ -173,10 +159,7 @@ def build_cluster_dataframe(clusters, week_start):
     df = pd.DataFrame(rows)
     if df.empty:
         return df
-
-    if "theme" not in df.columns or df["theme"].replace("", pd.NA).isna().all():
-        df["theme"] = df.apply(lambda row: _get_theme_key(row), axis=1)
-
+    # Only use theme names as provided by the pipeline output; do not relabel or synthesize themes
     return df.sort_values(
         ["conviction_score", "velocity", "cluster_strength"],
         ascending=[False, False, False],
@@ -217,10 +200,8 @@ def load_stored_clusters(week_start):
 
 
 def load_clusters(week_start, api_key):
-    stored_df = load_stored_clusters(week_start)
-    if not stored_df.empty:
-        return stored_df
-    return load_runtime_clusters(week_start, api_key)
+    # Only load stored clusters from the daily pipeline output; do not run runtime clustering
+    return load_stored_clusters(week_start)
 
 
 def compute_velocity(current_df, previous_df):
@@ -290,8 +271,7 @@ def apply_velocity_metrics(cluster_df, velocity_df):
         (merged["signal_quality"] * 0.3) +
         (merged["velocity"].clip(lower=0) * 0.2)
     ).round(2)
-    if "theme" not in merged.columns or merged["theme"].replace("", pd.NA).isna().all():
-        merged["theme"] = merged.apply(lambda row: _get_theme_key(row), axis=1)
+    # Use only the theme as provided by the pipeline output; do not relabel or synthesize themes
     if "velocity_velocity" in merged.columns:
         merged = merged.drop(columns=["velocity_velocity"])
     return merged.sort_values(
@@ -520,7 +500,7 @@ def main():
     print("Normalized columns:", list(cluster_df.columns))
     cluster_df = apply_velocity_metrics(cluster_df, velocity_df)
     cluster_df = _ensure_display_fields(cluster_df)
-    cluster_df["theme"] = cluster_df.apply(lambda row: _get_theme_key(row), axis=1)
+    # Use only the theme as provided by the pipeline output; do not relabel or synthesize themes
     cluster_df = cluster_df.sort_values(
         ["conviction_score", "velocity", "cluster_strength"],
         ascending=[False, False, False],

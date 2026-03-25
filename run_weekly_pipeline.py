@@ -33,6 +33,19 @@ GENERIC_THEME_TERMS = {
     "innovation", "innovations", "technology", "technologies", "market", "markets",
     "signal", "signals", "weekly", "development", "developments", "update", "updates",
 }
+THEME_NOISE_TERMS = {
+    "about", "after", "again", "also", "amid", "analyst", "analysts", "bbva",
+    "because", "before", "being", "could", "fool", "from", "into", "made",
+    "more", "over", "says", "than", "that", "their", "there", "these", "they",
+    "this", "those", "what", "when", "where", "which", "while", "with", "would",
+}
+REAL_WORLD_THEME_TERMS = {
+    "adoption", "automation", "autonomous", "buildout", "capex", "chip", "chips",
+    "cloud", "compliance", "data", "deployment", "electricity", "enterprise", "factory",
+    "funding", "government", "grid", "inference", "infrastructure", "investment",
+    "labor", "model", "nuclear", "policy", "power", "productivity", "regulation",
+    "robot", "robotics", "semiconductor", "software", "spending", "supply", "tariff",
+}
 
 
 def _compute_cluster_strength(cluster):
@@ -59,32 +72,125 @@ def _extract_theme_terms(articles):
     for article in articles:
         title = article.get("title") or ""
         for token in re.findall(r"[A-Za-z][A-Za-z0-9\-]+", title.lower()):
-            if len(token) < 3 or token in GENERIC_THEME_TERMS:
+            if len(token) < 3 or token in GENERIC_THEME_TERMS or token in THEME_NOISE_TERMS:
                 continue
             token_counts[token] = token_counts.get(token, 0) + 1
     ranked_tokens = sorted(token_counts.items(), key=lambda item: (-item[1], item[0]))
     return [token.title() for token, _ in ranked_tokens[:4]]
 
 
-def _derive_theme_name(raw_name, articles):
+def _extract_cluster_companies(articles):
+    company_counts = {}
+    for article in articles:
+        for company in article.get("companies", []):
+            normalized = str(company or "").strip()
+            if not normalized:
+                continue
+            company_counts[normalized] = company_counts.get(normalized, 0) + 1
+    ranked_companies = sorted(company_counts.items(), key=lambda item: (-item[1], item[0].lower()))
+    return [company for company, _ in ranked_companies[:4]]
+
+
+def _theme_tokens(text):
+    return [
+        token for token in re.findall(r"[A-Za-z][A-Za-z0-9&\-]+", str(text or "").lower())
+        if len(token) >= 3 and token not in GENERIC_THEME_TERMS and token not in THEME_NOISE_TERMS
+    ]
+
+
+def _cluster_support_terms(articles):
+    support = set()
+    repeated_title_terms = set()
+    title_term_counts = {}
+
+    for article in articles:
+        title = article.get("title") or ""
+        summary = article.get("summary") or ""
+        advisor_relevance = article.get("advisor_relevance") or ""
+
+        support.update(_theme_tokens(title))
+        support.update(_theme_tokens(summary))
+        support.update(_theme_tokens(advisor_relevance))
+
+        for token in _theme_tokens(title):
+            title_term_counts[token] = title_term_counts.get(token, 0) + 1
+
+        for company in article.get("companies", []):
+            support.update(_theme_tokens(company))
+
+    repeated_title_terms = {token for token, count in title_term_counts.items() if count >= 2}
+    return support, repeated_title_terms
+
+
+def _is_valid_theme_name(theme_name, articles):
+    cleaned_name = str(theme_name or "").strip()
+    if not cleaned_name:
+        return False
+
+    tokens = _theme_tokens(cleaned_name)
+    if not tokens:
+        return False
+    if len(tokens) < 2:
+        return False
+
+    support_terms, repeated_title_terms = _cluster_support_terms(articles)
+    token_set = set(tokens)
+    if not token_set & support_terms:
+        return False
+
+    has_company_anchor = any(
+        token in token_set
+        for company in _extract_cluster_companies(articles)
+        for token in _theme_tokens(company)
+    )
+    has_repeated_anchor = bool(token_set & repeated_title_terms)
+    has_real_world_anchor = bool(token_set & REAL_WORLD_THEME_TERMS)
+
+    return has_company_anchor or has_repeated_anchor or has_real_world_anchor
+
+
+def _select_best_theme_name(raw_name, articles):
+    candidates = []
+
     raw_name = str(raw_name or "").strip()
-    cleaned_words = [word for word in re.findall(r"[A-Za-z0-9&\-]+", raw_name) if word.lower() not in GENERIC_THEME_TERMS]
-    if 2 <= len(cleaned_words) <= 6:
-        return " ".join(cleaned_words[:6])
+    if raw_name:
+        cleaned_words = [
+            word for word in re.findall(r"[A-Za-z0-9&\-]+", raw_name)
+            if word.lower() not in GENERIC_THEME_TERMS and word.lower() not in THEME_NOISE_TERMS
+        ]
+        if cleaned_words:
+            candidates.append(" ".join(cleaned_words[:6]))
+
+    companies = _extract_cluster_companies(articles)
+    if len(companies) >= 2:
+        candidates.append(" / ".join(companies[:2]))
+    if companies:
+        candidates.append(f"{companies[0]} Deployment")
 
     theme_terms = _extract_theme_terms(articles)
-    if theme_terms:
-        return " ".join(theme_terms[:4])
+    if len(theme_terms) >= 2:
+        candidates.append(" ".join(theme_terms[:4]))
 
     top_article = max(articles, key=lambda article: article.get("signal_score", 0), default={})
     title_words = [
         word for word in re.findall(r"[A-Za-z0-9&\-]+", top_article.get("title") or "")
-        if word.lower() not in GENERIC_THEME_TERMS
+        if word.lower() not in GENERIC_THEME_TERMS and word.lower() not in THEME_NOISE_TERMS
     ]
-    if title_words:
-        return " ".join(title_words[:4])
+    if len(title_words) >= 2:
+        candidates.append(" ".join(title_words[:4]))
 
-    return "High Signal Cluster"
+    for candidate in candidates:
+        if _is_valid_theme_name(candidate, articles):
+            return candidate
+
+    return ""
+
+
+def _derive_theme_name(raw_name, articles):
+    selected_name = _select_best_theme_name(raw_name, articles)
+    if selected_name:
+        return selected_name
+    return ""
 
 
 def _dedupe_and_relabel_clusters(clusters):
@@ -108,6 +214,8 @@ def _dedupe_and_relabel_clusters(clusters):
             continue
 
         cluster["theme_name"] = _derive_theme_name(cluster.get("theme_name"), articles)
+        if not cluster["theme_name"]:
+            continue
         normalized_name = cluster["theme_name"].lower()
         if normalized_name in seen_names:
             differentiators = _extract_theme_terms(articles)
@@ -116,6 +224,9 @@ def _dedupe_and_relabel_clusters(clusters):
             else:
                 cluster["theme_name"] = f"{cluster['theme_name']} {len(deduped_clusters) + 1}"
             normalized_name = cluster["theme_name"].lower()
+
+        if not _is_valid_theme_name(cluster["theme_name"], articles):
+            continue
 
         seen_names.add(normalized_name)
         seen_article_sets.append(article_ids)
@@ -608,6 +719,10 @@ ARTICLES:
             "high_signal_ratio": high_signal_ratio,
         }
 
+        cluster["theme_name"] = _derive_theme_name(cluster.get("theme_name"), cluster_articles_list)
+        if not cluster["theme_name"]:
+            continue
+
         clusters.append(cluster)
         assigned_ids.update(article_ids)
 
@@ -656,7 +771,9 @@ ARTICLES:
                 }
             )
             index += 2
-        clusters = _dedupe_and_relabel_clusters(fallback_clusters)
+        clusters = _dedupe_and_relabel_clusters(
+            [cluster for cluster in fallback_clusters if cluster.get("theme_name")]
+        )
 
     clusters = clusters[:MAX_CLUSTERS]
 
