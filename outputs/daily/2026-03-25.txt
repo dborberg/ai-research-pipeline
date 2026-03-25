@@ -1,0 +1,59 @@
+<h2>Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>March 25, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Industrial AI goes physical:</strong> Agile Robots partnered with Google DeepMind to bring more advanced AI into industrial robotics, a notable sign that foundation-model capabilities are moving from software pilots into factory automation with potential implications for manufacturing productivity, capex cycles, and industrial winners beyond pure-play software. (Source: Google News)</li>
+<li><strong>AI infrastructure broadens beyond GPUs:</strong> Arm entered the data center chip race with a new CPU platform aimed at AI infrastructure, underscoring that the next leg of AI spending is expanding into CPUs, system architecture, and supporting silicon rather than remaining concentrated only in accelerators. (Source: Data Center Knowledge)</li>
+<li><strong>Robotics supply chains deepen:</strong> Texas Instruments and NVIDIA announced a partnership to accelerate robot deployments, highlighting how semis, power management, and edge compute are becoming a more integrated stack for automation investors to watch across industrials and semiconductor suppliers. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Healthcare AI adoption test:</strong> IQVIA.ai’s NVIDIA-powered platform points to a practical enterprise use case in life sciences, where AI is being positioned to improve clinical, commercial, and operational workflows; for advisors, the key issue is whether productivity gains convert into durable revenue growth rather than remaining a technology narrative. (Source: Google News)</li>
+<li><strong>Workflow governance matters:</strong> New research on Session Risk Memory highlights growing enterprise demand for pre-execution safety checks in AI-driven workflows, reinforcing that adoption in regulated industries will depend not just on model quality but on auditability, permissions, and operational controls. (Source: arXiv)</li>
+<li><strong>Industrial maintenance remains a real use case:</strong> Research on AI-enabled predictive maintenance for industrial devices reinforces a practical labor theme: companies are using AI to reduce downtime and shift workers toward higher-value monitoring and exception handling rather than routine inspection. (Source: arXiv)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>CPU competition heats up:</strong> Arm’s push into data center CPUs for AI infrastructure suggests hyperscalers and enterprise builders are looking for broader compute optimization across training and inference, which could create new beneficiaries in server design, memory, networking, and systems integration. (Source: Data Center Knowledge)</li>
+<li><strong>Edge robotics needs efficient power:</strong> The TI and NVIDIA partnership is also an infrastructure signal because robot deployments depend on embedded processing and power-management efficiency, areas likely to matter more as AI moves from cloud workloads into distributed industrial environments. (Source: The Robot Report)</li>
+<li><strong>Critical infrastructure AI brings new risk:</strong> Research on adversarial vulnerabilities in AI-based nuclear digital twins is an early reminder that AI adoption in energy and critical infrastructure will require more spending on validation, cybersecurity, and safety layers, not just model deployment. (Source: arXiv)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Look for second-order beneficiaries:</strong> Arm’s data center move reinforces the case for investors to look beyond the largest AI names toward enabling layers such as CPUs, server components, and infrastructure orchestration where spending breadth may widen. (Source: Data Center Knowledge)</li>
+<li><strong>Vertical software still needs proof:</strong> The IQVIA.ai discussion highlights a broader market question for AI-exposed enterprise names: valuation support will increasingly depend on measurable customer adoption, margin impact, and cross-sell success rather than simply announcing an NVIDIA-linked platform. (Source: Google News)</li>
+<li><strong>Industrial automation may gain market attention:</strong> The Agile Robots and Google DeepMind partnership adds to evidence that AI investment opportunities are expanding into industrial automation, where public-market exposure may come through suppliers in robotics, factory equipment, sensors, and semiconductors rather than only through model developers. (Source: Google News)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Safety controls are becoming a policy bridge:</strong> Research on deterministic pre-execution safety gates reflects the direction of travel for enterprise AI governance, where regulators and corporate risk teams are likely to favor systems that can document why an action was allowed or blocked. (Source: arXiv)</li>
+<li><strong>Critical systems scrutiny will rise:</strong> Work showing vulnerabilities in AI-based nuclear digital twins suggests policymakers and operators may push for stricter testing and assurance standards before AI is trusted in energy, defense, and other sensitive infrastructure. (Source: arXiv)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Factory robotics gets a major AI upgrade:</strong> Agile Robots’ partnership with Google DeepMind is the most strategically meaningful robotics development in today’s set because it ties advanced AI directly to industrial automation, potentially improving flexibility and precision in manufacturing and signaling broader commercial adoption of physical AI. (Source: Google News)</li>
+<li><strong>Robot deployment stack is maturing:</strong> Texas Instruments and NVIDIA are combining embedded processing, power management, and AI platforms to speed robot rollouts, a sign that the bottleneck is shifting from prototype capability to scalable deployment economics. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Enterprise proof points:</strong> Watch whether vertical AI platforms like IQVIA.ai begin reporting customer wins, pricing power, or margin lift rather than just partnership announcements. (Source: Google News)</li>
+<li><strong>Infrastructure breadth:</strong> Monitor whether more chipmakers and server vendors launch AI-optimized CPUs, networking, and power solutions, which would confirm that AI capex is broadening beyond accelerators. (Source: Data Center Knowledge)</li>
+<li><strong>Industrial deployment pace:</strong> Track whether robotics partnerships translate into announced factory installations, backlog growth, or automation orders over the next quarter. (Source: Google News)</li>
+<li><strong>Governance spending:</strong> Expect more attention on safety gates, audit trails, and model assurance as enterprises move AI into regulated workflows and critical infrastructure. (Source: arXiv)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>Broader AI trade:</strong> AI is no longer just a software story; it is increasingly a chips, power, and industrial automation story too. (Source: Data Center Knowledge)</li>
+<li><strong>Execution matters:</strong> Clients should expect the market to reward companies that show real AI revenue and productivity gains, not just flashy partnerships. (Source: Google News)</li>
+<li><strong>Industrial angle:</strong> One of the more interesting AI opportunities today is in factories and logistics, where automation can produce measurable cost savings. (Source: Google News)</li>
+<li><strong>Infrastructure depth:</strong> The next wave of AI spending may benefit the companies that supply the plumbing behind the models, including CPUs, embedded systems, and power management. (Source: The Robot Report)</li>
+<li><strong>Risk reminder:</strong> As AI moves into critical systems, governance and safety controls will become just as important as raw model performance. (Source: arXiv)</li>
+</ul>
