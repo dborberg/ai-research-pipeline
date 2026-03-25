@@ -2,6 +2,7 @@
 import hashlib
 import os
 from datetime import timedelta
+from pathlib import Path
 
 import pandas as pd
 import streamlit as st
@@ -9,7 +10,7 @@ from streamlit_autorefresh import st_autorefresh
 from dotenv import load_dotenv
 
 from app.cluster_schema import normalize_cluster_df
-from app.db import get_articles_by_ids, get_cluster_history, get_weekly_clusters, save_weekly_clusters
+from app.db import fetch_weekly_digests, get_articles_by_ids, get_cluster_history, get_weekly_clusters, save_weekly_clusters
 from app.reporting import get_openai_client, get_week_start
 from app.velocity import apply_velocity_metrics, compute_velocity
 from run_weekly_pipeline import cluster_articles, get_weekly_articles
@@ -21,6 +22,16 @@ except ImportError:  # pragma: no cover - optional dependency
 
 
 st.set_page_config(page_title="AI Signal Dashboard", layout="wide")
+
+
+DB_FILE = Path("data/ai_research.db")
+
+
+def _get_db_version():
+    try:
+        return int(DB_FILE.stat().st_mtime)
+    except FileNotFoundError:
+        return 0
 
 
 def _safe_float(value, default=0.0):
@@ -103,15 +114,17 @@ def _ensure_display_fields(cluster_df):
     return cluster_df
 
 
-@st.cache_data
-def load_articles(week_start):
+@st.cache_data(ttl=300)
+def load_articles(week_start, db_version):
     _ = week_start
+    _ = db_version
     article_data = get_weekly_articles()
     return article_data.get("articles", [])
 
 
-@st.cache_data
-def load_articles_by_ids(article_ids):
+@st.cache_data(ttl=300)
+def load_articles_by_ids(article_ids, db_version):
+    _ = db_version
     return get_articles_by_ids(list(article_ids))
 
 
@@ -167,12 +180,13 @@ def build_cluster_dataframe(clusters, week_start):
     ).reset_index(drop=True)
 
 
-@st.cache_data
-def load_runtime_clusters(week_start, api_key):
+@st.cache_data(ttl=300)
+def load_runtime_clusters(week_start, api_key, db_version):
+    _ = db_version
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY must be set to compute runtime clusters.")
 
-    articles = load_articles(week_start)
+    articles = load_articles(week_start, db_version)
     if not articles:
         return build_cluster_dataframe([], week_start)
 
@@ -182,15 +196,16 @@ def load_runtime_clusters(week_start, api_key):
     return build_cluster_dataframe(clusters, week_start)
 
 
-@st.cache_data
-def load_stored_clusters(week_start):
+@st.cache_data(ttl=300)
+def load_stored_clusters(week_start, db_version):
+    _ = db_version
     stored_rows = get_weekly_clusters(week_start)
     if not stored_rows:
         return build_cluster_dataframe([], week_start)
     hydrated_clusters = []
     for row in stored_rows:
         article_ids = tuple(row.get("article_ids", []))
-        articles = load_articles_by_ids(article_ids) if article_ids else []
+        articles = load_articles_by_ids(article_ids, db_version) if article_ids else []
         hydrated_clusters.append(
             {
                 **dict(row),
@@ -200,9 +215,19 @@ def load_stored_clusters(week_start):
     return build_cluster_dataframe(hydrated_clusters, week_start)
 
 
-def load_clusters(week_start, api_key):
+@st.cache_data(ttl=300)
+def load_weekly_digest(week_start, digest_type, db_version):
+    _ = db_version
+    rows = fetch_weekly_digests(digest_type=digest_type, limit=12)
+    for row in rows:
+        if str(row["week_start"]) == str(week_start):
+            return row.get("content") or ""
+    return ""
+
+
+def load_clusters(week_start, api_key, db_version):
     # Only load stored clusters from the daily pipeline output; do not run runtime clustering
-    return load_stored_clusters(week_start)
+    return load_stored_clusters(week_start, db_version)
 
 
 def render_top_clusters(cluster_df, velocity_df):
@@ -408,10 +433,13 @@ def main():
     api_key = os.getenv("OPENAI_API_KEY")
     current_week = get_week_start()
     previous_week = current_week - timedelta(days=7)
+    db_version = _get_db_version()
 
     try:
-        cluster_df = load_clusters(current_week.isoformat(), api_key)
-        previous_cluster_df = load_stored_clusters(previous_week.isoformat())
+        cluster_df = load_clusters(current_week.isoformat(), api_key, db_version)
+        previous_cluster_df = load_stored_clusters(previous_week.isoformat(), db_version)
+        thematic_digest = load_weekly_digest(current_week.isoformat(), "thematic", db_version)
+        wholesaler_digest = load_weekly_digest(current_week.isoformat(), "wholesaler", db_version)
     except Exception as exc:
         st.error(f"Unable to load cluster data: {exc}")
         st.stop()
@@ -433,11 +461,11 @@ def main():
 
     selected_theme = st.selectbox(
         "Filter by Theme",
-        ["All"] + sorted(cluster_df["theme"].unique())
+        ["All"] + sorted(cluster_df["theme_name"].dropna().astype(str).unique())
     )
 
     if selected_theme != "All":
-        cluster_df = cluster_df[cluster_df["theme"] == selected_theme].reset_index(drop=True)
+        cluster_df = cluster_df[cluster_df["theme_name"] == selected_theme].reset_index(drop=True)
 
     if cluster_df.empty:
         st.warning("No clusters matched the selected theme filter.")
@@ -462,10 +490,10 @@ def main():
     )
     col4.metric(
         "Themes Active",
-        cluster_df["theme"].nunique()
+        cluster_df["theme_name"].nunique()
     )
 
-    theme_df = cluster_df.groupby("theme", as_index=False).agg(
+    theme_df = cluster_df.groupby("theme_name", as_index=False).agg(
         total_articles=("article_count", "sum"),
         avg_conviction=("conviction_score", "mean"),
         avg_velocity=("velocity", "mean"),
@@ -481,13 +509,24 @@ def main():
     if px is not None and not theme_df.empty:
         fig = px.bar(
             theme_df,
-            x="theme",
+            x="theme_name",
             y="avg_conviction",
             color="avg_velocity",
             title="Conviction by Theme",
         )
         st.plotly_chart(fig, use_container_width=True)
         st.divider()
+
+    with st.expander("Latest Weekly Outputs", expanded=False):
+        if thematic_digest:
+            st.markdown("**Stored Thematic Digest**")
+            st.text(thematic_digest)
+        if wholesaler_digest:
+            st.markdown("**Stored Wholesaler Digest**")
+            st.text(wholesaler_digest)
+        if not thematic_digest and not wholesaler_digest:
+            st.caption("No stored weekly digest output found for the selected week yet.")
+
     render_top_clusters(cluster_df, velocity_df)
     st.divider()
     render_signal_buckets(cluster_df)
