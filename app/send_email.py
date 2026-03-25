@@ -5,12 +5,19 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
+def _looks_like_html(text):
+    lowered = (text or "").lower()
+    return any(tag in lowered for tag in ["<html", "<body", "<h2", "<h3", "<p", "<ul", "<ol", "<li"])
+
+
 def format_as_html(text):
     """Convert plain text digest into clean HTML email format."""
 
     lines = text.split("\n")
     html = []
     list_mode = None
+    title_rendered = False
+    date_rendered = False
 
     def close_list():
         nonlocal list_mode
@@ -22,6 +29,19 @@ def format_as_html(text):
 
     for line in lines:
         stripped = line.strip()
+
+        if not title_rendered and stripped and not stripped.isupper():
+            html.append(f"<h2 style='margin-top:0; margin-bottom:6px;'>{stripped}</h2>")
+            title_rendered = True
+            continue
+
+        if title_rendered and not date_rendered and stripped and (
+            stripped.startswith("Week of ") or
+            re.match(r"^[A-Z][a-z]+\s+\d{1,2},\s+\d{4}$", stripped)
+        ):
+            html.append(f"<p style='margin:0 0 16px 0;'><strong>{stripped}</strong></p>")
+            date_rendered = True
+            continue
 
         # Section headers (ALL CAPS)
         if stripped.isupper() and len(stripped) > 0:
@@ -78,15 +98,13 @@ def send_report(subject, body_text):
     if not sender_email or not app_password or not receiver_email:
         raise RuntimeError("EMAIL_USER, EMAIL_PASSWORD, and EMAIL_TO must be set")
 
-    subject = "Daily Riffs from the Gen AI Songbook"
-
     # Create message container
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = sender_email
     msg["To"] = receiver_email
 
-    html_body = format_as_html(body_text)
+    html_body = body_text if _looks_like_html(body_text) else format_as_html(body_text)
 
     msg.attach(MIMEText(body_text, "plain", "utf-8"))
     msg.attach(MIMEText(html_body, "html", "utf-8"))

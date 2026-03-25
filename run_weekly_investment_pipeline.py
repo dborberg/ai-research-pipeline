@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from app.db import fetch_weekly_digests, init_db
 from app.reporting import get_openai_client, get_week_start
 from app.send_email import send_report
-from run_weekly_pipeline import _generate_and_store_weekly_reports
+from run_weekly_pipeline import THEMATIC_TITLE, WHOLESALER_TITLE, _generate_and_store_weekly_reports
 
 
 WHOLESALER_TYPE = "wholesaler"
@@ -78,8 +78,8 @@ def main():
     reports = _load_or_generate_reports(args.mode, week_start)
 
     subject_map = {
-        "WHOLESALER": f"[WEEKLY - WHOLESALER] Week of {week_start.isoformat()}",
-        "THEMATIC": f"[WEEKLY - THEMATIC] Week of {week_start.isoformat()}",
+        "WHOLESALER": WHOLESALER_TITLE,
+        "THEMATIC": THEMATIC_TITLE,
         "SIGNAL": f"[WEEKLY - SIGNAL] AI Signal Command Brief - Week of {week_start.isoformat()}",
     }
     content_map = {

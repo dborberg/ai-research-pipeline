@@ -24,6 +24,8 @@ from app.velocity import apply_velocity_metrics, compute_velocity
 
 WHOLESALER_TYPE = "wholesaler"
 THEMATIC_TYPE = "thematic"
+WHOLESALER_TITLE = "Weekly Riffs from the Gen AI Songbook"
+THEMATIC_TITLE = "Weekly Motifs from the Gen AI Songbook"
 HIGH_SIGNAL_THRESHOLD = 8
 DEFAULT_SCORE_THRESHOLD = 6
 HIGH_SIGNAL_LIMIT = 25
@@ -378,6 +380,17 @@ def _dedupe_preserve_order(items, limit=None):
         if limit is not None and len(result) >= limit:
             break
     return result
+
+
+def _with_weekly_report_header(title, week_start, content):
+    if not content or not str(content).strip():
+        return f"{title}\nWeek of {week_start.strftime('%B %d, %Y')}"
+    return "\n".join([
+        title,
+        f"Week of {week_start.strftime('%B %d, %Y')}",
+        "",
+        str(content).strip(),
+    ]).strip()
 
 
 def get_weekly_articles(score_threshold=DEFAULT_SCORE_THRESHOLD):
@@ -1315,6 +1328,8 @@ def _generate_and_store_weekly_reports(client, week_start):
         article_data=weekly_bundle["article_data"],
     )
     thematic_content = generate_thematic_weekly(client, source_context)
+    wholesaler_content = _with_weekly_report_header(WHOLESALER_TITLE, week_start, wholesaler_content)
+    thematic_content = _with_weekly_report_header(THEMATIC_TITLE, week_start, thematic_content)
     save_weekly_clusters(week_start, weekly_bundle["clusters"])
 
     current_cluster_rows = get_weekly_clusters(week_start)
@@ -1376,8 +1391,8 @@ def main():
         "SIGNAL": "signal_command_brief",
     }
     subject_map = {
-        "WHOLESALER": f"[WEEKLY - WHOLESALER] Week of {week_start.isoformat()}",
-        "THEMATIC": f"[WEEKLY - THEMATIC] Week of {week_start.isoformat()}",
+        "WHOLESALER": WHOLESALER_TITLE,
+        "THEMATIC": THEMATIC_TITLE,
         "SIGNAL": f"[WEEKLY - SIGNAL] AI Signal Command Brief - Week of {week_start.isoformat()}",
     }
 
