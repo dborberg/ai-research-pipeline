@@ -158,6 +158,8 @@ def run(dry_run=False):
 
         # ✅ Generate ONCE and reuse
         digest_text = generate_daily_digest()
+        if not digest_text or not digest_text.strip():
+            raise ValueError("Digest generation returned empty content — aborting to prevent blank output file")
         save_daily_digest(digest_text)
         upsert_daily_digest(datetime.utcnow().date(), digest_text)
 
