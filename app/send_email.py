@@ -1,4 +1,5 @@
 import os
+import re
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -9,41 +10,52 @@ def format_as_html(text):
 
     lines = text.split("\n")
     html = []
-    in_list = False
+    list_mode = None
+
+    def close_list():
+        nonlocal list_mode
+        if list_mode == "ul":
+            html.append("</ul>")
+        elif list_mode == "ol":
+            html.append("</ol>")
+        list_mode = None
 
     for line in lines:
         stripped = line.strip()
 
         # Section headers (ALL CAPS)
         if stripped.isupper() and len(stripped) > 0:
-            if in_list:
-                html.append("</ul>")
-                in_list = False
+            close_list()
             html.append(f"<h2 style='margin-top:20px; margin-bottom:10px;'>{stripped}</h2>")
 
         # Bullet points
         elif stripped.startswith("•"):
-            if not in_list:
+            if list_mode != "ul":
+                close_list()
                 html.append("<ul style='margin-top:0; margin-bottom:10px;'>")
-                in_list = True
+                list_mode = "ul"
             html.append(f"<li style='margin-bottom:8px;'>{stripped[1:].strip()}</li>")
+
+        # Numbered items
+        elif re.match(r"^\d+\.\s+", stripped):
+            if list_mode != "ol":
+                close_list()
+                html.append("<ol style='margin-top:0; margin-bottom:10px; padding-left:20px;'>")
+                list_mode = "ol"
+            item_text = re.sub(r"^\d+\.\s+", "", stripped)
+            html.append(f"<li style='margin-bottom:8px;'>{item_text}</li>")
 
         # Blank lines
         elif stripped == "":
-            if in_list:
-                html.append("</ul>")
-                in_list = False
+            close_list()
             html.append("<br>")
 
         # Regular text
         else:
-            if in_list:
-                html.append("</ul>")
-                in_list = False
+            close_list()
             html.append(f"<p style='margin:0 0 10px 0;'>{stripped}</p>")
 
-    if in_list:
-        html.append("</ul>")
+    close_list()
 
     return f"""
     <html>
