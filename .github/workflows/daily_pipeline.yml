@@ -33,6 +33,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -47,13 +49,13 @@ jobs:
       - name: Run pipeline
         run: python run_pipeline.py
 
-      - name: Commit daily digest output
+      - name: Persist daily outputs and database
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add outputs/daily
-          git diff --cached --quiet || git commit -m "Save daily digest output"
-          git checkout -- .
+          git add outputs/daily data/ai_research.db
+          git diff --cached --quiet && exit 0
+          git commit -m "Save daily pipeline state"
           git fetch origin main
           git rebase -X ours origin/main
           git push
