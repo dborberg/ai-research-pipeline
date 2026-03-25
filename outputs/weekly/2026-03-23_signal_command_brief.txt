@@ -6,37 +6,37 @@ This report highlights the highest-conviction AI themes based on signal strength
 
 TOP CONVICTION SIGNALS
 
-data center capacity and chip competition
+compute and power bottlenecks
 Conviction: 6.78
 Strength: 7.65
 Momentum: 200%
 Velocity: +2 article change
 Why It Matters:
-This matters because AI capex is spreading across semiconductors, cloud, utilities, and data center operators rather than remaining concentrated in a single hardware category. For markets, it supports monitoring second-order beneficiaries and risks tied to power availability, infrastructure constraints, and changing chip share dynamics.
+This matters for markets because AI spending is broadening into semis, cloud, utilities, and physical infrastructure. Advisors should watch which firms gain pricing power or face constraints from data center capex, energy access, and shifting CPU/GPU architecture demand.
 
-Industrial automation and maintenance productivity
+Industrial automation and asset uptime
 Conviction: 6.50
 Strength: 7.40
 Momentum: 200%
 Velocity: +2 article change
 Why It Matters:
-This matters because industrial AI adoption can drive spending on robotics, sensors, industrial software, and automation equipment while improving margins for manufacturers. Advisors should view this as a practical deployment theme tied to productivity gains and supply-chain modernization rather than speculative model development.
+This matters because industrial AI can lift margins through throughput gains and lower maintenance costs, benefiting automation vendors, industrial software firms, and equipment suppliers. It also signals that AI capex is spreading beyond IT budgets into factory and operations spending.
 
-Low-cost sensing on existing infrastructure
+Software-defined sensing on existing infrastructure
 Conviction: 6.50
 Strength: 7.40
 Momentum: 200%
 Velocity: +2 article change
 Why It Matters:
-This matters because AI value creation is increasingly coming from software layers that unlock new functionality from already-deployed infrastructure. That can benefit edge computing, sensor ecosystems, smart building platforms, and engineering-focused industrial technology providers.
+This matters because it expands AI monetization into smart buildings, aerospace, security, and industrial monitoring with lighter hardware capex. Advisors should view this as supportive for edge AI, sensor ecosystems, and firms that can layer software value onto existing installed bases.
 
 ACCELERATING THEMES (BREAKOUTS)
 
 These themes are accelerating fastest relative to prior week.
 
-data center capacity and chip competition: Momentum 200%, velocity +2. This matters because AI capex is spreading across semiconductors, cloud, utilities, and data center operators rather than remaining concentrated in a single hardware category
-Industrial automation and maintenance productivity: Momentum 200%, velocity +2. This matters because industrial AI adoption can drive spending on robotics, sensors, industrial software, and automation equipment while improving margins for manufacturers
-Low-cost sensing on existing infrastructure: Momentum 200%, velocity +2. This matters because AI value creation is increasingly coming from software layers that unlock new functionality from already-deployed infrastructure
+compute and power bottlenecks: Momentum 200%, velocity +2. This matters for markets because AI spending is broadening into semis, cloud, utilities, and physical infrastructure
+Industrial automation and asset uptime: Momentum 200%, velocity +2. This matters because industrial AI can lift margins through throughput gains and lower maintenance costs, benefiting automation vendors, industrial software firms, and equipment suppliers
+Software-defined sensing on existing infrastructure: Momentum 200%, velocity +2. This matters because it expands AI monetization into smart buildings, aerospace, security, and industrial monitoring with lighter hardware capex
 
 FADING SIGNALS
 
@@ -44,14 +44,14 @@ No major theme showed week-over-week deterioration in this run.
 
 PORTFOLIO IMPLICATIONS
 
-Structural strengthening is concentrated in data center capacity and chip competition, Industrial automation and maintenance productivity, where conviction and signal quality are both holding up.
+Structural strengthening is concentrated in compute and power bottlenecks, Industrial automation and asset uptime, where conviction and signal quality are both holding up.
 Cyclical noise looks more likely in lower-strength breakouts, where momentum is improving faster than underlying strength.
-Conviction is increasing most clearly in data center capacity and chip competition, Industrial automation and maintenance productivity, supported by rising article volume against the prior week.
+Conviction is increasing most clearly in compute and power bottlenecks, Industrial automation and asset uptime, supported by rising article volume against the prior week.
 Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
 
 BOTTOM LINE
 
-1. Highest conviction theme: data center capacity and chip competition
-2. Most important new signal: data center capacity and chip competition
-3. Biggest acceleration: data center capacity and chip competition
+1. Highest conviction theme: compute and power bottlenecks
+2. Most important new signal: compute and power bottlenecks
+3. Biggest acceleration: compute and power bottlenecks
 4. Key risk / fading area: No material fading area
