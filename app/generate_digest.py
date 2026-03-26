@@ -1,5 +1,7 @@
 def generate_daily_digest():
+    import json
     import os
+    import re
     from datetime import datetime, timedelta
     from sqlalchemy import create_engine, text
     from openai import OpenAI
@@ -19,6 +21,61 @@ def generate_daily_digest():
             "data center", "power", "grid", "fab", "fabs", "campus", "semiconductor",
         ])
 
+    def parse_companies(raw_companies):
+        if not raw_companies:
+            return []
+        if isinstance(raw_companies, list):
+            return [str(item).strip() for item in raw_companies if str(item).strip()]
+        try:
+            parsed = json.loads(raw_companies)
+            if isinstance(parsed, list):
+                return [str(item).strip() for item in parsed if str(item).strip()]
+        except Exception:
+            pass
+        return [part.strip() for part in str(raw_companies).split(",") if part.strip()]
+
+    def has_policy_priority(article):
+        text = f"{article.get('title') or ''} {article.get('summary') or ''} {article.get('advisor_relevance') or ''}".lower()
+        return any(term in text for term in [
+            "white house", "congress", "senate", "house of representatives", "lawmakers", "lawmaker",
+            "regulator", "regulators", "regulation", "regulatory", "rulemaking", "antitrust",
+            "export control", "export controls", "restriction", "restrictions", "ban", "tariff",
+            "commission", "eu", "european union", "european commission", "ftc", "doj", "fcc",
+            "legislation", "bill", "policy proposal", "executive order", "compliance",
+            "sanders", "ocasio-cortez", "aoc", "senator", "representative",
+        ])
+
+    def has_named_event_anchor(article):
+        if parse_companies(article.get("companies")):
+            return True
+        title = article.get("title") or ""
+        return bool(re.search(r"\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,2})\b", title))
+
+    def article_priority_score(article):
+        score = float(article.get("ai_score") or 0)
+
+        if has_policy_priority(article):
+            score += 40
+        if is_big_story(article):
+            score += 20
+        if has_named_event_anchor(article):
+            score += 10
+
+        source_hint = source_quality_hint(article)
+        if source_hint == "policy_regulatory":
+            score += 10
+        elif source_hint == "business_financial":
+            score += 8
+        elif source_hint == "industry_technical":
+            score += 4
+        elif source_hint == "research_blog":
+            score -= 3
+
+        if parse_companies(article.get("companies")):
+            score += min(len(parse_companies(article.get("companies"))), 3)
+
+        return score
+
     def source_quality_hint(article):
         source = (article.get("source") or "").lower()
         if any(term in source for term in ["reuters", "financial times", "ft", "economist", "bloomberg", "wsj"]):
@@ -37,7 +94,7 @@ def generate_daily_digest():
 
         with engine.connect() as conn:
             result = conn.execute(text("""
-                SELECT title, source, summary, url, published_at
+                SELECT title, source, summary, url, published_at, companies, advisor_relevance, ai_score
                 FROM articles
                 WHERE published_at >= :cutoff
                 ORDER BY published_at DESC
@@ -52,6 +109,9 @@ def generate_daily_digest():
             summary = row[2] or ""
             url = row[3] or ""
             published_at = row[4] or ""
+            companies = row[5] or ""
+            advisor_relevance = row[6] or ""
+            ai_score = row[7]
 
             # Skip empty/incomplete content per your rule
             if not title or not summary:
@@ -63,7 +123,21 @@ def generate_daily_digest():
                 "summary": summary,
                 "url": url,
                 "published_at": published_at,
+                "companies": companies,
+                "advisor_relevance": advisor_relevance,
+                "ai_score": ai_score,
             })
+
+        articles.sort(
+            key=lambda article: (
+                has_policy_priority(article),
+                is_big_story(article),
+                has_named_event_anchor(article),
+                article_priority_score(article),
+                article.get("published_at") or "",
+            ),
+            reverse=True,
+        )
 
         return articles
 
@@ -83,6 +157,11 @@ No relevant articles found in the last 24 hours.
                 f"SOURCE: {article['source']}",
                 f"SOURCE_QUALITY_HINT: {source_quality_hint(article)}",
                 f"BIG_STORY_HINT: {'YES' if is_big_story(article) else 'NO'}",
+                f"POLICY_PRIORITY_HINT: {'YES' if has_policy_priority(article) else 'NO'}",
+                f"EVENT_ANCHOR_HINT: {'YES' if has_named_event_anchor(article) else 'NO'}",
+                f"COMPANIES_MENTIONED: {', '.join(parse_companies(article.get('companies')))}",
+                f"AI_SCORE: {article.get('ai_score') if article.get('ai_score') is not None else ''}",
+                f"ADVISOR_RELEVANCE: {article.get('advisor_relevance') or ''}",
                 f"PUBLISHED_AT: {article['published_at']}",
                 f"SUMMARY: {article['summary']}",
                 f"URL: {article['url']}",
@@ -112,6 +191,36 @@ Prefer coverage over precision. It is better to include multiple distinct real-w
 If an article is marked BIG_STORY_HINT: YES, treat it as a high-priority candidate for TOP STORIES. If any BIG story exists in the dataset, at least one BIG story must appear in TOP STORIES.
 
 When similar stories exist, prefer sources with SOURCE_QUALITY_HINT of business_financial, policy_regulatory, or industry_technical over research_blog, unless the research_blog source adds unique insight not available elsewhere.
+
+ADDITIONAL SELECTION AND WRITING RULES (CRITICAL UPGRADE)
+
+1. EVENT-FIRST RULE (MANDATORY)
+- Every bullet must start with a specific event.
+- Prefer named companies, named government actions, named legislation or policy proposals, and named investments, funding rounds, or market moves.
+- Do not start bullets with abstract framing such as "AI infrastructure is...", "AI adoption is...", or "Utilities are becoming...".
+- Instead, anchor bullets to concrete developments such as "Meta announced...", "Arm launched...", or "Lawmakers introduced...".
+
+2. POLICY / MACRO PRIORITY RULE
+- If any article includes legislation, named policymakers, government action, regulatory proposals, or infrastructure restrictions, it must be included in either TOP STORIES or REGULATION AND POLICY.
+- This rule overrides normal selection preferences.
+
+3. COMPANY SPECIFICITY RULE
+- Each section should include at least 1 to 2 named companies when available.
+- Avoid fully abstract summaries when a company, institution, or policymaker can be named.
+
+4. ANTI-ABSTRACTION RULE
+- Before finalizing output, check whether a bullet can be rewritten to include a company, policy, or real-world action.
+- If it can, rewrite it to include that specificity.
+
+5. PRIORITIZATION SHIFT
+- Prefer real events over general themes.
+- Even if a theme is strong, choose the article that anchors it to a real development.
+
+EXPECTED RESULT
+- Policy events such as named lawmaker or regulatory actions are never missed.
+- Output includes more named companies.
+- Output uses less generic language.
+- Output keeps the current structure but increases specificity.
 """
 
     user_prompt = f"""
