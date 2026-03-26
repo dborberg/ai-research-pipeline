@@ -3,7 +3,9 @@ name: Daily Riffs from the Gen AI Pipeline
 on:
   schedule:
     - cron: '30 11 * 3-10 *'   # 6:30 AM CDT (March-October) — GitHub cron uses UTC
+    - cron: '50 11 * 3-10 *'   # 6:50 AM CDT backup trigger in case the primary run is delayed or dropped
     - cron: '30 12 * 1-2,11-12 *'   # 6:30 AM CST (January-February, November-December) — GitHub cron uses UTC
+    - cron: '50 12 * 1-2,11-12 *'   # 6:50 AM CST backup trigger in case the primary run is delayed or dropped
   workflow_dispatch:
 
 # Separate concurrency groups for scheduled vs. manual runs so that
@@ -46,10 +48,24 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Guard against duplicate scheduled runs
+        run: |
+          CENTRAL_DATE=$(TZ=America/Chicago date +%F)
+          echo "CENTRAL_DATE=$CENTRAL_DATE" >> $GITHUB_ENV
+
+          if [[ "${{ github.event_name }}" == "schedule" ]] && git cat-file -e "HEAD:outputs/daily/${CENTRAL_DATE}.txt"; then
+            echo "SKIP_RUN=true" >> $GITHUB_ENV
+            echo "Scheduled digest for ${CENTRAL_DATE} already exists in the repository; skipping duplicate run."
+          else
+            echo "SKIP_RUN=false" >> $GITHUB_ENV
+          fi
+
       - name: Run pipeline
+        if: env.SKIP_RUN != 'true'
         run: python run_pipeline.py
 
       - name: Persist daily outputs and database
+        if: env.SKIP_RUN != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
