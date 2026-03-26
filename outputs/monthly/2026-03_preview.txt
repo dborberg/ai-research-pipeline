@@ -1,0 +1,55 @@
+AI SIGNAL COMMAND REVIEW - MONTHLY
+Month: 2026-03
+
+EXECUTIVE SUMMARY
+- March’s dominant shift was from AI as a software adoption story to AI as a physical-capacity buildout story, with power, cooling, land, memory, optics, and networking repeatedly cited as the real gating factors.
+- The investable AI universe broadened meaningfully beyond the largest platform names into utilities, grid equipment, cooling, power management, optical networking, memory, semiconductor design tools, and data center operators.
+- Enterprise adoption progressed from pilots toward operational use cases with clearer ROI, especially in back-office automation, industrial uptime, workflow orchestration, and software layered onto existing infrastructure.
+- Markets became more selective on monetization and returns: strong AI demand remained evident, but heavier capex, execution risk, and margin pressure increasingly limited equity upside for some participants.
+- Labor and governance moved closer to the center of the signal set, with hiring restraint, selective layoffs, training gaps, auditability, and sector-specific oversight all recurring as adoption scaled.
+
+STRUCTURAL WINNERS
+1. Compute, power, and physical AI infrastructure
+   Power access, cooling, grid capacity, and data center buildout were the clearest recurring winners across the month. The signal strengthened into late March, with weekly conviction highest in compute and power bottlenecks and daily coverage repeatedly expanding the theme into utilities, power management, cooling, and facility operators.
+
+2. Broadening semiconductor enablers beyond GPUs
+   The month consistently pointed to memory, wafer capacity, optics, photonics, networking, interconnect, and design tools as monetizing layers of the AI stack. This supports a broader “picks and shovels” view in which value accrues across the supply chain, not only to accelerator leaders.
+
+3. Industrial automation and asset uptime
+   Industrial AI moved from concept toward practical deployment, with recurring emphasis on throughput gains, predictive maintenance, labor productivity, and operational efficiency. Late-month weekly signals showed this theme as one of the highest-conviction areas.
+
+4. Software-defined sensing on installed infrastructure
+   A notable structural theme was AI creating value by upgrading existing systems rather than requiring full hardware replacement. Smart buildings, industrial monitoring, security, and ambient sensing all fit this lower-friction adoption pattern.
+
+RISING THEMES
+1. Inference and “AI factory” economics
+   Mid-to-late March coverage increasingly framed the next phase around inference, full-stack system design, and tokens-per-watt rather than training alone. That shift favors networking, storage, power electronics, cooling, and engineering software alongside compute.
+
+2. Governance, control layers, and regulated deployment
+   Governance became a more investable theme as enterprises moved toward systems of action and regulated use cases. Audit trails, permissions, approval layers, compliance tooling, and sector-specific risk frameworks appeared repeatedly in financial services, insurance, legal, and enterprise software contexts.
+
+3. Measurable enterprise ROI over experimentation
+   The signal improved for AI tied to direct operating leverage: procurement automation, compliance workflows, coding productivity, and financial-services efficiency. The market increasingly rewarded booked demand, backlog, and measurable savings over broad AI narratives.
+
+4. Labor impact through hiring restraint and workflow redesign
+   The labor signal shifted from immediate mass displacement toward slower hiring, selective restructuring, and higher productivity expectations. This suggests near-term effects may show up first in staffing mix, entry-level hiring, and margin narratives.
+
+BREAKING DOWN
+1. Pure software-excitement framing
+   The month repeatedly deemphasized AI as a simple application-layer story. Physical constraints and infrastructure economics overtook model novelty as the main driver of market relevance.
+
+2. Assumptions that AI demand automatically converts into profits
+   Several signals challenged the idea that AI revenue exposure guarantees earnings leverage. Micron’s stock reaction to capex, Foxconn’s margin pressure, and broader scrutiny of returns all pointed to a tougher market standard around monetization.
+
+3. Confidence in frictionless hyperscale buildout
+   Canceled or delayed projects, permitting issues, local political scrutiny, and power constraints showed that deployment timelines are increasingly exposed to financing, regulation, and infrastructure bottlenecks.
+
+4. Near-term expectations for broad labor replacement
+   While labor disruption remained a live theme, the month’s evidence was more consistent with gradual hiring freezes, targeted layoffs, and human-in-the-loop redesign than immediate economy-wide job elimination.
+
+PORTFOLIO IMPLICATIONS
+- Maintain overweight attention on AI infrastructure bottlenecks: power, cooling, grid equipment, memory, optics, networking, and data center enablers remain the most persistent cross-source beneficiaries.
+- Favor companies showing tangible monetization, backlog, pricing power, or operational ROI over those relying mainly on AI narrative or capex-led growth without clear return visibility.
+- Look for second-order beneficiaries beyond hyperscalers and leading GPU vendors, especially in industrial automation, semiconductor tooling, power management, and software layered onto installed infrastructure.
+- Treat governance and compliance as a real spending category, particularly in regulated industries where adoption depends on auditability, permissions, and risk controls.
+- Stay selective on labor-productivity winners: AI may support margins through slower hiring and workflow redesign, but execution risk, training gaps, and social or regulatory backlash remain important differentiators.
