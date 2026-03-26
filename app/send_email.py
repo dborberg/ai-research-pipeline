@@ -16,6 +16,7 @@ def _is_report_title(text):
         "Daily Riffs from the Gen AI Songbook",
         "Weekly Motifs from the Gen AI Songbook",
         "Weekly Riffs from the Gen AI Songbook",
+        "Monthly Tunes from the Gen AI Songbook",
     } or stripped.startswith("AI SIGNAL COMMAND")
 
 
@@ -54,6 +55,7 @@ def format_as_html(text):
 
         if title_rendered and not date_rendered and stripped and (
             stripped.startswith("Week of ") or
+            stripped.startswith("Month of ") or
             re.match(r"^[A-Z][a-z]+\s+\d{1,2},\s+\d{4}$", stripped)
         ):
             html.append(f"<p style='margin:0 0 12px 0;'><strong>{stripped}</strong></p>")

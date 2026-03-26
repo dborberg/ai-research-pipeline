@@ -10,6 +10,32 @@ from app.reporting import call_chat_model, get_openai_client, get_week_start, sa
 from app.send_email import send_report
 
 
+MONTHLY_TITLE = "Monthly Tunes from the Gen AI Songbook"
+
+
+def _with_monthly_report_header(title, report_month, content):
+    month_label = datetime.strptime(report_month, "%Y-%m").strftime("%B %Y")
+    cleaned_content = (content or "").strip()
+
+    for prefix in (
+        "AI SIGNAL COMMAND REVIEW - MONTHLY\nMonth: ",
+        "AI SIGNAL COMMAND REVIEW - MONTHLY",
+    ):
+        if cleaned_content.startswith(prefix):
+            if prefix == "AI SIGNAL COMMAND REVIEW - MONTHLY\nMonth: ":
+                lines = cleaned_content.splitlines()
+                cleaned_content = "\n".join(lines[2:]).strip()
+            else:
+                cleaned_content = cleaned_content[len(prefix):].strip()
+            break
+
+    return "\n\n".join([
+        title,
+        f"Month of {month_label}",
+        cleaned_content,
+    ]).strip()
+
+
 def _load_recent_cluster_history(weeks=5):
     current_week = get_week_start()
     rows = []
@@ -235,8 +261,6 @@ Write the monthly AI signal review for {report_month} using the historical daily
 
 Requirements:
 - Use these exact section headers:
-  AI SIGNAL COMMAND REVIEW - MONTHLY
-  Month: {report_month}
   EXECUTIVE SUMMARY
   STRUCTURAL WINNERS
   RISING THEMES
@@ -264,9 +288,6 @@ SOURCE MATERIAL:
 def generate_monthly_brief(summary_df, report_month, client):
     if summary_df.empty:
         return "\n".join([
-            "AI SIGNAL COMMAND REVIEW - MONTHLY",
-            f"Month: {report_month}",
-            "",
             "No monthly theme data is available yet.",
         ]).strip()
 
@@ -327,9 +348,6 @@ def generate_monthly_brief(summary_df, report_month, client):
         ]
 
     lines = [
-        "AI SIGNAL COMMAND REVIEW - MONTHLY",
-        f"Month: {report_month}",
-        "",
         "STRUCTURAL WINNERS",
         "",
     ]
@@ -376,9 +394,11 @@ def main():
         summary_df = _compute_theme_summary(history_df)
         monthly_content = generate_monthly_brief(summary_df, report_month, client)
 
+    monthly_content = _with_monthly_report_header(MONTHLY_TITLE, report_month, monthly_content)
+
     upsert_weekly_digest(month_anchor, "monthly", monthly_content)
     save_text_output("outputs/monthly", f"{report_month}.txt", monthly_content)
-    send_report(f"[MONTHLY] AI Signal Review - {report_month}", monthly_content)
+    send_report(MONTHLY_TITLE, monthly_content)
 
 
 if __name__ == "__main__":
