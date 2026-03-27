@@ -55,6 +55,7 @@ def format_as_html(text):
 
         if title_rendered and not date_rendered and stripped and (
             stripped.startswith("Week of ") or
+            stripped.startswith("Week Ending ") or
             stripped.startswith("Month of ") or
             re.match(r"^[A-Z][a-z]+\s+\d{1,2},\s+\d{4}$", stripped)
         ):

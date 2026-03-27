@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 
 from app.db import fetch_weekly_digests, init_db
-from app.reporting import get_openai_client, get_week_start
+from app.reporting import get_latest_completed_friday, get_openai_client
 from app.send_email import send_report
 from run_weekly_pipeline import THEMATIC_TITLE, WHOLESALER_TITLE, _generate_and_store_weekly_reports
 
@@ -70,7 +70,7 @@ def main():
     load_dotenv()
     init_db()
 
-    week_start = get_week_start()
+    week_start = get_latest_completed_friday()
 
     if args.mode not in {"WHOLESALER", "THEMATIC", "SIGNAL"}:
         raise RuntimeError("--mode must be one of WHOLESALER, THEMATIC, SIGNAL")
@@ -80,7 +80,7 @@ def main():
     subject_map = {
         "WHOLESALER": WHOLESALER_TITLE,
         "THEMATIC": THEMATIC_TITLE,
-        "SIGNAL": f"[WEEKLY - SIGNAL] AI Signal Command Brief - Week of {week_start.isoformat()}",
+        "SIGNAL": f"[WEEKLY - SIGNAL] AI Signal Command Brief - Week Ending {week_start.isoformat()}",
     }
     content_map = {
         "WHOLESALER": reports["wholesaler"],

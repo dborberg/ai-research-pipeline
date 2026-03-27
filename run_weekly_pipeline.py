@@ -16,7 +16,7 @@ from app.reporting import (
     WEEKLY_WHOLESALER_TEMPERATURE,
     call_chat_model,
     get_openai_client,
-    get_week_start,
+    get_latest_completed_friday,
     save_text_output,
 )
 from app.send_email import send_report
@@ -384,10 +384,10 @@ def _dedupe_preserve_order(items, limit=None):
 
 def _with_weekly_report_header(title, week_start, content):
     if not content or not str(content).strip():
-        return f"{title}\nWeek of {week_start.strftime('%B %d, %Y')}"
+        return f"{title}\nWeek Ending {week_start.strftime('%B %d, %Y')}"
     return "\n".join([
         title,
-        f"Week of {week_start.strftime('%B %d, %Y')}",
+        f"Week Ending {week_start.strftime('%B %d, %Y')}",
         "",
         str(content).strip(),
     ]).strip()
@@ -1201,7 +1201,7 @@ def generate_signal_command_brief(cluster_df, week_start):
     header = "\n".join(
         [
             "AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report",
-            f"Week of {week_start.isoformat()}",
+            f"Week Ending {week_start.isoformat()}",
             "",
             "Purpose:",
             "This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.",
@@ -1399,7 +1399,7 @@ def main():
     load_dotenv()
     init_db()
 
-    week_start = get_week_start()
+    week_start = get_latest_completed_friday()
     digest_type_map = {
         "WHOLESALER": WHOLESALER_TYPE,
         "THEMATIC": THEMATIC_TYPE,
@@ -1408,7 +1408,7 @@ def main():
     subject_map = {
         "WHOLESALER": WHOLESALER_TITLE,
         "THEMATIC": THEMATIC_TITLE,
-        "SIGNAL": f"[WEEKLY - SIGNAL] AI Signal Command Brief - Week of {week_start.isoformat()}",
+        "SIGNAL": f"[WEEKLY - SIGNAL] AI Signal Command Brief - Week Ending {week_start.isoformat()}",
     }
 
     if args.mode not in digest_type_map:
