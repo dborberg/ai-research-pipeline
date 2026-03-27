@@ -28,10 +28,12 @@ on:
           - THEMATIC
           - SIGNAL
 
-# Each scheduled cron entry gets its OWN concurrency group (via github.event.schedule)
-# so backup triggers are never silently dropped when the primary is still pending.
+# Single concurrency group for the whole workflow so scheduled and manual runs
+# never execute in parallel.  With cancel-in-progress: false a second trigger is
+# queued; by the time it dequeues the output file already exists in git and the
+# duplicate-run guard below will skip it.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.schedule || inputs.mode || 'manual' }}
+  group: ${{ github.workflow }}
   cancel-in-progress: false
 
 permissions:
@@ -87,7 +89,7 @@ jobs:
           echo "Mode: $TYPE"
           echo "UTC Time: $(date -u)"
 
-      - name: Guard against duplicate scheduled runs
+      - name: Guard against duplicate runs
         run: |
           CENTRAL_DATE=$(TZ=America/Chicago date +%F)
           WEEK_START=$(python -c "from datetime import date, timedelta; d=date.fromisoformat('${CENTRAL_DATE}'); n=(d.weekday()-4)%7; print((d - timedelta(days=n)).isoformat())")
@@ -104,9 +106,9 @@ jobs:
             echo "OUTPUT_PATH=$OUTPUT_PATH" >> $GITHUB_ENV
           fi
 
-          if [[ "${{ github.event_name }}" == "schedule" ]] && [[ -n "$OUTPUT_PATH" ]] && git cat-file -e "HEAD:${OUTPUT_PATH}"; then
+          if [[ -n "$OUTPUT_PATH" ]] && git cat-file -e "HEAD:${OUTPUT_PATH}"; then
             echo "SKIP_RUN=true" >> $GITHUB_ENV
-            echo "Scheduled weekly output already exists at ${OUTPUT_PATH}; skipping duplicate run."
+            echo "Weekly output already exists at ${OUTPUT_PATH}; skipping duplicate run."
           else
             echo "SKIP_RUN=false" >> $GITHUB_ENV
           fi
