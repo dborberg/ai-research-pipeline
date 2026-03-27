@@ -31,6 +31,7 @@ def compute_velocity(current_df, previous_df):
             decay_rows["current_article_count"] = 0
             decay_rows["velocity"] = -decay_rows["article_count"]
 
+            decay_rows = decay_rows.drop(columns=["previous_article_count"], errors="ignore")
             decay_rows = decay_rows.rename(columns={
                 "article_count": "previous_article_count"
             })
