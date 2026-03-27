@@ -1,0 +1,53 @@
+<h2>Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>March 27, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>NVIDIA showcased Omniverse at GTC:</strong> NVIDIA used its GTC event to position Omniverse as a core platform for digital twins, simulation, and robotics development, extending the AI story beyond chips into industrial software and physical AI infrastructure. For financial professionals, that broadens the investable AI stack and supports the case for second-order beneficiaries tied to automation, logistics, and industrial digitization. (Source: NVIDIA Blog)</li>
+<li><strong>Festo launched a new adaptive gripper:</strong> Festo introduced a robotic gripper designed for faster, gentler, and more hygienic picking, highlighting how AI-enabled automation is moving into real production environments where labor efficiency, quality control, and compliance matter. That is a practical signal that industrial customers are still funding productivity-oriented automation projects. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Physical AI remained the clearest real-world theme in today’s coverage:</strong> The combination of NVIDIA’s simulation push and Festo’s factory-floor product launch shows AI demand spreading from software models into equipment, sensors, and industrial workflows. For advisors, that matters because public market exposure may increasingly come from automation suppliers and infrastructure enablers, not just large language model leaders. (Source: NVIDIA Blog; Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Festo targeted labor-intensive picking tasks:</strong> Festo’s adaptive gripper is aimed at handling delicate and variable items more effectively, a reminder that AI and automation adoption is still being driven by labor shortages, throughput goals, and quality consistency rather than technology novelty alone. (Source: Robotics &amp; Automation News)</li>
+<li><strong>NVIDIA framed simulation as a workforce productivity tool:</strong> NVIDIA’s Omniverse messaging emphasized virtual testing and digital twins, which can reduce engineering rework, speed deployment, and improve how industrial teams train and validate automated systems before they reach the factory floor. (Source: NVIDIA Blog)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>NVIDIA expanded the AI infrastructure conversation beyond semiconductors:</strong> At GTC, NVIDIA highlighted Omniverse as part of the infrastructure layer for physical AI, reinforcing that the next leg of AI spending may include simulation software, industrial compute, and connected systems alongside chips. (Source: NVIDIA Blog)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>NVIDIA reinforced its multi-layer AI exposure:</strong> By tying chips, software, simulation, and robotics together at GTC, NVIDIA strengthened the market narrative that leading AI companies may capture value across multiple layers of the stack rather than through semiconductor demand alone. (Source: NVIDIA Blog)</li>
+<li><strong>Festo’s product launch pointed to broader automation beneficiaries:</strong> The new gripper is a small but useful read-through for investors looking beyond mega-cap AI names toward industrial automation, motion control, and smart manufacturing suppliers that benefit from productivity-driven capital spending. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Festo’s hygienic picking focus highlighted compliance-linked automation demand:</strong> While no major government action appeared in today’s input, Festo’s emphasis on cleaner and more precise robotic handling shows how regulation-adjacent requirements in food and manufacturing can support automation spending where traceability, safety, and sanitation standards are rising. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>NVIDIA used GTC to push Omniverse for physical AI:</strong> NVIDIA’s event made a strategic case that simulation and digital twins are becoming foundational tools for robotics, autonomous systems, and industrial automation, which could expand AI spending into manufacturing and logistics ecosystems. (Source: NVIDIA Blog)</li>
+<li><strong>Festo introduced an adaptive gripper for delicate picking:</strong> The launch is a concrete example of robotics moving deeper into real-world production tasks where speed, product handling, and hygiene are commercially important, especially in manufacturing and food-related operations. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch NVIDIA ecosystem follow-through:</strong> Monitor whether industrial companies, logistics operators, or automation vendors announce Omniverse-related deployments over the next 30 to 90 days, which would turn GTC messaging into measurable enterprise adoption. (Source: NVIDIA Blog)</li>
+<li><strong>Watch factory automation order trends:</strong> Festo’s launch is a useful signal, but investors should look for broader evidence that manufacturers are still approving robotics and handling-equipment budgets despite macro uncertainty. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Watch for AI spending broadening beyond model developers:</strong> If more product launches resemble Festo’s and more platforms resemble NVIDIA’s industrial push, the market may increasingly reward suppliers tied to physical deployment rather than only software model leaders. (Source: NVIDIA Blog; Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>Physical AI is becoming investable:</strong> The story is moving from chatbots to factories, warehouses, and industrial software. (Source: NVIDIA Blog; Robotics &amp; Automation News)</li>
+<li><strong>NVIDIA is still more than a chip story:</strong> Its latest push shows how it is trying to own software and simulation layers too. (Source: NVIDIA Blog)</li>
+<li><strong>Automation demand is still being driven by labor economics:</strong> Companies are buying tools that improve throughput, consistency, and compliance. (Source: Robotics &amp; Automation News)</li>
+<li><strong>The next AI winners may include industrial suppliers:</strong> Investors should keep looking beyond the largest platform names. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Real-world deployment matters more than AI hype:</strong> Product launches tied to measurable productivity gains are the signals worth watching. (Source: Robotics &amp; Automation News)</li>
+</ul>
