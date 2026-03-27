@@ -2,10 +2,12 @@ name: Weekly Digests
 
 on:
   schedule:
-    - cron: "0 13 * 3-10 5"
-    - cron: "15 13 * 3-10 5"
-    - cron: "0 14 * 1-2,11-12 5"
-    - cron: "15 14 * 1-2,11-12 5"
+    # CDT (UTC-5): March through October — runs on Fridays
+    - cron: "0 13 * 3-10 5"    # 8:00 AM CDT — WHOLESALER digest
+    - cron: "15 13 * 3-10 5"   # 8:15 AM CDT — THEMATIC digest
+    # CST (UTC-6): January–February, November–December — runs on Fridays
+    - cron: "0 14 * 1-2,11-12 5"   # 8:00 AM CST — WHOLESALER digest
+    - cron: "15 14 * 1-2,11-12 5"  # 8:15 AM CST — THEMATIC digest
   workflow_dispatch:
     inputs:
       mode:
