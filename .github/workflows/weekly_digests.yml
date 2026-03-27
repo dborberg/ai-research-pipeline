@@ -2,9 +2,10 @@ name: Weekly Digests
 
 on:
   schedule:
-    - cron: "45 13 * * 5"
-    - cron: "0 14 * * 5"
-    - cron: "15 14 * * 5"
+    - cron: "0 13 * 3-10 5"
+    - cron: "15 13 * 3-10 5"
+    - cron: "0 14 * 1-2,11-12 5"
+    - cron: "15 14 * 1-2,11-12 5"
   workflow_dispatch:
     inputs:
       mode:
@@ -16,6 +17,10 @@ on:
           - WHOLESALER
           - THEMATIC
           - SIGNAL
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.schedule || inputs.mode || 'manual' }}
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -47,9 +52,10 @@ jobs:
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "TYPE=${{ inputs.mode }}" >> $GITHUB_ENV
           else
-            if [[ "${{ github.event.schedule }}" == "45 13 * * 5" ]]; then echo "TYPE=WHOLESALER" >> $GITHUB_ENV; fi
-            if [[ "${{ github.event.schedule }}" == "0 14 * * 5" ]]; then echo "TYPE=THEMATIC" >> $GITHUB_ENV; fi
-            if [[ "${{ github.event.schedule }}" == "15 14 * * 5" ]]; then echo "TYPE=SIGNAL" >> $GITHUB_ENV; fi
+            if [[ "${{ github.event.schedule }}" == "0 13 * 3-10 5" ]]; then echo "TYPE=WHOLESALER" >> $GITHUB_ENV; fi
+            if [[ "${{ github.event.schedule }}" == "0 14 * 1-2,11-12 5" ]]; then echo "TYPE=WHOLESALER" >> $GITHUB_ENV; fi
+            if [[ "${{ github.event.schedule }}" == "15 13 * 3-10 5" ]]; then echo "TYPE=THEMATIC" >> $GITHUB_ENV; fi
+            if [[ "${{ github.event.schedule }}" == "15 14 * 1-2,11-12 5" ]]; then echo "TYPE=THEMATIC" >> $GITHUB_ENV; fi
           fi
 
       - name: Debug run context
@@ -59,12 +65,37 @@ jobs:
           echo "Mode: $TYPE"
           echo "UTC Time: $(date -u)"
 
+      - name: Guard against duplicate scheduled runs
+        run: |
+          CENTRAL_DATE=$(TZ=America/Chicago date +%F)
+          WEEK_START=$(python -c "from datetime import date, timedelta; d=date.fromisoformat('${CENTRAL_DATE}'); print((d - timedelta(days=d.weekday())).isoformat())")
+          echo "WEEK_START=$WEEK_START" >> $GITHUB_ENV
+
+          case "$TYPE" in
+            WHOLESALER) OUTPUT_PATH="outputs/weekly/${WEEK_START}_wholesaler.txt" ;;
+            THEMATIC) OUTPUT_PATH="outputs/weekly/${WEEK_START}_thematic.txt" ;;
+            SIGNAL) OUTPUT_PATH="outputs/weekly/${WEEK_START}_signal_command_brief.txt" ;;
+            *) OUTPUT_PATH="" ;;
+          esac
+
+          if [[ -n "$OUTPUT_PATH" ]]; then
+            echo "OUTPUT_PATH=$OUTPUT_PATH" >> $GITHUB_ENV
+          fi
+
+          if [[ "${{ github.event_name }}" == "schedule" ]] && [[ -n "$OUTPUT_PATH" ]] && git cat-file -e "HEAD:${OUTPUT_PATH}"; then
+            echo "SKIP_RUN=true" >> $GITHUB_ENV
+            echo "Scheduled weekly output already exists at ${OUTPUT_PATH}; skipping duplicate run."
+          else
+            echo "SKIP_RUN=false" >> $GITHUB_ENV
+          fi
+
       - name: Run weekly pipeline
-        if: env.TYPE != ''
+        if: env.TYPE != '' && env.SKIP_RUN != 'true'
         run: |
           python run_weekly_investment_pipeline.py --mode $TYPE
 
       - name: Persist weekly outputs and database
+        if: env.SKIP_RUN != 'true'
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"

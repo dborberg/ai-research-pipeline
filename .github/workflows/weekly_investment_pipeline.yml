@@ -1,9 +1,7 @@
-name: Weekly Investment AI Digest
+name: Weekly Riffs Manual Trigger
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '30 11 * * 5'
 
 jobs:
   run-weekly-investment:
