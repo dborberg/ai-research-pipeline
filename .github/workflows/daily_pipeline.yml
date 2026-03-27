@@ -12,18 +12,25 @@ on:
     - cron: '30 18 * 1-2,11-12 *'   # 12:30 PM CST second backup — last-resort catch if both earlier triggers are skipped
   workflow_dispatch:
 
-# Separate concurrency groups for scheduled vs. manual runs so that
-# ad-hoc workflow_dispatch triggers (e.g., debugging sessions) don't queue
-# behind — or delay — the scheduled morning pipeline.
-# With cancel-in-progress: false, in-progress runs are never aborted, but
-# only one pending run per group is allowed — if a newer run arrives while
-# one is already waiting, the older pending run is dropped, preventing a
-# backlog of queued jobs from building up.
-# NOTE: Backup triggers are spaced 3 h apart so they remain useful even
-# when GitHub delays ALL scheduled triggers equally (a 20-minute gap
-# provides no resilience against multi-hour scheduler drift).
+# Each scheduled cron entry gets its OWN concurrency group (via github.event.schedule)
+# so backup triggers are never silently dropped.
+#
+# The failure mode we must avoid: GitHub delays the 11:30 UTC primary by 3-4 hours.
+# The primary is sitting in a PENDING state. At 14:30 UTC the backup cron fires — but
+# if all triggers share ONE group ("workflow-schedule"), the backup sees the primary
+# pending and gets DROPPED (cancel-in-progress: false only prevents cancelling a
+# running job; a *pending* job blocks the slot and newer entrants are discarded).
+#
+# Fix: group includes the cron string, e.g., "workflow-schedule-30 11 * 3-10 *".
+# Each of the 6 cron entries is now in its own independent group.  If the primary
+# is delayed and still pending when a backup fires, the backup queues independently
+# and runs when a runner is free.  The "Guard against duplicate scheduled runs" step
+# (git cat-file check) prevents any actual duplicate output being generated.
+#
+# Manual workflow_dispatch runs use group "workflow-workflow_dispatch-manual" —
+# still one-pending-at-a-time to avoid accidental double-manual-triggers.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.schedule || 'manual' }}
   cancel-in-progress: false
 
 permissions:
@@ -32,6 +39,7 @@ permissions:
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -49,11 +57,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Guard against duplicate scheduled runs
         run: |
