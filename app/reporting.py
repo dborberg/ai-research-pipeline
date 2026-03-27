@@ -132,7 +132,5 @@ def get_latest_completed_friday(target_date=None):
         target_date = datetime.utcnow().date()
 
     days_since_friday = (target_date.weekday() - 4) % 7
-    if days_since_friday == 0:
-        days_since_friday = 7
 
     return target_date - timedelta(days=days_since_friday)

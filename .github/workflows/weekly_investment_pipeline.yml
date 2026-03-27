@@ -1,7 +1,17 @@
-name: Weekly Riffs Manual Trigger
+name: Weekly Reports Manual Trigger
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: Which weekly report to generate and send
+        required: true
+        default: WHOLESALER
+        type: choice
+        options:
+          - WHOLESALER
+          - THEMATIC
+          - SIGNAL
 
 jobs:
   run-weekly-investment:
@@ -24,7 +34,7 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - run: python run_weekly_investment_pipeline.py --mode WHOLESALER
+      - run: python run_weekly_investment_pipeline.py --mode ${{ inputs.mode }}
 
       - name: Persist weekly outputs and database
         run: |
