@@ -1,0 +1,73 @@
+AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report
+Week Ending 2026-03-27
+
+Purpose:
+This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.
+
+TOP CONVICTION SIGNALS
+
+Industrial and robotics automation
+Conviction: 7.35
+Strength: 7.60
+Momentum: 600%
+Velocity: +6 article change
+Why It Matters:
+This matters because AI adoption in physical industries can drive durable spending on robotics, industrial software, sensors, and automation hardware. It points investors toward second-order beneficiaries beyond model developers, especially firms exposed to manufacturing modernization and logistics efficiency.
+
+Synopsys Deployment
+Conviction: 6.98
+Strength: 7.77
+Momentum: 300%
+Velocity: +3 article change
+Why It Matters:
+This matters because trust, auditability, and validation will shape which AI systems reach regulated or mission-critical environments. It favors vendors in design software, cybersecurity, governance, and assurance layers that can reduce deployment risk and support enterprise adoption.
+
+Operational for supply chain and asset
+Conviction: 6.80
+Strength: 7.60
+Momentum: 300%
+Velocity: +3 article change
+Why It Matters:
+This theme matters because it links AI spending to margin improvement, uptime, and lower operating costs in industrial and logistics environments. Companies with strong operational data and installed infrastructure may monetize AI faster than firms pursuing less grounded use cases.
+
+data center power and compute bottlenecks
+Conviction: 6.30
+Strength: 6.61
+Momentum: 300%
+Velocity: +3 article change
+Why It Matters:
+This theme matters because AI capex is broadening from chips and cloud into power, cooling, and utility infrastructure. It supports diversified exposure across semis, hyperscalers, data center suppliers, and electricity providers tied to AI buildout.
+
+Specialized enterprise and scientific workflows
+Conviction: 6.13
+Strength: 6.45
+Momentum: 300%
+Velocity: +3 article change
+Why It Matters:
+This matters because vertical AI software may create durable revenue pools in professional services, public sector, healthcare, and research markets. Advisors should watch for firms with proprietary data, workflow integration, and compliance credibility, as these factors can create pricing power and stickier adoption.
+
+ACCELERATING THEMES (BREAKOUTS)
+
+These themes are accelerating fastest relative to prior week.
+
+Industrial and robotics automation: Momentum 600%, velocity +6. This matters because AI adoption in physical industries can drive durable spending on robotics, industrial software, sensors, and automation hardware
+Synopsys Deployment: Momentum 300%, velocity +3. This matters because trust, auditability, and validation will shape which AI systems reach regulated or mission-critical environments
+Operational for supply chain and asset: Momentum 300%, velocity +3. This theme matters because it links AI spending to margin improvement, uptime, and lower operating costs in industrial and logistics environments
+
+FADING SIGNALS
+
+No major theme showed week-over-week deterioration in this run.
+
+PORTFOLIO IMPLICATIONS
+
+Structural strengthening is concentrated in Industrial and robotics automation, Synopsys Deployment, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in data center power and compute bottlenecks, Specialized enterprise and scientific workflows, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in Industrial and robotics automation, Synopsys Deployment, supported by rising article volume against the prior week.
+Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
+
+BOTTOM LINE
+
+1. Highest conviction theme: Industrial and robotics automation
+2. Most important new signal: Industrial and robotics automation
+3. Biggest acceleration: Industrial and robotics automation
+4. Key risk / fading area: No material fading area
