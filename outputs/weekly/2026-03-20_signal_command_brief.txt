@@ -6,37 +6,45 @@ This report highlights the highest-conviction AI themes based on signal strength
 
 TOP CONVICTION SIGNALS
 
-compute and power bottlenecks
-Conviction: 6.78
-Strength: 7.65
-Momentum: 200%
-Velocity: +2 article change
+Industrial robotics and physical deployment
+Conviction: 7.35
+Strength: 7.60
+Momentum: 600%
+Velocity: +6 article change
 Why It Matters:
-This matters for markets because AI spending is broadening into semis, cloud, utilities, and physical infrastructure. Advisors should watch which firms gain pricing power or face constraints from data center capex, energy access, and shifting CPU/GPU architecture demand.
+This matters because physical AI expands the AI value chain into automation hardware, industrial software, sensors, and factory capex. For advisors, it strengthens the case for second-order beneficiaries in robotics, logistics automation, and industrial technology rather than only model developers.
 
-Industrial automation and asset uptime
-Conviction: 6.50
-Strength: 7.40
-Momentum: 200%
-Velocity: +2 article change
+Multi-Agent And Angle-Of-Attack Approach
+Conviction: 7.10
+Strength: 7.80
+Momentum: 400%
+Velocity: +4 article change
 Why It Matters:
-This matters because industrial AI can lift margins through throughput gains and lower maintenance costs, benefiting automation vendors, industrial software firms, and equipment suppliers. It also signals that AI capex is spreading beyond IT budgets into factory and operations spending.
+This matters because AI monetization is expanding into sensing, networking, and edge infrastructure where deployment costs can be lower and ROI more immediate. It supports investment themes around smart buildings, industrial IoT, telecom equipment, and software that upgrades installed hardware into intelligent systems.
 
-Software-defined sensing on existing infrastructure
-Conviction: 6.50
-Strength: 7.40
-Momentum: 200%
-Velocity: +2 article change
+Operational for supply chain and asset
+Conviction: 6.80
+Strength: 7.60
+Momentum: 300%
+Velocity: +3 article change
 Why It Matters:
-This matters because it expands AI monetization into smart buildings, aerospace, security, and industrial monitoring with lighter hardware capex. Advisors should view this as supportive for edge AI, sensor ecosystems, and firms that can layer software value onto existing installed bases.
+This matters because the winners may be firms with strong process discipline, proprietary data, and embedded workflow software rather than those merely experimenting with AI. It has implications for margin expansion, software spending durability, and differentiated adoption rates across industrial and engineering-heavy sectors.
+
+data center power and compute bottlenecks
+Conviction: 6.30
+Strength: 6.61
+Momentum: 300%
+Velocity: +3 article change
+Why It Matters:
+This matters because AI capex is spreading across chips, cloud, data center equipment, and electricity supply, creating a wider set of beneficiaries and bottlenecks. For markets, it supports monitoring pricing power in infrastructure vendors and rising strategic value for utilities and energy assets tied to data center expansion.
 
 ACCELERATING THEMES (BREAKOUTS)
 
 These themes are accelerating fastest relative to prior week.
 
-compute and power bottlenecks: Momentum 200%, velocity +2. This matters for markets because AI spending is broadening into semis, cloud, utilities, and physical infrastructure
-Industrial automation and asset uptime: Momentum 200%, velocity +2. This matters because industrial AI can lift margins through throughput gains and lower maintenance costs, benefiting automation vendors, industrial software firms, and equipment suppliers
-Software-defined sensing on existing infrastructure: Momentum 200%, velocity +2. This matters because it expands AI monetization into smart buildings, aerospace, security, and industrial monitoring with lighter hardware capex
+Industrial robotics and physical deployment: Momentum 600%, velocity +6. This matters because physical AI expands the AI value chain into automation hardware, industrial software, sensors, and factory capex
+Multi-Agent And Angle-Of-Attack Approach: Momentum 400%, velocity +4. This matters because AI monetization is expanding into sensing, networking, and edge infrastructure where deployment costs can be lower and ROI more immediate
+Operational for supply chain and asset: Momentum 300%, velocity +3. This matters because the winners may be firms with strong process discipline, proprietary data, and embedded workflow software rather than those merely experimenting with AI
 
 FADING SIGNALS
 
@@ -44,14 +52,14 @@ No major theme showed week-over-week deterioration in this run.
 
 PORTFOLIO IMPLICATIONS
 
-Structural strengthening is concentrated in compute and power bottlenecks, Industrial automation and asset uptime, where conviction and signal quality are both holding up.
-Cyclical noise looks more likely in lower-strength breakouts, where momentum is improving faster than underlying strength.
-Conviction is increasing most clearly in compute and power bottlenecks, Industrial automation and asset uptime, supported by rising article volume against the prior week.
+Structural strengthening is concentrated in Industrial robotics and physical deployment, Multi-Agent And Angle-Of-Attack Approach, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in data center power and compute bottlenecks, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in Industrial robotics and physical deployment, Multi-Agent And Angle-Of-Attack Approach, supported by rising article volume against the prior week.
 Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
 
 BOTTOM LINE
 
-1. Highest conviction theme: compute and power bottlenecks
-2. Most important new signal: compute and power bottlenecks
-3. Biggest acceleration: compute and power bottlenecks
+1. Highest conviction theme: Industrial robotics and physical deployment
+2. Most important new signal: Industrial robotics and physical deployment
+3. Biggest acceleration: Industrial robotics and physical deployment
 4. Key risk / fading area: No material fading area
