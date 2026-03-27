@@ -90,7 +90,7 @@ jobs:
       - name: Guard against duplicate scheduled runs
         run: |
           CENTRAL_DATE=$(TZ=America/Chicago date +%F)
-          WEEK_START=$(python -c "from datetime import date, timedelta; d=date.fromisoformat('${CENTRAL_DATE}'); n=(d.weekday()-4)%7; n=7 if n == 0 else n; print((d - timedelta(days=n)).isoformat())")
+          WEEK_START=$(python -c "from datetime import date, timedelta; d=date.fromisoformat('${CENTRAL_DATE}'); n=(d.weekday()-4)%7; print((d - timedelta(days=n)).isoformat())")
           echo "WEEK_START=$WEEK_START" >> $GITHUB_ENV
 
           case "$TYPE" in
