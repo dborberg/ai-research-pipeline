@@ -1,0 +1,64 @@
+<h2>Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>March 28, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Philadelphia Fed highlighted the link between monetary policy and productivity:</strong> The research argues that interest-rate policy can shape long-run investment, innovation, inflation, and labor-market outcomes, making AI-driven productivity a macro issue rather than just a tech story. For advisors, that matters because productivity expectations increasingly influence both equity multiples and the path of rates. (Source: Philadelphia Fed)</li>
+<li><strong>Meta agreed to fund local energy infrastructure for a Louisiana data center:</strong> The deal shows AI capex is spreading beyond chips and software into utilities, grid upgrades, and regional power assets. That broadens the investable universe for AI beneficiaries and reinforces that power availability is becoming a gating factor for growth. (Source: WSJ)</li>
+<li><strong>Salesforce benefited from a major U.S. Labor Department AI deployment:</strong> The public-sector rollout gives investors a concrete example of monetizable enterprise AI adoption rather than a purely narrative-driven story. For financial professionals, it supports the case that workflow software vendors with real deployments may deserve more durable valuation support than firms relying only on AI messaging. (Source: Simply Wall St)</li>
+<li><strong>Telangana Chief Minister A. Revanth Reddy proposed a “People’s Credits” framework for AI companies:</strong> The idea would tie AI growth to measurable social benefits, signaling that governments may start shaping AI economics through incentive systems as well as regulation. Advisors should view this as an early sign that policy risk and policy opportunity around AI are expanding globally. (Source: The Hindu)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Salesforce’s U.S. Labor Department deployment put AI-enabled workflow software into a real operating environment:</strong> The project suggests government and enterprise buyers are moving from pilots toward production use, with implications for software productivity, service delivery, and vendor stickiness. (Source: Simply Wall St)</li>
+<li><strong>ManpowerGroup emphasized AI talent and workforce transformation services:</strong> The staffing firm is trying to position AI-related hiring and reskilling as a growth lever even in a slower hiring market, which points to rising demand for labor intermediation, training, and change-management services. (Source: Simply Wall St)</li>
+<li><strong>Policy advocates and educators used a C-SPAN forum to push AI workforce training:</strong> The discussion centered on updating skills programs and improving coordination between employers and educators, reinforcing that labor readiness is becoming a practical bottleneck to AI adoption. (Source: C-SPAN)</li>
+<li><strong>Macy’s paired strong fourth-quarter results with early AI adoption efforts:</strong> The retailer’s narrative shows white-collar and operational AI is spreading into mature sectors through merchandising, inventory, and customer-engagement tools rather than headline-grabbing model launches. (Source: Simply Wall St)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Meta committed capital to local energy infrastructure tied to its Louisiana data center:</strong> The move underscores how hyperscalers are increasingly underwriting power availability directly, which could benefit utilities, grid equipment suppliers, and regional infrastructure developers. (Source: WSJ)</li>
+<li><strong>Meta’s Louisiana project highlighted power as a site-selection constraint:</strong> The need to secure reliable electricity alongside data center construction suggests future AI buildouts may favor regions that can move faster on transmission, generation, and permitting. (Source: WSJ)</li>
+<li><strong>Philadelphia Fed research reinforced why AI infrastructure spending matters beyond technology:</strong> If productivity-enhancing investment responds to policy conditions, then data centers, compute, and supporting energy assets become part of the broader macro transmission mechanism for growth and inflation. (Source: Philadelphia Fed)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Unity Software surged after management pointed to stronger Vector AI guidance:</strong> The stock move shows investors are still rewarding company-specific AI revenue signals, but it also highlights how quickly software valuations can react to incremental guidance changes. (Source: The Motley Fool)</li>
+<li><strong>Salesforce’s government AI deployment strengthened its investment case:</strong> A named customer and a practical use case matter more to markets than generic AI branding, especially as investors look for evidence that software vendors can convert AI features into durable revenue. (Source: Simply Wall St)</li>
+<li><strong>Macy’s used strong quarterly results and early AI uptake to reshape its narrative:</strong> The story is notable because it points to AI beneficiaries outside mega-cap tech, particularly in legacy sectors where margin improvement and execution can matter more than top-line disruption. (Source: Simply Wall St)</li>
+<li><strong>ManpowerGroup leaned into AI talent demand as part of its equity story:</strong> That framing suggests investors are starting to test whether staffing, consulting, and workforce-transition firms can capture second-order AI spending beyond the usual semiconductor and software names. (Source: Simply Wall St)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Telangana Chief Minister A. Revanth Reddy proposed “People’s Credits” for AI companies:</strong> The proposal would reward firms for delivering measurable social benefits, showing how AI policy may evolve toward incentive design, accountability metrics, and regional competition for investment. (Source: The Hindu)</li>
+<li><strong>Philadelphia Fed published analysis on monetary policy and productivity:</strong> While not a new rule, the work elevates productivity into the policy conversation and suggests AI’s economic effects could influence inflation expectations, labor-market interpretation, and future rate debates. (Source: Philadelphia Fed)</li>
+<li><strong>Workforce leaders and educators used a C-SPAN discussion to press for AI training policy:</strong> The emphasis on skills access and labor-market preparation signals that public-sector responses to AI are broadening beyond safety and privacy into employment and education policy. (Source: C-SPAN)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>IEEE Spectrum showcased the Roadrunner bipedal robot:</strong> The design highlights how embodied AI developers are experimenting beyond standard humanoid formats to improve agility and real-world utility. For investors, the strategic takeaway is that robotics innovation could create downstream demand for sensors, compute, motion-control components, and industrial automation platforms. (Source: IEEE Spectrum)</li>
+<li><strong>Robotics &amp; Automation News emphasized structured content as a foundation for automation workflows:</strong> The piece is less about a single robot launch and more about the software layer needed to make warehouse, industrial, and enterprise automation reliable at scale. That is relevant for investors because physical AI adoption often depends on data quality and process integration, not just hardware. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch whether more hyperscalers follow Meta by funding off-site power assets:</strong> Additional deals would confirm that electricity access is becoming a core competitive variable in AI infrastructure expansion. (Source: WSJ)</li>
+<li><strong>Watch for more named government AI deployments after the Salesforce-Labor Department example:</strong> Public-sector wins could become an important proof point for enterprise software monetization and procurement momentum. (Source: Simply Wall St)</li>
+<li><strong>Watch whether non-tech companies like Macy’s keep citing AI in earnings commentary:</strong> Broader adoption across retail, staffing, and other mature sectors would support the case for a wider field of AI beneficiaries beyond the largest platforms. (Source: Simply Wall St)</li>
+<li><strong>Watch for policy proposals that tie AI growth to labor or social outcomes:</strong> Telangana’s “People’s Credits” concept may be an early signal of more interventionist or incentive-based AI frameworks in other jurisdictions. (Source: The Hindu)</li>
+<li><strong>Watch labor-market and productivity data for signs AI investment is affecting the macro backdrop:</strong> If productivity improves without a comparable inflation rebound, markets may reassess both earnings durability and rate sensitivity. (Source: Philadelphia Fed)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is no longer just a software story:</strong> It is also becoming a power, grid, and infrastructure investment story. (Source: WSJ)</li>
+<li><strong>What matters now is proof of adoption, not just AI branding:</strong> Named deployments like Salesforce’s are more meaningful than broad promises. (Source: Simply Wall St)</li>
+<li><strong>We are starting to see AI winners outside mega-cap tech:</strong> Retail, staffing, and workflow software are all entering the conversation. (Source: Simply Wall St)</li>
+<li><strong>AI policy is broadening beyond safety rules:</strong> Governments are beginning to think about labor, incentives, and social accountability too. (Source: The Hindu)</li>
+<li><strong>If AI lifts productivity, it could eventually affect both earnings growth and interest-rate expectations:</strong> That is why this theme matters across stocks and bonds. (Source: Philadelphia Fed)</li>
+</ul>
