@@ -1,0 +1,55 @@
+<h2>Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>March 29, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>AI electricity demand moved into the spotlight:</strong> A new market analysis tied the AI buildout to rising power consumption, grid strain, and growing demand for grid batteries and battery metals, widening the investable AI theme beyond chips and software into utilities, storage, and industrial supply chains. That matters for advisors because it supports a broader conversation about second-order AI beneficiaries and execution risk in regulated infrastructure. (Source: AD HOC NEWS)</li>
+<li><strong>Google drew a clearer line around AI content access:</strong> Google said Google-Agent is distinct from Googlebot and other crawling tools, giving publishers and website operators more clarity on how AI-related access differs from traditional search indexing. For financial professionals, the significance is that platform rules are becoming more formal, which could affect publisher economics, digital advertising, and future regulatory scrutiny of large internet platforms. (Source: MarkTechPost)</li>
+<li><strong>Microsoft, Amazon, Alphabet, Meta, and NVIDIA remained central to the AI capex cycle:</strong> A fresh infrastructure review highlighted continued heavy spending on AI data centers, networking, storage, and compute, reinforcing that AI investment is still being driven by large-scale real-world capital allocation rather than only product hype. For advisors, that keeps focus on both earnings support for infrastructure leaders and concentration risk tied to a narrow group of mega-cap buyers and suppliers. (Source: Intellectia AI)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Open Text highlighted enterprise AI governance gaps:</strong> Open Text drew attention to the fact that many companies are adopting AI faster than they are building controls for security, compliance, and oversight, underscoring a growing need for governance software and internal risk management. For labor and enterprise planning, that suggests AI budgets may increasingly shift from experimentation toward managed deployment, auditability, and policy enforcement. (Source: simplywall.st)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Microsoft, Amazon, Alphabet, Meta, and NVIDIA anchored another round of AI infrastructure analysis:</strong> The report emphasized that AI demand is driving spending not just on semiconductors but also on data centers, networking, storage, and related physical infrastructure. That reinforces the case for looking beyond model developers to suppliers exposed to the full compute stack. (Source: Intellectia AI)</li>
+<li><strong>AI-driven grid pressure expanded the infrastructure conversation:</strong> The power-demand analysis argued that AI workloads are increasing the strategic importance of grid upgrades, utility investment, battery storage, and critical minerals used in energy systems. For investors, that points to possible beneficiaries in electrification and transmission alongside the usual data center names. (Source: AD HOC NEWS)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Open Text brought AI governance into the investment debate:</strong> The company-specific discussion suggested that vendors focused on information management, compliance, and risk controls could benefit as enterprises move from pilot projects to governed AI deployment. That gives advisors a way to discuss AI exposure beyond the most crowded semiconductor and hyperscaler trades. (Source: simplywall.st)</li>
+<li><strong>Hyperscaler capex remained the market’s core AI signal:</strong> The infrastructure spending review reinforced that Microsoft, Amazon, Alphabet, and Meta are still shaping the AI investment cycle through large capital commitments, with NVIDIA remaining a key upstream beneficiary. The opportunity is broad ecosystem exposure, while the risk is valuation sensitivity if spending growth slows. (Source: Intellectia AI)</li>
+<li><strong>Battery metals and storage entered the AI beneficiary set:</strong> The infrastructure shift analysis argued that AI’s power needs could create downstream investment interest in grid batteries, storage systems, and raw materials tied to electrification. That may help advisors frame AI as a cross-sector capital spending story rather than a pure software theme. (Source: AD HOC NEWS)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Google formalized how AI access differs from search crawling:</strong> By distinguishing Google-Agent from Googlebot and related systems, Google effectively created a clearer operating framework for publishers deciding how their content can be accessed for AI features versus search. The policy relevance is that transparency and consent mechanics are becoming more important as AI distribution models mature. (Source: MarkTechPost)</li>
+<li><strong>Open Text underscored the policy side of enterprise AI adoption:</strong> Its warning on governance and compliance gaps highlights that internal controls, audit trails, and regulatory readiness are becoming central to enterprise AI rollouts, especially in industries with data, privacy, and recordkeeping obligations. That is a reminder that AI adoption can be slowed or redirected by compliance demands, not just technical readiness. (Source: simplywall.st)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>AI infrastructure spending strengthened the case for physical automation beneficiaries:</strong> The data center investment review pointed to rising demand for compute, networking, and storage systems that also support industrial AI, autonomous systems, and machine-driven operations. While not a pure robotics deployment story, it is strategically relevant because physical AI adoption in logistics and automation depends on the same expanding compute and infrastructure backbone. (Source: Intellectia AI)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch hyperscaler capex updates:</strong> Any new spending signals from Microsoft, Amazon, Alphabet, or Meta will help determine whether AI infrastructure demand is still accelerating or beginning to normalize. (Source: Intellectia AI)</li>
+<li><strong>Watch utility and grid responses to AI load growth:</strong> If more utilities, regulators, or industrial suppliers start quantifying AI-related power demand, the market could broaden its focus from chips to transmission, storage, and power equipment. (Source: AD HOC NEWS)</li>
+<li><strong>Watch publisher reactions to Google-Agent rules:</strong> Website operators and media companies may adjust permissions, traffic strategies, or legal positions now that Google has clarified the boundary between AI access and traditional crawling. (Source: MarkTechPost)</li>
+<li><strong>Watch enterprise spending on AI controls:</strong> If companies respond to governance gaps by increasing budgets for compliance, security, and information management, software vendors outside the headline AI names could see stronger demand. (Source: simplywall.st)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is no longer just a software story:</strong> It is also becoming a power, grid, and industrial infrastructure story. (Source: AD HOC NEWS)</li>
+<li><strong>Big tech is still funding the AI buildout:</strong> That supports earnings for suppliers, but it also keeps concentration risk high. (Source: Intellectia AI)</li>
+<li><strong>Governance may be the next enterprise AI spending wave:</strong> Companies need controls, not just models. (Source: simplywall.st)</li>
+<li><strong>Google’s latest move shows AI is getting operational rules:</strong> That matters for media, internet platforms, and future regulation. (Source: MarkTechPost)</li>
+<li><strong>The broader AI opportunity may include utilities, storage, and materials:</strong> Some of the next winners could sit outside the usual tech names. (Source: AD HOC NEWS)</li>
+</ul>
