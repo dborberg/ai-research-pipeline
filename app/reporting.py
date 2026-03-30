@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from openai import OpenAI
 
@@ -9,6 +10,7 @@ MODEL_NAME = "gpt-5.4"
 WEEKLY_WHOLESALER_TEMPERATURE = 0.3
 WEEKLY_THEMATIC_TEMPERATURE = 0.35
 MONTHLY_REPORT_TEMPERATURE = 0.35
+_CENTRAL_TZ = ZoneInfo("America/Chicago")
 
 
 def get_openai_client(api_key):
@@ -123,13 +125,13 @@ def call_chat_model(client, system_prompt, user_prompt, temperature=0.3, max_com
 
 def get_week_start(target_date=None):
     if target_date is None:
-        target_date = datetime.utcnow().date()
+        target_date = datetime.now(_CENTRAL_TZ).date()
     return target_date - timedelta(days=target_date.weekday())
 
 
 def get_latest_completed_friday(target_date=None):
     if target_date is None:
-        target_date = datetime.utcnow().date()
+        target_date = datetime.now(_CENTRAL_TZ).date()
 
     days_since_friday = (target_date.weekday() - 4) % 7
 

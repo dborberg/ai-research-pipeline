@@ -1,8 +1,11 @@
 import json
 import os
 from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 from sqlalchemy import create_engine, text
+
+_CENTRAL_TZ = ZoneInfo("America/Chicago")
 
 DB_URL = "sqlite:///data/ai_research.db"
 
@@ -407,7 +410,7 @@ def fetch_daily_digests(days=None, limit=None):
     params = {}
 
     if days is not None:
-        cutoff = (datetime.utcnow().date() - timedelta(days=days - 1)).isoformat()
+        cutoff = (datetime.now(_CENTRAL_TZ).date() - timedelta(days=days - 1)).isoformat()
         query += " WHERE date >= :cutoff"
         params["cutoff"] = cutoff
 
@@ -431,7 +434,7 @@ def fetch_weekly_digests(weeks=None, digest_type=None, limit=None):
     conditions = []
 
     if weeks is not None:
-        cutoff = (datetime.utcnow().date() - timedelta(weeks=weeks - 1)).isoformat()
+        cutoff = (datetime.now(_CENTRAL_TZ).date() - timedelta(weeks=weeks - 1)).isoformat()
         conditions.append("week_start >= :cutoff")
         params["cutoff"] = cutoff
 
