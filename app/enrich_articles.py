@@ -52,7 +52,7 @@ add_column_if_missing("ai_score", "INTEGER")
 
 conn.commit()
 
-# Fetch articles needing enrichment
+# Fetch articles needing enrichment, prioritizing the most recent ones
 cursor.execute("""
 SELECT rowid, title
 FROM articles
@@ -61,6 +61,7 @@ WHERE summary IS NULL
    OR companies IS NULL
    OR advisor_relevance IS NULL
    OR ai_score IS NULL
+ORDER BY published_at DESC
 LIMIT 10
 """)
 

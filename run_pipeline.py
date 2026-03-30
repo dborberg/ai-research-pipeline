@@ -79,15 +79,25 @@ def ingest_articles():
             try:
                 conn.execute(text("""
                     INSERT OR IGNORE INTO articles 
-                    (feedly_id, title, source, url, published_at, created_at)
-                    VALUES (:feedly_id, :title, :source, :url, :published_at, :created_at)
+                    (feedly_id, title, source, url, published_at, created_at, summary)
+                    VALUES (:feedly_id, :title, :source, :url, :published_at, :created_at, :summary)
                 """), {
                     'feedly_id': article.get('link'),
                     'title': article.get('title'),
                     'source': article.get('source'),
                     'url': article.get('link'),
                     'published_at': article.get('published'),
-                    'created_at': datetime.utcnow().isoformat()
+                    'created_at': datetime.utcnow().isoformat(),
+                    'summary': article.get('summary') or article.get('text') or '',
+                })
+                # Fill summary for any existing article that was stored without one
+                conn.execute(text("""
+                    UPDATE articles
+                    SET summary = :summary
+                    WHERE feedly_id = :feedly_id AND (summary IS NULL OR summary = '')
+                """), {
+                    'feedly_id': article.get('link'),
+                    'summary': article.get('summary') or article.get('text') or '',
                 })
                 inserted += 1
             except Exception as e:
