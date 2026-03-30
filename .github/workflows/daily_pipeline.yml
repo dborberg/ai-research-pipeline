@@ -4,28 +4,23 @@ on:
   schedule:
     # CDT (UTC-5): March through October
     - cron: '30 11 * 3-10 *'    # 6:30 AM CDT primary
-    - cron: '30 14 * 3-10 *'    # 9:30 AM CDT backup — fires if primary is delayed >3 h by GitHub's scheduler
-    - cron: '30 17 * 3-10 *'    # 12:30 PM CDT second backup — last-resort catch if both earlier triggers are skipped
+    - cron: '30 14 * 3-10 *'    # 9:30 AM CDT backup 1 — fires if primary is delayed by GitHub's scheduler
+    - cron: '30 17 * 3-10 *'    # 12:30 PM CDT backup 2
+    - cron: '30 20 * 3-10 *'    # 3:30 PM CDT backup 3 — final safety net for severe scheduler delays
     # CST (UTC-6): January–February, November–December
     - cron: '30 12 * 1-2,11-12 *'   # 6:30 AM CST primary
-    - cron: '30 15 * 1-2,11-12 *'   # 9:30 AM CST backup — fires if primary is delayed >3 h by GitHub's scheduler
-    - cron: '30 18 * 1-2,11-12 *'   # 12:30 PM CST second backup — last-resort catch if both earlier triggers are skipped
+    - cron: '30 15 * 1-2,11-12 *'   # 9:30 AM CST backup 1 — fires if primary is delayed by GitHub's scheduler
+    - cron: '30 18 * 1-2,11-12 *'   # 12:30 PM CST backup 2
+    - cron: '30 21 * 1-2,11-12 *'   # 3:30 PM CST backup 3 — final safety net for severe scheduler delays
   workflow_dispatch:
 
-# Each scheduled cron entry gets its OWN concurrency group (via github.event.schedule)
-# so backup triggers are never silently dropped.
+# GitHub Actions scheduled workflows are subject to significant scheduler delays
+# (often 1-4+ hours on busy days). Each cron gets its OWN concurrency group so
+# that a pending or running earlier trigger doesn't block a later backup trigger.
 #
-# The failure mode we must avoid: GitHub delays the 11:30 UTC primary by 3-4 hours.
-# The primary is sitting in a PENDING state. At 14:30 UTC the backup cron fires — but
-# if all triggers share ONE group ("workflow-schedule"), the backup sees the primary
-# pending and gets DROPPED (cancel-in-progress: false only prevents cancelling a
-# running job; a *pending* job blocks the slot and newer entrants are discarded).
-#
-# Fix: group includes the cron string, e.g., "workflow-schedule-30 11 * 3-10 *".
-# Each of the 6 cron entries is now in its own independent group.  If the primary
-# is delayed and still pending when a backup fires, the backup queues independently
-# and runs when a runner is free.  The "Guard against duplicate scheduled runs" step
-# (git cat-file check) prevents any actual duplicate output being generated.
+# The "Guard against duplicate scheduled runs" step (git cat-file check) prevents
+# duplicate emails: if an earlier trigger already committed and pushed today's
+# output file, all subsequent triggers skip silently.
 #
 # Manual workflow_dispatch runs use group "workflow-workflow_dispatch-manual" —
 # still one-pending-at-a-time to avoid accidental double-manual-triggers.
