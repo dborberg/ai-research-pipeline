@@ -1,4 +1,61 @@
-Daily Riffs from the Gen AI Songbook
-March 30, 2026
+<h2>Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>March 30, 2026</strong></p>
 
-No relevant articles found in the last 24 hours.
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>STMicroelectronics and NVIDIA expanded 800V DC power designs for AI data centers:</strong> The new 12V and 6V architectures show that AI spending is broadening beyond GPUs into power conversion, efficiency, and rack-level infrastructure, which matters for advisors looking for second-order beneficiaries across semiconductors and industrial technology. (Source: ELE Times)</li>
+<li><strong>ABB and VoltaGrid expanded their partnership to supply power solutions for AI data centers:</strong> The announcement reinforces that electricity availability and backup power are becoming gating factors for AI deployment, creating potential opportunities in electrical equipment, distributed power, and energy services. (Source: themachinemaker.com)</li>
+<li><strong>Agent-Infra launched AIO Sandbox for AI agents:</strong> The release highlights continued commercialization of agent software infrastructure, suggesting enterprise AI adoption is moving from experimentation toward tools that can execute tasks across browsers, shells, and shared filesystems. (Source: MarkTechPost)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Agent-Infra introduced an all-in-one runtime for AI agents:</strong> By bundling browser, shell, and file access into one environment, the company is targeting more practical workflow automation for knowledge workers, with potential productivity gains but also clearer implications for job redesign and oversight needs. (Source: MarkTechPost)</li>
+<li><strong>Researchers detailed a prompting framework to automate parts of Domain-Driven Design:</strong> The work suggests AI is moving further into software architecture and developer workflows, which could improve white-collar productivity while shifting demand toward higher-level review and validation roles. (Source: arXiv)</li>
+<li><strong>Researchers published a benchmark for AI systems handling open-ended GUI tasks:</strong> The GUIDE benchmark points to a future where AI agents can navigate business software more effectively, a development that could accelerate back-office automation if reliability improves. (Source: arXiv)</li>
+<li><strong>Researchers examined human oversight in LLM-assisted digital twin workflows:</strong> The emphasis on resilience and expert review is a reminder that enterprise adoption may raise productivity, but firms still need governance, validation, and accountable human decision-makers in critical processes. (Source: arXiv)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>STMicroelectronics and NVIDIA expanded 800V DC power conversion options for AI data centers:</strong> The move underscores rising demand for more efficient power delivery inside AI facilities, an area that could benefit analog chipmakers, power electronics suppliers, and thermal management vendors. (Source: ELE Times)</li>
+<li><strong>ABB and VoltaGrid deepened their collaboration on AI data center power systems:</strong> The partnership highlights how fast AI buildouts are increasing demand for modular generation, backup systems, and electrical distribution equipment as operators try to shorten deployment timelines. (Source: themachinemaker.com)</li>
+<li><strong>TeraFab outlined an alternative manufacturing approach:</strong> While details are limited, the article points to continued interest in more flexible and efficient production models, which could matter for capital spending and supply-chain positioning in advanced industrial and semiconductor-adjacent manufacturing. (Source: EE Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>STMicroelectronics used its NVIDIA collaboration to push deeper into AI infrastructure:</strong> For investors, the announcement is a reminder that AI capex may support a wider set of public companies beyond the largest chip designers, especially in power management and supporting hardware. (Source: ELE Times)</li>
+<li><strong>ABB and VoltaGrid tied AI growth to power deployment economics:</strong> The partnership supports the view that AI investment opportunities extend into industrials and energy-enabling businesses, not just software and hyperscale platforms. (Source: themachinemaker.com)</li>
+<li><strong>Agent-Infra launched a commercial runtime for AI agents:</strong> The product release is a small but useful signal that venture-backed AI activity remains focused on monetizable enterprise tooling, particularly infrastructure that can make autonomous software more usable in business settings. (Source: MarkTechPost)</li>
+<li><strong>Researchers highlighted AI-based exchange-rate forecasting for financial markets:</strong> While still early-stage research rather than a commercial rollout, the work reflects continued pressure on asset managers and macro investors to incorporate machine learning into currency analysis and risk management. (Source: arXiv)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Researchers studying digital twin workflows emphasized human oversight and resilience:</strong> Although not a formal policy action, the focus aligns with the direction of enterprise governance and likely regulatory expectations around accountable AI use in critical systems. (Source: arXiv)</li>
+<li><strong>Researchers proposed uncertainty-guided safety monitoring for cyber-physical systems:</strong> The work adds to the broader case for stricter standards around AI reliability in industrial environments, an area investors should watch as safety expectations increasingly shape deployment timelines and vendor selection. (Source: arXiv)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Researchers introduced a reinforcement-learning method aimed at harder exploration problems:</strong> The advance could be strategically relevant for robotics and autonomous systems because better exploration can improve how machines learn in complex real-world environments such as warehouses, industrial sites, and defense settings. (Source: arXiv)</li>
+<li><strong>Researchers proposed improved safety monitoring for cyber-physical systems:</strong> The method targets rare but critical events, which is directly relevant to industrial automation and autonomous operations where reliability and fault detection are essential for broader deployment. (Source: arXiv)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch whether STMicroelectronics, ABB, and similar suppliers win follow-on AI infrastructure contracts:</strong> Additional customer announcements would confirm that AI spending is broadening into the electrical and power stack. (Source: ELE Times)</li>
+<li><strong>Watch for more partnerships linking data centers to distributed power providers:</strong> If companies like VoltaGrid keep gaining traction, it would signal that grid constraints are becoming a larger investment theme. (Source: themachinemaker.com)</li>
+<li><strong>Watch for enterprise software vendors to package more agent tools into managed products:</strong> Commercial launches similar to Agent-Infra could indicate faster adoption of task-executing AI in office workflows. (Source: MarkTechPost)</li>
+<li><strong>Watch for governance requirements to become standard in industrial AI deployments:</strong> The repeated emphasis on oversight and resilience suggests buyers may increasingly favor vendors that can prove auditability and human control. (Source: arXiv)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI spending is no longer just about chips:</strong> Power equipment, electrical systems, and data center hardware are becoming important beneficiaries too. (Source: ELE Times)</li>
+<li><strong>One of the biggest AI bottlenecks is electricity:</strong> Companies that can deliver power faster may matter as much as companies that build the models. (Source: themachinemaker.com)</li>
+<li><strong>Enterprise AI is moving from chatbots toward software that can actually do tasks:</strong> That could improve productivity, but it also raises oversight and workforce questions. (Source: MarkTechPost)</li>
+<li><strong>The next wave of AI winners may include industrial and infrastructure names, not just the largest tech platforms:</strong> That broadens the investable universe. (Source: ELE Times)</li>
+<li><strong>In robotics and industrial AI, reliability still matters as much as capability:</strong> Better safety and control will likely determine how fast adoption scales. (Source: arXiv)</li>
+</ul>
