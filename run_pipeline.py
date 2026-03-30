@@ -14,6 +14,7 @@ import logging
 import os
 from pathlib import Path
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
@@ -34,6 +35,12 @@ logging.basicConfig(
 
 DB_PATH = "sqlite:///data/ai_research.db"
 DAILY_OUTPUT_DIR = Path("outputs/daily")
+_CENTRAL_TZ = ZoneInfo("America/Chicago")
+
+
+def _central_today():
+    """Return today's date in Central Time (CDT/CST), matching the workflow guard step."""
+    return datetime.now(_CENTRAL_TZ).date()
 
 
 def ingest_articles():
@@ -114,7 +121,7 @@ def save_daily_digest(digest_text):
     print("Saving digest...")
 
     DAILY_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    output_path = DAILY_OUTPUT_DIR / f"{datetime.utcnow().date().isoformat()}.txt"
+    output_path = DAILY_OUTPUT_DIR / f"{_central_today().isoformat()}.txt"
 
     output_path.write_text(digest_text, encoding="utf-8")
 
@@ -161,7 +168,7 @@ def run(dry_run=False):
         if not digest_text or not digest_text.strip():
             raise ValueError("Digest generation returned empty content — aborting to prevent blank output file")
         save_daily_digest(digest_text)
-        upsert_daily_digest(datetime.utcnow().date(), digest_text)
+        upsert_daily_digest(_central_today(), digest_text)
 
         send_digest(digest_text=digest_text, dry_run=dry_run)
 

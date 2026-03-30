@@ -3,11 +3,13 @@ def generate_daily_digest():
     import os
     import re
     from datetime import datetime, timedelta
+    from zoneinfo import ZoneInfo
     from sqlalchemy import create_engine, text
     from openai import OpenAI
 
     DB_PATH = "sqlite:///data/ai_research.db"
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    _CENTRAL_TZ = ZoneInfo("America/Chicago")
 
     # -----------------------------
     # GET ARTICLES
@@ -142,7 +144,7 @@ def generate_daily_digest():
         return articles
 
     articles = get_recent_articles()
-    today = datetime.utcnow().strftime("%B %d, %Y")
+    today = datetime.now(_CENTRAL_TZ).strftime("%B %d, %Y")
 
     if not articles:
         return f"""Daily Riffs from the Gen AI Songbook
