@@ -1,14 +1,16 @@
 import os
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 from dotenv import load_dotenv
 
 from app.cluster_schema import normalize_cluster_df
-from app.db import fetch_daily_digests, fetch_weekly_digests, get_weekly_clusters, init_db, upsert_weekly_digest
+from app.db import fetch_daily_digests, fetch_weekly_digests, get_weekly_clusters, init_db, upsert_monthly_report
 from app.reporting import call_chat_model, get_openai_client, get_week_start, save_text_output
 from app.send_email import send_report
 
+_CENTRAL_TZ = ZoneInfo("America/Chicago")
 
 MONTHLY_TITLE = "Monthly Tunes from the Gen AI Songbook"
 
@@ -384,8 +386,7 @@ def main():
         raise RuntimeError("OPENAI_API_KEY must be set")
 
     history_df = _load_recent_cluster_history(weeks=5)
-    report_month = datetime.utcnow().strftime("%Y-%m")
-    month_anchor = datetime.utcnow().strftime("%Y-%m-01")
+    report_month = datetime.now(_CENTRAL_TZ).strftime("%Y-%m")
     client = get_openai_client(api_key)
 
     if _should_use_text_history(history_df):
@@ -396,7 +397,7 @@ def main():
 
     monthly_content = _with_monthly_report_header(MONTHLY_TITLE, report_month, monthly_content)
 
-    upsert_weekly_digest(month_anchor, "monthly", monthly_content)
+    upsert_monthly_report(report_month, monthly_content)
     save_text_output("outputs/monthly", f"{report_month}.txt", monthly_content)
     send_report(MONTHLY_TITLE, monthly_content)
 
