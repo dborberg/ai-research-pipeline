@@ -1,0 +1,10 @@
+.env
+.git
+.github
+venv/
+__pycache__/
+*.pyc
+pipeline.log
+logs/
+outputs/
+data/

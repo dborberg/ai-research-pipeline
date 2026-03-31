@@ -3,6 +3,7 @@ import sqlite3
 import os
 import time
 import datetime
+import argparse
 from dotenv import load_dotenv
 from openai import OpenAI
 
@@ -61,11 +62,56 @@ WHERE summary IS NULL
    OR companies IS NULL
    OR advisor_relevance IS NULL
    OR ai_score IS NULL
-ORDER BY published_at DESC
-LIMIT 10
 """)
 
-articles = cursor.fetchall()
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit", type=int, default=40)
+    parser.add_argument("--max-age-hours", type=int, default=36)
+    return parser.parse_args()
+
+
+def _parse_published_at(value):
+    if not value:
+        return None
+    try:
+        return datetime.datetime.fromisoformat(str(value).replace("Z", "+00:00")).replace(tzinfo=None)
+    except ValueError:
+        return None
+
+
+def _load_articles_to_enrich(limit, max_age_hours):
+    cutoff = datetime.datetime.utcnow() - datetime.timedelta(hours=max_age_hours)
+    cursor.execute(
+        """
+        SELECT rowid, title, published_at, created_at
+        FROM articles
+        WHERE summary IS NULL
+           OR themes IS NULL
+           OR companies IS NULL
+           OR advisor_relevance IS NULL
+           OR ai_score IS NULL
+        ORDER BY published_at DESC, created_at DESC
+        """
+    )
+
+    candidates = []
+    for rowid, title, published_at, created_at in cursor.fetchall():
+        published_dt = _parse_published_at(published_at)
+        created_dt = _parse_published_at(created_at)
+        reference_dt = published_dt or created_dt
+        if reference_dt and reference_dt < cutoff:
+            continue
+        candidates.append((rowid, title))
+        if len(candidates) >= limit:
+            break
+
+    return candidates
+
+
+args = parse_args()
+articles = _load_articles_to_enrich(args.limit, args.max_age_hours)
 
 print(f"Articles to enrich: {len(articles)}")
 

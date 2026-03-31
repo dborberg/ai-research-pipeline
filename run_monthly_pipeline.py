@@ -7,7 +7,14 @@ from dotenv import load_dotenv
 
 from app.cluster_schema import normalize_cluster_df
 from app.db import fetch_daily_digests, fetch_weekly_digests, get_weekly_clusters, init_db, upsert_monthly_report
-from app.reporting import call_chat_model, get_openai_client, get_week_start, save_text_output
+from app.reporting import (
+    call_chat_model,
+    get_latest_completed_friday,
+    get_latest_completed_month,
+    get_month_bounds,
+    get_openai_client,
+    save_text_output,
+)
 from app.send_email import send_report
 
 _CENTRAL_TZ = ZoneInfo("America/Chicago")
@@ -38,12 +45,22 @@ def _with_monthly_report_header(title, report_month, content):
     ]).strip()
 
 
-def _load_recent_cluster_history(weeks=5):
-    current_week = get_week_start()
+def _iter_fridays_in_month(report_month):
+    month_start, next_month_start = get_month_bounds(report_month)
+    first_friday_offset = (4 - month_start.weekday()) % 7
+    current_friday = month_start + timedelta(days=first_friday_offset)
+
+    fridays = []
+    while current_friday < next_month_start:
+        fridays.append(current_friday)
+        current_friday += timedelta(days=7)
+    return fridays
+
+
+def _load_recent_cluster_history(report_month):
     rows = []
 
-    for index in range(weeks):
-        week_start = current_week - timedelta(days=7 * index)
+    for week_start in _iter_fridays_in_month(report_month):
         weekly_rows = get_weekly_clusters(week_start)
         for row in weekly_rows:
             row_dict = dict(row)
@@ -247,8 +264,17 @@ def _should_use_text_history(history_df, minimum_cluster_weeks=3):
 
 
 def generate_monthly_brief_from_text_history(report_month, client):
-    weekly_rows = fetch_weekly_digests(weeks=8, limit=12)
-    daily_rows = fetch_daily_digests(days=35, limit=20)
+    month_start, next_month_start = get_month_bounds(report_month)
+    weekly_rows = fetch_weekly_digests(weeks=12, limit=24)
+    weekly_rows = [
+        row for row in weekly_rows
+        if month_start.isoformat() <= str(row["week_start"]) < next_month_start.isoformat()
+    ]
+    daily_rows = fetch_daily_digests(days=45, limit=45)
+    daily_rows = [
+        row for row in daily_rows
+        if month_start.isoformat() <= str(row["date"]) < next_month_start.isoformat()
+    ]
 
     if not weekly_rows and not daily_rows:
         raise RuntimeError("No daily or weekly digest history available for monthly fallback mode")
@@ -385,8 +411,8 @@ def main():
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY must be set")
 
-    history_df = _load_recent_cluster_history(weeks=5)
-    report_month = datetime.now(_CENTRAL_TZ).strftime("%Y-%m")
+    report_month = get_latest_completed_month()
+    history_df = _load_recent_cluster_history(report_month)
     client = get_openai_client(api_key)
 
     if _should_use_text_history(history_df):

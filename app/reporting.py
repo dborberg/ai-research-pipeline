@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -15,6 +15,42 @@ _CENTRAL_TZ = ZoneInfo("America/Chicago")
 
 def get_openai_client(api_key):
     return OpenAI(api_key=api_key)
+
+
+def get_central_now():
+    return datetime.now(_CENTRAL_TZ)
+
+
+def get_latest_completed_month(target_date=None):
+    if target_date is None:
+        target_date = get_central_now().date()
+    elif isinstance(target_date, datetime):
+        target_date = target_date.date()
+
+    first_day_of_current_month = target_date.replace(day=1)
+    last_day_of_previous_month = first_day_of_current_month - timedelta(days=1)
+    return last_day_of_previous_month.strftime("%Y-%m")
+
+
+def get_month_bounds(report_month):
+    month_start = datetime.strptime(report_month, "%Y-%m").date().replace(day=1)
+    if month_start.month == 12:
+        next_month_start = date(month_start.year + 1, 1, 1)
+    else:
+        next_month_start = date(month_start.year, month_start.month + 1, 1)
+    return month_start, next_month_start
+
+
+def get_weekly_window_bounds(week_ending):
+    if isinstance(week_ending, datetime):
+        week_ending = week_ending.date()
+
+    local_start = datetime.combine(week_ending - timedelta(days=6), time.min, tzinfo=_CENTRAL_TZ)
+    local_end = datetime.combine(week_ending + timedelta(days=1), time.min, tzinfo=_CENTRAL_TZ)
+
+    utc_start = local_start.astimezone(timezone.utc).replace(tzinfo=None)
+    utc_end = local_end.astimezone(timezone.utc).replace(tzinfo=None)
+    return utc_start.isoformat(timespec="seconds"), utc_end.isoformat(timespec="seconds")
 
 
 def save_text_output(output_dir, filename, content):
@@ -125,13 +161,13 @@ def call_chat_model(client, system_prompt, user_prompt, temperature=0.3, max_com
 
 def get_week_start(target_date=None):
     if target_date is None:
-        target_date = datetime.now(_CENTRAL_TZ).date()
+        target_date = get_central_now().date()
     return target_date - timedelta(days=target_date.weekday())
 
 
 def get_latest_completed_friday(target_date=None):
     if target_date is None:
-        target_date = datetime.now(_CENTRAL_TZ).date()
+        target_date = get_central_now().date()
 
     days_since_friday = (target_date.weekday() - 4) % 7
 

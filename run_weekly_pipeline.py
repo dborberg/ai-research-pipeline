@@ -15,8 +15,10 @@ from app.reporting import (
     WEEKLY_THEMATIC_TEMPERATURE,
     WEEKLY_WHOLESALER_TEMPERATURE,
     call_chat_model,
+    get_month_bounds,
     get_openai_client,
     get_latest_completed_friday,
+    get_weekly_window_bounds,
     save_text_output,
 )
 from app.send_email import send_report
@@ -393,8 +395,8 @@ def _with_weekly_report_header(title, week_start, content):
     ]).strip()
 
 
-def get_weekly_articles(score_threshold=DEFAULT_SCORE_THRESHOLD):
-    cutoff = (datetime.utcnow() - timedelta(days=7)).isoformat()
+def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
+    window_start, window_end = get_weekly_window_bounds(week_start)
 
     with get_engine().connect() as conn:
         high_signal_rows = conn.execute(
@@ -411,13 +413,15 @@ def get_weekly_articles(score_threshold=DEFAULT_SCORE_THRESHOLD):
                     companies
                 FROM articles
                 WHERE ai_score >= :high_signal_threshold
-                  AND published_at >= :cutoff
+                                    AND published_at >= :window_start
+                                    AND published_at < :window_end
                 ORDER BY ai_score DESC, published_at DESC
                 LIMIT :limit
             """),
             {
                 "high_signal_threshold": HIGH_SIGNAL_THRESHOLD,
-                "cutoff": cutoff,
+                                "window_start": window_start,
+                                "window_end": window_end,
                 "limit": HIGH_SIGNAL_LIMIT,
             },
         ).mappings().all()
@@ -437,14 +441,16 @@ def get_weekly_articles(score_threshold=DEFAULT_SCORE_THRESHOLD):
                 FROM articles
                 WHERE ai_score >= :score_threshold
                   AND ai_score < :high_signal_threshold
-                  AND published_at >= :cutoff
+                                    AND published_at >= :window_start
+                                    AND published_at < :window_end
                 ORDER BY ai_score DESC, published_at DESC
                 LIMIT :limit
             """),
             {
                 "score_threshold": score_threshold,
                 "high_signal_threshold": HIGH_SIGNAL_THRESHOLD,
-                "cutoff": cutoff,
+                                "window_start": window_start,
+                                "window_end": window_end,
                 "limit": MEDIUM_SIGNAL_LIMIT,
             },
         ).mappings().all()
@@ -880,8 +886,13 @@ CLUSTERS:
     }
 
 
-def _format_daily_digest_context():
-    digests = fetch_daily_digests(days=7, limit=7)
+def _format_daily_digest_context(week_start):
+    week_window_start = week_start - timedelta(days=6)
+    digests = fetch_daily_digests(days=14, limit=14)
+    digests = [
+        digest for digest in digests
+        if week_window_start.isoformat() <= str(digest["date"]) <= week_start.isoformat()
+    ]
     if not digests:
         return ""
 
@@ -952,19 +963,20 @@ def _format_cluster_context(clusters, patterns):
     return "\n".join(sections).strip()
 
 
-def build_weekly_source_context(client, score_threshold=DEFAULT_SCORE_THRESHOLD):
+def build_weekly_source_context(client, week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
     return _build_weekly_cluster_bundle(
         client,
+        week_start,
         score_threshold=score_threshold,
     )["source_context"]
 
 
-def _build_weekly_cluster_bundle(client, score_threshold=DEFAULT_SCORE_THRESHOLD):
-    article_data = get_weekly_articles(score_threshold=score_threshold)
+def _build_weekly_cluster_bundle(client, week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
+    article_data = get_weekly_articles(week_start, score_threshold=score_threshold)
     clusters = _enrich_clusters(cluster_articles(client, article_data["articles"]))
     patterns = extract_patterns(client, clusters)
     clustered_context = _format_cluster_context(clusters, patterns)
-    digest_context = _format_daily_digest_context()
+    digest_context = _format_daily_digest_context(week_start)
 
     if clustered_context and digest_context:
         source_context = (
@@ -1330,7 +1342,7 @@ def generate_signal_command_brief(cluster_df, week_start):
 
 
 def _generate_and_store_weekly_reports(client, week_start):
-    weekly_bundle = _build_weekly_cluster_bundle(client, score_threshold=DEFAULT_SCORE_THRESHOLD)
+    weekly_bundle = _build_weekly_cluster_bundle(client, week_start, score_threshold=DEFAULT_SCORE_THRESHOLD)
     source_context = weekly_bundle["source_context"]
 
     if not source_context.strip():

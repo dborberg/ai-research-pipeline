@@ -12,6 +12,7 @@ import sys
 import argparse
 import logging
 import os
+import math
 from pathlib import Path
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -113,8 +114,57 @@ def ingest_articles():
 def enrich_articles():
     logging.info("Starting enrichment")
     print("Enriching articles...")
-    subprocess.run([sys.executable, "app/enrich_articles.py"], check=True)
+    subprocess.run(
+        [
+            sys.executable,
+            "app/enrich_articles.py",
+            "--limit",
+            "40",
+            "--max-age-hours",
+            "36",
+        ],
+        check=True,
+    )
     logging.info("Enrichment completed")
+
+
+def _count_enriched_articles(feedly_ids):
+    unique_ids = sorted({feedly_id for feedly_id in feedly_ids if feedly_id})
+    if not unique_ids:
+        return 0
+
+    placeholders = ", ".join([f":feedly_id_{index}" for index in range(len(unique_ids))])
+    params = {f"feedly_id_{index}": feedly_id for index, feedly_id in enumerate(unique_ids)}
+
+    with create_engine(DB_PATH).connect() as conn:
+        return conn.execute(
+            text(
+                f"""
+                SELECT COUNT(*)
+                FROM articles
+                WHERE feedly_id IN ({placeholders})
+                  AND ai_score IS NOT NULL
+                  AND advisor_relevance IS NOT NULL
+                  AND TRIM(advisor_relevance) != ''
+                """
+            ),
+            params,
+        ).scalar_one()
+
+
+def _validate_recent_enrichment(articles):
+    ingested_ids = [article.get("link") for article in articles if article.get("link")]
+    if not ingested_ids:
+        return
+
+    enriched_count = _count_enriched_articles(ingested_ids)
+    required_count = len(ingested_ids) if len(ingested_ids) <= 5 else math.ceil(len(ingested_ids) * 0.6)
+
+    if enriched_count < required_count:
+        raise RuntimeError(
+            "Recent article enrichment is incomplete "
+            f"({enriched_count}/{len(ingested_ids)} enriched, required {required_count})"
+        )
 
 
 def generate_daily_digest():
@@ -177,6 +227,14 @@ def run(dry_run=False):
         except Exception as e:
             print(f"Enrichment failed: {e}")
             logging.exception("Enrichment failed")
+            return
+
+        try:
+            _validate_recent_enrichment(articles)
+        except Exception as e:
+            print(f"Enrichment validation failed: {e}")
+            logging.exception("Enrichment validation failed")
+            return
 
         # ✅ Generate ONCE and reuse
         try:

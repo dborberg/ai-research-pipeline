@@ -1,0 +1,64 @@
+name: Deploy Cloud Run Jobs
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/deploy_cloud_run_jobs.yml"
+      - "Dockerfile"
+      - ".dockerignore"
+      - "requirements.txt"
+      - "run_pipeline.py"
+      - "run_weekly_pipeline.py"
+      - "run_weekly_investment_pipeline.py"
+      - "run_monthly_pipeline.py"
+      - "app/**"
+      - "scripts/deploy_cloud_run_jobs.sh"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  PROJECT_ID: ai-research-pipeline
+  REGION: us-central1
+  REPOSITORY: ai-research-pipeline
+  IMAGE_NAME: ai-research-pipeline
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_DEPLOYER_SERVICE_ACCOUNT }}
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+
+      - name: Configure Docker auth
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+      - name: Build and push container image
+        env:
+          IMAGE_URI: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+        run: |
+          docker build --tag "$IMAGE_URI" .
+          docker push "$IMAGE_URI"
+          echo "IMAGE_URI=$IMAGE_URI" >> "$GITHUB_ENV"
+
+      - name: Deploy Cloud Run Jobs
+        env:
+          JOB_SERVICE_ACCOUNT: ${{ secrets.CLOUD_RUN_JOB_SERVICE_ACCOUNT }}
+        run: bash scripts/deploy_cloud_run_jobs.sh "$IMAGE_URI"
