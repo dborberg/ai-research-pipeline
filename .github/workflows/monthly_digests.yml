@@ -37,15 +37,15 @@ jobs:
       - name: Guard against duplicate runs
         run: |
           REPORT_MONTH=$(python - <<'PY'
-from datetime import datetime, timedelta
-from zoneinfo import ZoneInfo
+          from datetime import datetime, timedelta
+          from zoneinfo import ZoneInfo
 
-central_now = datetime.now(ZoneInfo("America/Chicago"))
-first_day_of_current_month = central_now.date().replace(day=1)
-last_day_of_previous_month = first_day_of_current_month - timedelta(days=1)
-print(last_day_of_previous_month.strftime("%Y-%m"))
-PY
-)
+          central_now = datetime.now(ZoneInfo("America/Chicago"))
+          first_day_of_current_month = central_now.date().replace(day=1)
+          last_day_of_previous_month = first_day_of_current_month - timedelta(days=1)
+          print(last_day_of_previous_month.strftime("%Y-%m"))
+          PY
+          )
           echo "REPORT_MONTH=$REPORT_MONTH" >> $GITHUB_ENV
 
           if [[ "${{ github.event_name }}" == "schedule" ]] && git cat-file -e "HEAD:outputs/monthly/${REPORT_MONTH}.txt"; then
