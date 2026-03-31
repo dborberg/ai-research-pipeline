@@ -163,6 +163,7 @@ def send_digest(digest_text=None, dry_run=False):
 
 def run(dry_run=False):
     try:
+        print("=== PIPELINE START ===")
         logging.info("Pipeline started")
 
         init_db()
@@ -171,22 +172,37 @@ def run(dry_run=False):
             print("No articles available — skipping digest generation safely")
             logging.warning("No articles available — skipping digest generation safely")
             return
-        enrich_articles()
+        try:
+            enrich_articles()
+        except Exception as e:
+            print(f"Enrichment failed: {e}")
+            logging.exception("Enrichment failed")
 
         # ✅ Generate ONCE and reuse
-        digest_text = generate_daily_digest()
-        if not digest_text or not digest_text.strip():
-            raise ValueError("Digest generation returned empty content — aborting to prevent blank output file")
-        save_daily_digest(digest_text)
-        upsert_daily_digest(_central_today(), digest_text)
+        try:
+            digest_text = generate_daily_digest()
+            if not digest_text or not digest_text.strip():
+                raise ValueError("Digest generation returned empty content — aborting to prevent blank output file")
+            save_daily_digest(digest_text)
+            upsert_daily_digest(_central_today(), digest_text)
+        except Exception as e:
+            print(f"Digest generation failed: {e}")
+            logging.exception("Digest generation failed")
+            return
 
-        send_digest(digest_text=digest_text, dry_run=dry_run)
+        try:
+            send_digest(digest_text=digest_text, dry_run=dry_run)
+        except Exception as e:
+            print(f"Email failed: {e}")
+            logging.exception("Email send failed")
 
         logging.info("Pipeline completed successfully")
 
     except Exception as e:
         logging.error(f"Pipeline failed: {e}")
         raise
+    finally:
+        print("=== PIPELINE END ===")
 
 
 if __name__ == "__main__":
