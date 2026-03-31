@@ -1,0 +1,61 @@
+<h2>Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>March 31, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>NVIDIA pushed power-flexible AI factories with energy partners:</strong> The company tied AI buildouts directly to grid resilience and flexible power management, reinforcing that the next leg of AI spending is not just chips and software but also utilities, power equipment, and energy coordination. For financial professionals, that broadens the investable AI ecosystem beyond the largest platform names. (Source: NVIDIA Blog)</li>
+<li><strong>SAP and ANYbotics partnered on industrial physical AI:</strong> The collaboration brings autonomous robotic inspection into enterprise workflows, showing that AI adoption is moving from office productivity into plant operations, maintenance, and safety. That matters for investors looking for AI beneficiaries in industrial software, automation, and logistics rather than only cloud and semiconductor leaders. (Source: AI News)</li>
+<li><strong>Researchers highlighted algorithmic insurance as a live financial-services use case:</strong> The paper underscores how insurers are using AI in underwriting, pricing, claims, and risk assessment, with potential margin benefits alongside governance, bias, and reputational risks. For advisors, it is a reminder that AI is already reshaping core financial-services business models, not just technology vendors. (Source: cs.LG updates on arXiv.org)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>SAP and ANYbotics linked enterprise software with autonomous inspection robots:</strong> The deal suggests AI-driven productivity gains are expanding from white-collar copilots into frontline industrial work, where companies can reduce manual inspection time and improve maintenance planning. (Source: AI News)</li>
+<li><strong>Insurers adopted algorithmic underwriting and claims tools:</strong> The shift points to faster decision-making and lower administrative costs in a large white-collar industry, but it also raises questions around explainability, bias, and how much human review remains in customer-facing decisions. (Source: cs.LG updates on arXiv.org)</li>
+<li><strong>Robotics developers emphasized lower-power automation design:</strong> More efficient robots could improve the labor economics of automation in warehouses, factories, and service settings by reducing operating costs where electricity and battery limits are becoming more important. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>NVIDIA promoted power-flexible AI factories with energy-sector partners:</strong> The announcement highlights a growing market for grid-aware data center design, load management, and power optimization as AI compute demand rises. That supports potential beneficiaries across utilities, electrical equipment, and thermal management. (Source: NVIDIA Blog)</li>
+<li><strong>Researchers connected AI growth with renewable energy investment:</strong> The analysis suggests rising AI electricity demand could accelerate clean-power procurement and related grid upgrades, creating a wider set of AI-linked infrastructure plays beyond semiconductors. (Source: cs.AI updates on arXiv.org)</li>
+<li><strong>Robotics developers focused on energy-efficient automation systems:</strong> The push for lower-power hardware and smarter controls matters because industrial AI adoption will increasingly depend on total energy cost, not just model capability. (Source: Robotics &amp; Automation News)</li>
+<li><strong>TeraFab outlined an alternative manufacturing approach:</strong> While details were limited, the piece points to continued experimentation in advanced production models that could affect capital spending, factory efficiency, and supply-chain positioning in tech manufacturing. (Source: EE Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>NVIDIA’s energy-linked AI factory push widened the AI beneficiary list:</strong> The development supports investment cases in utilities, grid equipment, cooling, and industrial infrastructure alongside the usual chip and cloud names. (Source: NVIDIA Blog)</li>
+<li><strong>Algorithmic insurance highlighted AI exposure inside financial services:</strong> The theme points investors toward insurers and software vendors that can improve underwriting and claims efficiency, while also flagging valuation risk if regulation or litigation rises around opaque models. (Source: cs.LG updates on arXiv.org)</li>
+<li><strong>SAP and ANYbotics showed a path to AI monetization in industrial operations:</strong> The partnership is a useful signal that enterprise AI spending may increasingly flow toward real-world automation projects with measurable maintenance and uptime returns. (Source: AI News)</li>
+<li><strong>Renewable-energy research framed AI as a capital-spending catalyst:</strong> If AI demand continues to pull forward power procurement, investors may find opportunities in developers, transmission, storage, and electrical equipment providers rather than only software platforms. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Researchers flagged governance risks in algorithmic insurance decisions:</strong> The paper points to likely regulatory scrutiny around transparency, bias, and customer fairness as insurers automate underwriting and claims. For advisors, that is a reminder that AI adoption in regulated industries can create both efficiency upside and compliance risk. (Source: cs.LG updates on arXiv.org)</li>
+<li><strong>NVIDIA’s grid-focused AI factory message underscored infrastructure policy relevance:</strong> As AI power demand grows, utility regulation, interconnection rules, and grid investment policy are becoming more important variables for data center expansion and related capital allocation. (Source: NVIDIA Blog)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>SAP and ANYbotics launched a physical AI partnership for industrial inspection:</strong> This is the clearest real-world robotics development in the dataset because it combines enterprise software with autonomous robots for asset monitoring, maintenance, and plant safety. Strategically, it supports the case for public-market exposure to industrial automation, factory software, and logistics-adjacent robotics. (Source: AI News)</li>
+<li><strong>Robotics developers prioritized energy-efficient system design:</strong> The focus on lower-power automation suggests future robotics winners may be defined not just by autonomy but by operating economics, especially in warehouses, mobile systems, and battery-constrained deployments. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch utility and grid announcements tied to AI data centers:</strong> More named partnerships between compute providers and energy companies would confirm that power availability is becoming a gating factor for AI growth. (Source: NVIDIA Blog)</li>
+<li><strong>Watch for insurer disclosures on AI underwriting and claims automation:</strong> Any new governance frameworks, legal challenges, or regulator commentary could quickly shape sentiment around AI adoption in financial services. (Source: cs.LG updates on arXiv.org)</li>
+<li><strong>Watch for additional enterprise software and robotics tie-ups:</strong> If more companies follow SAP and ANYbotics, it would signal that physical AI is becoming a mainstream enterprise spending category rather than a pilot-stage niche. (Source: AI News)</li>
+<li><strong>Watch power-procurement deals linked to AI expansion:</strong> New renewable, storage, or grid-upgrade commitments would strengthen the case that AI is driving a broader infrastructure capex cycle. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is no longer just a software story:</strong> It is increasingly a power, grid, and industrial infrastructure story too. (Source: NVIDIA Blog)</li>
+<li><strong>Physical AI is becoming investable:</strong> Partnerships like SAP and ANYbotics show robots are moving into real enterprise workflows. (Source: AI News)</li>
+<li><strong>Financial services is already in the AI adoption wave:</strong> Insurance is a good example of where efficiency gains and regulatory risks are arriving together. (Source: cs.LG updates on arXiv.org)</li>
+<li><strong>The next AI winners may sit outside the biggest tech platforms:</strong> Utilities, automation firms, and energy equipment providers are gaining relevance. (Source: NVIDIA Blog)</li>
+<li><strong>When clients ask about AI, remind them the opportunity set is broadening:</strong> Chips still matter, but so do power systems, industrial software, and robotics. (Source: AI News)</li>
+</ul>
