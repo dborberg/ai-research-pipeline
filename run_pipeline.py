@@ -76,7 +76,8 @@ def enrich_articles():
     subprocess.run(
         [
             sys.executable,
-            "app/enrich_articles.py",
+            "-m",
+            "app.enrich_articles",
             "--limit",
             "40",
             "--max-age-hours",

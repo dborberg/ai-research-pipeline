@@ -25,6 +25,7 @@ if [[ -z "$JOB_SERVICE_ACCOUNT" ]]; then
 fi
 
 SECRETS_SPEC="OPENAI_API_KEY=OPENAI_API_KEY:latest,EMAIL_USER=EMAIL_USER:latest,EMAIL_PASSWORD=EMAIL_PASSWORD:latest,EMAIL_TO=EMAIL_TO:latest"
+COMMON_ENV_VARS="PYTHONUNBUFFERED=1"
 COMMON_ARGS=(
   "--project=${PROJECT_ID}"
   "--region=${REGION}"
@@ -36,7 +37,6 @@ COMMON_ARGS=(
   "--task-timeout=${TASK_TIMEOUT}"
   "--tasks=1"
   "--parallelism=1"
-  "--set-env-vars=PYTHONUNBUFFERED=1"
   "--set-secrets=${SECRETS_SPEC}"
 )
 
@@ -54,33 +54,44 @@ ensure_repository() {
 
 deploy_job() {
   local job_name="$1"
+  local extra_env_vars="$2"
+  shift
   shift
 
+  local job_args=("${COMMON_ARGS[@]}" "--set-env-vars=${COMMON_ENV_VARS}")
+  if [[ -n "$extra_env_vars" ]]; then
+    job_args=("${COMMON_ARGS[@]}" "--set-env-vars=${COMMON_ENV_VARS},${extra_env_vars}")
+  fi
+
   if gcloud run jobs describe "$job_name" --project="$PROJECT_ID" --region="$REGION" >/dev/null 2>&1; then
-    gcloud run jobs update "$job_name" "${COMMON_ARGS[@]}" "$@"
+    gcloud run jobs update "$job_name" "${job_args[@]}" "$@"
   else
-    gcloud run jobs create "$job_name" "${COMMON_ARGS[@]}" "$@"
+    gcloud run jobs create "$job_name" "${job_args[@]}" "$@"
   fi
 }
 
 ensure_repository
 
-deploy_job ai-research-daily \
+deploy_job ai-research-daily "" \
   --command=python \
   --args=run_pipeline.py
 
-deploy_job ai-research-weekly-wholesaler \
+deploy_job ai-research-daily-dry-run "DB_URL=sqlite:////tmp/ai_research_dry_run.db" \
+  --command=python \
+  --args=run_pipeline.py,--dry-run
+
+deploy_job ai-research-weekly-wholesaler "" \
   --command=python \
   --args=run_weekly_investment_pipeline.py,--mode,WHOLESALER
 
-deploy_job ai-research-weekly-thematic \
+deploy_job ai-research-weekly-thematic "" \
   --command=python \
   --args=run_weekly_investment_pipeline.py,--mode,THEMATIC
 
-deploy_job ai-research-weekly-signal \
+deploy_job ai-research-weekly-signal "" \
   --command=python \
   --args=run_weekly_investment_pipeline.py,--mode,SIGNAL
 
-deploy_job ai-research-monthly \
+deploy_job ai-research-monthly "" \
   --command=python \
   --args=run_monthly_pipeline.py

@@ -19,12 +19,22 @@ The intended path is:
 The deploy script updates or creates these Cloud Run Jobs in `us-central1`:
 
 1. `ai-research-daily`
-2. `ai-research-weekly-wholesaler`
-3. `ai-research-weekly-thematic`
-4. `ai-research-weekly-signal`
-5. `ai-research-monthly`
+2. `ai-research-daily-dry-run`
+3. `ai-research-weekly-wholesaler`
+4. `ai-research-weekly-thematic`
+5. `ai-research-weekly-signal`
+6. `ai-research-monthly`
 
 All jobs use the same container image and set runtime secrets from Secret Manager.
+
+The `ai-research-daily-dry-run` job is intentionally isolated from production state:
+
+1. It runs `python run_pipeline.py --dry-run`.
+2. It uses a temporary SQLite database at `/tmp/ai_research_dry_run.db`.
+3. It does not send email.
+4. It is not scheduled by default.
+
+This is the safe path for inspecting a GCP-produced daily digest without mutating the production digest history used by the next scheduled run.
 
 ## Important runtime constraint
 
@@ -173,6 +183,29 @@ export REGION=us-central1
 export JOB_SERVICE_ACCOUNT=cloud-run-job-runner@ai-research-pipeline.iam.gserviceaccount.com
 bash scripts/deploy_cloud_run_jobs.sh
 ```
+
+## Safe daily output test in GCP
+
+After the jobs are deployed, you can manually execute the isolated test job:
+
+```bash
+gcloud run jobs execute ai-research-daily-dry-run \
+  --project=ai-research-pipeline \
+  --region=us-central1 \
+  --wait
+```
+
+Then inspect the digest output from Cloud Logging:
+
+```bash
+gcloud logging read \
+  'resource.type="cloud_run_job" AND resource.labels.job_name="ai-research-daily-dry-run"' \
+  --project=ai-research-pipeline \
+  --limit=100 \
+  --format='value(textPayload)'
+```
+
+This test path is designed not to disrupt the next scheduled daily production run.
 
 ## Next architecture step
 
