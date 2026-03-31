@@ -4,10 +4,11 @@ def generate_daily_digest():
     import re
     from datetime import datetime, timedelta
     from zoneinfo import ZoneInfo
-    from sqlalchemy import create_engine, text
+    from sqlalchemy import text
     from openai import OpenAI
 
-    DB_PATH = "sqlite:///data/ai_research.db"
+    from app.db import get_engine
+
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     _CENTRAL_TZ = ZoneInfo("America/Chicago")
 
@@ -91,7 +92,7 @@ def generate_daily_digest():
         return "general_news"
 
     def get_recent_articles():
-        engine = create_engine(DB_PATH)
+        engine = get_engine()
         cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
 
         with engine.connect() as conn:

@@ -9,3 +9,4 @@ lxml<5
 lxml_html_clean
 streamlit
 streamlit-autorefresh
+psycopg[binary]

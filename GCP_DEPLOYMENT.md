@@ -177,3 +177,35 @@ bash scripts/deploy_cloud_run_jobs.sh
 ## Next architecture step
 
 To make the Cloud Run Jobs themselves the production scheduler target, move persistence off SQLite and local output files first.
+
+## Dashboard recommendation
+
+The dashboard should eventually move to a Cloud Run Service if you want it always available, but it should not be treated as production-ready for Cloud Run in the current storage model.
+
+Current blockers:
+
+1. `app/db.py`, `run_pipeline.py`, `app/generate_digest.py`, and `app/enrich_articles.py` all depend on the same local database.
+2. The dashboard reads from `weekly_clusters`, `weekly_digests`, `daily_digests`, and `monthly_reports` and therefore needs the same durable state as the batch jobs.
+3. `streamlit_app.py` also relies on stored cluster history, so a stateless container with ephemeral disk will drift or reset.
+
+What is prepared now:
+
+1. The shared DB layer now supports `DB_URL` so the codebase can be pointed at managed storage later without another round of hardcoded path cleanup.
+2. `Dockerfile.dashboard` runs the Streamlit dashboard on Cloud Run's required `PORT`.
+
+Recommended migration sequence:
+
+1. Move the database to a managed backend and set `DB_URL` for both jobs and the dashboard.
+2. Validate that the batch jobs still populate the same tables in the managed database.
+3. Deploy the dashboard as a Cloud Run Service using `Dockerfile.dashboard`.
+
+Example dashboard deploy command after persistence is migrated:
+
+```bash
+gcloud run deploy ai-research-dashboard \
+  --project=ai-research-pipeline \
+  --region=us-central1 \
+  --source=. \
+  --dockerfile=Dockerfile.dashboard \
+  --allow-unauthenticated
+```

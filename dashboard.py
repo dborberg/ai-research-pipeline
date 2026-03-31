@@ -2,11 +2,13 @@ from datetime import datetime
 
 import pandas as pd
 import streamlit as st
+from dotenv import load_dotenv
 
 from app.db import fetch_daily_digests, fetch_monthly_reports, fetch_weekly_digests, get_engine, init_db
 
 
 st.set_page_config(page_title="AI Research Dashboard", layout="wide")
+load_dotenv()
 
 
 def load_articles():

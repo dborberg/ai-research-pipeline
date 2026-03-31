@@ -18,9 +18,9 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 from dotenv import load_dotenv
-from sqlalchemy import create_engine, text
+from sqlalchemy import text
 
-from app.db import init_db, upsert_daily_digest
+from app.db import get_engine, init_db, insert_article, upsert_daily_digest
 
 # ✅ Load environment variables (works locally + GitHub Actions)
 load_dotenv()
@@ -34,7 +34,6 @@ logging.basicConfig(
 )
 
 
-DB_PATH = "sqlite:///data/ai_research.db"
 DAILY_OUTPUT_DIR = Path("outputs/daily")
 _CENTRAL_TZ = ZoneInfo("America/Chicago")
 
@@ -50,61 +49,21 @@ def ingest_articles():
 
     from app.fetch_rss_articles import fetch_rss_articles, RSS_FEEDS
 
-    # Ensure data directory exists
+    # Ensure data directory exists for local SQLite and output artifacts.
     os.makedirs("data", exist_ok=True)
 
-    engine = create_engine(DB_PATH)
-
-    # Create table if it doesn't exist
-    with engine.connect() as conn:
-        conn.execute(text("""
-            CREATE TABLE IF NOT EXISTS articles (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                feedly_id TEXT UNIQUE,
-                title TEXT,
-                source TEXT,
-                url TEXT,
-                published_at TEXT,
-                created_at TEXT,
-                ai_score REAL
-            )
-        """))
-        conn.commit()
+    init_db()
 
     articles = fetch_rss_articles(RSS_FEEDS)
 
     inserted = 0
 
-    with engine.connect() as conn:
-        for article in articles:
-            try:
-                conn.execute(text("""
-                    INSERT OR IGNORE INTO articles 
-                    (feedly_id, title, source, url, published_at, created_at, summary)
-                    VALUES (:feedly_id, :title, :source, :url, :published_at, :created_at, :summary)
-                """), {
-                    'feedly_id': article.get('link'),
-                    'title': article.get('title'),
-                    'source': article.get('source'),
-                    'url': article.get('link'),
-                    'published_at': article.get('published'),
-                    'created_at': datetime.utcnow().isoformat(),
-                    'summary': article.get('summary') or article.get('text') or '',
-                })
-                # Fill summary for any existing article that was stored without one
-                conn.execute(text("""
-                    UPDATE articles
-                    SET summary = :summary
-                    WHERE feedly_id = :feedly_id AND (summary IS NULL OR summary = '')
-                """), {
-                    'feedly_id': article.get('link'),
-                    'summary': article.get('summary') or article.get('text') or '',
-                })
-                inserted += 1
-            except Exception as e:
-                logging.warning(f"Insert failed: {e}")
-
-        conn.commit()
+    for article in articles:
+        try:
+            insert_article(article)
+            inserted += 1
+        except Exception as e:
+            logging.warning(f"Insert failed: {e}")
 
     logging.info(f"Ingestion completed: {inserted} articles processed")
     print(f"Ingested {inserted} articles")
@@ -136,7 +95,7 @@ def _count_enriched_articles(feedly_ids):
     placeholders = ", ".join([f":feedly_id_{index}" for index in range(len(unique_ids))])
     params = {f"feedly_id_{index}": feedly_id for index, feedly_id in enumerate(unique_ids)}
 
-    with create_engine(DB_PATH).connect() as conn:
+    with get_engine().connect() as conn:
         return conn.execute(
             text(
                 f"""

@@ -2,7 +2,6 @@
 import hashlib
 import os
 from datetime import timedelta
-from pathlib import Path
 
 import pandas as pd
 import streamlit as st
@@ -10,7 +9,7 @@ from streamlit_autorefresh import st_autorefresh
 from dotenv import load_dotenv
 
 from app.cluster_schema import normalize_cluster_df
-from app.db import fetch_weekly_digests, get_articles_by_ids, get_cluster_history, get_weekly_clusters, save_weekly_clusters
+from app.db import fetch_weekly_digests, get_articles_by_ids, get_cluster_history, get_database_state_token, get_weekly_clusters, save_weekly_clusters
 from app.reporting import get_openai_client, get_week_start
 from app.velocity import apply_velocity_metrics, compute_velocity
 from run_weekly_pipeline import cluster_articles, get_weekly_articles
@@ -22,16 +21,11 @@ except ImportError:  # pragma: no cover - optional dependency
 
 
 st.set_page_config(page_title="AI Signal Dashboard", layout="wide")
-
-
-DB_FILE = Path("data/ai_research.db")
+load_dotenv()
 
 
 def _get_db_version():
-    try:
-        return int(DB_FILE.stat().st_mtime)
-    except FileNotFoundError:
-        return 0
+    return get_database_state_token()
 
 
 def _safe_float(value, default=0.0):
@@ -425,7 +419,6 @@ def main():
 
     # Auto-refresh every 5 minutes (300,000 ms)
     st_autorefresh(interval=300000, key="auto-refresh")
-    load_dotenv()
 
     st.title("AI Signal Command Center")
     st.caption("Weekly AI signal detection and thematic momentum")
