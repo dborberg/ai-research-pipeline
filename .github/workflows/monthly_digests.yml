@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "0 15 1 * *"
   workflow_dispatch:
+    inputs:
+      scheduled_run:
+        description: Set to true when this workflow is dispatched by GCP Cloud Scheduler
+        required: false
+        default: false
+        type: boolean
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name }}
@@ -48,7 +54,10 @@ jobs:
           )
           echo "REPORT_MONTH=$REPORT_MONTH" >> $GITHUB_ENV
 
-          if [[ "${{ github.event_name }}" == "schedule" ]] && git cat-file -e "HEAD:outputs/monthly/${REPORT_MONTH}.txt"; then
+          if [[ "${{ github.event_name }}" == "schedule" && "${{ vars.USE_GCP_SCHEDULER }}" == "true" ]]; then
+            echo "SKIP_RUN=true" >> $GITHUB_ENV
+            echo "GitHub cron disabled because USE_GCP_SCHEDULER=true; expecting GCP-triggered workflow_dispatch instead."
+          elif [[ ( "${{ github.event_name }}" == "schedule" || "${{ github.event.inputs.scheduled_run }}" == "true" ) ]] && git cat-file -e "HEAD:outputs/monthly/${REPORT_MONTH}.txt"; then
             echo "SKIP_RUN=true" >> $GITHUB_ENV
             echo "Monthly output for ${REPORT_MONTH} already exists; skipping duplicate run."
           else

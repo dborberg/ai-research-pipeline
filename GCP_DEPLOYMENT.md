@@ -50,6 +50,74 @@ Current safe interpretation:
 1. GitHub to GCP deployment is set up.
 2. Scheduled execution should remain in GitHub Actions until persistence is migrated.
 
+## Interim scheduler recommendation
+
+If you want more reliable trigger timing before moving persistence off SQLite, use GCP Cloud Scheduler to dispatch the existing GitHub workflows.
+
+This is the recommended interim architecture because it improves schedule reliability without changing the current stateful runtime behavior:
+
+1. Cloud Scheduler becomes the authoritative clock.
+2. GitHub Actions remains the execution runtime and still persists `outputs/` and `data/ai_research.db` back into the repository.
+3. Weekly, monthly, and the local dashboard continue to read the same repo-backed state they use today.
+
+This repository now supports that cutover safely:
+
+1. The daily, weekly, and monthly workflows accept `workflow_dispatch` payloads marked with `scheduled_run=true`.
+2. Duplicate guards treat those GCP-triggered dispatches like scheduled runs.
+3. If you set the GitHub repository variable `USE_GCP_SCHEDULER=true`, native GitHub cron events will skip immediately so Cloud Scheduler can be the sole scheduler.
+
+## One-time Cloud Scheduler setup
+
+You need a GitHub token that can dispatch workflows for `dborberg/ai-research-pipeline`.
+
+Recommended token shape:
+
+1. Fine-grained personal access token.
+2. Repository access limited to `dborberg/ai-research-pipeline`.
+3. Permissions sufficient to trigger Actions workflows.
+
+Important note:
+
+1. The token is sent as an HTTP header by Cloud Scheduler.
+2. That means it becomes part of the Scheduler job configuration, so use a dedicated low-scope token only for workflow dispatch.
+3. Do not reuse your normal interactive GitHub token for this.
+
+Then run:
+
+```bash
+export PROJECT_ID=ai-research-pipeline
+export REGION=us-central1
+export GITHUB_TOKEN=YOUR_GITHUB_TRIGGER_TOKEN
+bash scripts/deploy_gcp_github_scheduler.sh
+```
+
+This creates these Cloud Scheduler jobs in `us-central1` using `America/Chicago` time:
+
+1. `ai-research-gh-daily` at `6:30 AM`
+2. `ai-research-gh-weekly-wholesaler` at `8:00 AM Friday`
+3. `ai-research-gh-weekly-thematic` at `8:15 AM Friday`
+4. `ai-research-gh-weekly-signal` at `8:30 AM Friday`
+5. `ai-research-gh-monthly` at `10:00 AM` on the first day of the month
+
+The script is idempotent and updates existing jobs in place.
+
+## Cutover steps
+
+After the scheduler jobs exist, cut over in this order:
+
+1. Manually test one scheduler job with `gcloud scheduler jobs run ai-research-gh-daily --location=us-central1`.
+2. Confirm the corresponding GitHub workflow starts via `workflow_dispatch`.
+3. Set the GitHub repository variable `USE_GCP_SCHEDULER=true`.
+4. Leave the existing `schedule:` blocks in the workflows as dormant fallback definitions; they will skip while the variable is true.
+
+Example variable command:
+
+```bash
+gh variable set USE_GCP_SCHEDULER \
+  --repo dborberg/ai-research-pipeline \
+  --body true
+```
+
 ## Local gcloud bootstrap
 
 Run these commands locally once:
@@ -210,6 +278,22 @@ This test path is designed not to disrupt the next scheduled daily production ru
 ## Next architecture step
 
 To make the Cloud Run Jobs themselves the production scheduler target, move persistence off SQLite and local output files first.
+
+## Cloud SQL recommendation
+
+Moving persistence to Cloud SQL is recommended soon, but it is not required for the interim GCP-triggered GitHub scheduling build.
+
+Recommended timing:
+
+1. Do the Cloud Scheduler cutover now if schedule reliability is the immediate pain.
+2. Move persistence to Cloud SQL next if you want a single authoritative production state for daily, weekly, monthly, and the dashboard.
+3. Only after that move the production runtime itself from GitHub Actions to Cloud Run Jobs.
+
+In other words:
+
+1. Cloud Scheduler now.
+2. Cloud SQL next.
+3. Full Cloud Run production after the data layer is migrated.
 
 ## Dashboard recommendation
 

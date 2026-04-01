@@ -13,6 +13,12 @@ on:
     - cron: '30 18 * 1-2,11-12 *'   # 12:30 PM CST backup 2
     - cron: '30 21 * 1-2,11-12 *'   # 3:30 PM CST backup 3 — final safety net for severe scheduler delays
   workflow_dispatch:
+    inputs:
+      scheduled_run:
+        description: Set to true when this workflow is dispatched by GCP Cloud Scheduler
+        required: false
+        default: false
+        type: boolean
 
 # GitHub Actions scheduled workflows are subject to significant scheduler delays
 # (often 1-4+ hours on busy days). Each cron gets its OWN concurrency group so
@@ -62,7 +68,10 @@ jobs:
           CENTRAL_DATE=$(TZ=America/Chicago date +%F)
           echo "CENTRAL_DATE=$CENTRAL_DATE" >> $GITHUB_ENV
 
-          if [[ "${{ github.event_name }}" == "schedule" ]] && git cat-file -e "HEAD:outputs/daily/${CENTRAL_DATE}.txt"; then
+          if [[ "${{ github.event_name }}" == "schedule" && "${{ vars.USE_GCP_SCHEDULER }}" == "true" ]]; then
+            echo "SKIP_RUN=true" >> $GITHUB_ENV
+            echo "GitHub cron disabled because USE_GCP_SCHEDULER=true; expecting GCP-triggered workflow_dispatch instead."
+          elif [[ ( "${{ github.event_name }}" == "schedule" || "${{ github.event.inputs.scheduled_run }}" == "true" ) ]] && git cat-file -e "HEAD:outputs/daily/${CENTRAL_DATE}.txt"; then
             echo "SKIP_RUN=true" >> $GITHUB_ENV
             echo "Scheduled digest for ${CENTRAL_DATE} already exists in the repository; skipping duplicate run."
           else

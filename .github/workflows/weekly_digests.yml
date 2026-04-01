@@ -27,6 +27,11 @@ on:
           - WHOLESALER
           - THEMATIC
           - SIGNAL
+      scheduled_run:
+        description: Set to true when this workflow is dispatched by GCP Cloud Scheduler
+        required: false
+        default: false
+        type: boolean
 
 # Single concurrency group for the whole workflow so scheduled and manual runs
 # never execute in parallel.  With cancel-in-progress: false a second trigger is
@@ -98,6 +103,12 @@ jobs:
 
       - name: Guard against duplicate runs
         run: |
+          if [[ "${{ github.event_name }}" == "schedule" && "${{ vars.USE_GCP_SCHEDULER }}" == "true" ]]; then
+            echo "SKIP_RUN=true" >> $GITHUB_ENV
+            echo "GitHub cron disabled because USE_GCP_SCHEDULER=true; expecting GCP-triggered workflow_dispatch instead."
+            exit 0
+          fi
+
           CENTRAL_DATE=$(TZ=America/Chicago date +%F)
           WEEK_START=$(python -c "from datetime import date, timedelta; d=date.fromisoformat('${CENTRAL_DATE}'); n=(d.weekday()-4)%7; print((d - timedelta(days=n)).isoformat())")
           echo "WEEK_START=$WEEK_START" >> $GITHUB_ENV
@@ -113,7 +124,7 @@ jobs:
             echo "OUTPUT_PATH=$OUTPUT_PATH" >> $GITHUB_ENV
           fi
 
-          if [[ -n "$OUTPUT_PATH" ]] && git cat-file -e "HEAD:${OUTPUT_PATH}"; then
+          if [[ -n "$OUTPUT_PATH" && ( "${{ github.event_name }}" == "schedule" || "${{ github.event.inputs.scheduled_run }}" == "true" ) ]] && git cat-file -e "HEAD:${OUTPUT_PATH}"; then
             echo "SKIP_RUN=true" >> $GITHUB_ENV
             echo "Weekly output already exists at ${OUTPUT_PATH}; skipping duplicate run."
           else
