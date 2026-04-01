@@ -1,0 +1,50 @@
+Monthly Tunes from the Gen AI Songbook
+
+Month of March 2026
+
+EXECUTIVE SUMMARY
+- March signals converged around one dominant shift: AI moved further from a software narrative into an industrial and infrastructure buildout centered on power, cooling, networking, simulation, and factory deployment.
+- Industrial automation and physical AI strengthened through the month, with recurring evidence from robotics, digital twins, predictive maintenance, and enterprise-linked inspection workflows.
+- Power availability became the clearest gating factor for AI scale, broadening the beneficiary set toward utilities, electrical equipment, cooling, power conversion, and grid-linked infrastructure.
+- Enterprise adoption looked more durable where ROI is measurable and controls are strong: chip design, procurement, compliance, supply chain, and other regulated or mission-critical workflows.
+- Labor and governance signals turned more concrete, but the pattern was uneven: firms are raising productivity expectations, slowing hiring, and restructuring selected roles while keeping human oversight central.
+
+STRUCTURAL WINNERS
+1. Industrial and robotics automation
+   Repeatedly the highest-conviction theme late in the month, supported by NVIDIA’s Omniverse push, Agile Robots/DeepMind, Festo’s adaptive gripper, and SAP/ANYbotics. The common thread is AI monetization through throughput, uptime, maintenance, and labor efficiency in physical environments.
+
+2. Power, cooling, and electrical infrastructure for AI data centers
+   The month consistently highlighted AI as a power procurement and infrastructure story, not just a chip story. Meta’s Louisiana buildout, Google’s Michigan campus, ABB/VoltaGrid, STMicroelectronics/NVIDIA power designs, Vertiv expansion, and utility interest all reinforced this as a durable second-order beneficiary set.
+
+3. Mission-critical design and governance software
+   Synopsys and related verification themes recurred as enterprises pushed AI deeper into engineering while emphasizing reliability, auditability, and human oversight. This supports design software, assurance, cybersecurity, and control-layer vendors over unconstrained autonomy narratives.
+
+4. Broader AI infrastructure enablers beyond GPUs
+   The signal broadened across CPUs, memory, optics, networking, and power management. Arm’s AI CPU entry, Micron’s demand signal, and repeated discussion of optics and power-delivery bottlenecks suggest a wider infrastructure participation story, though with rising scrutiny on capex returns.
+
+RISING THEMES
+1. Operational AI inside existing enterprise systems
+   Procurement, compliance, legal, financial-services risk, and back-office workflows appeared repeatedly as practical adoption lanes. The emphasis shifted toward AI embedded in core systems with measurable cost or productivity benefits rather than standalone copilots.
+
+2. Specialized vertical and scientific workflows
+   Coverage increasingly pointed to AI supporting expert judgment in engineering, healthcare, geospatial, epidemiology, and financial services. The recurring implication was that proprietary data, workflow integration, and compliance credibility matter more than raw model access.
+
+3. Edge and retrofit intelligence on installed infrastructure
+   Software-defined sensing, ambient monitoring, and AI layered onto existing networks and equipment emerged as a quieter but persistent theme. This suggests adoption can scale through lower-friction upgrades rather than only large greenfield capex.
+
+BREAKING DOWN
+1. Pure software-hype framing
+   Across weekly and daily briefs, the market narrative shifted away from model novelty toward real-world constraints and deployment economics. Physical capacity, process quality, and operational integration increasingly displaced abstract software enthusiasm.
+
+2. Confidence that AI demand alone is enough
+   Several items showed investors becoming more selective as capex intensity rose. Micron’s stock reaction, Foxconn’s margin pressure, canceled or delayed data center projects, and repeated financing/permitting issues all reinforced that revenue exposure does not guarantee earnings quality.
+
+3. Expectations of rapid, clean labor replacement
+   The month’s labor evidence pointed instead to slower hiring, selective layoffs, workflow redesign, and rising demand for review, governance, and exception handling. Resistance in sensitive fields and reliability concerns also argued against a simple automation-replacement cycle.
+
+PORTFOLIO IMPLICATIONS
+- Maintain overweight attention on second-order AI beneficiaries tied to physical deployment: industrial automation, robotics, simulation, cooling, electrical equipment, and utility-linked infrastructure.
+- Favor companies with exposure to measurable enterprise ROI and strong control layers, especially in engineering, procurement, compliance, and regulated workflows where adoption appears stickier.
+- Treat power access, permitting, and infrastructure execution as core underwriting variables for AI-related holdings; these are now central constraints on growth, not side issues.
+- Broaden semiconductor exposure beyond accelerators toward memory, CPUs, optics, networking, and power-management layers, but be more selective where capex burdens threaten margin conversion.
+- Be cautious on narratives that rely on unconstrained agent autonomy or immediate labor elimination; the stronger signal is controlled deployment with human oversight, slower organizational change, and uneven monetization.
