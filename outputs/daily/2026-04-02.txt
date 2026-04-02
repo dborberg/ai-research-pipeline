@@ -1,0 +1,58 @@
+<h2>Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>April 02, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>OpenAI’s $122 billion raise:</strong> OpenAI reportedly secured an extraordinary funding round to expand data centers, diversify cloud partners, and broaden chip sourcing, making this one of the clearest signs yet that AI leadership is becoming a capital-intensive infrastructure race rather than just a software story. For financial professionals, that widens the investable theme to include cloud, semiconductors, networking, and power-exposed suppliers, while also raising execution and valuation risk. (Source: Data Center Knowledge)</li>
+<li><strong>KPMG’s enterprise margin playbook:</strong> KPMG outlined how companies are moving from AI pilots to agent deployments aimed at automating multi-step workflows and improving operating leverage, reinforcing that the next phase of adoption will be judged on measurable productivity and margin gains. That matters for advisors because it supports a more selective view of beneficiaries across software, consulting, and business services rather than a blanket AI trade. (Source: AI News)</li>
+<li><strong>Agile Robots closed the thyssenkrupp Automation Engineering acquisition:</strong> Agile Robots completed its purchase of thyssenkrupp Automation Engineering, highlighting that AI is also driving consolidation in industrial automation and advanced manufacturing. For investors, the deal is a reminder that physical AI can create opportunities beyond software through factory automation, reshoring, and industrial productivity themes. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>KPMG highlighted AI agents in back-office workflows:</strong> KPMG said enterprises are using AI agents to automate multi-step tasks, speed decisions, and support margin expansion, suggesting white-collar AI adoption is shifting from experimentation to targeted productivity programs. The practical implication is that firms with clean data, strong governance, and repeatable workflows may see the earliest labor-efficiency gains. (Source: AI News)</li>
+<li><strong>Researchers argued internal APIs will beat browser-based agents:</strong> A new paper contends that enterprise AI agents will work better when tied into internal APIs rather than browser automation, because APIs are faster, more reliable, and easier to govern. For employers, that points to spending on middleware, orchestration, and systems integration instead of relying on brittle front-end automation. (Source: arXiv)</li>
+<li><strong>Researchers proposed fatigue-aware human handoff systems:</strong> New work on learning when AI should defer to people, while accounting for human fatigue, underscores that workforce redesign will matter as much as model accuracy in real deployments. The takeaway for financial firms and other regulated employers is that oversight models may need to be redesigned, not just digitized. (Source: arXiv)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>OpenAI expanded its infrastructure ambitions:</strong> OpenAI’s reported $122 billion raise is a direct signal that AI demand is pulling forward spending on data centers, compute capacity, and chip supply diversification. That reinforces the case for looking beyond model developers to infrastructure owners, equipment vendors, and utilities tied to AI load growth. (Source: Data Center Knowledge)</li>
+<li><strong>Rambus launched an HBM4E controller:</strong> Rambus introduced a next-generation memory controller with 16 GT/s speeds and a 2,048-bit interface, highlighting how memory bandwidth is becoming a critical bottleneck in AI systems. For investors, the message is that AI infrastructure upside is spreading into memory, interconnect, and chip IP, not just GPUs. (Source: EE Times)</li>
+<li><strong>Researchers framed agent efficiency as a compute-cost issue:</strong> New work on “cognitive friction” in tool-using agents focused on balancing reasoning quality against latency and compute cost, a reminder that software design choices can materially affect infrastructure demand. That matters because more efficient agents could improve AI economics even as data center spending remains elevated. (Source: arXiv)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>OpenAI’s mega-round reset the scale of AI capital formation:</strong> The reported $122 billion financing stands out as a major capital markets signal, underscoring how private funding is being used to secure strategic control over compute, cloud, and chips. For advisors, it supports the view that AI investment opportunities extend into private infrastructure, suppliers, and financing ecosystems, but also that concentration and capital intensity are rising. (Source: Data Center Knowledge)</li>
+<li><strong>Agile Robots used M&amp;A to build industrial AI scale:</strong> Agile Robots’ acquisition of thyssenkrupp Automation Engineering shows that strategic buyers are using deals to assemble broader automation platforms. That is relevant for investors looking beyond mega-cap software toward industrial automation, manufacturing technology, and robotics-enabled productivity plays. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Rambus targeted a key AI bottleneck:</strong> Rambus’ HBM4E controller launch reinforces that second-order semiconductor beneficiaries may capture value as AI systems demand more memory bandwidth and specialized architectures. The broader market implication is that AI capex may continue to support a wider semiconductor stack than the most visible accelerator names. (Source: EE Times)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>OpenAI’s infrastructure expansion raised policy relevance:</strong> OpenAI’s reported plan to broaden cloud and chip sourcing has strategic implications for supply-chain resilience, infrastructure concentration, and potential government scrutiny around AI capacity and market power. For financial professionals, this is a reminder that policy risk is increasingly tied to who controls compute, not just who builds models. (Source: Data Center Knowledge)</li>
+<li><strong>Researchers emphasized governance in enterprise agent deployment:</strong> KPMG’s enterprise AI playbook stressed that governance, data controls, and targeted use cases are essential for scaling AI agents responsibly. While not a formal rulemaking event, it reflects the growing compliance overlay that employers and regulated industries will need before broad labor substitution or client-facing deployment. (Source: AI News)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Agile Robots completed the thyssenkrupp Automation Engineering deal:</strong> Agile Robots’ acquisition adds engineering depth, customer relationships, and production know-how in manufacturing automation, making it the clearest physical AI development in today’s set. For investors, the strategic significance is that robotics competition is moving toward full-stack industrial platforms that can serve factory automation, reshoring, and advanced production demand. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch whether OpenAI’s raise triggers follow-on infrastructure spending:</strong> The next 30 to 90 days should show whether cloud providers, chip suppliers, and data center operators announce new capacity plans tied to rising AI demand. (Source: Data Center Knowledge)</li>
+<li><strong>Watch enterprise buyers for proof of labor savings:</strong> KPMG’s margin-focused AI agent thesis will matter more if large employers begin reporting measurable productivity gains, workflow redesign, or slower hiring in support functions. (Source: AI News)</li>
+<li><strong>Watch memory and interconnect suppliers for broader AI upside:</strong> Rambus’ HBM4E launch suggests the market may keep rewarding companies exposed to bandwidth, packaging, and system bottlenecks rather than only headline GPU vendors. (Source: EE Times)</li>
+<li><strong>Watch industrial automation M&amp;A for signs of platform consolidation:</strong> Agile Robots’ thyssenkrupp deal may be an early indicator that robotics vendors are racing to assemble end-to-end manufacturing capabilities. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is no longer just a software story:</strong> The biggest money is now flowing into data centers, chips, and power-hungry infrastructure. (Source: Data Center Knowledge)</li>
+<li><strong>Enterprise AI adoption is getting more practical:</strong> Companies are focusing less on demos and more on whether AI can actually improve margins. (Source: AI News)</li>
+<li><strong>The AI supply chain is broader than the biggest chip names:</strong> Memory, interconnect, and infrastructure enablers may also benefit as spending scales. (Source: EE Times)</li>
+<li><strong>Robotics is becoming part of the AI investment conversation:</strong> Industrial automation deals show AI can drive productivity in factories, not just offices. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Capital intensity is rising fast:</strong> That creates opportunity, but it also means execution risk and valuation discipline matter more from here. (Source: Data Center Knowledge)</li>
+</ul>
