@@ -12,47 +12,47 @@ Strength: 8.40
 Momentum: 500%
 Velocity: +5 article change
 Why It Matters:
-This matters because AI upside is broadening into semiconductors, memory, thermal systems, and data center suppliers, creating second-order beneficiaries beyond software. For markets, it supports continued capex-led earnings growth but also raises concentration, execution, and supply-chain risk.
+This matters because AI upside is broadening from software into semiconductors, memory, thermal management, and data center infrastructure. For markets, it supports continued capex-led beneficiaries across the hardware and industrial supply chain, while raising questions about concentration, execution risk, and cyclical overbuild.
 
-Physical and autonomous systems commercialization
-Conviction: 7.10
-Strength: 7.40
+Physical and autonomy entering industrial and
+Conviction: 7.44
+Strength: 7.69
+Momentum: 600%
+Velocity: +6 article change
+Why It Matters:
+This matters because physical AI could become a multi-year capex cycle spanning industrial automation, mobility, sensors, and robotics platforms. For markets, it creates upside in productivity and equipment demand, but also high dispersion based on commercialization timing, regulation, and execution.
+
+safety governance and compliance as adoption
+Conviction: 7.03
+Strength: 7.05
+Momentum: 600%
+Velocity: +6 article change
+Why It Matters:
+This matters because stronger governance requirements can redirect spending toward cybersecurity, compliance automation, model assurance, and auditability vendors. It also raises the likelihood that regulation and enterprise procurement standards will favor firms with more trustworthy deployment architectures.
+
+Tempus Deployment
+Conviction: 6.72
+Strength: 7.05
+Momentum: 400%
+Velocity: +4 article change
+Why It Matters:
+This matters because vertical AI winners may capture pricing power through differentiated data assets and compliance-ready workflows, especially in healthcare and industrial safety. Investors should watch for firms with defensible datasets, embedded distribution, and evidence of operational deployment in regulated environments.
+
+Enterprise agent deployment moving pilots to
+Conviction: 6.58
+Strength: 6.60
 Momentum: 500%
 Velocity: +5 article change
 Why It Matters:
-This matters because physical AI could drive a new capex cycle across industrial automation, mobility, sensors, and robotics platforms. For markets, the opportunity is large but likely volatile, with valuation outcomes tied to deployment speed, regulation, and integration success.
-
-safety security and compliance tooling
-Conviction: 6.99
-Strength: 7.30
-Momentum: 500%
-Velocity: +5 article change
-Why It Matters:
-This matters because stronger safety and compliance tooling can accelerate enterprise adoption while creating new software categories in cybersecurity, regtech, and model governance. Markets may increasingly reward firms that can make AI auditable, secure, and regulator-ready.
-
-Labor productivity and human-AI operating models
-Conviction: 6.98
-Strength: 7.77
-Momentum: 300%
-Velocity: +3 article change
-Why It Matters:
-This matters because AI's earnings impact will increasingly show up through labor cost changes, service throughput, and margin expansion in sectors like healthcare and professional services. Advisors can use this theme to assess which industries face disruption risk versus productivity upside.
-
-Power and grid constraints compute growth
-Conviction: 6.78
-Strength: 7.65
-Momentum: 200%
-Velocity: +2 article change
-Why It Matters:
-This matters because AI demand is spilling into utilities, grid equipment, and renewable power, potentially reshaping capital allocation across energy and industrial sectors. Advisors should view power access as a gating factor for AI infrastructure growth and a source of new beneficiaries outside traditional tech.
+This matters because monetization is likely to accrue to enterprise software, middleware, and services firms that enable secure workflow integration rather than only to consumer AI apps. For investors, the theme supports a broader software spending cycle tied to productivity gains, margin expansion, and systems integration.
 
 ACCELERATING THEMES (BREAKOUTS)
 
 These themes are accelerating fastest relative to prior week.
 
-infrastructure capital cycle and supply bottlenecks: Momentum 500%, velocity +5. This matters because AI upside is broadening into semiconductors, memory, thermal systems, and data center suppliers, creating second-order beneficiaries beyond software
-Physical and autonomous systems commercialization: Momentum 500%, velocity +5. This matters because physical AI could drive a new capex cycle across industrial automation, mobility, sensors, and robotics platforms
-safety security and compliance tooling: Momentum 500%, velocity +5. This matters because stronger safety and compliance tooling can accelerate enterprise adoption while creating new software categories in cybersecurity, regtech, and model governance
+Physical and autonomy entering industrial and: Momentum 600%, velocity +6. This matters because physical AI could become a multi-year capex cycle spanning industrial automation, mobility, sensors, and robotics platforms
+safety governance and compliance as adoption: Momentum 600%, velocity +6. This matters because stronger governance requirements can redirect spending toward cybersecurity, compliance automation, model assurance, and auditability vendors
+infrastructure capital cycle and supply bottlenecks: Momentum 500%, velocity +5. This matters because AI upside is broadening from software into semiconductors, memory, thermal management, and data center infrastructure
 
 FADING SIGNALS
 
@@ -60,14 +60,14 @@ No major theme showed week-over-week deterioration in this run.
 
 PORTFOLIO IMPLICATIONS
 
-Structural strengthening is concentrated in infrastructure capital cycle and supply bottlenecks, Physical and autonomous systems commercialization, where conviction and signal quality are both holding up.
-Cyclical noise looks more likely in safety security and compliance tooling, Enterprise agent deployment and workflow integration, where momentum is improving faster than underlying strength.
-Conviction is increasing most clearly in infrastructure capital cycle and supply bottlenecks, Physical and autonomous systems commercialization, supported by rising article volume against the prior week.
+Structural strengthening is concentrated in infrastructure capital cycle and supply bottlenecks, Physical and autonomy entering industrial and, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in Enterprise agent deployment moving pilots to, Human labor redesign through agentic and, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in infrastructure capital cycle and supply bottlenecks, Physical and autonomy entering industrial and, supported by rising article volume against the prior week.
 Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
 
 BOTTOM LINE
 
 1. Highest conviction theme: infrastructure capital cycle and supply bottlenecks
-2. Most important new signal: infrastructure capital cycle and supply bottlenecks
-3. Biggest acceleration: infrastructure capital cycle and supply bottlenecks
+2. Most important new signal: Physical and autonomy entering industrial and
+3. Biggest acceleration: Physical and autonomy entering industrial and
 4. Key risk / fading area: No material fading area

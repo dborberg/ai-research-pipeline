@@ -1092,19 +1092,43 @@ Do not repeat the rest of the digest.
 """
 
     tip_user_prompt = f"""
-Write exactly this section header and content:
-
 AI PRACTICE TIP OF THE WEEK
-What: one sentence
-Why: two short sentences
-How to:
-1. one short sentence
-2. one short sentence
-3. one short sentence
-Copy prompt: one copy-paste prompt advisors can use
-Guardrail: one sentence reminding them to review outputs, avoid sensitive personal information, keep it factual, and follow firm policies
 
-Use the weekly digest draft below for context:
+You are designing ONE highly practical, differentiated AI use case for financial advisors that a wholesaler can suggest in a client conversation.
+
+CRITICAL REQUIREMENTS:
+- Do NOT repeat common use cases like summarizing articles or writing basic emails
+- Rotate across different advisor workflows each week such as prospecting, portfolio review, client communication, meeting prep, behavioral coaching, or practice management
+- The idea must feel specific, actionable, and new, not generic
+- It should be something an advisor could actually try within 10 minutes
+- Tie the use case loosely to this week's themes when relevant, but do not force it
+
+OUTPUT FORMAT:
+
+What:
+(A one-sentence description of the use case)
+
+Why it matters:
+(2 to 3 sentences explaining why this is useful for advisors specifically)
+
+How to:
+1. (A simple, practical, executable step)
+2. (A simple, practical, executable step)
+3. (A simple, practical, executable step)
+
+Copy prompt:
+(A clean, ready-to-use prompt the advisor can paste into ChatGPT)
+
+Guardrail:
+(1 to 2 sentences on compliance, accuracy, or appropriate use)
+
+STYLE:
+- Plain English
+- Advisor-friendly, not technical
+- Avoid hype
+- Focus on usefulness and differentiation
+
+Use the weekly digest draft below for context. Return only the section content in the format above:
 
 WEEK START: {week_start}
 
