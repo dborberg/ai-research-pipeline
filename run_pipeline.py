@@ -21,6 +21,7 @@ from dotenv import load_dotenv
 from sqlalchemy import text
 
 from app.db import get_engine, init_db, insert_article, upsert_daily_digest
+from app.pipeline_window import set_pipeline_window
 
 # ✅ Load environment variables (works locally + GitHub Actions)
 load_dotenv()
@@ -43,7 +44,7 @@ def _central_today():
     return datetime.now(_CENTRAL_TZ).date()
 
 
-def ingest_articles():
+def ingest_articles(window_start, window_end):
     logging.info("Starting ingestion")
     print("Ingesting articles...")
 
@@ -54,7 +55,7 @@ def ingest_articles():
 
     init_db()
 
-    articles = fetch_rss_articles(RSS_FEEDS)
+    articles = fetch_rss_articles(RSS_FEEDS, window_start=window_start, window_end=window_end)
 
     inserted = 0
 
@@ -176,8 +177,12 @@ def run(dry_run=False):
         print("=== PIPELINE START ===")
         logging.info("Pipeline started")
 
+        window_start, window_end = set_pipeline_window(hours=24)
+        print(f"Pipeline window UTC: {window_start.isoformat()} -> {window_end.isoformat()}")
+        logging.info("Pipeline window UTC: %s -> %s", window_start.isoformat(), window_end.isoformat())
+
         init_db()
-        articles = ingest_articles()
+        articles = ingest_articles(window_start, window_end)
         if not articles:
             print("No articles available — skipping digest generation safely")
             logging.warning("No articles available — skipping digest generation safely")

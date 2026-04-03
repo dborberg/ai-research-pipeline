@@ -68,6 +68,14 @@ jobs:
           CENTRAL_DATE=$(TZ=America/Chicago date +%F)
           echo "CENTRAL_DATE=$CENTRAL_DATE" >> $GITHUB_ENV
 
+          if [[ "${{ github.event_name }}" == "schedule" || "${{ github.event.inputs.scheduled_run }}" == "true" ]]; then
+            PIPELINE_WINDOW=$(CENTRAL_DATE="$CENTRAL_DATE" python -c 'from datetime import datetime, timedelta, timezone; from zoneinfo import ZoneInfo; import os; central_date = os.environ["CENTRAL_DATE"]; window_end_central = datetime.fromisoformat(f"{central_date}T06:30:00").replace(tzinfo=ZoneInfo("America/Chicago")); window_end = window_end_central.astimezone(timezone.utc).replace(tzinfo=None); window_start = window_end - timedelta(hours=24); print(f"PIPELINE_WINDOW_START_UTC={window_start.isoformat()}"); print(f"PIPELINE_WINDOW_END_UTC={window_end.isoformat()}")')
+          else
+            PIPELINE_WINDOW=$(python -c 'from datetime import datetime, timedelta, timezone; window_end = datetime.now(timezone.utc).replace(microsecond=0); window_start = window_end - timedelta(hours=24); print(f"PIPELINE_WINDOW_START_UTC={window_start.isoformat()}"); print(f"PIPELINE_WINDOW_END_UTC={window_end.isoformat()}")')
+          fi
+
+          echo "$PIPELINE_WINDOW" >> $GITHUB_ENV
+
           if [[ "${{ github.event_name }}" == "schedule" && "${{ vars.USE_GCP_SCHEDULER }}" == "true" ]]; then
             echo "SKIP_RUN=true" >> $GITHUB_ENV
             echo "GitHub cron disabled because USE_GCP_SCHEDULER=true; expecting GCP-triggered workflow_dispatch instead."

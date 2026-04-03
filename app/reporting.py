@@ -92,7 +92,7 @@ def format_top_article_context(days=7, limit=15):
             "\n".join(
                 [
                     f"TITLE: {article.get('title') or ''}",
-                    f"SOURCE: {article.get('source') or ''}",
+                    f"SOURCE: {article.get('original_publisher') or article.get('source') or ''}",
                     f"PUBLISHED_AT: {article.get('published_at') or ''}",
                     f"AI_SCORE: {article.get('ai_score') if article.get('ai_score') is not None else ''}",
                     f"SUMMARY: {article.get('summary') or ''}",

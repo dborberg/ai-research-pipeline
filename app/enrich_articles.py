@@ -8,6 +8,7 @@ from openai import OpenAI
 from sqlalchemy import text
 
 from app.db import get_engine, init_db
+from app.pipeline_window import get_pipeline_window
 
 load_dotenv()
 
@@ -33,7 +34,7 @@ def _parse_published_at(value):
 
 
 def _load_articles_to_enrich(limit, max_age_hours):
-    cutoff = datetime.datetime.utcnow() - datetime.timedelta(hours=max_age_hours)
+    window_start, window_end = get_pipeline_window(hours=max_age_hours)
     with engine.connect() as conn:
         rows = conn.execute(
             text(
@@ -55,7 +56,7 @@ def _load_articles_to_enrich(limit, max_age_hours):
         published_dt = _parse_published_at(published_at)
         created_dt = _parse_published_at(created_at)
         reference_dt = published_dt or created_dt
-        if reference_dt and reference_dt < cutoff:
+        if reference_dt and (reference_dt < window_start or reference_dt > window_end):
             continue
         candidates.append((rowid, title))
         if len(candidates) >= limit:

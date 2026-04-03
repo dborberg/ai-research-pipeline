@@ -4,6 +4,8 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+from app.branding import DAILY_TITLE, KNOWN_REPORT_TITLES
+
 
 def _looks_like_html(text):
     lowered = (text or "").lower()
@@ -12,12 +14,7 @@ def _looks_like_html(text):
 
 def _is_report_title(text):
     stripped = (text or "").strip()
-    return stripped in {
-        "Daily Riffs from the Gen AI Songbook",
-        "Weekly Motifs from the Gen AI Songbook",
-        "Weekly Riffs from the Gen AI Songbook",
-        "Monthly Tunes from the Gen AI Songbook",
-    } or stripped.startswith("AI SIGNAL COMMAND")
+    return stripped in KNOWN_REPORT_TITLES or stripped.startswith("AI SIGNAL COMMAND")
 
 
 def format_as_html(text):
@@ -159,4 +156,4 @@ def send_report(subject, body_text):
 def send_digest(digest_text):
     """Send the provided daily digest via email."""
 
-    send_report("Daily Riffs from the Gen AI Songbook", digest_text)
+    send_report(DAILY_TITLE, digest_text)

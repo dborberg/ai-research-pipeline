@@ -10,6 +10,7 @@ import pandas as pd
 from sqlalchemy import text
 
 from app.cluster_schema import normalize_cluster_df
+from app.branding import WEEKLY_THEMATIC_TITLE, WEEKLY_WHOLESALER_TITLE
 from app.db import fetch_daily_digests, fetch_weekly_digests, get_engine, get_weekly_clusters, init_db, save_weekly_clusters, upsert_weekly_digest
 from app.reporting import (
     WEEKLY_THEMATIC_TEMPERATURE,
@@ -26,8 +27,8 @@ from app.velocity import apply_velocity_metrics, compute_velocity
 
 WHOLESALER_TYPE = "wholesaler"
 THEMATIC_TYPE = "thematic"
-WHOLESALER_TITLE = "Weekly Riffs from the Gen AI Songbook"
-THEMATIC_TITLE = "Weekly Motifs from the Gen AI Songbook"
+WHOLESALER_TITLE = WEEKLY_WHOLESALER_TITLE
+THEMATIC_TITLE = WEEKLY_THEMATIC_TITLE
 HIGH_SIGNAL_THRESHOLD = 8
 DEFAULT_SCORE_THRESHOLD = 6
 HIGH_SIGNAL_LIMIT = 25

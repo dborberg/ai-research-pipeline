@@ -5,6 +5,8 @@ from typing import List, Dict, Any
 import logging
 import time
 
+from app.pipeline_window import get_pipeline_window
+
 logging.basicConfig(level=logging.INFO)
 
 # High-signal + higher-frequency feeds (important)
@@ -82,6 +84,33 @@ SOURCE_WEIGHT_ALIASES = {
     "the verge": 2,
     "arxiv": 2,
 }
+
+
+def _normalize_publisher_name(value: str) -> str:
+    return " ".join((value or "").strip().split())
+
+
+def _extract_original_publisher(entry: Dict[str, Any], feed_source: str) -> str:
+    entry_source = entry.get("source")
+    if hasattr(entry_source, "get"):
+        source_title = _normalize_publisher_name(entry_source.get("title", ""))
+        if source_title:
+            return source_title
+
+    title = entry.get("title", "") or ""
+    if " - " in title:
+        title_parts = [part.strip() for part in title.rsplit(" - ", 1)]
+        if len(title_parts) == 2 and title_parts[1]:
+            return _normalize_publisher_name(title_parts[1])
+
+    summary = _extract_summary(entry)
+    if "<font color=\"#6f6f6f\">" in summary:
+        publisher_fragment = summary.split("<font color=\"#6f6f6f\">", 1)[1].split("</font>", 1)[0]
+        publisher = _normalize_publisher_name(publisher_fragment)
+        if publisher:
+            return publisher
+
+    return _normalize_publisher_name(feed_source)
 
 
 def fetch_full_article(url):
@@ -251,17 +280,22 @@ def _dedupe_similar_titles(sorted_articles: List[Dict[str, Any]]) -> List[Dict[s
     return deduped
 
 
-def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
+def fetch_rss_articles(feed_urls: List[str], window_start=None, window_end=None) -> List[Dict[str, Any]]:
     articles = {}
     scraped_urls = set()
     enrichment_candidates = []
     total_feeds = len(feed_urls)
     successful_feeds = 0
-    now = datetime.utcnow()
-    cutoff = now - timedelta(hours=24)
+    resolved_window_start, resolved_window_end = get_pipeline_window(hours=24)
+    if window_start is None:
+        window_start = resolved_window_start
+    if window_end is None:
+        window_end = resolved_window_end
+    now = window_end
 
     print("=== RSS INGESTION START ===")
-    print(f"Cutoff time (UTC): {cutoff}")
+    print(f"Window start (UTC): {window_start}")
+    print(f"Window end (UTC): {window_end}")
 
     for url in feed_urls:
         print(f"\nParsing feed: {url}")
@@ -303,13 +337,13 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
             else:
                 published_dt = now
 
-            # Filter for last 24 hours
-            if published_dt < cutoff:
+            if published_dt < window_start or published_dt > window_end:
                 continue
 
             title = entry.get("title", "")
             summary = _extract_summary(entry)
             priority_score = _compute_priority_score(title, summary)
+            original_publisher = _extract_original_publisher(entry, source)
 
             article = {
                 "title": title,
@@ -319,7 +353,8 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
                 "content": "",
                 "text": summary,
                 "source": source,
-                "source_weight": _get_source_weight(source),
+                "original_publisher": original_publisher,
+                "source_weight": _get_source_weight(original_publisher or source),
                 "priority_score": priority_score,
                 "content_quality": len(summary),
                 "signal_score": 0.0,
@@ -393,7 +428,7 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
     theme_scores = {}
     for theme, theme_articles in theme_dict.items():
         avg_signal_score = sum(article.get("signal_score", 0) for article in theme_articles) / max(len(theme_articles), 1)
-        unique_sources = len({article.get("source", "unknown") for article in theme_articles})
+        unique_sources = len({article.get("original_publisher") or article.get("source", "unknown") for article in theme_articles})
         theme_scores[theme] = avg_signal_score + unique_sources * 0.5
 
     ordered_themes = [theme for theme in REQUIRED_THEMES if theme in theme_dict]
@@ -419,7 +454,7 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
     diversified_articles = []
 
     for article in selected_articles:
-        source = article.get("source", "unknown")
+        source = article.get("original_publisher") or article.get("source", "unknown")
 
         if source not in source_buckets:
             source_buckets[source] = []
@@ -427,7 +462,7 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
         if len(source_buckets[source]) < MAX_PER_SOURCE:
             source_buckets[source].append(article)
             diversified_articles.append(article)
-    sources = set(a["source"] for a in diversified_articles)
+    sources = {a.get("original_publisher") or a.get("source", "unknown") for a in diversified_articles}
     if len(sources) < 3:
         print("WARNING: Low source diversity")
 
@@ -440,10 +475,10 @@ def fetch_rss_articles(feed_urls: List[str]) -> List[Dict[str, Any]]:
     print(f"Enriched articles: {count_enriched}")
     print(f"Total articles: {len(diversified_articles)}")
     print("Source distribution:")
-    print(Counter(a["source"] for a in diversified_articles))
+    print(Counter((a.get("original_publisher") or a["source"]) for a in diversified_articles))
     print("Top 10 articles by signal_score:")
     for article in diversified_articles[:10]:
-        print(article["title"], round(article["signal_score"], 2), article["source"])
+        print(article["title"], round(article["signal_score"], 2), article.get("original_publisher") or article["source"])
     print(f"\n=== TOTAL NEW ARTICLES: {len(articles)} ===\n")
 
     return diversified_articles
@@ -460,7 +495,8 @@ def main():
 
     for i, article in enumerate(articles[:5]):
         print(f"{i+1}. {article['title']}")
-        print(f"   Source: {article['source']}")
+        print(f"   Feed source: {article['source']}")
+        print(f"   Original publisher: {article.get('original_publisher') or article['source']}")
         print(f"   Published: {article['published']}")
         print(f"   Link: {article['link']}")
         print(f"   Summary: {article['summary'][:200]}...\n")

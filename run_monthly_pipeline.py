@@ -5,6 +5,7 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 from dotenv import load_dotenv
 
+from app.branding import MONTHLY_TITLE
 from app.cluster_schema import normalize_cluster_df
 from app.db import fetch_daily_digests, fetch_weekly_digests, get_weekly_clusters, init_db, upsert_monthly_report
 from app.reporting import (
@@ -18,9 +19,6 @@ from app.reporting import (
 from app.send_email import send_report
 
 _CENTRAL_TZ = ZoneInfo("America/Chicago")
-
-MONTHLY_TITLE = "Monthly Tunes from the Gen AI Songbook"
-
 
 def _with_monthly_report_header(title, report_month, content):
     month_label = datetime.strptime(report_month, "%Y-%m").strftime("%B %Y")

@@ -2,12 +2,16 @@ def generate_daily_digest():
     import json
     import os
     import re
+    from collections import Counter
     from datetime import datetime, timedelta
+    from html import unescape
     from zoneinfo import ZoneInfo
     from sqlalchemy import text
     from openai import OpenAI
 
+    from app.branding import DAILY_TITLE
     from app.db import get_engine
+    from app.pipeline_window import get_pipeline_window
 
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     _CENTRAL_TZ = ZoneInfo("America/Chicago")
@@ -80,7 +84,7 @@ def generate_daily_digest():
         return score
 
     def source_quality_hint(article):
-        source = (article.get("source") or "").lower()
+        source = (article.get("original_publisher") or article.get("source") or "").lower()
         if any(term in source for term in ["reuters", "financial times", "ft", "economist", "bloomberg", "wsj"]):
             return "business_financial"
         if any(term in source for term in ["government", "policy", "regulation"]):
@@ -93,15 +97,16 @@ def generate_daily_digest():
 
     def get_recent_articles():
         engine = get_engine()
-        cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
+        window_start, window_end = get_pipeline_window(hours=24)
 
         with engine.connect() as conn:
             result = conn.execute(text("""
-                SELECT title, source, summary, url, published_at, companies, advisor_relevance, ai_score
+                SELECT title, source, COALESCE(original_publisher, source) AS original_publisher, summary, url, published_at, companies, advisor_relevance, ai_score
                 FROM articles
-                WHERE published_at >= :cutoff
+                WHERE published_at >= :window_start
+                  AND published_at <= :window_end
                 ORDER BY published_at DESC
-            """), {"cutoff": cutoff})
+            """), {"window_start": window_start.isoformat(), "window_end": window_end.isoformat()})
 
             rows = result.fetchall()
 
@@ -109,12 +114,13 @@ def generate_daily_digest():
         for row in rows:
             title = row[0] or ""
             source = row[1] or ""
-            summary = row[2] or ""
-            url = row[3] or ""
-            published_at = row[4] or ""
-            companies = row[5] or ""
-            advisor_relevance = row[6] or ""
-            ai_score = row[7]
+            original_publisher = row[2] or source
+            summary = row[3] or ""
+            url = row[4] or ""
+            published_at = row[5] or ""
+            companies = row[6] or ""
+            advisor_relevance = row[7] or ""
+            ai_score = row[8]
 
             # Skip empty/incomplete content per your rule
             if not title or not summary:
@@ -123,6 +129,7 @@ def generate_daily_digest():
             articles.append({
                 "title": title,
                 "source": source,
+                "original_publisher": original_publisher,
                 "summary": summary,
                 "url": url,
                 "published_at": published_at,
@@ -144,11 +151,85 @@ def generate_daily_digest():
 
         return articles
 
+    def _normalize_text(value):
+        text_value = unescape(re.sub(r"<[^>]+>", " ", value or ""))
+        return " ".join(text_value.lower().split())
+
+    def _extract_digest_bullets(content):
+        sections = []
+        for section_name, section_body in re.findall(r"<h3>(.*?)</h3>\s*<ul>(.*?)</ul>", content or "", flags=re.DOTALL | re.IGNORECASE):
+            for item in re.findall(r"<li>(.*?)</li>", section_body, flags=re.DOTALL | re.IGNORECASE):
+                lead_match = re.search(r"<strong>(.*?)</strong>", item, flags=re.DOTALL | re.IGNORECASE)
+                source_match = re.search(r"\(Source:\s*([^\)]+)\)", item, flags=re.DOTALL | re.IGNORECASE)
+                sections.append(
+                    {
+                        "section": unescape(section_name.strip()),
+                        "lead": unescape((lead_match.group(1) if lead_match else item).strip()),
+                        "source": unescape((source_match.group(1) if source_match else "").strip()),
+                        "text": _normalize_text(item),
+                    }
+                )
+        return sections
+
+    def _find_diversity_issues(content, available_publishers):
+        expected_sections = [
+            "TOP STORIES",
+            "ENTERPRISE AND LABOR",
+            "INFRASTRUCTURE AND POWER",
+            "CAPITAL MARKETS AND INVESTMENT",
+            "REGULATION AND POLICY",
+            "PHYSICAL AI AND ROBOTICS",
+            "WHAT TO WATCH",
+            "ADVISOR SOUNDBITES",
+        ]
+        issues = []
+        found_sections = re.findall(r"<h3>(.*?)</h3>", content or "", flags=re.IGNORECASE)
+        normalized_found_sections = [unescape(section).strip().upper() for section in found_sections]
+        missing_sections = [section for section in expected_sections if section not in normalized_found_sections]
+        if missing_sections:
+            issues.append(f"Missing required sections: {', '.join(missing_sections)}")
+
+        bullets = _extract_digest_bullets(content)
+        lead_counts = Counter(_normalize_text(bullet["lead"]) for bullet in bullets if bullet["lead"])
+        repeated_leads = [lead for lead, count in lead_counts.items() if lead and count > 1]
+        if repeated_leads:
+            issues.append("Repeated lead phrases suggest the same development is being reused across sections")
+
+        publisher_counts = Counter(bullet["source"] for bullet in bullets if bullet["source"])
+        unique_publishers = len({publisher for publisher in publisher_counts if publisher})
+        dominant_publishers = [
+            publisher for publisher, count in publisher_counts.items()
+            if count >= 5 and unique_publishers >= 4 and len(available_publishers) >= 4
+        ]
+        if dominant_publishers:
+            issues.append(
+                "Publisher concentration is still too high: " + ", ".join(
+                    f"{publisher} ({publisher_counts[publisher]})" for publisher in dominant_publishers
+                )
+            )
+
+        section_story_map = {}
+        for bullet in bullets:
+            normalized_lead = _normalize_text(bullet["lead"])
+            if not normalized_lead:
+                continue
+            section_story_map.setdefault(normalized_lead, set()).add(bullet["section"])
+        cross_section_repeats = [lead for lead, sections in section_story_map.items() if len(sections) > 1]
+        if cross_section_repeats:
+            issues.append("The same underlying development appears in multiple sections")
+
+        return issues
+
     articles = get_recent_articles()
     today = datetime.now(_CENTRAL_TZ).strftime("%B %d, %Y")
+    available_publishers = {
+        article.get("original_publisher") or article.get("source")
+        for article in articles
+        if article.get("original_publisher") or article.get("source")
+    }
 
     if not articles:
-        return f"""Daily Riffs from the Gen AI Songbook
+        return f"""{DAILY_TITLE}
 {today}
 
 No relevant articles found in the last 24 hours.
@@ -157,7 +238,8 @@ No relevant articles found in the last 24 hours.
         "\n".join(
             [
                 f"TITLE: {article['title']}",
-                f"SOURCE: {article['source']}",
+                f"SOURCE: {article.get('original_publisher') or article['source']}",
+                f"FEED_SOURCE: {article['source']}",
                 f"SOURCE_QUALITY_HINT: {source_quality_hint(article)}",
                 f"BIG_STORY_HINT: {'YES' if is_big_story(article) else 'NO'}",
                 f"POLICY_PRIORITY_HINT: {'YES' if has_policy_priority(article) else 'NO'}",
@@ -188,6 +270,8 @@ Prioritize diversity across these domains:
 Do not allow one source, one publication, or one type of content to dominate the output. Prefer real-world developments such as company announcements, policy changes, infrastructure projects, enterprise deployments, capital allocation, and robotics deployments over technical research. Use technical or research sources only when they add unique insight or when no stronger real-world coverage exists for that section.
 
 If multiple articles say similar things, choose the one with broader market relevance and clearer real-world impact. If the input is dominated by arXiv, EE Times, or other niche technical sources, actively rebalance toward business news, policy coverage, capital markets, and major company developments when those are present.
+
+Treat SOURCE as the original publisher when available. FEED_SOURCE may be an aggregator feed and should not be treated as true source diversity.
 
 Prefer coverage over precision. It is better to include multiple distinct real-world developments than to repeat one dominant theme across sections.
 
@@ -224,13 +308,25 @@ EXPECTED RESULT
 - Output includes more named companies.
 - Output uses less generic language.
 - Output keeps the current structure but increases specificity.
+
+MANDATORY INTERNAL WORKFLOW
+- Before writing, silently identify the strongest 12 to 18 candidate developments from the full dataset.
+- Group together articles covering the same underlying event, company announcement, policy action, paper, or deployment.
+- For each group, keep only the best candidate based on real-world relevance, source quality, and specificity.
+- Build the final briefing from those deduplicated event groups rather than selecting bullets one article at a time.
+
+MANDATORY FINAL AUDIT
+- Before returning the final HTML, silently check whether one publisher, one event, or one topic is overrepresented.
+- If the same underlying event appears in multiple sections, keep the strongest placement and replace the rest with different developments.
+- If one publisher appears repeatedly and credible alternatives exist in the input, swap in the alternatives.
+- Prefer breadth across publishers, sectors, and event types over repeated emphasis on one technically strong but narrow source.
 """
 
     user_prompt = f"""
 CRITICAL INSTRUCTION: Your response must contain EXACTLY these 8 sections in EXACTLY this order. Do not combine, rename, or omit sections.
 
 Output format:
-<h2>Daily Riffs from the Gen AI Songbook</h2>
+<h2>{DAILY_TITLE}</h2>
 <p><strong>{today}</strong></p>
 
 Then for each section:
@@ -279,6 +375,7 @@ Under ADVISOR SOUNDBITES write 5 plain English one-liners a financial advisor co
 
 Selection rules:
 - Prefer a mix of sources and avoid using the same source more than 2 times per section when alternatives exist.
+- Avoid leaning on the same publisher across the full briefing when credible alternatives exist elsewhere in the input.
 - Prefer real-world developments over technical research.
 - If multiple articles are similar, keep the one with clearer business or market impact.
 - Before writing "Nothing to report today." for any section, check whether relevant stories exist elsewhere in the input and include at least one meaningful item if possible.
@@ -288,6 +385,9 @@ Selection rules:
 - Ensure diversity across companies, sectors, geographies, and use cases.
 - If several articles cover the same event, include only one and replace the others with different topics.
 - Each section should re-scan the full dataset independently for relevant stories instead of relying on a single preselected subset.
+
+Thought process instruction:
+- Silently do a first pass for event grouping and publisher diversity, then a second pass for section assignment, and only then write the final HTML.
 
 Minimum coverage targets:
 - TOP STORIES: 3-5 distinct developments
@@ -312,22 +412,41 @@ ARTICLES:
 {article_block}
 """
 
-    response = client.chat.completions.create(
-        model="gpt-5.4",
-        messages=[
-            {"role": "system", "content": system_prompt.strip()},
-            {"role": "user", "content": user_prompt.strip()}
-        ],
-        temperature=0.2,
-        max_completion_tokens=4000,
-    )
-    choice = response.choices[0]
-    content = (choice.message.content or "").strip()
+    content = ""
+    issues = []
+    extra_feedback = ""
+    for attempt in range(3):
+        request_prompt = user_prompt.strip()
+        if extra_feedback:
+            request_prompt = f"{request_prompt}\n\nREVISION FEEDBACK:\n{extra_feedback}"
 
-    if not content:
-        raise ValueError(
-            f"LLM returned empty digest content "
-            f"(finish_reason={choice.finish_reason})"
+        response = client.chat.completions.create(
+            model="gpt-5.4",
+            messages=[
+                {"role": "system", "content": system_prompt.strip()},
+                {"role": "user", "content": request_prompt}
+            ],
+            temperature=0.2,
+            max_completion_tokens=4000,
+        )
+        choice = response.choices[0]
+        content = (choice.message.content or "").strip()
+
+        if not content:
+            raise ValueError(
+                f"LLM returned empty digest content "
+                f"(finish_reason={choice.finish_reason})"
+            )
+
+        issues = _find_diversity_issues(content, available_publishers)
+        if not issues:
+            break
+
+        extra_feedback = (
+            "The previous draft did not satisfy diversity requirements. "
+            "Rewrite from the same article set and fix these issues:\n- "
+            + "\n- ".join(issues)
+            + "\nDo not explain the fixes. Return only the corrected HTML."
         )
 
     # -----------------------------
