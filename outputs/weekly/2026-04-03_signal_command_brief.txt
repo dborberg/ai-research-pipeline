@@ -1,0 +1,73 @@
+AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report
+Week Ending 2026-04-03
+
+Purpose:
+This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.
+
+TOP CONVICTION SIGNALS
+
+infrastructure capital cycle and supply bottlenecks
+Conviction: 7.84
+Strength: 8.40
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+This matters because AI upside is broadening into semiconductors, memory, thermal systems, and data center suppliers, creating second-order beneficiaries beyond software. For markets, it supports continued capex-led earnings growth but also raises concentration, execution, and supply-chain risk.
+
+Physical and autonomous systems commercialization
+Conviction: 7.10
+Strength: 7.40
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+This matters because physical AI could drive a new capex cycle across industrial automation, mobility, sensors, and robotics platforms. For markets, the opportunity is large but likely volatile, with valuation outcomes tied to deployment speed, regulation, and integration success.
+
+safety security and compliance tooling
+Conviction: 6.99
+Strength: 7.30
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+This matters because stronger safety and compliance tooling can accelerate enterprise adoption while creating new software categories in cybersecurity, regtech, and model governance. Markets may increasingly reward firms that can make AI auditable, secure, and regulator-ready.
+
+Labor productivity and human-AI operating models
+Conviction: 6.98
+Strength: 7.77
+Momentum: 300%
+Velocity: +3 article change
+Why It Matters:
+This matters because AI's earnings impact will increasingly show up through labor cost changes, service throughput, and margin expansion in sectors like healthcare and professional services. Advisors can use this theme to assess which industries face disruption risk versus productivity upside.
+
+Power and grid constraints compute growth
+Conviction: 6.78
+Strength: 7.65
+Momentum: 200%
+Velocity: +2 article change
+Why It Matters:
+This matters because AI demand is spilling into utilities, grid equipment, and renewable power, potentially reshaping capital allocation across energy and industrial sectors. Advisors should view power access as a gating factor for AI infrastructure growth and a source of new beneficiaries outside traditional tech.
+
+ACCELERATING THEMES (BREAKOUTS)
+
+These themes are accelerating fastest relative to prior week.
+
+infrastructure capital cycle and supply bottlenecks: Momentum 500%, velocity +5. This matters because AI upside is broadening into semiconductors, memory, thermal systems, and data center suppliers, creating second-order beneficiaries beyond software
+Physical and autonomous systems commercialization: Momentum 500%, velocity +5. This matters because physical AI could drive a new capex cycle across industrial automation, mobility, sensors, and robotics platforms
+safety security and compliance tooling: Momentum 500%, velocity +5. This matters because stronger safety and compliance tooling can accelerate enterprise adoption while creating new software categories in cybersecurity, regtech, and model governance
+
+FADING SIGNALS
+
+No major theme showed week-over-week deterioration in this run.
+
+PORTFOLIO IMPLICATIONS
+
+Structural strengthening is concentrated in infrastructure capital cycle and supply bottlenecks, Physical and autonomous systems commercialization, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in safety security and compliance tooling, Enterprise agent deployment and workflow integration, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in infrastructure capital cycle and supply bottlenecks, Physical and autonomous systems commercialization, supported by rising article volume against the prior week.
+Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
+
+BOTTOM LINE
+
+1. Highest conviction theme: infrastructure capital cycle and supply bottlenecks
+2. Most important new signal: infrastructure capital cycle and supply bottlenecks
+3. Biggest acceleration: infrastructure capital cycle and supply bottlenecks
+4. Key risk / fading area: No material fading area
