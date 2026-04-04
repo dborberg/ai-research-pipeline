@@ -19,11 +19,12 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: Which weekly digest to send
+        description: Which weekly digest to send (ALL runs all three)
         required: true
-        default: WHOLESALER
+        default: ALL
         type: choice
         options:
+          - ALL
           - WHOLESALER
           - THEMATIC
           - SIGNAL
@@ -47,7 +48,7 @@ permissions:
 jobs:
   weekly-digests:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 45
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       EMAIL_USER: ${{ secrets.EMAIL_USER }}
@@ -134,7 +135,20 @@ jobs:
       - name: Run weekly pipeline
         if: env.TYPE != '' && env.SKIP_RUN != 'true'
         run: |
-          python run_weekly_investment_pipeline.py --mode $TYPE
+          FAILED=""
+          if [[ "$TYPE" == "ALL" || "$TYPE" == "WHOLESALER" ]]; then
+            python run_weekly_investment_pipeline.py --mode WHOLESALER || FAILED="$FAILED WHOLESALER"
+          fi
+          if [[ "$TYPE" == "ALL" || "$TYPE" == "THEMATIC" ]]; then
+            python run_weekly_investment_pipeline.py --mode THEMATIC || FAILED="$FAILED THEMATIC"
+          fi
+          if [[ "$TYPE" == "ALL" || "$TYPE" == "SIGNAL" ]]; then
+            python run_weekly_investment_pipeline.py --mode SIGNAL || FAILED="$FAILED SIGNAL"
+          fi
+          if [[ -n "$FAILED" ]]; then
+            echo "The following digest(s) failed:$FAILED"
+            exit 1
+          fi
 
       - name: Persist weekly outputs and database
         if: env.SKIP_RUN != 'true'
