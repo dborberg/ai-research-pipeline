@@ -1,0 +1,59 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>April 06, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>OpenAI presses Washington on grid and worker support:</strong> OpenAI urged U.S. policymakers to expand electric grid investment and strengthen the social safety net as AI raises power demand and threatens labor disruption, a notable signal that leading AI firms now see utilities, transmission, and workforce policy as core constraints on growth. For financial advisors, the story broadens the AI conversation beyond software toward infrastructure beneficiaries and policy risk. (Source: Bloomberg)</li>
+<li><strong>OpenAI links AI growth to public spending needs:</strong> OpenAI’s call for more grid capacity and labor support also highlights a second-order market issue: AI adoption may require heavier public and private capital spending in power systems, with potential implications for utilities, industrials, and fiscal policy debates. That matters for portfolio positioning because AI winners may increasingly include regulated and asset-heavy sectors, not just platform companies. (Source: Bloomberg)</li>
+<li><strong>OpenAI elevates labor disruption into the policy debate:</strong> By explicitly pairing infrastructure needs with social protections, OpenAI signaled that labor displacement is moving from a theoretical concern to a mainstream policy topic. Advisors can use this as a reminder that AI upside may be accompanied by political, regulatory, and redistribution pressures that affect valuations and sector leadership. (Source: Bloomberg)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Researchers propose terminal-based AI agents for office workflows:</strong> A new study argued that command-line agents may be sufficient for many enterprise automation tasks, suggesting companies could automate repetitive IT and back-office work faster and more cheaply than expected by using existing systems rather than waiting for fully redesigned software stacks. (Source: arXiv)</li>
+<li><strong>Researchers introduced UI-Oceanus for software task automation:</strong> The framework trains GUI agents in synthetic environments so they can handle more varied software interfaces, a sign that AI is moving beyond chat into direct workflow execution across enterprise applications. If commercialized, that could pressure routine white-collar tasks while supporting spending on automation software and cloud tools. (Source: arXiv)</li>
+<li><strong>OpenAI warned policymakers about labor market disruption:</strong> OpenAI’s request for stronger safety-net spending underscores that major AI developers expect workforce displacement to become material enough to warrant policy response, which is relevant for advisors discussing productivity gains alongside hiring pressure and reskilling needs. (Source: Bloomberg)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>OpenAI called for more U.S. electric grid capacity:</strong> OpenAI said AI growth will require greater grid investment, reinforcing the view that power availability is becoming a gating factor for data center expansion. For investors, that supports attention on utilities, transmission equipment, grid modernization, and other non-software beneficiaries of AI capex. (Source: Bloomberg)</li>
+<li><strong>OpenAI tied AI expansion to infrastructure bottlenecks:</strong> By framing electricity supply as a national priority for the AI era, OpenAI added weight to the thesis that data center growth will increasingly depend on power procurement, permitting, and long-duration infrastructure buildouts rather than chips alone. (Source: Bloomberg)</li>
+<li><strong>OpenAI broadened the AI buildout story beyond compute:</strong> The company’s policy push suggests the next leg of AI investment may include public and private spending on transmission, generation, and resilience, which could create opportunities across industrial supply chains as well as risks if grid constraints slow deployment. (Source: Bloomberg)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>OpenAI highlighted utilities and infrastructure as AI beneficiaries:</strong> OpenAI’s policy message effectively strengthens the investment case for looking beyond the largest software names toward utilities, electrical equipment, and grid-related capital spending as AI demand ripples through the economy. (Source: Bloomberg)</li>
+<li><strong>OpenAI underscored second-order AI capex themes:</strong> The company’s emphasis on electricity and worker support suggests investors may need to track who funds the AI buildout and who absorbs the social costs, a dynamic that could shape sector rotation, public spending expectations, and valuation dispersion across AI-linked industries. (Source: Bloomberg)</li>
+<li><strong>OpenAI raised the prospect of broader fiscal involvement in AI:</strong> Calls for both infrastructure and safety-net spending imply that AI may become a larger macro and budget issue, which matters for capital markets because government participation can influence subsidy flows, regulated returns, and the timing of private investment. (Source: Bloomberg)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>OpenAI urged U.S. policymakers to fund grid expansion:</strong> The company’s appeal puts AI infrastructure directly into the policy arena and increases the odds that power, permitting, and grid resilience become part of the national AI agenda. That is a meaningful policy signal for utilities, industrials, and data center developers. (Source: Bloomberg)</li>
+<li><strong>OpenAI asked for stronger social safety net spending:</strong> By linking AI adoption to worker disruption, OpenAI elevated labor policy as a parallel track to innovation policy, suggesting future debates may include retraining, income support, and other measures that could affect the pace and politics of enterprise AI deployment. (Source: Bloomberg)</li>
+<li><strong>Researchers examined harmful manipulation risks in language models:</strong> A new paper focused on how to evaluate whether language models can engage in harmful manipulation, adding to the body of work likely to inform future safety standards, governance frameworks, and enterprise risk controls as regulators scrutinize model behavior. (Source: arXiv)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>IEEE Spectrum highlighted how real-world robot experience shapes trust:</strong> The report found that direct interaction can materially influence how people perceive and accept robots, an important commercialization signal for warehouse automation, field robotics, and service deployments where adoption depends on worker comfort as much as technical performance. (Source: IEEE Spectrum)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch whether Washington responds to OpenAI’s grid push:</strong> Any federal or state action on transmission, power permitting, or utility investment would be an early sign that AI infrastructure constraints are moving into formal policy. (Source: Bloomberg)</li>
+<li><strong>Watch for labor policy proposals tied to AI displacement:</strong> OpenAI’s call for stronger worker support could foreshadow new debates around retraining, unemployment protections, or tax policy as AI adoption spreads. (Source: Bloomberg)</li>
+<li><strong>Watch enterprise software vendors for agent-based product launches:</strong> Research on terminal and GUI agents suggests the next 30 to 90 days could bring more practical automation tools aimed at IT operations and repetitive office workflows. (Source: arXiv)</li>
+<li><strong>Watch utilities and power equipment names for AI-related capex commentary:</strong> If management teams begin citing AI load growth more explicitly, it would strengthen the case that infrastructure beneficiaries are broadening beyond semiconductors. (Source: Bloomberg)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is no longer just a software story:</strong> The buildout increasingly depends on power, grid capacity, and real-world infrastructure. (Source: Bloomberg)</li>
+<li><strong>Some of the next AI winners may be utilities and industrial suppliers, not just the biggest tech platforms:</strong> That is where the second wave of spending may land. (Source: Bloomberg)</li>
+<li><strong>AI productivity gains are real, but so is the risk of labor disruption:</strong> That is why policy is becoming part of the investment story. (Source: Bloomberg)</li>
+<li><strong>Enterprise AI is moving from chatbots toward agents that can actually do work inside software systems:</strong> That could accelerate adoption in back-office functions. (Source: arXiv)</li>
+<li><strong>Robotics adoption will depend on trust as much as technology:</strong> Real-world deployment success often comes down to whether workers are comfortable using the machines. (Source: IEEE Spectrum)</li>
+</ul>
