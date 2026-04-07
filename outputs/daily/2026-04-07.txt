@@ -1,0 +1,59 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>April 07, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>OpenAI reportedly secured a $122 billion funding round:</strong> The scale of the raise signals that AI is now as much a capital formation and infrastructure story as a software story, with likely spillovers into chips, cloud, networking, and power demand. For advisors, it reinforces both the opportunity in AI enablers and the valuation risk building in private markets. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Banpu outlined a $1.5 billion US power investment tied to data center demand:</strong> The announcement shows how AI buildouts are pulling new capital into electricity generation, making utilities and power infrastructure increasingly important second-order beneficiaries of AI adoption. For financial professionals, this broadens the investable AI theme beyond large-cap tech. (Source: Bloomberg.com)</li>
+<li><strong>Oracle hired Schneider Electric executive Maxson as CFO as AI spending accelerates:</strong> The move highlights how major enterprise vendors are reshaping leadership and capital allocation around AI infrastructure needs. It also underscores that execution, financing discipline, and supply-chain coordination are becoming central differentiators as AI capex rises. (Source: Reuters)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Oracle appointed a new CFO during an AI-driven investment cycle:</strong> The hire suggests large enterprises are moving from experimentation to operational scaling, with finance leadership becoming more important as AI spending affects margins, hiring plans, and return-on-investment scrutiny. (Source: Reuters)</li>
+<li><strong>The EU legal analysis on AI agents emphasized that responsibility remains with developers and deployers:</strong> For employers, that points to continued demand for compliance, legal, and oversight roles even as AI agents automate more white-collar tasks. It also suggests labor savings may come with added governance costs. (Source: cs.AI updates on arXiv.org)</li>
+<li><strong>PASCO highlighted its long history in industrial automation:</strong> While not a major AI launch, the milestone reinforces the broader labor trend that companies continue to invest in automation to improve productivity and offset workforce constraints in industrial settings. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Banpu committed $1.5 billion to US power generation as data center demand rises:</strong> This is a direct signal that AI-related electricity needs are driving new generation investment, with implications for utilities, independent power producers, and grid equipment suppliers. (Source: Bloomberg.com)</li>
+<li><strong>Oracle’s CFO change came as the company ramps spending for AI cloud and infrastructure demand:</strong> The development reinforces that hyperscale and enterprise AI expansion is pressuring budgets for data centers, power management, and supporting hardware. (Source: Reuters)</li>
+<li><strong>OpenAI’s reported $122 billion raise underscored the scale of infrastructure capital now chasing AI:</strong> Even if deployed over time, funding of this size points to sustained demand for compute, networking, and facility buildout, which could keep supply chains tight across the AI stack. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>OpenAI’s reported $122 billion financing round reset the upper end of AI private-market capital formation:</strong> For investors, the headline reinforces how aggressively capital is being concentrated in a small number of AI platforms, raising both upside potential and questions around private valuation discipline. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Eclipse Ventures raised $1.3 billion to back robotics, AI infrastructure, and industrial technology:</strong> The fundraise suggests investor appetite remains strong for picks-and-shovels exposure beyond consumer AI apps, especially in semiconductors, automation, and industrial systems. (Source: Bloomberg.com)</li>
+<li><strong>Banpu’s US power investment highlighted a non-software AI capital allocation theme:</strong> Advisors can frame this as evidence that AI beneficiaries may include energy and infrastructure names, not just the largest platform companies. (Source: Bloomberg.com)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>The EU legal review of AI agents argued that accountability still sits with companies rather than autonomous systems:</strong> That matters for global firms because liability, compliance, and governance obligations could shape product rollout speed and cost structures across Europe. (Source: cs.AI updates on arXiv.org)</li>
+<li><strong>Banpu’s US power push carries policy relevance because data center growth is colliding with energy planning needs:</strong> Investors should watch for permitting, grid access, and state-level power policy responses as AI electricity demand rises. (Source: Bloomberg.com)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Eclipse Ventures raised $1.3 billion with a focus that includes robotics and industrial technology:</strong> The fundraise is strategically meaningful because it points to continued capital flowing into physical AI, where automation, machine intelligence, and industrial systems intersect. That is relevant for investors tracking logistics, factory automation, and defense-adjacent autonomy themes. (Source: Bloomberg.com)</li>
+<li><strong>ROSClaw introduced a framework for coordinating multiple heterogeneous autonomous agents:</strong> Although still research-oriented, the work is notable because multi-agent coordination is a key capability for warehouse automation, industrial robotics, and defense systems that need fleets of machines to work together reliably. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch whether more utilities and power producers follow Banpu into AI-linked generation projects:</strong> A broader wave of announcements would confirm that data center electricity demand is becoming a durable investment cycle. (Source: Bloomberg.com)</li>
+<li><strong>Watch whether Oracle and other enterprise vendors increase AI-related capex guidance:</strong> That would help determine whether current spending is a short-term buildout or a longer multiyear infrastructure commitment. (Source: Reuters)</li>
+<li><strong>Watch whether mega-rounds like OpenAI’s continue to clear at rising valuations:</strong> Additional deals of similar size would support the private-market AI boom but also increase concerns about concentration and exit risk. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Watch how EU legal thinking on AI agents evolves into enforceable guidance:</strong> Any move from theory to formal interpretation could affect deployment timelines and compliance costs for global software and enterprise vendors. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is no longer just a software story:</strong> It is also driving spending on power, data centers, and industrial infrastructure. (Source: Bloomberg.com)</li>
+<li><strong>Big AI winners may include utilities and equipment suppliers, not just the biggest tech stocks:</strong> That is where some of the second-order opportunity is emerging. (Source: Bloomberg.com)</li>
+<li><strong>When companies like Oracle reshape leadership around AI spending, it tells us this is becoming an operating model issue, not a side project:</strong> That matters for margins and execution. (Source: Reuters)</li>
+<li><strong>Private capital is still pouring into AI at extraordinary levels:</strong> That supports innovation, but it also raises the bar for valuation discipline. (Source: Robotics &amp; Automation News)</li>
+<li><strong>In Europe, companies will likely remain responsible for what AI agents do:</strong> That means adoption can grow, but compliance will stay front and center. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
