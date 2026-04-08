@@ -1,0 +1,59 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>April 08, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Intel joins Terafab:</strong> Intel signed on to Elon Musk's Terafab AI chip project, tying advanced semiconductors to both humanoid robotics and data center demand; for advisors, this is a notable sign that AI capital spending is broadening beyond software leaders into chips, automation, and physical infrastructure. (Source: Reuters)</li>
+<li><strong>Big funds rotate back into AI stocks:</strong> Institutional investors moved into Treasuries and major AI names including Nvidia, Microsoft, Amazon, Meta, and Alphabet as Iran war fears eased, underscoring how AI leadership remains powerful but still highly sensitive to macro risk appetite and rates. (Source: Bloomberg.com)</li>
+<li><strong>Firmus reaches a $5.5 billion valuation:</strong> Nvidia-backed U.K. data center builder Firmus hit a $5.5 billion valuation, highlighting how private capital continues to chase AI infrastructure rather than just model developers, with implications for second-order beneficiaries in power, cooling, and networking. (Source: TechCrunch)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>AI News highlighted software development gains:</strong> Enterprises are using AI to speed coding, shorten deployment cycles, and automate engineering workflows, but the report also stresses that centralized management is becoming essential as AI tools spread across teams and functions. (Source: AI News)</li>
+<li><strong>Researchers proposed machine identity governance rules:</strong> A new machine identity governance taxonomy argues that companies will need stronger authentication, authorization, and monitoring for AI agents operating across business units and borders, a useful signal for advisors watching compliance and cybersecurity spending. (Source: cs.AI updates on arXiv.org)</li>
+<li><strong>Bloomberg tracked renewed buying in AI leaders:</strong> The return of institutional flows into large-cap AI stocks suggests investors still expect enterprise demand for AI productivity tools to support earnings, even as hiring and workforce mix may keep shifting toward fewer routine tasks and more oversight roles. (Source: Bloomberg.com)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Firmus attracted a $5.5 billion valuation:</strong> The Nvidia-backed builder's rise shows investors are assigning premium value to AI-ready data center capacity, reinforcing the case for continued spending on power access, cooling systems, and specialized facilities. (Source: TechCrunch)</li>
+<li><strong>Intel expanded into Terafab's chip effort:</strong> By linking chip development to both data centers and humanoid systems, Intel's move points to rising demand for specialized compute infrastructure and a wider competitive field in AI hardware. (Source: Reuters)</li>
+<li><strong>Researchers advanced reflector control for wireless networks:</strong> A new multi-agent AI approach for reconfigurable intelligent reflectors suggests future gains in communications efficiency, offering a longer-dated read-through for telecom equipment and network infrastructure suppliers. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Bloomberg reported a fresh risk-on move:</strong> Large funds bought both Treasuries and AI equities as geopolitical stress faded, a reminder that AI exposure is still being traded alongside macro duration views rather than as a fully standalone theme. (Source: Bloomberg.com)</li>
+<li><strong>Firmus secured a multibillion-dollar private valuation:</strong> The company's $5.5 billion mark shows private investors are still willing to fund AI infrastructure aggressively, which may support adjacent opportunities beyond the Mag 7 in real estate, utilities, and equipment supply chains. (Source: TechCrunch)</li>
+<li><strong>Intel used Terafab to widen its AI narrative:</strong> Intel's participation in a next-generation chip project tied to robotics and data centers may matter for investors looking for AI diversification beyond the current hyperscaler and GPU winners. (Source: Reuters)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Reuters flagged policy relevance around Terafab:</strong> Intel's involvement in a strategically important AI chip initiative carries policy significance because advanced semiconductors tied to data centers and humanoid systems sit close to national competitiveness and industrial policy debates. (Source: Reuters)</li>
+<li><strong>Researchers framed cross-border AI governance as a live issue:</strong> The machine identity governance taxonomy highlights a growing policy challenge around how AI systems are authenticated and monitored across jurisdictions, with implications for regulated industries and multinational deployments. (Source: cs.AI updates on arXiv.org)</li>
+<li><strong>AI News emphasized centralized oversight needs:</strong> As companies deploy AI more broadly in software and operations, governance and control frameworks are becoming a practical policy response inside enterprises even before formal regulation catches up. (Source: AI News)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Intel joined a chip project aimed at humanoids:</strong> Terafab's focus on semiconductors for both humanoid robots and data centers makes this one of the clearest physical AI developments in the dataset, with strategic relevance for industrial automation, robotics supply chains, and defense-adjacent autonomy markets. (Source: Reuters)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch whether Intel details follow-on commitments:</strong> Any added capital spending, customer partnerships, or manufacturing plans tied to Terafab would help show whether this is a headline alliance or a meaningful new AI hardware platform. (Source: Reuters)</li>
+<li><strong>Watch private valuations in AI infrastructure:</strong> Firmus's $5.5 billion valuation will be a useful marker for whether investor enthusiasm keeps spreading into data center developers, power-linked assets, and non-software enablers. (Source: TechCrunch)</li>
+<li><strong>Watch macro sensitivity in AI leadership:</strong> Bloomberg's report suggests AI stocks remain tightly linked to geopolitical calm, Treasury demand, and rate expectations, so advisors should monitor whether the latest rally broadens or stays concentrated in mega-cap names. (Source: Bloomberg.com)</li>
+<li><strong>Watch enterprise governance spending:</strong> The push for centralized AI management and machine identity controls could become an early indicator of which software and cybersecurity vendors benefit as companies move from experimentation to scaled deployment. (Source: AI News)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is no longer just a software story:</strong> More of the spending is moving into chips, data centers, and robotics. (Source: Reuters)</li>
+<li><strong>Private markets are still rewarding AI infrastructure:</strong> That can create opportunities beyond the biggest public tech names. (Source: TechCrunch)</li>
+<li><strong>AI stocks are still a macro trade too:</strong> Geopolitics and interest rates can move them just as much as product news. (Source: Bloomberg.com)</li>
+<li><strong>Enterprise AI adoption should help productivity:</strong> But it also raises new governance and compliance costs. (Source: AI News)</li>
+<li><strong>Physical AI is becoming investable:</strong> Humanoid and automation supply chains are starting to matter alongside cloud and software. (Source: Reuters)</li>
+</ul>
