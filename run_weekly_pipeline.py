@@ -1104,23 +1104,20 @@ CRITICAL REQUIREMENTS:
 - Tie the use case loosely to this week's themes when relevant, but do not force it
 
 OUTPUT FORMAT:
+Return exactly this section structure and labels:
 
-What:
-(A one-sentence description of the use case)
+AI PRACTICE TIP OF THE WEEK
+What: <one-sentence description of the use case>
 
-Why it matters:
-(2 to 3 sentences explaining why this is useful for advisors specifically)
+Why: <2 to 3 sentences explaining why this is useful for advisors specifically>
 
 How to:
-1. (A simple, practical, executable step)
-2. (A simple, practical, executable step)
-3. (A simple, practical, executable step)
+<one short, practical step>
+<one short, practical step>
+<one short, practical step>
 
-Copy prompt:
-(A clean, ready-to-use prompt the advisor can paste into ChatGPT)
-
-Guardrail:
-(1 to 2 sentences on compliance, accuracy, or appropriate use)
+Copy prompt: <a clean, ready-to-use prompt the advisor can paste into ChatGPT>
+Guardrail: <1 to 2 sentences on compliance, accuracy, or appropriate use>
 
 STYLE:
 - Plain English
@@ -1128,7 +1125,7 @@ STYLE:
 - Avoid hype
 - Focus on usefulness and differentiation
 
-Use the weekly digest draft below for context. Return only the section content in the format above:
+Use the weekly digest draft below for context. Return only the section content in the format above.
 
 WEEK START: {week_start}
 
