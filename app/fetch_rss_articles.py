@@ -73,6 +73,16 @@ FEED_BUCKET_BY_URL = {
 MAX_ENRICHED_ARTICLES = 20
 MAX_RETURNED_ARTICLES = 40
 MAX_GOOGLE_GAP_FILLER_ARTICLES = 6
+MAX_BUCKET_ARTICLES = {
+    "policy_regulation": 10,
+    "infrastructure_power": 10,
+    "enterprise_labor": 10,
+    "business_markets": 10,
+    "physical_ai_robotics": 8,
+    "official_company": 6,
+    "research": 2,
+    "google_gap_filler": MAX_GOOGLE_GAP_FILLER_ARTICLES,
+}
 REQUIRED_THEMES = [
     "infrastructure",
     "enterprise",
@@ -663,10 +673,8 @@ def fetch_rss_articles(feed_urls: List[str], window_start=None, window_end=None)
         if source not in source_buckets:
             source_buckets[source] = []
 
-        if feed_bucket == "google_gap_filler" and bucket_counts[feed_bucket] >= MAX_GOOGLE_GAP_FILLER_ARTICLES:
-            continue
-
-        if feed_bucket == "research" and bucket_counts[feed_bucket] >= 2:
+        bucket_limit = MAX_BUCKET_ARTICLES.get(feed_bucket)
+        if bucket_limit is not None and bucket_counts[feed_bucket] >= bucket_limit:
             continue
 
         if len(source_buckets[source]) < MAX_PER_SOURCE and len(diversified_articles) < MAX_RETURNED_ARTICLES:
