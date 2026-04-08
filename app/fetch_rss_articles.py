@@ -3,60 +3,76 @@ from collections import Counter
 from datetime import datetime, timedelta
 from typing import List, Dict, Any
 import logging
+import re
 import time
 
 from app.pipeline_window import get_pipeline_window
 
 logging.basicConfig(level=logging.INFO)
 
-# High-signal + higher-frequency feeds (important)
-RSS_FEEDS = [
-    "https://news.google.com/rss/search?q=artificial+intelligence",
-    # General AI news aggregation
-    "https://news.google.com/rss/search?q=AI+data+center",
-    "https://news.google.com/rss/search?q=AI+policy",
-    "https://news.google.com/rss/search?q=AI+investment",
+FEED_BUCKETS = {
+    "business_markets": [
+        "https://techcrunch.com/tag/artificial-intelligence/feed/",
+        "https://venturebeat.com/category/ai/feed/",
+        "https://www.ft.com/technology?format=rss",
+        "https://www.ft.com/companies?format=rss",
+        "https://www.economist.com/science-and-technology/rss.xml",
+        "https://www.economist.com/business/rss.xml",
+    ],
+    "infrastructure_power": [
+        "https://www.designnews.com/rss.xml",
+        "https://www.eetimes.com/feed/",
+        "https://www.semiconductors.org/feed/",
+        "https://blogs.nvidia.com/feed/",
+    ],
+    "enterprise_labor": [
+        "https://www.artificialintelligence-news.com/feed/",
+        "https://www.marktechpost.com/feed/",
+        "https://aws.amazon.com/blogs/aws/feed/",
+        "https://blogs.microsoft.com/feed/",
+    ],
+    "policy_regulation": [
+        "https://news.google.com/rss/search?q=AI+policy",
+        "https://news.google.com/rss/search?q=AI+regulation",
+        "https://news.google.com/rss/search?q=data+center+moratorium",
+    ],
+    "physical_ai_robotics": [
+        "https://www.therobotreport.com/feed/",
+        "https://spectrum.ieee.org/rss/robotics/fulltext",
+        "https://www.automate.org/rss",
+        "https://roboticsandautomationnews.com/feed/",
+    ],
+    "official_company": [
+        "https://aws.amazon.com/blogs/aws/feed/",
+        "https://blogs.nvidia.com/feed/",
+        "https://blogs.microsoft.com/feed/",
+    ],
+    "research": [
+        "https://arxiv.org/rss/cs.AI",
+    ],
+    "google_gap_filler": [
+        "https://news.google.com/rss/search?q=artificial+intelligence",
+        "https://news.google.com/rss/search?q=AI+investment",
+        "https://news.google.com/rss/search?q=AI+data+center",
+        "https://news.google.com/rss/search?q=robotics+automation+AI",
+    ],
+}
 
-    # Business + finance AI
-    "https://news.google.com/rss/search?q=AI+stocks",
-    "https://news.google.com/rss/search?q=AI+capital+spending",
+RSS_FEEDS = []
+for feed_urls in FEED_BUCKETS.values():
+    for feed_url in feed_urls:
+        if feed_url not in RSS_FEEDS:
+            RSS_FEEDS.append(feed_url)
 
-    # Infrastructure + power
-    "https://news.google.com/rss/search?q=data+center+power",
-    "https://news.google.com/rss/search?q=AI+electricity+demand",
-
-    # Robotics / physical AI
-    "https://news.google.com/rss/search?q=robotics+automation+AI",
-    "https://techcrunch.com/tag/artificial-intelligence/feed/",
-    "https://venturebeat.com/category/ai/feed/",
-    "https://www.theverge.com/ai-artificial-intelligence/rss/index.xml",
-    "https://www.marktechpost.com/feed/",
-    "https://www.artificialintelligence-news.com/feed/",
-    "https://arxiv.org/rss/cs.AI",
-    "https://arxiv.org/rss/cs.LG",
-    "https://feeds.reuters.com/reuters/technologyNews",
-    "https://feeds.reuters.com/reuters/businessNews",
-    "https://www.ft.com/technology?format=rss",
-    "https://www.ft.com/companies?format=rss",
-    "https://www.economist.com/science-and-technology/rss.xml",
-    "https://www.economist.com/business/rss.xml",
-    "https://www.therobotreport.com/feed/",
-    "https://spectrum.ieee.org/rss/robotics/fulltext",
-    "https://www.automate.org/rss",
-    "https://roboticsandautomationnews.com/feed/",
-    "https://www.designnews.com/rss.xml",
-    "https://www.eetimes.com/feed/",
-    # Company blogs
-    "https://aws.amazon.com/blogs/aws/feed/",  # AWS Official Blog
-    "https://blogs.nvidia.com/feed/",          # NVIDIA Blog
-    "https://www.tesla.com/blog/feed",         # Tesla Blog
-    "https://www.spacex.com/updates.xml",      # SpaceX Updates
-    "https://blogs.microsoft.com/feed/",       # Microsoft Official Blog
-    "https://www.semiconductors.org/feed/",
-]
+FEED_BUCKET_BY_URL = {
+    feed_url: bucket_name
+    for bucket_name, feed_urls in FEED_BUCKETS.items()
+    for feed_url in feed_urls
+}
 
 MAX_ENRICHED_ARTICLES = 20
 MAX_RETURNED_ARTICLES = 40
+MAX_GOOGLE_GAP_FILLER_ARTICLES = 6
 REQUIRED_THEMES = [
     "infrastructure",
     "enterprise",
@@ -69,25 +85,136 @@ HIGH_QUALITY_SOURCES = {
     "Reuters": 3,
     "Financial Times": 3,
     "Wall Street Journal": 3,
+    "WSJ": 3,
     "The Economist": 3,
+    "Data Center Dynamics": 3,
+    "EE Times": 3,
+    "The Robot Report": 3,
+    "IEEE Spectrum": 3,
     "TechCrunch": 2,
     "VentureBeat": 2,
-    "The Verge": 2,
-    "arXiv": 2,
+    "AI News": 2,
+    "DesignNews": 2,
+    "Robotics & Automation News": 2,
+    "Business Wire": 2,
+    "PR Newswire": 1,
+    "arXiv": 1,
 }
 SOURCE_WEIGHT_ALIASES = {
-    "ft.com": 3,
-    "economist": 3,
+    "bloomberg": 3,
     "reuters": 3,
+    "ft.com": 3,
+    "financial times": 3,
+    "wsj": 3,
+    "economist": 3,
+    "data center dynamics": 3,
+    "ee times": 3,
+    "ieee spectrum": 3,
+    "robot report": 3,
     "techcrunch": 2,
     "venturebeat": 2,
-    "the verge": 2,
-    "arxiv": 2,
+    "ai news": 2,
+    "designnews": 2,
+    "robotics & automation news": 2,
+    "business wire": 2,
+    "pr newswire": 1,
+    "arxiv": 1,
 }
+STRONG_SOURCE_PATTERNS = [
+    "bloomberg",
+    "reuters",
+    "financial times",
+    "ft",
+    "wsj",
+    "wall street journal",
+    "economist",
+    "data center dynamics",
+    "ee times",
+    "ieee spectrum",
+    "robot report",
+]
+MEDIUM_SOURCE_PATTERNS = [
+    "techcrunch",
+    "venturebeat",
+    "ai news",
+    "designnews",
+    "robotics & automation news",
+    "business wire",
+    "globe and mail",
+    "american banker",
+    "mlex",
+]
+PRESS_RELEASE_PATTERNS = [
+    "pr newswire",
+    "business wire",
+    "globenewswire",
+    "newswire",
+    "stock titan",
+]
+WEAK_AGGREGATOR_PATTERNS = [
+    "benzinga",
+    "tipranks",
+    "yahoo finance",
+    "investing.com",
+    "news.futunn.com",
+    "quiver quantitative",
+    "simplywall.st",
+]
+LOCAL_SOURCE_PATTERNS = [
+    "daily news",
+    "daily herald",
+    "gazette",
+    "times",
+    "post",
+    "enterprise",
+    "local",
+    "wusf",
+    "wsaz",
+    "wpbf",
+    "fox",
+    "newscenter",
+    "source",
+    "independent",
+]
+OPINION_TITLE_PATTERNS = [
+    r"\bopinion\b",
+    r"\bviewpoint\b",
+    r"\beditorial\b",
+    r"\bguest essay\b",
+    r"\bcolumn\b",
+]
 
 
 def _normalize_publisher_name(value: str) -> str:
     return " ".join((value or "").strip().split())
+
+
+def _is_google_feed_source(source_name: str) -> bool:
+    return "google news" in (source_name or "").lower()
+
+
+def _matches_any_pattern(value: str, patterns: List[str]) -> bool:
+    normalized_value = (value or "").lower()
+    return any(pattern in normalized_value for pattern in patterns)
+
+
+def _source_tier(source_name: str) -> str:
+    normalized_source = (source_name or "").lower()
+    if _matches_any_pattern(normalized_source, STRONG_SOURCE_PATTERNS):
+        return "strong"
+    if "arxiv" in normalized_source:
+        return "research"
+    if _matches_any_pattern(normalized_source, PRESS_RELEASE_PATTERNS):
+        return "press_release"
+    if _matches_any_pattern(normalized_source, WEAK_AGGREGATOR_PATTERNS):
+        return "weak_aggregator"
+    if _matches_any_pattern(normalized_source, MEDIUM_SOURCE_PATTERNS):
+        return "medium"
+    if _matches_any_pattern(normalized_source, LOCAL_SOURCE_PATTERNS):
+        return "local"
+    if _is_google_feed_source(source_name):
+        return "google_feed"
+    return "standard"
 
 
 def _extract_original_publisher(entry: Dict[str, Any], feed_source: str) -> str:
@@ -200,6 +327,58 @@ def _get_source_weight(source_name: str) -> int:
     return 1
 
 
+def _has_real_event_anchor(article: Dict[str, Any]) -> bool:
+    text = f"{article.get('title', '')} {article.get('summary', '')}".lower()
+    return any(
+        keyword in text for keyword in [
+            "announced", "launch", "launched", "raised", "funding", "investment", "acquisition",
+            "acquired", "approved", "bill", "senate", "house", "regulator", "lawsuit", "sued",
+            "expands", "expansion", "signed", "deal", "partnership", "valuation", "bookings",
+            "earnings", "capex", "$", "million", "billion",
+        ]
+    )
+
+
+def _has_opinion_title(article: Dict[str, Any]) -> bool:
+    title = article.get("title", "") or ""
+    return any(re.search(pattern, title, flags=re.IGNORECASE) for pattern in OPINION_TITLE_PATTERNS)
+
+
+def _source_quality_adjustment(article: Dict[str, Any]) -> float:
+    original_publisher = article.get("original_publisher") or article.get("source") or ""
+    source_name = article.get("source") or ""
+    tier = _source_tier(original_publisher)
+    theme = _get_theme_key(article)
+    adjustment = 0.0
+
+    if tier == "strong":
+        adjustment += 1.25
+    elif tier == "medium":
+        adjustment += 0.5
+    elif tier == "research":
+        adjustment -= 0.35
+    elif tier == "press_release":
+        adjustment -= 0.4
+        if _has_real_event_anchor(article):
+            adjustment += 0.45
+    elif tier == "weak_aggregator":
+        adjustment -= 0.8
+    elif tier == "local":
+        adjustment -= 0.6
+        if theme in {"infrastructure", "policy"} and _has_real_event_anchor(article):
+            adjustment += 0.5
+    elif tier == "google_feed":
+        adjustment -= 0.35
+
+    if _has_opinion_title(article):
+        adjustment -= 0.25
+
+    if _is_google_feed_source(source_name):
+        adjustment -= 0.1
+
+    return adjustment
+
+
 def _compute_signal_score(article: Dict[str, Any]) -> float:
     signal_score = (
         article["priority_score"] * 0.5 +
@@ -210,6 +389,7 @@ def _compute_signal_score(article: Dict[str, Any]) -> float:
         signal_score += 1
     if "arxiv" in article.get("source", "").lower():
         signal_score *= 0.75
+    signal_score += _source_quality_adjustment(article)
     return round(signal_score, 2)
 
 
@@ -354,6 +534,7 @@ def fetch_rss_articles(feed_urls: List[str], window_start=None, window_end=None)
                 "text": summary,
                 "source": source,
                 "original_publisher": original_publisher,
+                "feed_bucket": FEED_BUCKET_BY_URL.get(url, "other"),
                 "source_weight": _get_source_weight(original_publisher or source),
                 "priority_score": priority_score,
                 "content_quality": len(summary),
@@ -373,8 +554,10 @@ def fetch_rss_articles(feed_urls: List[str], window_start=None, window_end=None)
     sorted_candidates = sorted(
         enrichment_candidates,
         key=lambda article: (
-            article.get("published", ""),
+            article.get("source_weight", 0),
+            article.get("priority_score", 0),
             len(article.get("summary", "")),
+            article.get("published", ""),
         ),
         reverse=True,
     )[:MAX_ENRICHED_ARTICLES]
@@ -447,21 +630,49 @@ def fetch_rss_articles(feed_urls: List[str], window_start=None, window_end=None)
             key=lambda article: article.get("signal_score", 0),
             reverse=True,
         )
-        selected_articles.extend(theme_articles[:2])
+        selected_articles.extend(theme_articles)
 
-    MAX_PER_SOURCE = 3
+    deduped_selected_articles = []
+    seen_links = set()
+    for article in sorted(
+        selected_articles,
+        key=lambda article: (
+            article.get("signal_score", 0),
+            article.get("priority_score", 0),
+            article.get("source_weight", 0),
+            article.get("content_quality", 0),
+            article.get("published", ""),
+        ),
+        reverse=True,
+    ):
+        link = article.get("link")
+        if not link or link in seen_links:
+            continue
+        seen_links.add(link)
+        deduped_selected_articles.append(article)
+
+    MAX_PER_SOURCE = 2
     source_buckets = {}
+    bucket_counts = Counter()
     diversified_articles = []
 
-    for article in selected_articles:
+    for article in deduped_selected_articles:
         source = article.get("original_publisher") or article.get("source", "unknown")
+        feed_bucket = article.get("feed_bucket", "other")
 
         if source not in source_buckets:
             source_buckets[source] = []
 
-        if len(source_buckets[source]) < MAX_PER_SOURCE:
+        if feed_bucket == "google_gap_filler" and bucket_counts[feed_bucket] >= MAX_GOOGLE_GAP_FILLER_ARTICLES:
+            continue
+
+        if feed_bucket == "research" and bucket_counts[feed_bucket] >= 2:
+            continue
+
+        if len(source_buckets[source]) < MAX_PER_SOURCE and len(diversified_articles) < MAX_RETURNED_ARTICLES:
             source_buckets[source].append(article)
             diversified_articles.append(article)
+            bucket_counts[feed_bucket] += 1
     sources = {a.get("original_publisher") or a.get("source", "unknown") for a in diversified_articles}
     if len(sources) < 3:
         print("WARNING: Low source diversity")
@@ -474,6 +685,8 @@ def fetch_rss_articles(feed_urls: List[str], window_start=None, window_end=None)
     print({k: len(v) for k, v in theme_dict.items()})
     print(f"Enriched articles: {count_enriched}")
     print(f"Total articles: {len(diversified_articles)}")
+    print("Feed bucket distribution:")
+    print(Counter(a.get("feed_bucket", "other") for a in diversified_articles))
     print("Source distribution:")
     print(Counter((a.get("original_publisher") or a["source"]) for a in diversified_articles))
     print("Top 10 articles by signal_score:")

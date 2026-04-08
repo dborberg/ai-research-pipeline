@@ -39,7 +39,16 @@ def _load_articles_to_enrich(limit, max_age_hours):
         rows = conn.execute(
             text(
                 """
-                SELECT id, title, published_at, created_at
+                SELECT
+                    id,
+                    title,
+                    source,
+                    COALESCE(original_publisher, source) AS original_publisher,
+                    summary,
+                    raw_text,
+                    cleaned_text,
+                    published_at,
+                    created_at
                 FROM articles
                 WHERE summary IS NULL
                    OR themes IS NULL
@@ -52,17 +61,54 @@ def _load_articles_to_enrich(limit, max_age_hours):
         ).fetchall()
 
     candidates = []
-    for rowid, title, published_at, created_at in rows:
+    for row in rows:
+        rowid, title, source, original_publisher, summary, raw_text, cleaned_text, published_at, created_at = row
         published_dt = _parse_published_at(published_at)
         created_dt = _parse_published_at(created_at)
         reference_dt = published_dt or created_dt
         if reference_dt and (reference_dt < window_start or reference_dt > window_end):
             continue
-        candidates.append((rowid, title))
+        candidates.append(
+            {
+                "id": rowid,
+                "title": title,
+                "source": source,
+                "original_publisher": original_publisher,
+                "summary": summary or "",
+                "raw_text": raw_text or "",
+                "cleaned_text": cleaned_text or "",
+            }
+        )
         if len(candidates) >= limit:
             break
 
     return candidates
+
+
+def _clip_text(value, limit):
+    text_value = " ".join(str(value or "").split())
+    if len(text_value) <= limit:
+        return text_value
+    return text_value[: limit - 3].rstrip() + "..."
+
+
+def _build_article_context(article):
+    rss_summary = _clip_text(article.get("summary"), 1200)
+    article_text = article.get("cleaned_text") or article.get("raw_text") or article.get("summary") or ""
+    article_text = _clip_text(article_text, 6000)
+
+    context_parts = [
+        f"Article title: {article.get('title') or ''}",
+        f"Source: {article.get('original_publisher') or article.get('source') or ''}",
+    ]
+
+    if rss_summary:
+        context_parts.append(f"RSS summary/excerpt: {rss_summary}")
+
+    if article_text:
+        context_parts.append(f"Article body/extracted text: {article_text}")
+
+    return "\n\n".join(context_parts)
 
 
 args = parse_args()
@@ -70,13 +116,15 @@ articles = _load_articles_to_enrich(args.limit, args.max_age_hours)
 
 print(f"Articles to enrich: {len(articles)}")
 
-for rowid, title in articles:
+for article in articles:
+    rowid = article["id"]
+    title = article["title"]
 
     system_message = """You are a senior AI research analyst writing for mutual fund wholesalers. 
 Your job is to analyze AI-related news and produce structured insights usable in advisor conversations. 
-Keep language clear, factual, and consistent."""
+Keep language clear, factual, and consistent. Use only the information provided in the article context. If details are unclear, stay conservative and do not invent facts."""
 
-    user_message = f"""Article title: {title}
+    user_message = f"""{_build_article_context(article)}
 
 Produce structured output with exactly these fields:
 

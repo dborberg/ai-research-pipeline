@@ -167,6 +167,8 @@ def _articles_insert_sql():
 
 def insert_article(article):
     init_db()
+    raw_text = article.get("content") or article.get("text") or article.get("summary") or ""
+    cleaned_text = article.get("text") or article.get("content") or article.get("summary") or ""
     params = {
         "feedly_id": article.get("link"),
         "title": article.get("title"),
@@ -174,12 +176,32 @@ def insert_article(article):
         "original_publisher": article.get("original_publisher") or article.get("source"),
         "url": article.get("link"),
         "published_at": article.get("published"),
+        "raw_text": raw_text,
+        "cleaned_text": cleaned_text,
         "created_at": datetime.utcnow().isoformat(),
         "summary": article.get("summary") or article.get("text") or "",
     }
 
     with get_engine().begin() as conn:
-        conn.execute(_articles_insert_sql(), params)
+        conn.execute(
+            text(
+                """
+                INSERT INTO articles
+                    (feedly_id, title, source, original_publisher, url, published_at, raw_text, cleaned_text, created_at, summary)
+                VALUES
+                    (:feedly_id, :title, :source, :original_publisher, :url, :published_at, :raw_text, :cleaned_text, :created_at, :summary)
+                ON CONFLICT(feedly_id) DO NOTHING
+                """
+            ) if get_dialect_name() == "postgresql" else text(
+                """
+                INSERT OR IGNORE INTO articles
+                    (feedly_id, title, source, original_publisher, url, published_at, raw_text, cleaned_text, created_at, summary)
+                VALUES
+                    (:feedly_id, :title, :source, :original_publisher, :url, :published_at, :raw_text, :cleaned_text, :created_at, :summary)
+                """
+            ),
+            params,
+        )
         conn.execute(
             text(
                 """
@@ -191,6 +213,25 @@ def insert_article(article):
             {
                 "feedly_id": params["feedly_id"],
                 "summary": params["summary"],
+            },
+        )
+        conn.execute(
+            text(
+                """
+                UPDATE articles
+                SET raw_text = :raw_text,
+                    cleaned_text = :cleaned_text
+                WHERE feedly_id = :feedly_id
+                  AND (
+                    raw_text IS NULL OR raw_text = '' OR LENGTH(raw_text) < LENGTH(:raw_text)
+                    OR cleaned_text IS NULL OR cleaned_text = '' OR LENGTH(cleaned_text) < LENGTH(:cleaned_text)
+                  )
+                """
+            ),
+            {
+                "feedly_id": params["feedly_id"],
+                "raw_text": params["raw_text"],
+                "cleaned_text": params["cleaned_text"],
             },
         )
 

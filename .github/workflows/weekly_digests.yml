@@ -125,8 +125,13 @@ jobs:
           fi
 
           if [[ -n "$OUTPUT_PATH" && ( "${{ github.event_name }}" == "schedule" || "${{ github.event.inputs.scheduled_run }}" == "true" ) ]] && git cat-file -e "HEAD:${OUTPUT_PATH}"; then
-            echo "SKIP_RUN=true" >> $GITHUB_ENV
-            echo "Weekly output already exists at ${OUTPUT_PATH}; skipping duplicate run."
+            if [[ "$TYPE" == "WHOLESALER" ]]; then
+              echo "SKIP_RUN=true" >> $GITHUB_ENV
+              echo "Weekly output already exists at ${OUTPUT_PATH}; skipping duplicate wholesaler generation run."
+            else
+              echo "SKIP_RUN=false" >> $GITHUB_ENV
+              echo "Weekly output already exists at ${OUTPUT_PATH}; continuing so ${TYPE} email can be sent from stored content."
+            fi
           else
             echo "SKIP_RUN=false" >> $GITHUB_ENV
           fi
