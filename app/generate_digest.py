@@ -1,4 +1,4 @@
-def generate_daily_digest():
+def generate_daily_digest(report_date=None):
     import json
     import os
     import re
@@ -221,7 +221,9 @@ def generate_daily_digest():
         return issues
 
     articles = get_recent_articles()
-    today = datetime.now(_CENTRAL_TZ).strftime("%B %d, %Y")
+    if report_date is None:
+        report_date = datetime.now(_CENTRAL_TZ).date()
+    today = report_date.strftime("%B %d, %Y")
     available_publishers = {
         article.get("original_publisher") or article.get("source")
         for article in articles
