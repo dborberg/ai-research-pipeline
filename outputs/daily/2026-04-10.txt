@@ -1,0 +1,65 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>April 10, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Bessent and Powell warned bank CEOs after an Anthropic model scare:</strong> Bloomberg reports the episode pushed AI risk into core bank governance and financial oversight, a notable signal for advisors because AI is now becoming a board-level operational and compliance issue for financial institutions, not just a technology story. (Source: Bloomberg.com)</li>
+<li><strong>ShengShu raised $293 million for AGI development in China:</strong> Reuters says the funding underscores that advanced AI capital formation remains global, with China still attracting meaningful investment despite geopolitical and policy frictions, which matters for clients thinking about AI as a multi-region competitive theme rather than a U.S.-only trade. (Source: Reuters)</li>
+<li><strong>OpenAI paused a planned UK data center project:</strong> The company cited regulation and costs, showing that AI expansion can be slowed by permitting, power economics, and policy conditions, which is relevant for advisors assessing infrastructure beneficiaries and regional execution risk. (Source: Reuters)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Apple and Qualcomm are building AI agents with limits:</strong> AI News says the companies are emphasizing constrained assistants that can complete tasks across apps while keeping tighter guardrails, suggesting near-term enterprise adoption may favor controlled productivity tools over fully autonomous systems. (Source: AI News)</li>
+<li><strong>Eclipse Automation found most manufacturers are adopting automation but few are seeing strong results:</strong> The survey points to execution, data integration, and governance as the real differentiators, which matters for investors because spending alone may not translate into productivity gains or margin improvement. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Healthcare workforce debate is shifting toward policy and reimbursement:</strong> Korea Biomedical Review says AI’s labor impact in healthcare may depend more on institutional rules than on the technology itself, a reminder that adoption curves in regulated sectors can be shaped by policy bottlenecks as much as by product quality. (Source: koreabiomed.com)</li>
+<li><strong>Businessday argued bad policy, not AI alone, will determine job outcomes:</strong> The piece reinforces that workforce disruption and productivity gains will vary by how governments and employers manage retraining, labor rules, and deployment, which is useful context for clients worried about broad-based white-collar displacement. (Source: Businessday NG)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Maine lawmakers passed a landmark data center moratorium:</strong> Maine Morning Star says the state moved toward what could be the first major statewide restriction of its kind, highlighting that local and state politics are becoming a real variable in AI infrastructure siting and could affect utilities, digital infrastructure, and regional growth expectations. (Source: Maine Morning Star)</li>
+<li><strong>SiFive raised $400 million to expand its data center CPU roadmap:</strong> EE Times frames the round as a sign that agentic AI demand is broadening the chip stack beyond GPUs, with investors increasingly watching CPUs, chip IP, and power-efficient architectures as secondary beneficiaries. (Source: EE Times)</li>
+<li><strong>Financial Times warned that chip bottlenecks could choke off the AI investment boom:</strong> The article argues that dependence on a narrow set of advanced semiconductor inputs could slow deployment and pressure returns, a useful caution for clients extrapolating current AI infrastructure spending too far into the future. (Source: Financial Times)</li>
+<li><strong>An arXiv study projected sharp power demand growth from AI data centers through 2030:</strong> The research estimates rising electricity use and localized grid stress in regions such as Virginia, Oregon, and Ireland, reinforcing the investment case for transmission, generation, and grid modernization alongside AI compute. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Nvidia CEO Jensen Huang urged companies to prioritize AI breakthroughs over short-term profit:</strong> Bloomberg says the message supports the view that elevated AI capex may persist even if near-term margins compress, which is important for framing earnings expectations across the ecosystem. (Source: Bloomberg.com)</li>
+<li><strong>SiFive’s oversubscribed round valued the company at about $3.65 billion:</strong> The financing is another sign that private capital is still flowing into non-GPU AI infrastructure plays, giving advisors a broader lens on where venture and growth investors see value beyond the largest public names. (Source: EE Times)</li>
+<li><strong>A new ETF is being pitched around AI infrastructure exposure:</strong> Simply Wall St highlights growing demand for packaged access to chips and enabling assets, though the limited detail is a reminder that advisors should scrutinize holdings, concentration, and valuation before treating thematic wrappers as diversified exposure. (Source: simplywall.st)</li>
+<li><strong>FT’s Asia-Pacific high-growth ranking pointed to shifting regional innovation depth:</strong> While not purely an AI story, the report adds context for clients looking beyond U.S. mega-cap exposure and considering where future AI-related growth ecosystems may emerge in Asia. (Source: Technology)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Maine moved toward a statewide ban or moratorium on large data centers through 2027:</strong> CNBC says the action could become a national precedent, making it one of the clearest policy signals that AI infrastructure now faces environmental, land-use, and political resistance at the state level. (Source: CNBC)</li>
+<li><strong>EU AI Act compliance is sharpening governance demands for agentic systems:</strong> AI News says companies deploying autonomous workflows may need stronger traceability and audit controls in 2026, which raises compliance costs but could benefit software vendors focused on governance and risk management. (Source: AI News)</li>
+<li><strong>The global gambling industry published an inaugural AI practice and policy benchmark:</strong> Newswise says the report reflects how regulated sectors are formalizing AI governance, a sign that adoption opportunities increasingly come with documentation, oversight, and compliance requirements. (Source: Newswise)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Plus One Robotics surpassed 2 billion successful warehouse picks:</strong> The milestone suggests logistics automation is moving from pilot programs to scaled deployment, with measurable throughput gains that matter for investors tracking labor substitution, warehouse productivity, and supply-chain technology adoption. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Amazon said robotics is central to faster delivery and lower costs:</strong> The Robot Report notes the company now has more than 1 million robots in fulfillment centers, reinforcing that physical AI is becoming a margin and service lever at one of the world’s largest logistics operators. (Source: The Robot Report)</li>
+<li><strong>AGIBOT released its GO-2 embodied AI foundation model:</strong> The launch is another sign that robotics vendors are trying to improve real-world execution reliability, which could expand future opportunities in industrial automation and service robotics if performance proves durable outside demos. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch whether other U.S. states follow Maine on data center restrictions:</strong> A broader permitting backlash would have implications for utilities, REITs, cloud buildouts, and regional economic development. (Source: CNBC)</li>
+<li><strong>Watch for more bank-sector AI oversight after the Anthropic-related warning:</strong> If regulators push boards and CEOs to tighten controls, financial firms may accelerate spending on model governance, audit, and operational risk tools. (Source: Bloomberg.com)</li>
+<li><strong>Watch whether UK or European policy changes revive paused infrastructure projects from OpenAI and others:</strong> That would be an important read-through on how quickly Europe can compete for AI capex. (Source: Reuters)</li>
+<li><strong>Watch private funding rounds in second-tier AI infrastructure names:</strong> Deals like SiFive’s can indicate whether investor appetite is broadening beyond GPUs into CPUs, networking, and power-efficiency plays. (Source: EE Times)</li>
+<li><strong>Watch for more hard deployment metrics in robotics:</strong> Milestones like Plus One’s pick count and Amazon’s robot fleet are more meaningful than concept announcements because they show where physical AI is already affecting labor and operating costs. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is still a growth story, but the next bottlenecks are power, permits, and chips, not just software.</strong> (Source: Financial Times)</li>
+<li><strong>Bank regulators are starting to treat AI as a governance issue, which means adoption in finance will likely come with tighter controls.</strong> (Source: Bloomberg.com)</li>
+<li><strong>Not every AI winner will be a mega-cap software company because capital is also flowing into chips, data centers, and grid-related infrastructure.</strong> (Source: EE Times)</li>
+<li><strong>Warehouse robotics is one of the clearest examples of AI moving from hype to measurable productivity in the real economy.</strong> (Source: Robotics &amp; Automation News)</li>
+<li><strong>Policy is becoming a bigger swing factor in AI returns because governments can speed up or slow down infrastructure and adoption.</strong> (Source: CNBC)</li>
+</ul>
