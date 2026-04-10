@@ -1,0 +1,65 @@
+AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report
+Week Ending 2026-04-10
+
+Purpose:
+This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.
+
+TOP CONVICTION SIGNALS
+
+Capital intensity and semiconductor bottlenecks in
+Conviction: 8.33
+Strength: 8.43
+Momentum: 800%
+Velocity: +8 article change
+Why It Matters:
+This theme matters because AI upside is increasingly tied to who can finance compute, secure chip supply, and absorb near-term margin pressure. It supports attention to semiconductors, chip IP, hyperscaler capex cycles, private valuations, and the risk that hardware bottlenecks cap software monetization.
+
+Governance stack for autonomous agents and
+Conviction: 7.59
+Strength: 7.33
+Momentum: 800%
+Velocity: +8 article change
+Why It Matters:
+This matters because governance is becoming a prerequisite for enterprise AI adoption, not a secondary feature. Vendors that provide security, compliance, and runtime control may gain pricing power as regulated industries scale agentic AI while trying to contain operational and legal risk.
+
+infrastructure constrained by power and permitting
+Conviction: 7.59
+Strength: 7.33
+Momentum: 800%
+Velocity: +8 article change
+Why It Matters:
+This matters because AI deployment increasingly depends on utilities, power markets, data center developers, and permitting regimes rather than software demand alone. Investors should expect regional dispersion in infrastructure economics, with implications for cloud margins, utility capex, and digital infrastructure valuations.
+
+Agentic model performance drives enterprise automation
+Conviction: 7.20
+Strength: 7.21
+Momentum: 600%
+Velocity: +6 article change
+Why It Matters:
+This matters because stronger agentic performance can expand AI spending from pilots into production workflows, especially in coding and knowledge automation. Markets may reward firms enabling lower-cost inference, model operations, and enterprise integration as adoption broadens beyond frontier model branding.
+
+ACCELERATING THEMES (BREAKOUTS)
+
+These themes are accelerating fastest relative to prior week.
+
+Capital intensity and semiconductor bottlenecks in: Momentum 800%, velocity +8. This theme matters because AI upside is increasingly tied to who can finance compute, secure chip supply, and absorb near-term margin pressure
+Governance stack for autonomous agents and: Momentum 800%, velocity +8. This matters because governance is becoming a prerequisite for enterprise AI adoption, not a secondary feature
+infrastructure constrained by power and permitting: Momentum 800%, velocity +8. This matters because AI deployment increasingly depends on utilities, power markets, data center developers, and permitting regimes rather than software demand alone
+
+FADING SIGNALS
+
+No major theme showed week-over-week deterioration in this run.
+
+PORTFOLIO IMPLICATIONS
+
+Structural strengthening is concentrated in Capital intensity and semiconductor bottlenecks in, Governance stack for autonomous agents and, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in Agentic model performance drives enterprise automation, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in Capital intensity and semiconductor bottlenecks in, Governance stack for autonomous agents and, supported by rising article volume against the prior week.
+Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
+
+BOTTOM LINE
+
+1. Highest conviction theme: Capital intensity and semiconductor bottlenecks in
+2. Most important new signal: Capital intensity and semiconductor bottlenecks in
+3. Biggest acceleration: Capital intensity and semiconductor bottlenecks in
+4. Key risk / fading area: No material fading area
