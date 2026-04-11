@@ -1,0 +1,63 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>April 11, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Anthropic taps CoreWeave:</strong> Anthropic agreed to rent AI computing capacity from CoreWeave to power Claude, underscoring that access to scarce compute remains a strategic bottleneck and a major driver of spending across the AI stack. For financial professionals, this reinforces the investable theme beyond software winners into cloud capacity, semis, and infrastructure financing. (Source: Bloomberg)</li>
+<li><strong>South Africa publishes a draft national AI policy:</strong> The government proposed new AI institutions and incentives, signaling that AI is becoming an economic development and industrial policy issue in emerging markets, not just a Silicon Valley product cycle. That matters for advisors because policy frameworks can shape local infrastructure buildout, adoption rates, and regional investment conditions. (Source: Reuters)</li>
+<li><strong>Maine weighs a potential ban on new data centers:</strong> Business Insider reported that Maine could become the first U.S. state to ban new data centers, highlighting a new layer of political and permitting risk around AI infrastructure. For advisors, the takeaway is that AI growth may increasingly depend on local power, land-use, and community approvals, not just demand for chips and models. (Source: Business Insider)</li>
+<li><strong>SCSP launches a National Security Commission on Robotics for Advanced Manufacturing:</strong> The new commission puts robotics, workforce training, and supply-chain resilience squarely into the U.S. competitiveness agenda. That broadens the AI conversation from chatbots to industrial automation and suggests continued policy support for domestic manufacturing technology. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Bloomberg Law highlights AI governance buildouts:</strong> Companies are being pushed to formalize oversight, controls, and internal policies around AI use, showing that enterprise adoption is increasingly tied to risk management rather than experimentation alone. For employers, that points to rising demand for compliance, legal, and operational roles alongside productivity gains. (Source: Bloomberg Law)</li>
+<li><strong>NVIDIA releases AITune:</strong> NVIDIA introduced an open-source inference toolkit aimed at helping enterprises find the fastest deployment backend for PyTorch models, which could reduce friction in moving AI from pilot projects into production. The labor angle is that easier deployment can accelerate workflow automation across knowledge work without requiring every company to build deep in-house optimization expertise. (Source: MarkTechPost)</li>
+<li><strong>Alibaba Tongyi Lab launches VimRAG:</strong> Alibaba’s new multimodal retrieval framework points to the next phase of enterprise AI, where systems can search and reason across images and video as well as text. If commercialized effectively, tools like this could expand productivity use cases in research, compliance review, media analysis, and internal knowledge management. (Source: MarkTechPost)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Erthos targets autonomous energy for data centers:</strong> Erthos said it will deliver dedicated energy solutions for data centers in 2026, reflecting how AI infrastructure demand is spilling into power generation and energy delivery. Investors should note that the AI buildout is increasingly a utilities and infrastructure story, not just a software and chip story. (Source: jsa.net)</li>
+<li><strong>Data Center Dynamics spotlights server redesign for AI workloads:</strong> The publication reported that chips are becoming the core design constraint in AI data centers, with server providers adapting systems around accelerator-heavy workloads. That supports continued demand across semiconductors, networking, thermal management, and specialized hardware vendors. (Source: Data Center Dynamics)</li>
+<li><strong>The Mountaineer flags pressure on electricity bills from data-center growth:</strong> The report connects rising compute demand with broader utility and household power implications, a reminder that AI infrastructure can create second-order effects in regulated utilities and local grid investment. Advisors can use this as a practical example of how AI demand reaches beyond technology stocks. (Source: The Mountaineer)</li>
+<li><strong>Champaign County advances a data-center moratorium step:</strong> Local action in Illinois adds to evidence that zoning and permitting friction could slow project timelines even when AI demand is strong. That raises execution risk for developers, utilities, and suppliers tied to regional data-center expansion. (Source: WCIA.com)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Yahoo Finance highlights a new AI infrastructure ETF theme:</strong> The coverage suggests investor demand is broadening from headline model companies toward diversified exposure in chips and enabling infrastructure. For advisors, the practical implication is that client interest in AI may increasingly center on portfolio construction beyond the Mag 7. (Source: Yahoo Finance)</li>
+<li><strong>CoreWeave’s deal flow keeps validating rented compute as an asset class:</strong> Anthropic’s capacity agreement adds another signal that third-party AI infrastructure providers can capture value as model developers outsource capital-intensive compute needs. That supports the case for looking at financing, leasing, and infrastructure intermediaries as part of the AI opportunity set. (Source: Bloomberg)</li>
+<li><strong>EE Times points to a deeper AI opportunity in chip design software:</strong> The article argues that the next gains may come from reworking the full chip-design stack rather than adding narrow AI features to legacy tools. For investors, that suggests potential upside in EDA vendors and semiconductor workflow enablers, though commercialization may be uneven. (Source: EE Times)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>South Africa opens consultation on a national AI framework:</strong> The draft policy proposes institutions and incentives to guide AI development, adding to the global trend of governments treating AI as a strategic economic policy area. That matters for multinational firms and investors tracking where adoption may be encouraged through public support. (Source: Reuters)</li>
+<li><strong>China issues interim rules for human-like AI interaction services:</strong> The new regulations indicate tighter oversight of AI products designed to mimic human interaction, reinforcing that product design and compliance requirements will diverge by jurisdiction. For investors, this is another reminder that regulatory fragmentation can shape competitive dynamics and rollout risk. (Source: Geopolitechs)</li>
+<li><strong>Joint Center report urges state and community action on AI gaps for Black entrepreneurs:</strong> The report frames AI policy as an inclusion and small-business development issue, not just a federal tech regulation debate. That broadens the policy lens toward who gets access to AI tools, capital, and local support ecosystems. (Source: Black PR Wire)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Chef Robotics expands into meatpacking:</strong> Chef Robotics is pushing AI-powered automation into a labor-intensive food processing segment, showing that physical AI adoption is moving into harder industrial environments where labor shortages and consistency matter. For investors, this is strategically meaningful because it points to real automation demand in manufacturing and food supply chains, not just warehouse pilots. (Source: The Shelby Report)</li>
+<li><strong>SVT Robotics launches Softbot Intelligence:</strong> SVT Robotics introduced a platform that captures real-time automation data across robots, software, and enterprise systems, aiming to create an AI-ready operating layer for logistics and industrial environments. The strategic takeaway is that interoperability and data plumbing may become as important as the robots themselves. (Source: Robotics & Automation News)</li>
+<li><strong>Dextall reports robotic welding at triple speed:</strong> Dextall said it increased facade manufacturing speed by standardizing inputs and deploying proprietary robotic welding, offering a concrete example of automation gains in industrial production. That supports the case for selective exposure to companies enabling manufacturing modernization and construction-tech automation. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch state and local data-center restrictions:</strong> Maine, Champaign County, and other local debates could become leading indicators for whether AI infrastructure faces a broader permitting backlash in the U.S. (Source: Business Insider)</li>
+<li><strong>Watch whether more model companies outsource compute:</strong> Anthropic’s CoreWeave deal may signal a wider shift toward rented capacity instead of fully owned infrastructure, with implications for cloud competition and infrastructure financing. (Source: Bloomberg)</li>
+<li><strong>Watch emerging-market AI policy frameworks:</strong> South Africa’s draft plan could be an early sign that more developing economies will pair AI governance with incentives and institution-building to attract investment. (Source: Reuters)</li>
+<li><strong>Watch U.S. industrial policy around robotics:</strong> The new SCSP commission could influence recommendations on workforce training, manufacturing automation, and supply-chain resilience over the next few months. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>Compute is the new bottleneck:</strong> The AI race is not just about the best model, it is also about who can secure enough infrastructure to run it at scale. (Source: Bloomberg)</li>
+<li><strong>AI investing is widening out:</strong> Clients do not have to own only mega-cap software names to get exposure because power, chips, servers, and infrastructure are all part of the story. (Source: Yahoo Finance)</li>
+<li><strong>Policy matters more than many investors think:</strong> Governments from South Africa to China are shaping how AI gets built, deployed, and regulated. (Source: Reuters)</li>
+<li><strong>Local politics can slow AI growth:</strong> Data centers may face zoning and power pushback, which means infrastructure timelines are not guaranteed even when demand is strong. (Source: Business Insider)</li>
+<li><strong>Robotics is becoming an AI investment theme too:</strong> Real-world automation in meatpacking and manufacturing shows AI is moving from screens into physical operations. (Source: The Shelby Report)</li>
+</ul>
