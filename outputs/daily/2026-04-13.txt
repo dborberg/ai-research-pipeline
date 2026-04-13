@@ -1,0 +1,64 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>April 13, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>TSMC heads toward a fourth straight record-profit quarter:</strong> Reuters reported that AI chip demand continues to translate into real earnings momentum for a core semiconductor supplier, reinforcing that AI spending is still flowing first into foundational hardware and manufacturing capacity rather than only software applications. That matters to advisors because it supports the case for looking beyond the largest platform stocks to infrastructure beneficiaries across the chip supply chain. (Source: Reuters)</li>
+<li><strong>Taiwan launched a national robotics center with a roughly $629 million funding plan:</strong> Taiwan’s new National Center for AI Robotics and multiyear support package show governments are starting to treat robotics and physical AI as strategic industrial policy, not just a technology niche. For financial professionals, the development broadens the AI investment story from semiconductors into automation, labor substitution, and national competitiveness. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Wall Street Journal highlighted a growing backlash to AI data center expansion:</strong> The report underscores that AI growth now faces a physical-world constraint in the form of permitting friction, community opposition, and infrastructure siting risk. For advisors, this is a reminder that AI upside in chips, utilities, and digital infrastructure may be accompanied by longer build timelines, local political resistance, and higher execution risk. (Source: WSJ)</li>
+<li><strong>South Africa opened a 60-day comment period on a draft AI policy:</strong> The publication of a formal draft framework is a concrete sign that AI governance is moving from discussion to rulemaking in more markets. For advisors, the takeaway is that compliance, disclosure, and operating standards are likely to become more important variables in evaluating global AI winners and laggards. (Source: Polity.org.za)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>S&amp;P Global Market Intelligence emphasized controlled AI deployment over full autonomy:</strong> AI News said companies are expanding AI use while keeping humans responsible for final decisions, especially in finance and other regulated settings. The practical implication is that near-term productivity gains may come from assistive tools that improve analyst throughput and compliance rather than from wholesale labor replacement. (Source: AI News)</li>
+<li><strong>Narwhal Labs announced a £20 million investment tied to its DeepBlue agentic AI platform:</strong> The funding points to continued enterprise demand for workflow automation tools designed for business use rather than consumer novelty. For advisors, it supports the view that spending is still building around software that can raise white-collar productivity, even if measurable returns remain uneven across employers. (Source: Pulse 2.0)</li>
+<li><strong>MiniMax released MMX-CLI for developers and AI agents:</strong> The launch expands multimodal AI access through command-line workflows, which could make it easier for enterprises to embed AI into coding, content, and operational processes. For labor and productivity, that suggests more AI adoption will arrive through existing work tools rather than standalone chat interfaces. (Source: MarkTechPost)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Microsoft’s AI infrastructure buildout was linked to a reported 160% increase in data center carbon footprint:</strong> Stand.earth framed the company’s expansion as a growing tension between AI capacity growth and decarbonization goals. For investors, the story highlights that power sourcing, emissions, and ESG scrutiny are becoming material considerations alongside compute demand. (Source: Stand.earth)</li>
+<li><strong>Carver became the latest city to impose a moratorium on data centers:</strong> Bring Me The News reported another local restriction on new data center development, adding to evidence that zoning and community resistance are becoming real bottlenecks for AI infrastructure. That matters because delays in siting and permitting can ripple into cloud capacity, utility demand, and construction spending. (Source: Bring Me The News)</li>
+<li><strong>Maine budget writers funded a measure tied to a data center ban:</strong> Maine Morning Star reported state-level action that could further complicate where AI-related capacity gets built. For advisors, the broader message is that data center growth is increasingly a policy and infrastructure story, not just a technology demand story. (Source: Maine Morning Star)</li>
+<li><strong>EE Times argued the semiconductor foundry market is more concentrated at the leading edge than headline figures suggest:</strong> Its analysis of TSMC, Samsung, Intel, and SMIC reinforces that AI infrastructure still depends on a narrow set of advanced manufacturing nodes even if total global chip production is more diversified. That concentration supports pricing power for leaders but also raises geopolitical and supply-chain risk. (Source: EE Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>StepFun is unwinding its offshore structure to prepare for an IPO:</strong> Reuters reported that the Chinese AI startup is aligning itself for a potential public listing, a sign that AI capital-markets activity is broadening beyond U.S. names and private funding rounds. For advisors, it is a useful signal that global AI competition is maturing into public-market pipelines. (Source: Reuters)</li>
+<li><strong>Narwhal Labs raised fresh capital around enterprise agentic AI:</strong> The £20 million investment is modest relative to hyperscaler spending, but it shows venture and growth capital are still backing business-focused AI platforms. That supports the idea that investable AI exposure may widen over time into smaller software and workflow automation companies beyond the largest incumbents. (Source: Pulse 2.0)</li>
+<li><strong>TSMC’s expected record profit reinforced the earnings side of the AI trade:</strong> Strong chip demand remains one of the clearest examples of AI enthusiasm converting into reported or expected financial performance. For portfolio construction, that keeps semiconductor manufacturing and equipment ecosystems central to the AI theme even as valuations elsewhere become more debated. (Source: Reuters)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>South Africa published a draft AI policy and invited public comment for 60 days:</strong> The move is a concrete regulatory event that signals more formal governance frameworks are coming in emerging as well as developed markets. Advisors should watch for how such frameworks affect compliance costs, procurement standards, and cross-border deployment. (Source: Polity.org.za)</li>
+<li><strong>U.S. AI chip export rules drew criticism as a supply-chain chokepoint:</strong> Moneycontrol argued that shifting restrictions may be creating uncertainty for allies and hardware buyers more than for China itself. Even as an opinion piece, it reflects a real market concern: export-control volatility can reshape semiconductor demand, customer access, and international AI infrastructure buildout. (Source: Moneycontrol.com)</li>
+<li><strong>Multiple U.S. localities moved to restrict or pause data center development:</strong> Carver, Ravenna, and Shalersville illustrate how AI infrastructure is increasingly colliding with local land-use and political processes. For investors, that means regulatory risk is no longer limited to model governance and antitrust; it now extends to the physical permitting environment for compute capacity. (Source: Record-Courier)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Taiwan created a national AI robotics center and committed major startup funding:</strong> The initiative is strategically meaningful because it links public capital, labor-shortage policy, and industrial automation in one program. For investors, it suggests robotics could become a more visible national priority in Asia alongside chips, with potential spillovers into manufacturing systems, healthcare automation, and logistics. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Binghamton University developed robotic guide dogs that walk and talk:</strong> The Robot Report described an assistive robotics system that combines mobility with large language model interaction. While early-stage, it is a useful reminder that physical AI is expanding into healthcare and accessibility markets, not just warehouses and factories. (Source: The Robot Report)</li>
+<li><strong>ROS 2 continued gaining attention as a commercial robotics software foundation:</strong> Robotics &amp; Automation News highlighted Nvidia, Intrinsic, and Open Robotics in the ecosystem around more scalable and secure robotics deployment. For advisors, the takeaway is that value in robotics may accrue not only to robot makers but also to software, simulation, and compute providers enabling deployment at scale. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch TSMC’s upcoming results:</strong> A strong print or guidance raise would be another real-world test of whether AI infrastructure demand is still accelerating through the semiconductor supply chain. (Source: Reuters)</li>
+<li><strong>Watch local and state data center restrictions:</strong> New moratoriums or permitting fights could become an early indicator of where AI infrastructure growth slows, shifts geography, or faces higher costs. (Source: Bring Me The News)</li>
+<li><strong>Watch how governments move from AI strategy to funded industrial programs:</strong> Taiwan’s robotics push may be an early sign of broader public-sector capital allocation into automation and physical AI. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Watch whether more AI firms restructure for public listings:</strong> StepFun’s IPO preparation could foreshadow a wider reopening of AI equity issuance outside the U.S. megacap complex. (Source: Reuters)</li>
+<li><strong>Watch power and ESG pressure around hyperscaler buildouts:</strong> Microsoft’s emissions profile shows that energy sourcing and sustainability claims may become more important to both regulators and investors as AI capacity expands. (Source: Stand.earth)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is still showing up first in chip earnings, which is why infrastructure remains the clearest part of the story.</strong> (Source: Reuters)</li>
+<li><strong>Data centers are becoming a local political issue, so AI growth is not just about demand anymore, it is also about permits and power.</strong> (Source: WSJ)</li>
+<li><strong>Most companies are using AI to assist employees, not replace them outright, especially in regulated industries.</strong> (Source: AI News)</li>
+<li><strong>Robotics is moving from a private-sector theme to a national industrial policy theme, and Taiwan is a good example.</strong> (Source: Robotics &amp; Automation News)</li>
+<li><strong>AI regulation is broadening globally, so governance and compliance are becoming part of the investment case.</strong> (Source: Polity.org.za)</li>
+</ul>
