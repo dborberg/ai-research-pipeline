@@ -1,0 +1,66 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>April 16, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>TSMC profit surge:</strong> TSMC reported a sharp profit increase as AI-driven chip demand continued to lift semiconductor spending, giving advisors a concrete earnings-based signal that AI infrastructure demand is still translating into real revenue and margin support across the supply chain. (Source: Bloomberg.com)</li>
+<li><strong>EU pressure on Meta:</strong> EU regulators plan to order Meta to change WhatsApp’s AI policy during an antitrust probe, underscoring that product rollout and monetization for major platforms now face rising compliance and regulatory friction, especially in Europe. (Source: WSJ)</li>
+<li><strong>Maine data center moratorium:</strong> Maine lawmakers passed what is described as the first statewide data center moratorium in the U.S., highlighting that AI buildout is increasingly constrained not just by chips and capital, but by local permitting, power, and political resistance. (Source: Bloomberg Law News)</li>
+<li><strong>Air Liquide Japan investment:</strong> Air Liquide said it will invest $236 million in Japan to support next-generation AI chip production, reinforcing that AI capital spending is broadening beyond chip designers into industrial gases, materials, and manufacturing infrastructure. (Source: Reuters)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Commvault launched AI Protect:</strong> Commvault introduced a product designed to reverse or recover actions taken by AI agents in cloud environments, a sign that enterprise adoption is moving from experimentation toward governance, auditability, and operational controls. (Source: AI News)</li>
+<li><strong>Lawyers warned on chatbot records:</strong> A U.S. legal ruling prompted warnings that AI chat histories could be used as evidence, raising compliance and workflow risks for firms using generative AI in research, drafting, and internal operations. (Source: Reuters)</li>
+<li><strong>Cadence expanded enterprise AI partnerships:</strong> Cadence deepened work with Nvidia and added Google Cloud integrations around AI, simulation, and robotics, showing how engineering and design software vendors are embedding AI into high-value professional workflows rather than just office productivity tools. (Source: AI News)</li>
+<li><strong>Industrial sales teams adopted AI tools:</strong> Industrial automation vendors are using AI sales enablement platforms to shorten long sales cycles and improve technical responsiveness, pointing to a practical white-collar productivity use case in complex B2B markets. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Schneider Electric pushed grid-focused AI:</strong> Schneider Electric highlighted its use of industrial AI and policy engagement to shape grid modernization, a reminder that electrification and power management are becoming central beneficiaries of AI infrastructure growth. (Source: Yahoo Finance)</li>
+<li><strong>InfraXmedia launched AI Cities Summit Series:</strong> InfraXmedia introduced a summit program aimed at helping governments plan for AI infrastructure growth, signaling that data center expansion is becoming a public-policy and urban-planning issue as much as a technology story. (Source: Data Center Dynamics)</li>
+<li><strong>Nvidia reframed AI economics:</strong> Nvidia argued that data centers should be evaluated on cost per token rather than traditional compute metrics, an important lens for investors tracking inference economics, utilization, and future spending efficiency across AI infrastructure. (Source: NVIDIA Blog)</li>
+<li><strong>India’s AI rise centered on power and buildout:</strong> India’s AI push is increasingly being framed around real infrastructure capacity and execution, suggesting that global AI competition will depend not only on software talent but also on power, data center, and national buildout capability. (Source: Storyboard18)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Skild AI bought Zebra’s robotics automation business:</strong> Skild AI acquired Zebra Technologies’ robotics automation unit, adding to evidence that AI-related automation remains an active M&amp;A theme with implications for logistics, industrial software, and warehouse technology valuations. (Source: Bloomberg.com)</li>
+<li><strong>Accenture backed General Robotics:</strong> Accenture invested in General Robotics to advance physical AI for manufacturing and logistics, showing that strategic capital is still flowing into automation platforms tied to productivity and supply-chain modernization. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Stereotaxis struck a medical robotics deal:</strong> Stereotaxis agreed to acquire Robocath for up to $45 million, offering another example of targeted consolidation in robotics outside the mega-cap AI trade and pointing to niche healthcare automation exposure. (Source: The Robot Report)</li>
+<li><strong>UCSD and Together AI proposed a more efficient model design:</strong> Researchers introduced Parcae as an architecture aimed at delivering stronger performance without simply doubling model size, a useful signal that future AI winners may include firms enabling lower-cost inference rather than only those funding brute-force scale. (Source: MarkTechPost)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Nvidia’s Jensen Huang called for U.S.-China AI collaboration:</strong> Huang urged greater cooperation amid chip-policy tensions, highlighting how export controls and geopolitics remain major swing factors for semiconductor demand, supply chains, and global AI market structure. (Source: National Today)</li>
+<li><strong>Financial Times flagged weak safety-rule momentum:</strong> The report argued that meaningful AI regulation focused on safety is unlikely to emerge soon, suggesting commercialization may continue to outpace formal safeguards and leaving investors with a more uneven policy backdrop. (Source: Financial Times)</li>
+<li><strong>Sunbury paused data center development:</strong> Sunbury council imposed a moratorium on data center projects until 2027, adding to signs that local governments may increasingly shape where AI infrastructure can be built and how quickly capital can be deployed. (Source: AOL.com)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Accenture funded manufacturing and logistics robotics:</strong> Accenture’s investment in General Robotics stands out as a strategically meaningful physical AI signal because it ties enterprise services, factory automation, and logistics productivity into one investable theme. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Skild AI expanded through acquisition:</strong> Skild AI’s purchase of Zebra Technologies’ robotics automation business points to continued consolidation in warehouse and industrial automation, where AI is increasingly being embedded into real operating environments. (Source: Bloomberg.com)</li>
+<li><strong>BionIT Labs showcased humanoid hand technology:</strong> BionIT Labs demonstrated its prosthetic manipulator integrated into Oversonic Robotics humanoids, highlighting that dexterity, sensing, and edge processing may become key bottlenecks and opportunities as humanoid systems move toward commercial use. (Source: EE Times)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Maine governor decision:</strong> Watch whether Governor Janet Mills signs or alters the Maine data center moratorium, because the outcome could become a template for other states weighing AI infrastructure restrictions. (Source: Decrypt)</li>
+<li><strong>Semiconductor supply-chain follow-through:</strong> Watch whether companies beyond TSMC and Air Liquide announce additional capex tied to AI chip production, which would confirm that spending breadth is widening across equipment, materials, and industrial inputs. (Source: Reuters)</li>
+<li><strong>European platform enforcement:</strong> Watch whether the EU’s action against Meta expands into broader AI product restrictions for other large consumer platforms, which could affect rollout timing and compliance costs across internet names. (Source: WSJ)</li>
+<li><strong>Factory robotics deployment signals:</strong> Watch Tesla’s roadmap discussion for autonomous mobile robots in legacy manufacturing, because practical deployment in existing plants would be a stronger commercialization signal than concept-stage humanoid headlines. (Source: The Robot Report)</li>
+<li><strong>Grid and permitting friction:</strong> Watch for more local or state actions on data centers and power access, since infrastructure bottlenecks may become one of the biggest determinants of where AI investment actually lands. (Source: Data Center Dynamics)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>Broader AI winners:</strong> AI investing is no longer just about chip designers; industrial suppliers, grid companies, and automation vendors are increasingly part of the story. (Source: Reuters)</li>
+<li><strong>Regulation matters:</strong> Europe is reminding investors that AI adoption can drive growth, but it can also bring real compliance costs and rollout delays. (Source: WSJ)</li>
+<li><strong>Infrastructure is the bottleneck:</strong> The next phase of AI may be limited as much by power and permitting as by software innovation. (Source: Bloomberg Law News)</li>
+<li><strong>Earnings still matter:</strong> TSMC’s results show that some AI enthusiasm is backed by real demand, not just market narrative. (Source: Bloomberg.com)</li>
+<li><strong>Physical AI is investable:</strong> Robotics and warehouse automation are becoming a practical extension of the AI theme for investors looking beyond the largest tech names. (Source: Bloomberg.com)</li>
+</ul>
