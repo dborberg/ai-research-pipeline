@@ -1,0 +1,72 @@
+Beyond the Horizon: Weekly Riffs from the Gen AI Songbook
+Week Ending April 17, 2026
+
+TOP 5 STORIES THIS WEEK
+
+1. Meta extended its multi-year, multi-generation partnership with Broadcom to build custom MTIA AI chips and Ethernet networking infrastructure, with the first phase running through 2029 and targeting more than 1 gigawatt of computing capacity. For advisors, this matters because hyperscaler AI spending is clearly broadening beyond standard GPUs into custom silicon and networking, which widens the list of potential infrastructure beneficiaries and also highlights customer concentration risk in the chip supply chain. (EE Times, Apr. 16)
+
+2. TSMC and ASML both reinforced the AI capex cycle this week, with TSMC reporting a sharp profit increase tied to AI chip demand and Reuters highlighting strong forecasts from both companies. For advisors, this is one of the clearest fact-based signals that AI demand is still showing up in real semiconductor earnings and equipment outlooks, not just in product launches or market narrative. (Bloomberg, Apr. 16; Reuters, Apr. 17)
+
+3. Maine lawmakers passed what multiple outlets described as the first statewide moratorium or freeze on new data center development. For advisors, this matters because AI infrastructure growth is now running into real permitting, land-use, power, and community constraints, which can affect timelines for data center, utility, and industrial buildouts. (NBC Boston, Apr. 16; Planetizen, Apr. 16)
+
+4. Air Liquide said it will invest $236 million in Japan to support next-generation AI chip production. For advisors, the takeaway is that AI capital deployment is spreading beyond chip designers into industrial gases, materials, and manufacturing support infrastructure, which makes the AI buildout a broader supply-chain story. (Reuters, Apr. 16)
+
+5. Skild AI acquired Fetch Robotics assets from Zebra Technologies to automate end-to-end warehouse fulfillment using its robotics software stack. For advisors, this is a timely example of AI moving from digital tools into physical automation, with real M&A activity signaling that warehouse and logistics robotics are becoming a more commercial part of the AI theme. (The Robot Report, Apr. 16)
+
+BEYOND THE MAG 7
+
+1. Cadence Design Systems expanded AI partnerships with Nvidia and Google Cloud at CadenceLIVE, tying AI, physics-based simulation, and accelerated computing to semiconductor design and robotics deployment. This matters now because it shows AI adoption deepening inside engineering software and technical workflows, where spending can be tied to design productivity and workflow integration rather than consumer usage alone. (AI News, Apr. 16)
+
+2. Path Robotics launched Rove, a mobile welding automation system powered by physical AI. This matters now because manufacturing automation is moving toward more flexible robotic systems that can work beyond fixed installations, making industrial labor substitution and throughput improvement a more immediate AI use case. (AiThority, Apr. 16)
+
+3. Air Liquide’s $236 million Japan investment is a reminder that industrial suppliers are becoming part of the AI buildout, not just chipmakers and cloud platforms. For advisors, that broadens the conversation to materials, gases, and production infrastructure that support advanced semiconductor capacity. (Reuters, Apr. 16)
+
+WHAT IS BEING DISRUPTED
+
+1. Warehouse fulfillment is being disrupted as Skild AI bought Fetch Robotics assets from Zebra and Peak Technologies partnered with Jacobi Robotics on AI-powered mixed-case palletizing for brownfield distribution centers. 
+
+2. Industrial welding is being disrupted as Path Robotics introduced Rove, a mobile AI-powered welding system aimed at bringing automation beyond fixed robotic cells. 
+
+3. Chip design and engineering workflows are being disrupted as Cadence expanded AI integrations with Nvidia and Google Cloud around simulation, robotics, and semiconductor system design. 
+
+REGULATORY RADAR
+
+1. Maine lawmakers passed a one-year freeze or moratorium on new data center development, marking one of the clearest U.S. policy signals this week that AI infrastructure expansion can be slowed by state-level action. (NBC Boston, Apr. 16; Planetizen, Apr. 16)
+
+2. India’s Ministry of Electronics and Information Technology formed a high-level AI governance group focused on policy, risk, and jobs impact. This is a concrete sign that a major digital market is moving toward more formal AI oversight tied to economic and workforce considerations. (NDTV Profit, Apr. 16; Social Samosa, Apr. 17)
+
+3. Nvidia CEO Jensen Huang publicly called for greater U.S.-China AI collaboration amid chip-policy tensions, putting export controls and cross-border semiconductor policy back in focus this week. While not a rule change itself, it is a direct policy-related development from a central AI infrastructure company. (National Today, Apr. 16)
+
+READY TO USE SOUNDBITES
+
+1. This week’s biggest AI signal was not another chatbot launch, it was Meta extending custom chip and networking work with Broadcom.
+
+2. TSMC and ASML both helped confirm that AI spending is still showing up in real semiconductor demand, not just investor enthusiasm.
+
+3. Maine’s data center freeze is a good reminder that AI growth now depends on permits, power, and local politics as much as software demand.
+
+4. AI is widening out into the industrial economy, with Air Liquide investing in chip-production support and robotics deals picking up in warehouses and factories.
+
+5. If clients ask where AI is going next, this week’s answer is clear: deeper into infrastructure, engineering software, and physical automation.
+
+QUESTIONS TO BRING TO YOUR CLIENTS
+
+1. Given this week’s Broadcom-Meta and TSMC signals, are we talking enough about AI exposure beyond the obvious platform names and into the broader semiconductor supply chain?
+
+2. With Maine freezing new data center development, should we be discussing how power, permitting, and local regulation could affect the pace of AI infrastructure growth?
+
+3. As deals like Skild’s Fetch acquisition and Path Robotics’ launch show AI moving into warehouses and manufacturing, are clients interested in the physical automation side of the AI story as well as software?
+
+AI PRACTICE TIP OF THE WEEK
+What: Use AI to build a 5-question “AI concentration risk check” for a client’s current equity holdings before a portfolio review.
+
+Why: Many clients think they own broad AI exposure when they may really own the same capex cycle, chip supply chain, or hyperscaler spending story in multiple places. This gives advisors a fast way to frame a more thoughtful review conversation around concentration, second-order beneficiaries, and real-world bottlenecks like power and permitting.
+
+How to:
+Paste in the client’s top 10 equity holdings or sectors.
+Ask AI to group them by AI role: platforms, semis, infrastructure, industrial enablers, or non-AI.
+Use the output to pick 5 review questions that test concentration, overlap, and missing exposure.
+
+Copy prompt: I’m preparing for a client portfolio review. Based on the holdings below, create a simple AI concentration risk check. First, group each holding into one of these buckets: AI platforms, semiconductors, AI infrastructure, industrial/supporting beneficiaries, or limited/direct AI relevance. Then identify where the client may have hidden concentration to the same AI spending cycle, including dependence on hyperscaler capex, chip demand, data center buildout, or supply-chain bottlenecks. Finally, give me 5 plain-English questions I can ask the client in a review meeting to discuss overlap, diversification, and whether their AI exposure is broader than they think. Keep it balanced and non-alarmist. Holdings: [paste holdings]
+
+Guardrail: Use this as a discussion aid, not a recommendation or holdings classification system. Verify company exposures and keep any client-facing conclusions consistent with your firm’s approved research and review process.

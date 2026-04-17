@@ -1,0 +1,73 @@
+AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report
+Week Ending 2026-04-17
+
+Purpose:
+This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.
+
+TOP CONVICTION SIGNALS
+
+compute supply chain expansion
+Conviction: 8.07
+Strength: 8.54
+Momentum: 600%
+Velocity: +6 article change
+Why It Matters:
+This matters for semiconductors, capital equipment, materials, and digital infrastructure because AI spending is showing up in earnings, forecasts, and long-dated partnerships. Advisors should watch both beneficiaries of sustained capex and risks from customer concentration and cycle sensitivity.
+
+embedded in technical and scientific workflows
+Conviction: 7.38
+Strength: 8.05
+Momentum: 400%
+Velocity: +4 article change
+Why It Matters:
+This is relevant because vertical AI adoption can create durable pricing power and workflow lock-in for domain software, engineering platforms, and specialized model providers. Advisors should watch sectors where AI shortens design cycles, improves asset utilization, or reduces R&D timelines.
+
+Enterprise deployment shifts to agents and
+Conviction: 7.24
+Strength: 7.92
+Momentum: 400%
+Velocity: +4 article change
+Why It Matters:
+This theme matters because it broadens the AI value chain beyond model providers to include cloud platforms, inference engines, endpoint security, identity, and workflow software. For markets, it signals that enterprise spending may increasingly favor deployable, governed automation over raw model novelty.
+
+Industrial robotics and warehouse automation
+Conviction: 7.10
+Strength: 7.40
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+This matters for industrials, logistics, automation software, and robotics suppliers because AI-driven productivity gains are becoming more tangible in physical operations. Advisors can view this as a longer-duration theme tied to labor scarcity, capex modernization, and supply-chain efficiency.
+
+OpenAI WSJ
+Conviction: 6.78
+Strength: 7.65
+Momentum: 200%
+Velocity: +2 article change
+Why It Matters:
+This is important because private-market pricing influences public-market sentiment, venture funding conditions, and expectations for future AI leaders. Advisors should balance upside from rapid value creation with the risk that valuation compression follows strategic uncertainty or slower monetization.
+
+ACCELERATING THEMES (BREAKOUTS)
+
+These themes are accelerating fastest relative to prior week.
+
+compute supply chain expansion: Momentum 600%, velocity +6. This matters for semiconductors, capital equipment, materials, and digital infrastructure because AI spending is showing up in earnings, forecasts, and long-dated partnerships
+Industrial robotics and warehouse automation: Momentum 500%, velocity +5. This matters for industrials, logistics, automation software, and robotics suppliers because AI-driven productivity gains are becoming more tangible in physical operations
+embedded in technical and scientific workflows: Momentum 400%, velocity +4. This is relevant because vertical AI adoption can create durable pricing power and workflow lock-in for domain software, engineering platforms, and specialized model providers
+
+FADING SIGNALS
+
+No major theme showed week-over-week deterioration in this run.
+
+PORTFOLIO IMPLICATIONS
+
+Structural strengthening is concentrated in compute supply chain expansion, embedded in technical and scientific workflows, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in Industrial robotics and warehouse automation, OpenAI WSJ, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in compute supply chain expansion, embedded in technical and scientific workflows, supported by rising article volume against the prior week.
+Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
+
+BOTTOM LINE
+
+1. Highest conviction theme: compute supply chain expansion
+2. Most important new signal: compute supply chain expansion
+3. Biggest acceleration: compute supply chain expansion
+4. Key risk / fading area: No material fading area
