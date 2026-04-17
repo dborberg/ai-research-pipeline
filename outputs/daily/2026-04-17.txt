@@ -1,0 +1,63 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>April 17, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>ASML and TSMC reinforced the AI capex story:</strong> Strong forecasts from both companies signaled that semiconductor and AI infrastructure spending remains healthy, a useful read-through for advisors tracking whether the hardware buildout behind generative AI is still expanding. (Source: Reuters)</li>
+<li><strong>Maine lawmakers passed a one-year freeze on data center development:</strong> The move highlights that AI growth now faces local permitting, land-use, and infrastructure resistance, not just demand questions, which matters for digital infrastructure, utilities, and regional buildout assumptions. (Source: NBC Boston)</li>
+<li><strong>Volt announced an AI Gigafactory in Rotterdam:</strong> The project adds to evidence that Europe is still building AI-focused compute capacity, supporting the case for continued investment in data centers, power equipment, and related infrastructure outside the U.S. (Source: Data Center Dynamics)</li>
+<li><strong>MeitY formed a high-level AI governance group in India:</strong> The committee’s focus on policy, risk, and jobs impact shows that major economies are moving from AI promotion toward formal oversight, a trend financial professionals should watch for compliance and adoption implications. (Source: NDTV Profit)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>AWS added Anthropic’s Claude Opus 4.7 to Amazon Bedrock:</strong> Amazon and Anthropic are pushing more capable enterprise AI tools into managed cloud workflows, which could accelerate adoption in coding, knowledge work, and agent-based business processes. (Source: AWS News Blog)</li>
+<li><strong>OpenAI launched GPT-Rosalind for life sciences:</strong> The industry-specific model points to a next phase of enterprise AI where vendors target high-value vertical workflows such as drug discovery and genomics rather than only general office productivity. (Source: MarkTechPost)</li>
+<li><strong>WSJ reported that data centers and power companies are competing for skilled workers:</strong> The AI buildout is tightening labor markets for electricians, technicians, and operators, suggesting that workforce bottlenecks may become a real constraint on deployment timelines and project costs. (Source: WSJ)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Financial Times warned that data center delays could choke AI expansion:</strong> The report underscores that physical buildout risk is becoming a central variable for AI growth, with implications for utilities, industrial suppliers, and infrastructure investors. (Source: Financial Times)</li>
+<li><strong>Meta extended its Broadcom partnership for custom AI chips and networking:</strong> The multi-year effort around MTIA accelerators and Ethernet infrastructure shows hyperscalers are broadening spending beyond Nvidia-style GPU exposure into custom silicon and networking stacks. (Source: EE Times)</li>
+<li><strong>Ypsilanti Township proposed a water moratorium that could block a University of Michigan data center:</strong> The development is a reminder that water access, alongside power and permitting, is emerging as a practical constraint on future AI infrastructure siting. (Source: The Michigan Daily)</li>
+<li><strong>Industry leaders urged Congress to strengthen U.S. chip policy:</strong> The push ties semiconductor capacity directly to AI competitiveness with China, reinforcing that public policy and domestic supply-chain support remain important to the infrastructure outlook. (Source: Broadband Breakfast)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>WSJ profiled a new AI startup valued at $1.5 billion:</strong> The story is another sign that private investors are still assigning premium valuations to AI companies, supporting the view that private-market enthusiasm remains strong even as public investors debate durability. (Source: WSJ)</li>
+<li><strong>CVPR 2026 organizers highlighted more than $10.3 billion in 2025 robotics funding:</strong> The funding backdrop suggests investor appetite is extending from software models into embodied AI and robotics, with potential relevance for industrial automation and logistics exposure. (Source: Robotics & Automation News)</li>
+<li><strong>Antioch raised funding to speed robot development through simulation:</strong> While smaller in scale, the round shows capital is also flowing into picks-and-shovels robotics tooling that could shorten commercialization cycles for physical AI systems. (Source: The Robot Report)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>India created an AI Governance and Economic Group:</strong> The government is explicitly linking AI policy with employment and economic impact, signaling a more structured regulatory approach in one of the world’s largest digital markets. (Source: Moneycontrol.com)</li>
+<li><strong>Planetizen reported Maine passed what it called the nation’s first data center moratorium:</strong> Even with limited detail, the policy signal is clear: state and local governments are becoming more willing to slow AI infrastructure expansion over community and resource concerns. (Source: Planetizen)</li>
+<li><strong>Lysander officials took a first step toward a data center moratorium:</strong> The New York case suggests Maine may not be isolated, and that local opposition could become a broader policy headwind for AI-related real estate and utility demand. (Source: Syracuse.com)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Skild AI acquired Fetch Robotics assets from Zebra Technologies:</strong> The deal is strategically meaningful because it pairs a robotics software stack with established warehouse automation assets, pointing to continued consolidation around AI-driven fulfillment and logistics automation. (Source: The Robot Report)</li>
+<li><strong>Path Robotics launched Rove for mobile welding automation:</strong> The product shows physical AI moving deeper into manufacturing, where flexible robotic systems can address labor shortages and improve throughput in industrial settings. (Source: AiThority)</li>
+<li><strong>Peak Technologies partnered with Jacobi Robotics on mixed-case palletizing:</strong> The warehouse-focused deployment highlights a practical use case where AI, computer vision, and motion planning can improve brownfield logistics operations without full facility redesign. (Source: Robotics & Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch semiconductor guidance this earnings season:</strong> ASML and TSMC strengthened the current AI spending narrative, but investors should look for confirmation from adjacent chip, equipment, and networking suppliers. (Source: Reuters)</li>
+<li><strong>Watch whether more states and municipalities challenge data center projects:</strong> Maine, Ypsilanti Township, and Lysander suggest permitting, water, and community pushback could become a wider bottleneck. (Source: NBC Boston)</li>
+<li><strong>Watch for more sovereign AI policy frameworks in Asia:</strong> India’s new governance structure may be an early sign that large markets will increasingly tie AI adoption to labor and risk oversight. (Source: NDTV Profit)</li>
+<li><strong>Watch custom silicon and networking winners beyond the Mag 7:</strong> Meta’s work with Broadcom suggests the next leg of AI infrastructure spending may broaden into merchant networking, ASICs, and related suppliers. (Source: EE Times)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI spending still looks real:</strong> ASML and TSMC are telling the market the hardware buildout has not rolled over yet. (Source: Reuters)</li>
+<li><strong>AI is no longer just a software story:</strong> Data centers, power, water, and permitting are becoming just as important as the models themselves. (Source: Financial Times)</li>
+<li><strong>Policy matters more now:</strong> India and Maine both show governments are starting to shape AI outcomes more directly. (Source: Moneycontrol.com)</li>
+<li><strong>There are opportunities beyond the biggest tech names:</strong> Custom chip, networking, utility, and industrial automation players can all benefit from the AI buildout. (Source: EE Times)</li>
+<li><strong>Robotics is becoming part of the AI investment conversation:</strong> Warehouse and factory automation are turning AI from a digital tool into a physical productivity story. (Source: The Robot Report)</li>
+</ul>
