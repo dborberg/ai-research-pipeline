@@ -1,0 +1,61 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>April 18, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Maine lawmakers passed a statewide ban on large data centers:</strong> The move puts a new policy brake on AI infrastructure buildout and shows that permitting, water, and community pushback are becoming real constraints on compute expansion, not just background noise. For financial professionals, that matters because infrastructure timelines can affect cloud growth, power demand, and the revenue cadence for suppliers tied to AI buildouts. (Source: Seacoastonline.com)</li>
+<li><strong>Reuters highlighted investor concern that heavy AI spending is sidelining other industries:</strong> The warning reinforces a key portfolio construction issue as capital crowds into AI leaders while other sectors risk being underfunded or overlooked. For advisors, it is a timely reminder to discuss concentration risk, valuation discipline, and where second-order beneficiaries may offer better risk-adjusted exposure. (Source: Reuters)</li>
+<li><strong>Recursive Superintelligence raised $500 million just months after launch:</strong> The funding round shows private capital is still moving aggressively into early-stage AI despite limited operating history, underscoring how strong investor appetite remains. For financial services professionals, that supports the case that AI enthusiasm is still shaping venture flows, valuations, and competitive intensity across the broader tech stack. (Source: Financial Times)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>NanoClaw and Vercel launched tools for setting AI agent policies and approval workflows across 15 messaging apps:</strong> The release points to a more practical phase of enterprise adoption where companies are trying to govern what agents can do before scaling them into daily work. That is relevant for productivity software spending and for firms balancing automation gains against operational and compliance risk. (Source: VentureBeat)</li>
+<li><strong>Google introduced Auto-Diagnose to identify software integration test failures at scale:</strong> The system is a concrete example of AI being used to reduce engineering toil rather than just generate content. For investors, that supports the view that AI can improve white-collar productivity inside large enterprises even when the benefit shows up first in internal efficiency rather than new revenue. (Source: MarkTechPost)</li>
+<li><strong>FiscalNote was highlighted for its AI-powered policy intelligence offering:</strong> The use case shows how specialized information businesses are embedding AI into workflow-heavy professional tasks such as tracking legislation and regulation. For advisors, it is a reminder that AI adoption is spreading into niche data and compliance-oriented software, not only broad consumer platforms. (Source: AD HOC NEWS)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Eos Energy partnered with Turbine-X to develop power infrastructure for the US AI data center market:</strong> The announcement shows that AI demand is pulling in battery, backup, and distributed power providers alongside chip and server vendors. That broadens the investable universe into grid support and energy infrastructure tied to data center growth. (Source: Data Center Dynamics)</li>
+<li><strong>Ypsilanti’s water system began considering a 12-month moratorium on supplying data centers:</strong> The proposal highlights that utility constraints now extend beyond electricity to water access, adding another layer of site-selection and permitting risk for AI infrastructure. For investors, it reinforces that local resource bottlenecks can shape where capacity gets built and at what cost. (Source: Planet Detroit)</li>
+<li><strong>Plainfield officials moved toward a moratorium on new data center proposals while drafting guidelines:</strong> The action suggests municipalities are becoming more selective about large digital infrastructure projects as land use, power, and community concerns rise. That matters for forecasting deployment pace across data center REITs, utilities, and infrastructure suppliers. (Source: Shaw Local)</li>
+<li><strong>Clyde rejected proposed data centers after public opposition:</strong> The decision is another sign that local resistance can derail projects even when AI demand remains strong. For market participants, that means infrastructure winners may increasingly depend on geography, permitting skill, and utility relationships rather than demand alone. (Source: The Mountaineer)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Financial Times reported that Recursive Superintelligence secured a $500 million funding round:</strong> The size and speed of the raise show venture investors are still willing to fund ambitious AI model companies very early, which supports elevated private-market valuations but also raises execution risk. (Source: Financial Times)</li>
+<li><strong>Reuters reported investor concern that AI capital allocation may be crowding out other sectors:</strong> The story is a useful market signal that AI enthusiasm is no longer just a growth narrative but also a source of concentration risk. Advisors can use it to frame diversification conversations beyond the most crowded AI trades. (Source: Reuters)</li>
+<li><strong>Eos Energy’s partnership with Turbine-X underscored a broader investment theme beyond the Mag 7:</strong> As AI spending moves into power systems and site infrastructure, public market exposure may widen to industrial, storage, and grid-related names that support compute growth without being direct model developers. (Source: Data Center Dynamics)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Maine lawmakers approved what was described as the first statewide ban on large data centers:</strong> The legislation is a notable policy signal because it directly targets the physical backbone of AI expansion. If similar measures spread, investors may need to reassess assumptions around data center siting, utility demand, and regional infrastructure growth. (Source: Seacoastonline.com)</li>
+<li><strong>Gov. Janet Mills remained undecided on whether to sign Maine’s data center pause:</strong> The uncertainty keeps a major infrastructure policy question open and shows how state-level executive decisions can quickly affect AI deployment economics. For advisors, it is a reminder that AI themes increasingly carry local political and regulatory risk. (Source: NBC News)</li>
+<li><strong>Plainfield’s village board signaled it would halt data center applications during a moratorium period:</strong> The local action adds to evidence that municipal policy is becoming a meaningful gatekeeper for AI infrastructure. That could create uneven regional winners and losers across utilities, developers, and digital infrastructure operators. (Source: Patch)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Path Robotics launched Rove to extend AI-powered welding automation into field applications:</strong> The product matters because it pushes physical AI beyond fixed factory cells and into more flexible industrial work, where labor shortages and productivity gains can be more immediate. For investors, it is a strategically meaningful sign that robotics adoption is expanding in real-world manufacturing and service environments, not just in pilot programs. (Source: Machine Maker)</li>
+<li><strong>Agility’s Digit demonstrated learning to dead-lift a 65-pound object through simulation-trained control:</strong> While still early, the demo shows embodied AI is improving in load handling and task adaptability, which are important capabilities for logistics and warehouse automation. That keeps humanoid and mobile manipulation systems on the radar for longer-term industrial automation exposure. (Source: IEEE Spectrum)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch whether Gov. Janet Mills signs or blocks Maine’s data center measure:</strong> That decision could become a template for other states weighing AI infrastructure growth against local resource and land-use concerns. (Source: NBC News)</li>
+<li><strong>Watch for more local utility and zoning restrictions on data centers:</strong> Ypsilanti, Plainfield, and Clyde suggest opposition is spreading from isolated disputes to a broader pattern that could slow project pipelines. (Source: Planet Detroit)</li>
+<li><strong>Watch whether venture funding keeps flowing to newly formed AI companies:</strong> The Recursive Superintelligence round will be a useful test of whether private capital remains willing to fund ambitious model builders at premium valuations. (Source: Financial Times)</li>
+<li><strong>Watch for more enterprise spending on AI governance tools:</strong> NanoClaw and Vercel’s launch suggests the next adoption wave may favor software that controls agents rather than just enables them. (Source: VentureBeat)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is still a powerful growth theme, but concentration risk is rising as more capital crowds into the same trades.</strong> (Source: Reuters)</li>
+<li><strong>Data centers are not just a tech story anymore; they are also a power, water, and permitting story.</strong> (Source: Seacoastonline.com)</li>
+<li><strong>Some of the best AI opportunities may sit outside the biggest platform stocks in energy, infrastructure, and industrial automation.</strong> (Source: Data Center Dynamics)</li>
+<li><strong>Enterprise AI adoption is shifting from experimentation to governed deployment, which is where real budget decisions start.</strong> (Source: VentureBeat)</li>
+<li><strong>Physical AI is becoming investable because robotics is moving from demos toward practical industrial use cases like welding and logistics.</strong> (Source: Machine Maker)</li>
+</ul>
