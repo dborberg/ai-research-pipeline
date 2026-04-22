@@ -1,0 +1,83 @@
+name: Generate Sector Report Prompt
+
+on:
+  workflow_dispatch:
+    inputs:
+      sector:
+        description: "Sector adapter to use for prompt assembly"
+        required: true
+        type: choice
+        options:
+          - healthcare
+          - financials
+          - industrials
+          - energy
+          - software
+          - semiconductors
+          - consumer_discretionary
+          - consumer_staples
+          - utilities
+          - materials
+          - communication_services
+          - real_estate
+      audience:
+        description: "Target audience for the generated report"
+        required: false
+        default: "financial advisors and investment professionals"
+        type: string
+      time_horizon:
+        description: "Time horizon to emphasize"
+        required: false
+        default: "1-3 years and 3-7 years"
+        type: string
+      style_notes:
+        description: "Optional style guidance"
+        required: false
+        default: ""
+        type: string
+      special_instructions:
+        description: "Optional run-specific instructions"
+        required: false
+        default: ""
+        type: string
+
+jobs:
+  assemble-prompt:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Create prompt artifact directory
+        run: mkdir -p artifacts
+
+      - name: Render assembled prompt package
+        run: |
+          python scripts/render_prompt.py "${{ inputs.sector }}" \
+            --audience "${{ inputs.audience }}" \
+            --time-horizon "${{ inputs.time_horizon }}" \
+            --style-notes "${{ inputs.style_notes }}" \
+            --special-instructions "${{ inputs.special_instructions }}" \
+            --output artifacts/assembled_prompt.md
+
+      - name: Preview assembled prompt
+        run: sed -n '1,220p' artifacts/assembled_prompt.md
+
+      # Future model invocation step:
+      # Add a provider-specific generation action or script here that consumes
+      # artifacts/assembled_prompt.md, calls the selected model, and writes the
+      # resulting sector report to a new artifact such as artifacts/report.md.
+      # Keep credentials and provider configuration in repository or environment
+      # secrets once you decide which inference provider to use.
+
+      - name: Upload assembled prompt artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: assembled-sector-report-prompt
+          path: artifacts/assembled_prompt.md
