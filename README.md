@@ -10,8 +10,10 @@ The system is intentionally simple and modular:
 - `prompts/user_prompt_template.md`: The runtime instruction layer with placeholders for sector, audience, time horizon, style notes, and special instructions.
 - `prompts/sectors/*.md`: Sector adapters that inject industry-specific business models, value-chain context, likely Gen AI use cases, adoption bottlenecks, value-capture questions, and analytical traps.
 - `scripts/render_prompt.py`: A dependency-light assembler that combines the core prompt, a chosen sector adapter, and the user template into one final prompt package.
-- `.github/workflows/generate_sector_report.yml`: A manual GitHub Actions workflow that renders the final prompt package and uploads it as an artifact.
 - `scripts/validate_prompt_package.py`: A lightweight validator that checks assembled prompt packages before upload, including healthcare-specific checks for all four required analytical pillars.
+- `scripts/generate_sector_report.py`: A report runner that uses the assembled prompt package to generate the final report.
+- `scripts/send_sector_report.py`: A delivery helper that emails the generated HTML report using the shared Gmail workflow secrets.
+- `.github/workflows/generate_sector_report.yml`: A manual GitHub Actions workflow that renders the prompt package, validates it, generates the report, emails it, and uploads both artifacts.
 - `examples/`: Sample assembled prompt packages for inspection.
 
 ## How the Modular Prompt System Works
@@ -22,7 +24,9 @@ The design separates stable instruction logic from sector-specific context:
 2. The sector adapter forces the analysis to reflect the economics and operating realities of a particular industry.
 3. The user prompt template applies run-specific inputs such as audience, time horizon, and any custom emphasis.
 4. `render_prompt.py` assembles those layers into one final prompt package for downstream model use.
-5. `validate_prompt_package.py` can be used to block publication if required sections or healthcare pillars are missing.
+5. `validate_prompt_package.py` blocks publication if required sections or healthcare pillars are missing.
+6. `generate_sector_report.py` uses the assembled prompt package to create the final sector report.
+7. `send_sector_report.py` emails the generated HTML report through the existing workflow email path.
 
 This approach is easier to maintain than keeping one full prompt per sector. It preserves consistency across reports while still allowing sector specificity to improve over time.
 
@@ -117,14 +121,15 @@ python scripts/render_prompt.py --list-sectors
 ## Use the GitHub Workflow
 
 1. Open the repository's **Actions** tab.
-2. Select **Generate Sector Report Prompt**.
+2. Select **Generate Sector Report**.
 3. Click **Run workflow**.
 4. Choose a sector and optionally adjust the audience, time horizon, style notes, and special instructions.
 5. If the sector is `healthcare`, you can also choose a `healthcare_focus_preset` to emphasize a balanced view, biotech and diagnostics, homecare and physical AI, providers and payers, or therapeutics-heavy analysis.
-6. The workflow validates the assembled prompt package before uploading the artifact. For healthcare, that validation explicitly checks that all four required analytical pillars are present.
-7. Download the uploaded `assembled-sector-report-prompt` artifact.
+6. The workflow validates the assembled prompt package before generating the report. For healthcare, that validation explicitly checks that all four required analytical pillars are present.
+7. The workflow generates the final HTML report, emails it through the configured Gmail workflow secrets, and uploads both the prompt package and report artifacts.
+8. Download `assembled-sector-report-prompt` if you want to inspect the exact prompt package, and `sector-ai-impact-report-html` if you want the generated report artifact.
 
-The workflow is intentionally provider-agnostic. It assembles the prompt package and marks the exact place where a future model or API invocation step can be added.
+The workflow now runs end to end: it assembles the prompt, validates it, generates the report, emails the HTML output, and uploads both the prompt package and final report artifacts.
 
 ## Add a New Sector
 
