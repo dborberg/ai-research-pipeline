@@ -1,4 +1,4 @@
-name: Generate Sector Report Prompt
+name: Generate Sector AI Impact Report
 
 on:
   workflow_dispatch:
@@ -40,10 +40,22 @@ on:
         required: false
         default: ""
         type: string
+      model:
+        description: "OpenAI model used to generate the final report"
+        required: false
+        default: "gpt-5.4"
+        type: string
 
 jobs:
-  assemble-prompt:
+  assemble-and-generate-report:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      EMAIL_USER: ${{ secrets.EMAIL_USER }}
+      EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+      EMAIL_TO: ${{ secrets.EMAIL_TO }}
 
     steps:
       - name: Check out repository
@@ -53,6 +65,21 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate required secrets
+        run: |
+          if [[ -z "${OPENAI_API_KEY}" ]]; then
+            echo "OPENAI_API_KEY secret is required to generate the sector report."
+            exit 1
+          fi
+          if [[ -z "${EMAIL_USER}" || -z "${EMAIL_PASSWORD}" || -z "${EMAIL_TO}" ]]; then
+            echo "EMAIL_USER, EMAIL_PASSWORD, and EMAIL_TO secrets are required to email the sector report."
+            exit 1
+          fi
 
       - name: Create prompt artifact directory
         run: mkdir -p artifacts
@@ -69,15 +96,49 @@ jobs:
       - name: Preview assembled prompt
         run: sed -n '1,220p' artifacts/assembled_prompt.md
 
-      # Future model invocation step:
-      # Add a provider-specific generation action or script here that consumes
-      # artifacts/assembled_prompt.md, calls the selected model, and writes the
-      # resulting sector report to a new artifact such as artifacts/report.md.
-      # Keep credentials and provider configuration in repository or environment
-      # secrets once you decide which inference provider to use.
+      - name: Generate sector report HTML
+        run: |
+          python scripts/generate_sector_report.py \
+            --prompt-package artifacts/assembled_prompt.md \
+            --model "${{ inputs.model }}" \
+            --output-format html \
+            --output artifacts/sector_report.html
+
+      - name: Preview generated HTML
+        run: sed -n '1,220p' artifacts/sector_report.html
+
+      - name: Email sector report
+        run: |
+          python scripts/send_sector_report.py \
+            --sector "${{ inputs.sector }}" \
+            --report-path artifacts/sector_report.html
+
+      - name: Add run summary
+        run: |
+          {
+            echo "## Sector AI Impact Report"
+            echo ""
+            echo "- Sector: \`${{ inputs.sector }}\`"
+            echo "- Audience: \`${{ inputs.audience }}\`"
+            echo "- Time horizon: \`${{ inputs.time_horizon }}\`"
+            echo "- Model: \`${{ inputs.model }}\`"
+            echo "- Email delivery: shared Gmail workflow configuration"
+            echo ""
+            echo "### HTML Preview"
+            echo ""
+            echo '```html'
+            sed -n '1,120p' artifacts/sector_report.html
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload assembled prompt artifact
         uses: actions/upload-artifact@v4
         with:
           name: assembled-sector-report-prompt
           path: artifacts/assembled_prompt.md
+
+      - name: Upload generated report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sector-ai-impact-report-html
+          path: artifacts/sector_report.html

@@ -1,6 +1,7 @@
 import os
 import re
 import smtplib
+from html import unescape
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -15,6 +16,20 @@ def _looks_like_html(text):
 def _is_report_title(text):
     stripped = (text or "").strip()
     return stripped in KNOWN_REPORT_TITLES or stripped.startswith("AI SIGNAL COMMAND")
+
+
+def _html_to_plain_text(text):
+    if not text:
+        return ""
+
+    plain = re.sub(r"(?i)<br\s*/?>", "\n", text)
+    plain = re.sub(r"(?i)</p>|</div>|</h[1-6]>", "\n\n", plain)
+    plain = re.sub(r"(?i)</li>", "\n", plain)
+    plain = re.sub(r"(?i)<li[^>]*>", "- ", plain)
+    plain = re.sub(r"<[^>]+>", "", plain)
+    plain = unescape(plain)
+    plain = re.sub(r"\n{3,}", "\n\n", plain)
+    return plain.strip()
 
 
 def format_as_html(text):
@@ -115,7 +130,7 @@ def format_as_html(text):
     """
 
 
-def send_report(subject, body_text):
+def send_report(subject, body_text, body_html=None):
     """Send the provided report via email using the shared HTML formatter."""
 
     smtp_server = "smtp.gmail.com"
@@ -133,9 +148,17 @@ def send_report(subject, body_text):
     msg["From"] = sender_email
     msg["To"] = receiver_email
 
-    html_body = body_text if _looks_like_html(body_text) else format_as_html(body_text)
+    if body_html is not None:
+        plain_body = (body_text or "").strip()
+        html_body = body_html
+    elif _looks_like_html(body_text):
+        plain_body = _html_to_plain_text(body_text)
+        html_body = body_text
+    else:
+        plain_body = body_text
+        html_body = format_as_html(body_text)
 
-    msg.attach(MIMEText(body_text, "plain", "utf-8"))
+    msg.attach(MIMEText(plain_body, "plain", "utf-8"))
     msg.attach(MIMEText(html_body, "html", "utf-8"))
 
     try:
