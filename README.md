@@ -1,104 +1,137 @@
 # Generative AI Sector Report Prompt System
 
-This repository now includes a modular prompt system for generating sector-specific investment impact reports on how Generative AI is reshaping an industry and what that may mean for investors.
+This repository includes a modular prompt framework for generating sector-specific investment impact reports on how Generative AI is reshaping an industry and what the likely implications may be for investors.
 
 ## Architecture
 
-- `prompts/core_system_prompt.md`: The master prompt that defines role, report objective, required structure, analytical standards, and quality bar.
-- `prompts/user_prompt_template.md`: The run-time instruction layer with placeholders for sector, time horizon, audience, style notes, and any custom instructions.
-- `prompts/sectors/*.md`: Concise sector adapters that inject industry economics, value-chain context, likely use cases, adoption bottlenecks, relevant KPIs, and analytical traps.
-- `scripts/render_prompt.py`: A lightweight Python assembler that loads the core prompt, selected sector adapter, and user template into one prompt package.
-- `scripts/generate_sector_report.py`: A lightweight report runner that reads the assembled prompt package, calls the model, and writes the finished report in markdown or HTML.
-- `scripts/send_sector_report.py`: A small email delivery helper that sends the generated sector report through the same Gmail path used by the daily, weekly, and monthly workflows.
-- `.github/workflows/generate_sector_report.yml`: A manual GitHub Actions workflow that renders the assembled prompt, generates the HTML report, emails it, and uploads the artifacts.
+The system is intentionally simple and modular:
 
-## How the Modular System Works
+- `prompts/core_system_prompt.md`: The reusable master prompt that defines role, audience, tone, required report structure, analytical standards, and quality bar.
+- `prompts/user_prompt_template.md`: The runtime instruction layer with placeholders for sector, audience, time horizon, style notes, and special instructions.
+- `prompts/sectors/*.md`: Sector adapters that inject industry-specific business models, value-chain context, likely Gen AI use cases, adoption bottlenecks, value-capture questions, and analytical traps.
+- `scripts/render_prompt.py`: A dependency-light assembler that combines the core prompt, a chosen sector adapter, and the user template into one final prompt package.
+- `.github/workflows/generate_sector_report.yml`: A manual GitHub Actions workflow that renders the final prompt package and uploads it as an artifact.
+- `scripts/validate_prompt_package.py`: A lightweight validator that checks assembled prompt packages before upload, including healthcare-specific checks for all four required analytical pillars.
+- `examples/`: Sample assembled prompt packages for inspection.
 
-The system separates stable report behavior from sector-specific context:
+## How the Modular Prompt System Works
 
-1. The core system prompt defines how the model should think and write.
-2. The sector adapter adds the economics and operating realities of a given industry.
-3. The user prompt template injects run-specific parameters such as time horizon or audience.
-4. `render_prompt.py` combines all three into a single assembled prompt package.
-5. `generate_sector_report.py` uses that assembled package to generate the final report.
-6. `send_sector_report.py` emails the finished HTML output through the existing shared SMTP configuration.
+The design separates stable instruction logic from sector-specific context:
 
-This structure keeps the prompt system maintainable. You can improve sector specificity without rewriting the full prompt every time, and you can adjust the base reporting standard once in the core prompt instead of editing multiple independent prompt copies.
+1. The core system prompt defines how the model should analyze and write.
+2. The sector adapter forces the analysis to reflect the economics and operating realities of a particular industry.
+3. The user prompt template applies run-specific inputs such as audience, time horizon, and any custom emphasis.
+4. `render_prompt.py` assembles those layers into one final prompt package for downstream model use.
+5. `validate_prompt_package.py` can be used to block publication if required sections or healthcare pillars are missing.
 
-## Why Sector Adapters Instead of Fully Separate Prompts
+This approach is easier to maintain than keeping one full prompt per sector. It preserves consistency across reports while still allowing sector specificity to improve over time.
 
-Sector adapters are a better maintenance pattern than fully separate prompts because they:
+## Why Sector Adapters Are Better Than Separate Full Prompts
 
-- preserve a consistent report structure and quality standard across sectors
-- reduce drift when the core analytical framework changes
+Sector adapters are the right maintenance pattern here because they:
+
+- keep report structure and quality standards consistent across sectors
+- reduce prompt drift when the core analytical framework changes
 - make sector updates smaller and easier to review
-- improve reuse in automation workflows such as GitHub Actions
-- keep the model grounded in industry specifics without duplicating the entire instruction stack
+- support automation in GitHub Actions and other pipelines
+- let the model stay grounded in industry detail without duplicating the full instruction stack
+
+## Why Healthcare Is Deeper Than the Other Sectors
+
+Healthcare is treated as a richer adapter because a shallow healthcare AI prompt will often collapse into documentation, coding, and call-center automation. Those are important, but they are not the whole investment story.
+
+The healthcare adapter now forces the model to address four required analytical pillars:
+
+1. Clinical and administrative workflow
+2. Biotechnology and therapeutic development
+3. Diagnostic intelligence at scale
+4. Long-run in-home healthcare transformation through physical AI, robotics, ambient sensing, and agentic care systems
+
+That structure is designed to keep the report investment-relevant across providers, payers, life sciences, diagnostics, healthcare IT, and longer-duration care delivery change.
 
 ## Run Locally
 
-Render a prompt package to stdout:
+Render a prompt package with defaults:
 
 ```bash
-python scripts/render_prompt.py software
+python scripts/render_prompt.py healthcare
 ```
 
-Render to a file with custom inputs:
+Render a prompt package with explicit inputs:
 
 ```bash
-python scripts/render_prompt.py healthcare \
+python scripts/render_prompt.py \
+  --sector-name healthcare \
   --audience "portfolio managers and strategists" \
-  --time-horizon "12-24 months and 5+ years" \
-  --style-notes "Write with concise, institutional tone" \
-  --special-instructions "Emphasize reimbursement and administrative cost takeout" \
-  --output artifacts/assembled_prompt.md
+  --time-horizon "1-3 years and 3-7 years" \
+  --style-notes "Write in crisp institutional prose" \
+  --special-instructions "Spend real time on biotech productivity and diagnostic intelligence"
 ```
 
-Generate the final report from the assembled prompt package:
+Render a second healthcare variant by changing only the run-time emphasis:
 
 ```bash
-OPENAI_API_KEY=your_key_here python scripts/generate_sector_report.py \
-  --prompt-package artifacts/assembled_prompt.md \
-  --model gpt-5.4 \
-  --output-format html \
-  --output artifacts/sector_report.html
+python scripts/render_prompt.py \
+  --sector-name healthcare \
+  --audience "portfolio managers and strategists" \
+  --time-horizon "1-3 years and 3-7 years" \
+  --style-notes "Write in crisp institutional prose" \
+  --special-instructions "Lean harder into long-run in-home care transformation, robotics, ambient sensing, and caregiver augmentation."
 ```
 
-Email the generated HTML report with the shared Gmail sender and recipient configuration:
+In GitHub Actions, healthcare runs now also support a structured dropdown input:
+
+- `balanced`
+- `biotech_diagnostics`
+- `homecare_physical_ai`
+- `providers_payers`
+- `therapeutics_only`
+
+That preset is combined with any free-form `special_instructions` you enter. For non-healthcare sectors, the preset is ignored.
+
+Validate an assembled prompt package before using or publishing it:
 
 ```bash
-EMAIL_USER=you@example.com \
-EMAIL_PASSWORD=app_password \
-EMAIL_TO=recipient@example.com \
-python scripts/send_sector_report.py \
-  --sector software \
-  --report-path artifacts/sector_report.html
+python scripts/validate_prompt_package.py \
+  --prompt-package out/final_prompt_healthcare.md \
+  --sector-name healthcare
 ```
 
-List supported sectors:
+By default, the script writes the assembled prompt to:
 
 ```bash
-python scripts/render_prompt.py software --list-sectors
+out/final_prompt_<sector>.md
+```
+
+Examples:
+
+- `out/final_prompt_healthcare.md`
+- `out/final_prompt_semiconductors.md`
+
+List available sectors:
+
+```bash
+python scripts/render_prompt.py --list-sectors
 ```
 
 ## Use the GitHub Workflow
 
-1. Open the repository's Actions tab.
-2. Select `Generate Sector AI Impact Report`.
-3. Click `Run workflow`.
-4. Choose a sector and optionally adjust the audience, time horizon, style notes, special instructions, or model.
-5. The workflow emails the HTML report to the same configured Gmail recipient used by the daily, weekly, and monthly pipelines.
-6. Download the uploaded `sector-ai-impact-report-html` artifact for the finished report.
-7. If needed, also download `assembled-sector-report-prompt` to inspect the exact prompt package used for the run.
+1. Open the repository's **Actions** tab.
+2. Select **Generate Sector Report Prompt**.
+3. Click **Run workflow**.
+4. Choose a sector and optionally adjust the audience, time horizon, style notes, and special instructions.
+5. If the sector is `healthcare`, you can also choose a `healthcare_focus_preset` to emphasize a balanced view, biotech and diagnostics, homecare and physical AI, providers and payers, or therapeutics-heavy analysis.
+6. The workflow validates the assembled prompt package before uploading the artifact. For healthcare, that validation explicitly checks that all four required analytical pillars are present.
+7. Download the uploaded `assembled-sector-report-prompt` artifact.
 
-The workflow expects `OPENAI_API_KEY`, `EMAIL_USER`, `EMAIL_PASSWORD`, and `EMAIL_TO` repository secrets. It installs Python dependencies, renders the prompt package, generates the HTML report, emails it through the shared Gmail delivery path, adds a preview to the run summary, and uploads both the prompt package and the final report.
+The workflow is intentionally provider-agnostic. It assembles the prompt package and marks the exact place where a future model or API invocation step can be added.
 
 ## Add a New Sector
 
-1. Create a new file in `prompts/sectors/` named after the sector, for example `aerospace_defense.md`.
-2. Follow the same compact adapter pattern used by the existing sectors:
+1. Create a new file in `prompts/sectors/` such as `aerospace_defense.md`.
+2. Follow the existing adapter pattern:
    - sector definition
-   - main business models
+   - major business models
    - value chain notes
    - key revenue drivers
    - key cost centers
@@ -106,15 +139,37 @@ The workflow expects `OPENAI_API_KEY`, `EMAIL_USER`, `EMAIL_PASSWORD`, and `EMAI
    - adoption bottlenecks
    - likely beneficiaries
    - incumbents at risk
-   - important KPIs or signals investors should watch
-   - sector-specific analytical traps to avoid
-3. Add the new sector name to the `workflow_dispatch` options in `.github/workflows/generate_sector_report.yml`.
-4. Test locally with `python scripts/render_prompt.py <new_sector_name>`.
+   - important KPIs and signals
+   - analytical traps to avoid
+3. Add the new sector to the workflow dropdown in `.github/workflows/generate_sector_report.yml`.
+4. Run `python scripts/render_prompt.py --sector-name <new_sector>` to validate the adapter locally.
+
+## Modify the Healthcare Logic Over Time
+
+Healthcare is the most likely adapter to evolve because the sector spans multiple distinct investment subthemes. The best way to extend it is to preserve the current pillar structure and deepen specific sections as evidence improves.
+
+Good future update paths include:
+
+- refining the biotech section as AI-native discovery, platform biology, or trial design economics mature
+- deepening the diagnostic intelligence section as evidence, reimbursement, and liability frameworks evolve
+- expanding the in-home care section as physical AI, robotics, sensing, and payer support move from pilot activity toward scaled deployment
+- adding more explicit subsector cues for payers, CROs, medtech, diagnostics, provider systems, and home health
+- refining the healthcare preset library further if you want even narrower structured emphasis modes beyond the current dropdown choices
+
+## Examples
+
+The `examples/` directory contains assembled prompt packages for:
+
+- `examples/healthcare_prompt_package.md`
+- `examples/healthcare_prompt_package_homecare_variant.md`
+- `examples/semiconductors_prompt_package.md`
+
+These are useful for checking whether sector specificity is actually showing up in the final prompt package.
 
 ## Design Assumptions
 
-- The report is meant to be investment-oriented and client-ready, not a technical AI explainer.
-- The output should stay balanced and explicit about uncertainty rather than defaulting to optimistic AI narratives.
-- The prompt assembler is intentionally dependency-free so it can run easily in local environments and CI.
-- Report generation currently uses the OpenAI Python client, trying the Responses API first and falling back to Chat Completions for compatibility with the repo's existing usage pattern.
-- Sector report email delivery reuses the same SMTP-based Gmail path and destination-secret pattern as the existing daily, weekly, and monthly workflows.
+- The report is meant to be investment-oriented and client-ready, not a technology demo.
+- The output should separate realistic nearer-term impacts from longer-duration possibilities.
+- The renderer should remain dependency-light and easy to use in CI.
+- Healthcare needs stronger structural guidance than the other sectors to avoid defaulting to a generic administrative-automation narrative.
+- The `special_instructions` field is the right place to emphasize one healthcare angle over another at run time without weakening the base healthcare adapter.

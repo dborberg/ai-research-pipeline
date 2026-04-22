@@ -13,6 +13,7 @@ PROMPTS_DIR = REPO_ROOT / "prompts"
 SECTORS_DIR = PROMPTS_DIR / "sectors"
 CORE_PROMPT_PATH = PROMPTS_DIR / "core_system_prompt.md"
 USER_TEMPLATE_PATH = PROMPTS_DIR / "user_prompt_template.md"
+DEFAULT_OUTPUT_DIR = REPO_ROOT / "out"
 
 
 def read_text(path: Path) -> str:
@@ -30,6 +31,10 @@ def list_available_sectors() -> list[str]:
 
 def normalize_sector_name(value: str) -> str:
     return value.strip().lower().replace(" ", "_").replace("-", "_")
+
+
+def default_output_path(sector: str) -> Path:
+    return DEFAULT_OUTPUT_DIR / f"final_prompt_{normalize_sector_name(sector)}.md"
 
 
 def render_template(template: str, replacements: dict[str, str]) -> str:
@@ -91,6 +96,11 @@ def parse_args() -> argparse.Namespace:
         help="Sector name or sector adapter filename stem.",
     )
     parser.add_argument(
+        "--sector-name",
+        dest="sector_name",
+        help="Sector name or sector adapter filename stem.",
+    )
+    parser.add_argument(
         "--audience",
         default="financial advisors and investment professionals",
         help="Audience description for the report.",
@@ -114,7 +124,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=Path,
-        help="Optional file path for the assembled prompt package. Prints to stdout if omitted.",
+        help="Optional file path for the assembled prompt package. Defaults to out/final_prompt_<sector>.md.",
     )
     parser.add_argument(
         "--list-sectors",
@@ -135,16 +145,18 @@ def main() -> int:
         print("\n".join(sectors))
         return 0
 
-    if not args.sector:
+    sector_name = args.sector_name or args.sector
+
+    if not sector_name:
         print(
-            "A sector name is required unless --list-sectors is used.",
+            "A sector name is required unless --list-sectors is used. Use either the positional sector argument or --sector-name.",
             file=sys.stderr,
         )
         return 1
 
     try:
         prompt_package = build_prompt_package(
-            sector=args.sector,
+            sector=sector_name,
             audience=args.audience,
             time_horizon=args.time_horizon,
             style_notes=args.style_notes,
@@ -154,11 +166,10 @@ def main() -> int:
         print(str(exc), file=sys.stderr)
         return 1
 
-    if args.output:
-        args.output.parent.mkdir(parents=True, exist_ok=True)
-        args.output.write_text(prompt_package, encoding="utf-8")
-    else:
-        print(prompt_package)
+    output_path = args.output or default_output_path(sector_name)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(prompt_package, encoding="utf-8")
+    print(output_path)
 
     return 0
 

@@ -1,4 +1,4 @@
-name: Generate Sector AI Impact Report
+name: Generate Sector Report Prompt
 
 on:
   workflow_dispatch:
@@ -40,22 +40,21 @@ on:
         required: false
         default: ""
         type: string
-      model:
-        description: "OpenAI model used to generate the final report"
+      healthcare_focus_preset:
+        description: "Healthcare-only emphasis preset"
         required: false
-        default: "gpt-5.4"
-        type: string
+        default: balanced
+        type: choice
+        options:
+          - balanced
+          - biotech_diagnostics
+          - homecare_physical_ai
+          - providers_payers
+          - therapeutics_only
 
 jobs:
-  assemble-and-generate-report:
+  assemble-prompt:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-
-    env:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      EMAIL_USER: ${{ secrets.EMAIL_USER }}
-      EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-      EMAIL_TO: ${{ secrets.EMAIL_TO }}
 
     steps:
       - name: Check out repository
@@ -65,80 +64,94 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: "pip"
-
-      - name: Install Python dependencies
-        run: pip install -r requirements.txt
-
-      - name: Validate required secrets
-        run: |
-          if [[ -z "${OPENAI_API_KEY}" ]]; then
-            echo "OPENAI_API_KEY secret is required to generate the sector report."
-            exit 1
-          fi
-          if [[ -z "${EMAIL_USER}" || -z "${EMAIL_PASSWORD}" || -z "${EMAIL_TO}" ]]; then
-            echo "EMAIL_USER, EMAIL_PASSWORD, and EMAIL_TO secrets are required to email the sector report."
-            exit 1
-          fi
 
       - name: Create prompt artifact directory
-        run: mkdir -p artifacts
+        run: mkdir -p artifacts out
+
+      - name: Resolve effective special instructions
+        run: |
+          PRESET_TEXT=""
+
+          if [[ "${{ inputs.sector }}" == "healthcare" ]]; then
+            case "${{ inputs.healthcare_focus_preset }}" in
+              balanced)
+                PRESET_TEXT="For healthcare, keep the analysis balanced across all four required pillars and do not let the report collapse into mostly administrative workflow automation."
+                ;;
+              biotech_diagnostics)
+                PRESET_TEXT="For healthcare, place extra emphasis on biotechnology and therapeutic development plus diagnostic intelligence at scale, while still covering all four required analytical pillars."
+                ;;
+              homecare_physical_ai)
+                PRESET_TEXT="For healthcare, place extra emphasis on the long-run in-home healthcare transformation enabled by physical AI, robotics, ambient sensing, and agentic care systems, while still covering all four required analytical pillars."
+                ;;
+              providers_payers)
+                PRESET_TEXT="For healthcare, place extra emphasis on providers and payers, including clinical workflow, administrative efficiency, reimbursement dynamics, care coordination, diagnostic support adoption, and where economic value may accrue across care delivery and managed care, while still covering all four required analytical pillars."
+                ;;
+              therapeutics_only)
+                PRESET_TEXT="For healthcare, place extra emphasis on biotechnology and therapeutic development, including target discovery, molecule design, biomarker discovery, patient stratification, clinical trial design, protocol optimization, R&D productivity, probability of success, and development timelines, while still covering all four required analytical pillars."
+                ;;
+            esac
+          fi
+
+          USER_TEXT="${{ inputs.special_instructions }}"
+
+          if [[ -n "$PRESET_TEXT" && -n "$USER_TEXT" ]]; then
+            EFFECTIVE_SPECIAL_INSTRUCTIONS="$PRESET_TEXT $USER_TEXT"
+          elif [[ -n "$PRESET_TEXT" ]]; then
+            EFFECTIVE_SPECIAL_INSTRUCTIONS="$PRESET_TEXT"
+          else
+            EFFECTIVE_SPECIAL_INSTRUCTIONS="$USER_TEXT"
+          fi
+
+          {
+            echo "EFFECTIVE_SPECIAL_INSTRUCTIONS<<EOF"
+            echo "$EFFECTIVE_SPECIAL_INSTRUCTIONS"
+            echo "EOF"
+          } >> "$GITHUB_ENV"
 
       - name: Render assembled prompt package
         run: |
-          python scripts/render_prompt.py "${{ inputs.sector }}" \
+          python scripts/render_prompt.py \
+            --sector-name "${{ inputs.sector }}" \
             --audience "${{ inputs.audience }}" \
             --time-horizon "${{ inputs.time_horizon }}" \
             --style-notes "${{ inputs.style_notes }}" \
-            --special-instructions "${{ inputs.special_instructions }}" \
-            --output artifacts/assembled_prompt.md
+            --special-instructions "${EFFECTIVE_SPECIAL_INSTRUCTIONS}"
+          cp "out/final_prompt_${{ inputs.sector }}.md" artifacts/assembled_prompt.md
 
       - name: Preview assembled prompt
         run: sed -n '1,220p' artifacts/assembled_prompt.md
 
-      - name: Generate sector report HTML
+      - name: Validate assembled prompt package
         run: |
-          python scripts/generate_sector_report.py \
+          python scripts/validate_prompt_package.py \
             --prompt-package artifacts/assembled_prompt.md \
-            --model "${{ inputs.model }}" \
-            --output-format html \
-            --output artifacts/sector_report.html
-
-      - name: Preview generated HTML
-        run: sed -n '1,220p' artifacts/sector_report.html
-
-      - name: Email sector report
-        run: |
-          python scripts/send_sector_report.py \
-            --sector "${{ inputs.sector }}" \
-            --report-path artifacts/sector_report.html
+            --sector-name "${{ inputs.sector }}"
 
       - name: Add run summary
         run: |
           {
-            echo "## Sector AI Impact Report"
+            echo "## Sector Report Prompt Package"
             echo ""
             echo "- Sector: \`${{ inputs.sector }}\`"
             echo "- Audience: \`${{ inputs.audience }}\`"
             echo "- Time horizon: \`${{ inputs.time_horizon }}\`"
-            echo "- Model: \`${{ inputs.model }}\`"
-            echo "- Email delivery: shared Gmail workflow configuration"
+            echo "- Healthcare preset: \`${{ inputs.healthcare_focus_preset }}\`"
+            echo "- Validation: passed"
             echo ""
-            echo "### HTML Preview"
+            echo "### Prompt Preview"
             echo ""
-            echo '```html'
-            sed -n '1,120p' artifacts/sector_report.html
+            echo '```md'
+            sed -n '1,120p' artifacts/assembled_prompt.md
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Future model invocation placeholder
+        run: |
+          echo "Placeholder: call your chosen model or provider here using artifacts/assembled_prompt.md."
+          echo "Keep provider-specific secrets, SDK installs, and output handling in this section when you are ready."
 
       - name: Upload assembled prompt artifact
         uses: actions/upload-artifact@v4
         with:
           name: assembled-sector-report-prompt
           path: artifacts/assembled_prompt.md
-
-      - name: Upload generated report artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: sector-ai-impact-report-html
-          path: artifacts/sector_report.html
