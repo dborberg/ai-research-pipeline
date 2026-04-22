@@ -1,0 +1,66 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>April 22, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Lloyds pilots AI investment guidance:</strong> Lloyds is testing an AI-based investment guidance tool as UK regulators study AI’s impact on financial services, a notable signal that wealth and banking firms are moving AI closer to client-facing use cases while compliance standards are still forming. For advisors, this raises both competitive pressure and oversight risk around how AI can support recommendations and investor communications. (Source: Reuters)</li>
+<li><strong>Microsoft pushes production AI through partners:</strong> Microsoft said enterprise AI adoption is shifting from experimentation to production, with customers prioritizing measurable ROI, governance, security, and implementation support. For financial professionals, that reinforces the case that spending may broaden beyond model providers into consulting, integration, and compliance-oriented software ecosystems. (Source: The Official Microsoft Blog)</li>
+<li><strong>Maine weighs a data center ban:</strong> Gov. Janet Mills is considering restrictions on certain data center projects, underscoring that AI infrastructure growth now faces local political, environmental, and permitting friction. For investors, that is a reminder that AI buildout depends not just on demand for compute, but also on where projects can actually get approved. (Source: Maine Morning Star)</li>
+<li><strong>SpaceX questions AI space data centers:</strong> A filing cited by SpaceX said AI-focused space data centers are unproven and may not be commercially viable, offering a useful reality check as capital chases ambitious AI infrastructure concepts. For advisors, the takeaway is to separate durable enablers such as power, networking, and conventional data centers from speculative moonshots with unclear economics. (Source: Reuters)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Snowflake expands AI tools for business users and developers:</strong> Snowflake broadened its AI platform with Snowflake Intelligence for mainstream users and Cortex Code for technical teams, showing how software vendors are trying to embed AI across both white-collar workflows and developer productivity. That supports the view that AI adoption may deepen inside existing enterprise platforms rather than through stand-alone tools alone. (Source: AI News)</li>
+<li><strong>Microsoft highlights governance-led deployments:</strong> Microsoft said customers are focusing on high-value use cases with data, security, governance, and responsible AI foundations built in from the start, a sign that enterprise buyers increasingly want operational discipline rather than pilot projects. That matters for labor because AI budgets may favor workflow redesign and managed implementation over broad-based hiring. (Source: The Official Microsoft Blog)</li>
+<li><strong>VentureBeat reports AI security tools were hijacked at 90-plus organizations:</strong> The incident shows that AI can create new operational risk when connected to core enterprise systems, especially if tools gain write access to security infrastructure. For employers, that could slow autonomous deployment and increase demand for governance, cyber talent, and human review layers. (Source: VentureBeat)</li>
+<li><strong>Hugging Face releases ml-intern:</strong> Hugging Face introduced an open-source agent designed to automate parts of the LLM post-training workflow, including literature review, dataset discovery, and evaluation. While still technical, it points to a broader labor trend: AI is starting to automate higher-skill knowledge work inside engineering and research functions, not just routine office tasks. (Source: MarkTechPost)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Charlotte officials call for a data center moratorium:</strong> A Charlotte city council member urged tighter regulation and a moratorium amid drought concerns, highlighting how water use and local resource constraints are becoming real bottlenecks for AI infrastructure siting. That adds a new layer of execution risk for data center developers, utilities, and cloud supply chains. (Source: WBTV)</li>
+<li><strong>Data Center Dynamics spotlights batteries as grid support assets:</strong> The publication argued that batteries in AI data centers are evolving from backup systems into part of broader power architecture and system stability. For investors, that suggests AI capex may increasingly benefit electrical equipment, storage, and resilience vendors alongside chipmakers. (Source: Data Center Dynamics)</li>
+<li><strong>Tenstorrent previews a large compute cluster:</strong> Tenstorrent demonstrated a system that generated video faster than real time ahead of a broader launch, signaling that competition in AI compute infrastructure is expanding beyond the largest incumbents. That matters because alternative chip and system vendors could capture niche or price-sensitive demand as AI workloads diversify. (Source: EE Times)</li>
+<li><strong>OilPrice.com highlights geothermal as a possible AI power source:</strong> The report argued geothermal could cover a meaningful share of AI data center electricity demand by 2030, reflecting how investors are increasingly looking beyond gas and nuclear to meet rising compute-related load. The practical takeaway is that power sourcing is becoming a strategic differentiator in AI infrastructure. (Source: Crude Oil Prices Today | OilPrice.com)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Lloyds tests AI in investment guidance:</strong> Lloyds’ pilot is an important capital markets signal because it shows established financial institutions are experimenting with AI in advisory-adjacent workflows, not just back-office automation. If adoption expands, the beneficiaries could include compliance software, enterprise AI vendors, and incumbent financial platforms that can deploy AI within regulated frameworks. (Source: Reuters)</li>
+<li><strong>SpaceX throws cold water on orbital AI infrastructure:</strong> SpaceX’s filing that AI space data centers may not be commercially viable is a reminder that not every AI-adjacent concept deserves infrastructure-style valuation multiples. Investors should distinguish between proven demand chains and highly speculative narratives with uncertain unit economics. (Source: Reuters)</li>
+<li><strong>Microsoft emphasizes ROI-driven AI spending:</strong> Microsoft’s message that customers want measurable business outcomes suggests enterprise AI budgets are becoming more disciplined, which may favor vendors with clear monetization, integration capability, and governance features. That is a healthier signal for long-term capital allocation than hype-driven experimentation. (Source: The Official Microsoft Blog)</li>
+<li><strong>Tenstorrent showcases non-Mag 7 compute competition:</strong> Tenstorrent’s cluster preview reinforces that AI infrastructure opportunities may extend beyond the largest public winners if smaller hardware players can prove performance and attract deployment partners. For advisors, it supports a broader ecosystem view across semis, networking, power, and private-market challengers. (Source: EE Times)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>UK regulators study AI as Lloyds pilots a guidance tool:</strong> The UK is examining AI’s impact in financial services just as Lloyds tests AI for investment guidance, making this a key policy-development story for wealth management. The likely implication is that client-facing AI will advance, but under tighter scrutiny around suitability, disclosures, and accountability. (Source: Reuters)</li>
+<li><strong>Gov. Janet Mills considers limits on data centers in Maine:</strong> Maine’s debate over a potential data center ban shows AI policy is increasingly being shaped at the state and local level through land use, infrastructure, and environmental review rather than only through national AI rules. That could redirect where future AI-related capex gets deployed. (Source: Maine Morning Star)</li>
+<li><strong>Charlotte leaders push for data center restrictions during drought:</strong> The call for regulation and a moratorium in Charlotte highlights how municipal policy can become a gating factor for AI infrastructure when water and utility concerns intensify. Investors should expect more local permitting friction as AI power demand rises. (Source: WBTV)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Neura Robotics and AWS form a physical AI partnership:</strong> Neura Robotics and Amazon Web Services announced a strategic collaboration to scale physical AI, including cloud support for robot training and potential deployment of Neura systems in select Amazon fulfillment centers. For investors, this is one of the clearer signs that robotics, cloud infrastructure, and logistics automation are converging into a more commercially relevant AI category. (Source: Robotics &amp; Automation News)</li>
+<li><strong>GMEX Robotics upgrades its hospital logistics robot:</strong> GMEX Robotics introduced an improved autonomous delivery robot for hospitals with AI sensing, navigation, and access controls, showing that physical AI is gaining traction in operational settings where labor shortages and workflow efficiency matter. The strategic relevance is that healthcare automation is becoming a real deployment market, not just a prototype story. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Universal Robots, PickNik, and Path Robotics discuss factory deployment hurdles:</strong> Industry leaders said moving AI robotics from the lab to the factory floor requires more integration, infrastructure, and operational discipline than many investors assume. That is a useful reminder that industrial automation adoption can be durable, but often slower and more execution-dependent than software AI rollouts. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch local data center permitting fights:</strong> Decisions in places such as Maine, Charlotte, Oklahoma City, Seattle, and Champaign County could become leading indicators for whether AI infrastructure faces a broader wave of municipal and state resistance. (Source: The Oklahoman)</li>
+<li><strong>Watch whether banks expand AI into client-facing advice:</strong> Lloyds’ pilot could be an early signal for broader adoption across wealth, retirement, and banking platforms if regulators provide workable guardrails. (Source: Reuters)</li>
+<li><strong>Watch power architecture spending inside data centers:</strong> Battery systems, cooling, and grid-stability equipment may emerge as second-order winners if AI workloads keep pushing facilities toward higher density and uptime requirements. (Source: Data Center Dynamics)</li>
+<li><strong>Watch physical AI pilots in logistics and industry:</strong> Partnerships like Neura Robotics with AWS and Amazon will be worth tracking for evidence that robotics deployments are moving from demos to scaled operational use. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Watch whether alternative compute vendors gain traction:</strong> Tenstorrent’s upcoming system launch may offer a read-through on whether customers are willing to diversify AI hardware exposure beyond the dominant incumbents. (Source: EE Times)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI in finance is moving closer to the client, but regulation will decide how fast it scales.</strong> (Source: Reuters)</li>
+<li><strong>The next phase of AI spending looks more like implementation and governance than pure experimentation.</strong> (Source: The Official Microsoft Blog)</li>
+<li><strong>AI investing is no longer just about chips because power, batteries, and permitting are becoming part of the story.</strong> (Source: Data Center Dynamics)</li>
+<li><strong>Not every AI infrastructure idea is investable, and SpaceX’s skepticism on space data centers is a good example.</strong> (Source: Reuters)</li>
+<li><strong>Physical AI is becoming more relevant as robotics partnerships start targeting warehouses, factories, and hospitals.</strong> (Source: Robotics &amp; Automation News)</li>
+</ul>
