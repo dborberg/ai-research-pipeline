@@ -29,6 +29,10 @@ def read_text(path: Path) -> str:
 def build_execution_prompt(prompt_package: str, output_format: str) -> str:
     output_instructions = (
         "Return only the finished report in markdown.\n"
+        "- Aim for the lower half of the allowed report length unless the prompt explicitly requires more detail.\n"
+        "- Prioritize a complete report over extra detail if there is any risk of truncation.\n"
+        "- Do not end with unfinished bullets, unfinished sentences, or incomplete sections.\n"
+        "- Ensure the Bottom Line section is fully completed.\n"
         "- Do not add meta commentary about the prompt package.\n"
     )
 
@@ -37,6 +41,10 @@ def build_execution_prompt(prompt_package: str, output_format: str) -> str:
             "Return only the finished report as complete HTML.\n"
             "- Use semantic tags such as <html>, <body>, <h1>, <h2>, <p>, <ul>, and <li>.\n"
             "- Make the HTML email-friendly with simple inline styling only.\n"
+            "- Aim for the lower half of the allowed report length unless the prompt explicitly requires more detail.\n"
+            "- Prioritize a complete report over extra detail if there is any risk of truncation.\n"
+            "- Do not end with unfinished bullets, unfinished sentences, incomplete sections, or incomplete HTML.\n"
+            "- Ensure the Bottom Line section is fully completed.\n"
             "- Do not wrap the HTML in markdown fences.\n"
             "- Do not add meta commentary about the prompt package.\n"
         )
@@ -148,7 +156,10 @@ def generate_with_chat_completions(
                     "Execute the supplied prompt package. Treat the Core System Prompt "
                     "as the governing instructions, the Sector Adapter as the sector "
                     "context, and the User Prompt as the active task. Return only the "
-                    f"{format_instruction}."
+                    f"{format_instruction}. Aim for the lower half of the allowed "
+                    "length range, prioritize completion over extra detail, do not end "
+                    "with unfinished bullets or sentences, and ensure the Bottom Line "
+                    "section is fully completed."
                 ),
             },
             {"role": "user", "content": prompt_package},
