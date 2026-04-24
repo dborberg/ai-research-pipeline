@@ -95,6 +95,121 @@ def generate_daily_digest(report_date=None):
             return "research_blog"
         return "general_news"
 
+    def extract_theme_tags(article):
+        text = " ".join(
+            [
+                article.get("title") or "",
+                article.get("summary") or "",
+                article.get("advisor_relevance") or "",
+            ]
+        ).lower()
+        theme_rules = {
+            "infrastructure_and_power": [
+                "data center", "datacenter", "power", "grid", "electricity", "utility", "utilities",
+                "cooling", "thermal", "nuclear", "land", "water", "semiconductor", "chip", "networking",
+                "optical", "fab", "fabs",
+            ],
+            "enterprise_and_labor": [
+                "hiring", "layoff", "layoffs", "job", "jobs", "workforce", "productivity", "automation",
+                "employee", "employees", "coding", "developer", "software development", "copilot",
+            ],
+            "capital_markets_and_investment": [
+                "earnings", "revenue", "valuation", "funding", "raised", "investment", "investor",
+                "capital", "stock", "shares", "private equity", "venture", "vc", "lease",
+            ],
+            "regulation_and_policy": [
+                "regulation", "regulatory", "policy", "lawmakers", "congress", "senate", "government",
+                "public feedback", "moratorium", "antitrust", "export control", "compliance", "bill",
+            ],
+            "physical_ai_and_robotics": [
+                "robot", "robotics", "autonomous", "autonomy", "warehouse automation", "drone", "aviation",
+                "manufacturing", "factory", "humanoid", "inspection", "logistics",
+            ],
+        }
+
+        tags = []
+        for theme_name, terms in theme_rules.items():
+            if any(term in text for term in terms):
+                tags.append(theme_name)
+        return tags
+
+    def event_anchor(article):
+        companies = [company.lower() for company in parse_companies(article.get("companies"))]
+        title = (article.get("title") or "").lower()
+        normalized_title = re.sub(r"[^a-z0-9\s]", " ", title)
+        stopwords = {
+            "the", "and", "for", "with", "from", "into", "after", "amid", "over", "under", "that",
+            "this", "will", "would", "could", "about", "their", "they", "says", "said", "report",
+            "reported", "announced", "launches", "launch", "launching", "new", "its", "are", "now",
+            "more", "than", "into", "using", "use", "shows",
+        }
+        title_tokens = [
+            token for token in normalized_title.split()
+            if len(token) > 2 and token not in stopwords and not token.isdigit()
+        ]
+        theme_tags = extract_theme_tags(article)
+
+        if companies:
+            return "company|" + "|".join(companies[:2] + theme_tags[:2])
+        if title_tokens:
+            return "title|" + "|".join(title_tokens[:6] + theme_tags[:2])
+        return "fallback|" + (article.get("url") or article.get("published_at") or "")
+
+    def deduplicate_articles_by_event(articles):
+        grouped_articles = {}
+        for article in articles:
+            anchor = event_anchor(article)
+            incumbent = grouped_articles.get(anchor)
+            if incumbent is None or article_priority_score(article) > article_priority_score(incumbent):
+                grouped_articles[anchor] = article
+
+        deduped_articles = list(grouped_articles.values())
+        deduped_articles.sort(
+            key=lambda article: (
+                has_policy_priority(article),
+                is_big_story(article),
+                has_named_event_anchor(article),
+                article_priority_score(article),
+                article.get("published_at") or "",
+            ),
+            reverse=True,
+        )
+        return deduped_articles
+
+    def build_theme_signal_block(all_articles):
+        theme_labels = {
+            "infrastructure_and_power": "INFRASTRUCTURE AND POWER",
+            "enterprise_and_labor": "ENTERPRISE AND LABOR",
+            "capital_markets_and_investment": "CAPITAL MARKETS AND INVESTMENT",
+            "regulation_and_policy": "REGULATION AND POLICY",
+            "physical_ai_and_robotics": "PHYSICAL AI AND ROBOTICS",
+        }
+        theme_examples = {theme_name: [] for theme_name in theme_labels}
+
+        for article in all_articles:
+            companies = parse_companies(article.get("companies"))
+            example_label = companies[0] if companies else (article.get("title") or "").split(":")[0].strip()
+            for theme_name in extract_theme_tags(article):
+                if example_label and example_label not in theme_examples[theme_name]:
+                    theme_examples[theme_name].append(example_label)
+
+        theme_counts = Counter(
+            theme_name
+            for article in all_articles
+            for theme_name in extract_theme_tags(article)
+        )
+
+        lines = []
+        for theme_name, count in theme_counts.most_common():
+            examples = ", ".join(theme_examples[theme_name][:4])
+            lines.append(
+                f"THEME_SIGNAL: {theme_labels[theme_name]} | corroborating_articles={count} | representative_examples={examples}"
+            )
+
+        if not lines:
+            return ""
+        return "\n".join(lines)
+
     def get_recent_articles():
         engine = get_engine()
         window_start, window_end = get_pipeline_window(hours=24)
@@ -220,17 +335,19 @@ def generate_daily_digest(report_date=None):
 
         return issues
 
-    articles = get_recent_articles()
+    all_articles = get_recent_articles()
+    articles = deduplicate_articles_by_event(all_articles)
     if report_date is None:
         report_date = datetime.now(_CENTRAL_TZ).date()
     today = report_date.strftime("%B %d, %Y")
     available_publishers = {
         article.get("original_publisher") or article.get("source")
-        for article in articles
+        for article in all_articles
         if article.get("original_publisher") or article.get("source")
     }
+    theme_signal_block = build_theme_signal_block(all_articles)
 
-    if not articles:
+    if not all_articles:
         return f"""{DAILY_TITLE}
 {today}
 
@@ -276,6 +393,10 @@ If multiple articles say similar things, choose the one with broader market rele
 Treat SOURCE as the original publisher when available. FEED_SOURCE may be an aggregator feed and should not be treated as true source diversity.
 
 Prefer coverage over precision. It is better to include multiple distinct real-world developments than to repeat one dominant theme across sections.
+
+The article set may already be deduplicated at the event level before it reaches you. Treat that as a reduction of duplicate evidence, not a signal to ignore broader thematic patterns.
+
+If multiple distinct events point to the same higher-order theme, preserve that theme explicitly in WHAT TO WATCH and ADVISOR SOUNDBITES even when duplicate event articles have been removed.
 
 If an article is marked BIG_STORY_HINT: YES, treat it as a high-priority candidate for TOP STORIES. If any BIG story exists in the dataset, at least one BIG story must appear in TOP STORIES.
 
@@ -387,6 +508,7 @@ Selection rules:
 - Ensure diversity across companies, sectors, geographies, and use cases.
 - If several articles cover the same event, include only one and replace the others with different topics.
 - Each section should re-scan the full dataset independently for relevant stories instead of relying on a single preselected subset.
+- Do not mistake event deduplication for theme suppression. Repeated patterns across distinct events should still appear as synthesized takeaways when supported by the input.
 
 Thought process instruction:
 - Silently do a first pass for event grouping and publisher diversity, then a second pass for section assignment, and only then write the final HTML.
@@ -409,6 +531,9 @@ Critical override:
 Fill rule:
 - If a section looks thin, search again for secondary but still relevant stories before using "Nothing to report today."
 - Avoid using "Nothing to report today." unless absolutely no relevant content exists after a second pass.
+
+THEME SIGNALS FROM THE FULL, PRE-DEDUPED ARTICLE SET:
+{theme_signal_block}
 
 ARTICLES:
 {article_block}
