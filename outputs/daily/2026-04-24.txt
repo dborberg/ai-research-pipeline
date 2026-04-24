@@ -1,0 +1,66 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>April 24, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Applied Digital signed a $7.5 billion AI data center lease with a U.S. hyperscaler:</strong> The deal is one of the clearest signals that hyperscaler AI spending is still translating into long-term physical infrastructure commitments, not just software enthusiasm. For financial professionals, it strengthens the case for looking beyond mega-cap platforms toward data center landlords, power-linked real assets, and infrastructure suppliers. (Source: Reuters)</li>
+<li><strong>Financial Times reported that AI and defense companies are dominating U.S. growth investment:</strong> Capital is concentrating around a narrow set of themes, which supports momentum but also raises crowding and valuation risk. Advisors should view this as both a confirmation of investor conviction and a reminder to discuss concentration risk and second-order beneficiaries outside the most obvious winners. (Source: Financial Times)</li>
+<li><strong>Oklo announced a partnership with Nvidia and Los Alamos on AI-driven advanced nuclear infrastructure:</strong> The announcement shows how AI demand is pulling capital and strategic attention into power generation, especially firm power sources that could support data center growth. For advisors, this broadens the AI conversation from chips and software to utilities, nuclear-adjacent infrastructure, and energy security. (Source: Data Center Dynamics)</li>
+<li><strong>Financial Times reported that consumers are increasingly using AI for investment decisions:</strong> Retail clients are arriving with AI-generated ideas and recommendations more often, which raises both engagement opportunities and suitability risks. Advisors may need to spend more time separating generic AI output from personalized fiduciary advice and reinforcing the value of human oversight. (Source: Financial Times)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Thomson Reuters Legal Solutions highlighted how compliance leaders are shaping safe AI adoption:</strong> The message is that enterprise AI rollouts are increasingly being governed by risk, audit, and compliance teams rather than left solely to innovation groups. That favors vendors and employers that can pair productivity gains with governance discipline. (Source: Thomson Reuters Legal Solutions)</li>
+<li><strong>Mend.io released an AI security governance framework for enterprises:</strong> The framework covers asset inventory, risk tiering, and AI supply chain controls, underscoring that companies are moving from experimentation toward formal operating standards. For investors, that supports demand for cybersecurity, governance, and enterprise software tools that help firms scale AI responsibly. (Source: MarkTechPost)</li>
+<li><strong>Ericsson, Verizon, Telefonica, and Nokia were cited as accelerating automation to offset AI-related cost pressure:</strong> Telecom operators and equipment makers are using software automation to defend margins as AI-driven chip and energy costs rise. The broader takeaway is that AI adoption in white-collar and network operations is becoming a cost-control tool, not just a growth initiative. (Source: EE Times)</li>
+<li><strong>The Hindu warned that AI-driven job disruption is increasing pressure for worker support and policy reform:</strong> The article reinforces that productivity gains may come with labor displacement and retraining needs, especially in administrative and knowledge-work functions. Advisors should expect AI to remain a two-sided story for employment, wages, and consumer spending. (Source: The Hindu)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Reuters reported that AI is reshaping real estate values around powered land:</strong> Sites with access to electricity are gaining strategic value, while projects without the right power profile risk becoming stranded or less competitive. That matters for REITs, utilities, industrial land owners, and infrastructure developers tied to AI buildouts. (Source: Reuters)</li>
+<li><strong>Champaign County approved a 12-month moratorium on data centers:</strong> The move is a reminder that local permitting and land-use politics can slow AI infrastructure deployment even when demand is strong. Investors should treat data center growth as partly a regulatory and community-acceptance story, not just a compute-demand story. (Source: wandtv.com)</li>
+<li><strong>The YCUA Board approved a 12-month moratorium on providing water to data centers:</strong> Water access is emerging alongside power as a practical constraint on where AI infrastructure can scale. This adds another layer of execution risk for developers and could increase the value of sites with secure utility access. (Source: The Michigan Daily)</li>
+<li><strong>EE Times said the Strait of Hormuz disruption exposed semiconductor supply chain vulnerabilities:</strong> The article points to risks around helium, logistics routes, and concentrated upstream inputs that can tighten chip availability and raise costs. For advisors, it is a useful reminder that AI infrastructure exposure includes geopolitical and supply-chain fragility beyond the fabs themselves. (Source: EE Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Reliable Robotics raised $160 million to scale fully automated aircraft systems:</strong> The round shows that private capital is still backing AI in regulated, safety-critical markets where commercialization depends on certification and government demand, not just consumer adoption. It is a notable example of AI capital flowing into industrial and defense-adjacent autonomy. (Source: The Robot Report)</li>
+<li><strong>Honeywell agreed to sell its warehouse automation business to American Industrial Partners:</strong> The transaction highlights continued private equity interest in logistics automation and shows large industrial companies are still reshaping portfolios around higher-priority businesses. For investors, it reinforces that automation remains an active M&amp;A and carve-out theme beyond software. (Source: The Robot Report)</li>
+<li><strong>SK expanded its AI ambitions in Vietnam through data center and policy agreements:</strong> The move suggests AI capital formation is broadening geographically into emerging Asian digital infrastructure markets. That may create opportunities across regional telecom, power, construction, and semiconductor-linked supply chains. (Source: Koreabizwire)</li>
+<li><strong>Financial Times said AI and defense startups are drawing strong investor interest across the Americas growth landscape:</strong> The signal is that private and public market appetite remains strongest where AI intersects with national security, infrastructure, and enterprise productivity. Advisors may want to frame AI as a broader capital allocation cycle rather than a single software trade. (Source: Technology)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Larimer County asked for public feedback on proposed data center regulations:</strong> Local governments are becoming more active in setting the rules for AI infrastructure siting, which can affect project timing, cost, and regional competitiveness. This is a practical reminder that policy risk is increasingly local as well as national. (Source: Larimer County)</li>
+<li><strong>Michigan gubernatorial hopefuls discussed AI data center regulation at a press forum:</strong> State-level politics are starting to shape how aggressively regions court or constrain AI infrastructure. For investors, that could influence where utilities, developers, and industrial suppliers see the strongest pipeline growth. (Source: Michigan Advance)</li>
+<li><strong>RBC and Scotiabank were reported to be stepping back on climate targets as AI-driven energy demand rises:</strong> The story highlights growing tension between decarbonization goals, power demand, and policy support. Advisors should watch for knock-on effects in utilities, financials, and ESG positioning as AI electricity needs keep climbing. (Source: CarbonCredits.com)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Flex and Teradyne Robotics expanded their partnership to scale automation across global manufacturing:</strong> Flex will both deploy Teradyne robotics in its own operations and manufacture key components, making this a meaningful real-world signal that industrial automation is moving from pilots toward scaled deployment. For investors, it ties robotics demand to factory efficiency, labor substitution, and supply-chain resilience. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Reliable Robotics said it is advancing FAA-certifiable autonomous aircraft systems with more than 200 commitments:</strong> The company’s funding and certification progress suggest autonomy is gaining traction in cargo, defense, and aviation operations where labor constraints and safety standards are central. This is strategically meaningful because it points to AI monetization in transportation and defense, not just warehouses. (Source: The Robot Report)</li>
+<li><strong>Star Robotics launched Watchbot 2 for security and inspection in facilities such as data centers and power sites:</strong> The product shows how physical AI is being applied to critical infrastructure operations where reliability and labor efficiency matter. While earlier stage than large industrial deployments, it is another sign that AI is moving into real-world monitoring and site management. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch whether more counties and utilities impose data center limits:</strong> Additional moratoriums on land, power, or water would be an early sign that AI infrastructure growth could face more local bottlenecks than the market currently expects. (Source: wandtv.com)</li>
+<li><strong>Watch whether powered land keeps commanding a premium in real estate markets:</strong> If land with grid access continues to reprice higher, that would reinforce the idea that AI is creating a new class of infrastructure scarcity. (Source: Reuters)</li>
+<li><strong>Watch whether advanced nuclear partnerships move from announcements to signed power offtake or development milestones:</strong> That would be a stronger indicator that AI-related energy demand is beginning to reshape long-duration capital spending. (Source: Data Center Dynamics)</li>
+<li><strong>Watch whether retail investors rely more heavily on AI-generated portfolio ideas:</strong> Rising client use of AI tools could change advisor workflows, compliance needs, and the competitive positioning of wealth platforms. (Source: Financial Times)</li>
+<li><strong>Watch whether private capital keeps flowing into autonomy, logistics, and defense-linked AI:</strong> Follow-on rounds, certification progress, and customer commitments would help separate durable industrial adoption from thematic hype. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is no longer just a software story:</strong> The money is moving into data centers, power, and industrial infrastructure too. (Source: Reuters)</li>
+<li><strong>Some of the best AI beneficiaries may sit outside the Mag 7:</strong> Think utilities, digital infrastructure, and automation suppliers. (Source: Data Center Dynamics)</li>
+<li><strong>Client interest in AI investing is rising fast:</strong> That makes human judgment and fiduciary oversight more valuable, not less. (Source: Financial Times)</li>
+<li><strong>AI demand is real, but so are the bottlenecks:</strong> Power, water, permitting, and supply chains can all slow the buildout. (Source: The Michigan Daily)</li>
+<li><strong>Robotics and autonomy are becoming investable extensions of the AI theme:</strong> Especially in manufacturing, logistics, aviation, and defense. (Source: Robotics &amp; Automation News)</li>
+</ul>
