@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 from app.cluster_schema import normalize_cluster_df
 from app.db import fetch_weekly_digests, get_articles_by_ids, get_cluster_history, get_database_state_token, get_weekly_clusters, save_weekly_clusters
 from app.reporting import get_openai_client, get_week_start
+from app.send_email import send_report
 from app.velocity import apply_velocity_metrics, compute_velocity
 from run_weekly_pipeline import cluster_articles, get_weekly_articles
 from scripts.generate_sector_report import (
@@ -25,6 +26,7 @@ from scripts.generate_sector_report import (
 )
 from scripts.render_prompt import build_prompt_package, get_report_mode_options, normalize_sector_name
 from scripts.resolve_sector_focus import SECTOR_FOCUS_OPTIONS, build_focus_instruction
+from scripts.send_sector_report import build_subject, html_to_plain_text
 
 try:
     from plotly import express as px
@@ -301,6 +303,14 @@ def _build_sector_report_output_paths(sector_key: str, report_mode: str, output_
     return prompt_path, report_path
 
 
+def _email_sector_report(sector_key: str, html_report: str):
+    send_report(
+        subject=build_subject(sector_key),
+        body_text=html_to_plain_text(html_report),
+        body_html=html_report,
+    )
+
+
 def generate_sector_report_package(
     api_key: str,
     sector_key: str,
@@ -449,9 +459,20 @@ def render_sector_report_launcher(api_key: str):
             st.error(f"Unable to generate the sector report: {exc}")
             return
 
-    st.success("Sector report generated locally.")
+    if output_format == "html":
+        try:
+            _email_sector_report(sector_key, str(result["report"]))
+        except Exception as exc:
+            st.error(f"Sector report generated locally, but email delivery failed: {exc}")
+        else:
+            st.success("Sector report generated, saved locally, and emailed.")
+    else:
+        st.success("Sector report generated locally.")
+
     st.caption(f"Prompt saved to {result['prompt_path']}")
     st.caption(f"Report saved to {result['report_path']}")
+    if output_format == "html":
+        st.caption("Email delivery uses the same Gmail environment variables as the production workflow: EMAIL_USER, EMAIL_PASSWORD, and EMAIL_TO.")
 
     with st.expander("Effective Special Instructions", expanded=False):
         st.write(result["effective_special_instructions"] or "None provided.")
