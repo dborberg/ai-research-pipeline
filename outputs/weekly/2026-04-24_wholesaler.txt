@@ -1,0 +1,72 @@
+Beyond the Horizon: Weekly Riffs from the Gen AI Songbook
+Week Ending April 24, 2026
+
+TOP 5 STORIES THIS WEEK
+
+1. Applied Digital signed a $7.5 billion AI data center lease with a U.S. hyperscaler, one of the clearest long-term infrastructure commitments tied to AI demand this week. For advisors, it is a concrete signal that AI spending is still flowing into physical capacity, which keeps data centers, power access, and infrastructure suppliers central to the conversation beyond software alone. (Reuters)
+
+2. Microsoft said it will invest $18 billion to expand cloud and AI capacity in Australia, extending the hyperscaler buildout into another major developed market. For advisors, that matters because it reinforces that AI capex is still global and infrastructure-heavy, with implications for utilities, construction, networking, and data center ecosystems. (Data Center Dynamics)
+
+3. Amazon expanded its strategic collaboration with Anthropic, deepening ties around AI development and computing capacity through AWS. For advisors, this is a timely reminder that cloud platforms and model developers are locking in closer infrastructure relationships, which can shape where enterprise AI workloads and related spending concentrate. (About Amazon)
+
+4. Neura Robotics and AWS announced a strategic collaboration to scale physical AI, including integration with Amazon SageMaker and potential deployment of Neura robots in select Amazon fulfillment centers. For advisors, this matters because it ties AI directly to warehouse automation and shows robotics moving from concept to operational testing inside a named enterprise environment. (Robotics & Automation News)
+
+5. Reliable Robotics raised $160 million to accelerate deployment of its FAA-certifiable autonomous aircraft system and scale production, while citing more than 200 commercial and military commitments. For advisors, that is a real-world sign that AI capital is reaching regulated, safety-critical industries where certification and government demand can matter as much as software adoption. (The Robot Report)
+
+BEYOND THE MAG 7
+
+1. Applied Digital stood out this week because its $7.5 billion lease shows AI demand is creating real value for specialized data center operators, not just the cloud giants leasing the capacity. That gives advisors a fact-based way to discuss second-order beneficiaries tied to powered land, colocation, and infrastructure execution. (Reuters)
+
+2. Flex and Teradyne Robotics expanded their partnership so Flex will both use Teradyne robots in its own factories and manufacture key robotics components. That matters now because it shows industrial automation demand is spreading through manufacturing supply chains, not just through standalone robot vendors. (Robotics & Automation News)
+
+3. Oklo partnered with Nvidia and Los Alamos on AI-driven advanced nuclear infrastructure development. For advisors, this is a timely example of AI demand pulling adjacent sectors like power generation and energy infrastructure into the opportunity set. (Data Center Dynamics)
+
+WHAT IS BEING DISRUPTED
+
+1. Warehouse and fulfillment operations are being disrupted as Neura Robotics and AWS move toward potential robot deployments in select Amazon fulfillment centers. (Robotics & Automation News)
+
+2. Engineering and chip design workflows are being disrupted as Cadence and Nvidia expand AI-driven simulation, digital twin, and design automation tools for semiconductor and robotics development. (Robotics & Automation News)
+
+3. Aviation operations are being disrupted as Reliable Robotics uses fresh funding to push FAA-certifiable autonomous aircraft systems toward commercial and military deployment. (The Robot Report)
+
+REGULATORY RADAR
+
+1. Maine passed what was described as the first statewide moratorium on AI data centers, putting a direct policy constraint on future infrastructure buildout in the state. (Democracy Now!)
+
+2. India is weighing a stricter AI governance framework, with reports indicating tougher rules are likely as policymakers respond to emerging AI risks. (Moneycontrol.com)
+
+3. U.S. lawmakers proposed restricting government use of Chinese-made ground robots, extending tech-sovereignty policy from chips into finished autonomous systems. (IEEE Spectrum)
+
+READY TO USE SOUNDBITES
+
+1. This week’s biggest AI story was not a chatbot launch, it was a $7.5 billion data center lease.
+
+2. Microsoft’s $18 billion Australia buildout is a reminder that AI demand is still showing up in concrete, power, and networking.
+
+3. Amazon and Anthropic are tightening the link between cloud capacity and model development, which tells you infrastructure is still where the money is going.
+
+4. Physical AI is getting more real when AWS is working with Neura and Amazon fulfillment centers are part of the deployment path.
+
+5. Reliable Robotics shows AI is moving into regulated industries where certification and real operations matter more than hype.
+
+QUESTIONS TO BRING TO YOUR CLIENTS
+
+1. With Applied Digital signing a $7.5 billion lease and Microsoft committing $18 billion in Australia, are we talking enough about AI infrastructure beneficiaries beyond the largest platform stocks?
+
+2. As Amazon, AWS, and Neura push robotics into fulfillment settings, where do clients see the biggest long-term impact from AI in the physical economy?
+
+3. With Maine moving on data center restrictions and India weighing tougher AI rules, how should we factor policy and permitting risk into AI-related opportunities?
+
+AI PRACTICE TIP OF THE WEEK
+What: Use AI to build a 5-question “AI in the physical economy” discovery script tailored to one client’s actual holdings, so the next review meeting surfaces hidden concentration, opportunity, and policy-risk conversations.
+
+Why: This gives advisors a sharper portfolio review conversation than a standard performance recap because it connects this week’s AI infrastructure, power, robotics, and regulation themes directly to what the client already owns. It also helps uncover whether a client has more AI exposure than they realize through industrials, utilities, REITs, or supply-chain names, not just big tech.
+
+How to:
+Paste in the client’s top 10 holdings or sector weights and ask AI to identify likely AI-linked exposure in infrastructure, power, automation, and policy-sensitive areas.
+Have AI turn that into 5 plain-English discovery questions, each tied to one holding or sector the client already owns.
+Use the best 2 to 3 questions in your next review meeting agenda or call prep notes.
+
+Copy prompt: I’m preparing for a client portfolio review. Below are the client’s top holdings and sector weights. Based on this week’s themes around AI data centers, cloud capacity, power demand, robotics, automation, and policy risk, identify where this portfolio may already have direct or indirect AI-related exposure beyond mega-cap tech. Then write 5 concise, client-friendly discovery questions I can ask in a review meeting. For each question, include 1) the holding or sector it relates to, 2) why it may be connected to AI infrastructure, power, automation, or regulation, and 3) what client concern or opportunity the question is designed to uncover. Keep the tone neutral, practical, and suitable for a financial advisor conversation. Do not make performance predictions or recommendations. [Paste holdings/sector weights here]
+
+Guardrail: Do not paste full account numbers, personal identifiers, or nonpublic client information into a public AI tool. Review the output for accuracy and compliance, especially any company-specific links to AI themes, before using it with clients.

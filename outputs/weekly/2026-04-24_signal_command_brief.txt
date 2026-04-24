@@ -1,0 +1,65 @@
+AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report
+Week Ending 2026-04-24
+
+Purpose:
+This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.
+
+TOP CONVICTION SIGNALS
+
+compute and data center capacity buildout
+Conviction: 7.72
+Strength: 7.94
+Momentum: 600%
+Velocity: +6 article change
+Why It Matters:
+This supports continued capex strength across data centers, cloud infrastructure, networking, and AI hardware suppliers. For markets, it reinforces pricing power and demand visibility for infrastructure enablers rather than only application-layer software vendors.
+
+Agentic enters enterprise and engineering workflows
+Conviction: 7.65
+Strength: 8.30
+Momentum: 400%
+Velocity: +4 article change
+Why It Matters:
+This points to revenue opportunities in vertical software, developer tools, design automation, and enterprise AI platforms with strong domain integration. Markets may increasingly reward vendors that can convert AI from experimentation into workflow automation with clear ROI and defensible enterprise deployment.
+
+Semiconductor bottlenecks shift to packaging resilience
+Conviction: 6.98
+Strength: 7.77
+Momentum: 300%
+Velocity: +3 article change
+Why It Matters:
+This is relevant for semiconductor investors because margin and growth may accrue to firms with packaging, memory, interconnect, and supply-chain leverage, not just GPU designers. It also raises risk around shortages, delayed deployments, and higher hardware costs across enterprise IT and communications markets.
+
+Physical and robotics scale through industrial
+Conviction: 6.72
+Strength: 7.05
+Momentum: 400%
+Velocity: +4 article change
+Why It Matters:
+This matters for industrials and automation because value is likely to accrue not only to robot makers but also to contract manufacturers, cloud providers, sensors, and software platforms enabling deployment. Advisors should view robotics as an ecosystem buildout tied to productivity and labor-cost pressure rather than a standalone hardware story.
+
+ACCELERATING THEMES (BREAKOUTS)
+
+These themes are accelerating fastest relative to prior week.
+
+compute and data center capacity buildout: Momentum 600%, velocity +6. This supports continued capex strength across data centers, cloud infrastructure, networking, and AI hardware suppliers
+Agentic enters enterprise and engineering workflows: Momentum 400%, velocity +4. This points to revenue opportunities in vertical software, developer tools, design automation, and enterprise AI platforms with strong domain integration
+Physical and robotics scale through industrial: Momentum 400%, velocity +4. This matters for industrials and automation because value is likely to accrue not only to robot makers but also to contract manufacturers, cloud providers, sensors, and software platforms enabling deployment
+
+FADING SIGNALS
+
+No major theme showed week-over-week deterioration in this run.
+
+PORTFOLIO IMPLICATIONS
+
+Structural strengthening is concentrated in compute and data center capacity buildout, Agentic enters enterprise and engineering workflows, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in Semiconductor bottlenecks shift to packaging resilience, Physical and robotics scale through industrial, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in compute and data center capacity buildout, Agentic enters enterprise and engineering workflows, supported by rising article volume against the prior week.
+Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
+
+BOTTOM LINE
+
+1. Highest conviction theme: compute and data center capacity buildout
+2. Most important new signal: compute and data center capacity buildout
+3. Biggest acceleration: compute and data center capacity buildout
+4. Key risk / fading area: No material fading area
