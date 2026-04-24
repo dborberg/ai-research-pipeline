@@ -1,15 +1,16 @@
 # Generative AI Sector Report Prompt System
 
-This repository includes a modular prompt framework for generating sector-specific investment impact reports on how Generative AI is reshaping an industry and what the likely implications may be for investors.
+This repository includes a modular prompt framework for generating sector-specific investment impact reports on how Generative AI is reshaping an industry and what the likely implications may be for investors, with an optional frontier-possibilities mode available through the local Streamlit launcher.
 
 ## Architecture
 
 The system is intentionally simple and modular:
 
 - `prompts/core_system_prompt.md`: The reusable master prompt that defines role, audience, tone, required report structure, analytical standards, and quality bar.
-- `prompts/user_prompt_template.md`: The runtime instruction layer with placeholders for sector, audience, time horizon, style notes, and special instructions.
+- `prompts/user_prompt_template.md`: The runtime instruction layer for the default investment implication reports.
+- `prompts/user_prompt_frontier_possibilities.md`: The runtime instruction layer for frontier possibility reports.
 - `prompts/sectors/*.md`: Sector adapters that inject industry-specific business models, value-chain context, likely Gen AI use cases, adoption bottlenecks, value-capture questions, and analytical traps.
-- `scripts/render_prompt.py`: A dependency-light assembler that combines the core prompt, a chosen sector adapter, and the user template into one final prompt package.
+- `scripts/render_prompt.py`: A dependency-light assembler that combines the core prompt, a chosen sector adapter, and the selected prompt template into one final prompt package.
 - `scripts/validate_prompt_package.py`: A lightweight validator that checks assembled prompt packages before upload, including healthcare-specific checks for all four required analytical pillars.
 - `scripts/generate_sector_report.py`: A report runner that uses the assembled prompt package to generate the final report.
 - `scripts/send_sector_report.py`: A delivery helper that emails the generated HTML report using the shared Gmail workflow secrets.
@@ -22,7 +23,7 @@ The design separates stable instruction logic from sector-specific context:
 
 1. The core system prompt defines how the model should analyze and write.
 2. The sector adapter forces the analysis to reflect the economics and operating realities of a particular industry.
-3. The user prompt template applies run-specific inputs such as audience, time horizon, and any custom emphasis.
+3. The selected prompt template applies run-specific inputs such as audience, time horizon, any custom emphasis, and the required output structure for that mode.
 4. `render_prompt.py` assembles those layers into one final prompt package for downstream model use.
 5. `validate_prompt_package.py` blocks publication if required sections or healthcare pillars are missing.
 6. `generate_sector_report.py` uses the assembled prompt package to create the final sector report.
@@ -82,6 +83,17 @@ python scripts/render_prompt.py \
   --style-notes "Write in crisp institutional prose" \
   --special-instructions "Lean harder into long-run in-home care transformation, robotics, ambient sensing, and caregiver augmentation."
 ```
+
+Render a frontier possibilities prompt package:
+
+```bash
+python scripts/render_prompt.py \
+  --sector-name healthcare \
+  --industry-focus biotechnology \
+  --report-mode frontier_possibilities
+```
+
+In the local Streamlit launcher, the Sector Report Launcher can choose between `Investment Implications` and `Frontier Possibilities`. The GitHub Actions workflow remains on the existing investment-oriented path.
 
 In GitHub Actions, the sector dropdown now uses the standard GICS sectors. The workflow also includes an `industry_focus` dropdown with:
 

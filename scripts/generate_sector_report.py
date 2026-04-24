@@ -51,7 +51,7 @@ def build_execution_prompt(prompt_package: str, output_format: str) -> str:
 
     return (
         "You are executing an assembled prompt package for a sector-specific "
-        "Generative AI investment impact report.\n\n"
+        "Generative AI report.\n\n"
         "Execution rules:\n"
         "- Treat the 'Core System Prompt' section as the governing instruction layer.\n"
         "- Treat the 'Sector Adapter' section as the sector-specific context layer.\n"

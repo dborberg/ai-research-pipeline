@@ -23,7 +23,7 @@ from scripts.generate_sector_report import (
     normalize_html_output,
     normalize_markdown_output,
 )
-from scripts.render_prompt import build_prompt_package, normalize_sector_name
+from scripts.render_prompt import build_prompt_package, get_report_mode_options, normalize_sector_name
 from scripts.resolve_sector_focus import SECTOR_FOCUS_OPTIONS, build_focus_instruction
 
 try:
@@ -292,12 +292,12 @@ def _combine_special_instructions(focus_instruction: str, user_instructions: str
     return focus_instruction or user_text
 
 
-def _build_sector_report_output_paths(sector_key: str, output_format: str) -> tuple[Path, Path]:
+def _build_sector_report_output_paths(sector_key: str, report_mode: str, output_format: str) -> tuple[Path, Path]:
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     STREAMLIT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    prompt_path = STREAMLIT_OUTPUT_DIR / f"prompt_{sector_key}_{timestamp}.md"
+    prompt_path = STREAMLIT_OUTPUT_DIR / f"prompt_{sector_key}_{report_mode}_{timestamp}.md"
     extension = "html" if output_format == "html" else "md"
-    report_path = STREAMLIT_OUTPUT_DIR / f"report_{sector_key}_{timestamp}.{extension}"
+    report_path = STREAMLIT_OUTPUT_DIR / f"report_{sector_key}_{report_mode}_{timestamp}.{extension}"
     return prompt_path, report_path
 
 
@@ -305,6 +305,7 @@ def generate_sector_report_package(
     api_key: str,
     sector_key: str,
     industry_focus_key: str,
+    report_mode: str,
     audience: str,
     time_horizon: str,
     style_notes: str,
@@ -319,6 +320,8 @@ def generate_sector_report_package(
     )
     prompt_package = build_prompt_package(
         sector=sector_key,
+        industry_focus=industry_focus_key,
+        report_mode=report_mode,
         audience=audience,
         time_horizon=time_horizon,
         style_notes=style_notes,
@@ -355,7 +358,7 @@ def generate_sector_report_package(
     else:
         report = normalize_markdown_output(report)
 
-    prompt_path, report_path = _build_sector_report_output_paths(sector_key, output_format)
+    prompt_path, report_path = _build_sector_report_output_paths(sector_key, report_mode, output_format)
     prompt_path.write_text(prompt_package, encoding="utf-8")
     report_path.write_text(report.rstrip() + "\n", encoding="utf-8")
 
@@ -394,7 +397,17 @@ def render_sector_report_launcher(api_key: str):
     )
     _save_streamlit_ui_state({"sector_report_industry": industry_key})
 
+    report_mode_options = get_report_mode_options()
+    report_mode_values = list(report_mode_options.keys())
+    _restore_widget_value("sector_report_mode", report_mode_values[0], report_mode_values)
+
     with st.form("sector_report_launcher_form"):
+        report_mode = st.selectbox(
+            "Report Mode",
+            options=report_mode_values,
+            format_func=lambda value: report_mode_options[value],
+            key="sector_report_mode",
+        )
         audience = st.text_input("Audience", value=DEFAULT_AUDIENCE)
         time_horizon = st.text_input("Time Horizon", value=DEFAULT_TIME_HORIZON)
         style_notes = st.text_area("Style Notes", value="", height=80)
@@ -423,6 +436,7 @@ def render_sector_report_launcher(api_key: str):
                 api_key=api_key,
                 sector_key=sector_key,
                 industry_focus_key=industry_key,
+                report_mode=report_mode,
                 audience=audience,
                 time_horizon=time_horizon,
                 style_notes=style_notes,
@@ -430,6 +444,7 @@ def render_sector_report_launcher(api_key: str):
                 model=model,
                 output_format=output_format,
             )
+            _save_streamlit_ui_state({"sector_report_mode": report_mode})
         except Exception as exc:
             st.error(f"Unable to generate the sector report: {exc}")
             return
@@ -448,11 +463,11 @@ def render_sector_report_launcher(api_key: str):
     if output_format == "html":
         components.html(str(result["report"]), height=900, scrolling=True)
         mime_type = "text/html"
-        download_name = f"sector_report_{normalize_sector_name(sector_key)}.html"
+        download_name = f"sector_report_{normalize_sector_name(sector_key)}_{report_mode}.html"
     else:
         st.markdown(str(result["report"]))
         mime_type = "text/markdown"
-        download_name = f"sector_report_{normalize_sector_name(sector_key)}.md"
+        download_name = f"sector_report_{normalize_sector_name(sector_key)}_{report_mode}.md"
 
     st.download_button(
         "Download Generated Report",
