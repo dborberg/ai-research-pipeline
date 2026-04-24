@@ -1,10 +1,12 @@
 
 import hashlib
 import os
-from datetime import timedelta
+from datetime import datetime, timedelta
+from pathlib import Path
 
 import pandas as pd
 import streamlit as st
+import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
 from dotenv import load_dotenv
 
@@ -13,6 +15,16 @@ from app.db import fetch_weekly_digests, get_articles_by_ids, get_cluster_histor
 from app.reporting import get_openai_client, get_week_start
 from app.velocity import apply_velocity_metrics, compute_velocity
 from run_weekly_pipeline import cluster_articles, get_weekly_articles
+from scripts.generate_sector_report import (
+    DEFAULT_MAX_OUTPUT_TOKENS,
+    DEFAULT_MODEL,
+    generate_with_chat_completions,
+    generate_with_responses_api,
+    normalize_html_output,
+    normalize_markdown_output,
+)
+from scripts.render_prompt import build_prompt_package, normalize_sector_name
+from scripts.resolve_sector_focus import SECTOR_FOCUS_OPTIONS, build_focus_instruction
 
 try:
     from plotly import express as px
@@ -22,6 +34,11 @@ except ImportError:  # pragma: no cover - optional dependency
 
 st.set_page_config(page_title="AI Signal Dashboard", layout="wide")
 load_dotenv()
+
+REPO_ROOT = Path(__file__).resolve().parent
+STREAMLIT_OUTPUT_DIR = REPO_ROOT / "out" / "streamlit"
+DEFAULT_AUDIENCE = "financial advisors and investment professionals"
+DEFAULT_TIME_HORIZON = "1-3 years and 3-7 years"
 
 
 def _get_db_version():
@@ -224,6 +241,195 @@ def load_clusters(week_start, api_key, db_version):
     return load_stored_clusters(week_start, db_version)
 
 
+def _sector_labels() -> dict[str, str]:
+    return {
+        sector_key: str(sector_config["label"])
+        for sector_key, sector_config in SECTOR_FOCUS_OPTIONS.items()
+    }
+
+
+def _industry_options(sector_key: str) -> list[tuple[str, str]]:
+    industries = SECTOR_FOCUS_OPTIONS[sector_key]["industries"]
+    options = [("Balanced", "balanced")]
+    options.extend(
+        (str(industry_config["label"]), industry_key)
+        for industry_key, industry_config in industries.items()
+    )
+    return options
+
+
+def _combine_special_instructions(focus_instruction: str, user_instructions: str) -> str:
+    user_text = user_instructions.strip()
+    if focus_instruction and user_text:
+        return f"{focus_instruction} {user_text}"
+    return focus_instruction or user_text
+
+
+def _build_sector_report_output_paths(sector_key: str, output_format: str) -> tuple[Path, Path]:
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    STREAMLIT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    prompt_path = STREAMLIT_OUTPUT_DIR / f"prompt_{sector_key}_{timestamp}.md"
+    extension = "html" if output_format == "html" else "md"
+    report_path = STREAMLIT_OUTPUT_DIR / f"report_{sector_key}_{timestamp}.{extension}"
+    return prompt_path, report_path
+
+
+def generate_sector_report_package(
+    api_key: str,
+    sector_key: str,
+    industry_focus_key: str,
+    audience: str,
+    time_horizon: str,
+    style_notes: str,
+    user_special_instructions: str,
+    model: str,
+    output_format: str,
+) -> dict[str, object]:
+    focus_instruction = build_focus_instruction(sector_key, industry_focus_key)
+    effective_special_instructions = _combine_special_instructions(
+        focus_instruction,
+        user_special_instructions,
+    )
+    prompt_package = build_prompt_package(
+        sector=sector_key,
+        audience=audience,
+        time_horizon=time_horizon,
+        style_notes=style_notes,
+        special_instructions=effective_special_instructions,
+    )
+
+    client = get_openai_client(api_key)
+    generation_errors: list[str] = []
+
+    try:
+        report = generate_with_responses_api(
+            client=client,
+            prompt_package=prompt_package,
+            model=model,
+            max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
+            output_format=output_format,
+        )
+    except Exception as exc:
+        generation_errors.append(f"Responses API failed: {exc}")
+        try:
+            report = generate_with_chat_completions(
+                client=client,
+                prompt_package=prompt_package,
+                model=model,
+                max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
+                output_format=output_format,
+            )
+        except Exception as fallback_exc:
+            generation_errors.append(f"Chat Completions fallback failed: {fallback_exc}")
+            raise RuntimeError("\n".join(generation_errors)) from fallback_exc
+
+    if output_format == "html":
+        report = normalize_html_output(report)
+    else:
+        report = normalize_markdown_output(report)
+
+    prompt_path, report_path = _build_sector_report_output_paths(sector_key, output_format)
+    prompt_path.write_text(prompt_package, encoding="utf-8")
+    report_path.write_text(report.rstrip() + "\n", encoding="utf-8")
+
+    return {
+        "prompt_package": prompt_package,
+        "report": report,
+        "prompt_path": prompt_path,
+        "report_path": report_path,
+        "effective_special_instructions": effective_special_instructions,
+    }
+
+
+def render_sector_report_launcher(api_key: str):
+    st.subheader("Sector Report Launcher")
+    st.caption("This launcher runs against your local repo checkout and writes prompt and report artifacts under out/streamlit.")
+
+    sector_label_lookup = _sector_labels()
+    sector_keys = list(sector_label_lookup.keys())
+    sector_key = st.selectbox(
+        "Sector",
+        options=sector_keys,
+        format_func=lambda value: sector_label_lookup[value],
+        key="sector_report_sector",
+    )
+
+    industry_options = _industry_options(sector_key)
+    industry_key = st.selectbox(
+        "Industry Focus",
+        options=[value for _, value in industry_options],
+        format_func=lambda value: next(label for label, option_value in industry_options if option_value == value),
+        key="sector_report_industry",
+    )
+
+    with st.form("sector_report_launcher_form"):
+        audience = st.text_input("Audience", value=DEFAULT_AUDIENCE)
+        time_horizon = st.text_input("Time Horizon", value=DEFAULT_TIME_HORIZON)
+        style_notes = st.text_area("Style Notes", value="", height=80)
+        special_instructions = st.text_area("Additional Special Instructions", value="", height=120)
+
+        controls_left, controls_right = st.columns(2)
+        model = controls_left.text_input("Model", value=DEFAULT_MODEL)
+        output_format = controls_right.selectbox(
+            "Output Format",
+            options=["html", "markdown"],
+            index=0,
+        )
+
+        submit = st.form_submit_button("Generate Sector Report")
+
+    if not submit:
+        return
+
+    if not api_key:
+        st.error("OPENAI_API_KEY must be set in your local environment before generating a sector report.")
+        return
+
+    with st.spinner("Generating sector report from your local checkout..."):
+        try:
+            result = generate_sector_report_package(
+                api_key=api_key,
+                sector_key=sector_key,
+                industry_focus_key=industry_key,
+                audience=audience,
+                time_horizon=time_horizon,
+                style_notes=style_notes,
+                user_special_instructions=special_instructions,
+                model=model,
+                output_format=output_format,
+            )
+        except Exception as exc:
+            st.error(f"Unable to generate the sector report: {exc}")
+            return
+
+    st.success("Sector report generated locally.")
+    st.caption(f"Prompt saved to {result['prompt_path']}")
+    st.caption(f"Report saved to {result['report_path']}")
+
+    with st.expander("Effective Special Instructions", expanded=False):
+        st.write(result["effective_special_instructions"] or "None provided.")
+
+    with st.expander("Rendered Prompt Package", expanded=False):
+        st.code(str(result["prompt_package"]), language="markdown")
+
+    st.markdown("**Generated Report**")
+    if output_format == "html":
+        components.html(str(result["report"]), height=900, scrolling=True)
+        mime_type = "text/html"
+        download_name = f"sector_report_{normalize_sector_name(sector_key)}.html"
+    else:
+        st.markdown(str(result["report"]))
+        mime_type = "text/markdown"
+        download_name = f"sector_report_{normalize_sector_name(sector_key)}.md"
+
+    st.download_button(
+        "Download Generated Report",
+        data=str(result["report"]),
+        file_name=download_name,
+        mime=mime_type,
+    )
+
+
 def render_top_clusters(cluster_df, velocity_df):
     st.subheader("Top Themes By Conviction")
 
@@ -421,9 +627,19 @@ def main():
     st_autorefresh(interval=300000, key="auto-refresh")
 
     st.title("AI Signal Command Center")
-    st.caption("Weekly AI signal detection and thematic momentum")
+    st.caption("Weekly AI signal detection, thematic momentum, and sector report generation")
 
     api_key = os.getenv("OPENAI_API_KEY")
+    view = st.radio(
+        "Workspace",
+        options=["Signal Dashboard", "Sector Report Launcher"],
+        horizontal=True,
+    )
+
+    if view == "Sector Report Launcher":
+        render_sector_report_launcher(api_key)
+        return
+
     current_week = get_week_start()
     previous_week = current_week - timedelta(days=7)
     db_version = _get_db_version()
