@@ -1,4 +1,4 @@
-
+import json
 import hashlib
 import os
 from datetime import datetime, timedelta
@@ -37,12 +37,39 @@ load_dotenv()
 
 REPO_ROOT = Path(__file__).resolve().parent
 STREAMLIT_OUTPUT_DIR = REPO_ROOT / "out" / "streamlit"
+STREAMLIT_STATE_PATH = REPO_ROOT / "data" / "streamlit_ui_state.json"
 DEFAULT_AUDIENCE = "financial advisors and investment professionals"
 DEFAULT_TIME_HORIZON = "1-3 years and 3-7 years"
 
 
 def _get_db_version():
     return get_database_state_token()
+
+
+def _load_streamlit_ui_state() -> dict[str, str]:
+    try:
+        return json.loads(STREAMLIT_STATE_PATH.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return {}
+    except json.JSONDecodeError:
+        return {}
+
+
+def _save_streamlit_ui_state(updates: dict[str, str]):
+    current_state = _load_streamlit_ui_state()
+    current_state.update(updates)
+    STREAMLIT_STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    STREAMLIT_STATE_PATH.write_text(json.dumps(current_state, indent=2, sort_keys=True), encoding="utf-8")
+
+
+def _restore_widget_value(widget_key: str, default_value: str, allowed_values: list[str] | None = None):
+    if widget_key in st.session_state:
+        return
+
+    restored_value = _load_streamlit_ui_state().get(widget_key, default_value)
+    if allowed_values is not None and restored_value not in allowed_values:
+        restored_value = default_value
+    st.session_state[widget_key] = restored_value
 
 
 def _safe_float(value, default=0.0):
@@ -347,20 +374,25 @@ def render_sector_report_launcher(api_key: str):
 
     sector_label_lookup = _sector_labels()
     sector_keys = list(sector_label_lookup.keys())
+    _restore_widget_value("sector_report_sector", sector_keys[0], sector_keys)
     sector_key = st.selectbox(
         "Sector",
         options=sector_keys,
         format_func=lambda value: sector_label_lookup[value],
         key="sector_report_sector",
     )
+    _save_streamlit_ui_state({"sector_report_sector": sector_key})
 
     industry_options = _industry_options(sector_key)
+    industry_values = [value for _, value in industry_options]
+    _restore_widget_value("sector_report_industry", "balanced", industry_values)
     industry_key = st.selectbox(
         "Industry Focus",
-        options=[value for _, value in industry_options],
+        options=industry_values,
         format_func=lambda value: next(label for label, option_value in industry_options if option_value == value),
         key="sector_report_industry",
     )
+    _save_streamlit_ui_state({"sector_report_industry": industry_key})
 
     with st.form("sector_report_launcher_form"):
         audience = st.text_input("Audience", value=DEFAULT_AUDIENCE)
@@ -630,11 +662,15 @@ def main():
     st.caption("Weekly AI signal detection, thematic momentum, and sector report generation")
 
     api_key = os.getenv("OPENAI_API_KEY")
+    workspace_options = ["Signal Dashboard", "Sector Report Launcher"]
+    _restore_widget_value("workspace_view", workspace_options[0], workspace_options)
     view = st.radio(
         "Workspace",
-        options=["Signal Dashboard", "Sector Report Launcher"],
+        options=workspace_options,
         horizontal=True,
+        key="workspace_view",
     )
+    _save_streamlit_ui_state({"workspace_view": view})
 
     if view == "Sector Report Launcher":
         render_sector_report_launcher(api_key)
@@ -668,10 +704,14 @@ def main():
         ascending=[False, False, False],
     ).reset_index(drop=True)
 
+    theme_options = ["All"] + sorted(cluster_df["theme_name"].dropna().astype(str).unique())
+    _restore_widget_value("dashboard_theme_filter", "All", theme_options)
     selected_theme = st.selectbox(
         "Filter by Theme",
-        ["All"] + sorted(cluster_df["theme_name"].dropna().astype(str).unique())
+        theme_options,
+        key="dashboard_theme_filter",
     )
+    _save_streamlit_ui_state({"dashboard_theme_filter": selected_theme})
 
     if selected_theme != "All":
         cluster_df = cluster_df[cluster_df["theme_name"] == selected_theme].reset_index(drop=True)

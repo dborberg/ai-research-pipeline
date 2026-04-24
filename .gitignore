@@ -7,3 +7,4 @@ logs/
 data/*.db
 data/ai_research.db
 data/.last_refresh
+data/streamlit_ui_state.json

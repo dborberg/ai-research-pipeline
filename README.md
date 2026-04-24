@@ -128,6 +128,31 @@ python scripts/render_prompt.py --list-sectors
 
 The workflow now runs end to end: it assembles the prompt, validates it, generates the report, emails the HTML output, and uploads both the prompt package and final report artifacts.
 
+## Local macOS Launcher App
+
+If you want Dock-friendly local apps instead of launching Streamlit from Terminal manually, build the macOS wrappers:
+
+```bash
+./scripts/build_ai_signal_center_app.sh
+```
+
+By default this creates:
+
+```bash
+~/Applications/AI Signal Command Center.app
+~/Applications/Stop AI Signal Command Center.app
+```
+
+The start app wraps [launch_ai_signal_center.command](/Users/davidborberg/ai-research-pipeline/launch_ai_signal_center.command), so one click starts the local Streamlit server on port `8510` if needed and opens the browser. The stop app wraps [stop_ai_signal_center.command](/Users/davidborberg/ai-research-pipeline/stop_ai_signal_center.command). After building them once, drag either or both apps into the Dock.
+
+The Streamlit app also persists the last-used workspace selection locally, so reopening the launcher returns you to the most recent workspace view.
+
+If you want the app somewhere else, pass a target directory:
+
+```bash
+./scripts/build_ai_signal_center_app.sh ~/Desktop
+```
+
 ## Add a New Sector
 
 1. Create a new file in `prompts/sectors/` such as `aerospace_defense.md`.

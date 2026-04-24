@@ -1,7 +1,7 @@
 #!/bin/zsh
 set -euo pipefail
 
-REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(cd "$(dirname "$0")" && pwd -P)"
 APP_PORT="8510"
 APP_URL="http://localhost:${APP_PORT}"
 PYTHON_BIN="$REPO_DIR/venv/bin/python"
@@ -11,6 +11,7 @@ LOG_FILE="$LOG_DIR/streamlit_app.log"
 PID_FILE="$LOG_DIR/streamlit_app.pid"
 
 mkdir -p "$LOG_DIR"
+cd "$REPO_DIR"
 
 if [[ ! -x "$PYTHON_BIN" ]]; then
   osascript -e 'display alert "Python environment not found" message "Expected venv/bin/python in the repository root." as critical'

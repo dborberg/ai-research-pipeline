@@ -1,7 +1,7 @@
 #!/bin/zsh
 set -euo pipefail
 
-REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(cd "$(dirname "$0")" && pwd -P)"
 APP_PORT="8510"
 LOG_DIR="$REPO_DIR/logs"
 PID_FILE="$LOG_DIR/streamlit_app.pid"
