@@ -8,18 +8,91 @@ on:
         required: true
         type: choice
         options:
-          - healthcare
-          - financials
-          - industrials
-          - energy
-          - software
-          - semiconductors
+          - communication_services
           - consumer_discretionary
           - consumer_staples
-          - utilities
+          - energy
+          - financials
+          - healthcare
+          - industrials
+          - information_technology
           - materials
-          - communication_services
           - real_estate
+          - utilities
+      industry_focus:
+        description: "Sector-level balanced view or standard GICS industry emphasis"
+        required: false
+        default: balanced
+        type: choice
+        options:
+          - balanced
+          - diversified_telecommunication_services
+          - wireless_telecommunication_services
+          - media
+          - entertainment
+          - interactive_media_and_services
+          - automobile_components
+          - automobiles
+          - household_durables
+          - leisure_products
+          - distributors
+          - diversified_consumer_services
+          - hotels_restaurants_and_leisure
+          - broadline_retail
+          - specialty_retail
+          - textiles_apparel_and_luxury_goods
+          - consumer_staples_distribution_and_retail
+          - beverages
+          - food_products
+          - tobacco
+          - household_products
+          - personal_care_products
+          - energy_equipment_and_services
+          - oil_gas_and_consumable_fuels
+          - banks
+          - financial_services
+          - capital_markets
+          - mortgage_real_estate_investment_trusts_reits
+          - consumer_finance
+          - insurance
+          - healthcare_equipment_and_supplies
+          - healthcare_providers_and_services
+          - healthcare_technology
+          - biotechnology
+          - pharmaceuticals
+          - life_sciences_tools_and_services
+          - aerospace_and_defense
+          - building_products
+          - construction_and_engineering
+          - electrical_equipment
+          - industrial_conglomerates
+          - machinery
+          - trading_companies_and_distributors
+          - commercial_services_and_supplies
+          - professional_services
+          - air_freight_and_logistics
+          - passenger_airlines
+          - marine_transportation
+          - ground_transportation
+          - transportation_infrastructure
+          - it_services
+          - software
+          - communications_equipment
+          - technology_hardware_storage_and_peripherals
+          - electronic_equipment_instruments_and_components
+          - semiconductors_and_semiconductor_equipment
+          - chemicals
+          - construction_materials
+          - containers_and_packaging
+          - metals_and_mining
+          - paper_and_forest_products
+          - equity_real_estate_investment_trusts_reits
+          - real_estate_management_and_development
+          - electric_utilities
+          - gas_utilities
+          - multi_utilities
+          - water_utilities
+          - independent_power_and_renewable_electricity_producers
       audience:
         description: "Target audience for the generated report"
         required: false
@@ -40,17 +113,6 @@ on:
         required: false
         default: ""
         type: string
-      healthcare_focus_preset:
-        description: "Healthcare-only emphasis preset"
-        required: false
-        default: balanced
-        type: choice
-        options:
-          - balanced
-          - biotech_diagnostics
-          - homecare_physical_ai
-          - providers_payers
-          - therapeutics_only
       model:
         description: "OpenAI model used to generate the final report"
         required: false
@@ -97,27 +159,9 @@ jobs:
 
       - name: Resolve effective special instructions
         run: |
-          PRESET_TEXT=""
-
-          if [[ "${{ inputs.sector }}" == "healthcare" ]]; then
-            case "${{ inputs.healthcare_focus_preset }}" in
-              balanced)
-                PRESET_TEXT="For healthcare, keep the analysis balanced across all four required pillars and do not let the report collapse into mostly administrative workflow automation."
-                ;;
-              biotech_diagnostics)
-                PRESET_TEXT="For healthcare, place extra emphasis on biotechnology and therapeutic development plus diagnostic intelligence at scale, while still covering all four required analytical pillars."
-                ;;
-              homecare_physical_ai)
-                PRESET_TEXT="For healthcare, place extra emphasis on the long-run in-home healthcare transformation enabled by physical AI, robotics, ambient sensing, and agentic care systems, while still covering all four required analytical pillars."
-                ;;
-              providers_payers)
-                PRESET_TEXT="For healthcare, place extra emphasis on providers and payers, including clinical workflow, administrative efficiency, reimbursement dynamics, care coordination, diagnostic support adoption, and where economic value may accrue across care delivery and managed care, while still covering all four required analytical pillars."
-                ;;
-              therapeutics_only)
-                PRESET_TEXT="For healthcare, place extra emphasis on biotechnology and therapeutic development, including target discovery, molecule design, biomarker discovery, patient stratification, clinical trial design, protocol optimization, R&D productivity, probability of success, and development timelines, while still covering all four required analytical pillars."
-                ;;
-            esac
-          fi
+          PRESET_TEXT="$(python scripts/resolve_sector_focus.py \
+            --sector "${{ inputs.sector }}" \
+            --industry-focus "${{ inputs.industry_focus }}")"
 
           USER_TEXT="${{ inputs.special_instructions }}"
 
@@ -177,9 +221,9 @@ jobs:
             echo "## Sector Report Run"
             echo ""
             echo "- Sector: \`${{ inputs.sector }}\`"
+            echo "- Industry focus: \`${{ inputs.industry_focus }}\`"
             echo "- Audience: \`${{ inputs.audience }}\`"
             echo "- Time horizon: \`${{ inputs.time_horizon }}\`"
-            echo "- Healthcare preset: \`${{ inputs.healthcare_focus_preset }}\`"
             echo "- Model: \`${{ inputs.model }}\`"
             echo "- Validation: passed"
             echo "- Output: generated and emailed"

@@ -83,15 +83,12 @@ python scripts/render_prompt.py \
   --special-instructions "Lean harder into long-run in-home care transformation, robotics, ambient sensing, and caregiver augmentation."
 ```
 
-In GitHub Actions, healthcare runs now also support a structured dropdown input:
+In GitHub Actions, the sector dropdown now uses the standard GICS sectors. The workflow also includes an `industry_focus` dropdown with:
 
-- `balanced`
-- `biotech_diagnostics`
-- `homecare_physical_ai`
-- `providers_payers`
-- `therapeutics_only`
+- `balanced` for a sector-level report spanning all industries in the selected sector
+- the standard GICS industries for the covered sectors
 
-That preset is combined with any free-form `special_instructions` you enter. For non-healthcare sectors, the preset is ignored.
+The workflow validates the sector and industry pairing before prompt rendering. If you pick an industry that does not belong to the selected sector, the run fails fast with the allowed options for that sector.
 
 Validate an assembled prompt package before using or publishing it:
 
@@ -124,8 +121,8 @@ python scripts/render_prompt.py --list-sectors
 2. Select **Generate Sector Report**.
 3. Click **Run workflow**.
 4. Choose a sector and optionally adjust the audience, time horizon, style notes, and special instructions.
-5. If the sector is `healthcare`, you can also choose a `healthcare_focus_preset` to emphasize a balanced view, biotech and diagnostics, homecare and physical AI, providers and payers, or therapeutics-heavy analysis.
-6. The workflow validates the assembled prompt package before generating the report. For healthcare, that validation explicitly checks that all four required analytical pillars are present.
+5. Choose `industry_focus` as `balanced` for a full sector report or select a standard GICS industry to tilt the report toward that industry while still preserving sector context.
+6. The workflow validates both the sector and industry focus, then validates the assembled prompt package before generating the report. For healthcare, that validation still explicitly checks that the required analytical pillars are present.
 7. The workflow generates the final HTML report, emails it through the configured Gmail workflow secrets, and uploads both the prompt package and report artifacts.
 8. Download `assembled-sector-report-prompt` if you want to inspect the exact prompt package, and `sector-ai-impact-report-html` if you want the generated report artifact.
 
