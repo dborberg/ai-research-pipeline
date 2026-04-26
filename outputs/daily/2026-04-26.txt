@@ -1,0 +1,65 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>April 26, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Janet Mills vetoed Maine’s proposed data center moratorium:</strong> The decision keeps a potential brake off AI infrastructure buildout and shows that state politics are becoming a real variable in where compute capacity gets built. For financial professionals, that matters for utilities, digital infrastructure, industrial suppliers, and regional economic development tied to AI capex. (Source: Maine Public)</li>
+<li><strong>India formed an AI policy panel:</strong> New Delhi’s move signals that one of the world’s largest growth markets is shifting from broad AI enthusiasm toward a more formal policy framework. That could shape startup funding, compliance costs, and competitive positioning for firms seeking exposure to India’s AI ecosystem. (Source: Mint)</li>
+<li><strong>The Globe and Mail highlighted a $720 billion AI capex divide among hyperscalers:</strong> The article argues that only a subset of large platforms is spending primarily for growth while others are spending more to maintain existing capacity. The key takeaway for advisors is that AI spending remains powerful, but returns may accrue unevenly across mega-cap tech. (Source: The Globe and Mail)</li>
+<li><strong>CBS News reported that AI-driven data center growth is pushing up household electricity bills:</strong> That broadens the AI story from a technology theme into an inflation, utility, and consumer affordability issue. Advisors can use this as a reminder that AI creates second-order winners and losers beyond software and semiconductors. (Source: CBS News)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>ABB Robotics launched its PoWa cobot family for industrial tasks:</strong> ABB is targeting easier deployment, higher payloads, and AI-assisted programming, which supports the case that labor shortages and productivity pressure are still driving automation spending across factories and smaller industrial users. (Source: The Robot Report)</li>
+<li><strong>Opening Bell Daily argued a beaten-down AI infrastructure stock could benefit as enterprises automate:</strong> Even with limited company detail, the broader signal is that enterprise buyers are still funding automation projects that promise labor efficiency and workflow improvement, not just experimental AI pilots. (Source: Opening Bell Daily)</li>
+<li><strong>Tech Labari reported allegations that South Africa’s draft AI policy cited nonexistent research:</strong> The episode is a practical warning for employers adopting AI in research, compliance, and communications roles, where productivity gains can be offset by verification costs and reputational risk if human review is weak. (Source: Tech Labari)</li>
+<li><strong>Robotics &amp; Automation News highlighted the strategic value of legacy automation components:</strong> The article suggests many manufacturers are choosing retrofit and maintenance over full replacement, which points to a more gradual labor and productivity transition where firms automate selectively rather than through wholesale plant overhauls. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>CBS News reported that AI data center expansion is contributing to higher electricity bills:</strong> The story reinforces that power availability and cost are becoming central constraints on AI growth, with implications for utilities, regulators, and inflation-sensitive sectors. (Source: CBS News)</li>
+<li><strong>Janet Mills blocked a pause on new data center construction in Maine:</strong> The veto is incrementally supportive for continued data center development and shows that permitting and state policy are now part of the AI infrastructure investment thesis. (Source: NewsBytes)</li>
+<li><strong>Douglas County kept data centers and crypto mines on hold while drafting regulations:</strong> Even without a formal moratorium, local governments are slowing approvals until rules catch up, which is a reminder that AI infrastructure timelines can be delayed by zoning and community review. (Source: Lawrence Journal-World)</li>
+<li><strong>A Korean business report said AI investment is accelerating a semiconductor boom:</strong> The excerpt is thin on company specifics, but it adds to the evidence that chip demand remains a core transmission channel from AI spending into the broader hardware supply chain. (Source: 매일경제)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>The Globe and Mail framed hyperscaler AI spending as a capex trap for some players:</strong> The investment implication is that headline spending alone is no longer enough; markets may increasingly reward companies that convert AI capex into revenue growth rather than simply defending installed capacity. (Source: The Globe and Mail)</li>
+<li><strong>Mint’s coverage of India’s AI policy panel points to policy-driven investment dispersion:</strong> As governments shape AI rules, startup valuations and capital formation may depend as much on regulatory clarity as on technical capability, especially in emerging markets. (Source: Mint)</li>
+<li><strong>CBS News tied AI infrastructure growth to rising consumer power costs:</strong> That matters for capital markets because it suggests AI beneficiaries may include utilities and grid suppliers, while higher electricity costs could pressure households and some energy-intensive industries. (Source: CBS News)</li>
+<li><strong>MSN reported that Skild AI acquired Zebra Technologies’ robotics automation business:</strong> The deal is a sign that capital is still moving into physical AI platforms, with M&amp;A becoming another route to gain exposure beyond the largest software names. (Source: MSN)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>India established an AI policy panel:</strong> The move raises the odds of a more structured national framework for AI development, which could influence startup compliance, foreign investment appetite, and the pace of commercialization in a major growth market. (Source: Mint)</li>
+<li><strong>Maine’s governor vetoed a bill that would have paused AI data center construction:</strong> The episode shows that AI policy is no longer limited to model safety and privacy debates; it now includes land use, power demand, and local economic tradeoffs around physical infrastructure. (Source: Maine Public)</li>
+<li><strong>Douglas County delayed approvals for data centers and crypto mines until regulations are written:</strong> Local rulemaking is emerging as a meaningful friction point for AI infrastructure, especially where communities want more clarity on power use, siting, and project scope before granting approvals. (Source: Lawrence Journal-World)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>ABB Robotics introduced the PoWa cobot line:</strong> ABB is betting that easier-to-program collaborative robots can expand automation into more industrial workflows, which is strategically relevant because it links AI software, labor substitution, and factory productivity in a public-company context. (Source: The Robot Report)</li>
+<li><strong>Skild AI acquired Zebra Technologies’ robotics automation business:</strong> The transaction suggests continued consolidation in warehouse and industrial automation, with AI capabilities increasingly paired with established robotics assets to speed commercial deployment. (Source: MSN)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Watch whether more states and counties follow Maine and Douglas County:</strong> Additional permitting fights or moratorium proposals would be an early sign that AI infrastructure growth is running into broader political resistance. (Source: Maine Public)</li>
+<li><strong>Watch for hyperscaler earnings commentary on AI capex productivity:</strong> If management teams start distinguishing growth spending from maintenance spending more clearly, that could reshape market leadership within large-cap tech. (Source: The Globe and Mail)</li>
+<li><strong>Watch utility and grid responses to data center demand:</strong> Rising consumer power bills could trigger stronger regulatory scrutiny, cost-allocation debates, or accelerated grid investment plans. (Source: CBS News)</li>
+<li><strong>Watch whether India’s AI policy panel produces startup-friendly rules or tighter oversight:</strong> The balance it strikes could influence cross-border capital flows and sentiment toward AI opportunities in emerging markets. (Source: Mint)</li>
+<li><strong>Watch for more robotics M&amp;A and product launches tied to labor efficiency:</strong> Deals like Skild AI and launches like ABB’s PoWa suggest physical AI may become a broader investable theme beyond software and chips. (Source: MSN)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is still a growth story, but the winners may be the companies that turn capex into earnings, not just the ones spending the most.</strong> (Source: The Globe and Mail)</li>
+<li><strong>Data centers are becoming an energy and policy story, not just a technology story.</strong> (Source: CBS News)</li>
+<li><strong>State and local governments now have real influence over how fast AI infrastructure gets built.</strong> (Source: Maine Public)</li>
+<li><strong>Physical AI is moving from concept to commercial reality through robotics launches and acquisitions.</strong> (Source: The Robot Report)</li>
+<li><strong>In markets like India, AI policy could shape investment outcomes almost as much as the technology itself.</strong> (Source: Mint)</li>
+</ul>
