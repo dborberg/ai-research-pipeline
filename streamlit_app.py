@@ -1,7 +1,9 @@
 import json
 import hashlib
 import os
+import re
 from datetime import datetime, timedelta
+from html import unescape
 from pathlib import Path
 
 import pandas as pd
@@ -42,6 +44,16 @@ STREAMLIT_OUTPUT_DIR = REPO_ROOT / "out" / "streamlit"
 STREAMLIT_STATE_PATH = REPO_ROOT / "data" / "streamlit_ui_state.json"
 DEFAULT_AUDIENCE = "financial advisors and investment professionals"
 DEFAULT_TIME_HORIZON = "1-3 years and 3-7 years"
+FRONTIER_REQUIRED_HEADINGS = [
+    "Executive Summary",
+    "The Big Shift",
+    "Near-Term Possibilities: 1-3 Years",
+    "Medium-Term Possibilities: 3-7 Years",
+    "Frontier Scenario: A Day in the Life",
+    "Reality Check",
+    "Most Important Boundaries",
+    "Bottom Line",
+]
 
 
 def _get_db_version():
@@ -311,6 +323,29 @@ def _email_sector_report(sector_key: str, html_report: str):
     )
 
 
+def _validate_generated_report(report_mode: str, report_text: str):
+    if report_mode != "frontier_possibilities":
+        return
+
+    normalized = re.sub(r"(?is)<script.*?>.*?</script>", " ", report_text)
+    normalized = re.sub(r"(?is)<style.*?>.*?</style>", " ", normalized)
+    normalized = re.sub(r"(?i)<br\\s*/?>", "\n", normalized)
+    normalized = re.sub(r"</(p|div|h1|h2|h3|h4|h5|h6|li|section|article)>", "\n", normalized, flags=re.IGNORECASE)
+    normalized = re.sub(r"<[^>]+>", " ", normalized)
+    normalized = unescape(normalized)
+
+    missing_headings = [
+        heading for heading in FRONTIER_REQUIRED_HEADINGS
+        if heading not in normalized
+    ]
+    if missing_headings:
+        missing = ", ".join(missing_headings)
+        raise RuntimeError(
+            "Frontier report validation failed. Missing required headings: "
+            f"{missing}"
+        )
+
+
 def generate_sector_report_package(
     api_key: str,
     sector_key: str,
@@ -319,11 +354,16 @@ def generate_sector_report_package(
     audience: str,
     time_horizon: str,
     style_notes: str,
+    theme: str,
     user_special_instructions: str,
     model: str,
     output_format: str,
 ) -> dict[str, object]:
-    focus_instruction = build_focus_instruction(sector_key, industry_focus_key)
+    focus_instruction = build_focus_instruction(
+        sector_key,
+        industry_focus_key,
+        report_mode=report_mode,
+    )
     effective_special_instructions = _combine_special_instructions(
         focus_instruction,
         user_special_instructions,
@@ -336,6 +376,7 @@ def generate_sector_report_package(
         time_horizon=time_horizon,
         style_notes=style_notes,
         special_instructions=effective_special_instructions,
+        theme=theme,
     )
 
     client = get_openai_client(api_key)
@@ -367,6 +408,8 @@ def generate_sector_report_package(
         report = normalize_html_output(report)
     else:
         report = normalize_markdown_output(report)
+
+    _validate_generated_report(report_mode, report)
 
     prompt_path, report_path = _build_sector_report_output_paths(sector_key, report_mode, output_format)
     prompt_path.write_text(prompt_package, encoding="utf-8")
@@ -413,13 +456,19 @@ def render_sector_report_launcher(api_key: str):
 
     with st.form("sector_report_launcher_form"):
         report_mode = st.selectbox(
-            "Report Mode",
+            "Select report type",
             options=report_mode_values,
             format_func=lambda value: report_mode_options[value],
             key="sector_report_mode",
+            help="Choose whether to generate an investment-oriented sector report or a more imaginative frontier use-case report.",
         )
         audience = st.text_input("Audience", value=DEFAULT_AUDIENCE)
         time_horizon = st.text_input("Time Horizon", value=DEFAULT_TIME_HORIZON)
+        theme = st.text_input(
+            "Specific thematic focus, if any",
+            value="",
+            placeholder="Example: robotics, healthcare delivery, energy infrastructure, customer service, product design",
+        )
         style_notes = st.text_area("Style Notes", value="", height=80)
         special_instructions = st.text_area("Additional Special Instructions", value="", height=120)
 
@@ -450,6 +499,7 @@ def render_sector_report_launcher(api_key: str):
                 audience=audience,
                 time_horizon=time_horizon,
                 style_notes=style_notes,
+                theme=theme,
                 user_special_instructions=special_instructions,
                 model=model,
                 output_format=output_format,

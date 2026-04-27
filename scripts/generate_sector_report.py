@@ -7,7 +7,7 @@ import argparse
 import os
 import re
 import sys
-from html import escape
+from html import escape, unescape
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +17,16 @@ from openai import OpenAI
 DEFAULT_MODEL = "gpt-5.5"
 DEFAULT_MAX_OUTPUT_TOKENS = 2800
 DEFAULT_OUTPUT_FORMAT = "markdown"
+FRONTIER_REQUIRED_HEADINGS = [
+    "Executive Summary",
+    "The Big Shift",
+    "Near-Term Possibilities: 1-3 Years",
+    "Medium-Term Possibilities: 3-7 Years",
+    "Frontier Scenario: A Day in the Life",
+    "Reality Check",
+    "Most Important Boundaries",
+    "Bottom Line",
+]
 
 
 def read_text(path: Path) -> str:
@@ -55,7 +65,7 @@ def build_execution_prompt(prompt_package: str, output_format: str) -> str:
         "Execution rules:\n"
         "- Treat the 'Core System Prompt' section as the governing instruction layer.\n"
         "- Treat the 'Sector Adapter' section as the sector-specific context layer.\n"
-        "- Treat the 'User Prompt' section as the active task and run-specific input layer.\n"
+        "- Treat the 'User Prompt' section as the active task, run-specific input layer, and mode-specific override layer when it narrows or redirects the objective.\n"
         f"{output_instructions}\n"
         "Prompt package follows:\n\n"
         f"{prompt_package}"
@@ -118,6 +128,75 @@ def normalize_markdown_output(text: str) -> str:
     return text.strip()
 
 
+def is_frontier_prompt_package(prompt_package: str) -> bool:
+    return "This is the Frontier Possibilities version" in prompt_package
+
+
+def strip_html_for_validation(text: str) -> str:
+    stripped = re.sub(r"(?is)<script.*?>.*?</script>", " ", text)
+    stripped = re.sub(r"(?is)<style.*?>.*?</style>", " ", stripped)
+    stripped = re.sub(r"(?i)<br\\s*/?>", "\n", stripped)
+    stripped = re.sub(r"</(p|div|h1|h2|h3|h4|h5|h6|li|section|article)>", "\n", stripped, flags=re.IGNORECASE)
+    stripped = re.sub(r"<[^>]+>", " ", stripped)
+    stripped = unescape(stripped)
+    stripped = re.sub(r"[ \t]+", " ", stripped)
+    stripped = re.sub(r"\n+", "\n", stripped)
+    return stripped
+
+
+def get_missing_frontier_headings(report_text: str) -> list[str]:
+    normalized = strip_html_for_validation(report_text)
+    return [heading for heading in FRONTIER_REQUIRED_HEADINGS if heading not in normalized]
+
+
+def repair_frontier_report(
+    client: OpenAI,
+    prompt_package: str,
+    current_report: str,
+    model: str,
+    output_format: str,
+    max_output_tokens: int,
+) -> str:
+    format_instruction = "markdown"
+    if output_format == "html":
+        format_instruction = "HTML suitable for email delivery"
+
+    required_headings = "\n".join(f"- {heading}" for heading in FRONTIER_REQUIRED_HEADINGS)
+    response = client.chat.completions.create(
+        model=model,
+        messages=[
+            {
+                "role": "developer",
+                "content": (
+                    "You are repairing a frontier possibilities report so it matches the required structure exactly. "
+                    "Preserve grounded content, keep the tone imaginative but credible, avoid fabricated facts, "
+                    "and return only the revised report."
+                ),
+            },
+            {
+                "role": "user",
+                "content": (
+                    "The following frontier report draft is missing required headings or used substitute headings. "
+                    f"Rewrite it in {format_instruction} using exactly these headings:\n"
+                    f"{required_headings}\n\n"
+                    "Keep the report grounded, sector-specific, and complete. "
+                    "Do not leave any section unfinished. "
+                    "Do not add fabricated products, partnerships, financial figures, adoption statistics, or regulatory claims.\n\n"
+                    "Prompt package:\n"
+                    f"{prompt_package}\n\n"
+                    "Current draft:\n"
+                    f"{current_report}"
+                ),
+            },
+        ],
+        max_completion_tokens=max_output_tokens,
+    )
+    content = response.choices[0].message.content
+    if isinstance(content, str) and content.strip():
+        return content.strip()
+    raise RuntimeError("Frontier repair pass did not return text output.")
+
+
 def generate_with_responses_api(
     client: OpenAI,
     prompt_package: str,
@@ -155,7 +234,8 @@ def generate_with_chat_completions(
                 "content": (
                     "Execute the supplied prompt package. Treat the Core System Prompt "
                     "as the governing instructions, the Sector Adapter as the sector "
-                    "context, and the User Prompt as the active task. Return only the "
+                    "context, and the User Prompt as the active task and mode-specific "
+                    "override layer when it narrows or redirects the objective. Return only the "
                     f"{format_instruction}. Aim for the lower half of the allowed "
                     "length range, prioritize completion over extra detail, do not end "
                     "with unfinished bullets or sentences, and ensure the Bottom Line "
@@ -254,6 +334,22 @@ def main() -> int:
         report = normalize_html_output(report)
     else:
         report = normalize_markdown_output(report)
+
+    if is_frontier_prompt_package(prompt_package):
+        missing_headings = get_missing_frontier_headings(report)
+        if missing_headings:
+            repaired = repair_frontier_report(
+                client=client,
+                prompt_package=prompt_package,
+                current_report=report,
+                model=args.model,
+                output_format=args.output_format,
+                max_output_tokens=args.max_output_tokens,
+            )
+            if args.output_format == "html":
+                report = normalize_html_output(repaired)
+            else:
+                report = normalize_markdown_output(repaired)
 
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
