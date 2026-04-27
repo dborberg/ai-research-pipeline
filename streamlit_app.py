@@ -19,8 +19,8 @@ from app.send_email import send_report
 from app.velocity import apply_velocity_metrics, compute_velocity
 from run_weekly_pipeline import cluster_articles, get_weekly_articles
 from scripts.generate_sector_report import (
-    DEFAULT_MAX_OUTPUT_TOKENS,
     DEFAULT_MODEL,
+    get_max_output_tokens_for_mode,
     append_missing_frontier_sections,
     generate_missing_frontier_sections,
     generate_with_chat_completions,
@@ -385,13 +385,14 @@ def generate_sector_report_package(
 
     client = get_openai_client(api_key)
     generation_errors: list[str] = []
+    max_output_tokens = get_max_output_tokens_for_mode(report_mode)
 
     try:
         report = generate_with_responses_api(
             client=client,
             prompt_package=prompt_package,
             model=model,
-            max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
+            max_output_tokens=max_output_tokens,
             output_format=output_format,
         )
     except Exception as exc:
@@ -401,7 +402,7 @@ def generate_sector_report_package(
                 client=client,
                 prompt_package=prompt_package,
                 model=model,
-                max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
+                max_output_tokens=max_output_tokens,
                 output_format=output_format,
             )
         except Exception as fallback_exc:
@@ -423,7 +424,7 @@ def generate_sector_report_package(
                     current_report=report,
                     model=model,
                     output_format=output_format,
-                    max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
+                    max_output_tokens=max_output_tokens,
                 )
             except Exception:
                 repaired = ""
@@ -441,7 +442,7 @@ def generate_sector_report_package(
                 missing_headings=missing_headings,
                 model=model,
                 output_format=output_format,
-                max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
+                max_output_tokens=max_output_tokens,
             )
             report = append_missing_frontier_sections(
                 current_report=report,

@@ -16,6 +16,7 @@ from openai import OpenAI
 
 DEFAULT_MODEL = "gpt-5.5"
 DEFAULT_MAX_OUTPUT_TOKENS = 2800
+FRONTIER_MAX_OUTPUT_TOKENS = 3600
 DEFAULT_OUTPUT_FORMAT = "markdown"
 FRONTIER_REQUIRED_HEADINGS = [
     "Executive Summary",
@@ -34,6 +35,18 @@ FRONTIER_SECTION_BUDGET_GUIDANCE = (
     "2-3 short paragraphs for Frontier Scenario: A Day in the Life, 1 concise paragraph or tight bullets for Reality Check, "
     "4-5 brief bullets for Most Important Boundaries, and 2 short paragraphs for Bottom Line."
 )
+
+
+def get_max_output_tokens_for_mode(report_mode: str) -> int:
+    if report_mode == "frontier_possibilities":
+        return FRONTIER_MAX_OUTPUT_TOKENS
+    return DEFAULT_MAX_OUTPUT_TOKENS
+
+
+def get_max_output_tokens_for_prompt(prompt_package: str) -> int:
+    if is_frontier_prompt_package(prompt_package):
+        return FRONTIER_MAX_OUTPUT_TOKENS
+    return DEFAULT_MAX_OUTPUT_TOKENS
 
 
 def read_text(path: Path) -> str:
@@ -407,8 +420,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--max-output-tokens",
         type=int,
-        default=DEFAULT_MAX_OUTPUT_TOKENS,
-        help=f"Maximum output tokens. Defaults to {DEFAULT_MAX_OUTPUT_TOKENS}.",
+        help=(
+            "Optional maximum output tokens override. "
+            f"Defaults to {DEFAULT_MAX_OUTPUT_TOKENS} for investable prompts and "
+            f"{FRONTIER_MAX_OUTPUT_TOKENS} for frontier prompts."
+        ),
     )
     return parser.parse_args()
 
@@ -432,13 +448,14 @@ def main() -> int:
 
     client = OpenAI(api_key=api_key)
     generation_errors: list[str] = []
+    max_output_tokens = args.max_output_tokens or get_max_output_tokens_for_prompt(prompt_package)
 
     try:
         report = generate_with_responses_api(
             client=client,
             prompt_package=prompt_package,
             model=args.model,
-            max_output_tokens=args.max_output_tokens,
+            max_output_tokens=max_output_tokens,
             output_format=args.output_format,
         )
     except Exception as exc:
@@ -448,7 +465,7 @@ def main() -> int:
                 client=client,
                 prompt_package=prompt_package,
                 model=args.model,
-                max_output_tokens=args.max_output_tokens,
+                max_output_tokens=max_output_tokens,
                 output_format=args.output_format,
             )
         except Exception as fallback_exc:
@@ -471,7 +488,7 @@ def main() -> int:
                     current_report=report,
                     model=args.model,
                     output_format=args.output_format,
-                    max_output_tokens=args.max_output_tokens,
+                    max_output_tokens=max_output_tokens,
                 )
             except Exception:
                 repaired = ""
@@ -489,7 +506,7 @@ def main() -> int:
                 missing_headings=missing_headings,
                 model=args.model,
                 output_format=args.output_format,
-                max_output_tokens=args.max_output_tokens,
+                max_output_tokens=max_output_tokens,
             )
             report = append_missing_frontier_sections(
                 current_report=report,
