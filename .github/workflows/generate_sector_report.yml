@@ -116,7 +116,7 @@ on:
       model:
         description: "OpenAI model used to generate the final report"
         required: false
-        default: "gpt-5.4"
+        default: "gpt-5.5"
         type: string
 
 jobs:

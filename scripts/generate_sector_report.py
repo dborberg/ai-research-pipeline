@@ -14,7 +14,7 @@ from typing import Any
 from openai import OpenAI
 
 
-DEFAULT_MODEL = "gpt-5.4"
+DEFAULT_MODEL = "gpt-5.5"
 DEFAULT_MAX_OUTPUT_TOKENS = 2800
 DEFAULT_OUTPUT_FORMAT = "markdown"
 

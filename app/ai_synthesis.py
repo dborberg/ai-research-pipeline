@@ -86,7 +86,7 @@ Prioritize higher AI Score articles. Avoid repeating headers. Keep tone consiste
 
     try:
         response = client.chat.completions.create(
-            model="gpt-5.4",
+            model="gpt-5.5",
             messages=[
                 {"role": "system", "content": system_message},
                 {"role": "user", "content": user_message}

@@ -6,7 +6,7 @@ from openai import OpenAI
 
 from app.db import fetch_daily_digests, fetch_top_articles, fetch_weekly_digests
 
-MODEL_NAME = "gpt-5.4"
+MODEL_NAME = "gpt-5.5"
 WEEKLY_WHOLESALER_TEMPERATURE = 0.3
 WEEKLY_THEMATIC_TEMPERATURE = 0.35
 MONTHLY_REPORT_TEMPERATURE = 0.35

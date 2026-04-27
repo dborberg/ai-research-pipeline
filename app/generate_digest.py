@@ -548,7 +548,7 @@ ARTICLES:
             request_prompt = f"{request_prompt}\n\nREVISION FEEDBACK:\n{extra_feedback}"
 
         response = client.chat.completions.create(
-            model="gpt-5.4",
+            model="gpt-5.5",
             messages=[
                 {"role": "system", "content": system_prompt.strip()},
                 {"role": "user", "content": request_prompt}

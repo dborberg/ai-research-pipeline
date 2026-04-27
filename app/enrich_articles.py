@@ -145,7 +145,7 @@ Return ONLY valid JSON. No extra text.
     for attempt in range(2):
         try:
             response = client.chat.completions.create(
-                model="gpt-5.4",
+                model="gpt-5.5",
                 messages=[
                     {"role": "system", "content": system_message},
                     {"role": "user", "content": user_message}
