@@ -27,6 +27,13 @@ FRONTIER_REQUIRED_HEADINGS = [
     "Most Important Boundaries",
     "Bottom Line",
 ]
+FRONTIER_SECTION_BUDGET_GUIDANCE = (
+    "Keep the overall report concise enough to finish cleanly. "
+    "Use 2-3 short paragraphs for Executive Summary, 1-2 compact paragraphs for The Big Shift, "
+    "3-4 concise use cases in Near-Term Possibilities, 3-4 concise use cases in Medium-Term Possibilities, "
+    "2-3 short paragraphs for Frontier Scenario: A Day in the Life, 1 concise paragraph or tight bullets for Reality Check, "
+    "4-5 brief bullets for Most Important Boundaries, and 2 short paragraphs for Bottom Line."
+)
 
 
 def read_text(path: Path) -> str:
@@ -180,6 +187,7 @@ def repair_frontier_report(
                     f"Rewrite it in {format_instruction} using exactly these headings:\n"
                     f"{required_headings}\n\n"
                     "Keep the report grounded, sector-specific, and complete. "
+                    f"{FRONTIER_SECTION_BUDGET_GUIDANCE} "
                     "Do not leave any section unfinished. "
                     "Do not add fabricated products, partnerships, financial figures, adoption statistics, or regulatory claims.\n\n"
                     "Prompt package:\n"
@@ -195,6 +203,86 @@ def repair_frontier_report(
     if isinstance(content, str) and content.strip():
         return content.strip()
     raise RuntimeError("Frontier repair pass did not return text output.")
+
+
+def generate_missing_frontier_sections(
+    client: OpenAI,
+    prompt_package: str,
+    current_report: str,
+    missing_headings: list[str],
+    model: str,
+    output_format: str,
+    max_output_tokens: int,
+) -> str:
+    format_instruction = "markdown"
+    if output_format == "html":
+        format_instruction = "HTML suitable for email delivery"
+
+    missing_heading_list = "\n".join(f"- {heading}" for heading in missing_headings)
+    response = client.chat.completions.create(
+        model=model,
+        messages=[
+            {
+                "role": "developer",
+                "content": (
+                    "You are completing a frontier possibilities report that was truncated before its final required sections. "
+                    "Return only the missing sections, using exactly the required headings and no extra preamble."
+                ),
+            },
+            {
+                "role": "user",
+                "content": (
+                    f"Write only these missing sections in {format_instruction}:\n"
+                    f"{missing_heading_list}\n\n"
+                    f"{FRONTIER_SECTION_BUDGET_GUIDANCE} "
+                    "Keep the output concise, grounded, and internally consistent with the existing report. "
+                    "Do not restate earlier sections. Do not fabricate products, partnerships, financial figures, adoption statistics, or regulatory claims.\n\n"
+                    "Prompt package:\n"
+                    f"{prompt_package}\n\n"
+                    "Existing report:\n"
+                    f"{current_report}"
+                ),
+            },
+        ],
+        max_completion_tokens=max_output_tokens,
+    )
+    content = response.choices[0].message.content
+    if isinstance(content, str) and content.strip():
+        return content.strip()
+    raise RuntimeError("Frontier missing-sections repair did not return text output.")
+
+
+def append_missing_frontier_sections(
+    current_report: str,
+    missing_sections: str,
+    output_format: str,
+) -> str:
+    if output_format != "html":
+        return current_report.rstrip() + "\n\n" + missing_sections.strip()
+
+    report = current_report.rstrip()
+    additions = missing_sections.strip()
+
+    if not additions:
+        return report
+
+    if "<html" not in additions.lower():
+        additions = normalize_html_output(additions)
+
+    body_match = re.search(r"(?is)<body[^>]*>(.*)</body>", additions)
+    body_content = body_match.group(1).strip() if body_match else additions
+
+    closing_body = re.search(r"(?is)</body>\s*</html>\s*$", report)
+    if closing_body:
+        insertion_point = closing_body.start()
+        return report[:insertion_point] + body_content + "\n</body></html>"
+
+    closing_html = re.search(r"(?is)</html>\s*$", report)
+    if closing_html:
+        insertion_point = closing_html.start()
+        return report[:insertion_point] + body_content + "\n</html>"
+
+    return report + body_content
 
 
 def generate_with_responses_api(
@@ -350,6 +438,26 @@ def main() -> int:
                 report = normalize_html_output(repaired)
             else:
                 report = normalize_markdown_output(repaired)
+            missing_headings = get_missing_frontier_headings(report)
+        if missing_headings:
+            additions = generate_missing_frontier_sections(
+                client=client,
+                prompt_package=prompt_package,
+                current_report=report,
+                missing_headings=missing_headings,
+                model=args.model,
+                output_format=args.output_format,
+                max_output_tokens=args.max_output_tokens,
+            )
+            report = append_missing_frontier_sections(
+                current_report=report,
+                missing_sections=additions,
+                output_format=args.output_format,
+            )
+            if args.output_format == "html":
+                report = normalize_html_output(report)
+            else:
+                report = normalize_markdown_output(report)
 
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)

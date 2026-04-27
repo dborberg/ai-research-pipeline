@@ -21,10 +21,14 @@ from run_weekly_pipeline import cluster_articles, get_weekly_articles
 from scripts.generate_sector_report import (
     DEFAULT_MAX_OUTPUT_TOKENS,
     DEFAULT_MODEL,
+    append_missing_frontier_sections,
+    generate_missing_frontier_sections,
     generate_with_chat_completions,
     generate_with_responses_api,
+    get_missing_frontier_headings,
     normalize_html_output,
     normalize_markdown_output,
+    repair_frontier_report,
 )
 from scripts.render_prompt import build_prompt_package, get_report_mode_options, normalize_sector_name
 from scripts.resolve_sector_focus import SECTOR_FOCUS_OPTIONS, build_focus_instruction
@@ -408,6 +412,42 @@ def generate_sector_report_package(
         report = normalize_html_output(report)
     else:
         report = normalize_markdown_output(report)
+
+    if report_mode == "frontier_possibilities":
+        missing_headings = get_missing_frontier_headings(report)
+        if missing_headings:
+            repaired = repair_frontier_report(
+                client=client,
+                prompt_package=prompt_package,
+                current_report=report,
+                model=model,
+                output_format=output_format,
+                max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
+            )
+            if output_format == "html":
+                report = normalize_html_output(repaired)
+            else:
+                report = normalize_markdown_output(repaired)
+            missing_headings = get_missing_frontier_headings(report)
+        if missing_headings:
+            additions = generate_missing_frontier_sections(
+                client=client,
+                prompt_package=prompt_package,
+                current_report=report,
+                missing_headings=missing_headings,
+                model=model,
+                output_format=output_format,
+                max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
+            )
+            report = append_missing_frontier_sections(
+                current_report=report,
+                missing_sections=additions,
+                output_format=output_format,
+            )
+            if output_format == "html":
+                report = normalize_html_output(report)
+            else:
+                report = normalize_markdown_output(report)
 
     _validate_generated_report(report_mode, report)
 
