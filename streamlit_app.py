@@ -416,19 +416,23 @@ def generate_sector_report_package(
     if report_mode == "frontier_possibilities":
         missing_headings = get_missing_frontier_headings(report)
         if missing_headings:
-            repaired = repair_frontier_report(
-                client=client,
-                prompt_package=prompt_package,
-                current_report=report,
-                model=model,
-                output_format=output_format,
-                max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
-            )
-            if output_format == "html":
-                report = normalize_html_output(repaired)
-            else:
-                report = normalize_markdown_output(repaired)
-            missing_headings = get_missing_frontier_headings(report)
+            try:
+                repaired = repair_frontier_report(
+                    client=client,
+                    prompt_package=prompt_package,
+                    current_report=report,
+                    model=model,
+                    output_format=output_format,
+                    max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
+                )
+            except Exception:
+                repaired = ""
+            if repaired:
+                if output_format == "html":
+                    report = normalize_html_output(repaired)
+                else:
+                    report = normalize_markdown_output(repaired)
+                missing_headings = get_missing_frontier_headings(report)
         if missing_headings:
             additions = generate_missing_frontier_sections(
                 client=client,

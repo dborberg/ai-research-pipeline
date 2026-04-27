@@ -100,6 +100,53 @@ def extract_text_from_response(response: Any) -> str:
     raise RuntimeError("The model response did not contain any text output.")
 
 
+def extract_text_from_chat_completion(response: Any) -> str:
+    choices = getattr(response, "choices", None) or []
+    if not choices:
+        raise RuntimeError("The chat completion response did not contain any choices.")
+
+    message = getattr(choices[0], "message", None)
+    if message is None:
+        raise RuntimeError("The chat completion response did not contain a message.")
+
+    content = getattr(message, "content", None)
+    if isinstance(content, str) and content.strip():
+        return content.strip()
+
+    collected: list[str] = []
+    if isinstance(content, (list, tuple)):
+        for part in content:
+            if isinstance(part, str) and part.strip():
+                collected.append(part.strip())
+                continue
+
+            text_value = getattr(part, "text", None)
+            if isinstance(text_value, str) and text_value.strip():
+                collected.append(text_value.strip())
+                continue
+
+            if isinstance(part, dict):
+                direct_text = part.get("text")
+                if isinstance(direct_text, str) and direct_text.strip():
+                    collected.append(direct_text.strip())
+                    continue
+
+                nested_text = part.get("text", {})
+                if isinstance(nested_text, dict):
+                    value = nested_text.get("value")
+                    if isinstance(value, str) and value.strip():
+                        collected.append(value.strip())
+
+    if collected:
+        return "\n\n".join(collected).strip()
+
+    refusal = getattr(message, "refusal", None)
+    if isinstance(refusal, str) and refusal.strip():
+        raise RuntimeError(f"The model refused to provide text output: {refusal.strip()}")
+
+    raise RuntimeError("The chat completion response did not contain any text output.")
+
+
 def normalize_html_output(text: str) -> str:
     stripped = text.strip()
     stripped = re.sub(r"^```html\s*", "", stripped, flags=re.IGNORECASE)
@@ -199,10 +246,7 @@ def repair_frontier_report(
         ],
         max_completion_tokens=max_output_tokens,
     )
-    content = response.choices[0].message.content
-    if isinstance(content, str) and content.strip():
-        return content.strip()
-    raise RuntimeError("Frontier repair pass did not return text output.")
+    return extract_text_from_chat_completion(response)
 
 
 def generate_missing_frontier_sections(
@@ -246,10 +290,7 @@ def generate_missing_frontier_sections(
         ],
         max_completion_tokens=max_output_tokens,
     )
-    content = response.choices[0].message.content
-    if isinstance(content, str) and content.strip():
-        return content.strip()
-    raise RuntimeError("Frontier missing-sections repair did not return text output.")
+    return extract_text_from_chat_completion(response)
 
 
 def append_missing_frontier_sections(
@@ -334,10 +375,7 @@ def generate_with_chat_completions(
         ],
         max_completion_tokens=max_output_tokens,
     )
-    content = response.choices[0].message.content
-    if isinstance(content, str) and content.strip():
-        return content.strip()
-    raise RuntimeError("The Chat Completions response did not contain any text output.")
+    return extract_text_from_chat_completion(response)
 
 
 def parse_args() -> argparse.Namespace:
@@ -426,19 +464,23 @@ def main() -> int:
     if is_frontier_prompt_package(prompt_package):
         missing_headings = get_missing_frontier_headings(report)
         if missing_headings:
-            repaired = repair_frontier_report(
-                client=client,
-                prompt_package=prompt_package,
-                current_report=report,
-                model=args.model,
-                output_format=args.output_format,
-                max_output_tokens=args.max_output_tokens,
-            )
-            if args.output_format == "html":
-                report = normalize_html_output(repaired)
-            else:
-                report = normalize_markdown_output(repaired)
-            missing_headings = get_missing_frontier_headings(report)
+            try:
+                repaired = repair_frontier_report(
+                    client=client,
+                    prompt_package=prompt_package,
+                    current_report=report,
+                    model=args.model,
+                    output_format=args.output_format,
+                    max_output_tokens=args.max_output_tokens,
+                )
+            except Exception:
+                repaired = ""
+            if repaired:
+                if args.output_format == "html":
+                    report = normalize_html_output(repaired)
+                else:
+                    report = normalize_markdown_output(repaired)
+                missing_headings = get_missing_frontier_headings(report)
         if missing_headings:
             additions = generate_missing_frontier_sections(
                 client=client,
