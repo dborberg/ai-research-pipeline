@@ -150,7 +150,6 @@ Return ONLY valid JSON. No extra text.
                     {"role": "system", "content": system_message},
                     {"role": "user", "content": user_message}
                 ],
-                temperature=0.3,
             )
 
             response_text = response.choices[0].message.content.strip()

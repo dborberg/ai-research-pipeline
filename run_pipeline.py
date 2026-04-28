@@ -39,6 +39,16 @@ DAILY_OUTPUT_DIR = Path("outputs/daily")
 _CENTRAL_TZ = ZoneInfo("America/Chicago")
 
 
+def _abort_pipeline(message, *, exception=None):
+    print(message)
+    if exception is None:
+        logging.error(message)
+        raise RuntimeError(message)
+
+    logging.exception(message)
+    raise RuntimeError(message) from exception
+
+
 def _central_today():
     """Return today's date in Central Time (CDT/CST), matching the workflow guard step."""
     return datetime.now(_CENTRAL_TZ).date()
@@ -184,22 +194,16 @@ def run(dry_run=False):
         init_db()
         articles = ingest_articles(window_start, window_end)
         if not articles:
-            print("No articles available — skipping digest generation safely")
-            logging.warning("No articles available — skipping digest generation safely")
-            return
+            _abort_pipeline("No articles available for the daily pipeline window")
         try:
             enrich_articles()
         except Exception as e:
-            print(f"Enrichment failed: {e}")
-            logging.exception("Enrichment failed")
-            return
+            _abort_pipeline(f"Enrichment failed: {e}", exception=e)
 
         try:
             _validate_recent_enrichment(articles)
         except Exception as e:
-            print(f"Enrichment validation failed: {e}")
-            logging.exception("Enrichment validation failed")
-            return
+            _abort_pipeline(f"Enrichment validation failed: {e}", exception=e)
 
         # ✅ Generate ONCE and reuse
         try:
@@ -209,15 +213,12 @@ def run(dry_run=False):
             save_daily_digest(digest_text)
             upsert_daily_digest(_central_today(), digest_text)
         except Exception as e:
-            print(f"Digest generation failed: {e}")
-            logging.exception("Digest generation failed")
-            return
+            _abort_pipeline(f"Digest generation failed: {e}", exception=e)
 
         try:
             send_digest(digest_text=digest_text, dry_run=dry_run)
         except Exception as e:
-            print(f"Email failed: {e}")
-            logging.exception("Email send failed")
+            _abort_pipeline(f"Email failed: {e}", exception=e)
 
         logging.info("Pipeline completed successfully")
 

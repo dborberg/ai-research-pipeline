@@ -675,7 +675,6 @@ ARTICLES:
         client,
         system_prompt,
         user_prompt,
-        temperature=0.2,
         max_completion_tokens=2600,
     )
     parsed = _parse_json_response(raw_response, {"clusters": []})
@@ -861,7 +860,6 @@ CLUSTERS:
         client,
         system_prompt,
         user_prompt,
-        temperature=0.2,
         max_completion_tokens=1200,
     )
     parsed = _parse_json_response(

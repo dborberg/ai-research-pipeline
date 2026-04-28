@@ -64,6 +64,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Guard against duplicate scheduled runs
+        id: guard
         run: |
           CENTRAL_DATE=$(TZ=America/Chicago date +%F)
           echo "CENTRAL_DATE=$CENTRAL_DATE" >> $GITHUB_ENV
@@ -77,21 +78,32 @@ jobs:
           echo "$PIPELINE_WINDOW" >> $GITHUB_ENV
 
           if [[ "${{ github.event_name }}" == "schedule" && "${{ vars.USE_GCP_SCHEDULER }}" == "true" ]]; then
-            echo "SKIP_RUN=true" >> $GITHUB_ENV
+            SKIP_RUN=true
             echo "GitHub cron disabled because USE_GCP_SCHEDULER=true; expecting GCP-triggered workflow_dispatch instead."
           elif [[ ( "${{ github.event_name }}" == "schedule" || "${{ github.event.inputs.scheduled_run }}" == "true" ) ]] && git cat-file -e "HEAD:outputs/daily/${CENTRAL_DATE}.txt"; then
-            echo "SKIP_RUN=true" >> $GITHUB_ENV
+            SKIP_RUN=true
             echo "Scheduled digest for ${CENTRAL_DATE} already exists in the repository; skipping duplicate run."
           else
-            echo "SKIP_RUN=false" >> $GITHUB_ENV
+            SKIP_RUN=false
           fi
 
+          echo "SKIP_RUN=$SKIP_RUN" >> $GITHUB_ENV
+          echo "skip_run=$SKIP_RUN" >> $GITHUB_OUTPUT
+
       - name: Run pipeline
-        if: env.SKIP_RUN != 'true'
+        if: steps.guard.outputs.skip_run != 'true'
         run: python run_pipeline.py
 
+      - name: Verify daily digest artifact exists
+        if: steps.guard.outputs.skip_run != 'true'
+        run: |
+          test -f "outputs/daily/${CENTRAL_DATE}.txt" || {
+            echo "Expected outputs/daily/${CENTRAL_DATE}.txt to exist after a successful daily pipeline run."
+            exit 1
+          }
+
       - name: Persist daily outputs and database
-        if: env.SKIP_RUN != 'true'
+        if: always() && steps.guard.outputs.skip_run != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

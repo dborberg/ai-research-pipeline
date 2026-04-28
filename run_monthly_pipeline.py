@@ -165,7 +165,6 @@ DATA:
         client,
         system_prompt,
         user_prompt,
-        temperature=0.2,
         max_completion_tokens=500,
     )
 
@@ -190,7 +189,6 @@ WHY_IT_MATTERS: {row['latest_relevance'] or 'No relevance summary available.'}
         client,
         system_prompt,
         user_prompt,
-        temperature=0.2,
         max_completion_tokens=180,
     )
 
@@ -218,7 +216,6 @@ DATA:
         client,
         system_prompt,
         user_prompt,
-        temperature=0.2,
         max_completion_tokens=400,
     )
 
@@ -306,7 +303,6 @@ SOURCE MATERIAL:
         client,
         system_prompt,
         user_prompt,
-        temperature=0.2,
         max_completion_tokens=1800,
     )
 

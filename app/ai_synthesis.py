@@ -91,7 +91,6 @@ Prioritize higher AI Score articles. Avoid repeating headers. Keep tone consiste
                 {"role": "system", "content": system_message},
                 {"role": "user", "content": user_message}
             ],
-            temperature=0.2,
         )
         
         response_text = response.choices[0].message.content.strip()

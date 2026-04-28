@@ -7,9 +7,6 @@ from openai import OpenAI
 from app.db import fetch_daily_digests, fetch_top_articles, fetch_weekly_digests
 
 MODEL_NAME = "gpt-5.5"
-WEEKLY_WHOLESALER_TEMPERATURE = 0.3
-WEEKLY_THEMATIC_TEMPERATURE = 0.35
-MONTHLY_REPORT_TEMPERATURE = 0.35
 _CENTRAL_TZ = ZoneInfo("America/Chicago")
 
 
@@ -146,14 +143,13 @@ def build_monthly_source_context(weeks=4):
     return "\n\n" + ("\n\n" + ("=" * 80) + "\n\n").join(blocks)
 
 
-def call_chat_model(client, system_prompt, user_prompt, temperature=0.3, max_completion_tokens=2200):
+def call_chat_model(client, system_prompt, user_prompt, max_completion_tokens=2200):
     response = client.chat.completions.create(
         model=MODEL_NAME,
         messages=[
             {"role": "system", "content": system_prompt.strip()},
             {"role": "user", "content": user_prompt.strip()},
         ],
-        temperature=temperature,
         max_completion_tokens=max_completion_tokens,
     )
     return response.choices[0].message.content.strip()

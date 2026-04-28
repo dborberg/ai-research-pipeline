@@ -553,7 +553,6 @@ ARTICLES:
                 {"role": "system", "content": system_prompt.strip()},
                 {"role": "user", "content": request_prompt}
             ],
-            temperature=0.2,
             max_completion_tokens=4000,
         )
         choice = response.choices[0]
