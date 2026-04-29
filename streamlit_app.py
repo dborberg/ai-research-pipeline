@@ -398,6 +398,7 @@ def generate_sector_report_package(
     except Exception as exc:
         generation_errors.append(f"Responses API failed: {exc}")
         try:
+            client = get_openai_client(api_key)
             report = generate_with_chat_completions(
                 client=client,
                 prompt_package=prompt_package,

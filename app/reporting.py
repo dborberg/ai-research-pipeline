@@ -8,10 +8,16 @@ from app.db import fetch_daily_digests, fetch_top_articles, fetch_weekly_digests
 
 MODEL_NAME = "gpt-5.5"
 _CENTRAL_TZ = ZoneInfo("America/Chicago")
+OPENAI_REQUEST_TIMEOUT_SECONDS = 90.0
+OPENAI_MAX_RETRIES = 5
 
 
 def get_openai_client(api_key):
-    return OpenAI(api_key=api_key)
+    return OpenAI(
+        api_key=api_key,
+        timeout=OPENAI_REQUEST_TIMEOUT_SECONDS,
+        max_retries=OPENAI_MAX_RETRIES,
+    )
 
 
 def get_central_now():

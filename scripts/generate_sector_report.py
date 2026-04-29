@@ -13,6 +13,8 @@ from typing import Any
 
 from openai import OpenAI
 
+from app.reporting import get_openai_client
+
 
 DEFAULT_MODEL = "gpt-5.5"
 DEFAULT_MAX_OUTPUT_TOKENS = 2800
@@ -446,7 +448,7 @@ def main() -> int:
         print(str(exc), file=sys.stderr)
         return 1
 
-    client = OpenAI(api_key=api_key)
+    client = get_openai_client(api_key)
     generation_errors: list[str] = []
     max_output_tokens = args.max_output_tokens or get_max_output_tokens_for_prompt(prompt_package)
 
@@ -461,6 +463,7 @@ def main() -> int:
     except Exception as exc:
         generation_errors.append(f"Responses API failed: {exc}")
         try:
+            client = get_openai_client(api_key)
             report = generate_with_chat_completions(
                 client=client,
                 prompt_package=prompt_package,
