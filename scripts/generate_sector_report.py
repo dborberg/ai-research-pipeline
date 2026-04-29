@@ -23,8 +23,8 @@ DEFAULT_OUTPUT_FORMAT = "markdown"
 FRONTIER_REQUIRED_HEADINGS = [
     "Executive Summary",
     "The Big Shift",
-    "Near-Term Possibilities: 1-3 Years",
-    "Medium-Term Possibilities: 3-7 Years",
+    "Near-Term Possibilities: From Assistance to New Workflows",
+    "Medium-Term Possibilities: New Capabilities That Do Not Exist at Scale Today",
     "Frontier Scenario: A Day in the Life",
     "Reality Check",
     "Most Important Boundaries",
@@ -33,7 +33,7 @@ FRONTIER_REQUIRED_HEADINGS = [
 FRONTIER_SECTION_BUDGET_GUIDANCE = (
     "Keep the overall report concise enough to finish cleanly. "
     "Use 2-3 short paragraphs for Executive Summary, 1-2 compact paragraphs for The Big Shift, "
-    "3-4 concise use cases in Near-Term Possibilities, 3-4 concise use cases in Medium-Term Possibilities, "
+    "3-4 concise use cases in Near-Term Possibilities and 5-7 concise but ambitious use cases in Medium-Term Possibilities, "
     "2-3 short paragraphs for Frontier Scenario: A Day in the Life, 1 concise paragraph or tight bullets for Reality Check, "
     "4-5 brief bullets for Most Important Boundaries, and 2 short paragraphs for Bottom Line."
 )

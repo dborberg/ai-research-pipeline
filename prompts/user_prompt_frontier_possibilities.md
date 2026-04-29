@@ -37,6 +37,7 @@ Investment implications may be mentioned only lightly and only when they natural
 
 - Focus on use cases, workflows, operating changes, customer experiences, product capabilities, and new forms of human-machine collaboration.
 - Emphasize what people, companies, machines, customers, workers, patients, engineers, operators, managers, or consumers may actually be able to do differently.
+- The report should push beyond current workflow efficiency. It should not merely describe AI helping people do today's tasks faster. It should describe new capabilities, new interaction models, new product architectures, new operating models, and new forms of human-machine collaboration that could become possible because Gen AI exists.
 - Avoid making the report primarily about stocks, valuation, margins, market share, or investment recommendations.
 - Do not recommend securities, companies, funds, or trades.
 - Do not make unsupported claims about current product capabilities.
@@ -55,14 +56,18 @@ Use exactly these section headings:
 
 1. Executive Summary
 2. The Big Shift
-3. Near-Term Possibilities: 1-3 Years
-4. Medium-Term Possibilities: 3-7 Years
+3. Near-Term Possibilities: From Assistance to New Workflows
+4. Medium-Term Possibilities: New Capabilities That Do Not Exist at Scale Today
 5. Frontier Scenario: A Day in the Life
 6. Reality Check
 7. Most Important Boundaries
 8. Bottom Line
 
-Target total length: roughly 1,000-1,300 words.
+You may add one optional section immediately after the Medium-Term section using exactly this heading:
+
+Most Frontier Ideas Worth Watching
+
+Target total length: roughly 1,200-1,600 words.
 
 If there is any risk of running long, choose brevity over exhaustiveness so every required section is fully completed.
 
@@ -93,7 +98,7 @@ If there is any risk of running long, choose brevity over exhaustiveness so ever
   - how customers or end users interact with the sector
   - how physical or digital systems become more adaptive
 
-### Near-Term Possibilities: 1-3 Years
+### Near-Term Possibilities: From Assistance to New Workflows
 
 - Provide 3-4 use-case stories.
 - For each use case, include:
@@ -103,17 +108,42 @@ If there is any risk of running long, choose brevity over exhaustiveness so ever
   - What makes it plausible
   - What could limit it
 - Keep each use case compact. One short paragraph plus brief supporting sentences is enough.
+- For each use case, ask:
+  - What becomes possible that was previously impractical, too expensive, too slow, too complex, or too dependent on scarce expertise?
+  - How does the workflow, product, system, or customer experience become structurally different from today?
+  - What does the AI connect to, observe, generate, simulate, coordinate, or control?
+  - Where does human judgment remain essential?
+  - Why is this plausible within the stated time horizon?
 
-### Medium-Term Possibilities: 3-7 Years
+### Medium-Term Possibilities: New Capabilities That Do Not Exist at Scale Today
 
-- Provide 3-4 more ambitious use-case stories.
+- Provide 5-7 use-case stories.
 - For each use case, include:
   - Use Case Name
   - What it could look like
   - Why it matters
   - What would need to be true
   - What could go wrong
+- Each use case must be meaningfully more ambitious than near-term productivity improvement.
+- Each use case should describe a new capability, new system behavior, new operating model, new user interaction pattern, or a new human-machine collaboration model that does not exist at scale today.
 - Keep each use case compact. One short paragraph plus brief supporting sentences is enough.
+- For each use case, ask:
+  - What becomes possible that was previously impractical, too expensive, too slow, too complex, or too dependent on scarce expertise?
+  - How does the workflow, product, system, or customer experience become structurally different from today?
+  - What does the AI connect to, observe, generate, simulate, coordinate, or control?
+  - Where does human judgment remain essential?
+  - Why is this plausible within the stated time horizon?
+
+### Most Frontier Ideas Worth Watching
+
+- This section is optional but encouraged when the sector has credible frontier ideas worth surfacing.
+- Include 3-5 concise ideas.
+- For each idea, include:
+  - What it is
+  - Why it could matter
+  - What would need to be true
+  - Why it may not happen
+- These ideas should be imaginative but not fabricated.
 
 ### Frontier Scenario: A Day in the Life
 
@@ -181,6 +211,22 @@ If there is any risk of running long, choose brevity over exhaustiveness so ever
 - Do not overuse the words transform, revolutionize, unlock, or disrupt.
 - Aim for the lower half of the allowed length range if needed to ensure the report is fully completed.
 - Prefer completeness over extra detail if there is any risk of truncation.
+
+## Frontier Depth Test
+
+Before finalizing, check whether the report is frontier enough.
+
+If most use cases can be summarized as "AI makes today's process faster," revise them.
+
+At least half of the use cases, and most of the 3-7 year use cases, must describe one or more of the following:
+- a new product capability
+- a new user interaction model
+- a new system behavior
+- a new workflow architecture
+- a new form of human-machine collaboration
+- a new way digital or physical infrastructure operates
+- a new way software, hardware, data, or networks adapt over time
+- a new capability that does not exist at scale today
 
 ## Output Reminder
 

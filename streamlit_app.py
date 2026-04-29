@@ -51,8 +51,8 @@ DEFAULT_TIME_HORIZON = "1-3 years and 3-7 years"
 FRONTIER_REQUIRED_HEADINGS = [
     "Executive Summary",
     "The Big Shift",
-    "Near-Term Possibilities: 1-3 Years",
-    "Medium-Term Possibilities: 3-7 Years",
+    "Near-Term Possibilities: From Assistance to New Workflows",
+    "Medium-Term Possibilities: New Capabilities That Do Not Exist at Scale Today",
     "Frontier Scenario: A Day in the Life",
     "Reality Check",
     "Most Important Boundaries",
