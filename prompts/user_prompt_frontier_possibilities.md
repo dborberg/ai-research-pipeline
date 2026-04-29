@@ -89,6 +89,12 @@ Target total length: roughly 1,300-1,700 words.
 
 If there is any risk of running long, choose brevity over exhaustiveness so every required section is fully completed.
 
+## Completeness Requirement
+
+- For every use case in the Near-Term and Medium-Term sections, include all required fields.
+- Do not truncate any use case.
+- The Medium-Term section must include at least 5 use cases unless the user explicitly requests a shorter report.
+
 ## Section Requirements
 
 ### Executive Summary
@@ -133,10 +139,12 @@ If there is any risk of running long, choose brevity over exhaustiveness so ever
 - In `Why it matters`, explain the practical benefit. Focus on productivity, safety, quality, speed, personalization, access, resilience, creativity, customer experience, adaptability, or improved decision-making.
 - In `What makes it plausible`, explain what current or emerging capabilities make this realistic within 1-3 years.
 - In `What could limit it`, explain the key constraints, such as data quality, integration complexity, regulation, trust, safety, liability, cybersecurity, cost, change management, physical-world limitations, or user adoption.
+- Include every required field for every use case. Do not leave any use case partially completed.
 
 ### Medium-Term Possibilities: New Capabilities That Do Not Exist at Scale Today
 
 - Provide 5-7 more ambitious use-case stories.
+- Include at least 5 use cases unless the user explicitly requests a shorter report.
 - These use cases should be meaningfully more ambitious than near-term productivity improvement.
 - Most medium-term use cases should describe one or more of the following:
   - a new product capability
@@ -157,6 +165,7 @@ If there is any risk of running long, choose brevity over exhaustiveness so ever
 - In `Why it matters`, explain the deeper operational, customer, societal, strategic, or human significance.
 - In `What would need to be true`, identify the technological, data, regulatory, behavioral, infrastructure, organizational, or economic conditions needed for this scenario to become real.
 - In `What could go wrong`, describe failure modes, adoption barriers, unintended consequences, safety issues, trust issues, or reasons the use case may remain niche.
+- Include every required field for every use case. Do not leave any use case partially completed.
 
 ### Most Frontier Ideas Worth Watching
 
@@ -271,4 +280,4 @@ If the report fails this test, revise the use cases before providing the final a
 - Write only the final report.
 - Do not describe the prompt package.
 - Do not add preambles, caveats, or methodology notes outside the required report structure.
-- Do not end with unfinished bullets, unfinished sentences, or an incomplete Bottom Line.
+- Do not end with unfinished bullets, unfinished sentences, a partially completed use case, or an incomplete Bottom Line.
