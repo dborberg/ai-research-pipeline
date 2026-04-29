@@ -19,6 +19,7 @@ from app.send_email import send_report
 from app.velocity import apply_velocity_metrics, compute_velocity
 from run_weekly_pipeline import cluster_articles, get_weekly_articles
 from scripts.generate_sector_report import (
+    FRONTIER_REQUIRED_HEADINGS,
     DEFAULT_MODEL,
     get_max_output_tokens_for_mode,
     append_missing_frontier_sections,
@@ -48,16 +49,6 @@ STREAMLIT_OUTPUT_DIR = REPO_ROOT / "out" / "streamlit"
 STREAMLIT_STATE_PATH = REPO_ROOT / "data" / "streamlit_ui_state.json"
 DEFAULT_AUDIENCE = "financial advisors and investment professionals"
 DEFAULT_TIME_HORIZON = "1-3 years and 3-7 years"
-FRONTIER_REQUIRED_HEADINGS = [
-    "Executive Summary",
-    "The Big Shift",
-    "Near-Term Possibilities: From Assistance to New Workflows",
-    "Medium-Term Possibilities: New Capabilities That Do Not Exist at Scale Today",
-    "Frontier Scenario: A Day in the Life",
-    "Reality Check",
-    "Most Important Boundaries",
-    "Bottom Line",
-]
 
 
 def _get_db_version():
