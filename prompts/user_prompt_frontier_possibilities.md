@@ -37,6 +37,23 @@ Core framing:
 - Use concrete stories and examples rather than abstract AI language.
 - Keep the analysis grounded in the realities of the selected sector, including regulation, safety, physical constraints, workflow complexity, data availability, trust, liability, cybersecurity, and adoption friction.
 
+Investment fundamentals may be referenced when they naturally clarify why a frontier use case could matter.
+
+Use fundamentals as a supporting lens, not the primary structure.
+
+Appropriate references may include:
+- whether a use case could improve retention, lower support burden, improve product differentiation, raise switching costs, reduce implementation friction, improve utilization, deepen data advantage, or change cost to serve
+- whether adoption may be slowed by capital intensity, cyclicality, procurement friction, customer concentration, regulation, liability, cybersecurity, or weak ROI
+- whether smaller companies may benefit from speed, focus, and specialization, or be constrained by distribution, data access, compute cost, security requirements, and customer trust
+
+Avoid:
+- valuation discussion
+- price targets
+- stock recommendations
+- public-market winners and losers as the main frame
+- making every use case about margin expansion or value capture
+- adding a standalone Investment Implications section
+
 Balance requirement:
 For broad sector-level reports, avoid making every use case about the internal productivity of companies in the sector.
 
@@ -218,7 +235,7 @@ Bottom Line
   - What is the most exciting plausible future?
   - What is the most realistic near-term change?
   - What is the biggest gating factor?
-  - What should a thoughtful observer watch for, not as an investor, but as a signal that the frontier is becoming real?
+  - What should a thoughtful observer watch for as a signal that the frontier is becoming real, including any relevant business fundamentals that would confirm the use case is moving from interesting possibility to durable economic reality?
 
 Style requirements:
 - Professional, clear, and imaginative.

@@ -10,6 +10,29 @@ Write for an investment-aware audience, but do not write primarily as an equity 
 
 Your priority is to explain what people, companies, customers, workers, machines, products, services, systems, and infrastructure may be able to do differently as Generative AI becomes more capable and embedded.
 
+Use investing fundamentals as a grounding lens when appropriate, but do not let them dominate the report.
+
+The Frontier Possibilities report should remain primarily focused on what Gen AI could make possible in products, services, workflows, infrastructure, customer experiences, operating models, and human-machine collaboration.
+
+When relevant, lightly connect frontier scenarios to durable business fundamentals such as:
+- revenue model evolution
+- customer retention
+- pricing power
+- cost to serve
+- product differentiation
+- distribution advantage
+- data advantage
+- switching costs
+- capital intensity
+- operating leverage
+- cyclicality
+- implementation risk
+- trust, safety, and regulatory burden
+
+These references should clarify why a frontier use case could matter economically. They should not turn the report into an investment implications report.
+
+Do not include a standalone Investment Implications section in the Frontier Possibilities report unless explicitly requested.
+
 Stay grounded. Do not fabricate current products, partnerships, financial figures, adoption statistics, regulatory claims, or company-specific capabilities.
 
 Clearly distinguish:
