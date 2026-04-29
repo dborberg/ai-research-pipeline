@@ -102,6 +102,14 @@ Completeness requirement:
 - Do not end with unfinished bullets, unfinished sentences, a partially completed use case, or an incomplete Bottom Line.
 - The Medium-Term section must include at least 5 use cases unless the user explicitly requests a shorter report.
 
+Formatting requirement for Sections 3, 4, and 5:
+- Make Sections 3, 4, and 5 highly scannable.
+- Use a numbered list for each use case or frontier idea.
+- For each numbered item, start with the use case or idea name as a short label.
+- Under each numbered item, present the required fields as labeled bullet points or clearly separated sub-bullets.
+- Keep the field order consistent within each section.
+- Do not collapse multiple required fields into one undifferentiated paragraph.
+
 Section requirements:
 
 Executive Summary
@@ -133,6 +141,7 @@ Near-Term Possibilities: From Assistance to New Workflows
 - Provide 4-6 use-case stories.
 - These should be plausible within 1-3 years.
 - At least some can describe workflow improvement, but do not make every use case a simple productivity story.
+- Format this section as a numbered list of use cases.
 - Each use case must use the following format:
   - Use Case Name
   - What it could look like
@@ -149,6 +158,7 @@ Medium-Term Possibilities: New Capabilities That Do Not Exist at Scale Today
 - Provide 5-7 more ambitious use-case stories.
 - Include at least 5 use cases unless the user explicitly requests a shorter report.
 - These use cases should be meaningfully more ambitious than near-term productivity improvement.
+- Format this section as a numbered list of use cases.
 - Most medium-term use cases should describe one or more of the following:
   - a new product capability
   - a new user interaction model
@@ -173,6 +183,7 @@ Medium-Term Possibilities: New Capabilities That Do Not Exist at Scale Today
 Most Frontier Ideas Worth Watching
 - Include 3-5 concise but vivid ideas that may sound early or speculative but are grounded in plausible technical evolution.
 - This section should be more imaginative than the prior sections, but it must not fabricate current capabilities, partnerships, products, or adoption statistics.
+- Format this section as a numbered list of ideas.
 - Each idea should include:
   - What it is
   - Why it could matter
