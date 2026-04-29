@@ -11,7 +11,8 @@ from pathlib import Path
 REQUIRED_TOP_LEVEL_MARKERS = [
     "# Prompt Package",
     "## Selected Sector",
-    "## Core System Prompt",
+    "## Report Mode",
+    "## System Prompt",
     "## Sector Adapter",
     "## User Prompt",
 ]

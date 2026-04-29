@@ -31,7 +31,7 @@ from scripts.generate_sector_report import (
     normalize_markdown_output,
     repair_frontier_report,
 )
-from scripts.render_prompt import build_prompt_package, get_report_mode_options, normalize_sector_name
+from scripts.render_prompt import build_prompt_components, get_report_mode_options, normalize_sector_name
 from scripts.resolve_sector_focus import SECTOR_FOCUS_OPTIONS, build_focus_instruction
 from scripts.send_sector_report import build_subject, html_to_plain_text
 
@@ -363,7 +363,7 @@ def generate_sector_report_package(
         focus_instruction,
         user_special_instructions,
     )
-    prompt_package = build_prompt_package(
+    prompt_components = build_prompt_components(
         sector=sector_key,
         industry_focus=industry_focus_key,
         report_mode=report_mode,
@@ -373,6 +373,7 @@ def generate_sector_report_package(
         special_instructions=effective_special_instructions,
         theme=theme,
     )
+    prompt_package = str(prompt_components["prompt_package"])
 
     client = get_openai_client(api_key)
     generation_errors: list[str] = []
@@ -381,7 +382,9 @@ def generate_sector_report_package(
     try:
         report = generate_with_responses_api(
             client=client,
-            prompt_package=prompt_package,
+            system_prompt=str(prompt_components["system_prompt"]),
+            sector_adapter=str(prompt_components["sector_adapter"]),
+            user_prompt=str(prompt_components["user_prompt"]),
             model=model,
             max_output_tokens=max_output_tokens,
             output_format=output_format,
@@ -392,7 +395,9 @@ def generate_sector_report_package(
             client = get_openai_client(api_key)
             report = generate_with_chat_completions(
                 client=client,
-                prompt_package=prompt_package,
+                system_prompt=str(prompt_components["system_prompt"]),
+                sector_adapter=str(prompt_components["sector_adapter"]),
+                user_prompt=str(prompt_components["user_prompt"]),
                 model=model,
                 max_output_tokens=max_output_tokens,
                 output_format=output_format,

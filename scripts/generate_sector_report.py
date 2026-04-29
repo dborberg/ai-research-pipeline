@@ -60,7 +60,7 @@ def read_text(path: Path) -> str:
         raise FileNotFoundError(f"Prompt package not found: {path}") from exc
 
 
-def build_execution_prompt(prompt_package: str, output_format: str) -> str:
+def build_generation_user_prompt(sector_adapter: str, user_prompt: str, output_format: str) -> str:
     output_instructions = (
         "Return only the finished report in markdown.\n"
         "- Aim for the lower half of the allowed report length unless the prompt explicitly requires more detail.\n"
@@ -84,15 +84,16 @@ def build_execution_prompt(prompt_package: str, output_format: str) -> str:
         )
 
     return (
-        "You are executing an assembled prompt package for a sector-specific "
-        "Generative AI report.\n\n"
+        "You are executing a sector-specific Generative AI report request.\n\n"
         "Execution rules:\n"
-        "- Treat the 'Core System Prompt' section as the governing instruction layer.\n"
-        "- Treat the 'Sector Adapter' section as the sector-specific context layer.\n"
-        "- Treat the 'User Prompt' section as the active task, run-specific input layer, and mode-specific override layer when it narrows or redirects the objective.\n"
+        "- Treat the system message as the governing instruction layer.\n"
+        "- Treat the 'Sector Adapter' section below as the sector-specific context layer.\n"
+        "- Treat the 'User Prompt' section below as the active task and mode-specific requirements.\n"
         f"{output_instructions}\n"
-        "Prompt package follows:\n\n"
-        f"{prompt_package}"
+        "Sector Adapter follows:\n\n"
+        f"{sector_adapter}\n\n"
+        "User Prompt follows:\n\n"
+        f"{user_prompt}"
     )
 
 
@@ -201,6 +202,23 @@ def normalize_markdown_output(text: str) -> str:
 
 def is_frontier_prompt_package(prompt_package: str) -> bool:
     return "This is the Frontier Possibilities version" in prompt_package
+
+
+def extract_prompt_package_section(prompt_package: str, heading: str) -> str:
+    pattern = rf"(?ms)^## {re.escape(heading)}\n\n(.*?)(?=^## |\Z)"
+    match = re.search(pattern, prompt_package)
+    if not match:
+        raise RuntimeError(f"Prompt package is missing required section: {heading}")
+    return match.group(1).strip()
+
+
+def parse_prompt_package(prompt_package: str) -> dict[str, str]:
+    return {
+        "report_mode": extract_prompt_package_section(prompt_package, "Report Mode"),
+        "system_prompt": extract_prompt_package_section(prompt_package, "System Prompt"),
+        "sector_adapter": extract_prompt_package_section(prompt_package, "Sector Adapter"),
+        "user_prompt": extract_prompt_package_section(prompt_package, "User Prompt"),
+    }
 
 
 def strip_html_for_validation(text: str) -> str:
@@ -345,14 +363,17 @@ def append_missing_frontier_sections(
 
 def generate_with_responses_api(
     client: OpenAI,
-    prompt_package: str,
+    system_prompt: str,
+    sector_adapter: str,
+    user_prompt: str,
     model: str,
     max_output_tokens: int,
     output_format: str,
 ) -> str:
     response = client.responses.create(
         model=model,
-        input=build_execution_prompt(prompt_package, output_format),
+        instructions=system_prompt,
+        input=build_generation_user_prompt(sector_adapter, user_prompt, output_format),
         max_output_tokens=max_output_tokens,
     )
     return extract_text_from_response(response)
@@ -360,7 +381,9 @@ def generate_with_responses_api(
 
 def generate_with_chat_completions(
     client: OpenAI,
-    prompt_package: str,
+    system_prompt: str,
+    sector_adapter: str,
+    user_prompt: str,
     model: str,
     max_output_tokens: int,
     output_format: str,
@@ -376,19 +399,13 @@ def generate_with_chat_completions(
         model=model,
         messages=[
             {
-                "role": "developer",
-                "content": (
-                    "Execute the supplied prompt package. Treat the Core System Prompt "
-                    "as the governing instructions, the Sector Adapter as the sector "
-                    "context, and the User Prompt as the active task and mode-specific "
-                    "override layer when it narrows or redirects the objective. Return only the "
-                    f"{format_instruction}. Aim for the lower half of the allowed "
-                    "length range, prioritize completion over extra detail, do not end "
-                    "with unfinished bullets or sentences, and ensure the Bottom Line "
-                    "section is fully completed."
-                ),
+                "role": "system",
+                "content": system_prompt,
             },
-            {"role": "user", "content": prompt_package},
+            {
+                "role": "user",
+                "content": build_generation_user_prompt(sector_adapter, user_prompt, output_format),
+            },
         ],
         max_completion_tokens=max_output_tokens,
     )
@@ -450,6 +467,12 @@ def main() -> int:
         print(str(exc), file=sys.stderr)
         return 1
 
+    try:
+        prompt_components = parse_prompt_package(prompt_package)
+    except RuntimeError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+
     client = get_openai_client(api_key)
     generation_errors: list[str] = []
     max_output_tokens = args.max_output_tokens or get_max_output_tokens_for_prompt(prompt_package)
@@ -457,7 +480,9 @@ def main() -> int:
     try:
         report = generate_with_responses_api(
             client=client,
-            prompt_package=prompt_package,
+            system_prompt=prompt_components["system_prompt"],
+            sector_adapter=prompt_components["sector_adapter"],
+            user_prompt=prompt_components["user_prompt"],
             model=args.model,
             max_output_tokens=max_output_tokens,
             output_format=args.output_format,
@@ -468,7 +493,9 @@ def main() -> int:
             client = get_openai_client(api_key)
             report = generate_with_chat_completions(
                 client=client,
-                prompt_package=prompt_package,
+                system_prompt=prompt_components["system_prompt"],
+                sector_adapter=prompt_components["sector_adapter"],
+                user_prompt=prompt_components["user_prompt"],
                 model=args.model,
                 max_output_tokens=max_output_tokens,
                 output_format=args.output_format,

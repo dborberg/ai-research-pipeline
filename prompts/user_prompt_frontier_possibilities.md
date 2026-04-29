@@ -1,40 +1,31 @@
-You are an expert sector futurist, technology strategist, workflow designer, and applied AI researcher.
+Your task is to produce a grounded but imaginative report on how Generative AI could reshape real-world workflows, products, services, operating models, infrastructure, customer experiences, and human-machine interaction within the selected GICS sector, industry group, industry, or sub-industry.
 
-Your task is to produce a grounded but imaginative report on how Generative AI could reshape real-world workflows, products, services, operating models, infrastructure, customer experiences, and human-machine interaction within a selected GICS sector, industry group, industry, or sub-industry.
-
-This report is NOT primarily an investment implications report.
+This is the Frontier Possibilities version, not the Realistic Investable Impact version.
 
 The goal is to explore what could become possible as Generative AI develops, improves, becomes multimodal, connects to enterprise data, integrates with software systems, combines with robotics or automation where relevant, and becomes embedded into daily workflows, products, infrastructure, and decision loops.
 
 The output should describe plausible frontier use cases that may sound ambitious or even fanciful today, but are still grounded in potential technological, operational, and economic reality.
 
-You must minimize hallucinations while maximizing imaginative but plausible scenario development.
+Minimize hallucinations while maximizing imaginative but plausible scenario development.
 
-Important distinction:
-This is the Frontier Possibilities version, not the Realistic Investable Impact version.
+Do not write primarily as an investment analyst. Write as a sector futurist, technology strategist, workflow designer, and applied AI researcher.
 
-Do not write primarily as an investment analyst. Write as a sector futurist and workflow strategist.
-
-When the reusable core prompt's investment-oriented defaults conflict with this frontier brief, follow this frontier brief for structure, tone, emphasis, and conclusion.
-
-Your job is to describe what Gen AI could allow people, machines, customers, workers, operators, designers, engineers, managers, consumers, or organizations to do differently in this sector over the next 1-3 and 3-7 years.
+Describe what Gen AI could allow people, machines, customers, workers, operators, designers, engineers, managers, consumers, or organizations to do differently in this sector over the next 1-3 years and 3-7 years.
 
 Investment implications may be mentioned only lightly and only when they naturally follow from the use case. They should not drive the structure, tone, or conclusion of the report.
 
-## Inputs
-
+Inputs:
 - GICS Sector: {{sector_display_name}}
 - GICS Industry Group: {{industry_group}}
 - GICS Industry: {{industry}}
 - GICS Sub-Industry: {{sub_industry}}
 - Specific thematic focus, if any: {{theme}}
 - Audience: {{audience}}
-- Time horizon: {{time_horizon}}
+- Time horizon: 1-3 years and 3-7 years
 - Style notes: {{style_notes}}
 - Special instructions: {{special_instructions}}
 
-## Core Framing
-
+Core framing:
 - Focus on use cases, workflows, operating changes, customer experiences, product capabilities, system behaviors, and new forms of human-machine collaboration.
 - Emphasize what people, companies, machines, customers, workers, patients, engineers, operators, managers, or consumers may actually be able to do differently.
 - Push beyond current workflow efficiency. Do not merely describe AI helping people do today's tasks faster.
@@ -46,8 +37,7 @@ Investment implications may be mentioned only lightly and only when they natural
 - Use concrete stories and examples rather than abstract AI language.
 - Keep the analysis grounded in the realities of the selected sector, including regulation, safety, physical constraints, workflow complexity, data availability, trust, liability, cybersecurity, and adoption friction.
 
-## Balance Requirement
-
+Balance requirement:
 For broad sector-level reports, avoid making every use case about the internal productivity of companies in the sector.
 
 Include a balanced mix of:
@@ -60,6 +50,8 @@ Include a balanced mix of:
 
 For broad sector-level reports, include at least two use cases that describe new customer-facing or user-facing experiences, not just internal engineering, support, or productivity workflows.
 
+If the user asks for small-cap company relevance, include it as a practical lens where appropriate. The small-cap lens should highlight where smaller companies may be able to move faster, specialize deeply, create focused AI-native tools, serve overlooked niches, or face constraints such as limited data, compute cost, security burden, implementation complexity, procurement friction, or lack of distribution. Keep the primary focus on frontier use cases and what becomes possible.
+
 For each use case, ask:
 1. What becomes possible that was previously impractical, too expensive, too slow, too complex, too risky, or too dependent on scarce expertise?
 2. How does the workflow, product, system, customer experience, or operating model become structurally different from today?
@@ -67,14 +59,11 @@ For each use case, ask:
 4. Where does human judgment remain essential?
 5. Why is this plausible within the stated time horizon?
 
-## Required Output Structure
-
+Required output structure:
 Use exactly this title:
-
 {{frontier_report_title}}
 
 Use exactly these section headings:
-
 1. Executive Summary
 2. The Big Shift
 3. Near-Term Possibilities: From Assistance to New Workflows
@@ -85,20 +74,20 @@ Use exactly these section headings:
 8. Most Important Boundaries
 9. Bottom Line
 
-Target total length: roughly 1,300-1,700 words.
+Target total length:
+Roughly 1,300-1,700 words.
 
 If there is any risk of running long, choose brevity over exhaustiveness so every required section is fully completed.
 
-## Completeness Requirement
-
+Completeness requirement:
 - For every use case in the Near-Term and Medium-Term sections, include all required fields.
 - Do not truncate any use case.
+- Do not end with unfinished bullets, unfinished sentences, a partially completed use case, or an incomplete Bottom Line.
 - The Medium-Term section must include at least 5 use cases unless the user explicitly requests a shorter report.
 
-## Section Requirements
+Section requirements:
 
-### Executive Summary
-
+Executive Summary
 - Write 3-5 paragraphs.
 - Explain the biggest frontier idea for the sector or industry.
 - Focus on what Gen AI may allow people, organizations, systems, customers, products, machines, or infrastructure to do differently.
@@ -110,8 +99,7 @@ If there is any risk of running long, choose brevity over exhaustiveness so ever
   - What makes the opportunity realistic rather than pure science fiction?
   - What are the biggest constraints that determine the pace of adoption?
 
-### The Big Shift
-
+The Big Shift
 - Describe the core transformation Gen AI could bring to the selected sector.
 - Focus on the shift from today's workflow, product model, service model, or operating model to a more AI-enabled future state.
 - Use plain English and avoid buzzwords.
@@ -124,25 +112,23 @@ If there is any risk of running long, choose brevity over exhaustiveness so ever
   - how infrastructure, software, hardware, networks, logistics, physical systems, or devices become more adaptive, where relevant
   - how human judgment and AI-generated options interact
 
-### Near-Term Possibilities: From Assistance to New Workflows
-
+Near-Term Possibilities: From Assistance to New Workflows
 - Provide 4-6 use-case stories.
 - These should be plausible within 1-3 years.
 - At least some can describe workflow improvement, but do not make every use case a simple productivity story.
-- Each use case should have the following format:
+- Each use case must use the following format:
   - Use Case Name
   - What it could look like
   - Why it matters
   - What makes it plausible
   - What could limit it
-- In `What it could look like`, describe the use case as a concrete story. Show who uses the AI, what the AI does, what data or tools it connects to, and how the workflow, product, customer interaction, or system behavior changes.
-- In `Why it matters`, explain the practical benefit. Focus on productivity, safety, quality, speed, personalization, access, resilience, creativity, customer experience, adaptability, or improved decision-making.
-- In `What makes it plausible`, explain what current or emerging capabilities make this realistic within 1-3 years.
-- In `What could limit it`, explain the key constraints, such as data quality, integration complexity, regulation, trust, safety, liability, cybersecurity, cost, change management, physical-world limitations, or user adoption.
+- In What it could look like, describe the use case as a concrete story. Show who uses the AI, what the AI does, what data or tools it connects to, and how the workflow, product, customer interaction, or system behavior changes.
+- In Why it matters, explain the practical benefit. Focus on productivity, safety, quality, speed, personalization, access, resilience, creativity, customer experience, adaptability, or improved decision-making.
+- In What makes it plausible, explain what current or emerging capabilities make this realistic within 1-3 years.
+- In What could limit it, explain the key constraints, such as data quality, integration complexity, regulation, trust, safety, liability, cybersecurity, cost, change management, physical-world limitations, or user adoption.
 - Include every required field for every use case. Do not leave any use case partially completed.
 
-### Medium-Term Possibilities: New Capabilities That Do Not Exist at Scale Today
-
+Medium-Term Possibilities: New Capabilities That Do Not Exist at Scale Today
 - Provide 5-7 more ambitious use-case stories.
 - Include at least 5 use cases unless the user explicitly requests a shorter report.
 - These use cases should be meaningfully more ambitious than near-term productivity improvement.
@@ -155,20 +141,19 @@ If there is any risk of running long, choose brevity over exhaustiveness so ever
   - a new way digital or physical infrastructure operates
   - a new way software, hardware, data, networks, logistics, devices, or physical systems adapt over time
   - a new capability that does not exist at scale today
-- Each use case should have the following format:
+- Each use case must use the following format:
   - Use Case Name
   - What it could look like
   - Why it matters
   - What would need to be true
   - What could go wrong
-- In `What it could look like`, describe a more advanced future scenario. It should be imaginative, vivid, and concrete, but still grounded in realistic sector evolution.
-- In `Why it matters`, explain the deeper operational, customer, societal, strategic, or human significance.
-- In `What would need to be true`, identify the technological, data, regulatory, behavioral, infrastructure, organizational, or economic conditions needed for this scenario to become real.
-- In `What could go wrong`, describe failure modes, adoption barriers, unintended consequences, safety issues, trust issues, or reasons the use case may remain niche.
+- In What it could look like, describe a more advanced future scenario. It should be imaginative, vivid, and concrete, but still grounded in realistic sector evolution.
+- In Why it matters, explain the deeper operational, customer, societal, strategic, or human significance.
+- In What would need to be true, identify the technological, data, regulatory, behavioral, infrastructure, organizational, or economic conditions needed for this scenario to become real.
+- In What could go wrong, describe failure modes, adoption barriers, unintended consequences, safety issues, trust issues, or reasons the use case may remain niche.
 - Include every required field for every use case. Do not leave any use case partially completed.
 
-### Most Frontier Ideas Worth Watching
-
+Most Frontier Ideas Worth Watching
 - Include 3-5 concise but vivid ideas that may sound early or speculative but are grounded in plausible technical evolution.
 - This section should be more imaginative than the prior sections, but it must not fabricate current capabilities, partnerships, products, or adoption statistics.
 - Each idea should include:
@@ -178,12 +163,12 @@ If there is any risk of running long, choose brevity over exhaustiveness so ever
   - Why it may not happen
 - Make each idea concrete and story-like.
 - Do not write this section as vague bullet points.
-- Example of the desired depth:
-  Instead of writing, `Personal AI systems engineers could automate workflows,` write something closer to:
-  `A sales manager, plant supervisor, or finance analyst could describe a recurring workflow - such as reconciling orders, flagging margin exceptions, preparing a customer-risk summary, and notifying the account team - and the AI would assemble a governed micro-application using approved company systems. The frontier idea is not just task automation; it is that software creation moves closer to the business user while IT governs permissions, security, and reliability.`
 
-### Frontier Scenario: A Day in the Life
+Example of the desired depth:
+Instead of writing, `Personal AI systems engineers could automate workflows,` write something closer to:
+`A sales manager, plant supervisor, or finance analyst could describe a recurring workflow - such as reconciling orders, flagging margin exceptions, preparing a customer-risk summary, and notifying the account team - and the AI would assemble a governed micro-application using approved company systems. The frontier idea is not just task automation; it is that software creation moves closer to the business user while IT governs permissions, security, and reliability.`
 
+Frontier Scenario: A Day in the Life
 - Write a vivid but realistic scenario showing how a person, team, customer, operator, engineer, clinician, plant manager, field worker, consumer, executive, or cross-functional group might interact with Gen AI in this sector 5-7 years from now.
 - This should read like a short narrative, not a financial analysis.
 - For broad sector-level reports, prefer a scenario that shows a broader AI operating layer across multiple functions rather than a narrow single-worker productivity story.
@@ -201,8 +186,7 @@ If there is any risk of running long, choose brevity over exhaustiveness so ever
   - where human judgment remains necessary
   - why the workflow, product experience, or operating model is meaningfully different from today
 
-### Reality Check
-
+Reality Check
 - Provide a grounded assessment of what must be true for the frontier scenarios to happen.
 - Include:
   - data requirements
@@ -215,8 +199,7 @@ If there is any risk of running long, choose brevity over exhaustiveness so ever
   - human behavior and change management issues
 - Do not use this section to turn the report into an investment thesis.
 
-### Most Important Boundaries
-
+Most Important Boundaries
 - Explain what Gen AI is unlikely to do, even over 3-7 years.
 - Include 4-6 realistic boundaries.
 - Examples:
@@ -228,8 +211,7 @@ If there is any risk of running long, choose brevity over exhaustiveness so ever
   - situations where adoption will be slower than hype suggests
   - areas where user trust, privacy, safety, or cybersecurity may limit adoption
 
-### Bottom Line
-
+Bottom Line
 - Write 2-4 paragraphs.
 - Summarize the most important frontier possibilities.
 - The conclusion should answer:
@@ -238,8 +220,7 @@ If there is any risk of running long, choose brevity over exhaustiveness so ever
   - What is the biggest gating factor?
   - What should a thoughtful observer watch for, not as an investor, but as a signal that the frontier is becoming real?
 
-## Style Requirements
-
+Style requirements:
 - Professional, clear, and imaginative.
 - Sound like a thoughtful futurist, not a stock analyst.
 - Avoid hype.
@@ -255,8 +236,7 @@ If there is any risk of running long, choose brevity over exhaustiveness so ever
 - Do not include valuation, price targets, or security-level conclusions.
 - Do not overuse the words `transform`, `revolutionize`, `unlock`, or `disrupt`.
 
-## Frontier Depth Test
-
+Frontier Depth Test:
 Before finalizing the report, check whether it is frontier enough.
 
 If most use cases can be summarized as `AI makes today's process faster,` revise them.
@@ -275,8 +255,7 @@ For broad sector-level reports, confirm that at least two use cases are customer
 
 If the report fails this test, revise the use cases before providing the final answer.
 
-## Output Reminder
-
+Output reminder:
 - Write only the final report.
 - Do not describe the prompt package.
 - Do not add preambles, caveats, or methodology notes outside the required report structure.

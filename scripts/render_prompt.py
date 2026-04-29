@@ -17,6 +17,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 PROMPTS_DIR = REPO_ROOT / "prompts"
 SECTORS_DIR = PROMPTS_DIR / "sectors"
 CORE_PROMPT_PATH = PROMPTS_DIR / "core_system_prompt.md"
+FRONTIER_SYSTEM_PROMPT_PATH = PROMPTS_DIR / "frontier_system_prompt.md"
 USER_TEMPLATE_PATH = PROMPTS_DIR / "user_prompt_template.md"
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "out"
 DEFAULT_REPORT_MODE = "investment_implications"
@@ -26,10 +27,12 @@ BALANCED_FOCUS_LABEL = "a Balanced Sector View"
 REPORT_MODE_CONFIG: dict[str, dict[str, Path | str]] = {
     "investment_implications": {
         "label": "Realistic Investable Impact",
+        "system_prompt_path": CORE_PROMPT_PATH,
         "template_path": USER_TEMPLATE_PATH,
     },
     "frontier_possibilities": {
         "label": "Frontier Possibilities",
+        "system_prompt_path": FRONTIER_SYSTEM_PROMPT_PATH,
         "template_path": PROMPTS_DIR / "user_prompt_frontier_possibilities.md",
     },
 }
@@ -178,6 +181,10 @@ def get_user_template_path(report_mode: str) -> Path:
     return Path(REPORT_MODE_CONFIG[report_mode]["template_path"])
 
 
+def get_system_prompt_path(report_mode: str) -> Path:
+    return Path(REPORT_MODE_CONFIG[report_mode]["system_prompt_path"])
+
+
 def render_template(template: str, replacements: dict[str, str]) -> str:
     rendered = template
     for key, value in replacements.items():
@@ -185,7 +192,7 @@ def render_template(template: str, replacements: dict[str, str]) -> str:
     return rendered
 
 
-def build_prompt_package(
+def build_prompt_components(
     sector: str,
     audience: str,
     time_horizon: str,
@@ -211,6 +218,10 @@ def build_prompt_package(
     focus_context = get_focus_context(sector, industry_focus)
     industry_display_name = get_industry_display_name(sector, industry_focus)
 
+    normalized_audience = audience.strip() or "financial advisors and investment professionals"
+    normalized_style_notes = style_notes.strip() or "None provided."
+    normalized_special_instructions = special_instructions.strip() or "None provided."
+
     replacements = {
         "sector_name": sector,
         "sector_display_name": focus_context["sector_display_name"],
@@ -223,25 +234,58 @@ def build_prompt_package(
         "frontier_report_title": get_frontier_report_title(sector, industry_focus),
         "theme": theme.strip() or "None specified.",
         "time_horizon": time_horizon,
-        "audience": audience,
-        "style_notes": style_notes or "None provided.",
-        "special_instructions": special_instructions or "None provided.",
+        "audience": normalized_audience,
+        "style_notes": normalized_style_notes,
+        "special_instructions": normalized_special_instructions,
         "report_mode_label": get_report_mode_label(normalized_report_mode),
     }
 
-    core_prompt = read_text(CORE_PROMPT_PATH)
+    system_prompt = read_text(get_system_prompt_path(normalized_report_mode))
     sector_prompt = read_text(sector_path)
     user_template = render_template(read_text(get_user_template_path(normalized_report_mode)), replacements)
 
-    return "\n\n".join(
+    prompt_package = "\n\n".join(
         [
             "# Prompt Package",
             f"## Selected Sector\n\n{sector}",
-            "## Core System Prompt\n\n" + core_prompt,
+            f"## Report Mode\n\n{get_report_mode_label(normalized_report_mode)}",
+            "## System Prompt\n\n" + system_prompt,
             "## Sector Adapter\n\n" + sector_prompt,
             "## User Prompt\n\n" + user_template,
         ]
     ).rstrip() + "\n"
+
+    return {
+        "prompt_package": prompt_package,
+        "system_prompt": system_prompt,
+        "sector_adapter": sector_prompt,
+        "user_prompt": user_template,
+        "report_mode": normalized_report_mode,
+    }
+
+
+def build_prompt_package(
+    sector: str,
+    audience: str,
+    time_horizon: str,
+    style_notes: str,
+    special_instructions: str,
+    report_mode: str = DEFAULT_REPORT_MODE,
+    industry_focus: str = "balanced",
+    theme: str = "",
+) -> str:
+    return str(
+        build_prompt_components(
+            sector=sector,
+            audience=audience,
+            time_horizon=time_horizon,
+            style_notes=style_notes,
+            special_instructions=special_instructions,
+            report_mode=report_mode,
+            industry_focus=industry_focus,
+            theme=theme,
+        )["prompt_package"]
+    )
 
 
 def parse_args() -> argparse.Namespace:
