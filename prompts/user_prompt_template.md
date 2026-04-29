@@ -3,6 +3,7 @@ Use the core system prompt together with the selected sector adapter to write a 
 ## Report Inputs
 
 - Sector: {{sector_name}}
+- Specific thematic focus, if any: {{theme}}
 - Audience: {{audience}}
 - Time horizon: {{time_horizon}}
 - Style notes: {{style_notes}}
@@ -11,10 +12,12 @@ Use the core system prompt together with the selected sector adapter to write a 
 ## Instructions
 
 - Produce a 900-1,200 word report that follows the required section structure exactly.
+- Use exactly this title: {{investment_report_title}}
 - Use the core system prompt as the governing instruction layer.
 - Use the selected sector adapter as the sector-specific context and analytical specificity layer.
 - Calibrate the report to the stated audience while keeping it investment-oriented, analytical, and client-ready.
 - Use the stated time horizon to separate nearer-term impacts from longer-run disruption.
+- If a specific thematic focus is provided, use it to shape emphasis without abandoning the broader investable sector analysis.
 - Apply the style notes only if they do not weaken the core prompt's standards for specificity, balance, uncertainty, and investment relevance.
 - Apply the special instructions only if they do not conflict with the core prompt or the sector adapter.
 - If the sector adapter identifies required analytical pillars, treat them as mandatory parts of the analysis rather than optional examples.

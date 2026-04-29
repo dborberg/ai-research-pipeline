@@ -93,7 +93,7 @@ python scripts/render_prompt.py \
   --report-mode frontier_possibilities
 ```
 
-In the local Streamlit launcher, the Sector Report Launcher can choose between `Investment Implications` and `Frontier Possibilities`. The GitHub Actions workflow remains on the existing investment-oriented path.
+In the local Streamlit launcher, the Sector Report Launcher can choose between `Realistic Investable Impact` and `Frontier Possibilities`, and it also supports an optional thematic-focus input. The GitHub Actions workflow remains on the existing investment-oriented path.
 
 In GitHub Actions, the sector dropdown now uses the standard GICS sectors. The workflow also includes an `industry_focus` dropdown with:
 

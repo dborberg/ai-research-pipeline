@@ -21,15 +21,22 @@ USER_TEMPLATE_PATH = PROMPTS_DIR / "user_prompt_template.md"
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "out"
 DEFAULT_REPORT_MODE = "investment_implications"
 BALANCED_FOCUS_LABEL = "a Balanced Sector View"
+# Realistic Investable Impact: focuses on business model implications, value capture,
+# competitive position, adoption timing, and investable signals.
 REPORT_MODE_CONFIG: dict[str, dict[str, Path | str]] = {
     "investment_implications": {
-        "label": "Investment Implications",
+        "label": "Realistic Investable Impact",
         "template_path": USER_TEMPLATE_PATH,
     },
     "frontier_possibilities": {
         "label": "Frontier Possibilities",
         "template_path": PROMPTS_DIR / "user_prompt_frontier_possibilities.md",
     },
+}
+REPORT_MODE_ALIASES = {
+    "realistic_investable_impact": "investment_implications",
+    "investment_implications": "investment_implications",
+    "frontier_possibilities": "frontier_possibilities",
 }
 
 
@@ -59,6 +66,7 @@ def default_output_path(sector: str, report_mode: str) -> Path:
 
 def normalize_report_mode(value: str) -> str:
     normalized_value = normalize_token(value)
+    normalized_value = REPORT_MODE_ALIASES.get(normalized_value, normalized_value)
     if normalized_value not in REPORT_MODE_CONFIG:
         available_modes = ", ".join(sorted(REPORT_MODE_CONFIG))
         raise ValueError(f"Unsupported report mode '{value}'. Available modes: {available_modes}")
@@ -103,6 +111,69 @@ def get_industry_display_name(sector: str, industry_focus: str) -> str:
     return prettify_token(industry_focus)
 
 
+def get_focus_context(sector: str, industry_focus: str) -> dict[str, str]:
+    sector_display_name = get_sector_display_name(sector)
+    normalized_focus = normalize_token(industry_focus)
+
+    context = {
+        "sector_display_name": sector_display_name,
+        "industry_group": "None specified.",
+        "industry": "None specified.",
+        "sub_industry": "None specified.",
+    }
+
+    if normalized_focus == "balanced":
+        context["industry_or_sub_industry"] = sector_display_name
+        return context
+
+    sector_key = normalize_sector_name(sector)
+    sector_config = SECTOR_FOCUS_OPTIONS.get(sector_key, {})
+    industries = sector_config.get("industries", {})
+    industry_config = industries.get(normalized_focus, {})
+
+    industry_label = str(industry_config.get("industry") or industry_config.get("label") or prettify_token(industry_focus))
+    industry_group_label = str(industry_config.get("industry_group") or "None specified.")
+    sub_industry_label = str(industry_config.get("sub_industry") or "None specified.")
+
+    context["industry_group"] = industry_group_label
+    context["industry"] = industry_label
+    context["sub_industry"] = sub_industry_label
+    context["industry_or_sub_industry"] = (
+        sub_industry_label
+        if sub_industry_label != "None specified."
+        else industry_label
+    )
+    return context
+
+
+def get_frontier_report_title(sector: str, industry_focus: str) -> str:
+    sector_display_name = get_sector_display_name(sector)
+    normalized_focus = normalize_token(industry_focus)
+
+    if normalized_focus == "balanced":
+        return f"Generative AI and What May Become Possible in {sector_display_name}"
+
+    focus_context = get_focus_context(sector, industry_focus)
+    return (
+        "Generative AI and What May Become Possible in "
+        f"{focus_context['industry_or_sub_industry']} within {sector_display_name}"
+    )
+
+
+def get_investment_report_title(sector: str, industry_focus: str) -> str:
+    sector_display_name = get_sector_display_name(sector)
+    normalized_focus = normalize_token(industry_focus)
+
+    if normalized_focus == "balanced":
+        return f"Generative AI Investment Implications for {sector_display_name}"
+
+    focus_context = get_focus_context(sector, industry_focus)
+    return (
+        "Generative AI Investment Implications for "
+        f"{focus_context['industry_or_sub_industry']} within {sector_display_name}"
+    )
+
+
 def get_user_template_path(report_mode: str) -> Path:
     return Path(REPORT_MODE_CONFIG[report_mode]["template_path"])
 
@@ -122,6 +193,7 @@ def build_prompt_package(
     special_instructions: str,
     report_mode: str = DEFAULT_REPORT_MODE,
     industry_focus: str = "balanced",
+    theme: str = "",
 ) -> str:
     normalized_report_mode = normalize_report_mode(report_mode)
     normalized_sector = normalize_sector_name(sector)
@@ -136,13 +208,20 @@ def build_prompt_package(
             f"Available sectors: {available}"
         )
 
-    sector_display_name = get_sector_display_name(sector)
+    focus_context = get_focus_context(sector, industry_focus)
     industry_display_name = get_industry_display_name(sector, industry_focus)
 
     replacements = {
         "sector_name": sector,
-        "sector_display_name": sector_display_name,
+        "sector_display_name": focus_context["sector_display_name"],
         "industry_name": industry_display_name,
+        "industry_group": focus_context["industry_group"],
+        "industry": focus_context["industry"],
+        "sub_industry": focus_context["sub_industry"],
+        "industry_or_sub_industry": focus_context["industry_or_sub_industry"],
+        "investment_report_title": get_investment_report_title(sector, industry_focus),
+        "frontier_report_title": get_frontier_report_title(sector, industry_focus),
+        "theme": theme.strip() or "None specified.",
         "time_horizon": time_horizon,
         "audience": audience,
         "style_notes": style_notes or "None provided.",
@@ -206,9 +285,14 @@ def parse_args() -> argparse.Namespace:
         help="Industry focus slug or balanced. Used for display framing while preserving the existing sector and industry context layering.",
     )
     parser.add_argument(
+        "--theme",
+        default="",
+        help="Optional thematic focus for the selected sector or industry context.",
+    )
+    parser.add_argument(
         "--report-mode",
         default=DEFAULT_REPORT_MODE,
-        help="Report mode. Supported values: investment_implications or frontier_possibilities. UI labels such as 'Investment Implications' are also accepted.",
+        help="Report mode. Supported values: investment_implications or frontier_possibilities. UI labels such as 'Realistic Investable Impact' are also accepted.",
     )
     parser.add_argument(
         "--output",
@@ -258,6 +342,7 @@ def main() -> int:
             special_instructions=args.special_instructions,
             report_mode=normalized_report_mode,
             industry_focus=args.industry_focus,
+            theme=args.theme,
         )
     except (FileNotFoundError, ValueError) as exc:
         print(str(exc), file=sys.stderr)

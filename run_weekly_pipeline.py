@@ -13,8 +13,6 @@ from app.cluster_schema import normalize_cluster_df
 from app.branding import WEEKLY_THEMATIC_TITLE, WEEKLY_WHOLESALER_TITLE
 from app.db import fetch_daily_digests, fetch_weekly_digests, get_engine, get_weekly_clusters, init_db, save_weekly_clusters, upsert_weekly_digest
 from app.reporting import (
-    WEEKLY_THEMATIC_TEMPERATURE,
-    WEEKLY_WHOLESALER_TEMPERATURE,
     call_chat_model,
     get_month_bounds,
     get_openai_client,
@@ -1078,7 +1076,6 @@ CONTENT:
         client,
         main_system_prompt,
         main_user_prompt,
-        temperature=WEEKLY_WHOLESALER_TEMPERATURE,
         max_completion_tokens=1800,
     )
 
@@ -1135,7 +1132,6 @@ DRAFT DIGEST:
         client,
         tip_system_prompt,
         tip_user_prompt,
-        temperature=WEEKLY_WHOLESALER_TEMPERATURE,
         max_completion_tokens=500,
     )
 
@@ -1223,7 +1219,6 @@ CONTENT:
         client,
         system_prompt,
         user_prompt,
-        temperature=WEEKLY_THEMATIC_TEMPERATURE,
         max_completion_tokens=2200,
     )
     return _clean_thematic_output(response)

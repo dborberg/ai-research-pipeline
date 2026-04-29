@@ -294,6 +294,9 @@ SECTOR_FOCUS_OPTIONS: dict[str, dict[str, object]] = {
             },
             "electronic_equipment_instruments_and_components": {
                 "label": "Electronic Equipment, Instruments & Components",
+                "industry_group": "Technology Hardware & Equipment",
+                "industry": "Electronic Equipment, Instruments & Components",
+                "sub_industry": "Electronic Equipment & Instruments",
                 "focus": "sensors, test equipment, components, design complexity, industrial end-market exposure, and embedded intelligence value capture",
             },
             "semiconductors_and_semiconductor_equipment": {
@@ -377,7 +380,11 @@ SECTOR_FOCUS_OPTIONS: dict[str, dict[str, object]] = {
 }
 
 
-def build_focus_instruction(sector_key: str, industry_key: str) -> str:
+def build_focus_instruction(
+    sector_key: str,
+    industry_key: str,
+    report_mode: str = "investment_implications",
+) -> str:
     sector_config = SECTOR_FOCUS_OPTIONS[sector_key]
 
     if industry_key == "balanced":
@@ -385,6 +392,12 @@ def build_focus_instruction(sector_key: str, industry_key: str) -> str:
 
     industries = sector_config["industries"]
     industry_config = industries[industry_key]
+    if report_mode == "frontier_possibilities":
+        return (
+            f"For the {sector_config['label']} report, place extra emphasis on the {industry_config['label']} industry, "
+            f"especially {industry_config['focus']}, while still covering adjacent workflows, the broader sector context, "
+            "and realistic operational constraints that shape what could become possible."
+        )
     return (
         f"For the {sector_config['label']} report, place extra emphasis on the {industry_config['label']} industry, "
         f"especially {industry_config['focus']}, while still covering the full sector, adjacent industries, and the main sector-level value-capture question."

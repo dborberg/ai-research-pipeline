@@ -49,7 +49,7 @@ Investment implications may be mentioned only lightly and only when they natural
 
 Use exactly this title:
 
-Generative AI and What May Become Possible in {{industry_or_sub_industry}} within {{sector_display_name}}
+{{frontier_report_title}}
 
 Use exactly these section headings:
 
