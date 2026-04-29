@@ -172,13 +172,13 @@ def normalize_html_output(text: str) -> str:
     stripped = re.sub(r"\s*```$", "", stripped)
 
     if "<html" in stripped.lower():
-        return stripped
+        return repair_common_html_artifacts(stripped)
 
     if "<body" in stripped.lower():
-        return f"<html>{stripped}</html>"
+        return repair_common_html_artifacts(f"<html>{stripped}</html>")
 
     if re.search(r"(?i)<(h1|h2|h3|p|ul|ol|li|div|section|article)\b", stripped):
-        return (
+        return repair_common_html_artifacts(
             "<html><body style=\"font-family: Arial, sans-serif; font-size: 14px; "
             "line-height: 1.6; color: #111827;\">"
             f"{stripped}"
@@ -193,7 +193,26 @@ def normalize_html_output(text: str) -> str:
         f"<p>{escaped}</p>"
         "</body></html>"
     )
-    return body
+    return repair_common_html_artifacts(body)
+
+
+def repair_common_html_artifacts(text: str) -> str:
+    repaired = text
+    repaired = re.sub(r"(?is)<h2\s+style<\s*h2\s+style=", '<h2 style=', repaired)
+    repaired = re.sub(r'(?is)<li[^<"]*style="[^"<]*<h2', '</ol>\n<h2', repaired)
+    repaired = re.sub(r'(?is)<li[^<]*<h2', '</ol>\n<h2', repaired)
+    repaired = re.sub(r'(?is)</ol>\s*</ol>', '</ol>', repaired)
+    repaired = re.sub(r'(?is)</ul>\s*</ul>', '</ul>', repaired)
+    return repaired
+
+
+def has_malformed_html_artifacts(text: str) -> bool:
+    artifact_patterns = [
+        r"(?is)<h2\s+style<\s*h2\s+style=",
+        r'(?is)<li[^<"]*style="[^"<]*<h2',
+        r'(?is)<li[^<]*<h2',
+    ]
+    return any(re.search(pattern, text) for pattern in artifact_patterns)
 
 
 def normalize_markdown_output(text: str) -> str:
@@ -512,7 +531,8 @@ def main() -> int:
 
     if is_frontier_prompt_package(prompt_package):
         missing_headings = get_missing_frontier_headings(report)
-        if missing_headings:
+        malformed_html = args.output_format == "html" and has_malformed_html_artifacts(report)
+        if missing_headings or malformed_html:
             try:
                 repaired = repair_frontier_report(
                     client=client,
@@ -530,6 +550,7 @@ def main() -> int:
                 else:
                     report = normalize_markdown_output(repaired)
                 missing_headings = get_missing_frontier_headings(report)
+                malformed_html = args.output_format == "html" and has_malformed_html_artifacts(report)
         if missing_headings:
             additions = generate_missing_frontier_sections(
                 client=client,

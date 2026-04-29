@@ -26,6 +26,7 @@ from scripts.generate_sector_report import (
     generate_missing_frontier_sections,
     generate_with_chat_completions,
     generate_with_responses_api,
+    has_malformed_html_artifacts,
     get_missing_frontier_headings,
     normalize_html_output,
     normalize_markdown_output,
@@ -413,7 +414,8 @@ def generate_sector_report_package(
 
     if report_mode == "frontier_possibilities":
         missing_headings = get_missing_frontier_headings(report)
-        if missing_headings:
+        malformed_html = output_format == "html" and has_malformed_html_artifacts(report)
+        if missing_headings or malformed_html:
             try:
                 repaired = repair_frontier_report(
                     client=client,
@@ -431,6 +433,7 @@ def generate_sector_report_package(
                 else:
                     report = normalize_markdown_output(repaired)
                 missing_headings = get_missing_frontier_headings(report)
+                malformed_html = output_format == "html" and has_malformed_html_artifacts(report)
         if missing_headings:
             additions = generate_missing_frontier_sections(
                 client=client,
