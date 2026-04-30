@@ -10,6 +10,7 @@ MODEL_NAME = "gpt-5.5"
 _CENTRAL_TZ = ZoneInfo("America/Chicago")
 OPENAI_REQUEST_TIMEOUT_SECONDS = 90.0
 OPENAI_MAX_RETRIES = 5
+OPENAI_TEXT_RETRY_MAX_TOKENS = 7500
 
 
 def get_openai_client(api_key):
@@ -150,15 +151,51 @@ def build_monthly_source_context(weeks=4):
 
 
 def call_chat_model(client, system_prompt, user_prompt, max_completion_tokens=2200):
-    response = client.chat.completions.create(
-        model=MODEL_NAME,
-        messages=[
-            {"role": "system", "content": system_prompt.strip()},
-            {"role": "user", "content": user_prompt.strip()},
-        ],
-        max_completion_tokens=max_completion_tokens,
-    )
-    return response.choices[0].message.content.strip()
+    token_budget = max_completion_tokens
+    revision_feedback = ""
+
+    for attempt in range(3):
+        request_prompt = user_prompt.strip()
+        if revision_feedback:
+            request_prompt = f"{request_prompt}\n\nREVISION FEEDBACK:\n{revision_feedback}"
+
+        response = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=[
+                {"role": "system", "content": system_prompt.strip()},
+                {"role": "user", "content": request_prompt},
+            ],
+            max_completion_tokens=token_budget,
+        )
+
+        choices = getattr(response, "choices", None) or []
+        if not choices:
+            raise ValueError("Chat completion did not return any choices.")
+
+        choice = choices[0]
+        message = getattr(choice, "message", None)
+        content = (getattr(message, "content", None) or "").strip()
+        if content:
+            return content
+
+        if getattr(choice, "finish_reason", None) == "length" and attempt < 2:
+            token_budget = min(
+                max(token_budget + 400, int(token_budget * 1.5)),
+                OPENAI_TEXT_RETRY_MAX_TOKENS,
+            )
+            revision_feedback = (
+                "The previous attempt ran out of output tokens before returning usable text. "
+                "Rewrite the full response more compactly while preserving all requested sections, "
+                "factual grounding, and completeness. Return only the finished text."
+            )
+            continue
+
+        raise ValueError(
+            "Chat completion returned empty content "
+            f"(finish_reason={getattr(choice, 'finish_reason', None)})"
+        )
+
+    raise ValueError("Chat completion failed to produce usable content after retries.")
 
 
 def get_week_start(target_date=None):
