@@ -12,9 +12,11 @@ def generate_daily_digest(report_date=None):
     from app.branding import DAILY_TITLE
     from app.db import get_engine
     from app.pipeline_window import get_pipeline_window
+    from app.reporting import get_openai_client
 
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    client = get_openai_client(os.getenv("OPENAI_API_KEY"))
     _CENTRAL_TZ = ZoneInfo("America/Chicago")
+    digest_token_budget = 6000
 
     # -----------------------------
     # GET ARTICLES
@@ -553,12 +555,21 @@ ARTICLES:
                 {"role": "system", "content": system_prompt.strip()},
                 {"role": "user", "content": request_prompt}
             ],
-            max_completion_tokens=4000,
+            max_completion_tokens=digest_token_budget,
         )
         choice = response.choices[0]
         content = (choice.message.content or "").strip()
 
         if not content:
+            if choice.finish_reason == "length" and attempt < 2:
+                digest_token_budget = 7500
+                extra_feedback = (
+                    "The previous attempt ran out of output tokens before returning usable HTML. "
+                    "Rewrite the full digest more compactly while preserving all required sections, "
+                    "source diversity, event specificity, and complete HTML structure. "
+                    "Return only the finished HTML."
+                )
+                continue
             raise ValueError(
                 f"LLM returned empty digest content "
                 f"(finish_reason={choice.finish_reason})"
