@@ -1,0 +1,65 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>May 01, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Reuters reported that AI-related investment helped lift first-quarter U.S. growth:</strong> AI capital spending is now showing up as a macroeconomic support, giving advisors a concrete way to connect the AI theme to GDP, corporate capex, and market leadership beyond consumer demand alone. (Source: Reuters)</li>
+<li><strong>Bloomberg reported that a White House AI memo touched issues in the Anthropic-Pentagon dispute:</strong> Federal AI policy, defense procurement, and private model-provider relationships are becoming financially relevant variables for AI companies and the infrastructure firms that support them. (Source: Bloomberg.com)</li>
+<li><strong>Data Center Dynamics raised the question of who pays the data center power bill:</strong> Rising electricity demand tied to AI infrastructure is becoming a cost-allocation issue for utilities, data center operators, local governments, and customers, which could affect margins and project timelines. (Source: Data Center Dynamics)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>GitHub Copilot will move to per-token AI charging on June 1:</strong> The shift from flat subscriptions to usage-based pricing could make enterprise AI budgets more variable and push companies to manage employee AI consumption more carefully. (Source: AI News)</li>
+<li><strong>Freelance knowledge workers are using generative AI for upskilling but still verify outputs:</strong> A new study found that tools like ChatGPT help workers structure learning, but trust, quality, and credentialing limits remain barriers to full labor-market transformation. (Source: cs.AI updates on arXiv.org)</li>
+<li><strong>Launchpad Build AI introduced a Manufacturing Language Model for automation design:</strong> The tool aims to speed robotics and factory-automation planning from photos, videos, and CAD files, pointing to AI’s growing role in industrial engineering workflows. (Source: The Robot Report)</li>
+<li><strong>Bloomberg reported that AI hallucinations put South African ministers under scrutiny:</strong> The episode underscores that knowledge-work adoption of AI requires governance, verification, and accountability, not just productivity claims. (Source: Bloomberg.com)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Data Center Dynamics reported that AI workloads are pressuring data center power architecture:</strong> Interest in direct-current power designs reflects how AI computing demand is forcing operators to rethink electrical efficiency, reliability, and capital spending. (Source: Data Center Dynamics)</li>
+<li><strong>WMTW examined the potential impact of future data centers in Maine:</strong> Local questions around power use, real estate, and community effects show that AI infrastructure buildout is increasingly a regional planning and permitting issue. (Source: WMTW)</li>
+<li><strong>A Detroit community group launched a study of data center development:</strong> Community-level analysis could influence future permitting, utility planning, and public acceptance of AI-related infrastructure projects. (Source: Planet Detroit)</li>
+<li><strong>WaferSAGE demonstrated AI-assisted wafer defect analysis for semiconductor manufacturing:</strong> The research points to potential productivity gains in chip production through smaller, on-premise vision-language models tailored to fab workflows. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Teradyne Robotics reported first-quarter revenue of 91 million dollars:</strong> Revenue rose from 69 million dollars a year earlier, with management citing demand from e-commerce, electronics, semiconductors, and AI data centers, making robotics a more visible AI-adjacent revenue pool. (Source: The Robot Report)</li>
+<li><strong>Athos Silicon revised its chiplet roadmap after spinning out of Mercedes-Benz:</strong> The move toward a single in-house-designed SoC chiplet highlights the cost, execution, and competitive pressures facing AI semiconductor startups in automotive and safety-critical markets. (Source: EE Times)</li>
+<li><strong>NVIDIA expanded GeForce NOW with RTX 5080-powered cloud gaming capacity:</strong> While not a pure enterprise AI announcement, the update reinforces NVIDIA’s broader strategy of monetizing high-performance GPU infrastructure across cloud-based services. (Source: NVIDIA Blog)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Italy closed antitrust probes into AI firms after commitments on hallucination risks:</strong> Regulators are increasingly treating AI accuracy and consumer protection as part of the compliance landscape, not just as technical model-quality issues. (Source: Reuters)</li>
+<li><strong>Dell Technologies’ CEO commented on an AI data center moratorium proposal:</strong> The discussion shows that public companies tied to AI infrastructure may face permitting, zoning, and political risk alongside strong demand. (Source: Insider Monkey)</li>
+<li><strong>Smoky Mountain News reported a data center bill targeting rates, water, and incentives:</strong> Combined with WKBN’s report of a Weathersfield Township moratorium on data center approvals, local policy scrutiny is becoming a real constraint on AI infrastructure deployment. (Source: Smoky Mountain News; WKBN.com)</li>
+<li><strong>The Economist reported that AI risks are pushing policymakers to regulate quickly:</strong> The speed of AI development is increasing pressure for governments to set rules before harms become harder to manage, creating both compliance costs and guardrails for adoption. (Source: The Economist)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Bosch began delivering hardware components to Kodiak AI:</strong> The collaboration marks progress toward production-scale autonomous trucking and highlights the importance of established industrial suppliers in commercializing physical AI. (Source: Robotics &amp; Automation News)</li>
+<li><strong>LG held exploratory talks with NVIDIA on physical AI, data centers, and mobility:</strong> The discussions point to growing convergence between robotics, compute infrastructure, and AI-enabled mobility platforms. (Source: AI News)</li>
+<li><strong>DAIMON Robotics released a large tactile dataset for robot manipulation:</strong> By open-sourcing 10,000 hours of touch-rich robotic data, the company is targeting one of the key bottlenecks for humanoid and industrial robots operating in the real world. (Source: IEEE Spectrum)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>GitHub Copilot’s June pricing change:</strong> Watch whether usage-based AI software pricing improves vendor monetization or creates customer pushback as enterprise token consumption rises. (Source: AI News)</li>
+<li><strong>Teradyne Robotics’ AI-related sales mix:</strong> Management said AI-related revenue reached about 15 percent of quarterly sales, making future quarters a useful signal for physical AI demand outside the largest tech platforms. (Source: The Robot Report)</li>
+<li><strong>Local data center restrictions in Weathersfield and other communities:</strong> Moratoriums, water rules, and power-rate debates could become leading indicators for AI infrastructure bottlenecks. (Source: WKBN.com; Smoky Mountain News)</li>
+<li><strong>Bosch and Kodiak AI’s autonomous trucking validation milestones:</strong> Hardware deliveries and sensor integrations will help show whether autonomous freight is moving from pilots toward scalable deployment. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Athos Silicon’s planned chiplet tape-out:</strong> Execution will be important for assessing whether smaller AI chip companies can compete in automotive and edge AI markets against larger incumbents. (Source: EE Times)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>Reuters’ GDP report makes AI more than a tech-sector story:</strong> AI investment is now large enough to matter in conversations about economic growth. (Source: Reuters)</li>
+<li><strong>Bloomberg’s Anthropic-Pentagon story shows policy risk is part of the AI trade:</strong> Government rules and procurement decisions can shape winners and losers. (Source: Bloomberg.com)</li>
+<li><strong>GitHub Copilot’s pricing shift is a reminder that AI usage is not free:</strong> Enterprises may see productivity gains, but they will also need tighter cost controls. (Source: AI News)</li>
+<li><strong>Teradyne Robotics’ revenue growth shows AI is moving into the physical economy:</strong> Robotics, factories, warehouses, and data centers are becoming part of the AI investment map. (Source: The Robot Report)</li>
+<li><strong>Local data center pushback shows the AI buildout has real-world constraints:</strong> Power, water, zoning, and community acceptance may matter as much as chips and models. (Source: Smoky Mountain News; WKBN.com)</li>
+</ul>
