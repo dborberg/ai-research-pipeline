@@ -1,8 +1,6 @@
 name: Monthly Digest
 
 on:
-  schedule:
-    - cron: "0 15 1 * *"
   workflow_dispatch:
     inputs:
       scheduled_run:
@@ -41,6 +39,7 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Guard against duplicate runs
+        id: guard
         run: |
           REPORT_MONTH=$(python - <<'PY'
           from datetime import datetime, timedelta
@@ -54,23 +53,22 @@ jobs:
           )
           echo "REPORT_MONTH=$REPORT_MONTH" >> $GITHUB_ENV
 
-          if [[ "${{ github.event_name }}" == "schedule" && "${{ vars.USE_GCP_SCHEDULER }}" == "true" ]]; then
+          if [[ "${{ github.event.inputs.scheduled_run }}" == "true" ]] && git cat-file -e "HEAD:outputs/monthly/${REPORT_MONTH}.txt"; then
             echo "SKIP_RUN=true" >> $GITHUB_ENV
-            echo "GitHub cron disabled because USE_GCP_SCHEDULER=true; expecting GCP-triggered workflow_dispatch instead."
-          elif [[ ( "${{ github.event_name }}" == "schedule" || "${{ github.event.inputs.scheduled_run }}" == "true" ) ]] && git cat-file -e "HEAD:outputs/monthly/${REPORT_MONTH}.txt"; then
-            echo "SKIP_RUN=true" >> $GITHUB_ENV
+            echo "skip_run=true" >> $GITHUB_OUTPUT
             echo "Monthly output for ${REPORT_MONTH} already exists; skipping duplicate run."
           else
             echo "SKIP_RUN=false" >> $GITHUB_ENV
+            echo "skip_run=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Run monthly pipeline
-        if: env.SKIP_RUN != 'true'
+        if: steps.guard.outputs.skip_run != 'true'
         run: |
           python run_monthly_pipeline.py
 
       - name: Persist monthly outputs and database
-        if: env.SKIP_RUN != 'true'
+        if: steps.guard.outputs.skip_run != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

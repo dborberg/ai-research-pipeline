@@ -64,7 +64,13 @@ This repository now supports that cutover safely:
 
 1. The daily, weekly, and monthly workflows accept `workflow_dispatch` payloads marked with `scheduled_run=true`.
 2. Duplicate guards treat those GCP-triggered dispatches like scheduled runs.
-3. If you set the GitHub repository variable `USE_GCP_SCHEDULER=true`, native GitHub cron events will skip immediately so Cloud Scheduler can be the sole scheduler.
+3. Cloud Scheduler can be the sole scheduler while GitHub Actions remains the execution runtime.
+
+Operational note:
+
+1. If you keep native GitHub `schedule:` blocks, GitHub will still emit `schedule` events even when Cloud Scheduler is the intended clock.
+2. If you want Cloud Scheduler to be the only visible trigger source, remove or disable the GitHub `schedule:` blocks rather than relying on skip guards alone.
+3. In the current dispatch-only model, the workflows are manually dispatchable for testing and scheduler-dispatchable for production automation.
 
 ## One-time Cloud Scheduler setup
 
@@ -107,8 +113,13 @@ After the scheduler jobs exist, cut over in this order:
 
 1. Manually test one scheduler job with `gcloud scheduler jobs run ai-research-gh-daily --location=us-central1`.
 2. Confirm the corresponding GitHub workflow starts via `workflow_dispatch`.
-3. Set the GitHub repository variable `USE_GCP_SCHEDULER=true`.
-4. Leave the existing `schedule:` blocks in the workflows as dormant fallback definitions; they will skip while the variable is true.
+3. If GitHub native cron is still enabled in your workflows and you want guard-based skipping during transition, set the GitHub repository variable `USE_GCP_SCHEDULER=true`.
+4. If you want Cloud Scheduler to be the only active trigger source, remove the `schedule:` blocks from the workflows after validation.
+
+Verification guidance:
+
+1. In a dispatch-only setup, GitHub Actions history should show `workflow_dispatch` events for production automation.
+2. If `schedule` events are still appearing, GitHub cron is still enabled somewhere in the workflow configuration.
 
 Example variable command:
 

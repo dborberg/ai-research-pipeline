@@ -1,21 +1,6 @@
 name: Weekly Digests
 
 on:
-  schedule:
-    # CDT (UTC-5): March through October
-    - cron: "0 13 * 3-10 5"       # 8:00 AM CDT  — WHOLESALER primary
-    - cron: "0 16 * 3-10 5"       # 11:00 AM CDT — WHOLESALER backup (fires if primary delayed >3 h)
-    - cron: "15 13 * 3-10 5"      # 8:15 AM CDT  — THEMATIC primary
-    - cron: "15 16 * 3-10 5"      # 11:15 AM CDT — THEMATIC backup
-    - cron: "30 13 * 3-10 5"      # 8:30 AM CDT  — SIGNAL primary
-    - cron: "30 16 * 3-10 5"      # 11:30 AM CDT — SIGNAL backup
-    # CST (UTC-6): January–February, November–December
-    - cron: "0 14 * 1-2,11-12 5"  # 8:00 AM CST  — WHOLESALER primary
-    - cron: "0 17 * 1-2,11-12 5"  # 11:00 AM CST — WHOLESALER backup
-    - cron: "15 14 * 1-2,11-12 5" # 8:15 AM CST  — THEMATIC primary
-    - cron: "15 17 * 1-2,11-12 5" # 11:15 AM CST — THEMATIC backup
-    - cron: "30 14 * 1-2,11-12 5" # 8:30 AM CST  — SIGNAL primary
-    - cron: "30 17 * 1-2,11-12 5" # 11:30 AM CST — SIGNAL backup
   workflow_dispatch:
     inputs:
       mode:
@@ -33,10 +18,8 @@ on:
         default: false
         type: boolean
 
-# Single concurrency group for the whole workflow so scheduled and manual runs
-# never execute in parallel.  With cancel-in-progress: false a second trigger is
-# queued; by the time it dequeues the output file already exists in git and the
-# duplicate-run guard below will skip it.
+# Single concurrency group for the whole workflow so scheduler-dispatched and
+# manual runs never execute in parallel.
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
@@ -67,30 +50,15 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Determine job type
+        id: determine_type
         run: |
-          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            echo "TYPE=${{ inputs.mode }}" >> $GITHUB_ENV
-          else
-            # CDT (months 3-10)
-            if [[ "${{ github.event.schedule }}" == "0 13 * 3-10 5" ]];   then echo "TYPE=WHOLESALER" >> $GITHUB_ENV; fi
-            if [[ "${{ github.event.schedule }}" == "0 16 * 3-10 5" ]];   then echo "TYPE=WHOLESALER" >> $GITHUB_ENV; fi
-            if [[ "${{ github.event.schedule }}" == "15 13 * 3-10 5" ]];  then echo "TYPE=THEMATIC"   >> $GITHUB_ENV; fi
-            if [[ "${{ github.event.schedule }}" == "15 16 * 3-10 5" ]];  then echo "TYPE=THEMATIC"   >> $GITHUB_ENV; fi
-            if [[ "${{ github.event.schedule }}" == "30 13 * 3-10 5" ]];  then echo "TYPE=SIGNAL"     >> $GITHUB_ENV; fi
-            if [[ "${{ github.event.schedule }}" == "30 16 * 3-10 5" ]];  then echo "TYPE=SIGNAL"     >> $GITHUB_ENV; fi
-            # CST (months 1-2, 11-12)
-            if [[ "${{ github.event.schedule }}" == "0 14 * 1-2,11-12 5" ]];  then echo "TYPE=WHOLESALER" >> $GITHUB_ENV; fi
-            if [[ "${{ github.event.schedule }}" == "0 17 * 1-2,11-12 5" ]];  then echo "TYPE=WHOLESALER" >> $GITHUB_ENV; fi
-            if [[ "${{ github.event.schedule }}" == "15 14 * 1-2,11-12 5" ]]; then echo "TYPE=THEMATIC"   >> $GITHUB_ENV; fi
-            if [[ "${{ github.event.schedule }}" == "15 17 * 1-2,11-12 5" ]]; then echo "TYPE=THEMATIC"   >> $GITHUB_ENV; fi
-            if [[ "${{ github.event.schedule }}" == "30 14 * 1-2,11-12 5" ]]; then echo "TYPE=SIGNAL"     >> $GITHUB_ENV; fi
-            if [[ "${{ github.event.schedule }}" == "30 17 * 1-2,11-12 5" ]]; then echo "TYPE=SIGNAL"     >> $GITHUB_ENV; fi
-          fi
+          echo "TYPE=${{ inputs.mode }}" >> $GITHUB_ENV
+          echo "type=${{ inputs.mode }}" >> $GITHUB_OUTPUT
 
       - name: Debug run context
         run: |
           echo "Trigger: ${{ github.event_name }}"
-          echo "Schedule: ${{ github.event.schedule }}"
+          echo "Scheduled run: ${{ github.event.inputs.scheduled_run }}"
           echo "Mode: $TYPE"
           echo "UTC Time: $(date -u)"
 
@@ -102,13 +70,8 @@ jobs:
           fi
 
       - name: Guard against duplicate runs
+        id: guard
         run: |
-          if [[ "${{ github.event_name }}" == "schedule" && "${{ vars.USE_GCP_SCHEDULER }}" == "true" ]]; then
-            echo "SKIP_RUN=true" >> $GITHUB_ENV
-            echo "GitHub cron disabled because USE_GCP_SCHEDULER=true; expecting GCP-triggered workflow_dispatch instead."
-            exit 0
-          fi
-
           CENTRAL_DATE=$(TZ=America/Chicago date +%F)
           WEEK_START=$(python -c "from datetime import date, timedelta; d=date.fromisoformat('${CENTRAL_DATE}'); n=(d.weekday()-4)%7; print((d - timedelta(days=n)).isoformat())")
           echo "WEEK_START=$WEEK_START" >> $GITHUB_ENV
@@ -124,25 +87,28 @@ jobs:
             echo "OUTPUT_PATH=$OUTPUT_PATH" >> $GITHUB_ENV
           fi
 
-          if [[ -n "$OUTPUT_PATH" && ( "${{ github.event_name }}" == "schedule" || "${{ github.event.inputs.scheduled_run }}" == "true" ) ]] && git cat-file -e "HEAD:${OUTPUT_PATH}"; then
+          if [[ -n "$OUTPUT_PATH" && "${{ github.event.inputs.scheduled_run }}" == "true" ]] && git cat-file -e "HEAD:${OUTPUT_PATH}"; then
             if [[ "$TYPE" == "WHOLESALER" ]]; then
               echo "SKIP_RUN=true" >> $GITHUB_ENV
+              echo "skip_run=true" >> $GITHUB_OUTPUT
               echo "Weekly output already exists at ${OUTPUT_PATH}; skipping duplicate wholesaler generation run."
             else
               echo "SKIP_RUN=false" >> $GITHUB_ENV
+              echo "skip_run=false" >> $GITHUB_OUTPUT
               echo "Weekly output already exists at ${OUTPUT_PATH}; continuing so ${TYPE} email can be sent from stored content."
             fi
           else
             echo "SKIP_RUN=false" >> $GITHUB_ENV
+            echo "skip_run=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Run weekly pipeline
-        if: env.TYPE != '' && env.SKIP_RUN != 'true'
+        if: steps.determine_type.outputs.type != '' && steps.guard.outputs.skip_run != 'true'
         run: |
           python run_weekly_investment_pipeline.py --mode $TYPE
 
       - name: Persist weekly outputs and database
-        if: env.SKIP_RUN != 'true'
+        if: steps.guard.outputs.skip_run != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

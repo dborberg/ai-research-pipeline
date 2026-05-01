@@ -1,17 +1,6 @@
 name: Daily Riffs from the Gen AI Pipeline
 
 on:
-  schedule:
-    # CDT (UTC-5): March through October
-    - cron: '30 11 * 3-10 *'    # 6:30 AM CDT primary
-    - cron: '30 14 * 3-10 *'    # 9:30 AM CDT backup 1 — fires if primary is delayed by GitHub's scheduler
-    - cron: '30 17 * 3-10 *'    # 12:30 PM CDT backup 2
-    - cron: '30 20 * 3-10 *'    # 3:30 PM CDT backup 3 — final safety net for severe scheduler delays
-    # CST (UTC-6): January–February, November–December
-    - cron: '30 12 * 1-2,11-12 *'   # 6:30 AM CST primary
-    - cron: '30 15 * 1-2,11-12 *'   # 9:30 AM CST backup 1 — fires if primary is delayed by GitHub's scheduler
-    - cron: '30 18 * 1-2,11-12 *'   # 12:30 PM CST backup 2
-    - cron: '30 21 * 1-2,11-12 *'   # 3:30 PM CST backup 3 — final safety net for severe scheduler delays
   workflow_dispatch:
     inputs:
       scheduled_run:
@@ -20,18 +9,11 @@ on:
         default: false
         type: boolean
 
-# GitHub Actions scheduled workflows are subject to significant scheduler delays
-# (often 1-4+ hours on busy days). Each cron gets its OWN concurrency group so
-# that a pending or running earlier trigger doesn't block a later backup trigger.
-#
-# The "Guard against duplicate scheduled runs" step (git cat-file check) prevents
-# duplicate emails: if an earlier trigger already committed and pushed today's
-# output file, all subsequent triggers skip silently.
-#
-# Manual workflow_dispatch runs use group "workflow-workflow_dispatch-manual" —
-# still one-pending-at-a-time to avoid accidental double-manual-triggers.
+# Cloud Scheduler is the authoritative trigger. This workflow remains manually
+# dispatchable for testing, and scheduled_run=true is used for GCP-triggered
+# dispatches so duplicate guards behave like production automation.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.schedule || 'manual' }}
+  group: ${{ github.workflow }}-${{ github.event_name }}
   cancel-in-progress: false
 
 permissions:
@@ -69,7 +51,7 @@ jobs:
           CENTRAL_DATE=$(TZ=America/Chicago date +%F)
           echo "CENTRAL_DATE=$CENTRAL_DATE" >> $GITHUB_ENV
 
-          if [[ "${{ github.event_name }}" == "schedule" || "${{ github.event.inputs.scheduled_run }}" == "true" ]]; then
+          if [[ "${{ github.event.inputs.scheduled_run }}" == "true" ]]; then
             PIPELINE_WINDOW=$(CENTRAL_DATE="$CENTRAL_DATE" python -c 'from datetime import datetime, timedelta, timezone; from zoneinfo import ZoneInfo; import os; central_date = os.environ["CENTRAL_DATE"]; window_end_central = datetime.fromisoformat(f"{central_date}T06:30:00").replace(tzinfo=ZoneInfo("America/Chicago")); window_end = window_end_central.astimezone(timezone.utc).replace(tzinfo=None); window_start = window_end - timedelta(hours=24); print(f"PIPELINE_WINDOW_START_UTC={window_start.isoformat()}"); print(f"PIPELINE_WINDOW_END_UTC={window_end.isoformat()}")')
           else
             PIPELINE_WINDOW=$(python -c 'from datetime import datetime, timedelta, timezone; window_end = datetime.now(timezone.utc).replace(microsecond=0); window_start = window_end - timedelta(hours=24); print(f"PIPELINE_WINDOW_START_UTC={window_start.isoformat()}"); print(f"PIPELINE_WINDOW_END_UTC={window_end.isoformat()}")')
@@ -77,10 +59,7 @@ jobs:
 
           echo "$PIPELINE_WINDOW" >> $GITHUB_ENV
 
-          if [[ "${{ github.event_name }}" == "schedule" && "${{ vars.USE_GCP_SCHEDULER }}" == "true" ]]; then
-            SKIP_RUN=true
-            echo "GitHub cron disabled because USE_GCP_SCHEDULER=true; expecting GCP-triggered workflow_dispatch instead."
-          elif [[ ( "${{ github.event_name }}" == "schedule" || "${{ github.event.inputs.scheduled_run }}" == "true" ) ]] && git cat-file -e "HEAD:outputs/daily/${CENTRAL_DATE}.txt"; then
+          if [[ "${{ github.event.inputs.scheduled_run }}" == "true" ]] && git cat-file -e "HEAD:outputs/daily/${CENTRAL_DATE}.txt"; then
             SKIP_RUN=true
             echo "Scheduled digest for ${CENTRAL_DATE} already exists in the repository; skipping duplicate run."
           else

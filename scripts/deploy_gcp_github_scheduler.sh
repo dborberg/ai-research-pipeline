@@ -23,6 +23,7 @@ fi
 
 URI_BASE="https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows"
 HEADERS="Authorization=Bearer ${GITHUB_TOKEN},Accept=application/vnd.github+json,Content-Type=application/json,X-GitHub-Api-Version=2022-11-28"
+TEMP_DIR=""
 
 ensure_scheduler_api() {
   gcloud services enable cloudscheduler.googleapis.com --project="$PROJECT_ID" >/dev/null
@@ -79,53 +80,52 @@ upsert_http_job() {
 main() {
   ensure_scheduler_api
 
-  local temp_dir
-  temp_dir="$(mktemp -d)"
-  trap 'rm -rf "$temp_dir"' EXIT
+  TEMP_DIR="$(mktemp -d)"
+  trap 'rm -rf "${TEMP_DIR:-}"' EXIT
 
-  create_payload "$temp_dir/daily.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"scheduled_run\":\"true\"}}"
-  create_payload "$temp_dir/weekly-wholesaler.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"mode\":\"WHOLESALER\",\"scheduled_run\":\"true\"}}"
-  create_payload "$temp_dir/weekly-thematic.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"mode\":\"THEMATIC\",\"scheduled_run\":\"true\"}}"
-  create_payload "$temp_dir/weekly-signal.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"mode\":\"SIGNAL\",\"scheduled_run\":\"true\"}}"
-  create_payload "$temp_dir/monthly.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"scheduled_run\":\"true\"}}"
+  create_payload "$TEMP_DIR/daily.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"scheduled_run\":\"true\"}}"
+  create_payload "$TEMP_DIR/weekly-wholesaler.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"mode\":\"WHOLESALER\",\"scheduled_run\":\"true\"}}"
+  create_payload "$TEMP_DIR/weekly-thematic.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"mode\":\"THEMATIC\",\"scheduled_run\":\"true\"}}"
+  create_payload "$TEMP_DIR/weekly-signal.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"mode\":\"SIGNAL\",\"scheduled_run\":\"true\"}}"
+  create_payload "$TEMP_DIR/monthly.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"scheduled_run\":\"true\"}}"
 
   upsert_http_job \
     ai-research-gh-daily \
     "$DAILY_CRON" \
     "Trigger the daily GitHub workflow from Cloud Scheduler" \
     "${URI_BASE}/daily_pipeline.yml/dispatches" \
-    "$temp_dir/daily.json"
+    "$TEMP_DIR/daily.json"
 
   upsert_http_job \
     ai-research-gh-weekly-wholesaler \
     "$WEEKLY_WHOLESALER_CRON" \
     "Trigger the weekly wholesaler GitHub workflow from Cloud Scheduler" \
     "${URI_BASE}/weekly_digests.yml/dispatches" \
-    "$temp_dir/weekly-wholesaler.json"
+    "$TEMP_DIR/weekly-wholesaler.json"
 
   upsert_http_job \
     ai-research-gh-weekly-thematic \
     "$WEEKLY_THEMATIC_CRON" \
     "Trigger the weekly thematic GitHub workflow from Cloud Scheduler" \
     "${URI_BASE}/weekly_digests.yml/dispatches" \
-    "$temp_dir/weekly-thematic.json"
+    "$TEMP_DIR/weekly-thematic.json"
 
   upsert_http_job \
     ai-research-gh-weekly-signal \
     "$WEEKLY_SIGNAL_CRON" \
     "Trigger the weekly signal GitHub workflow from Cloud Scheduler" \
     "${URI_BASE}/weekly_digests.yml/dispatches" \
-    "$temp_dir/weekly-signal.json"
+    "$TEMP_DIR/weekly-signal.json"
 
   upsert_http_job \
     ai-research-gh-monthly \
     "$MONTHLY_CRON" \
     "Trigger the monthly GitHub workflow from Cloud Scheduler" \
     "${URI_BASE}/monthly_digests.yml/dispatches" \
-    "$temp_dir/monthly.json"
+    "$TEMP_DIR/monthly.json"
 
   echo "Cloud Scheduler jobs created or updated in ${PROJECT_ID}/${REGION}."
-  echo "Set the GitHub repository variable USE_GCP_SCHEDULER=true only after you have validated these jobs."
+  echo "Scheduler jobs are ready for workflow_dispatch-based automation."
 }
 
 main "$@"
