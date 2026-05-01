@@ -113,21 +113,12 @@ After the scheduler jobs exist, cut over in this order:
 
 1. Manually test one scheduler job with `gcloud scheduler jobs run ai-research-gh-daily --location=us-central1`.
 2. Confirm the corresponding GitHub workflow starts via `workflow_dispatch`.
-3. If GitHub native cron is still enabled in your workflows and you want guard-based skipping during transition, set the GitHub repository variable `USE_GCP_SCHEDULER=true`.
-4. If you want Cloud Scheduler to be the only active trigger source, remove the `schedule:` blocks from the workflows after validation.
+3. Remove or disable any native GitHub `schedule:` blocks if you want Cloud Scheduler to be the only active trigger source.
 
 Verification guidance:
 
 1. In a dispatch-only setup, GitHub Actions history should show `workflow_dispatch` events for production automation.
 2. If `schedule` events are still appearing, GitHub cron is still enabled somewhere in the workflow configuration.
-
-Example variable command:
-
-```bash
-gh variable set USE_GCP_SCHEDULER \
-  --repo dborberg/ai-research-pipeline \
-  --body true
-```
 
 ## Local gcloud bootstrap
 
