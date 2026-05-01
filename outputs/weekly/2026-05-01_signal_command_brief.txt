@@ -1,0 +1,73 @@
+AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report
+Week Ending 2026-05-01
+
+Purpose:
+This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.
+
+TOP CONVICTION SIGNALS
+
+infrastructure capex broadens
+Conviction: 8.04
+Strength: 7.75
+Momentum: 900%
+Velocity: +9 article change
+Why It Matters:
+This supports AI as a capital-spending and infrastructure cycle, not just a software theme. It matters for semiconductors, data-center operators, power equipment, electronic components, construction automation and credit markets financing AI buildouts.
+
+Factory robotics adoption scales
+Conviction: 7.86
+Strength: 7.79
+Momentum: 800%
+Velocity: +8 article change
+Why It Matters:
+AI-driven automation may lift industrial productivity and create demand for robotics, sensors, actuators, factory software, cloud integration and domain-specific models. It broadens AI exposure into industrials and manufacturing supply chains.
+
+Governed enterprise agent deployment
+Conviction: 7.32
+Strength: 7.60
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+The next enterprise AI spending wave may favor platforms that combine productivity gains with controls, security and measurable ROI. Usage-based pricing also changes software margin dynamics and customer budgeting.
+
+OpenAI commercialization reset
+Conviction: 7.05
+Strength: 7.90
+Momentum: 200%
+Velocity: +2 article change
+Why It Matters:
+OpenAI’s performance affects private AI valuations, IPO expectations and sentiment toward AI monetization. Microsoft’s continued alignment may help stabilize the platform ecosystem but does not remove execution risk.
+
+News Google
+Conviction: 6.98
+Strength: 7.77
+Momentum: 300%
+Velocity: +3 article change
+Why It Matters:
+Security and assurance may become gating factors for AI adoption in regulated industries. This could increase demand for AI governance, identity, monitoring, audit and cybersecurity tools.
+
+ACCELERATING THEMES (BREAKOUTS)
+
+These themes are accelerating fastest relative to prior week.
+
+infrastructure capex broadens: Momentum 900%, velocity +9. This supports AI as a capital-spending and infrastructure cycle, not just a software theme
+Factory robotics adoption scales: Momentum 800%, velocity +8. AI-driven automation may lift industrial productivity and create demand for robotics, sensors, actuators, factory software, cloud integration and domain-specific models
+Governed enterprise agent deployment: Momentum 500%, velocity +5. The next enterprise AI spending wave may favor platforms that combine productivity gains with controls, security and measurable ROI
+
+FADING SIGNALS
+
+No major theme showed week-over-week deterioration in this run.
+
+PORTFOLIO IMPLICATIONS
+
+Structural strengthening is concentrated in infrastructure capex broadens, Factory robotics adoption scales, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in infrastructure capex broadens, Governed enterprise agent deployment, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in infrastructure capex broadens, Factory robotics adoption scales, supported by rising article volume against the prior week.
+Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
+
+BOTTOM LINE
+
+1. Highest conviction theme: infrastructure capex broadens
+2. Most important new signal: infrastructure capex broadens
+3. Biggest acceleration: infrastructure capex broadens
+4. Key risk / fading area: No material fading area
