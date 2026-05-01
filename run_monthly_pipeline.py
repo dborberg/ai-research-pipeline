@@ -9,6 +9,7 @@ from app.branding import MONTHLY_TITLE
 from app.cluster_schema import normalize_cluster_df
 from app.db import fetch_daily_digests, fetch_weekly_digests, get_weekly_clusters, init_db, upsert_monthly_report
 from app.reporting import (
+    build_monthly_source_context,
     call_chat_model,
     get_latest_completed_friday,
     get_latest_completed_month,
@@ -143,6 +144,106 @@ def _build_llm_context(summary_df):
     return "\n".join(context_lines).strip()
 
 
+def _build_monthly_scorecard(summary_df):
+    if summary_df.empty:
+        return "No cluster summary data available."
+
+    persistent_count = int((summary_df["persistence"] >= 3).sum())
+    accelerating_count = int((summary_df["regime"] == "ACCELERATING").sum())
+    fading_count = int((summary_df["regime"] == "FADING").sum())
+    median_conviction = float(summary_df["conviction_score"].median())
+
+    top_row = summary_df.sort_values(
+        ["persistence", "conviction_score", "avg_velocity"],
+        ascending=[False, False, False],
+    ).iloc[0]
+
+    lines = [
+        f"THEME_COUNT: {len(summary_df)}",
+        f"PERSISTENT_THEMES_3PLUS_WEEKS: {persistent_count}",
+        f"ACCELERATING_THEMES: {accelerating_count}",
+        f"FADING_THEMES: {fading_count}",
+        f"MEDIAN_CONVICTION: {median_conviction:.2f}",
+        (
+            "TOP_SIGNAL: "
+            f"{top_row['theme_name']} "
+            f"(conviction {float(top_row['conviction_score']):.1f}, "
+            f"persistence {int(top_row['persistence'])} weeks, "
+            f"velocity {float(top_row['avg_velocity']):+.1f})"
+        ),
+    ]
+    return "\n".join(lines)
+
+
+def _generate_monthly_synthesis(report_month, client, source_context, summary_df=None):
+    context_sections = []
+
+    if summary_df is not None and not summary_df.empty:
+        top_summary_df = summary_df.head(12)
+        context_sections.extend(
+            [
+                "MONTHLY SCORECARD",
+                _build_monthly_scorecard(summary_df),
+                "",
+                "TOP THEME TABLE",
+                _build_llm_context(top_summary_df),
+            ]
+        )
+
+    if source_context:
+        if context_sections:
+            context_sections.append("")
+        context_sections.extend(
+            [
+                "MONTHLY SOURCE MATERIAL",
+                source_context,
+            ]
+        )
+
+    combined_context = "\n".join(section for section in context_sections if section is not None).strip()
+    if not combined_context:
+        raise RuntimeError("No monthly source material is available for synthesis")
+
+    system_prompt = """
+You are a senior portfolio strategy analyst writing a useful monthly AI investment review.
+Use plain text only. Be concise, analytical, and portfolio-relevant. Do not invent facts beyond the supplied material.
+Prefer synthesis over theme dumping.
+"""
+    user_prompt = f"""
+Write the monthly AI signal review for {report_month}.
+
+Requirements:
+- Use these exact section headers:
+  EXECUTIVE SUMMARY
+  THE BIG SHIFTS
+  INVESTABLE SIGNALS
+  FRICTIONS AND RISKS
+  PORTFOLIO ACTIONS
+- Under EXECUTIVE SUMMARY, provide exactly 3 bullets.
+- Under THE BIG SHIFTS, provide 2 to 4 numbered items.
+- Under INVESTABLE SIGNALS, provide 2 to 4 numbered items.
+- Under FRICTIONS AND RISKS, provide 2 to 3 numbered items.
+- Under PORTFOLIO ACTIONS, provide 3 to 5 bullets.
+- Group overlapping topics into broader themes instead of repeating near-duplicate compute, power, or capex items.
+- Do not output raw label dumps such as repeated Conviction/Velocity/Persistence lines.
+- Only surface single-week or low-persistence signals if they reinforce a broader pattern; otherwise treat them as watch items or omit them.
+- Each numbered item should start with a short theme headline followed by 2 to 4 sentences explaining what changed and why it matters for investors.
+- If the evidence base is thin or noisy, say so directly in the relevant section.
+- Focus on what changed across the month, what seems durable, and what actually matters for portfolio positioning.
+- Plain text only.
+
+SOURCE MATERIAL:
+{combined_context}
+"""
+
+    return call_chat_model(
+        client,
+        system_prompt,
+        user_prompt,
+        max_completion_tokens=2200,
+    )
+
+
 def _generate_executive_summary(client, summary_df, report_month):
     context = _build_llm_context(summary_df.head(8))
     system_prompt = """
@@ -275,36 +376,7 @@ def generate_monthly_brief_from_text_history(report_month, client):
         raise RuntimeError("No daily or weekly digest history available for monthly fallback mode")
 
     history_context = _build_text_history_context(weekly_rows, daily_rows)
-    system_prompt = """
-You are a senior portfolio strategy analyst writing a monthly AI review from prior daily and weekly advisor briefs.
-Use plain text only. Be concise, analytical, and investment-oriented. Do not invent facts beyond the supplied material.
-"""
-    user_prompt = f"""
-Write the monthly AI signal review for {report_month} using the historical daily and weekly digest content below.
-
-Requirements:
-- Use these exact section headers:
-  EXECUTIVE SUMMARY
-  STRUCTURAL WINNERS
-  RISING THEMES
-  BREAKING DOWN
-  PORTFOLIO IMPLICATIONS
-- Under EXECUTIVE SUMMARY, provide 3 to 5 bullets.
-- Under STRUCTURAL WINNERS, RISING THEMES, and BREAKING DOWN, provide 2 to 4 numbered items each.
-- Under PORTFOLIO IMPLICATIONS, provide 3 to 5 bullets.
-- Focus on recurring themes, shifts in emphasis, and portfolio-relevant implications.
-- Plain text only.
-
-SOURCE MATERIAL:
-{history_context}
-"""
-
-    return call_chat_model(
-        client,
-        system_prompt,
-        user_prompt,
-        max_completion_tokens=1800,
-    )
+    return _generate_monthly_synthesis(report_month, client, history_context)
 
 
 def generate_monthly_brief(summary_df, report_month, client):
@@ -314,87 +386,8 @@ def generate_monthly_brief(summary_df, report_month, client):
         ]).strip()
 
     summary_df = normalize_cluster_df(summary_df)
-    conviction_median = summary_df["conviction_score"].median()
-
-    structural = summary_df[
-        (summary_df["persistence"] >= 3) &
-        (summary_df["conviction_score"] > conviction_median)
-    ].sort_values(
-        ["conviction_score", "persistence", "avg_velocity"],
-        ascending=[False, False, False],
-    ).head(5)
-
-    rising = summary_df[
-        ((summary_df["velocity"] if "velocity" in summary_df.columns else 0) > 0) |
-        (summary_df["avg_velocity"] > 0) |
-        (summary_df["conviction_score"] > conviction_median)
-    ].sort_values(
-        ["avg_velocity", "conviction_score", "persistence"],
-        ascending=[False, False, False],
-    ).head(5)
-
-    breaking_down = summary_df[
-        ((summary_df["velocity"] if "velocity" in summary_df.columns else 0) < 0) |
-        (summary_df["avg_velocity"] < 0) |
-        (summary_df["conviction_score"] < conviction_median)
-    ].sort_values(
-        ["avg_velocity", "conviction_score"],
-        ascending=[True, False],
-    ).head(5)
-
-    def _fallback_relevance(row):
-        relevance = str(row.get("latest_relevance") or "").strip()
-        if relevance:
-            return relevance
-        return (
-            f"{row['theme_name']} remains relevant because conviction and persistence indicate "
-            "the theme is still shaping AI-related capital allocation."
-        )
-
-    def _render_theme_block(row):
-        pm_take = _generate_pm_take(client, row).strip()
-        why_it_matters = _fallback_relevance(row)
-        return [
-            str(row["theme_name"]),
-            "",
-            f"Conviction: {float(row['conviction_score']):.1f}",
-            f"Velocity: {float(row.get('avg_velocity', 0.0)):+.1f}",
-            f"Persistence: {int(row['persistence'])} weeks",
-            "",
-            "Why It Matters:",
-            why_it_matters,
-            "",
-            "PM Takeaway:",
-            pm_take or "Sustained AI infrastructure buildout supports utilities, grid equipment, and power semis exposure.",
-            "",
-        ]
-
-    lines = [
-        "STRUCTURAL WINNERS",
-        "",
-    ]
-
-    if structural.empty:
-        lines.extend(["No structural winners cleared the conviction threshold this month.", ""])
-    else:
-        for _, row in structural.iterrows():
-            lines.extend(_render_theme_block(row))
-
-    lines.extend(["RISING THEMES", ""])
-    if rising.empty:
-        lines.extend(["No rising themes stood out this month.", ""])
-    else:
-        for _, row in rising.iterrows():
-            lines.extend(_render_theme_block(row))
-
-    lines.extend(["BREAKING DOWN", ""])
-    if breaking_down.empty:
-        lines.extend(["No themes showed a meaningful breakdown in momentum.", ""])
-    else:
-        for _, row in breaking_down.iterrows():
-            lines.extend(_render_theme_block(row))
-
-    return "\n".join(str(line) for line in lines if line is not None).strip()
+    weekly_context = build_monthly_source_context(weeks=6)
+    return _generate_monthly_synthesis(report_month, client, weekly_context, summary_df=summary_df)
 
 
 def main():
