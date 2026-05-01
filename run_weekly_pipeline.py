@@ -32,6 +32,16 @@ DEFAULT_SCORE_THRESHOLD = 6
 HIGH_SIGNAL_LIMIT = 25
 MEDIUM_SIGNAL_LIMIT = 15
 MAX_CLUSTERS = 10
+PRACTICE_TIP_WORKFLOW_ROTATION = [
+    "prospecting",
+    "client communication",
+    "meeting prep",
+    "behavioral coaching",
+    "practice management",
+    "portfolio review",
+    "client onboarding",
+    "referral follow-up",
+]
 GENERIC_THEME_TERMS = {
     "ai", "artificial", "intelligence", "theme", "themes", "trend", "trends",
     "innovation", "innovations", "technology", "technologies", "market", "markets",
@@ -42,6 +52,17 @@ THEME_NOISE_TERMS = {
     "because", "before", "being", "could", "fool", "from", "into", "made",
     "more", "over", "says", "than", "that", "their", "there", "these", "they",
     "this", "those", "what", "when", "where", "which", "while", "with", "would",
+}
+
+PRACTICE_TIP_WORKFLOW_KEYWORDS = {
+    "prospecting": ["prospect", "prospecting", "lead", "outreach", "prospective"],
+    "client communication": ["client-friendly", "follow-up", "followup", "update", "email", "talking point", "headline"],
+    "meeting prep": ["meeting prep", "meeting brief", "review meeting", "prep sheet", "discussion map"],
+    "behavioral coaching": ["behavioral", "coaching", "confidence", "panic", "decision", "risk tolerance"],
+    "practice management": ["crm", "workflow", "operations", "task", "staff", "practice management"],
+    "portfolio review": ["portfolio review", "holdings", "sector weights", "concentration", "exposure map", "exposure", "allocation"],
+    "client onboarding": ["onboarding", "new client", "discovery", "welcome", "first meeting"],
+    "referral follow-up": ["referral", "introduction", "center of influence", "coi", "network"],
 }
 REAL_WORLD_THEME_TERMS = {
     "adoption", "automation", "autonomous", "buildout", "capex", "chip", "chips",
@@ -1004,6 +1025,16 @@ def generate_wholesaler_weekly(client, source_context, week_start, article_data=
     if curated_event_context and source_context:
         supplemental_context = f"\n\nSUPPLEMENTAL INPUT: CLUSTERED THEMES AND DAILY DIGESTS\n{source_context}"
 
+    recent_tip_history = _get_recent_practice_tip_history(week_start)
+    required_workflow = _choose_practice_tip_workflow(week_start, recent_tip_history)
+    if recent_tip_history:
+        recent_tip_context = "\n".join(
+            f"- {item['week_start']}: workflow={item['workflow']}; what={item['what']}"
+            for item in recent_tip_history
+        )
+    else:
+        recent_tip_context = "- No recent practice tips available."
+
     main_system_prompt = """
 You are a senior AI research analyst writing a weekly AI digest for mutual fund wholesalers. The output must be immediately usable in advisor conversations.
 
@@ -1097,6 +1128,9 @@ CRITICAL REQUIREMENTS:
 - The idea must feel specific, actionable, and new, not generic
 - It should be something an advisor could actually try within 10 minutes
 - Tie the use case loosely to this week's themes when relevant, but do not force it
+- REQUIRED WORKFLOW FOR THIS WEEK: {required_workflow}
+- Do NOT reuse or closely mimic any recent practice tip ideas listed below
+- If a recent tip covered portfolio review, holdings review, concentration mapping, or exposure mapping, do not return another variant of that same concept
 
 OUTPUT FORMAT:
 Return exactly this section structure and labels:
@@ -1107,9 +1141,9 @@ What: <one-sentence description of the use case>
 Why: <2 to 3 sentences explaining why this is useful for advisors specifically>
 
 How to:
-<one short, practical step>
-<one short, practical step>
-<one short, practical step>
+1. <one short, practical step>
+2. <one short, practical step>
+3. <one short, practical step>
 
 Copy prompt: <a clean, ready-to-use prompt the advisor can paste into ChatGPT>
 Guardrail: <1 to 2 sentences on compliance, accuracy, or appropriate use>
@@ -1119,10 +1153,14 @@ STYLE:
 - Advisor-friendly, not technical
 - Avoid hype
 - Focus on usefulness and differentiation
+- The How to section must use numbered steps, not plain paragraphs
 
 Use the weekly digest draft below for context. Return only the section content in the format above.
 
 WEEK START: {week_start}
+
+RECENT PRACTICE TIP HISTORY TO AVOID:
+{recent_tip_context}
 
 DRAFT DIGEST:
 {main_digest}
@@ -1150,6 +1188,79 @@ def _clean_thematic_output(content):
         cleaned = re.sub(pattern, "", cleaned)
     cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
     return cleaned.strip()
+
+
+def _extract_practice_tip_text(content):
+    text = str(content or "")
+    if "AI PRACTICE TIP OF THE WEEK" not in text:
+        return ""
+    return text.split("AI PRACTICE TIP OF THE WEEK", 1)[1].strip()
+
+
+def _extract_practice_tip_what(content):
+    tip_text = _extract_practice_tip_text(content)
+    if not tip_text:
+        return ""
+
+    match = re.search(r"(?im)^What:\s*(.+)$", tip_text)
+    if match:
+        return match.group(1).strip()
+
+    first_line = tip_text.splitlines()[0].strip() if tip_text.splitlines() else ""
+    return first_line
+
+
+def _infer_practice_tip_workflow(text):
+    normalized = str(text or "").lower()
+    if not normalized:
+        return "general"
+
+    for workflow, keywords in PRACTICE_TIP_WORKFLOW_KEYWORDS.items():
+        if any(keyword in normalized for keyword in keywords):
+            return workflow
+
+    return "general"
+
+
+def _get_recent_practice_tip_history(week_start, limit=4):
+    rows = fetch_weekly_digests(digest_type=WHOLESALER_TYPE, limit=12)
+    history = []
+
+    for row in rows:
+        if str(row["week_start"]) == week_start.isoformat():
+            continue
+
+        what_line = _extract_practice_tip_what(row["content"])
+        if not what_line:
+            continue
+
+        history.append(
+            {
+                "week_start": str(row["week_start"]),
+                "what": what_line,
+                "workflow": _infer_practice_tip_workflow(what_line),
+            }
+        )
+
+        if len(history) >= limit:
+            break
+
+    return history
+
+
+def _choose_practice_tip_workflow(week_start, recent_tip_history):
+    recent_workflows = [item["workflow"] for item in recent_tip_history[:3] if item.get("workflow")]
+    start_index = week_start.isocalendar().week % len(PRACTICE_TIP_WORKFLOW_ROTATION)
+    rotated_workflows = (
+        PRACTICE_TIP_WORKFLOW_ROTATION[start_index:] +
+        PRACTICE_TIP_WORKFLOW_ROTATION[:start_index]
+    )
+
+    for workflow in rotated_workflows:
+        if workflow not in recent_workflows:
+            return workflow
+
+    return rotated_workflows[0]
 
 
 def generate_thematic_weekly(client, source_context):

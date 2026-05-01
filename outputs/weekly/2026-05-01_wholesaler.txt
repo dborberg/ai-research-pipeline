@@ -58,15 +58,15 @@ QUESTIONS TO BRING TO YOUR CLIENTS
 3. If physical AI adoption accelerates in factories and warehouses, where could robotics, automation, sensors, and industrial software create opportunities outside mega-cap technology?
 
 AI PRACTICE TIP OF THE WEEK
-What: Use AI to create a quick “AI exposure map” for a client’s top holdings before a portfolio review.
+What: Use AI to create a “headline pause plan” for clients who may want to chase AI-related investments after seeing big cloud spending, data center financing, or robotics headlines.
 
-Why: This helps advisors move the AI conversation beyond “Do I own the Mag 7?” and into infrastructure, capital spending, pricing power, and real business exposure. It also gives advisors better questions to ask, especially as AI spending spreads into cloud, data centers, credit, components, and robotics.
+Why: This week’s AI news is exciting, but it can trigger FOMO, recency bias, and action for action’s sake. A simple coaching script helps the advisor slow the decision down, validate the client’s interest, and bring the conversation back to process.
 
 How to:
-Paste in a client’s top 10 to 15 equity holdings or fund names.
-Ask AI to sort the exposure into categories like platforms, infrastructure, suppliers, adopters, and indirect beneficiaries.
-Use the output to prepare two or three client-friendly discussion points for the next review.
+1. Pick one client type, such as “growth-oriented retiree,” “business owner with cash,” or “younger accumulator.”
+2. Paste in 2 or 3 AI headlines from this week and the client’s likely emotional reaction.
+3. Ask AI to create a short pause script, 3 coaching questions, and one decision rule before making any change.
 
-Copy prompt: I am preparing for a client portfolio review. Below are the client’s top holdings or funds: [paste list]. Create a simple AI exposure map with five categories: 1) major AI platforms, 2) infrastructure and data center beneficiaries, 3) component or equipment suppliers, 4) companies using AI to improve operations, and 5) companies with limited or unclear AI exposure. For each category, give one plain-English observation and one smart question I can raise with the client. Keep it balanced and avoid making buy/sell recommendations.
+Copy prompt: Create a behavioral coaching tool for a financial advisor speaking with a [client type] who is reacting to recent AI headlines about cloud spending, data center financing, and robotics. The client may be feeling FOMO and wants to “get more AI exposure.” Write: 1) a 60-second advisor script that validates the interest without encouraging a quick trade, 2) three questions that help the client separate excitement from financial goals, and 3) one simple decision rule the client can agree to before making any investment change. Keep the tone calm, practical, and non-technical.
 
-Guardrail: Treat the output as a conversation aid, not investment research or a recommendation. Verify company and fund exposures using approved research tools before using it with clients.
+Guardrail: Do not include client names, account details, or personal financial data in the prompt. Review the output for firm policy, suitability, and approved language before using it with a client.
