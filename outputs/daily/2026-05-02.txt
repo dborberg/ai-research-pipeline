@@ -1,0 +1,65 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>May 02, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>U.S. officials weighed faster cybersecurity deadlines:</strong> Reuters reported that federal officials are considering shorter timelines for organizations to fix digital vulnerabilities, reflecting concern that AI could make hacking faster and more scalable. For advisors, this reinforces cybersecurity as both a risk-management priority and an AI-adjacent spending theme. (Source: Reuters)</li>
+<li><strong>Morningstar reported broad policy-insider support for AI regulation:</strong> A Morningstar item said nine in ten U.S. policy insiders believe AI must be regulated and that governments are falling behind. This matters because regulatory uncertainty could affect compliance costs, deployment timelines, and valuations across AI-exposed companies. (Source: Morningstar)</li>
+<li><strong>Twinsburg approved a one-year data center moratorium:</strong> Cleveland.com reported that the Ohio city paused data center development for one year, adding to evidence that local permitting and community pushback can slow AI infrastructure buildout. Advisors should frame AI infrastructure as a land, power, and policy story, not just a chip story. (Source: Cleveland.com)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>SAP outlined AI governance as a margin-protection issue:</strong> SAP argued that companies deploying autonomous AI agents need accountability, audit trails, human escalation points, and strong data controls before placing AI into business-critical workflows. The practical takeaway is that enterprise AI value may depend as much on governance and integration as on model quality. (Source: AI News)</li>
+<li><strong>Meta introduced Autodata for training-data creation:</strong> Meta announced an agentic framework designed to let AI models act as autonomous data scientists that generate higher-quality training data. If tools like this mature, they could reduce manual data-preparation work and improve AI development efficiency. (Source: MarkTechPost)</li>
+<li><strong>The Manila Times reported an AI-powered university policy hub:</strong> A university policy hub is being introduced to simplify student access to institutional policies, showing AI moving into administrative knowledge work. For financial professionals, this is another sign that AI adoption is spreading horizontally across service-heavy organizations. (Source: The Manila Times)</li>
+<li><strong>MarkTechPost published a guide to low-cost LLM post-training:</strong> The tutorial showed how developers can fine-tune models using open-source tools and limited hardware such as Google Colab. The broader labor implication is that advanced AI customization is becoming more accessible to smaller teams, not just large platform companies. (Source: MarkTechPost)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>OCP members promoted DC power for AI data centers:</strong> Data Center Dynamics reported that Open Compute Project members are advocating DC power architectures to handle rising AI power demands. This points to investment needs beyond GPUs, including power delivery, electrical systems, and data center efficiency upgrades. (Source: Data Center Dynamics)</li>
+<li><strong>Data Center Dynamics highlighted silicon diversification:</strong> The publication reported that a wider range of chip options is reshaping data center infrastructure decisions as operators tailor hardware to specific workloads. This could broaden AI infrastructure exposure beyond a narrow set of suppliers over time. (Source: Data Center Dynamics)</li>
+<li><strong>Sedgwick County prepared to consider extending its data center moratorium:</strong> The Wichita Eagle reported that county officials may extend a pause on data center development. For investors, the signal is that AI capacity expansion can face local zoning, energy, water, and community-review constraints. (Source: Wichita Eagle)</li>
+<li><strong>SPEA and Infineon appeared in a smart-meter reliability discussion:</strong> EE Times reported that modern energy meters require more precise in-circuit testing to prevent defects, measurement drift, and communication failures. Reliable smart-grid hardware is increasingly important as utilities manage more data-intensive and AI-enabled energy systems. (Source: EE Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Coatue moved into data-center land acquisition:</strong> The Wall Street Journal reported that the AI-focused investor is launching a venture to buy land tied to data center development. This underscores how AI investment is spilling into real assets, power access, land banking, and infrastructure finance. (Source: WSJ)</li>
+<li><strong>The Wall Street Journal questioned AI sales transparency:</strong> The Journal raised concerns about whether investors can trust reported AI sales figures. Advisors should watch whether companies provide clear, auditable AI revenue metrics rather than broad AI branding. (Source: WSJ)</li>
+<li><strong>Construction Dive analyzed Maine’s data center moratorium debate:</strong> The publication highlighted how local policy debates can affect construction planning and project timing. For portfolios, this is relevant to engineering, construction, utilities, real estate, and infrastructure suppliers tied to AI buildout. (Source: Construction Dive)</li>
+<li><strong>Oliver County Commissioners repealed a data center moratorium:</strong> KFYR-TV reported that the North Dakota county reversed a prior pause on data center development. The mixed local policy backdrop suggests AI infrastructure winners may be determined partly by which regions can approve projects quickly. (Source: KFYR-TV)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Francesca Hong released a “Labor SHIFT” AI worker policy:</strong> Urban Milwaukee reported that the Democratic gubernatorial frontrunner introduced a May Day policy focused on protecting workers in the AI age. This shows AI labor policy moving from national debate into state-level political platforms. (Source: Urban Milwaukee)</li>
+<li><strong>A U.S. judge said senior lawyers must answer for AI mistakes:</strong> Reuters reported that senior attorneys can be held responsible for errors made by subordinates using AI tools. The ruling highlights a broader governance principle for professional services: AI may improve productivity, but accountability stays with humans and supervisors. (Source: Reuters)</li>
+<li><strong>Missouri residents called for a data center moratorium at City Hall:</strong> The Joplin Globe reported that residents gathered to seek a pause on data center development. Local opposition to data centers is becoming a policy risk for AI infrastructure, especially where power, water, noise, and land use are contested. (Source: The Joplin Globe)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Figure and 1X ramped humanoid robot production:</strong> IEEE Spectrum reported that Figure is producing 55 humanoid robots per week and that 1X opened its NEO Factory in Hayward, California, with consumer shipments planned for 2026. This signals that humanoid robotics is moving from prototypes toward early manufacturing scale, though commercial adoption remains unproven. (Source: IEEE Spectrum)</li>
+<li><strong>Createme highlighted deformable materials as a robotics test case:</strong> The Robot Report described fabric and apparel manufacturing as a key challenge for physical AI because robots must adapt to changing shapes and contact conditions in real time. Success here could expand automation into labor-intensive manufacturing categories that have historically resisted robotics. (Source: The Robot Report)</li>
+<li><strong>Flex expanded use of Teradyne Robotics systems:</strong> The Robot Report discussed enterprise robotics adoption and highlighted Flex deploying Teradyne Robotics systems globally. For investors, this points to physical AI opportunities in factory automation, contract manufacturing, and industrial productivity rather than only humanoid robots. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>U.S. cybersecurity deadline changes:</strong> Watch whether federal officials move from discussion to formal rule changes that force faster vulnerability remediation, which could lift demand for cybersecurity tools and compliance services. (Source: Reuters)</li>
+<li><strong>Local data center votes in counties and cities:</strong> Track moratorium decisions in places such as Sedgwick County, Twinsburg, and Missouri municipalities because permitting friction can reshape where AI capacity gets built. (Source: Wichita Eagle, Cleveland.com, The Joplin Globe)</li>
+<li><strong>AI revenue disclosure quality:</strong> Monitor whether public companies separate real AI-driven revenue from marketing language, as investor scrutiny of AI sales claims appears to be increasing. (Source: WSJ)</li>
+<li><strong>Power-architecture upgrades in data centers:</strong> Watch adoption of DC power, smarter metering, and grid-modernization hardware as AI workloads intensify pressure on energy systems. (Source: Data Center Dynamics, EE Times)</li>
+<li><strong>Humanoid robot production milestones:</strong> Track whether Figure, 1X, and other robotics firms can convert production ramps into paying deployments, not just impressive demonstrations. (Source: IEEE Spectrum)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming a cybersecurity catalyst:</strong> “As AI makes cyberattacks faster, companies may need to spend more on defense, monitoring, and compliance.” (Source: Reuters)</li>
+<li><strong>AI infrastructure is local:</strong> “The AI buildout depends not only on chips and cloud demand, but also on whether towns approve data centers.” (Source: Cleveland.com)</li>
+<li><strong>AI revenue needs proof:</strong> “Investors should ask which AI sales are measurable and recurring, not just which companies use the word AI.” (Source: WSJ)</li>
+<li><strong>Enterprise AI needs guardrails:</strong> “The winners may be the companies that combine AI productivity with strong governance, auditability, and human oversight.” (Source: AI News)</li>
+<li><strong>Robotics is the next frontier:</strong> “AI is starting to move from screens into factories, warehouses, and humanoid systems, but broad commercialization will take time.” (Source: IEEE Spectrum)</li>
+</ul>
