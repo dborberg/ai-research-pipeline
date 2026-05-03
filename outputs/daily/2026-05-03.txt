@@ -1,0 +1,65 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>May 03, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Alphabet’s reported $190 billion AI infrastructure commitment broadened the AI supply-chain story:</strong> The spending plan reinforces that AI exposure is not limited to software platforms, with potential implications for semiconductors, networking, data centers, power equipment, and utilities. (Source: The Globe and Mail)</li>
+<li><strong>South Africa’s AI policy process drew scrutiny over allegedly fake references:</strong> The report highlights a practical governance risk for institutions adopting or regulating AI: credibility, verification, and accountability matter as much as ambition. (Source: MyBroadband)</li>
+<li><strong>Korea’s NIPA chief shifted the country’s AI push from GPUs to industry results:</strong> The policy emphasis on measurable productivity outcomes suggests the next phase of AI spending may be judged less by compute capacity and more by real economic impact. (Source: Chosunbiz)</li>
+<li><strong>Anthropic’s latest model prompted renewed boardroom concern about AI governance:</strong> The Fortune report frames advanced AI oversight as a CEO and board issue, which matters for investors evaluating operational, reputational, and compliance risk. (Source: Fortune)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Korea’s venture support agencies accelerated AI adoption to improve policy efficiency:</strong> Public-sector AI use is expanding beyond technology companies, signaling broader demand for workflow automation, enterprise software, and digital transformation services. (Source: Seoul Economic Daily)</li>
+<li><strong>Anthropic’s governance debate underscored a new executive skill gap:</strong> As AI tools move into sensitive business processes, companies may need stronger internal controls, clearer accountability, and more AI-literate leadership teams. (Source: Fortune)</li>
+<li><strong>Korea’s NIPA refocused AI policy toward industry outcomes:</strong> The shift points to rising pressure on companies and governments to prove AI is improving productivity, not just increasing technology budgets. (Source: Chosunbiz)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Silicon Valley 101 and Power HF hosted an AI infrastructure forum focused on power constraints:</strong> The event positioned electricity availability as a competitive bottleneck for AI, reinforcing the investment relevance of utilities, grid upgrades, power equipment, and energy procurement. (Source: mykxlg.com)</li>
+<li><strong>Huawei released a North Africa AI data center reference design at its Egypt summit:</strong> The announcement shows AI infrastructure buildouts are becoming more geographically distributed, with emerging-market demand for data centers, networking, cooling, and power systems. (Source: iAfrica.com)</li>
+<li><strong>Local residents blocked a proposed data center project in one town:</strong> The Business Insider account illustrates how permitting, zoning, and community opposition can slow AI infrastructure expansion even when demand for compute remains strong. (Source: Business Insider)</li>
+<li><strong>Camden prepared to vote on a data center moratorium while Kingsland weighed rezoning:</strong> Municipal land-use decisions are becoming a real constraint for AI capacity growth, creating project-timing risk for developers and infrastructure investors. (Source: thecurrentga.org)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Navitas Semiconductor’s board changes and AI power push drew investor attention:</strong> The Yahoo Finance report shows how AI infrastructure demand is expanding the investable universe beyond GPUs into power semiconductors, while governance and execution remain key risks. (Source: Yahoo Finance)</li>
+<li><strong>Josh Brown’s HALO stock strategy framed AI as a reason to own what machines cannot replicate:</strong> The approach gives advisors a diversification narrative around scarcity, brands, experiences, and human-driven moats rather than only mega-cap technology. (Source: WSJ)</li>
+<li><strong>Antioch raised $8.5 million for simulation-based autonomous systems development:</strong> The funding round signals venture interest in physical AI infrastructure that can reduce testing costs for robotics, drones, manufacturing, logistics, and defense-adjacent autonomy. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Alphabet’s AI infrastructure spending narrative highlighted semiconductor beneficiaries:</strong> Even without full stock-level detail in the excerpt, the report reinforces market interest in second-order AI winners across chips and supporting infrastructure. (Source: The Globe and Mail)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Beijing expanded its AI governance outreach toward Southeast Asia:</strong> China’s regional engagement suggests AI rules, standards, and data practices are becoming tools of geopolitical influence, with implications for cross-border technology deployment. (Source: Eurasia Review)</li>
+<li><strong>Oregon data center politics emerged as a potential election issue:</strong> Local elections may increasingly affect AI infrastructure through tax policy, permitting, environmental concerns, and community acceptance. (Source: OregonLive.com)</li>
+<li><strong>South Africa’s AI policy controversy raised verification concerns for regulators:</strong> Allegations of fake references in policy material show that governments adopting AI-related frameworks need stronger sourcing, audit trails, and public trust mechanisms. (Source: MyBroadband)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Researchers proposed a lightweight stability regulator for autonomous mobile robots:</strong> The Robot Report article highlights a practical deployment issue: robotics reliability depends not only on better hardware, but also on AI control layers that reduce planner oscillation, latency, and instability in dynamic spaces. (Source: The Robot Report)</li>
+<li><strong>FAULHABER introduced its DualGear drive system for autonomous logistics systems:</strong> The component is designed to reduce integration effort, save space, and lower system complexity in conveyor and compact wheel-drive applications, supporting continued warehouse automation adoption. (Source: The Robot Report)</li>
+<li><strong>Antioch funded cloud simulation tools for autonomous systems:</strong> Its platform targets faster and safer development of robots, drones, and industrial autonomous systems by reducing reliance on costly physical testing. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Local data center votes in Camden, Kingsland, Oregon, and similar markets:</strong> Permitting delays and moratoriums could become a meaningful constraint on AI compute growth over the next 30 to 90 days. (Source: thecurrentga.org, OregonLive.com)</li>
+<li><strong>Power availability after the Silicon Valley 101 and Power HF forum:</strong> Watch whether AI infrastructure discussions translate into utility capex plans, grid interconnection reform, or new energy procurement deals. (Source: mykxlg.com)</li>
+<li><strong>Korea’s shift from GPU accumulation to industry results:</strong> Investors should monitor whether other governments start measuring AI programs by productivity gains, export competitiveness, or sector-specific deployments. (Source: Chosunbiz)</li>
+<li><strong>Navitas Semiconductor’s execution around AI power solutions:</strong> Smaller AI infrastructure suppliers may offer upside beyond mega-cap platforms, but governance changes and customer traction will be critical proof points. (Source: Yahoo Finance)</li>
+<li><strong>Beijing’s AI governance outreach in Southeast Asia:</strong> Regional standards and policy alignment could influence cloud, chip, data, and enterprise AI market access across Asia. (Source: Eurasia Review)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI investing is moving from models to megawatts:</strong> Clients should understand that power, data centers, chips, and permitting are now central to the AI story. (Source: mykxlg.com)</li>
+<li><strong>The next AI winners may not all be the obvious mega-cap names:</strong> Power semiconductors, infrastructure suppliers, and companies with hard-to-replicate moats deserve attention. (Source: Yahoo Finance, WSJ)</li>
+<li><strong>Government AI policy is becoming an investment variable:</strong> Governance quality, local zoning, and geopolitical standards can all affect which AI projects scale. (Source: MyBroadband, Eurasia Review)</li>
+<li><strong>Boards need AI oversight, not just AI enthusiasm:</strong> Strong governance may become a differentiator as companies embed advanced AI into business operations. (Source: Fortune)</li>
+<li><strong>Robotics is the physical side of the AI cycle:</strong> Simulation, motion systems, and reliability software are helping AI move from screens into warehouses, factories, and autonomous systems. (Source: The Robot Report, Robotics &amp; Automation News)</li>
+</ul>
