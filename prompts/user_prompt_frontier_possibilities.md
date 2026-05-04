@@ -76,6 +76,89 @@ For each use case, ask:
 4. Where does human judgment remain essential?
 5. Why is this plausible within the stated time horizon?
 
+Frontier Expansion Requirement:
+
+For each medium-term use case, do not stop at making today's workflow faster, easier, or better coordinated.
+
+Push the use case through this escalation ladder:
+
+1. Assistance:
+AI helps a human complete an existing task.
+
+2. Coordination:
+AI connects fragmented systems, documents, people, data, assets, or workflows.
+
+3. Simulation:
+AI lets users test scenarios, trade-offs, risks, and consequences before acting.
+
+4. Delegation:
+AI prepares or executes bounded actions within human-approved limits.
+
+5. Re-architecture:
+The product, workflow, service model, customer experience, infrastructure behavior, or operating model becomes structurally different from today.
+
+For the 3-7 year section, each use case should reach at least level 3, and most should reach level 4 or level 5.
+
+If a medium-term use case only reaches level 1 or 2, revise it before finalizing.
+
+Sector-Agnostic Frontier Pattern Test:
+
+For the selected sector, infer the most relevant frontier patterns from the list below. Do not force every pattern. Choose only those that fit the sector.
+
+Possible frontier patterns include:
+- a static product becomes adaptive
+- a periodic service becomes continuous
+- a manual workflow becomes event-triggered
+- a fragmented process becomes an operating layer
+- a human-only expert process becomes AI-prepared and human-approved
+- a document or record becomes machine-readable and action-oriented
+- a dashboard becomes a simulation environment
+- a support function becomes a self-explaining system
+- a physical asset becomes sensor-aware and self-diagnosing
+- a one-time transaction becomes a lifecycle relationship
+- a generic interface becomes personalized to context and intent
+- a scarce expert capability becomes available to smaller teams or underserved customers
+- a system of record becomes a system of action
+- a reactive process becomes predictive or anticipatory
+- a product sale becomes an ongoing service loop
+
+Use these patterns to generate more ambitious 3-7 year scenarios without becoming ungrounded.
+
+Highest Ambition Pass:
+
+Before finalizing the Medium-Term Possibilities section, review each use case and ask:
+
+"What is the more complete, more ambitious version of this idea that could plausibly exist in 5-7 years if data access, integration, governance, and user trust improve?"
+
+Revise the use case toward that stronger version while keeping it grounded.
+
+Do not make it more futuristic by adding vague autonomy. Make it more frontier by expanding:
+- what systems are connected
+- what decisions can be simulated
+- what actions can be prepared
+- what workflows become continuous or event-driven
+- what customer experience becomes possible
+- what humans still approve
+- what economic or productivity mechanism makes it matter
+
+Future-State Naming Requirement:
+
+For every medium-term use case, name the future-state category, not just the AI feature.
+
+Prefer names that describe a new operating model, product category, workflow architecture, or system behavior.
+
+Examples of the naming style:
+- "Living [Sector] Operating System"
+- "Consent-Based Digital Twin"
+- "Self-Explaining Infrastructure"
+- "Bounded Autonomous Agent"
+- "Event-Triggered Service Layer"
+- "Adaptive Product Loop"
+- "Human-Governed Automation Workspace"
+- "AI-Native Expert Coordination Layer"
+
+Do not use these examples literally unless they fit the selected sector. Infer the right category name from the sector context.
+
 Required output structure:
 Use exactly this title:
 {{frontier_report_title}}
