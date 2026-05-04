@@ -545,6 +545,10 @@ ARTICLES:
     issues = []
     extra_feedback = ""
     for attempt in range(3):
+        print(
+            f"Daily digest LLM attempt {attempt + 1}/3 "
+            f"with max_completion_tokens={digest_token_budget}"
+        )
         request_prompt = user_prompt.strip()
         if extra_feedback:
             request_prompt = f"{request_prompt}\n\nREVISION FEEDBACK:\n{extra_feedback}"
@@ -562,6 +566,7 @@ ARTICLES:
 
         if not content:
             if choice.finish_reason == "length" and attempt < 2:
+                print("Daily digest returned empty content due to length; retrying with a larger token budget")
                 digest_token_budget = 7500
                 extra_feedback = (
                     "The previous attempt ran out of output tokens before returning usable HTML. "
@@ -579,6 +584,7 @@ ARTICLES:
         if not issues:
             break
 
+        print("Daily digest diversity retry triggered: " + "; ".join(issues))
         extra_feedback = (
             "The previous draft did not satisfy diversity requirements. "
             "Rewrite from the same article set and fix these issues:\n- "
