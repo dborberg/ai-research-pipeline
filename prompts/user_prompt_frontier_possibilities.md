@@ -183,7 +183,28 @@ Completeness requirement:
 - For every use case in the Near-Term and Medium-Term sections, include all required fields.
 - Do not truncate any use case.
 - Do not end with unfinished bullets, unfinished sentences, a partially completed use case, or an incomplete Bottom Line.
-- The Medium-Term section must include at least 5 use cases unless the user explicitly requests a shorter report.
+- The Medium-Term section must include exactly 5 use cases.
+
+Completion and Compression Rule:
+
+To ensure every section is fully completed, use exact counts and concise fields.
+
+Near-Term Possibilities:
+Provide exactly 4 use cases.
+
+Medium-Term Possibilities:
+Provide exactly 5 use cases.
+
+Most Frontier Ideas Worth Watching:
+Provide exactly 3 ideas.
+
+For every use case or frontier idea, every required field must be completed.
+
+Each field should be 1 concise sentence or 2 short sentences maximum.
+
+Do not over-expand the Executive Summary, The Big Shift, or early use cases at the expense of completing later sections.
+
+If necessary, choose sharper and shorter examples rather than longer prose.
 
 Formatting requirement for Sections 3, 4, and 5:
 - Make Sections 3, 4, and 5 highly scannable.
@@ -221,7 +242,7 @@ The Big Shift
   - how human judgment and AI-generated options interact
 
 Near-Term Possibilities: From Assistance to New Workflows
-- Provide 4-6 use-case stories.
+- Provide exactly 4 use-case stories.
 - These should be plausible within 1-3 years.
 - At least some can describe workflow improvement, but do not make every use case a simple productivity story.
 - Format this section as a numbered list of use cases.
@@ -238,8 +259,8 @@ Near-Term Possibilities: From Assistance to New Workflows
 - Include every required field for every use case. Do not leave any use case partially completed.
 
 Medium-Term Possibilities: New Capabilities That Do Not Exist at Scale Today
-- Provide 5-7 more ambitious use-case stories.
-- Include at least 5 use cases unless the user explicitly requests a shorter report.
+- Provide exactly 5 more ambitious use-case stories.
+- Include exactly 5 use cases.
 - These use cases should be meaningfully more ambitious than near-term productivity improvement.
 - Format this section as a numbered list of use cases.
 - Most medium-term use cases should describe one or more of the following:
@@ -264,7 +285,7 @@ Medium-Term Possibilities: New Capabilities That Do Not Exist at Scale Today
 - Include every required field for every use case. Do not leave any use case partially completed.
 
 Most Frontier Ideas Worth Watching
-- Include 3-5 concise but vivid ideas that may sound early or speculative but are grounded in plausible technical evolution.
+- Include exactly 3 concise but vivid ideas that may sound early or speculative but are grounded in plausible technical evolution.
 - This section should be more imaginative than the prior sections, but it must not fabricate current capabilities, partnerships, products, or adoption statistics.
 - Format this section as a numbered list of ideas.
 - Each idea should include:
@@ -370,4 +391,6 @@ Output reminder:
 - Write only the final report.
 - Do not describe the prompt package.
 - Do not add preambles, caveats, or methodology notes outside the required report structure.
-- Do not end with unfinished bullets, unfinished sentences, a partially completed use case, or an incomplete Bottom Line.
+- Do not end with unfinished bullets, unfinished sentences, a partially completed use case, a partially completed frontier idea, or an incomplete Bottom Line.
+- If nearing length limits, compress earlier prose rather than omitting required fields.
+- Completion is more important than exhaustiveness.

@@ -34,10 +34,10 @@ FRONTIER_REQUIRED_HEADINGS = [
 FRONTIER_SECTION_BUDGET_GUIDANCE = (
     "Keep the overall report concise enough to finish cleanly. "
     "Use 2-3 short paragraphs for Executive Summary, 1-2 compact paragraphs for The Big Shift, "
-    "4-6 concise but complete Near-Term use cases, at least 5 concise but ambitious and fully completed Medium-Term use cases unless the user explicitly requested a shorter report, "
-    "3-5 concise Most Frontier Ideas Worth Watching entries, 2-3 short paragraphs for Frontier Scenario: A Day in the Life, "
+    "exactly 4 concise but complete Near-Term use cases, exactly 5 concise but ambitious and fully completed Medium-Term use cases, "
+    "exactly 3 concise Most Frontier Ideas Worth Watching entries, 2-3 short paragraphs for Frontier Scenario: A Day in the Life, "
     "1 concise paragraph or tight bullets for Reality Check, 4-6 brief bullets for Most Important Boundaries, "
-    "and 2-4 short paragraphs for Bottom Line. Do not leave any use case truncated or missing one of its required fields."
+    "and 2-4 short paragraphs for Bottom Line. Do not leave any use case or frontier idea truncated or missing one of its required fields."
 )
 
 
