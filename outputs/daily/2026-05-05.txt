@@ -1,0 +1,66 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>May 05, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Meta tapped Wall Street banks for data center financing:</strong> Meta selected Morgan Stanley and JPMorgan for financing tied to an El Paso data center, reinforcing that AI-adjacent infrastructure is becoming a major capital-formation theme for banks, private credit, utilities, and technology platforms. (Source: Reuters)</li>
+<li><strong>Seattle weighed a one-year pause on mega data centers:</strong> Seattle’s plan includes a proposed moratorium and utility rate changes, signaling that power costs, local approvals, and community scrutiny are now material constraints in the AI infrastructure buildout. (Source: CHS Capitol Hill Seattle News)</li>
+<li><strong>Microsoft framed AI as an operating-model shift:</strong> Microsoft said leading companies are reorganizing work around human-agent collaboration, a sign that AI adoption may increasingly show up in workflow redesign, productivity targets, and headcount planning rather than isolated software pilots. (Source: The Official Microsoft Blog)</li>
+<li><strong>Haun raised $1 billion and expanded toward AI agents:</strong> The crypto-focused investor’s new funds show continued private-market appetite for AI-agent themes, especially where artificial intelligence overlaps with digital assets and next-generation software platforms. (Source: Bloomberg.com)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>The Milken Institute and Harris Poll flagged a workforce execution gap:</strong> Their report found broad consensus on AI workforce policy but a shortfall between employer intent and actual preparation, suggesting productivity gains may vary widely by company execution. (Source: guardonline.com)</li>
+<li><strong>Google added webhooks to the Gemini API:</strong> Google’s update replaces polling for long-running AI jobs with event-driven notifications, making enterprise AI workflows easier to automate and more practical for production environments. (Source: MarkTechPost)</li>
+<li><strong>Siemens EDA highlighted agentic AI for chip verification:</strong> Siemens Digital Industries Software is applying AI to RTL verification workflows, showing how specialized engineering functions may gain productivity while still requiring expert human oversight. (Source: EE Times)</li>
+<li><strong>AWS highlighted AI-related platform activity in its weekly roundup:</strong> Amazon’s cloud unit pointed to What’s Next with AWS 2026, Amazon Quick, and an OpenAI partnership, reinforcing that cloud providers remain central distribution channels for enterprise AI adoption. (Source: AWS News Blog)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>GUC and Wiwynn announced a silicon-to-system AI infrastructure collaboration:</strong> Global Unichip Corp. and Wiwynn are combining ASIC design, advanced packaging, rack-scale integration, liquid cooling, and optical interconnect expertise, showing that AI infrastructure value is spreading beyond GPUs. (Source: EE Times)</li>
+<li><strong>Data Center Dynamics emphasized continuous AI power design:</strong> The article argued that AI workloads require power systems built into the core data center architecture, not just backup systems, underscoring the investment case for resilient electrical infrastructure. (Source: Data Center Dynamics)</li>
+<li><strong>24/7 Wall St. connected AI data centers to power-market investing:</strong> The report framed electricity demand from AI data centers as a market force shaping investor interest in utilities, grid infrastructure, energy supply, and related infrastructure plays. (Source: 24/7 Wall St.)</li>
+<li><strong>Zyphra introduced a throughput-focused training and inference method:</strong> The company said its Tensor and Sequence Parallelism approach delivered 2.6 times higher throughput versus matched baselines, highlighting ongoing efforts to improve the economics of AI compute. (Source: MarkTechPost)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>ON Semiconductor narrowed its first-quarter loss on AI data-center demand:</strong> The result suggests AI infrastructure spending may be supporting semiconductor companies beyond the most obvious GPU leaders, broadening the potential public-market opportunity set. (Source: WSJ)</li>
+<li><strong>Nvidia shares steadied as Jensen Huang backed U.S. military AI use:</strong> The story links AI infrastructure leaders to defense demand, while also highlighting policy, ethics, and headline risks around military applications. (Source: CoinCentral)</li>
+<li><strong>Reuters profiled an investor who used AI to boost portfolio gains:</strong> The anecdote shows how retail investors are increasingly using AI tools for investment decisions, creating an opening for advisors to reinforce due diligence, suitability, and risk management. (Source: Reuters)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Colleton County considered a data center moratorium:</strong> The South Carolina county’s review adds to evidence that local governments are examining land use, power demand, and community impacts before approving large-scale data center growth. (Source: Bluffton Today)</li>
+<li><strong>Waite Park backed a year-long data center moratorium:</strong> The city council’s unanimous support shows that smaller municipalities are also asserting control over AI-adjacent infrastructure development timelines. (Source: St. Cloud Live)</li>
+<li><strong>A Cheyenne-area petition called for a pause on data centers:</strong> With up to 70 data centers reportedly in the works, local opposition in Wyoming highlights how scale, electricity use, and infrastructure strain can become political risks for AI buildout assumptions. (Source: Cowboy State Daily)</li>
+<li><strong>Goa unveiled an AI policy focused on talent and global investment:</strong> The policy shows how regional governments are competing to attract AI capital, skills, and startup ecosystems, creating geographic dispersion in AI opportunity. (Source: BW Businessworld)</li>
+<li><strong>Maine’s data center moratorium was vetoed:</strong> The veto is expected to allow at least one project to move forward, illustrating that policy risk can cut both ways depending on state and local decisions. (Source: IT Brew)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>ABB Robotics launched the OmniVance autonomous finishing cell:</strong> ABB’s plug-and-play sanding and polishing system uses a GoFa cobot and intuitive software to address manufacturing labor shortages, throughput, scrap, and rework. (Source: The Robot Report)</li>
+<li><strong>Familiar Machines and Magic introduced a pet-like home robot concept:</strong> The startup from iRobot co-founder Colin Angle uses edge AI, multimodal sensing, memory, and touch to build a screen-free companion robot, showing how AI is moving into embodied consumer devices. (Source: IEEE Spectrum)</li>
+<li><strong>Robotics and Automation News highlighted autonomous pallet-truck advances:</strong> The article described how AGVs and AMRs are transforming warehouse material handling through sensors, navigation, and AI-enabled autonomy. (Source: Robotics & Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>A county imposed a data center moratorium to study regulation:</strong> Watch whether more local governments pause projects to evaluate power, tax, water, noise, and land-use impacts before approving AI infrastructure expansion. (Source: mydailyrecord.com)</li>
+<li><strong>Robotics and Automation News identified networking as an automation bottleneck:</strong> Watch latency, bandwidth, uptime, edge computing, and redundancy as practical constraints for AI-driven robotics in logistics, healthcare, and industrial automation. (Source: Robotics & Automation News)</li>
+<li><strong>An arXiv paper tested risk-aware AI agents for 6G network slicing:</strong> Watch whether telecom and cloud infrastructure providers prioritize tail-risk controls, service-level reliability, and digital-twin testing as AI agents move into network operations. (Source: cs.AI updates on arXiv.org)</li>
+<li><strong>An arXiv paper showed AI improving iterative routing optimization:</strong> Watch logistics, delivery, and scheduling use cases where AI systems refine decisions over multiple steps rather than producing one-shot answers. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>Meta’s financing move is a reminder:</strong> AI is not just a software story; it is also a financing, power, real estate, and infrastructure story. (Source: Reuters)</li>
+<li><strong>Seattle’s moratorium proposal is a reminder:</strong> The biggest constraint on AI growth may be local power and permitting, not model capability. (Source: CHS Capitol Hill Seattle News)</li>
+<li><strong>Microsoft’s operating-model message is a reminder:</strong> The companies that win with AI may be the ones that redesign work, not just the ones that buy new tools. (Source: The Official Microsoft Blog)</li>
+<li><strong>ON Semiconductor’s results are a reminder:</strong> AI infrastructure demand can benefit suppliers beyond the headline chip names. (Source: WSJ)</li>
+<li><strong>ABB’s new robotics cell is a reminder:</strong> AI is moving from screens into factories, warehouses, and physical workflows where productivity gains may be easier to measure. (Source: The Robot Report)</li>
+</ul>
