@@ -1,0 +1,66 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>May 06, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Hut 8’s planned Texas AI data center lease signals another large infrastructure commitment:</strong> Hut 8 is set to lease a Texas AI data center in a transaction valued at least $9.8 billion, underscoring that AI demand is translating into long-duration commitments for power, land, compute capacity, and digital infrastructure. For advisors, this supports client conversations about AI exposure beyond software and chips. (Source: Bloomberg.com)</li>
+<li><strong>Anthropic’s Dario Amodei and JPMorgan’s Jamie Dimon put jobs and regulation at the center of the AI debate:</strong> CNBC highlighted comments from Anthropic and JPMorgan leadership on the AI boom, regulatory risk, and workforce disruption, reinforcing that AI is now a boardroom, labor-market, and policy issue, not just a technology trend. (Source: CNBC)</li>
+<li><strong>Bulloch County extended its data center moratorium and discussed a possible full ban:</strong> The Georgia county’s action shows that local governments can slow or block AI infrastructure even when demand for compute remains strong, making permitting, community acceptance, and grid readiness key risks for AI-linked investments. (Source: WSAV-TV)</li>
+<li><strong>Google is reportedly testing Remy, an AI personal agent for Gemini:</strong> The staff-only test points to a broader platform shift from chatbots toward AI agents that can take actions for users, a development that could influence productivity software, cloud demand, and competitive positioning among major technology companies. (Source: AI News)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>AWS previewed AI-agent desktops inside Amazon WorkSpaces:</strong> Amazon said the new capability gives AI agents a secure desktop environment so they can work with legacy applications without requiring APIs or major system modernization, a practical step toward automating back-office workflows in large enterprises. (Source: AWS News Blog)</li>
+<li><strong>ServiceNow expanded agentic AI governance with NVIDIA:</strong> ServiceNow announced governance capabilities that extend from desktops to data centers, highlighting enterprise demand for controls, oversight, and auditability as companies move from AI pilots to production-scale agent deployments. (Source: Business Wire)</li>
+<li><strong>A Georgia prosecutor was disciplined after AI-related errors in a murder case:</strong> The Reuters report is a reminder that professional adoption of AI can create legal, reputational, and operational risk when outputs are not verified, supporting continued demand for governance, compliance, and human-in-the-loop review. (Source: Reuters)</li>
+<li><strong>Multiplier, Remote, Papaya Global, OysterHR, Velocity Global, and Rippling were highlighted in a review of global hiring platforms:</strong> The article points to rising demand for software that manages distributed teams, payroll, and compliance, a labor-infrastructure theme that could intersect with AI-enabled HR and workforce automation tools. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Google launched a second accelerator for AI and energy startups:</strong> The program highlights the growing linkage between AI growth and energy availability, suggesting that grid technology, efficiency tools, and power infrastructure may become increasingly important parts of the AI investment stack. (Source: Data Center Dynamics)</li>
+<li><strong>Flex plans to spin off its AI data-center infrastructure unit into a separately listed company:</strong> The proposed separation would create a more focused public-market vehicle tied to AI infrastructure demand, reinforcing that the data center buildout is reshaping corporate strategy beyond the semiconductor sector. (Source: Reuters)</li>
+<li><strong>Waite Park City Council passed a one-year data center moratorium:</strong> The Minnesota action adds to a growing list of local restrictions on data center development, showing that AI infrastructure expansion depends on land-use approvals, power capacity, water concerns, and community support. (Source: KNSI)</li>
+<li><strong>Quside commercialized photonic quantum security technology for AI-era infrastructure:</strong> The Barcelona-based ICFO spinout says its quantum random number generator chip is finding demand in defense, space, high-performance computing, and data centers as organizations prepare for post-quantum cryptography. (Source: EE Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>AMD issued an upbeat forecast after AI data center demand surged:</strong> The outlook suggests AI infrastructure spending remains a meaningful growth driver for semiconductor companies and gives advisors a fresh example of how AI demand is flowing into earnings expectations. (Source: Bloomberg.com)</li>
+<li><strong>EE Times reported the post-quantum cryptography market could grow from $1.2 billion in 2026 to $13 billion by 2035:</strong> The forecast highlights a long-duration cybersecurity opportunity as governments and enterprises prepare for future quantum threats to today’s encrypted data. (Source: EE Times)</li>
+<li><strong>WaiV Robotics emerged from stealth with $7.5 million in seed funding:</strong> The company’s maritime drone launch-and-recovery system shows investor interest in specialized physical AI applications for defense, offshore energy, logistics, and inspection markets. (Source: The Robot Report)</li>
+<li><strong>Flex’s planned data-center infrastructure spin-off could broaden public AI infrastructure exposure:</strong> If completed, the listing may give investors a more targeted way to access the physical buildout behind AI, including power distribution, racks, thermal systems, and modular data center infrastructure. (Source: Reuters)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Bloomberg Law reported that executive concern about AI policy has moved ahead of DEI worries:</strong> The survey signal suggests AI governance is becoming a higher-priority corporate risk, with implications for compliance budgets, board oversight, vendor selection, and enterprise adoption timelines. (Source: Bloomberg Law News)</li>
+<li><strong>Spring Hope passed a data center moratorium while Camdenton residents packed city hall over a proposed AI data center moratorium:</strong> These local government actions reinforce that AI infrastructure faces a rising policy layer at the municipal level, where zoning, noise, water, and power concerns can affect project timelines. (Source: springhopeenterprise.com; KY3)</li>
+<li><strong>Researchers proposed AgentGov-SC to address EU AI Act accountability gaps for autonomous agents in smart-city infrastructure:</strong> The paper argues that existing rules may not fully cover interacting AI systems across public agencies, pointing to future demand for clearer liability, auditability, and risk-management frameworks. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Tutor Intelligence built a real-world robotics data factory using 100 Sonny semi-humanoid robots:</strong> The company is using human teleoperators and robot fleets to train its Ti0 vision-language-action model, while advancing Cassie, a mobile manipulator for case-picking and palletizing in logistics and industrial environments. (Source: The Robot Report)</li>
+<li><strong>WaiV Robotics launched an AI-driven platform for drone takeoff and landing at sea:</strong> Its deck-mounted system is designed to recover VTOL drones in high sea states without modifying drone hardware or software, potentially expanding autonomous drone use in maritime defense, offshore energy, and inspection. (Source: The Robot Report)</li>
+<li><strong>Researchers introduced STEP to reduce latency in robot manipulation policies:</strong> The method aims to make diffusion-based robotic control faster and more reliable, a technical but strategically relevant development for future warehouse automation, manufacturing robotics, and physical AI deployment. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Local data center approvals:</strong> Watch whether more counties and cities adopt moratoriums, because permitting friction could shift where AI infrastructure capital is deployed.</li>
+<li><strong>AI infrastructure earnings revisions:</strong> Monitor semiconductor, data center equipment, power, and cooling companies for confirmation that demand remains broad beyond the largest cloud platforms.</li>
+<li><strong>Enterprise agent deployments:</strong> Track whether tools from AWS, ServiceNow, NVIDIA, and Google move from previews and internal tests into paid production use.</li>
+<li><strong>AI governance spending:</strong> Rising concern among executives and legal-sector mistakes could accelerate demand for compliance, audit, verification, and risk-management software.</li>
+<li><strong>Physical AI commercialization:</strong> Follow robotics companies targeting logistics, maritime operations, industrial automation, and defense, where AI may solve labor and safety constraints in the physical world.</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming an infrastructure story as much as a software story:</strong> Data centers, power, cooling, and permitting are now central to the investment case.</li>
+<li><strong>The next phase of AI may be agents, not chatbots:</strong> Companies are building systems that can take actions across business workflows, not just answer questions.</li>
+<li><strong>AI adoption creates risk as well as productivity:</strong> Legal errors and policy concerns show why governance and verification tools matter.</li>
+<li><strong>AI exposure is broadening beyond the Magnificent Seven:</strong> Semiconductors, data center equipment, energy infrastructure, cybersecurity, and robotics are all part of the ecosystem.</li>
+<li><strong>Robotics is where AI meets the real economy:</strong> Maritime drones, warehouse manipulators, and industrial automation show how AI can move from screens into physical operations.</li>
+</ul>
