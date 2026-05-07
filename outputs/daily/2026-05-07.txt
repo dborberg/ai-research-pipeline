@@ -1,0 +1,66 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>May 07, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Anthropic struck a SpaceX data center deal:</strong> Reuters reported that Anthropic secured data center capacity from SpaceX as it pushes deeper into AI coding tools, underscoring that access to compute is becoming a strategic moat for leading AI companies and a demand driver for infrastructure, power, and data center supply chains. (Source: Reuters)</li>
+<li><strong>The Pentagon expanded its AI supplier roster:</strong> The U.S. government added Microsoft, Reflection AI, Amazon, and Nvidia to agreements allowing AI products to be used in classified defense operations, signaling that federal procurement could become a meaningful growth channel for AI infrastructure, cloud, and model providers. (Source: AI News)</li>
+<li><strong>Major tech interests are moving to shape AI policy:</strong> Bloomberg Government News reported on the network of technology power players trying to influence future AI rules, highlighting a key risk for advisors to monitor: regulation could reshape compliance costs, market access, and competitive positioning across the AI value chain. (Source: Bloomberg Government News)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>AWS made its MCP Server generally available:</strong> Amazon Web Services launched a managed Model Context Protocol server for AI agents and coding assistants, pointing to continued enterprise investment in secure agent workflows, developer productivity, and cloud-integrated automation. (Source: AWS News Blog)</li>
+<li><strong>HP emphasized data readiness for enterprise AI:</strong> HP’s enterprise AI discussion focused on preparing business data for AI use and weighing local versus cloud compute, reinforcing that many companies still need data architecture upgrades before AI can deliver broad productivity gains. (Source: AI News)</li>
+<li><strong>EE Times highlighted industrial AI adoption in uncertain environments:</strong> The report cited Siemens EDA, MRPeasy, and Global Unichip Corp. in discussing how factories are using AI to handle noisy sensors, changing conditions, and real-time decision-making, extending the productivity story beyond office work into operations. (Source: EE Times)</li>
+<li><strong>AWS agent tooling pointed to a shift in white-collar workflows:</strong> The general availability of AWS MCP Server shows that AI adoption is moving from experimentation toward tools that can assist software developers and business teams inside governed enterprise systems. (Source: AWS News Blog)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Supermicro signed an MoU with Nano Nuclear:</strong> The companies agreed to explore integrating micro reactor technology with data centers, reflecting growing market attention on alternative power sources as AI compute demand strains conventional grid capacity. (Source: Data Center Dynamics)</li>
+<li><strong>Nvidia promoted Spectrum-X for gigascale AI factories:</strong> Nvidia positioned its AI-native Ethernet fabric as a networking layer for large-scale AI infrastructure, reinforcing that the AI buildout is not just about GPUs but also switches, networking, and data center system design. (Source: NVIDIA Blog)</li>
+<li><strong>Data Center Dynamics called for new data center governance models:</strong> The publication argued that AI workloads require stronger quality, cybersecurity, and operational governance, a reminder that infrastructure spending may increasingly include resilience and risk-management layers. (Source: Data Center Dynamics)</li>
+<li><strong>Central Pennsylvania residents opposed a proposed data center:</strong> PennLive reported local pushback against a data center project, showing that AI infrastructure growth can face execution risk from zoning, community resistance, power concerns, and land-use politics. (Source: PennLive.com)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Arm forecast stronger-than-expected revenue:</strong> Arm cited surging AI data center demand, giving investors another signal that AI infrastructure spending continues to support semiconductor fundamentals beyond the most visible GPU names. (Source: Reuters)</li>
+<li><strong>Lattice Semiconductor agreed to buy AMI:</strong> Lattice is acquiring firmware developer AMI in a $1.65 billion cash-and-stock deal, broadening its exposure from low-power FPGAs into server management, firmware, and secure infrastructure controls for cloud and AI environments. (Source: EE Times)</li>
+<li><strong>Johnson and Johnson reported positive OTTAVA study results:</strong> The company completed an initial clinical study for its investigational robotic surgical system, highlighting robotic surgery as a long-duration medtech growth theme that sits adjacent to AI-enabled automation. (Source: The Robot Report)</li>
+<li><strong>Geekplus partnered with Mindugar in Latin America:</strong> The warehouse robotics company’s regional partnership points to automation demand outside the U.S. and Europe, supporting the idea that AI-related investment opportunities may broaden into logistics, industrial infrastructure, and emerging markets. (Source: Robotics and Automation News)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Illinois lawmakers advanced the POWER Act debate:</strong> The Loyola Phoenix reported on Illinois’ effort to regulate AI data centers, showing that state-level policy may increasingly affect where AI infrastructure is built and how much it costs. (Source: The Loyola Phoenix)</li>
+<li><strong>Pine County rejected a proposed data center moratorium:</strong> The county board’s decision, alongside other local moratorium discussions reported in Iowa and by the Eastern Band of Cherokee Indians, shows that permitting and community governance are becoming live constraints for high-power computing projects. (Source: pinecountynews.com; Daily Gate City; Smoky Mountain News)</li>
+<li><strong>Anthropic’s CEO called for auto-style AI regulation:</strong> The proposal to model AI oversight on the auto industry suggests that structured safety standards could become a middle path between voluntary governance and restrictive regulation. (Source: FinAi News)</li>
+<li><strong>The EU AI Act raised chatbot compliance questions:</strong> The New York State Bar Association highlighted the act’s implications for AI-powered chatbots, reminding advisors that customer-facing AI tools may carry new disclosure, governance, and risk-management obligations. (Source: New York State Bar Association)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Comau and Aptiv partnered on AI-powered automation:</strong> The companies will explore next-generation robotics, autonomous systems, and intelligent industrial automation, reinforcing that physical AI is becoming a practical theme for manufacturing productivity and safety. (Source: Robotics and Automation News)</li>
+<li><strong>Genesis AI introduced the GENE-26.5 robotics model:</strong> The company unveiled a foundation model designed for dexterous robot manipulation, pairing software with a robotic hand, tactile glove, and training data engine aimed at complex physical tasks. (Source: The Robot Report)</li>
+<li><strong>Geekplus and Mindugar targeted Latin American warehouse automation:</strong> Their partnership aims to accelerate robotics adoption across regional supply chains, highlighting logistics automation as a tangible AI use case with potential relevance for industrial technology investors. (Source: Robotics and Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>AI infrastructure permitting:</strong> Watch local moratoriums, zoning disputes, and state-level data center bills, because community resistance could slow projects even when demand for compute remains strong. (Source: The Loyola Phoenix; PennLive.com)</li>
+<li><strong>Semiconductor guidance breadth:</strong> Watch whether more chip and infrastructure suppliers echo Arm’s AI data center demand signal, especially companies tied to networking, firmware, memory, and power management. (Source: Reuters; EE Times)</li>
+<li><strong>Alternative data center power:</strong> Watch whether exploratory nuclear and microreactor agreements move from memoranda of understanding to real deployments, utility partnerships, or regulatory filings. (Source: Data Center Dynamics)</li>
+<li><strong>Enterprise agent deployment:</strong> Watch whether tools like AWS MCP Server lead to measurable developer productivity gains or remain limited to controlled pilots because of security and data-governance concerns. (Source: AWS News Blog)</li>
+<li><strong>Robotics commercialization milestones:</strong> Watch whether industrial and medical robotics announcements translate into regulatory clearances, customer deployments, and recurring service revenue. (Source: The Robot Report; Robotics and Automation News)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming an infrastructure story:</strong> The winners may include companies tied to data centers, power, networking, and security, not just model developers. (Source: Reuters; Data Center Dynamics)</li>
+<li><strong>Regulation is now part of the AI investment case:</strong> State rules, local permitting, and global compliance standards can affect timelines, margins, and competitive advantage. (Source: Bloomberg Government News; The Loyola Phoenix)</li>
+<li><strong>Enterprise AI still depends on data quality:</strong> Companies need clean, governed data before AI tools can reliably improve productivity. (Source: AI News)</li>
+<li><strong>AI spending is broadening beyond the Mag 7:</strong> Arm, Lattice Semiconductor, and industrial automation names show how the AI supply chain is expanding. (Source: Reuters; EE Times)</li>
+<li><strong>Physical AI is moving from concept to deployment:</strong> Robotics in factories, warehouses, and operating rooms is becoming a more investable extension of the AI theme. (Source: The Robot Report; Robotics and Automation News)</li>
+</ul>
