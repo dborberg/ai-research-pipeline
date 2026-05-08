@@ -188,6 +188,28 @@ def generate_daily_digest(report_date=None):
             return text_value
         return text_value[: limit - 3].rstrip() + "..."
 
+    def primary_section_hint(article):
+        preferred_order = [
+            "regulation_and_policy",
+            "capital_markets_and_investment",
+            "infrastructure_and_power",
+            "enterprise_and_labor",
+            "physical_ai_and_robotics",
+        ]
+        label_map = {
+            "regulation_and_policy": "REGULATION AND POLICY",
+            "capital_markets_and_investment": "CAPITAL MARKETS AND INVESTMENT",
+            "infrastructure_and_power": "INFRASTRUCTURE AND POWER",
+            "enterprise_and_labor": "ENTERPRISE AND LABOR",
+            "physical_ai_and_robotics": "PHYSICAL AI AND ROBOTICS",
+        }
+
+        themes = extract_theme_tags(article)
+        for theme_name in preferred_order:
+            if theme_name in themes:
+                return label_map[theme_name]
+        return "TOP STORIES"
+
     def select_prompt_articles(deduped_articles, min_count=12, max_count=18):
         selected_articles = []
         seen_ids = set()
@@ -410,6 +432,7 @@ No relevant articles found in the last 24 hours.
             [
                 f"TITLE: {article['title']}",
                 f"SOURCE: {article.get('original_publisher') or article['source']}",
+                f"PRIMARY_SECTION_HINT: {primary_section_hint(article)}",
                 f"SOURCE_QUALITY_HINT: {source_quality_hint(article)}",
                 f"BIG_STORY_HINT: {'YES' if is_big_story(article) else 'NO'}",
                 f"POLICY_PRIORITY_HINT: {'YES' if has_policy_priority(article) else 'NO'}",
@@ -441,6 +464,8 @@ If multiple articles say similar things, choose the one with broader market rele
 Treat SOURCE as the original publisher when available. FEED_SOURCE may be an aggregator feed and should not be treated as true source diversity.
 
 Prefer coverage over precision. It is better to include multiple distinct real-world developments than to repeat one dominant theme across sections.
+
+Treat PRIMARY_SECTION_HINT as the default home for an article unless a stronger strategic reason justifies moving it.
 
 The article set may already be deduplicated at the event level before it reaches you. Treat that as a reduction of duplicate evidence, not a signal to ignore broader thematic patterns.
 
@@ -553,6 +578,8 @@ Selection rules:
 - Keep bullets specific, event-driven, and concise.
 - Each section should include multiple distinct topics rather than repeating one underlying narrative.
 - Once a story appears in TOP STORIES, do not reuse that same underlying development in other sections.
+- If a company, financing event, law, moratorium, or policy action is used in one analytical section, do not reuse that same event in another analytical section.
+- WHAT TO WATCH and ADVISOR SOUNDBITES may synthesize broader themes from earlier sections, but they should not repeat the same named event as a standalone bullet.
 - Ensure diversity across companies, sectors, geographies, and use cases.
 - If several articles cover the same event, include only one and replace the others with different topics.
 - Each section should re-scan the full dataset independently for relevant stories instead of relying on a single preselected subset.
