@@ -1,0 +1,73 @@
+AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report
+Week Ending 2026-05-08
+
+Purpose:
+This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.
+
+TOP CONVICTION SIGNALS
+
+data center power and financing constraints
+Conviction: 8.91
+Strength: 8.33
+Momentum: 1200%
+Velocity: +12 article change
+Why It Matters:
+AI exposure is broadening into power, real estate, data center operators, infrastructure credit, and private markets. Investors will need to assess whether capacity growth can earn adequate returns despite permitting, financing, and energy bottlenecks.
+
+Brain Corp Ahold Delhaize
+Conviction: 7.79
+Strength: 7.98
+Momentum: 700%
+Velocity: +7 article change
+Why It Matters:
+Physical AI could expand AI-driven productivity gains into industrial, logistics, retail, and consumer-hardware markets. It may also increase demand for sensors, robotics components, edge compute, cloud infrastructure, and systems integrators.
+
+infrastructure supply chain broadens beyond GPUs
+Conviction: 7.35
+Strength: 7.60
+Momentum: 600%
+Velocity: +6 article change
+Why It Matters:
+This widens the investable AI supply chain beyond model developers and GPU makers. Advisors can frame AI infrastructure as a multi-layer hardware, networking, power, and systems-management opportunity.
+
+Government policy reshapes access
+Conviction: 6.72
+Strength: 7.05
+Momentum: 400%
+Velocity: +4 article change
+Why It Matters:
+Geopolitics and procurement decisions can materially alter AI revenue pools, competitive positioning, and valuation assumptions. Advisors should treat policy exposure as a core risk factor for AI semiconductors, clouds, and model providers.
+
+News AWS
+Conviction: 6.58
+Strength: 6.92
+Momentum: 400%
+Velocity: +4 article change
+Why It Matters:
+As agent usage scales, spending may shift from model training alone toward inference optimization, cloud integration, memory systems, and developer platforms. This matters for cloud providers, enterprise software vendors, and infrastructure suppliers tied to production AI workloads.
+
+ACCELERATING THEMES (BREAKOUTS)
+
+These themes are accelerating fastest relative to prior week.
+
+data center power and financing constraints: Momentum 1200%, velocity +12. AI exposure is broadening into power, real estate, data center operators, infrastructure credit, and private markets
+Brain Corp Ahold Delhaize: Momentum 700%, velocity +7. Physical AI could expand AI-driven productivity gains into industrial, logistics, retail, and consumer-hardware markets
+infrastructure supply chain broadens beyond GPUs: Momentum 600%, velocity +6. This widens the investable AI supply chain beyond model developers and GPU makers
+
+FADING SIGNALS
+
+No major theme showed week-over-week deterioration in this run.
+
+PORTFOLIO IMPLICATIONS
+
+Structural strengthening is concentrated in data center power and financing constraints, Brain Corp Ahold Delhaize, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in Government policy reshapes access, News AWS, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in data center power and financing constraints, Brain Corp Ahold Delhaize, supported by rising article volume against the prior week.
+Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
+
+BOTTOM LINE
+
+1. Highest conviction theme: data center power and financing constraints
+2. Most important new signal: data center power and financing constraints
+3. Biggest acceleration: data center power and financing constraints
+4. Key risk / fading area: No material fading area
