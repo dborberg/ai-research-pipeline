@@ -1,0 +1,62 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>May 08, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Nvidia backed IREN:</strong> Nvidia plans to invest up to $2.1 billion in IREN as part of an AI data center deal, reinforcing that AI growth is increasingly tied to power, land, and compute infrastructure rather than software alone. (Source: Reuters)</li>
+<li><strong>EU lawmakers softened AI rules:</strong> EU countries and lawmakers reached a provisional deal on watered-down AI rules, which could reduce near-term compliance pressure for AI developers and adopters while keeping regulation central to the investment debate. (Source: Reuters)</li>
+<li><strong>Big Tech cash flow tightened:</strong> Big Tech’s $725 billion AI spending wave has pushed free cash flow to a decade low, giving advisors a useful way to explain why AI winners may still face margin, capital allocation, and shareholder return questions. (Source: Financial Times)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Brain Corp piloted robots at Albert:</strong> Brain Corp said its AI shelf-scanning robots exceeded a 90% accuracy baseline at Albert, an Ahold Delhaize retailer, showing how automation can reduce manual store tasks and improve inventory execution. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Anthropic unsettled White House planning:</strong> Anthropic’s Mythos reportedly disrupted elements of the White House AI strategy process, underscoring how major AI developers can influence enterprise confidence and policy expectations. (Source: WSJ)</li>
+<li><strong>Minneapolis CCTV research tested AI planning:</strong> Researchers used AI analysis of existing traffic cameras to evaluate pedestrian refuges and curb extensions, pointing to lower-cost public-sector productivity gains from software layered onto existing infrastructure. (Source: arXiv.org)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Florida regulated hyperscale AI data centers:</strong> Governor Ron DeSantis signed a bill adding rules for hyperscale AI data centers, highlighting that state permitting and oversight are becoming material variables in AI infrastructure buildout. (Source: WUSF)</li>
+<li><strong>NRC sought an AI nuclear framework:</strong> The Nuclear Regulatory Commission is seeking research support for regulating AI use in nuclear plants, a sign that safety-critical energy systems may become part of the AI adoption curve. (Source: Washington Technology)</li>
+<li><strong>Sheboygan considered a data center pause:</strong> Local officials are weighing a one-year moratorium on AI data centers, showing how community-level power, land, and planning concerns can slow infrastructure deployment. (Source: The Sheboygan Press)</li>
+<li><strong>Barcelona Supercomputing Center advanced hybrid quantum:</strong> Spain is positioning BSC’s MareNostrum systems as part of Europe’s AI, supercomputing, and quantum infrastructure strategy, with IBM, Google, Qilimanjaro, and QuantWare part of the broader ecosystem. (Source: EE Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Principal targeted data center funds:</strong> Principal is reportedly seeking $3 billion for two data center funds, showing how AI demand is creating opportunities in private real assets and infrastructure vehicles beyond public mega-cap technology stocks. (Source: Bloomberg.com)</li>
+<li><strong>SEC pressed for financing disclosure:</strong> The SEC called for clearer disclosure around AI data center financing, a reminder that investors will need better visibility into leverage, obligations, and capital intensity behind AI infrastructure growth. (Source: Bloomberg Law News)</li>
+<li><strong>Infineon lifted its revenue outlook:</strong> Infineon projected fiscal 2026 revenue above €16 billion, helped by AI data center demand for power supply solutions, illustrating broader semiconductor exposure beyond GPUs. (Source: EE Times)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Connecticut pursued AI policy leadership:</strong> Connecticut’s effort to shape national AI policy is facing challenges, reflecting the fragmented state-level environment companies may have to navigate in the absence of a single federal framework. (Source: MLex)</li>
+<li><strong>Florida enacted AI data center rules:</strong> Florida’s new law regulating AI data centers adds to evidence that AI infrastructure is becoming a state policy issue, not just a technology-sector investment theme. (Source: Florida Phoenix)</li>
+<li><strong>Michigan saw no movement on a moratorium:</strong> A proposed statewide data center moratorium and related housing rules have not advanced, showing that policy risk can remain uncertain even when no immediate restrictions are adopted. (Source: Livingston Daily)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>SGS certified Dobot robots:</strong> SGS verified that Dobot’s CR 30H collaborative robots meet ISO 10218-1:2025 cybersecurity-related safety requirements, signaling that security and safety certification are becoming adoption gates for connected industrial robots. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Brain Corp’s retail deployment showed practical autonomy:</strong> AI-powered shelf-scanning robots at Albert demonstrated high accuracy in live store conditions, supporting the case for robotics in retail operations, logistics visibility, and labor-constrained environments. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Nvidia’s IREN investment raises the bar:</strong> Watch whether more chipmakers, cloud providers, and infrastructure operators use direct investments to secure power-backed AI capacity. (Source: Reuters)</li>
+<li><strong>Florida’s data center law may set a template:</strong> Monitor whether other states add permitting, power, or land-use rules that could reshape where AI capacity gets built. (Source: WUSF)</li>
+<li><strong>Principal’s fundraising target tests investor appetite:</strong> Demand for data center funds will be an important signal for how far institutional capital is willing to follow the AI infrastructure theme. (Source: Bloomberg.com)</li>
+<li><strong>The SEC’s disclosure push could widen:</strong> Clearer rules around data center financing may affect public companies, REITs, private credit, and infrastructure funds tied to AI buildout. (Source: Bloomberg Law News)</li>
+<li><strong>Dobot’s certification points to robotics due diligence:</strong> Investors should watch whether cybersecurity and safety standards become differentiators for industrial automation suppliers. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming a real-assets story:</strong> The Nvidia and Principal developments show that data centers, power, and financing are now central to the AI investment thesis. (Source: Reuters; Bloomberg.com)</li>
+<li><strong>AI spending has a cost:</strong> The $725 billion Big Tech capex surge supports growth, but it also pressures free cash flow and raises the hurdle for returns. (Source: Financial Times)</li>
+<li><strong>Regulation is moving from theory to permitting:</strong> Florida and Sheboygan show that AI policy is starting to affect where physical infrastructure can actually be built. (Source: WUSF; The Sheboygan Press)</li>
+<li><strong>Robotics is leaving the lab:</strong> Brain Corp’s retail pilot and Dobot’s certification show physical AI moving into stores and factories with measurable operating use cases. (Source: Robotics &amp; Automation News)</li>
+<li><strong>The AI trade is broadening:</strong> Infineon’s outlook and data center fundraising suggest opportunities may extend beyond the largest software and GPU names. (Source: EE Times; Bloomberg.com)</li>
+</ul>
