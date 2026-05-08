@@ -42,6 +42,46 @@ PRACTICE_TIP_WORKFLOW_ROTATION = [
     "client onboarding",
     "referral follow-up",
 ]
+PRACTICE_TIP_CONCEPT_ROTATION = [
+    "prospecting",
+    "client messaging",
+    "meeting prep",
+    "practice operations",
+    "client discovery",
+    "portfolio exposure mapping",
+    "behavioral coaching",
+]
+PRACTICE_TIP_CONCEPT_KEYWORDS = {
+    "behavioral coaching": [
+        "behavioral", "coaching", "fomo", "recency bias", "decision premortem",
+        "pause script", "calm opening", "if this goes wrong", "if we do nothing",
+        "buy, sell, or hold", "buy/sell/hold",
+    ],
+    "portfolio exposure mapping": [
+        "portfolio review", "holdings", "sector weights", "concentration", "allocation",
+        "exposure map", "exposure", "top 10 holdings", "portfolio", "review meeting",
+    ],
+    "client messaging": [
+        "email", "follow-up", "followup", "talking point", "headline", "client-friendly",
+        "script", "soundbite", "update", "conversation",
+    ],
+    "meeting prep": [
+        "meeting prep", "meeting brief", "agenda", "prep notes", "discussion map",
+        "review agenda", "call prep",
+    ],
+    "practice operations": [
+        "crm", "workflow", "operations", "task", "staff", "practice management",
+        "process", "operating", "checklist",
+    ],
+    "prospecting": [
+        "prospect", "prospecting", "lead", "outreach", "prospective", "referral",
+        "introduction", "center of influence", "coi", "network",
+    ],
+    "client discovery": [
+        "discovery", "question", "questions", "first meeting", "onboarding", "new client",
+        "discovery script",
+    ],
+}
 GENERIC_THEME_TERMS = {
     "ai", "artificial", "intelligence", "theme", "themes", "trend", "trends",
     "innovation", "innovations", "technology", "technologies", "market", "markets",
@@ -1027,9 +1067,11 @@ def generate_wholesaler_weekly(client, source_context, week_start, article_data=
 
     recent_tip_history = _get_recent_practice_tip_history(week_start)
     required_workflow = _choose_practice_tip_workflow(week_start, recent_tip_history)
+    required_concept = _choose_practice_tip_concept(week_start, recent_tip_history)
+    recent_tip_constraints = _build_recent_practice_tip_constraints(recent_tip_history)
     if recent_tip_history:
         recent_tip_context = "\n".join(
-            f"- {item['week_start']}: workflow={item['workflow']}; what={item['what']}"
+            f"- {item['week_start']}: workflow={item['workflow']}; concept={item.get('concept', 'general')}; what={item['what']}"
             for item in recent_tip_history
         )
     else:
@@ -1125,12 +1167,16 @@ You are designing ONE highly practical, differentiated AI use case for financial
 CRITICAL REQUIREMENTS:
 - Do NOT repeat common use cases like summarizing articles or writing basic emails
 - Rotate across different advisor workflows each week such as prospecting, portfolio review, client communication, meeting prep, behavioral coaching, or practice management
+- Also rotate across different idea families. If recent tips covered behavioral coaching, portfolio exposure mapping, client messaging, or meeting prep, do not return another close variant of that same concept
 - The idea must feel specific, actionable, and new, not generic
 - It should be something an advisor could actually try within 10 minutes
 - Tie the use case loosely to this week's themes when relevant, but do not force it
 - REQUIRED WORKFLOW FOR THIS WEEK: {required_workflow}
+- REQUIRED IDEA FAMILY FOR THIS WEEK: {required_concept}
 - Do NOT reuse or closely mimic any recent practice tip ideas listed below
 - If a recent tip covered portfolio review, holdings review, concentration mapping, or exposure mapping, do not return another variant of that same concept
+- If a recent tip covered behavioral coaching, pause scripts, premortems, FOMO control, or decision framing, do not return another variant of that same concept
+- Prefer a different advisor job-to-be-done than the last 3 tips, even if the wording would be different
 
 OUTPUT FORMAT:
 Return exactly this section structure and labels:
@@ -1161,6 +1207,9 @@ WEEK START: {week_start}
 
 RECENT PRACTICE TIP HISTORY TO AVOID:
 {recent_tip_context}
+
+RECENT PRACTICE TIP CONSTRAINTS:
+{recent_tip_constraints}
 
 DRAFT DIGEST:
 {main_digest}
@@ -1222,6 +1271,18 @@ def _infer_practice_tip_workflow(text):
     return "general"
 
 
+def _infer_practice_tip_concept(text):
+    normalized = str(text or "").lower()
+    if not normalized:
+        return "general"
+
+    for concept, keywords in PRACTICE_TIP_CONCEPT_KEYWORDS.items():
+        if any(keyword in normalized for keyword in keywords):
+            return concept
+
+    return "general"
+
+
 def _get_recent_practice_tip_history(week_start, limit=4):
     rows = fetch_weekly_digests(digest_type=WHOLESALER_TYPE, limit=12)
     history = []
@@ -1239,6 +1300,7 @@ def _get_recent_practice_tip_history(week_start, limit=4):
                 "week_start": str(row["week_start"]),
                 "what": what_line,
                 "workflow": _infer_practice_tip_workflow(what_line),
+                "concept": _infer_practice_tip_concept(_extract_practice_tip_text(row["content"])),
             }
         )
 
@@ -1261,6 +1323,41 @@ def _choose_practice_tip_workflow(week_start, recent_tip_history):
             return workflow
 
     return rotated_workflows[0]
+
+
+def _choose_practice_tip_concept(week_start, recent_tip_history):
+    recent_concepts = [item["concept"] for item in recent_tip_history[:3] if item.get("concept")]
+    start_index = week_start.isocalendar().week % len(PRACTICE_TIP_CONCEPT_ROTATION)
+    rotated_concepts = (
+        PRACTICE_TIP_CONCEPT_ROTATION[start_index:] +
+        PRACTICE_TIP_CONCEPT_ROTATION[:start_index]
+    )
+
+    for concept in rotated_concepts:
+        if concept not in recent_concepts:
+            return concept
+
+    return rotated_concepts[0]
+
+
+def _build_recent_practice_tip_constraints(recent_tip_history):
+    recent_workflows = [item["workflow"] for item in recent_tip_history[:3] if item.get("workflow")]
+    recent_concepts = [item["concept"] for item in recent_tip_history[:3] if item.get("concept")]
+    recent_what_lines = [item["what"] for item in recent_tip_history[:3] if item.get("what")]
+
+    lines = []
+    if recent_workflows:
+        lines.append("- Avoid these recent workflow lanes: " + ", ".join(dict.fromkeys(recent_workflows)))
+    if recent_concepts:
+        lines.append("- Avoid these recent idea families: " + ", ".join(dict.fromkeys(recent_concepts)))
+    if recent_what_lines:
+        lines.append("- Do not reuse or lightly rephrase these recent tip ideas:")
+        lines.extend(f"  - {item}" for item in recent_what_lines)
+
+    if not lines:
+        lines.append("- No recent workflow or idea-family constraints available.")
+
+    return "\n".join(lines)
 
 
 def generate_thematic_weekly(client, source_context):

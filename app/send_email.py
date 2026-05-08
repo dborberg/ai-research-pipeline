@@ -18,6 +18,13 @@ def _is_report_title(text):
     return stripped in KNOWN_REPORT_TITLES or stripped.startswith("AI SIGNAL COMMAND")
 
 
+def _split_labeled_line(text):
+    match = re.match(r"^([A-Za-z][A-Za-z ]{0,40}):\s*(.*)$", (text or "").strip())
+    if not match:
+        return None, None
+    return match.group(1).strip(), match.group(2).strip()
+
+
 def _html_to_plain_text(text):
     if not text:
         return ""
@@ -102,6 +109,20 @@ def format_as_html(text):
             item_text = re.sub(r"^\d+\.\s+", "", stripped)
             html.append(f"<li style='margin:0 0 6px 0;'>{item_text}")
             current_item_open = True
+
+        # Standalone labeled subsections such as What/Why/Copy prompt/Guardrail
+        elif not current_item_open and _split_labeled_line(stripped)[0]:
+            label, value = _split_labeled_line(stripped)
+            if list_mode != "ul":
+                close_list()
+                html.append("<ul style='margin:0 0 10px 0; padding-left:18px;'>")
+                list_mode = "ul"
+            else:
+                close_item()
+            item_body = f"<strong>{label}:</strong>"
+            if value:
+                item_body = f"{item_body} {value}"
+            html.append(f"<li style='margin:0 0 6px 0;'>{item_body}</li>")
 
         # Blank lines
         elif stripped == "":
