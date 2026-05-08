@@ -6,17 +6,21 @@ def generate_daily_digest(report_date=None):
     from datetime import datetime, timedelta
     from html import unescape
     from zoneinfo import ZoneInfo
+    from openai import APITimeoutError, OpenAI
     from sqlalchemy import text
-    from openai import OpenAI
 
     from app.branding import DAILY_TITLE
     from app.db import get_engine
     from app.pipeline_window import get_pipeline_window
-    from app.reporting import get_openai_client
 
-    client = get_openai_client(os.getenv("OPENAI_API_KEY"))
     _CENTRAL_TZ = ZoneInfo("America/Chicago")
     digest_token_budget = 6000
+    digest_request_timeout = float(os.getenv("OPENAI_DIGEST_TIMEOUT_SECONDS", "150"))
+    client = OpenAI(
+        api_key=os.getenv("OPENAI_API_KEY"),
+        timeout=digest_request_timeout,
+        max_retries=0,
+    )
 
     # -----------------------------
     # GET ARTICLES
@@ -177,6 +181,51 @@ def generate_daily_digest(report_date=None):
             reverse=True,
         )
         return deduped_articles
+
+    def clip_prompt_text(value, limit):
+        text_value = " ".join(str(value or "").split())
+        if len(text_value) <= limit:
+            return text_value
+        return text_value[: limit - 3].rstrip() + "..."
+
+    def select_prompt_articles(deduped_articles, min_count=12, max_count=18):
+        selected_articles = []
+        seen_ids = set()
+        required_themes = [
+            "regulation_and_policy",
+            "capital_markets_and_investment",
+            "infrastructure_and_power",
+            "physical_ai_and_robotics",
+            "enterprise_and_labor",
+        ]
+
+        for theme_name in required_themes:
+            for article in deduped_articles:
+                article_id = id(article)
+                if article_id in seen_ids:
+                    continue
+                if theme_name not in extract_theme_tags(article):
+                    continue
+
+                selected_articles.append(article)
+                seen_ids.add(article_id)
+                break
+
+        for article in deduped_articles:
+            if len(selected_articles) >= max_count:
+                break
+
+            article_id = id(article)
+            if article_id in seen_ids:
+                continue
+
+            selected_articles.append(article)
+            seen_ids.add(article_id)
+
+        if len(selected_articles) < min_count:
+            return deduped_articles[:max_count]
+
+        return selected_articles
 
     def build_theme_signal_block(all_articles):
         theme_labels = {
@@ -348,6 +397,7 @@ def generate_daily_digest(report_date=None):
         if article.get("original_publisher") or article.get("source")
     }
     theme_signal_block = build_theme_signal_block(all_articles)
+    prompt_articles = select_prompt_articles(articles)
 
     if not all_articles:
         return f"""{DAILY_TITLE}
@@ -360,20 +410,16 @@ No relevant articles found in the last 24 hours.
             [
                 f"TITLE: {article['title']}",
                 f"SOURCE: {article.get('original_publisher') or article['source']}",
-                f"FEED_SOURCE: {article['source']}",
                 f"SOURCE_QUALITY_HINT: {source_quality_hint(article)}",
                 f"BIG_STORY_HINT: {'YES' if is_big_story(article) else 'NO'}",
                 f"POLICY_PRIORITY_HINT: {'YES' if has_policy_priority(article) else 'NO'}",
-                f"EVENT_ANCHOR_HINT: {'YES' if has_named_event_anchor(article) else 'NO'}",
                 f"COMPANIES_MENTIONED: {', '.join(parse_companies(article.get('companies')))}",
                 f"AI_SCORE: {article.get('ai_score') if article.get('ai_score') is not None else ''}",
-                f"ADVISOR_RELEVANCE: {article.get('advisor_relevance') or ''}",
-                f"PUBLISHED_AT: {article['published_at']}",
-                f"SUMMARY: {article['summary']}",
-                f"URL: {article['url']}",
+                f"ADVISOR_RELEVANCE: {clip_prompt_text(article.get('advisor_relevance'), 220)}",
+                f"SUMMARY: {clip_prompt_text(article['summary'], 420)}",
             ]
         )
-        for article in articles
+        for article in prompt_articles
     )
 
     system_prompt = """
@@ -553,14 +599,33 @@ ARTICLES:
         if extra_feedback:
             request_prompt = f"{request_prompt}\n\nREVISION FEEDBACK:\n{extra_feedback}"
 
-        response = client.chat.completions.create(
-            model="gpt-5.5",
-            messages=[
-                {"role": "system", "content": system_prompt.strip()},
-                {"role": "user", "content": request_prompt}
-            ],
-            max_completion_tokens=digest_token_budget,
-        )
+        try:
+            response = client.chat.completions.create(
+                model="gpt-5.5",
+                messages=[
+                    {"role": "system", "content": system_prompt.strip()},
+                    {"role": "user", "content": request_prompt}
+                ],
+                max_completion_tokens=digest_token_budget,
+                timeout=digest_request_timeout,
+            )
+        except APITimeoutError:
+            if attempt == 2:
+                raise
+
+            print(
+                "Daily digest request timed out; retrying with the same prompt "
+                f"and timeout={digest_request_timeout:.0f}s"
+            )
+            extra_feedback = (
+                "The previous attempt timed out before returning the full HTML digest. "
+                "Rewrite the full digest more compactly while preserving all required sections, "
+                "source diversity, event specificity, and complete HTML structure. "
+                "Return only the finished HTML."
+            )
+            digest_token_budget = min(digest_token_budget, 5000)
+            continue
+
         choice = response.choices[0]
         content = (choice.message.content or "").strip()
 
