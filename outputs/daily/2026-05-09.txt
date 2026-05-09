@@ -1,0 +1,62 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>May 09, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Local AI data center bans accelerated:</strong> Tom's Hardware reported that 69 U.S. jurisdictions are blocking new AI data center builds, including four described as permanent, underscoring permitting and community-risk constraints around the physical AI buildout. (Source: Tom's Hardware)</li>
+<li><strong>Chris Hohn cut Microsoft exposure:</strong> The Financial Times reported that Hohn's hedge fund sharply reduced an $8 billion Microsoft stake, a reminder that AI can create valuation risk for incumbents as well as growth opportunity. (Source: Financial Times)</li>
+<li><strong>China backed AI-plus-energy expansion:</strong> Four Chinese departments reportedly promoted AI and energy integration while DeepSeek plans to raise up to 50 billion yuan, signaling continued state-linked capital support for hard-tech AI infrastructure. (Source: 富途牛牛)</li>
+<li><strong>Wells Fargo launched an AI advisor platform:</strong> The wirehouse debut shows AI moving directly into wealth management workflows, with potential implications for advisor productivity, service models, and competitive differentiation. (Source: InvestmentNews)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>RingCentral expanded its AI Receptionist:</strong> RingCentral added Shopify, Calendly, and WhatsApp integrations to AIR, broadening the product from call answering into scheduling, order support, messaging, and small-business workflow automation. (Source: AI News)</li>
+<li><strong>OpenAI extended Codex into the browser:</strong> OpenAI released a Chrome extension that lets its coding agent operate across signed-in tools such as Gmail, Salesforce, LinkedIn, and internal systems, pointing toward more agentic white-collar automation. (Source: MarkTechPost)</li>
+<li><strong>Industrial AI rules gained a streamlining push:</strong> Siemens benefited from an EU effort to simplify industrial AI regulation, which could reduce compliance friction for manufacturers adopting AI in operations. (Source: Bloomberg)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Mitsubishi Heavy Industries adjusted turbine production:</strong> The company plans to revamp gas turbine manufacturing to meet AI data center-driven power demand, showing how AI capex is flowing into industrial energy equipment. (Source: Data Center Dynamics)</li>
+<li><strong>Nvidia's next data center phase may lean on photonics:</strong> Data Center Knowledge highlighted fiber and photonics as potential enablers of Nvidia's next AI infrastructure push, broadening the investment lens beyond GPUs alone. (Source: Data Center Knowledge)</li>
+<li><strong>Memory sourcing became more geopolitical:</strong> EE Times reported that DRAM, NAND, and HBM procurement is shifting toward regionalized, compliance-sensitive supply chains as U.S.-China tensions affect AI hardware availability and pricing. (Source: EE Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Nyobolt reached unicorn valuation:</strong> Nyobolt raised $60 million at a valuation above $1 billion to expand fast-charging systems for autonomous machines, industrial automation, and AI infrastructure. (Source: The Robot Report)</li>
+<li><strong>Utah's MIDA faced scrutiny over an AI data center:</strong> TownLift reported questions around MIDA's role in a Utah AI data center, reinforcing that local governance and land-use review can affect AI infrastructure investment timelines. (Source: TownLift Park City)</li>
+<li><strong>AI infrastructure demand widened beyond software:</strong> The day's capital signals point to investable exposure in power equipment, memory, networking, and automation suppliers, not only the largest platform companies. (Source: Data Center Dynamics)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Glass and Jawando introduced competing data center legislation:</strong> The competing bills highlight how local and regional policymakers are moving to shape where AI infrastructure can be built and under what conditions. (Source: thebanner.com)</li>
+<li><strong>Lysander approved a six-month data center moratorium:</strong> The board action, alongside resident opposition to a proposed project, adds to evidence that local resistance can delay or reshape AI infrastructure expansion. (Source: WSYR)</li>
+<li><strong>Carroll County continued its data center review:</strong> Officials are addressing uncertainty while a yearlong moratorium remains in place, showing that permitting risk is becoming a practical constraint for AI growth. (Source: Baltimore Sun)</li>
+<li><strong>Collins announced an AI data center policy proposal:</strong> The proposal adds to a growing policy pipeline around data center siting, resource use, and local oversight. (Source: ABC7 WWSB)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Rhoda AI targeted robotics training bottlenecks:</strong> Rhoda AI is developing a video-based action model that uses internet video to help robots learn tasks more efficiently, potentially lowering data-collection costs for warehouse, industrial, and service robotics. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Permitting risk:</strong> Watch whether more counties and municipalities adopt data center moratoriums, because local approvals may become as important as chip supply for AI infrastructure growth. (Source: Tom's Hardware)</li>
+<li><strong>Power equipment backlogs:</strong> Track gas turbines, grid interconnects, cooling systems, and backup power suppliers as data center demand pressures energy supply chains. (Source: Data Center Dynamics)</li>
+<li><strong>Enterprise agent adoption:</strong> Monitor whether browser-based AI agents move from demos to governed enterprise deployments across sales, support, coding, and operations. (Source: MarkTechPost)</li>
+<li><strong>Portfolio concentration risk:</strong> Watch whether more large investors trim mega-cap AI leaders, which could signal a broader rotation toward second-order AI beneficiaries. (Source: Financial Times)</li>
+<li><strong>Robotics infrastructure demand:</strong> Track funding for batteries, charging, sensors, and autonomy software as physical AI moves from pilots into commercial deployment. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is no longer just a software story:</strong> The buildout now depends on power, land, cooling, memory, networking, and local permits. (Source: Tom's Hardware)</li>
+<li><strong>Mega-cap leadership may not be risk-free:</strong> Even AI winners can face valuation pressure if investors worry disruption will compress future returns. (Source: Financial Times)</li>
+<li><strong>Productivity tools are reaching the advisor desktop:</strong> AI platforms in wealth management are becoming part of daily workflow, not just a back-office experiment. (Source: InvestmentNews)</li>
+<li><strong>Second-order AI beneficiaries matter:</strong> Industrial power, memory, photonics, and automation suppliers may capture value as AI infrastructure expands. (Source: Data Center Knowledge)</li>
+<li><strong>Robots need better power and better training data:</strong> Advances in charging and video-based learning could accelerate physical AI adoption in warehouses and factories. (Source: The Robot Report)</li>
+</ul>
