@@ -1,0 +1,64 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>May 10, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Florida enacted a data-center power law:</strong> The state moved to limit summer electricity-bill spikes tied to AI data centers, showing that AI infrastructure is now a consumer-cost and utility-regulation issue, not just a technology buildout story. Advisors should expect more scrutiny around power-intensive AI assets. (Source: WFTV)</li>
+<li><strong>Nvidia committed more than $40 billion to AI equity deals:</strong> Nvidia is reportedly expanding from chip supplier to ecosystem financier, with OpenAI highlighted as a major stake. This reinforces Nvidia’s strategic reach but also raises concentration and circular-investment questions for portfolios heavily exposed to AI leaders. (Source: TechCrunch)</li>
+<li><strong>Connecticut passed SB5:</strong> The state approved a sweeping AI regulation law, adding to a patchwork of state-level rules that could affect compliance costs, adoption timelines, and risk management for companies deploying AI. (Source: crypto.news)</li>
+<li><strong>South Korea’s public AI spending surged:</strong> Government AI spending reportedly rose 11-fold to nearly 3 trillion won, signaling that national AI competition is becoming a fiscal-policy priority and may create opportunities for infrastructure, software, and services vendors. (Source: Chosunbiz)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Cognex launched the In-Sight 3900 Vision System:</strong> The AI-powered machine-vision platform is designed for high-speed factory inspection at the edge, a practical example of AI improving quality control while reshaping frontline manufacturing roles. (Source: The Robot Report)</li>
+<li><strong>NVIDIA researchers introduced Star Elastic:</strong> The model approach packages 30B, 23B, and 12B reasoning models into one checkpoint, which could help enterprises reduce training and inference costs as they scale AI workloads. (Source: MarkTechPost)</li>
+<li><strong>NVlabs released cuda-oxide:</strong> The experimental Rust-to-CUDA compiler backend points to continued investment in developer productivity around Nvidia’s GPU ecosystem, reinforcing how software tooling can deepen enterprise dependence on dominant AI platforms. (Source: MarkTechPost)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>A South Carolina county advanced a data-center moratorium:</strong> The first-reading vote signals growing local resistance to AI infrastructure projects, especially where power use, land use, and community impacts are unresolved. (Source: Bluffton Today)</li>
+<li><strong>Lonsdale passed a one-year data-center moratorium:</strong> Local officials said they want to evaluate development carefully before allowing projects to proceed, underscoring that AI capacity expansion can be slowed by municipal permitting. (Source: Voice of Alexandria)</li>
+<li><strong>Vernon County weighed a moratorium amid transmission-line uncertainty:</strong> The debate links data-center development directly to grid constraints and legal disputes, a reminder that AI infrastructure returns may depend on transmission access as much as compute demand. (Source: VernonReporter)</li>
+<li><strong>Syracuse.com’s editorial board urged New York to regulate AI data centers:</strong> The call for state oversight reflects broader concern that AI infrastructure growth could pressure electricity systems and local planning unless policy frameworks catch up. (Source: Syracuse.com)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>The University of Michigan endowment was reportedly set for a $2 billion AI gain:</strong> The report highlights how early AI exposure can materially affect institutional portfolio outcomes, while also reminding advisors that concentrated venture-style winners are hard to replicate. (Source: The Detroit News)</li>
+<li><strong>Meta Platforms faced a mixed AI investment setup:</strong> Investors are weighing legal and regulatory pressure against possible Pentagon-related upside, showing how AI valuations increasingly depend on policy, litigation, and government demand as well as product growth. (Source: simplywall.st)</li>
+<li><strong>An Iren co-founder criticized Australia’s AI red tape:</strong> The comments suggest regulatory bottlenecks may influence where AI infrastructure capital is deployed, making country-level permitting and power policy relevant to global AI investment themes. (Source: The Australian)</li>
+<li><strong>Nvidia’s ecosystem financing highlighted a broader capital-allocation shift:</strong> Large AI leaders are using balance sheets to shape the next generation of AI companies, which may support private-market valuations but also increases interdependence across the AI trade. (Source: MSN)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>Chatham County faced a lawsuit over its data-center moratorium:</strong> The legal challenge shows that local restrictions on AI infrastructure may create uncertainty for developers, utilities, and investors tracking project timelines. (Source: The North State Journal)</li>
+<li><strong>Amitabh Kant warned India against AI overregulation:</strong> His comments argued that India should dominate key AI “nodes” while avoiding rules that could slow competitiveness, reflecting how governments are balancing control with growth. (Source: BW Businessworld)</li>
+<li><strong>New York policy advocates pushed for state-level data-center oversight:</strong> The debate illustrates how AI regulation is expanding beyond models and privacy into land use, utility costs, and infrastructure permitting. (Source: Syracuse.com)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>IEEE Spectrum highlighted AI-enabled robot dexterity:</strong> The roundup featured advances in human-like robot hands, reinforcement-learning control for Boston Dynamics’ Spot, and embodied AI systems, reinforcing that AI is moving from screens into factories, inspection, logistics, and field operations. (Source: IEEE Spectrum)</li>
+<li><strong>Genesis AI’s GENE-26.5 system showcased manipulation progress:</strong> Human-like robotic dexterity could become strategically important for industrial automation, warehousing, and defense applications where flexible physical tasks remain difficult to automate. (Source: IEEE Spectrum)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>State lawmakers and county boards accelerate data-center rules:</strong> Watch whether moratoriums, lawsuits, and utility-cost protections begin delaying AI infrastructure projects or changing where capital is deployed. (Source: WFTV; Bluffton Today; Voice of Alexandria)</li>
+<li><strong>AI leaders expand strategic investing:</strong> Monitor whether large technology companies continue using equity stakes and partnerships to secure model access, customers, and ecosystem influence. (Source: TechCrunch; MSN)</li>
+<li><strong>Public-sector AI budgets rise globally:</strong> Track government spending programs in Asia, the U.S., and Europe as potential demand drivers for cloud, cybersecurity, semiconductors, and consulting firms. (Source: Chosunbiz)</li>
+<li><strong>Enterprise AI costs move lower:</strong> Watch model-efficiency releases and developer tools that could make AI adoption more affordable beyond the largest technology firms. (Source: MarkTechPost)</li>
+<li><strong>Robotics moves from demos to deployment:</strong> Follow machine vision, dexterous manipulation, and mobile robotics for signs that physical AI is becoming a measurable productivity theme in manufacturing and logistics. (Source: The Robot Report; IEEE Spectrum)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>Data-center regulation is now part of the AI investment story:</strong> AI growth depends on electricity, permitting, and local acceptance, not just better chips. (Source: WFTV; Bluffton Today)</li>
+<li><strong>Nvidia is becoming more than a chip company:</strong> Its AI equity investments show how dominant platforms may try to finance and shape their own ecosystems. (Source: TechCrunch)</li>
+<li><strong>AI regulation is moving state by state:</strong> Companies may face a growing compliance patchwork before there is a single national rulebook. (Source: crypto.news)</li>
+<li><strong>AI opportunity is broadening beyond the Magnificent Seven:</strong> Industrial automation, public-sector spending, and infrastructure providers are increasingly part of the discussion. (Source: The Robot Report; Chosunbiz)</li>
+<li><strong>Physical AI is the next productivity frontier:</strong> Robots with better vision, mobility, and dexterity could eventually affect factories, warehouses, defense, and logistics. (Source: IEEE Spectrum)</li>
+</ul>
