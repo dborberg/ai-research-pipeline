@@ -1,0 +1,61 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>May 11, 2026</strong></p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>AI safety reviews could become a federal procurement gate:</strong> A group is urging that advanced AI labs pass safety reviews before qualifying for U.S. government contracts, a potential new hurdle for vendors seeking public-sector revenue and a signal that AI governance may become tied to commercial access. (Source: Reuters)</li>
+<li><strong>Florida moved to regulate AI data centers:</strong> Governor Ron DeSantis signed a law regulating AI data centers, underscoring that AI infrastructure growth is increasingly facing state-level oversight that could affect permitting, costs, and site selection. (Source: Let's Data Science)</li>
+<li><strong>SoftBank targeted batteries for AI data centers:</strong> SoftBank is reportedly planning large-scale batteries for AI data centers, highlighting power reliability and storage as investable bottlenecks in the AI buildout beyond chips and software. (Source: Bloomberg)</li>
+</ul>
+
+<h3>ENTERPRISE AND LABOR</h3>
+<ul>
+<li><strong>Bloomberg Law flagged gaps in AI hiring compliance:</strong> Employers using AI in recruiting face a patchwork of rules across jurisdictions, raising legal and reputational risk for firms that automate screening, ranking, or interview workflows. (Source: Bloomberg Law News)</li>
+<li><strong>Law firms are being pushed toward clearer AI billing disclosure:</strong> Greater transparency around how AI is used in legal work may help firms preserve client trust while defending pricing models as automation changes professional services delivery. (Source: Bloomberg Law News)</li>
+<li><strong>Researchers challenged the chatbot-first enterprise model:</strong> A new paper argues that defaulting to conversational chatbots can create risks including poor task fit, deskilling, labor displacement, and market concentration, reinforcing the case for more specialized AI workflows. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>INFRASTRUCTURE AND POWER</h3>
+<ul>
+<li><strong>Hyperscale Data advanced Michigan AI compute leasing plans:</strong> The company said it is making progress toward leasing AI compute capacity at its Michigan data center campus while evaluating longer-term expansion opportunities. (Source: Financial Times)</li>
+<li><strong>Andover moved to ban an AI data center:</strong> Local opposition escalated after a township meeting reportedly turned violent, showing that community resistance and zoning conflict can slow the physical rollout of AI infrastructure. (Source: AOL.com)</li>
+<li><strong>Grove City residents pushed for a data center moratorium:</strong> The local moratorium effort adds to evidence that data center growth is becoming a political and permitting issue in more U.S. communities. (Source: The Columbus Dispatch)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT</h3>
+<ul>
+<li><strong>Cerebras is reportedly lifting its IPO price range:</strong> Reuters reported that Cerebras is expected to raise its IPO range to $150 to $160 per share as demand surges, signaling continued appetite for AI compute and semiconductor exposure. (Source: Reuters)</li>
+<li><strong>Bain sized agentic AI automation as a major SaaS opportunity:</strong> Bain & Company estimated a $100 billion U.S. market for agentic AI automation across enterprise software, with potential beneficiaries including Salesforce, ServiceNow, Workday, GitHub, Glean, Harvey, Sierra, and Cursor. (Source: AI News)</li>
+<li><strong>Financial AI adoption is being linked to governance quality:</strong> Trust in AI tools for financial services increasingly depends on design, oversight, and regulation, which could separate durable platforms from tools that struggle with compliance and client confidence. (Source: Devdiscourse)</li>
+</ul>
+
+<h3>REGULATION AND POLICY</h3>
+<ul>
+<li><strong>China is emphasizing human oversight for agentic AI:</strong> China’s policy direction for autonomous AI systems appears focused on keeping humans in the loop, a governance approach that may influence adoption speed and compliance expectations for global firms. (Source: The Register)</li>
+<li><strong>New Zealand’s government AI framework drew criticism:</strong> The country’s approach to AI use in government was described as potentially overly optimistic, reflecting wider debate over whether public-sector AI frameworks adequately address operational and accountability risks. (Source: The Conversation)</li>
+<li><strong>China’s IP market is being reshaped by AI policy:</strong> Experts cited AI, policy shifts, and quality standards as forces changing China’s intellectual property landscape, which matters for companies with innovation, branding, or enforcement exposure in the region. (Source: World Trademark Review)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Joby and Skyports completed New York point-to-point eVTOL flights:</strong> The flights to Downtown Skyport demonstrated urban air mobility operations, charging readiness, and vertical takeoff and landing infrastructure in a major metropolitan market. (Source: Robotics & Automation News)</li>
+<li><strong>BioProVLA-Agent showed progress in lab robotics:</strong> The academic system combines protocol parsing, visual verification, and robotic execution for biological lab tasks, pointing to longer-term automation potential in life sciences research workflows. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Federal procurement standards:</strong> Watch whether AI safety reviews become a practical requirement for government contracts, because procurement rules can quickly shape vendor winners and losers. (Source: Reuters)</li>
+<li><strong>Local data center resistance:</strong> Monitor zoning fights, moratoriums, and state regulation as early indicators of where AI infrastructure buildouts may face delays or higher costs. (Source: The Columbus Dispatch)</li>
+<li><strong>AI power reliability spending:</strong> Track battery storage, grid interconnection, and backup power investments as data center operators seek to secure dependable capacity. (Source: Bloomberg)</li>
+<li><strong>Agentic AI revenue conversion:</strong> Watch whether enterprise software vendors turn large automation forecasts into measurable bookings, retention gains, and margin improvement. (Source: AI News)</li>
+<li><strong>Physical AI commercialization:</strong> Follow eVTOL, lab automation, and other embodied AI pilots for signs of real deployments rather than demonstrations. (Source: Robotics & Automation News)</li>
+</ul>
+
+<h3>ADVISOR SOUNDBITES</h3>
+<ul>
+<li><strong>AI is moving from software story to infrastructure story:</strong> Power, batteries, permitting, and data centers are becoming as important as models and apps. (Source: Bloomberg)</li>
+<li><strong>Regulation is becoming part of the AI investment thesis:</strong> Companies that can meet safety, governance, and transparency expectations may earn better access to enterprise and government customers. (Source: Reuters)</li>
+<li><strong>The AI trade is broadening:</strong> Opportunities are appearing in semiconductors, SaaS automation, data centers, energy storage, and specialized infrastructure. (Source: AI News)</li>
+<li><strong>Local politics can slow global technology trends:</strong> Even strong demand for AI compute can run into zoning, community, and environmental pushback. (Source: AOL.com)</li>
+<li><strong>Physical AI is still early but strategically important:</strong> Robotics, lab automation, and electric mobility pilots show how AI could eventually affect transportation, logistics, healthcare research, and industrial work. (Source: Robotics & Automation News)</li>
+</ul>
