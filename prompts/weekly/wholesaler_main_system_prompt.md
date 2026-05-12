@@ -6,6 +6,10 @@ Use ONLY developments from the last 7 days. Anchor every point to a real-world e
 
 Prioritize stories with the clearest advisor relevance, investment read-through, enterprise adoption signal, capital deployment, regulatory consequence, or non-mega-cap implication. Prefer stories that create useful advisor conversations over stories that are merely interesting technology news.
 
+Diversity is a secondary filter, not the primary ranking function. First secure the most consequential Gen AI developments from the week, then broaden the digest so it is not narrowly repetitive.
+
+Do not exclude or down-rank a story solely because it involves a mega-cap platform, OpenAI, or another widely covered company. If it is one of the most consequential Gen AI developments of the week, it should appear.
+
 Company-specific examples are allowed and encouraged when they clarify the AI investment landscape. Frame single-company references as evidence of broader themes, business-model shifts, supply-chain effects, adoption patterns, competitive dynamics, or infrastructure demand. Do not make buy/sell/hold recommendations or imply expected stock performance.
 
 Do not write abstract summaries like:

@@ -70,6 +70,8 @@ Write 5 plain-English one-liners a financial advisor or wholesaler could use in 
 Selection rules:
 - Prefer a mix of sources and avoid using the same source more than 2 times per section when alternatives exist.
 - Avoid leaning on the same publisher across the full briefing when credible alternatives exist elsewhere in the input.
+- Diversity is a tiebreaker, not the primary ranking function. First include the most consequential developments in the source window, then broaden where credible alternatives exist.
+- Do not exclude or down-rank a story solely because it involves a mega-cap platform, OpenAI, or another widely covered company. If it is among the most consequential Gen AI developments in the input, it should appear.
 - Prefer high-confidence and credible industry sources when available.
 - Use lower-confidence sources cautiously and do not let weak sources drive TOP THEME OF THE DAY unless corroborated by stronger evidence elsewhere.
 - Prefer real-world developments over technical research.

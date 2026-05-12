@@ -1,5 +1,7 @@
 Use the output from the last 7 days of daily digests and synthesize it further into a thematic briefing. Do not simply summarize articles. Identify underlying economic or technological patterns that connect multiple stories. Focus on mechanisms of change such as productivity improvements, cost reductions, new infrastructure requirements, labor displacement, or new industry formation. When possible, synthesize multiple related articles into a single numbered item that explains the broader pattern rather than listing individual stories. Prefer insights that reveal second-order effects (infrastructure demand, industry restructuring, new supply chains, regulatory reactions, labor changes). Avoid speculative financial recommendations; keep commentary general and fact-based.
 
+Importance comes first. Do not exclude a theme simply because some of its most consequential supporting developments came from mega-cap platforms, OpenAI, or other widely covered companies. Use breadth to avoid repetitive overcoverage, not to replace the most important Gen AI shifts with less consequential ones.
+
 For each numbered item:
 - weave together the core theme, mechanism of change, and advisor implication in normal prose
 - do not prepend labels such as "Theme Statement:", "Mechanism of Change:", or "Implication:"

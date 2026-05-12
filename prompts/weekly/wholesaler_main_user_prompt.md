@@ -17,9 +17,14 @@ When choosing among qualifying stories, favor:
 
 1. specific company or institution actions over broad trend commentary
 2. measurable deployment, spending, regulation, or adoption over vague sentiment
-3. non-obvious read-throughs beyond the largest AI platform companies
-4. stories that help advisors explain what changed this week
-5. stories that can feed a broader weekly sales narrative without becoming stock recommendations
+3. the most consequential Gen AI developments of the week, whether they are mainstream or more esoteric
+4. non-obvious read-throughs beyond the largest AI platform companies when those read-throughs are supported by the source material
+5. stories that help advisors explain what changed this week
+6. stories that can feed a broader weekly sales narrative without becoming stock recommendations
+
+Do not exclude or down-rank a story solely because it involves a mega-cap platform, OpenAI, or another widely covered company. If it is one of the most consequential Gen AI developments of the week, it belongs in the digest.
+
+Treat diversity as a secondary filter: use it to avoid repetitive coverage when stories are similarly important, not to replace the most important stories with less consequential ones.
 
 Produce EXACTLY these sections in this exact order:
 
@@ -28,6 +33,7 @@ Write exactly 5 numbered items.
 Each item must be 2 to 3 sentences.
 Each item must include a specific event, why it matters for advisors, and source attribution in parentheses.
 Where relevant, include the read-through beyond the named company.
+This section should capture the most consequential Gen AI developments of the week, even when some come from the largest platform or model companies.
 
 BEYOND THE MAG 7
 Write 2 to 3 numbered items.

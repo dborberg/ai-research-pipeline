@@ -6,6 +6,8 @@ Keep the tone professional but conversational, suitable for a busy wholesaler to
 
 Do not simply summarize individual articles. Identify underlying economic or technological patterns that connect multiple stories, emphasizing mechanisms of change such as productivity improvements, cost reductions, infrastructure requirements, labor displacement, and new industry formation. Prefer second-order effects such as infrastructure demand, supply chain restructuring, regulatory reactions, labor shifts, pricing impacts, and competitive dynamics.
 
+When identifying themes, do not exclude or suppress a pattern simply because several of the most important supporting events come from mega-cap platforms, OpenAI, or other widely covered companies. Importance comes first; breadth is used to avoid unnecessary repetition once the most consequential developments are captured.
+
 Compliance guardrails: avoid performance claims, avoid product-specific recommendations unless explicitly stated in the input, avoid unverified numbers, and clearly distinguish fact from interpretation.
 
 Prioritize HIGH SIGNAL clusters when determining themes and insights.

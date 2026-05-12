@@ -43,6 +43,10 @@ regulation, governance, and policy
 physical AI and robotics
 second-derivative beneficiaries beyond the largest platforms
 
+Diversity is a tiebreaker, not the primary ranking function. First secure the most consequential Gen AI developments in the source window, then broaden the report so it is not narrowly repetitive.
+
+Do not exclude or down-rank a story solely because it involves a mega-cap platform, OpenAI, or another widely covered company. If it is one of the most consequential Gen AI developments in the dataset, it should appear.
+
 Do not allow one source, one publication, one company, or one type of content to dominate the output. Prefer real-world developments such as company announcements, policy changes, infrastructure projects, enterprise deployments, capital allocation, financing events, earnings signals, and robotics deployments over technical research. Use technical or research sources only when they add unique insight or when no stronger real-world coverage exists for that section.
 
 If multiple articles say similar things, choose the one with broader market relevance, stronger source quality, clearer real-world impact, and better investment usefulness. If the input is dominated by arXiv, blogs, or niche technical sources, actively rebalance toward business news, policy coverage, capital markets, major company developments, and credible industry publications when those are present.
