@@ -4,6 +4,7 @@ import json
 import os
 import re
 from datetime import datetime, timedelta
+from pathlib import Path
 
 from dotenv import load_dotenv
 import pandas as pd
@@ -111,6 +112,35 @@ REAL_WORLD_THEME_TERMS = {
     "labor", "model", "nuclear", "policy", "power", "productivity", "regulation",
     "robot", "robotics", "semiconductor", "software", "spending", "supply", "tariff",
 }
+REPO_ROOT = Path(__file__).resolve().parent
+WEEKLY_PROMPTS_DIR = REPO_ROOT / "prompts" / "weekly"
+WEEKLY_PROMPT_PATHS = {
+    "cluster_articles_system": WEEKLY_PROMPTS_DIR / "cluster_articles_system_prompt.md",
+    "cluster_articles_user": WEEKLY_PROMPTS_DIR / "cluster_articles_user_prompt.md",
+    "pattern_extraction_system": WEEKLY_PROMPTS_DIR / "pattern_extraction_system_prompt.md",
+    "pattern_extraction_user": WEEKLY_PROMPTS_DIR / "pattern_extraction_user_prompt.md",
+    "wholesaler_main_system": WEEKLY_PROMPTS_DIR / "wholesaler_main_system_prompt.md",
+    "wholesaler_main_user": WEEKLY_PROMPTS_DIR / "wholesaler_main_user_prompt.md",
+    "wholesaler_practice_tip_system": WEEKLY_PROMPTS_DIR / "wholesaler_practice_tip_system_prompt.md",
+    "wholesaler_practice_tip_user": WEEKLY_PROMPTS_DIR / "wholesaler_practice_tip_user_prompt.md",
+    "thematic_system": WEEKLY_PROMPTS_DIR / "thematic_system_prompt.md",
+    "thematic_user": WEEKLY_PROMPTS_DIR / "thematic_user_prompt.md",
+}
+
+
+def _read_weekly_prompt_template(name):
+    path = WEEKLY_PROMPT_PATHS[name]
+    try:
+        return path.read_text(encoding="utf-8").strip()
+    except FileNotFoundError as exc:
+        raise FileNotFoundError(f"Required weekly prompt file not found: {path}") from exc
+
+
+def _load_weekly_prompt(name, **replacements):
+    prompt = _read_weekly_prompt_template(name)
+    for key, value in replacements.items():
+        prompt = prompt.replace(f"{{{{{key}}}}}", str(value))
+    return prompt
 
 
 def _compute_cluster_strength(cluster):
@@ -680,55 +710,11 @@ def cluster_articles(client, articles):
             )
         )
 
-    system_prompt = """
-You are an AI research clustering engine.
-Group articles into 5–10 DISTINCT, NON-OVERLAPPING THEMES based on underlying economic or technological drivers.
-
-Each theme must represent a real-world force such as:
-- infrastructure constraints
-- enterprise adoption shifts
-- labor/productivity changes
-- regulatory developments
-- capital allocation trends
-
-Avoid vague names like "AI trends" or "innovation".
-Do not create clusters with fewer than 2 articles unless the signal is extremely strong.
-At least 60% of the articles used to define each cluster must be HIGH SIGNAL when available.
-Prioritize HIGH SIGNAL articles when determining cluster structure. Use MEDIUM SIGNAL only for supporting context.
-Focus on patterns across multiple articles, not individual summaries.
-Emphasize second-order effects and economic implications such as infrastructure demand, labor shifts, enterprise deployment, cost changes, supply chains, regulation, pricing power, and industry formation.
-For each cluster, include a short investment_relevance explaining why this matters for markets, sectors, or advisors.
-Return valid JSON only.
-"""
-
-    user_prompt = f"""
-Cluster the following weekly AI research articles into 5 to 10 distinct themes.
-
-Return JSON with this exact structure:
-{{
-  "clusters": [
-    {{
-      "theme_name": "short theme name",
-      "article_ids": [1, 2, 3],
-      "representative_summary": "2-3 sentence synthesis of the cluster",
-      "key_companies": ["Company A", "Company B"],
-      "investment_relevance": "1-2 sentence explanation of why this matters for markets, sectors, or advisors"
-    }}
-  ]
-}}
-
-Rules:
-- Each article may appear in at most one cluster.
-- Favor high-signal articles when assigning the core of a cluster.
-- Use medium-signal articles only if they materially strengthen the same theme.
-- Do not create vague umbrella themes.
-- Do not create clusters with fewer than 2 articles unless the signal is extremely strong.
-- At least 60% of the articles used to define each cluster must be HIGH SIGNAL when available.
-- Theme names should be concise, specific, and useful for business readers.
-
-ARTICLES:
-{chr(10).join(article_lines)}
-"""
+        system_prompt = _load_weekly_prompt("cluster_articles_system")
+        user_prompt = _load_weekly_prompt(
+                "cluster_articles_user",
+                article_lines="\n".join(article_lines),
+        )
 
     raw_response = call_chat_model(
         client,
@@ -886,34 +872,11 @@ def extract_patterns(client, clusters):
             )
         )
 
-    system_prompt = """
-You are an AI research pattern extraction engine.
-Identify cross-cluster signals from weekly AI themes.
-Prioritize high-signal clusters, focus on patterns across multiple articles, and emphasize second-order effects and economic implications.
-Rank outputs by importance. The first item in each list must represent the most important signal for investors.
-Avoid generic observations. Each pattern must reflect a real economic or strategic shift.
-Return valid JSON only.
-"""
-
-    user_prompt = f"""
-Review these weekly AI theme clusters and extract the strongest patterns.
-
-Return JSON with this exact structure:
-{{
-  "emerging_trends": ["trend 1", "trend 2", "trend 3"],
-  "converging_signals": ["signal 1", "signal 2", "signal 3"],
-  "second_order_effects": ["effect 1", "effect 2", "effect 3"]
-}}
-
-Rules:
-- Rank each list by importance for investors.
-- The first item in each list must be the strongest signal.
-- Avoid generic observations.
-- Each item should describe a real economic or strategic shift.
-
-CLUSTERS:
-{chr(10).join(cluster_lines)}
-"""
+    system_prompt = _load_weekly_prompt("pattern_extraction_system")
+    user_prompt = _load_weekly_prompt(
+        "pattern_extraction_user",
+        cluster_lines="\n".join(cluster_lines),
+    )
 
     raw_response = call_chat_model(
         client,
@@ -1077,73 +1040,12 @@ def generate_wholesaler_weekly(client, source_context, week_start, article_data=
     else:
         recent_tip_context = "- No recent practice tips available."
 
-    main_system_prompt = """
-You are a senior AI research analyst writing a weekly AI digest for mutual fund wholesalers. The output must be immediately usable in advisor conversations.
-
-Write in plain text only. No markdown. No bullet symbols. Numbered items are allowed where requested.
-
-Use ONLY developments from the last 7 days. Anchor every point to a real-world event such as a company move, policy action, funding round, enterprise deployment, infrastructure buildout, or robotics deployment.
-
-Do not write abstract summaries like:
-AI continues to expand
-AI demand suggests
-This reflects a broader trend
-
-Prefer this structure inside each item:
-What happened
-Why it matters for advisors
-Implied takeaway
-
-Keep interpretation concise and clearly tied to facts in the source material. Avoid performance claims, product recommendations, and unverified numbers.
-"""
-
-    main_user_prompt = f"""
-Use the curated weekly source material below to produce a wholesaler-ready weekly digest.
-
-Select only stories that meet at least one of these:
-- named company or institution
-- capital deployment such as capex, funding, or buildout
-- policy or regulatory development
-- enterprise adoption with measurable implication
-- infrastructure expansion in power, chips, or data centers
-- physical AI or robotics deployment
-
-Reject vague or purely research-driven items unless they are tied to a real-world deployment or business decision.
-
-Produce EXACTLY these sections in this exact order:
-
-TOP 5 STORIES THIS WEEK
-Write exactly 5 numbered items.
-Each item must be 2 to 3 sentences.
-Each item must include a specific event, why it matters for advisors, and source attribution in parentheses.
-
-BEYOND THE MAG 7
-Write 2 to 3 numbered items.
-Each item must name a company, sector, or theme outside the obvious mega-cap AI names and explain why it matters now.
-
-WHAT IS BEING DISRUPTED
-Write exactly 3 numbered items.
-One sentence each.
-Each must reference a real signal from the week.
-
-REGULATORY RADAR
-Write 2 to 3 numbered items.
-Reference only actual policy or regulatory developments from the week.
-No speculation.
-
-READY TO USE SOUNDBITES
-Write exactly 5 numbered statements.
-Use plain English, conversational tone, and make each one specific and timely.
-
-QUESTIONS TO BRING TO YOUR CLIENTS
-Write exactly 3 numbered questions.
-Frame them as opportunities tied directly to this week's developments.
-
-Do NOT include the AI PRACTICE TIP OF THE WEEK section in this response.
-
-CONTENT:
-{primary_context}{supplemental_context}
-"""
+    main_system_prompt = _load_weekly_prompt("wholesaler_main_system")
+    main_user_prompt = _load_weekly_prompt(
+        "wholesaler_main_user",
+        primary_context=primary_context,
+        supplemental_context=supplemental_context,
+    )
 
     main_digest = call_chat_model(
         client,
@@ -1152,68 +1054,16 @@ CONTENT:
         max_completion_tokens=1800,
     )
 
-    tip_system_prompt = """
-You are generating only the final section of a weekly AI digest for mutual fund wholesalers.
-Write plain text only. Keep it practical, low-friction, and advisor-friendly.
-Base the tip on the week's actual developments and the draft digest provided.
-Do not repeat the rest of the digest.
-"""
-
-    tip_user_prompt = f"""
-AI PRACTICE TIP OF THE WEEK
-
-You are designing ONE highly practical, differentiated AI use case for financial advisors that a wholesaler can suggest in a client conversation.
-
-CRITICAL REQUIREMENTS:
-- Do NOT repeat common use cases like summarizing articles or writing basic emails
-- Rotate across different advisor workflows each week such as prospecting, portfolio review, client communication, meeting prep, behavioral coaching, or practice management
-- Also rotate across different idea families. If recent tips covered behavioral coaching, portfolio exposure mapping, client messaging, or meeting prep, do not return another close variant of that same concept
-- The idea must feel specific, actionable, and new, not generic
-- It should be something an advisor could actually try within 10 minutes
-- Tie the use case loosely to this week's themes when relevant, but do not force it
-- REQUIRED WORKFLOW FOR THIS WEEK: {required_workflow}
-- REQUIRED IDEA FAMILY FOR THIS WEEK: {required_concept}
-- Do NOT reuse or closely mimic any recent practice tip ideas listed below
-- If a recent tip covered portfolio review, holdings review, concentration mapping, or exposure mapping, do not return another variant of that same concept
-- If a recent tip covered behavioral coaching, pause scripts, premortems, FOMO control, or decision framing, do not return another variant of that same concept
-- Prefer a different advisor job-to-be-done than the last 3 tips, even if the wording would be different
-
-OUTPUT FORMAT:
-Return exactly this section structure and labels:
-
-AI PRACTICE TIP OF THE WEEK
-What: <one-sentence description of the use case>
-
-Why: <2 to 3 sentences explaining why this is useful for advisors specifically>
-
-How to:
-1. <one short, practical step>
-2. <one short, practical step>
-3. <one short, practical step>
-
-Copy prompt: <a clean, ready-to-use prompt the advisor can paste into ChatGPT>
-Guardrail: <1 to 2 sentences on compliance, accuracy, or appropriate use>
-
-STYLE:
-- Plain English
-- Advisor-friendly, not technical
-- Avoid hype
-- Focus on usefulness and differentiation
-- The How to section must use numbered steps, not plain paragraphs
-
-Use the weekly digest draft below for context. Return only the section content in the format above.
-
-WEEK START: {week_start}
-
-RECENT PRACTICE TIP HISTORY TO AVOID:
-{recent_tip_context}
-
-RECENT PRACTICE TIP CONSTRAINTS:
-{recent_tip_constraints}
-
-DRAFT DIGEST:
-{main_digest}
-"""
+    tip_system_prompt = _load_weekly_prompt("wholesaler_practice_tip_system")
+    tip_user_prompt = _load_weekly_prompt(
+        "wholesaler_practice_tip_user",
+        required_workflow=required_workflow,
+        required_concept=required_concept,
+        week_start=week_start,
+        recent_tip_context=recent_tip_context,
+        recent_tip_constraints=recent_tip_constraints,
+        main_digest=main_digest,
+    )
 
     practice_tip = call_chat_model(
         client,
@@ -1361,67 +1211,8 @@ def _build_recent_practice_tip_constraints(recent_tip_history):
 
 
 def generate_thematic_weekly(client, source_context):
-    system_prompt = """
-You are a senior AI research analyst condensing a week of daily AI briefings into a concise weekly thematic digest for mutual fund wholesalers. Your output will be sent as an email. Use plain text only, no markdown. Do not use bullet symbols such as hyphens, asterisks, or bullet characters. Numbered lists (1, 2, 3) are allowed.
-
-Access the daily briefings by date. Use ONLY entries dated within the last 7 days. Ignore everything older than that.
-
-Keep the tone professional but conversational, suitable for a busy wholesaler to read in under 5 minutes and immediately use in advisor meetings.
-
-Do not simply summarize individual articles. Identify underlying economic or technological patterns that connect multiple stories, emphasizing mechanisms of change such as productivity improvements, cost reductions, infrastructure requirements, labor displacement, and new industry formation. Prefer second-order effects such as infrastructure demand, supply chain restructuring, regulatory reactions, labor shifts, pricing impacts, and competitive dynamics.
-
-Compliance guardrails: avoid performance claims, avoid product-specific recommendations unless explicitly stated in the input, avoid unverified numbers, and clearly distinguish fact from interpretation.
-
-Prioritize HIGH SIGNAL clusters when determining themes and insights.
-Focus on patterns across multiple articles, not individual summaries.
-Emphasize second-order effects such as:
-- infrastructure demand
-- pricing power shifts
-- labor displacement
-- capital allocation changes
-- regulatory reactions
-"""
-
-    user_prompt = f"""
-Use the output from the last 7 days of daily digests and synthesize it further into a thematic briefing. Do not simply summarize articles. Identify underlying economic or technological patterns that connect multiple stories. Focus on mechanisms of change such as productivity improvements, cost reductions, new infrastructure requirements, labor displacement, or new industry formation. When possible, synthesize multiple related articles into a single numbered item that explains the broader pattern rather than listing individual stories. Prefer insights that reveal second-order effects (infrastructure demand, industry restructuring, new supply chains, regulatory reactions, labor changes). Avoid speculative financial recommendations; keep commentary general and fact-based.
-
-For each numbered item:
-- weave together the core theme, mechanism of change, and advisor implication in normal prose
-- do not prepend labels such as "Theme Statement:", "Mechanism of Change:", or "Implication:"
-- write each item as a clean, natural paragraph or 2 to 3 connected sentences
-
-Output the following sections exactly:
-
-THE MOST IMPORTANT SHIFT THIS WEEK
-Provide 2 to 3 numbered items.
-
-WHERE AI IS QUIETLY EXPANDING
-Provide 3 to 5 numbered items.
-
-INFRASTRUCTURE SIGNALS
-Provide 3 to 5 numbered items.
-
-EARLY PRODUCTIVITY SIGNALS
-Provide 3 to 4 numbered items.
-
-SURPRISING OR UNDERAPPRECIATED DEVELOPMENT
-Provide one short paragraph describing a development that could become a future Beyond the Horizon case study.
-
-EMERGING BUSINESS MODELS
-Provide 1 to 3 numbered items.
-
-Prioritize HIGH SIGNAL clusters when determining themes and insights.
-Focus on patterns across multiple articles, not individual summaries.
-Emphasize second-order effects such as:
-- infrastructure demand
-- pricing power shifts
-- labor displacement
-- capital allocation changes
-- regulatory reactions
-
-CONTENT:
-{source_context}
-"""
+    system_prompt = _load_weekly_prompt("thematic_system")
+    user_prompt = _load_weekly_prompt("thematic_user", source_context=source_context)
 
     response = call_chat_model(
         client,

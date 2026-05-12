@@ -1,3 +1,29 @@
+from pathlib import Path
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DAILY_PROMPTS_DIR = REPO_ROOT / "prompts" / "daily"
+DAILY_PROMPT_PATHS = {
+    "daily_digest_system": DAILY_PROMPTS_DIR / "daily_digest_system_prompt.md",
+    "daily_digest_user": DAILY_PROMPTS_DIR / "daily_digest_user_prompt.md",
+}
+
+
+def _read_daily_prompt_template(name):
+    path = DAILY_PROMPT_PATHS[name]
+    try:
+        return path.read_text(encoding="utf-8").strip()
+    except FileNotFoundError as exc:
+        raise FileNotFoundError(f"Required daily prompt file not found: {path}") from exc
+
+
+def _load_daily_prompt(name, **replacements):
+    prompt = _read_daily_prompt_template(name)
+    for key, value in replacements.items():
+        prompt = prompt.replace(f"{{{{{key}}}}}", str(value))
+    return prompt
+
+
 def generate_daily_digest(report_date=None):
     import json
     import os
@@ -32,6 +58,8 @@ def generate_daily_digest(report_date=None):
             "government", "policy", "regulation", "white house", "lawmakers",
             "upgrade", "earnings", "index", "investment", "capex", "valuation", "funding",
             "data center", "power", "grid", "fab", "fabs", "campus", "semiconductor",
+            "cooling", "nuclear", "battery", "batteries", "interconnection", "fiber", "optical",
+            "bond issuance", "private credit", "sovereign ai", "agentic", "robotics",
         ])
 
     def parse_companies(raw_companies):
@@ -64,8 +92,128 @@ def generate_daily_digest(report_date=None):
         title = article.get("title") or ""
         return bool(re.search(r"\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,2})\b", title))
 
+    def source_quality_hint(article):
+        source = (article.get("original_publisher") or article.get("source") or "").lower()
+        if any(term in source for term in [
+            "reuters", "bloomberg", "financial times", "ft.com", "wall street journal", "wsj",
+            "associated press", "ap news", "sec", "federal register", "white house",
+            "congress", "senate", "house.gov", "commerce department", "ftc", "doj",
+            "company announcement", "press release", "investor relations", "filing",
+            "google cloud", "aws", "microsoft azure", "oracle", "nvidia",
+        ]):
+            return "high_confidence"
+        if any(term in source for term in [
+            "mckinsey", "bain", "bcg", "gartner", "idc", "forrester", "s&p global",
+            "semiconductor engineering", "data center dynamics", "utility dive",
+            "eetimes", "digitimes", "converge digest", "the register", "ieee",
+            "robot report", "design news",
+        ]):
+            return "credible_industry"
+        if any(term in source for term in [
+            "fortune", "the information", "morning brew", "local", "news",
+        ]):
+            return "useful_careful"
+        if any(term in source for term in [
+            "medium", "substack", "blog", "aggregator", "crypto", "coin",
+        ]):
+            return "lower_confidence"
+        return "general_news"
+
+    def investment_theme_score(article):
+        text = " ".join(
+            [
+                article.get("title") or "",
+                article.get("summary") or "",
+                article.get("advisor_relevance") or "",
+                " ".join(parse_companies(article.get("companies"))),
+            ]
+        ).lower()
+        theme_terms = {
+            "infrastructure_buildout": (
+                18,
+                [
+                    "data center", "datacenter", "compute leasing", "gpu", "gpus", "asic", "asics",
+                    "tpu", "tpus", "hbm", "memory", "advanced packaging", "semicap", "cloud infrastructure",
+                    "sovereign ai", "networking", "interconnect", "accelerated computing",
+                ],
+            ),
+            "power_physical_bottlenecks": (
+                18,
+                [
+                    "grid capacity", "electricity demand", "power purchase agreement", "ppa", "battery",
+                    "batteries", "backup power", "natural gas turbine", "fuel cell", "nuclear", "cooling",
+                    "liquid cooling", "water use", "fiber", "optical", "transformer", "switchgear",
+                    "permitting", "zoning", "interconnection queue", "moratorium",
+                ],
+            ),
+            "capital_intensity_financing": (
+                16,
+                [
+                    "capex", "capital expenditure", "bond issuance", "debt financing", "project finance",
+                    "data center leasing", "infrastructure funding", "private credit", "sovereign funding",
+                    "multi-year", "balance sheet", "financing",
+                ],
+            ),
+            "enterprise_adoption_monetization": (
+                14,
+                [
+                    "agentic", "agent", "copilot", "workflow automation", "saas", "pricing", "roi",
+                    "customer adoption", "retention", "observability", "identity", "security", "governance",
+                    "spend controls", "compliance tool", "professional services automation",
+                ],
+            ),
+            "second_derivative_beneficiaries": (
+                13,
+                [
+                    "electrical equipment", "power semiconductor", "analog semiconductor", "cooling supplier",
+                    "fiber supplier", "networking", "industrial automation", "engineering firm", "utility",
+                    "utilities", "specialty materials", "cybersecurity", "data infrastructure",
+                    "validation", "governance software",
+                ],
+            ),
+            "labor_redesign": (
+                11,
+                [
+                    "white-collar", "workflow change", "ai-assisted coding", "junior talent",
+                    "professional services", "quality control", "testing", "human-in-the-loop",
+                    "augmentation", "replacement", "workforce",
+                ],
+            ),
+            "regulation_governance_access": (
+                15,
+                [
+                    "procurement standard", "model safety", "ai disclosure", "hiring rule", "privacy",
+                    "auditability", "ip policy", "public-sector", "public sector", "risk control",
+                    "export control", "antitrust",
+                ],
+            ),
+            "physical_ai_robotics": (
+                14,
+                [
+                    "robot", "robotics", "humanoid", "autonomous system", "industrial automation",
+                    "warehouse automation", "evtol", "drone", "drones", "lab automation",
+                    "surgical automation", "ai-enabled manufacturing", "embodied ai", "defense autonomy",
+                ],
+            ),
+            "market_structure_competitive_advantage": (
+                10,
+                [
+                    "scale economies", "data advantage", "supply constraint", "switching cost",
+                    "ecosystem", "open-source pressure", "concentration risk", "platform advantage",
+                    "margin durability",
+                ],
+            ),
+        }
+        score = 0
+        for weight, terms in theme_terms.values():
+            matches = sum(1 for term in terms if term in text)
+            if matches:
+                score += weight + min(matches - 1, 4) * 2
+        return score
+
     def article_priority_score(article):
         score = float(article.get("ai_score") or 0)
+        score += investment_theme_score(article)
 
         if has_policy_priority(article):
             score += 40
@@ -75,31 +223,20 @@ def generate_daily_digest(report_date=None):
             score += 10
 
         source_hint = source_quality_hint(article)
-        if source_hint == "policy_regulatory":
-            score += 10
-        elif source_hint == "business_financial":
-            score += 8
-        elif source_hint == "industry_technical":
+        if source_hint == "high_confidence":
+            score += 14
+        elif source_hint == "credible_industry":
+            score += 9
+        elif source_hint == "useful_careful":
             score += 4
-        elif source_hint == "research_blog":
-            score -= 3
+        elif source_hint == "lower_confidence":
+            score -= 8
 
-        if parse_companies(article.get("companies")):
-            score += min(len(parse_companies(article.get("companies"))), 3)
+        companies = parse_companies(article.get("companies"))
+        if companies:
+            score += min(len(companies), 5)
 
         return score
-
-    def source_quality_hint(article):
-        source = (article.get("original_publisher") or article.get("source") or "").lower()
-        if any(term in source for term in ["reuters", "financial times", "ft", "economist", "bloomberg", "wsj"]):
-            return "business_financial"
-        if any(term in source for term in ["government", "policy", "regulation"]):
-            return "policy_regulatory"
-        if any(term in source for term in ["eetimes", "semiconductor", "design news", "robot report", "ieee"]):
-            return "industry_technical"
-        if any(term in source for term in ["arxiv", "blog"]):
-            return "research_blog"
-        return "general_news"
 
     def extract_theme_tags(article):
         text = " ".join(
@@ -113,23 +250,28 @@ def generate_daily_digest(report_date=None):
             "infrastructure_and_power": [
                 "data center", "datacenter", "power", "grid", "electricity", "utility", "utilities",
                 "cooling", "thermal", "nuclear", "land", "water", "semiconductor", "chip", "networking",
-                "optical", "fab", "fabs",
+                "optical", "fiber", "fab", "fabs", "battery", "batteries", "backup power",
+                "interconnection", "permitting", "zoning", "transformer", "switchgear",
             ],
             "enterprise_and_labor": [
                 "hiring", "layoff", "layoffs", "job", "jobs", "workforce", "productivity", "automation",
                 "employee", "employees", "coding", "developer", "software development", "copilot",
+                "agentic", "agent", "workflow", "governance", "compliance", "spend control",
             ],
             "capital_markets_and_investment": [
                 "earnings", "revenue", "valuation", "funding", "raised", "investment", "investor",
                 "capital", "stock", "shares", "private equity", "venture", "vc", "lease",
+                "bond", "debt", "private credit", "project finance", "capex", "ipo",
             ],
             "regulation_and_policy": [
                 "regulation", "regulatory", "policy", "lawmakers", "congress", "senate", "government",
                 "public feedback", "moratorium", "antitrust", "export control", "compliance", "bill",
+                "procurement", "model safety", "privacy", "ip", "hiring rule", "public-sector",
             ],
             "physical_ai_and_robotics": [
                 "robot", "robotics", "autonomous", "autonomy", "warehouse automation", "drone", "aviation",
-                "manufacturing", "factory", "humanoid", "inspection", "logistics",
+                "manufacturing", "factory", "humanoid", "inspection", "logistics", "evtol",
+                "lab automation", "surgical automation", "embodied ai", "defense autonomy",
             ],
         }
 
@@ -197,10 +339,10 @@ def generate_daily_digest(report_date=None):
             "physical_ai_and_robotics",
         ]
         label_map = {
-            "regulation_and_policy": "REGULATION AND POLICY",
-            "capital_markets_and_investment": "CAPITAL MARKETS AND INVESTMENT",
-            "infrastructure_and_power": "INFRASTRUCTURE AND POWER",
-            "enterprise_and_labor": "ENTERPRISE AND LABOR",
+            "regulation_and_policy": "REGULATION, GOVERNANCE AND POLICY",
+            "capital_markets_and_investment": "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
+            "infrastructure_and_power": "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS",
+            "enterprise_and_labor": "ENTERPRISE ADOPTION AND LABOR",
             "physical_ai_and_robotics": "PHYSICAL AI AND ROBOTICS",
         }
 
@@ -251,10 +393,10 @@ def generate_daily_digest(report_date=None):
 
     def build_theme_signal_block(all_articles):
         theme_labels = {
-            "infrastructure_and_power": "INFRASTRUCTURE AND POWER",
-            "enterprise_and_labor": "ENTERPRISE AND LABOR",
-            "capital_markets_and_investment": "CAPITAL MARKETS AND INVESTMENT",
-            "regulation_and_policy": "REGULATION AND POLICY",
+            "infrastructure_and_power": "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS",
+            "enterprise_and_labor": "ENTERPRISE ADOPTION AND LABOR",
+            "capital_markets_and_investment": "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
+            "regulation_and_policy": "REGULATION, GOVERNANCE AND POLICY",
             "physical_ai_and_robotics": "PHYSICAL AI AND ROBOTICS",
         }
         theme_examples = {theme_name: [] for theme_name in theme_labels}
@@ -361,14 +503,15 @@ def generate_daily_digest(report_date=None):
 
     def _find_diversity_issues(content, available_publishers):
         expected_sections = [
+            "TOP THEME OF THE DAY",
             "TOP STORIES",
-            "ENTERPRISE AND LABOR",
-            "INFRASTRUCTURE AND POWER",
-            "CAPITAL MARKETS AND INVESTMENT",
-            "REGULATION AND POLICY",
+            "ENTERPRISE ADOPTION AND LABOR",
+            "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS",
+            "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
+            "REGULATION, GOVERNANCE AND POLICY",
             "PHYSICAL AI AND ROBOTICS",
             "WHAT TO WATCH",
-            "ADVISOR SOUNDBITES",
+            "ADVISOR / WHOLESALER SOUNDBITES",
         ]
         issues = []
         found_sections = re.findall(r"<h3>(.*?)</h3>", content or "", flags=re.IGNORECASE)
@@ -376,8 +519,38 @@ def generate_daily_digest(report_date=None):
         missing_sections = [section for section in expected_sections if section not in normalized_found_sections]
         if missing_sections:
             issues.append(f"Missing required sections: {', '.join(missing_sections)}")
+        found_required_sections = [section for section in normalized_found_sections if section in expected_sections]
+        if found_required_sections != expected_sections:
+            issues.append("Required sections are not in the expected order or old section names were used")
+
+        top_theme_match = re.search(
+            r"<h3>\s*TOP THEME OF THE DAY\s*</h3>\s*<p>.*?</p>",
+            content or "",
+            flags=re.DOTALL | re.IGNORECASE,
+        )
+        if not top_theme_match:
+            issues.append("TOP THEME OF THE DAY must be a paragraph immediately after its h3 heading")
+
+        disallowed_tags = [
+            tag for tag in re.findall(r"</?\s*([a-zA-Z0-9]+)", content or "")
+            if tag.lower() not in {"h2", "h3", "p", "ul", "li", "strong"}
+        ]
+        if disallowed_tags:
+            issues.append("HTML includes disallowed tags: " + ", ".join(sorted(set(disallowed_tags))))
+
+        if re.search(r"(^|\s)(buy|sell|hold|overweight|underweight|price target)(\s|[.,;:])", content or "", flags=re.IGNORECASE):
+            issues.append("Output includes explicit recommendation language")
+        if "->" in (content or "") or "→" in (content or ""):
+            issues.append("Output includes arrows")
 
         bullets = _extract_digest_bullets(content)
+        bullets_missing_sources = [
+            bullet["lead"] for bullet in bullets
+            if bullet["section"].upper() not in {"WHAT TO WATCH", "ADVISOR / WHOLESALER SOUNDBITES"} and not bullet["source"]
+        ]
+        if bullets_missing_sources:
+            issues.append("Analytical section bullets must include Source attribution")
+
         lead_counts = Counter(_normalize_text(bullet["lead"]) for bullet in bullets if bullet["lead"])
         repeated_leads = [lead for lead, count in lead_counts.items() if lead and count > 1]
         if repeated_leads:
@@ -422,11 +595,26 @@ def generate_daily_digest(report_date=None):
     prompt_articles = select_prompt_articles(articles)
 
     if not all_articles:
-        return f"""{DAILY_TITLE}
-{today}
-
-No relevant articles found in the last 24 hours.
-"""
+        return f"""<h2>{DAILY_TITLE}</h2>
+<p><strong>{today}</strong></p>
+<h3>TOP THEME OF THE DAY</h3>
+<p>No meaningful Gen AI developments surfaced in the daily source window, so there is no cross-story investment theme to elevate today.</p>
+<h3>TOP STORIES</h3>
+<ul><li><strong>No major Gen AI stories surfaced:</strong> Continue monitoring company actions, policy moves, infrastructure buildouts, financing events, and enterprise deployments for fresh signals. (Source: Full article set)</li></ul>
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul><li><strong>No major enterprise adoption or labor developments surfaced:</strong> Continue monitoring agentic AI, copilots, workflow redesign, professional services automation, and governance signals. (Source: Full article set)</li></ul>
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul><li><strong>No major infrastructure or power bottleneck developments surfaced:</strong> Continue monitoring data centers, grid capacity, cooling, semiconductors, networking, and permitting constraints. (Source: Full article set)</li></ul>
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul><li><strong>No major capital markets or investment-implication developments surfaced:</strong> Continue monitoring earnings, capex, financing, funding, valuation discipline, and second-derivative beneficiaries. (Source: Full article set)</li></ul>
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul><li><strong>No major regulation, governance, or policy developments surfaced:</strong> Continue monitoring procurement rules, model safety, privacy, export controls, antitrust, and AI hiring rules. (Source: Full article set)</li></ul>
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul><li><strong>No major commercial Physical AI or robotics developments surfaced:</strong> Continue monitoring robotics, autonomous systems, lab automation, industrial automation, and AI-enabled manufacturing for signs that pilots are moving into real deployment. (Source: Full article set)</li></ul>
+<h3>WHAT TO WATCH</h3>
+<ul><li><strong>Fresh source flow:</strong> Watch for new company announcements, policy actions, capex disclosures, infrastructure projects, and enterprise deployments in the next daily window. (Source: Full article set)</li></ul>
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul><li><strong>Quiet days still matter:</strong> When the source window is thin, the discipline is to wait for real events rather than force an AI narrative. (Source: Full article set)</li></ul>"""
     article_block = "\n\n---\n\n".join(
         "\n".join(
             [
@@ -434,6 +622,7 @@ No relevant articles found in the last 24 hours.
                 f"SOURCE: {article.get('original_publisher') or article['source']}",
                 f"PRIMARY_SECTION_HINT: {primary_section_hint(article)}",
                 f"SOURCE_QUALITY_HINT: {source_quality_hint(article)}",
+                f"INVESTMENT_THEME_SCORE: {investment_theme_score(article)}",
                 f"BIG_STORY_HINT: {'YES' if is_big_story(article) else 'NO'}",
                 f"POLICY_PRIORITY_HINT: {'YES' if has_policy_priority(article) else 'NO'}",
                 f"COMPANIES_MENTIONED: {', '.join(parse_companies(article.get('companies')))}",
@@ -445,174 +634,14 @@ No relevant articles found in the last 24 hours.
         for article in prompt_articles
     )
 
-    system_prompt = """
-You are an AI research analyst producing a daily briefing for financial advisors and mutual fund wholesalers. Distill generative AI news into clear, concise, professionally written summaries that a non-technical financial professional can understand and act on. Present both opportunities and risks where appropriate. Ensure emerging physical AI and robotics developments are included when strategically meaningful to industrial automation, logistics, defense, or public market exposure. If article content appears incomplete or missing, skip that article silently and summarize only what was provided.
-
-Return clean HTML only. Do not use markdown. Use email-friendly spacing and structure.
-
-Prioritize diversity across these domains:
-- infrastructure and power
-- enterprise and labor
-- capital markets and investment
-- regulation and policy
-- physical AI and robotics
-
-Do not allow one source, one publication, or one type of content to dominate the output. Prefer real-world developments such as company announcements, policy changes, infrastructure projects, enterprise deployments, capital allocation, and robotics deployments over technical research. Use technical or research sources only when they add unique insight or when no stronger real-world coverage exists for that section.
-
-If multiple articles say similar things, choose the one with broader market relevance and clearer real-world impact. If the input is dominated by arXiv, EE Times, or other niche technical sources, actively rebalance toward business news, policy coverage, capital markets, and major company developments when those are present.
-
-Treat SOURCE as the original publisher when available. FEED_SOURCE may be an aggregator feed and should not be treated as true source diversity.
-
-Prefer coverage over precision. It is better to include multiple distinct real-world developments than to repeat one dominant theme across sections.
-
-Treat PRIMARY_SECTION_HINT as the default home for an article unless a stronger strategic reason justifies moving it.
-
-The article set may already be deduplicated at the event level before it reaches you. Treat that as a reduction of duplicate evidence, not a signal to ignore broader thematic patterns.
-
-If multiple distinct events point to the same higher-order theme, preserve that theme explicitly in WHAT TO WATCH and ADVISOR SOUNDBITES even when duplicate event articles have been removed.
-
-If an article is marked BIG_STORY_HINT: YES, treat it as a high-priority candidate for TOP STORIES. If any BIG story exists in the dataset, at least one BIG story must appear in TOP STORIES.
-
-When similar stories exist, prefer sources with SOURCE_QUALITY_HINT of business_financial, policy_regulatory, or industry_technical over research_blog, unless the research_blog source adds unique insight not available elsewhere.
-
-ADDITIONAL SELECTION AND WRITING RULES (CRITICAL UPGRADE)
-
-1. EVENT-FIRST RULE (MANDATORY)
-- Every bullet must start with a specific event.
-- Prefer named companies, named government actions, named legislation or policy proposals, and named investments, funding rounds, or market moves.
-- Do not start bullets with abstract framing such as "AI infrastructure is...", "AI adoption is...", or "Utilities are becoming...".
-- Instead, anchor bullets to concrete developments such as "Meta announced...", "Arm launched...", or "Lawmakers introduced...".
-
-2. POLICY / MACRO PRIORITY RULE
-- If any article includes legislation, named policymakers, government action, regulatory proposals, or infrastructure restrictions, it must be included in either TOP STORIES or REGULATION AND POLICY.
-- This rule overrides normal selection preferences.
-
-3. COMPANY SPECIFICITY RULE
-- Each section should include at least 1 to 2 named companies when available.
-- Avoid fully abstract summaries when a company, institution, or policymaker can be named.
-
-4. ANTI-ABSTRACTION RULE
-- Before finalizing output, check whether a bullet can be rewritten to include a company, policy, or real-world action.
-- If it can, rewrite it to include that specificity.
-
-5. PRIORITIZATION SHIFT
-- Prefer real events over general themes.
-- Even if a theme is strong, choose the article that anchors it to a real development.
-
-EXPECTED RESULT
-- Policy events such as named lawmaker or regulatory actions are never missed.
-- Output includes more named companies.
-- Output uses less generic language.
-- Output keeps the current structure but increases specificity.
-
-MANDATORY INTERNAL WORKFLOW
-- Before writing, silently identify the strongest 12 to 18 candidate developments from the full dataset.
-- Group together articles covering the same underlying event, company announcement, policy action, paper, or deployment.
-- For each group, keep only the best candidate based on real-world relevance, source quality, and specificity.
-- Build the final briefing from those deduplicated event groups rather than selecting bullets one article at a time.
-
-MANDATORY FINAL AUDIT
-- Before returning the final HTML, silently check whether one publisher, one event, or one topic is overrepresented.
-- If the same underlying event appears in multiple sections, keep the strongest placement and replace the rest with different developments.
-- If one publisher appears repeatedly and credible alternatives exist in the input, swap in the alternatives.
-- Prefer breadth across publishers, sectors, and event types over repeated emphasis on one technically strong but narrow source.
-"""
-
-    user_prompt = f"""
-CRITICAL INSTRUCTION: Your response must contain EXACTLY these 8 sections in EXACTLY this order. Do not combine, rename, or omit sections.
-
-Output format:
-<h2>{DAILY_TITLE}</h2>
-<p><strong>{today}</strong></p>
-
-Then for each section:
-<h3>SECTION NAME</h3>
-<ul>
-<li><strong>Lead phrase:</strong> Explanation (Source: X)</li>
-</ul>
-
-Use only clean HTML with h2, h3, p, ul, li, and strong tags.
-Do not use markdown.
-Do not use arrows.
-
-If the input contains any material related to robotics, physical AI, humanoid systems, warehouse automation, autonomous systems, or industrial AI, you MUST include at least one substantive bullet under PHYSICAL AI AND ROBOTICS summarizing the most strategically meaningful development for investors.
-
-TOP STORIES
-
-ENTERPRISE AND LABOR
-
-INFRASTRUCTURE AND POWER
-
-CAPITAL MARKETS AND INVESTMENT
-
-REGULATION AND POLICY
-
-PHYSICAL AI AND ROBOTICS
-
-WHAT TO WATCH
-
-ADVISOR SOUNDBITES
-
-Under TOP STORIES write the 2-3 most important developments and why they matter to financial services professionals.
-
-Under ENTERPRISE AND LABOR write about AI impact on white-collar work, productivity, hiring, and workforce restructuring.
-
-Under INFRASTRUCTURE AND POWER write about data centers, energy demand, grid investment, semiconductors, cooling, and nuclear.
-
-Under CAPITAL MARKETS AND INVESTMENT write about earnings, valuations, private credit, VC funding, and opportunities beyond Mag 7.
-
-Under REGULATION AND POLICY write about US and global AI policy, export controls, labor policy responses, and antitrust.
-
-Under PHYSICAL AI AND ROBOTICS write about autonomous systems, humanoid robots, and logistics automation.
-
-Under WHAT TO WATCH write 3-5 leading indicators or emerging themes worth monitoring over the next 30-90 days.
-
-Under ADVISOR SOUNDBITES write 5 plain English one-liners a financial advisor could say verbatim in a client meeting today.
-
-Selection rules:
-- Prefer a mix of sources and avoid using the same source more than 2 times per section when alternatives exist.
-- Avoid leaning on the same publisher across the full briefing when credible alternatives exist elsewhere in the input.
-- Prefer real-world developments over technical research.
-- If multiple articles are similar, keep the one with clearer business or market impact.
-- Before writing "Nothing to report today." for any section, check whether relevant stories exist elsewhere in the input and include at least one meaningful item if possible.
-- Keep bullets specific, event-driven, and concise.
-- Each section should include multiple distinct topics rather than repeating one underlying narrative.
-- Once a story appears in TOP STORIES, do not reuse that same underlying development in other sections.
-- If a company, financing event, law, moratorium, or policy action is used in one analytical section, do not reuse that same event in another analytical section.
-- WHAT TO WATCH and ADVISOR SOUNDBITES may synthesize broader themes from earlier sections, but they should not repeat the same named event as a standalone bullet.
-- Ensure diversity across companies, sectors, geographies, and use cases.
-- If several articles cover the same event, include only one and replace the others with different topics.
-- Each section should re-scan the full dataset independently for relevant stories instead of relying on a single preselected subset.
-- Do not mistake event deduplication for theme suppression. Repeated patterns across distinct events should still appear as synthesized takeaways when supported by the input.
-
-Thought process instruction:
-- Silently do a first pass for event grouping and publisher diversity, then a second pass for section assignment, and only then write the final HTML.
-
-Minimum coverage targets:
-- TOP STORIES: 3-5 distinct developments
-- ENTERPRISE AND LABOR: 3-4 distinct developments
-- INFRASTRUCTURE AND POWER: 3-5 distinct developments
-- CAPITAL MARKETS AND INVESTMENT: 3-5 distinct developments
-- REGULATION AND POLICY: 2-3 distinct developments
-- PHYSICAL AI AND ROBOTICS: 1-3 distinct developments
-
-Critical override:
-- You must include at least one macro, policy, or capital markets signal every day.
-- If none are initially selected, search the input again and promote the strongest available government policy, regulation, capital markets, valuation, funding, stock, or macroeconomic AI story.
-- This override is more important than ranking preferences.
-- If any article is marked BIG_STORY_HINT: YES, at least one BIG story must appear in TOP STORIES.
-- If any article references data centers, power, grid, energy, semiconductors, fabs, networking, optical, cooling, or thermal, at least one such story must appear in INFRASTRUCTURE AND POWER.
-
-Fill rule:
-- If a section looks thin, search again for secondary but still relevant stories before using "Nothing to report today."
-- Avoid using "Nothing to report today." unless absolutely no relevant content exists after a second pass.
-
-THEME SIGNALS FROM THE FULL, PRE-DEDUPED ARTICLE SET:
-{theme_signal_block}
-
-ARTICLES:
-{article_block}
-"""
+    system_prompt = _load_daily_prompt("daily_digest_system")
+    user_prompt = _load_daily_prompt(
+        "daily_digest_user",
+        daily_title=DAILY_TITLE,
+        today=today,
+        theme_signal_block=theme_signal_block,
+        article_block=article_block,
+    )
 
     content = ""
     issues = []
