@@ -1,0 +1,73 @@
+AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report
+Week Ending 2026-05-15
+
+Purpose:
+This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.
+
+TOP CONVICTION SIGNALS
+
+infrastructure bottlenecks shift to memory power
+Conviction: 7.56
+Strength: 7.53
+Momentum: 700%
+Velocity: +7 article change
+Why It Matters:
+This broadens the AI infrastructure trade into memory, power, grid, components, cooling and data-center-adjacent suppliers. It also raises risk for sectors exposed to memory inflation or local resistance to new data center construction.
+
+NVIDIA Ineffable
+Conviction: 7.10
+Strength: 7.40
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+If agentic AI becomes commercially useful, demand may rise for memory layers, evaluation tooling, RL infrastructure, local inference hardware and orchestration software. The uneven benchmark results also suggest adoption will be gradual and toolchain-dependent.
+
+China policy and capex pressure reshape
+Conviction: 6.98
+Strength: 7.77
+Momentum: 300%
+Velocity: +3 article change
+Why It Matters:
+AI-linked China exposure is increasingly a policy trade as well as a technology trade. Advisors should weigh growth potential against export controls, margin pressure and geopolitical volatility.
+
+Enterprise adoption moves to cost-efficient deployment
+Conviction: 6.72
+Strength: 7.05
+Momentum: 400%
+Velocity: +4 article change
+Why It Matters:
+This favors vendors that reduce AI operating costs, simplify model migration and help enterprises move from pilots to sustainable workflows. It may broaden AI adoption beyond the largest firms with the deepest compute budgets.
+
+capital cycle concentrates around infrastructure platforms
+Conviction: 6.69
+Strength: 6.70
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+The theme supports continued market focus on AI infrastructure earnings, private-to-public exits and strategic ecosystem control. It also highlights concentration risk if AI returns accrue mainly to a small set of infrastructure platforms.
+
+ACCELERATING THEMES (BREAKOUTS)
+
+These themes are accelerating fastest relative to prior week.
+
+infrastructure bottlenecks shift to memory power: Momentum 700%, velocity +7. This broadens the AI infrastructure trade into memory, power, grid, components, cooling and data-center-adjacent suppliers
+NVIDIA Ineffable: Momentum 500%, velocity +5. If agentic AI becomes commercially useful, demand may rise for memory layers, evaluation tooling, RL infrastructure, local inference hardware and orchestration software
+capital cycle concentrates around infrastructure platforms: Momentum 500%, velocity +5. The theme supports continued market focus on AI infrastructure earnings, private-to-public exits and strategic ecosystem control
+
+FADING SIGNALS
+
+No major theme showed week-over-week deterioration in this run.
+
+PORTFOLIO IMPLICATIONS
+
+Structural strengthening is concentrated in infrastructure bottlenecks shift to memory power, NVIDIA Ineffable, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in Enterprise adoption moves to cost-efficient deployment, capital cycle concentrates around infrastructure platforms, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in infrastructure bottlenecks shift to memory power, NVIDIA Ineffable, supported by rising article volume against the prior week.
+Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
+
+BOTTOM LINE
+
+1. Highest conviction theme: infrastructure bottlenecks shift to memory power
+2. Most important new signal: infrastructure bottlenecks shift to memory power
+3. Biggest acceleration: infrastructure bottlenecks shift to memory power
+4. Key risk / fading area: No material fading area
