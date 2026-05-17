@@ -1,0 +1,65 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>May 17, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The dominant signal today is that the AI investment cycle is becoming a permitting, power, and governance cycle, not just a model-performance race. Multiple local actions against data center expansion show that physical constraints and community acceptance can affect the timing and cost of AI capacity buildouts. At the same time, policy proposals and boardroom governance pressure suggest enterprises will need more formal controls before AI can scale broadly. For CPM, advisor, and wholesaler conversations, the key takeaway is to monitor both the direct AI leaders and the second-derivative enablers tied to power, compliance, infrastructure, and implementation risk.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>A Nevada city paused new data center development:</strong> The action highlights how local permitting and land-use restrictions can slow the physical buildout behind AI compute demand, making data center approval timelines an increasingly important portfolio-monitoring signal for cloud, utility, electrical equipment, cooling, and real estate infrastructure exposure. (Source: Las Vegas Review-Journal)</li>
+<li><strong>More than 60 groups called on New Jersey’s governor to pause AI data center projects:</strong> The request shows that opposition to AI infrastructure is moving from individual municipalities to state-level political pressure, which may raise development risk for projects dependent on power, water, land, and community approval. (Source: NJ.com)</li>
+<li><strong>Senate Democrats introduced bills to regulate artificial intelligence:</strong> The legislative push reinforces that AI policy is moving from discussion to proposed rulemaking, with implications for companies building models, deploying AI into workflows, or selling governance and compliance tools. (Source: WSJD 100.5)</li>
+<li><strong>Enphase Energy unveiled an AI data center, battery, and EV charging roadmap:</strong> The announcement suggests power-management companies are positioning around AI-driven electricity demand, creating a read-through beyond chips and cloud platforms to storage, distributed energy, grid-adjacent hardware, and charging infrastructure. (Source: MarketBeat)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>foreignpolicyjournal.com reported that AI governance is becoming a boardroom compliance emergency:</strong> The article points to rising scrutiny in the UK, EU, and US, which matters because enterprise AI adoption increasingly depends on auditability, risk controls, and management accountability rather than experimentation alone. (Source: foreignpolicyjournal.com)</li>
+<li><strong>The Globe and Mail reported a significant disagreement inside the Federal Reserve over AI’s economic impact:</strong> The debate matters because AI-driven productivity, labor displacement, and inflation effects could influence central bank thinking over time, giving advisors a macro lens for discussing AI beyond technology-sector earnings. (Source: The Globe and Mail)</li>
+<li><strong>The Financial Times reported that Chinese AI groups are pulling ahead of US rivals in video generation:</strong> Advances in generative video could reshape marketing, entertainment, design, and content-production workflows, making media software, creator tools, cloud inference demand, and IP-risk management areas to monitor. (Source: Financial Times)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Hillsboro residents rallied against planned data centers as the city said a pause in new applications is expected:</strong> Hillsboro is a meaningful data center market, so local pushback underscores that AI capacity growth can face zoning, utility, and community constraints even in established technology infrastructure hubs. (Source: KATU)</li>
+<li><strong>A small California city voted to freeze new data center development for five years near the Salton Sea region:</strong> A multi-year freeze highlights how AI-related infrastructure can collide with local concerns over land, power, water, and environmental impact, potentially shifting demand toward jurisdictions with faster permitting and clearer utility capacity. (Source: The Cool Down)</li>
+<li><strong>Cumberland County proposed a data center moratorium ahead of a public hearing:</strong> The proposal adds to evidence that local governments are reassessing data center approvals, which may increase the value of sites with secured power, interconnection, cooling, and community support. (Source: CityView NC)</li>
+<li><strong>The Fiscal Court held a first reading of a proposed data center moratorium:</strong> Even early-stage local policy actions matter because project delays can ripple into construction schedules, utility planning, equipment orders, and data center supply expectations. (Source: Messenger-Inquirer)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>A former Republican candidate endorsed a Democrat over AI data center concerns:</strong> The endorsement shows AI infrastructure can become a local electoral issue, making political risk and community sentiment relevant inputs for investors tracking data center developers, utilities, construction firms, and power-equipment suppliers. (Source: KWTX)</li>
+<li><strong>Oakley agreed to extend its data center moratorium for one year:</strong> The extension suggests permitting delays can persist rather than resolve quickly, which may affect development timelines, capital deployment assumptions, and the scarcity value of already-approved data center capacity. (Source: Contra Costa News)</li>
+<li><strong>Texas county officials reportedly passed a one-year ban on rural data centers:</strong> The reported ban points to the possibility that developers seeking less-regulated rural sites may still encounter local resistance, creating a portfolio-monitoring issue for infrastructure, utility-load growth, and AI capex timing assumptions. (Source: Tom’s Hardware)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>A Texas state senator said counties may not have legal authority to impose rural data center bans:</strong> The dispute highlights a potential tension between local land-use controls and state-level authority, which could shape how quickly AI infrastructure projects can be challenged or restarted. (Source: Tom’s Hardware)</li>
+<li><strong>Denver residents and community groups planned a press conference ahead of a data center moratorium vote:</strong> The local mobilization shows that data center policy is becoming a public-facing governance issue, with implications for permitting, public hearings, environmental reviews, and developer community-relations strategy. (Source: Yellow Scene Magazine)</li>
+<li><strong>Senate Democrats’ AI regulatory bills added to the policy pipeline:</strong> Even without detailed provisions in the available summary, the action signals that AI developers and enterprise adopters should expect continued scrutiny around safety, accountability, privacy, and deployment standards. (Source: WSJD 100.5)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>A maker built a mobile suitcase chatbot using an Nvidia Jetson system and local Gemma model inference:</strong> While small-scale, the project illustrates the direction of edge AI toward low-latency, on-device systems that could eventually support mobile robots, autonomous devices, field service tools, and industrial edge deployments without constant cloud connectivity. (Source: Tom’s Hardware)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Local data center moratorium calendars:</strong> Watch whether proposed pauses in counties and cities convert into longer freezes, because approval delays could affect AI capacity planning, utility load forecasts, and equipment-order timing. (Source: KATU, CityView NC, Messenger-Inquirer)</li>
+<li><strong>State-level responses to municipal data center restrictions:</strong> Monitor whether state officials preempt local bans or clarify permitting authority, since that could determine whether AI infrastructure bottlenecks are temporary delays or durable constraints. (Source: Tom’s Hardware)</li>
+<li><strong>Enterprise AI governance spending:</strong> Track whether regulatory pressure leads companies to increase budgets for compliance software, model-risk management, cybersecurity, legal review, and AI auditability. (Source: foreignpolicyjournal.com)</li>
+<li><strong>AI’s macroeconomic treatment by policymakers:</strong> Follow Federal Reserve commentary on productivity, labor markets, and inflation, because AI could increasingly enter rate-policy debates and long-term earnings assumptions. (Source: The Globe and Mail)</li>
+<li><strong>Power-management company roadmaps:</strong> Watch whether more energy, battery, and grid-adjacent firms explicitly position around AI data center demand, as this would broaden the AI investment discussion beyond semiconductors and cloud platforms. (Source: MarketBeat)</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>Nevada’s data center pause is a reminder:</strong> AI growth needs permits, power, water, and community approval, not just better chips. (Source: Las Vegas Review-Journal)</li>
+<li><strong>New Jersey’s pause request shows the AI buildout is becoming political:</strong> Infrastructure exposure should be monitored for local and state-level approval risk. (Source: NJ.com)</li>
+<li><strong>Senate AI bills signal that governance is becoming part of adoption:</strong> Companies may need controls and documentation before AI scales across the enterprise. (Source: WSJD 100.5)</li>
+<li><strong>Enphase’s roadmap shows the AI trade is broadening:</strong> Power storage, grid equipment, and energy management are increasingly part of the AI infrastructure conversation. (Source: MarketBeat)</li>
+<li><strong>China’s progress in AI video highlights global competition:</strong> The next phase of AI may affect media workflows, cloud demand, and intellectual-property risk at the same time. (Source: Financial Times)</li>
+</ul>
