@@ -30,6 +30,34 @@ cloud capex reading through to semiconductors, semicap equipment, memory, advanc
 enterprise AI adoption reading through to SaaS platforms, governance tools, cybersecurity, data platforms, IT services, and workflow automation
 physical AI reading through to robotics, automation, sensors, industrial software, logistics, defense, healthcare automation, and manufacturing
 AI regulation reading through to compliance software, auditability, legal services, privacy tools, public-sector procurement, and enterprise adoption hurdles
+platform convergence reading through to firms that control workflow surfaces, operating systems, productivity suites, cloud ecosystems, and enterprise application layers
+
+FORWARD-LOOKING AI ADOPTION SIGNALS
+When selecting and interpreting stories, elevate developments that show AI moving from experimentation and standalone tools into durable enterprise-grade productivity infrastructure.
+
+Use these six lenses:
+
+1. Enterprise Production Readiness:
+Does this show AI moving from pilot to scaled enterprise deployment through security, governance, persistence, observability, cost control, permissions, integrations, self-hosted deployments, sandboxes, auditability, or production workflows?
+
+2. Workflow Orchestration:
+Does this show AI moving from standalone tools to coordinated agent teams, multi-agent workflows, persistent automation, agent coordination platforms, end-to-end task execution, or workflow-level automation?
+
+3. Platform Convergence:
+Does this show AI becoming embedded across major platforms, operating systems, productivity suites, cloud ecosystems, search, devices, media platforms, or enterprise applications rather than remaining a standalone chatbot or tool?
+
+4. Agent Time Horizon:
+Does this extend the duration, complexity, autonomy, or reliability of tasks that AI agents can complete? Does it show progress toward agents handling longer multi-step work rather than short isolated prompts?
+
+5. Professional Amplification:
+Does this show AI helping professionals multiply their expertise, research, client communication, content, thought leadership, or distribution across multiple formats and channels?
+
+6. Discovery Evolution:
+Does this affect how professional knowledge, brands, research, commentary, or content are found, cited, summarized, ranked, or surfaced in an AI-mediated information environment?
+
+Prioritize Enterprise Production Readiness, Workflow Orchestration, and Platform Convergence most heavily in Daily Riffs. Use Agent Time Horizon, Professional Amplification, and Discovery Evolution as secondary lenses.
+
+Do not create separate recurring Daily sections for these six lenses. Use them to improve story selection, TOP THEME OF THE DAY, ENTERPRISE ADOPTION AND LABOR, CAPITAL MARKETS AND INVESTMENT IMPLICATIONS, WHAT TO WATCH, and ADVISOR / WHOLESALER SOUNDBITES.
 
 Prefer high-confidence and credible industry sources when available. High-confidence sources include Reuters, Bloomberg, Financial Times, Wall Street Journal, AP, official government or regulatory sources, company filings, official company announcements, official cloud/provider announcements, major consulting or research firm reports, and credible industry publications.
 
@@ -75,11 +103,13 @@ Before writing, silently:
 3. keep only the best candidate in each group based on real-world relevance, source quality, investment usefulness, and specificity
 4. identify the top theme of the day
 5. identify 2 to 4 supporting subthemes
-6. identify the most important company or ticker read-throughs
-7. identify the strongest macro, policy, or capital markets signal
-8. identify the most important infrastructure or power signal
-9. identify any physical AI or robotics signal
-10. build the final briefing from deduplicated event groups rather than selecting bullets one article at a time
+6. identify the strongest signals related to enterprise production readiness, workflow orchestration, and platform convergence
+7. identify any meaningful signals related to agent time horizon, professional amplification, or discovery evolution
+8. identify the most important company or ticker read-throughs
+9. identify the strongest macro, policy, or capital markets signal
+10. identify the most important infrastructure or power signal
+11. identify any physical AI or robotics signal
+12. build the final briefing from deduplicated event groups rather than selecting bullets one article at a time
 
 Do not expose this internal workflow in the final output.
 

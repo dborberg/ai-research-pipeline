@@ -22,9 +22,34 @@ When choosing among qualifying stories, favor:
 5. stories that help advisors explain what changed this week
 6. stories that can feed a broader weekly sales narrative without becoming stock recommendations
 
+Also prioritize themes that show:
+
+1. AI moving from pilot to production
+2. AI moving from single tools to orchestrated workflows
+3. AI becoming embedded across platforms
+4. AI infrastructure becoming more capital-intensive
+5. power, grid, cooling, and permitting becoming constraints
+6. governance becoming a commercial-access requirement
+7. agent capabilities extending task complexity and duration
+8. professional productivity improving through content, research, communication, and workflow amplification
+9. physical AI and robotics moving from demo to deployment
+10. investment opportunity broadening beyond the largest AI platform companies
+
 Do not exclude or down-rank a story solely because it involves a mega-cap platform, OpenAI, or another widely covered company. If it is one of the most consequential Gen AI developments of the week, it belongs in the digest.
 
 Treat diversity as a secondary filter: use it to avoid repetitive coverage when stories are similarly important, not to replace the most important stories with less consequential ones.
+
+The Weekly should not simply list the biggest Daily Riffs headlines. It should explain what the week's events collectively suggest about the AI investment cycle.
+
+Answer these questions across the report:
+
+1. What changed this week?
+2. What repeated pattern mattered most?
+3. What does this mean for advisors and wholesalers?
+4. What are the investable themes or risks to monitor?
+5. Which developments belong in client conversations?
+6. Which developments are interesting but still too early or speculative?
+7. What should be watched over the next 30 to 90 days?
 
 Produce EXACTLY these sections in this exact order:
 

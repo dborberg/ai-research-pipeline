@@ -21,8 +21,12 @@ REQUIRED_HEADINGS = [
 ]
 ALLOWED_TAGS = {"h2", "h3", "p", "ul", "li", "strong"}
 RECOMMENDATION_RE = re.compile(
-    r"(^|\s)(buy|sell|hold|overweight|underweight|price target)(\s|[.,;:])",
+    r"(^|\s)(buy|sell|hold|overweight|underweight|price target|guaranteed winner|guaranteed loser)(\s|[.,;:])",
     flags=re.IGNORECASE,
+)
+EMOJI_RE = re.compile(
+    "[\U0001F300-\U0001FAFF\U00002700-\U000027BF]",
+    flags=re.UNICODE,
 )
 PHYSICAL_AI_FALLBACK = (
     "<li><strong>No major commercial Physical AI or robotics developments surfaced:</strong> "
@@ -90,18 +94,24 @@ def validate_daily_digest_html(html, require_physical_ai_fallback=False):
 
     if re.search(r"(^|\n)\s*[-*]\s+", html):
         issues.append("Markdown bullet formatting detected")
+    if re.search(r"(\*\*|__|^#{1,6}\s+|`)", html, flags=re.MULTILINE):
+        issues.append("Markdown formatting detected")
     if "->" in html or "→" in html:
         issues.append("Arrow formatting detected")
+    if EMOJI_RE.search(html):
+        issues.append("Emoji detected")
     if RECOMMENDATION_RE.search(html):
         issues.append("Explicit recommendation language detected")
 
-    analytical_sections = {
+    bullet_sections = {
         "TOP STORIES",
         "ENTERPRISE ADOPTION AND LABOR",
         "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS",
         "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
         "REGULATION, GOVERNANCE AND POLICY",
         "PHYSICAL AI AND ROBOTICS",
+        "WHAT TO WATCH",
+        "ADVISOR / WHOLESALER SOUNDBITES",
     }
     section_blocks = re.findall(
         r"<h3>(.*?)</h3>\s*(?:<p>.*?</p>\s*)?(?:<ul>(.*?)</ul>)?",
@@ -110,7 +120,7 @@ def validate_daily_digest_html(html, require_physical_ai_fallback=False):
     )
     for heading, body in section_blocks:
         normalized_heading = " ".join(re.sub(r"<[^>]+>", "", heading).split()).upper()
-        if normalized_heading not in analytical_sections:
+        if normalized_heading not in bullet_sections:
             continue
         for item in re.findall(r"<li>.*?</li>", body or "", flags=re.DOTALL | re.IGNORECASE):
             if "(Source:" not in item:

@@ -120,9 +120,13 @@ for article in articles:
     rowid = article["id"]
     title = article["title"]
 
-    system_message = """You are a senior AI research analyst writing for mutual fund wholesalers. 
-Your job is to analyze AI-related news and produce structured insights usable in advisor conversations. 
-Keep language clear, factual, and consistent. Use only the information provided in the article context. If details are unclear, stay conservative and do not invent facts."""
+    system_message = """You are a senior AI research analyst writing for mutual fund wholesalers.
+Your job is to analyze AI-related news and produce structured insights usable in advisor conversations.
+Keep language clear, factual, and consistent. Use only the information provided in the article context. If details are unclear, stay conservative and do not invent facts.
+
+Score articles higher when they show investment-relevant AI developments in infrastructure buildout, power and physical bottlenecks, capital intensity and financing, enterprise AI adoption and monetization, second-derivative beneficiaries, labor redesign, regulation and governance, physical AI and robotics, market structure, named company relevance, or forward-looking AI adoption signals.
+
+Forward-looking AI adoption signals include enterprise production readiness, workflow orchestration, platform convergence, agent capability or time-horizon expansion, professional amplification, and AI-mediated discovery evolution. Prioritize concrete real-world actions over generic commentary."""
 
     user_message = f"""{_build_article_context(article)}
 
@@ -135,6 +139,12 @@ Produce structured output with exactly these fields:
   "advisor_relevance": "why this matters",
   "ai_score": number between 1 and 10
 }}
+
+AI_SCORE guidance:
+9-10: concrete company, policy, financing, market, infrastructure, enterprise deployment, platform convergence, agent workflow, or robotics development with clear investment or advisor implications.
+7-8: credible real-world AI development with useful read-throughs to adoption, capex, labor, governance, or suppliers.
+5-6: relevant but narrower, earlier, or less directly investable.
+1-4: generic commentary, weak sourcing, technical novelty without commercial implication, or low advisor usefulness.
 
 Return ONLY valid JSON. No extra text.
 """

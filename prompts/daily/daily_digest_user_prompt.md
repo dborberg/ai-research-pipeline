@@ -40,7 +40,7 @@ WHAT TO WATCH
 ADVISOR / WHOLESALER SOUNDBITES
 
 TOP THEME OF THE DAY:
-Write one short paragraph. Synthesize the day's strongest cross-story theme. Do not list headlines. Explain what today's news says about the direction of the AI investment cycle. Useful themes include AI moving from a model story to an infrastructure story; power, grid, cooling, and permitting as AI bottlenecks; enterprise AI moving from copilots to governed agents; AI capex becoming a financing and balance-sheet story; governance becoming a commercial-access issue; second-derivative beneficiaries emerging beyond the largest platforms; labor impact shifting from replacement to workflow redesign; or physical AI moving from pilots toward deployment.
+Write one short paragraph. Synthesize the day's strongest cross-story theme. Do not list headlines. Explain what today's news says about the direction of the AI investment cycle. Useful themes include AI moving from a model story to an infrastructure story; power, grid, cooling, and permitting as AI bottlenecks; enterprise AI moving from copilots to governed agents; AI capex becoming a financing and balance-sheet story; governance becoming a commercial-access issue; platform convergence embedding AI across workflow surfaces; second-derivative beneficiaries emerging beyond the largest platforms; labor impact shifting from replacement to workflow redesign; or physical AI moving from pilots toward deployment.
 
 TOP STORIES:
 Write the 3 to 5 most important developments and why they matter to financial services professionals. Each bullet must begin with a concrete event, company action, government action, financing event, policy move, deployment, or market signal.
@@ -68,6 +68,13 @@ ADVISOR / WHOLESALER SOUNDBITES:
 Write 5 plain-English one-liners a financial advisor or wholesaler could use in an internal or client conversation. These should be memorable, non-promotional, and easy to say out loud.
 
 Selection rules:
+- Use FORWARD-LOOKING AI ADOPTION SIGNALS as selection and interpretation lenses, not as separate sections. Prioritize Enterprise Production Readiness, Workflow Orchestration, and Platform Convergence most heavily; use Agent Time Horizon, Professional Amplification, and Discovery Evolution as secondary lenses.
+- Enterprise Production Readiness includes security, governance, persistence, observability, cost control, permissions, integrations, self-hosted deployments, sandboxes, auditability, and production workflows.
+- Workflow Orchestration includes coordinated agent teams, multi-agent workflows, persistent automation, agent coordination platforms, end-to-end task execution, and workflow-level automation.
+- Platform Convergence includes AI embedded across major platforms, operating systems, productivity suites, cloud ecosystems, search, devices, media platforms, and enterprise applications.
+- Agent Time Horizon includes longer, more complex, more autonomous, or more reliable multi-step agent tasks.
+- Professional Amplification includes AI helping professionals multiply expertise, research, client communication, content, thought leadership, or distribution across formats and channels.
+- Discovery Evolution includes AI-mediated search, citation, summarization, ranking, brand discovery, research discovery, and generative engine optimization.
 - Prefer a mix of sources and avoid using the same source more than 2 times per section when alternatives exist.
 - Avoid leaning on the same publisher across the full briefing when credible alternatives exist elsewhere in the input.
 - Diversity is a tiebreaker, not the primary ranking function. First include the most consequential developments in the source window, then broaden where credible alternatives exist.
@@ -80,6 +87,7 @@ Selection rules:
 - Keep bullets specific, event-driven, and concise.
 - Every bullet should follow this logic: Event + why it matters + investment/advisor implication.
 - Where relevant, include the read-through beyond the obvious company to suppliers, customers, infrastructure providers, software vendors, industrials, utilities, cybersecurity, compliance tools, or physical AI beneficiaries.
+- For platform convergence stories, include the read-through to firms that control workflow surfaces, operating systems, productivity suites, cloud ecosystems, search, devices, media platforms, and enterprise application layers.
 - Do not insert companies mechanically. Mention companies only when the input supports the connection or when they are clearly useful examples of a theme.
 - Each section should include multiple distinct topics rather than repeating one underlying narrative.
 - Once a story appears in TOP STORIES, do not reuse that same underlying development in other analytical sections.

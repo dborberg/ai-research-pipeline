@@ -616,19 +616,65 @@ def _weekly_event_priority(article):
         score += 5
     if any(term in text for term in [
         "capex", "funding", "buildout", "investment", "factory", "fab", "data center", "campus",
-        "power", "grid", "chip", "semiconductor",
+        "power", "grid", "chip", "semiconductor", "gpu", "hbm", "memory", "advanced packaging",
+        "compute leasing", "cloud infrastructure", "sovereign ai", "networking", "interconnect",
+        "optical", "fiber", "cooling", "liquid cooling", "transformer", "switchgear",
+        "backup power", "nuclear", "interconnection", "permitting", "zoning",
+    ]):
+        score += 4
+    if any(term in text for term in [
+        "bond issuance", "debt financing", "project finance", "private credit", "data center leasing",
+        "infrastructure funding", "multi-year capex", "balance sheet",
     ]):
         score += 4
     if any(term in text for term in [
         "policy", "regulation", "government", "lawmakers", "compliance", "export controls",
+        "procurement", "model safety", "ai disclosure", "hiring rule", "privacy", "auditability",
+        "ip policy", "public-sector", "public sector", "risk control", "antitrust",
     ]):
         score += 4
     if any(term in text for term in [
-        "enterprise", "workflow", "productivity", "adoption", "deployment",
+        "enterprise", "workflow", "productivity", "adoption", "deployment", "agentic",
+        "copilot", "saas", "pricing", "roi", "retention", "observability", "identity",
+        "security", "governance", "spend controls", "professional services automation",
+    ]):
+        score += 3
+    if any(term in text for term in [
+        "enterprise production", "production readiness", "enterprise-grade", "enterprise grade",
+        "permission", "permissions", "self-hosted", "self hosted", "sandbox", "audit trail",
+        "production workflow",
+    ]):
+        score += 5
+    if any(term in text for term in [
+        "workflow orchestration", "multi-agent", "multi agent", "agent team", "agent teams",
+        "persistent automation", "agent coordination", "end-to-end", "end to end",
+        "task execution", "workflow-level", "workflow level",
+    ]):
+        score += 5
+    if any(term in text for term in [
+        "platform convergence", "workspace", "microsoft 365", "google workspace",
+        "operating system", "productivity suite", "cloud ecosystem", "enterprise application",
+        "embedded ai", "search", "browser", "device", "devices", "media platform",
+    ]):
+        score += 5
+    if any(term in text for term in [
+        "long-running", "long running", "multi-step", "multi step", "autonomous agent",
+        "agent reliability", "professional amplification", "client communication",
+        "thought leadership", "ai search", "citation", "answer engine", "generative engine",
+        "discovery evolution",
     ]):
         score += 3
     if any(term in text for term in [
         "robot", "robotics", "autonomous", "humanoid", "drone", "factory automation",
+        "warehouse automation", "evtol", "lab automation", "surgical automation",
+        "ai-enabled manufacturing", "embodied ai", "defense autonomy",
+    ]):
+        score += 3
+    if any(term in text for term in [
+        "electrical equipment", "power semiconductor", "analog semiconductor", "industrial automation",
+        "engineering firm", "utility", "utilities", "specialty materials", "cybersecurity",
+        "data infrastructure", "governance software", "scale economies", "data advantage",
+        "switching cost", "ecosystem control", "platform advantage", "margin durability",
     ]):
         score += 3
 

@@ -34,3 +34,36 @@ Where useful, include the read-through to adjacent sectors, suppliers, customers
 Keep interpretation concise and clearly tied to facts in the source material. Avoid performance claims, product recommendations, and unverified numbers.
 
 Across the full digest, aim for a coherent weekly narrative rather than a list of unrelated AI headlines. The digest should help a wholesaler explain what this week revealed about the AI buildout, adoption curve, regulatory environment, and investment opportunity set.
+
+FORWARD-LOOKING WEEKLY SYNTHESIS LENSES
+When synthesizing the week's Daily Riffs and curated weekly events, look for repeated evidence that AI is moving from tools, pilots, and experiments into durable business infrastructure.
+
+Specifically identify whether the week included meaningful signals of:
+
+1. Enterprise Production Readiness:
+Evidence that AI is moving into scaled deployment through enterprise security, governance, permissions, observability, cost control, self-hosting, auditability, integration, or production workflows.
+
+2. Workflow Orchestration:
+Evidence that AI is moving from individual copilots and standalone tools into coordinated agent teams, multi-agent platforms, persistent workflows, or end-to-end automation.
+
+3. Platform Convergence:
+Evidence that AI is becoming embedded across major platforms, productivity suites, devices, cloud ecosystems, search, enterprise applications, or operating systems.
+
+4. Agent Capability / Time Horizon Expansion:
+Evidence that AI agents can handle longer, more complex, more autonomous, or more reliable multi-step tasks.
+
+5. Professional Amplification:
+Evidence that AI is helping professionals multiply expertise, content, communication, research, thought leadership, client engagement, or distribution.
+
+6. Discovery Evolution / GEO:
+Evidence that AI is changing how knowledge, research, brands, firms, or professional content are found, cited, summarized, ranked, or surfaced in AI-generated answers.
+
+Do not force all six into the output. Surface only the strongest 2 to 4 themes supported by the week's Daily Riffs and source material.
+
+The weekly report should convert daily event-level observations into broader sales-group-ready themes. Preserve major company examples when they are central to a theme, but generalize narrow company observations into broader business-model, supply-chain, productivity, infrastructure, or adoption themes when appropriate. Emphasize portfolio conversations, business-model implications, investment-cycle implications, and monitoring signals rather than narrow stock-call language.
+
+When useful and supported by the week's evidence, connect forward-looking AI adoption signals to the broader productivity and Total Factor Productivity narrative. AI matters economically when it extends human capability, compresses workflows, increases decision speed, scales expertise, reduces coordination costs, automates multi-step work, improves software and knowledge-work productivity, or changes how firms organize labor, capital, and information. Do not force a productivity or TFP reference when the evidence does not support it.
+
+Before writing, silently review the inputs and identify the dominant theme of the week, 3 to 5 recurring subthemes, repeated infrastructure/power/capex signals, repeated enterprise adoption or workflow orchestration signals, repeated regulation/governance signals, repeated labor/productivity signals, repeated physical AI or robotics signals, company-specific examples to preserve, company-specific examples to generalize, and advisor/wholesaler-ready soundbites that can be reused or improved. Do not expose this internal workflow.
+
+Before finalizing, silently check that the output synthesizes rather than merely aggregates daily reports, surfaces the strongest recurring themes, uses company examples appropriately, generalizes narrow stock comments when needed, considers forward-looking adoption signals, includes productivity or TFP only when supported, provides clear advisor/wholesaler talking points, avoids unsupported claims and performance promises, and is useful for the internal sales group.

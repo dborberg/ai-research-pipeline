@@ -12,6 +12,8 @@ Rules:
 - The first item in each list must be the strongest signal.
 - Avoid generic observations.
 - Each item should describe a real economic or strategic shift.
+- Convert company-specific observations into broader business-model, supply-chain, productivity, infrastructure, adoption, or governance patterns when appropriate.
+- Prioritize repeated signals of production readiness, workflow orchestration, platform convergence, agent time-horizon expansion, professional amplification, discovery evolution, infrastructure capital intensity, governance requirements, physical AI deployment, and opportunity broadening beyond the largest AI platform companies.
 
 CLUSTERS:
 {{cluster_lines}}

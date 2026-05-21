@@ -100,13 +100,14 @@ def generate_daily_digest(report_date=None):
             "congress", "senate", "house.gov", "commerce department", "ftc", "doj",
             "company announcement", "press release", "investor relations", "filing",
             "google cloud", "aws", "microsoft azure", "oracle", "nvidia",
+            "official", "regulatory",
         ]):
             return "high_confidence"
         if any(term in source for term in [
             "mckinsey", "bain", "bcg", "gartner", "idc", "forrester", "s&p global",
             "semiconductor engineering", "data center dynamics", "utility dive",
             "eetimes", "digitimes", "converge digest", "the register", "ieee",
-            "robot report", "design news",
+            "robot report", "design news", "data centre dynamics",
         ]):
             return "credible_industry"
         if any(term in source for term in [
@@ -118,6 +119,77 @@ def generate_daily_digest(report_date=None):
         ]):
             return "lower_confidence"
         return "general_news"
+
+    def forward_adoption_score(article):
+        text = " ".join(
+            [
+                article.get("title") or "",
+                article.get("summary") or "",
+                article.get("advisor_relevance") or "",
+                " ".join(parse_companies(article.get("companies"))),
+            ]
+        ).lower()
+        lens_terms = {
+            "enterprise_production_readiness": (
+                16,
+                [
+                    "production", "enterprise-grade", "enterprise grade", "security", "governance",
+                    "permission", "permissions", "observability", "cost control", "spend control",
+                    "auditability", "audit trail", "self-hosted", "self hosted", "sandbox",
+                    "integration", "integrations", "deployment", "production workflow",
+                    "risk control", "compliance",
+                ],
+            ),
+            "workflow_orchestration": (
+                15,
+                [
+                    "multi-agent", "multi agent", "agent team", "agent teams", "orchestration",
+                    "coordinated agents", "persistent automation", "end-to-end", "end to end",
+                    "workflow automation", "agent coordination", "task execution", "workflow-level",
+                    "workflow level",
+                ],
+            ),
+            "platform_convergence": (
+                15,
+                [
+                    "workspace", "office", "microsoft 365", "google workspace", "operating system",
+                    "productivity suite", "cloud ecosystem", "enterprise application", "search",
+                    "browser", "device", "devices", "media platform", "embedded ai",
+                    "application suite",
+                ],
+            ),
+            "agent_time_horizon": (
+                9,
+                [
+                    "long-running", "long running", "multi-step", "multi step", "autonomous agent",
+                    "agent reliability", "extended task", "complex task", "background agent",
+                    "persistent agent",
+                ],
+            ),
+            "professional_amplification": (
+                8,
+                [
+                    "research", "client communication", "content", "thought leadership",
+                    "professional", "advisor", "analyst", "sales", "distribution",
+                    "knowledge work", "expertise",
+                ],
+            ),
+            "discovery_evolution": (
+                8,
+                [
+                    "ai search", "search result", "citation", "cited", "summarized", "ranking",
+                    "surfaced", "answer engine", "generative engine", "geo", "brand discovery",
+                    "content discovery", "publisher", "crawl", "crawler",
+                ],
+            ),
+        }
+
+        score = 0
+        for weight, terms in lens_terms.values():
+            matches = sum(1 for term in terms if term in text)
+            if matches:
+                score += weight + min(matches - 1, 3) * 2
+        return score
 
     def investment_theme_score(article):
         text = " ".join(
@@ -203,6 +275,25 @@ def generate_daily_digest(report_date=None):
                     "margin durability",
                 ],
             ),
+            "forward_looking_ai_adoption_signals": (
+                18,
+                [
+                    "enterprise production", "production readiness", "workflow orchestration",
+                    "multi-agent", "multi agent", "platform convergence", "agent time horizon",
+                    "professional amplification", "discovery evolution", "generative engine",
+                    "enterprise-grade", "persistent automation", "embedded ai", "governed agents",
+                ],
+            ),
+            "named_company_relevance": (
+                10,
+                [
+                    "nvidia", "microsoft", "amazon", "alphabet", "google", "meta", "apple",
+                    "openai", "anthropic", "oracle", "broadcom", "amd", "arm", "tsmc",
+                    "asml", "salesforce", "servicenow", "palantir", "snowflake", "datadog",
+                    "crowdstrike", "palo alto", "schneider", "eaton", "vertiv", "ge vernova",
+                    "constellation", "abb", "siemens", "tesla",
+                ],
+            ),
         }
         score = 0
         for weight, terms in theme_terms.values():
@@ -214,6 +305,7 @@ def generate_daily_digest(report_date=None):
     def article_priority_score(article):
         score = float(article.get("ai_score") or 0)
         score += investment_theme_score(article)
+        score += forward_adoption_score(article)
 
         if has_policy_priority(article):
             score += 40
@@ -257,6 +349,9 @@ def generate_daily_digest(report_date=None):
                 "hiring", "layoff", "layoffs", "job", "jobs", "workforce", "productivity", "automation",
                 "employee", "employees", "coding", "developer", "software development", "copilot",
                 "agentic", "agent", "workflow", "governance", "compliance", "spend control",
+                "production readiness", "observability", "permissions", "auditability",
+                "workflow orchestration", "multi-agent", "multi agent", "professional amplification",
+                "knowledge work",
             ],
             "capital_markets_and_investment": [
                 "earnings", "revenue", "valuation", "funding", "raised", "investment", "investor",
@@ -272,6 +367,14 @@ def generate_daily_digest(report_date=None):
                 "robot", "robotics", "autonomous", "autonomy", "warehouse automation", "drone", "aviation",
                 "manufacturing", "factory", "humanoid", "inspection", "logistics", "evtol",
                 "lab automation", "surgical automation", "embodied ai", "defense autonomy",
+            ],
+            "forward_looking_ai_adoption": [
+                "enterprise production", "production readiness", "enterprise-grade", "enterprise grade",
+                "workflow orchestration", "multi-agent", "multi agent", "persistent automation",
+                "platform convergence", "operating system", "productivity suite", "cloud ecosystem",
+                "enterprise application", "agent time horizon", "long-running", "multi-step",
+                "professional amplification", "discovery evolution", "generative engine",
+                "ai search", "citation", "answer engine",
             ],
         }
 
@@ -398,6 +501,7 @@ def generate_daily_digest(report_date=None):
             "capital_markets_and_investment": "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
             "regulation_and_policy": "REGULATION, GOVERNANCE AND POLICY",
             "physical_ai_and_robotics": "PHYSICAL AI AND ROBOTICS",
+            "forward_looking_ai_adoption": "FORWARD-LOOKING AI ADOPTION SIGNALS",
         }
         theme_examples = {theme_name: [] for theme_name in theme_labels}
 
@@ -623,6 +727,7 @@ def generate_daily_digest(report_date=None):
                 f"PRIMARY_SECTION_HINT: {primary_section_hint(article)}",
                 f"SOURCE_QUALITY_HINT: {source_quality_hint(article)}",
                 f"INVESTMENT_THEME_SCORE: {investment_theme_score(article)}",
+                f"FORWARD_ADOPTION_SCORE: {forward_adoption_score(article)}",
                 f"BIG_STORY_HINT: {'YES' if is_big_story(article) else 'NO'}",
                 f"POLICY_PRIORITY_HINT: {'YES' if has_policy_priority(article) else 'NO'}",
                 f"COMPANIES_MENTIONED: {', '.join(parse_companies(article.get('companies')))}",

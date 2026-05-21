@@ -2,6 +2,10 @@ Use the output from the last 7 days of daily digests and synthesize it further i
 
 Importance comes first. Do not exclude a theme simply because some of its most consequential supporting developments came from mega-cap platforms, OpenAI, or other widely covered companies. Use breadth to avoid repetitive overcoverage, not to replace the most important Gen AI shifts with less consequential ones.
 
+Prioritize stories and themes that show AI moving from pilot to production, AI moving from single tools to orchestrated workflows, AI becoming embedded across platforms, AI infrastructure becoming more capital-intensive, power/grid/cooling/permitting becoming constraints, governance becoming a commercial-access requirement, agent capabilities extending task complexity and duration, professional productivity improving through workflow amplification, physical AI and robotics moving from demo to deployment, and investment opportunity broadening beyond the largest AI platform companies.
+
+The Weekly should not simply list the biggest Daily Riffs headlines. It should explain what the week's events collectively suggest about the AI investment cycle: what changed, what repeated pattern mattered most, what it means for advisors and wholesalers, what themes or risks should be monitored, which developments belong in client conversations, which developments remain speculative, and what should be watched over the next 30 to 90 days.
+
 For each numbered item:
 - weave together the core theme, mechanism of change, and advisor implication in normal prose
 - do not prepend labels such as "Theme Statement:", "Mechanism of Change:", or "Implication:"
