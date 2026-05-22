@@ -1,0 +1,72 @@
+Beyond the Horizon: Weekly Riffs from the Gen AI Songbook
+Week Ending May 22, 2026
+
+TOP 5 STORIES THIS WEEK
+
+1. At Dell Technologies World, NVIDIA said AI infrastructure demand is “parabolic” and that Dell AI Factories are being used by 5,000 enterprises, including Lilly, Samsung and Honeywell. This changed the advisor conversation from “are companies experimenting?” to “which suppliers benefit as enterprises build governed, lower-cost inference infrastructure for production AI?” (NVIDIA Blog)
+
+2. AMD was reported to be investing more than $10 billion across Taiwan’s AI and chip ecosystem, including support for advanced chips, servers, and leading-edge manufacturing capacity. The read-through is that AI capex is broadening into foundries, advanced packaging, memory, server ODMs, power management and semiconductor equipment, not just the most visible accelerator vendors. (Reuters; EE Times)
+
+3. Meta was reported to be weighing a $200 billion AI data center bet. The size makes AI a return-on-invested-capital conversation for advisors: the next test is whether massive compute spending can translate into durable monetization rather than margin and free-cash-flow pressure. (Bloomberg)
+
+4. JPMorgan rolled out AI tools across global investment banking, according to a senior banker. This is a production-readiness signal in a highly regulated, high-value workflow, with read-throughs to financial services productivity, compliance, data platforms, workflow software and professional-services labor models. (Reuters)
+
+5. FANUC partnered with Google to advance physical AI across its industrial robots and said more than 1,000 robots have already shipped for physical AI-related applications. This moved robotics from demo narrative toward factory-floor adoption, with implications for automation suppliers, sensors, simulation software, edge compute and industrial productivity. (The Robot Report)
+
+BEYOND THE MAG 7
+
+1. Geekplus won an RBR50 Innovation Award for its AI-powered Robot Arm Picking Station deployed at Schneider Electric’s Shanghai facility, where it reportedly doubled manual picking throughput and achieved 99.99% or higher accuracy. The productivity impact matters now because warehouse AI is becoming measurable in throughput, accuracy and labor efficiency rather than staying in pilot mode.
+
+2. Nebius plans to deploy Bloom Energy fuel cells for U.S. data centers. The supplier effect is important because AI infrastructure operators are looking for dedicated on-site power as grid interconnection, reliability and permitting become bottlenecks.
+
+3. Doozy Robotics announced global expansion ahead of a planned Series A, citing a Robot-as-a-Service model, live paying customers, a qualified pipeline and a U.S. pharmaceutical humanoid pilot. The new demand pool is promising but still early: advisors should separate signed deployments and uptime economics from pipeline claims in humanoid and industrial robotics.
+
+WHAT IS BEING DISRUPTED
+
+1. Google’s redesign of the search box into a multimodal AI interface disrupts keyword search, web discovery and the assumption that users will always navigate through traditional links.
+
+2. JPMorgan’s global investment-banking AI rollout disrupts analyst and banker workflows by moving AI into document preparation, analysis and client-service support.
+
+3. Geekplus’s Schneider Electric warehouse deployment disrupts manual picking economics by showing AI-enabled robotics can handle variable items without extensive per-SKU training.
+
+REGULATORY RADAR
+
+1. Denver approved a one-year pause on new data centers, showing that city-level permitting can directly affect where AI infrastructure gets built. For investors, zoning, water, power access and community approval are now part of the AI capex diligence checklist.
+
+2. Trump postponed an AI executive order over concerns about overregulation, creating near-term uncertainty around federal policy direction. The practical relevance is that model developers, enterprise adopters and public-sector vendors still lack a clear national framework for governance, procurement and compliance expectations.
+
+3. California considered AI regulation as Gov. Gavin Newsom ordered new workforce protections tied to AI-related job shifts. This makes labor policy a live adoption issue and raises the importance of HR compliance, workforce planning, documentation and change management.
+
+READY TO USE SOUNDBITES
+
+1. This week’s AI story was not just better models; it was the cost and complexity of putting AI into production.
+
+2. NVIDIA and Dell gave advisors a concrete enterprise signal: thousands of companies are now building AI factories, not just testing chatbots.
+
+3. Meta’s reported data center plan turns AI into a capital-discipline debate: who can earn returns on the buildout, not just who can spend the most.
+
+4. FANUC and Geekplus show that AI is entering the physical economy through factories and warehouses, where productivity can be measured in throughput, accuracy and safety.
+
+5. Local data center moratoriums are a reminder that AI growth needs permission to build: power, water, zoning and community acceptance now matter.
+
+QUESTIONS TO BRING TO YOUR CLIENTS
+
+1. If AI infrastructure is becoming constrained by power, cooling and permitting, are we looking beyond chips and cloud platforms to the suppliers that make the buildout possible?
+
+2. If banks, manufacturers and warehouses are moving AI into production workflows, which industries in your portfolio could see productivity gains first, and which could face margin pressure from faster adopters?
+
+3. If regulation is moving through local data center rules, federal uncertainty and state labor protections, are we treating AI governance as a commercial requirement rather than a back-office issue?
+
+AI PRACTICE TIP OF THE WEEK
+What: Use AI to create a “second-opinion portfolio agenda” for a prospect by turning their anonymized holdings into 3 review questions about AI capex, infrastructure bottlenecks, and return on investment.
+
+Why: This gives advisors a sharper prospecting angle than “let me review your portfolio.” This week’s AI news makes the conversation timely: investors now need to separate companies benefiting from AI buildout from companies spending heavily and needing to prove returns.
+
+How to:
+1. Paste in an anonymized list of the prospect’s top holdings, funds, or sector weights.
+2. Ask AI to identify where AI-related capex, power constraints, robotics, or regulated adoption may create questions for review.
+3. Use the output to frame a second-opinion meeting agenda, not a recommendation.
+
+Copy prompt: I am a financial advisor preparing for a second-opinion portfolio conversation with a prospect. Below is an anonymized list of their holdings, funds, or sector weights: [paste here]. Based on this week’s AI themes — enterprise AI infrastructure, large data center spending, power and permitting constraints, robotics adoption, and the need to prove return on invested capital — create a concise review agenda with: 1) three portfolio questions I should ask, 2) why each question matters, 3) what evidence I should check before making any conclusion, and 4) a plain-English way to explain the issue to a prospect. Do not make buy/sell recommendations.
+
+Guardrail: Use this only as a discovery and preparation tool. Verify all holdings, fund exposures, and company-specific claims through approved research and your firm’s compliance process before discussing conclusions with a prospect.

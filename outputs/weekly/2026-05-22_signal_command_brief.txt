@@ -1,0 +1,73 @@
+AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report
+Week Ending 2026-05-22
+
+Purpose:
+This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.
+
+TOP CONVICTION SIGNALS
+
+Advanced chip capacity buildout
+Conviction: 8.24
+Strength: 8.62
+Momentum: 700%
+Velocity: +7 article change
+Why It Matters:
+This supports continued market attention on semiconductor capex, foundries, advanced packaging, EDA, and AI server supply chains. It also raises execution and supply bottleneck risks that can shape margins and competitive positioning.
+
+Industrial robotic labor substitution
+Conviction: 7.21
+Strength: 7.50
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+Physical AI creates second-order demand for robotics hardware, autonomy software, sensors, simulation, and systems integration. If economics hold, automation could shift labor cost structures in manufacturing, logistics, healthcare operations, and industrial services.
+
+Robotics autonomy software layers
+Conviction: 6.99
+Strength: 7.30
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+Robotics adoption may depend less on individual machines and more on operating systems, data loops, simulation, and developer ecosystems. This could create platform-like economics for robotics software and expand demand for edge AI chips and industrial automation infrastructure.
+
+factory capex ROI scrutiny
+Conviction: 6.80
+Strength: 6.80
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+Markets are increasingly judging AI leaders by return on invested capital, free cash flow impact, and whether enterprise demand can absorb infrastructure buildouts. Beneficiaries may extend beyond GPUs into servers, networking, storage, and enterprise data center systems.
+
+Enterprise implementation bottleneck
+Conviction: 6.58
+Strength: 6.60
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+AI monetization may favor companies that can combine models with deployment services, domain expertise, and enterprise integration. Advisors should watch whether AI spending converts into productivity, operating leverage, and customer retention rather than remaining stuck in pilots.
+
+ACCELERATING THEMES (BREAKOUTS)
+
+These themes are accelerating fastest relative to prior week.
+
+Advanced chip capacity buildout: Momentum 700%, velocity +7. This supports continued market attention on semiconductor capex, foundries, advanced packaging, EDA, and AI server supply chains
+Industrial robotic labor substitution: Momentum 500%, velocity +5. Physical AI creates second-order demand for robotics hardware, autonomy software, sensors, simulation, and systems integration
+Robotics autonomy software layers: Momentum 500%, velocity +5. Robotics adoption may depend less on individual machines and more on operating systems, data loops, simulation, and developer ecosystems
+
+FADING SIGNALS
+
+No major theme showed week-over-week deterioration in this run.
+
+PORTFOLIO IMPLICATIONS
+
+Structural strengthening is concentrated in Advanced chip capacity buildout, Industrial robotic labor substitution, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in Enterprise implementation bottleneck, Alibaba Alibaba Cloud, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in Advanced chip capacity buildout, Industrial robotic labor substitution, supported by rising article volume against the prior week.
+Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
+
+BOTTOM LINE
+
+1. Highest conviction theme: Advanced chip capacity buildout
+2. Most important new signal: Advanced chip capacity buildout
+3. Biggest acceleration: Advanced chip capacity buildout
+4. Key risk / fading area: No material fading area
