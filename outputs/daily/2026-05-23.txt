@@ -1,0 +1,62 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>May 23, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s strongest signal is that the AI investment cycle is broadening from models and chips into the harder-to-scale layers of infrastructure, policy, and embedded platforms. Data center siting, inference latency, vehicle compute, and government technology funding all point to AI becoming a physical and regulatory buildout, not just a software adoption story. For CPM, advisor, and wholesaler conversations, the key takeaway is that AI exposure increasingly runs through second-derivative beneficiaries such as power, grid, data center services, automotive semiconductors, governance tools, and industrial automation. The portfolio discussion should balance enthusiasm for AI demand with discipline around permitting risk, capital intensity, valuation, and policy uncertainty.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>The U.S. government moved to inject roughly $2 billion into quantum computing companies:</strong> The CHIPS and Science Act awards, including a reported $1 billion allocation tied to IBM and additional support for GlobalFoundries, D-Wave Quantum, Rigetti Computing, Infleqtion, Atom Computing, PsiQuantum, Quantinuum, and others, show Washington treating next-generation compute as strategic infrastructure for AI, cybersecurity, defense, and financial systems. The implication is that industrial policy remains a meaningful investment variable for advanced hardware, fabs, materials, and national-security technology supply chains. (Source: EE Times)</li>
+<li><strong>Stellantis expanded its Qualcomm partnership for AI-powered vehicle platforms:</strong> The collaboration links Snapdragon Digital Chassis systems with Stellantis’ STLA Brain software platform to support cockpit, connectivity, active safety, and Level 2-plus autonomy features across vehicle brands. The read-through is that AI is becoming embedded in automotive operating systems, benefiting centralized vehicle compute, ADAS software, sensors, and semiconductor content per vehicle. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Data Center Knowledge reported that AI inference is pulling infrastructure back into metro data centers:</strong> As more AI workloads require low latency near end users, capacity demand may expand beyond remote hyperscale training campuses into metro and edge-oriented facilities. The implication is broader opportunity and bottleneck monitoring across colocation, fiber, optical networking, cooling, power equipment, and urban interconnection markets. (Source: Data Center Knowledge)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Standard Chartered’s CEO apologized for upset caused by AI-related comments:</strong> The episode shows that AI workforce messaging is becoming a governance and reputational issue for large financial institutions, even when the underlying technology strategy is not disclosed in detail. The implication for advisors is that enterprise AI adoption will require change management, employee communication, and stakeholder trust alongside productivity tools. (Source: Reuters)</li>
+<li><strong>Yamaha Robotics Group discussed integrating industrial robots with PLC-driven automation:</strong> The focus on making robots easier to connect with existing factory control systems points to AI and automation moving into practical production workflows rather than isolated demonstrations. The investment read-through extends to industrial software, controls, sensors, robotics components, systems integrators, and manufacturers that can modernize brownfield facilities. (Source: The Robot Report)</li>
+<li><strong>Open Robotics previewed a Robotics Summit keynote on open foundations for AI-powered robots:</strong> The planned discussion around ROS, Gazebo, safety, security, and modern robotics tooling highlights the need for shared infrastructure before physical AI can scale reliably. The business-model implication is that durable adoption may depend less on one robot form factor and more on software ecosystems, simulation, developer tools, and enterprise-grade safety layers. (Source: The Robot Report)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Minneapolis moved to pause some new data center development through a moratorium:</strong> The action highlights how local zoning, power availability, land use, and community concerns can slow AI infrastructure deployment even when cloud demand is strong. The implication is that data center growth should be monitored through permitting, interconnection queues, utility planning, and local political risk, not just hyperscaler capex announcements. (Source: kare11.com)</li>
+<li><strong>Dubuque County supervisors considered a data center moratorium:</strong> The county-level debate reinforces that communities are scrutinizing potential data center projects before approvals proceed, especially around resource use and local impacts. The read-through is that AI infrastructure portfolios may face uneven geographic execution risk, while well-positioned regions with power, water, fiber, and policy support could gain relative importance. (Source: KCRG)</li>
+<li><strong>Hudson Valley residents rallied against a proposed massive data center in East Fishkill:</strong> Local opposition shows that social license, environmental concerns, and community engagement can become practical constraints on AI infrastructure buildouts. The portfolio-monitoring implication is that developers, utilities, and suppliers tied to data center growth may face project timing risk even when secular demand remains intact. (Source: Food &amp; Water Watch)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Bloomberg reported that Zoom’s Anthropic investment has generated a $1 billion gain:</strong> The reported mark shows that established software companies can gain AI exposure not only through product monetization, but also through strategic stakes in leading private model developers. The implication is to monitor corporate venture portfolios, partnership economics, and balance-sheet AI optionality across software and cloud-adjacent companies. (Source: Bloomberg)</li>
+<li><strong>24/7 Wall St. framed nuclear power as a potentially underappreciated part of the AI data center buildout:</strong> The article underscores that AI demand is increasingly translating into a power-availability and reliability question, not just a chip-supply question. The read-through extends to nuclear operators, regulated utilities, grid equipment, backup power, cooling, and long-duration energy solutions, while valuation discipline remains important after strong AI-infrastructure enthusiasm. (Source: 24/7 Wall St.)</li>
+<li><strong>Thomson Reuters published an item on AI’s impact in tax and accounting:</strong> Even with limited detail in the excerpt, the topic signals that AI is penetrating professional workflows where accuracy, auditability, compliance, and trusted content matter. The business-model implication is that data-rich workflow incumbents may have an advantage if they can embed governed AI into recurring professional software and research products. (Source: Thomson Reuters tax and accounting)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>The Wall Street Journal reported that David Sacks made a late appeal that contributed to President Trump backing away from an AI executive order:</strong> The episode points to fluid federal AI policy dynamics and internal disagreement over how aggressively to govern the technology. The implication is that model developers, cloud platforms, enterprise adopters, and compliance vendors should be monitored for policy-sensitive changes in procurement, safety expectations, and disclosure practices. (Source: WSJ)</li>
+<li><strong>Capitol News Illinois reported that a bill regulating powerful AI models advanced:</strong> The state-level action suggests AI governance may develop through a patchwork of local and state rules even if federal direction remains uncertain. The investment and business implication is that compliance, auditability, model documentation, legal review, and governance software could become commercial-access requirements for enterprise AI deployment. (Source: Capitol News Illinois)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>IEEE Spectrum highlighted Boston Dynamics’ Atlas handling a mini-fridge using reinforcement learning and whole-body control:</strong> The demonstration, alongside other robotics examples in the roundup, shows continued progress in embodied AI systems that can operate in more dynamic physical environments. The implication is to monitor the path from demonstrations to commercial deployment across logistics, construction automation, manufacturing, sensors, motion control, simulation, and safety systems. (Source: IEEE Spectrum)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>County and municipal data center agendas over the next 30 to 90 days:</strong> More moratorium votes, zoning reviews, or community challenges would signal that local permitting is becoming a gating factor for AI infrastructure. The implication is to track geographic execution risk for data center developers, utilities, grid suppliers, and construction partners. (Source: kare11.com; KCRG; Food &amp; Water Watch)</li>
+<li><strong>Metro data center leasing and interconnection demand:</strong> Rising inference workloads close to users would confirm that AI infrastructure demand is spreading beyond remote hyperscale campuses. The implication is to watch colocation providers, fiber networks, optical equipment, cooling vendors, and urban power constraints. (Source: Data Center Knowledge)</li>
+<li><strong>Enterprise AI workforce communications from large banks and professional services firms:</strong> More executive walk-backs, labor concerns, or productivity announcements would show how sensitive AI adoption remains inside white-collar organizations. The advisor implication is that productivity upside may arrive with reputational, governance, and workforce-transition costs. (Source: Reuters)</li>
+<li><strong>State-level AI model legislation and federal executive-order signals:</strong> Divergence between state rules and federal policy would raise compliance complexity for firms deploying advanced AI systems. The implication is to monitor governance software, legal services, audit tools, and enterprise procurement timelines. (Source: Capitol News Illinois; WSJ)</li>
+<li><strong>Corporate AI investment marks and strategic partnership disclosures:</strong> More gains or write-downs tied to private model-company stakes would show how AI exposure is moving through balance sheets as well as income statements. The implication is to evaluate AI-linked financial exposure separately from core product revenue. (Source: Bloomberg)</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>Local data center votes matter:</strong> AI demand may be global, but capacity is approved one community, grid connection, and permit at a time. (Source: kare11.com; KCRG)</li>
+<li><strong>Inference changes the map:</strong> As AI moves from training models to serving users, metro data centers, fiber, cooling, and power equipment become more important parts of the story. (Source: Data Center Knowledge)</li>
+<li><strong>AI exposure is not only in AI companies:</strong> Strategic stakes, suppliers, utilities, and workflow incumbents can all carry second-order sensitivity to the AI cycle. (Source: Bloomberg; Thomson Reuters tax and accounting)</li>
+<li><strong>Governance is becoming a commercial requirement:</strong> Companies may need auditability, documentation, and compliance processes before AI can scale in regulated workflows. (Source: Capitol News Illinois; WSJ)</li>
+<li><strong>Physical AI is still early but broadening:</strong> Robotics progress is moving the conversation from chatbots and copilots toward factories, vehicles, warehouses, and construction sites. (Source: IEEE Spectrum; Robotics &amp; Automation News)</li>
+</ul>
