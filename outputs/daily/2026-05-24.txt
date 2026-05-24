@@ -1,0 +1,64 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>May 24, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s strongest theme is that AI is increasingly constrained by physical-world bottlenecks rather than model capability alone. Local data center moratoriums, fiber capacity concerns, and infrastructure asset transactions all point to a market where compute demand is colliding with zoning, power, cooling, connectivity, and community acceptance. For CPM, advisor, and wholesaler conversations, the key message is that the AI cycle is broadening beyond mega-cap platforms into real estate, grid equipment, networking, cooling, permitting, and local policy risk. The investment discussion should increasingly focus on who can scale AI infrastructure reliably, not just who has the best model.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Cleveland considered a data center moratorium:</strong> The city joined a growing list of communities weighing restrictions on new data center development, reinforcing that AI infrastructure growth can be slowed by local zoning and public concerns even when compute demand remains strong. The portfolio implication is to monitor permitting, local politics, and power access as key risks for data center developers, utilities, electrical equipment suppliers, and AI infrastructure beneficiaries. (Source: Spectrum News)</li>
+<li><strong>Data Center Dynamics reported that AI factories have a fiber problem:</strong> The report highlights that AI-scale data centers need more than chips and power; they also need dense, reliable fiber connectivity to move data between facilities, clouds, and users. The investment read-through extends to fiber networks, optical equipment, data center interconnect, networking hardware, and carriers positioned around high-capacity AI traffic growth. (Source: Data Center Dynamics)</li>
+<li><strong>The Robot Report argued that near-term physical AI will be task-specific rather than humanoid-first:</strong> The article points to cost-efficient robots using local sense-think-act loops as the more practical commercial path for embodied AI adoption. The business-model implication is that investors should watch edge AI processors, machine vision, industrial automation, sensors, and workflow-specific robotics rather than assuming humanoids capture the earliest economic value. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Ohio schools adopted AI tools while reviewing student-learning protections:</strong> The education-sector example shows AI moving into institutional workflows but with demand for guardrails, training, and integrity controls. The advisor implication is that AI adoption will often create spending on governance, policy, monitoring, and professional development before it produces clean productivity metrics. (Source: The Columbus Dispatch)</li>
+<li><strong>UC Berkeley Law banned AI use for student work:</strong> The policy underscores that high-skill institutions are still defining acceptable AI use, especially where authorship, evaluation, and trust matter. The enterprise read-through is that regulated and credentialed professions may adopt AI more slowly unless vendors provide auditability, permissions, disclosure, and compliance-ready workflows. (Source: Dallas Express)</li>
+<li><strong>A state chief minister said policy would be used to lead the AI shift:</strong> The government-led framing suggests public-sector AI adoption is becoming an economic-development priority, even where implementation details remain limited. The implication is to monitor future procurement, training, cloud partnerships, and local AI infrastructure plans as signals of enterprise-grade adoption moving from rhetoric to budgeted programs. (Source: The Times of India)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Washington Township passed a six-month moratorium on data centers:</strong> The action shows that local governments are pausing projects to evaluate land use, infrastructure load, and community priorities. The investment implication is that data center growth may increasingly favor locations with pre-cleared sites, utility alignment, and supportive local policy. (Source: The Detroit News)</li>
+<li><strong>Harlingen officials approved a 120-day moratorium to study potential data center impacts:</strong> The pause reinforces that municipalities are scrutinizing water, power, traffic, tax, and land-use effects before allowing new projects. The portfolio-monitoring implication is to treat permitting timelines and interconnection readiness as important variables for AI infrastructure exposure. (Source: KRGV)</li>
+<li><strong>St. George residents protested a northern Utah AI data center project:</strong> The public pushback shows that AI infrastructure can become a visible local political issue, particularly where communities worry about resource consumption or quality-of-life impacts. The advisor takeaway is that AI capex growth is real, but project-level execution risk can rise when community acceptance is not secured early. (Source: St. George News)</li>
+<li><strong>A township renewed moratoriums on data centers and medical marijuana facilities:</strong> The renewal adds another example of local governments slowing data center approvals while they assess zoning and infrastructure implications. The read-through is that suppliers tied to power, cooling, fiber, and construction may still benefit from demand, but deployment cadence could vary meaningfully by jurisdiction. (Source: Tri-County Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>A Phoenix Investors affiliate sold a Memphis X-AI data center to a SpaceX subsidiary for $185 million:</strong> The transaction shows strategic capital moving into AI-linked data center assets, where ownership, location, power access, and future expansion potential can carry significant value. The investment implication is that AI infrastructure is becoming a real-assets and balance-sheet story, with read-throughs to data center real estate, power availability, construction, and private infrastructure financing. (Source: PR Newswire)</li>
+<li><strong>Flex reportedly pitched an AI data center spin-off as power and cooling growth accelerates:</strong> The reported move suggests infrastructure suppliers may look to isolate AI-exposed businesses to highlight demand tied to thermal management, power distribution, and data center systems. The portfolio-monitoring implication is to watch whether industrial and electronics manufacturing companies re-segment AI infrastructure units to improve investor visibility into growth and margins. (Source: MarketBeat)</li>
+<li><strong>Venture capitalist John Doerr called AI the biggest technology tsunami ever:</strong> While the comment is high-level, it reflects continued investor conviction that AI will reshape software, infrastructure, labor, and business formation. The advisor implication is to balance long-term thematic enthusiasm with valuation discipline, cash-flow visibility, and attention to second-derivative beneficiaries beyond the best-known platform companies. (Source: WSJ)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Minneapolis Council Member Wonsley issued a message on a data center moratorium:</strong> The local policy communication shows that data center expansion is becoming a civic planning issue, not just a technology deployment issue. The policy implication is that AI infrastructure investors should monitor city-level proposals, because local rules can influence site selection, construction timelines, and the distribution of economic benefits. (Source: Minneapolis Times)</li>
+<li><strong>National Review published an article on AI and regulatory power:</strong> The piece adds to the policy debate over how governments may shape AI adoption, although the available excerpt does not identify specific rules or affected companies. The business implication is that governance, compliance, auditability, and legal-risk management remain important commercial-access issues for enterprises adopting AI at scale. (Source: National Review)</li>
+<li><strong>Washington Township implemented a six-month moratorium on data center action:</strong> The decision reinforces that local policy can act as a gating factor for AI infrastructure even when national demand for compute is rising. The portfolio implication is to watch for clusters of municipal restrictions that could redirect development toward jurisdictions with clearer permitting frameworks. (Source: Macomb Daily)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Zebra Technologies made a strategic investment in Apera AI:</strong> The reported investment supports industrial automation workflows, pointing to continued corporate interest in machine vision and AI-enabled automation for manufacturing and logistics. The read-through is that physical AI adoption may benefit companies tied to sensors, scanning, warehouse systems, robotics software, and productivity tools that solve specific labor and throughput problems. (Source: Yahoo Finance)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Local governments extending or expanding data center moratoriums:</strong> A rising number of municipal pauses would suggest that permitting and community acceptance are becoming material constraints on AI infrastructure growth. The monitoring implication is to track whether delays affect site pipelines, utility planning, and data center construction timelines.</li>
+<li><strong>Fiber and optical-network capacity around AI data center clusters:</strong> Growing attention to connectivity bottlenecks would confirm that AI infrastructure demand is broadening beyond power and GPUs. The investment implication is to watch optical networking, fiber deployment, data center interconnect, and high-speed switching as second-derivative beneficiaries.</li>
+<li><strong>Corporate separation or re-segmentation of AI infrastructure businesses:</strong> More companies highlighting power, cooling, or data center units separately would signal that management teams see investor demand for clearer AI infrastructure exposure. The portfolio implication is to monitor margins, order books, and backlog quality rather than AI labeling alone.</li>
+<li><strong>Institutional AI-use rules in education, law, finance, and public agencies:</strong> More formal bans, permissions, or disclosure requirements would show how governance is shaping adoption in trusted professional settings. The advisor implication is that compliance-ready AI tools may have a more durable path than unmanaged consumer-style usage.</li>
+<li><strong>Task-specific robotics deployments in logistics and industrial settings:</strong> Evidence of production deployments would be more meaningful than humanoid demonstrations alone. The investment read-through is to monitor machine vision, edge AI chips, automation integrators, and workflow-specific robotics vendors.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>Local data center moratoriums show that AI growth is no longer just a cloud story:</strong> It is also a zoning, power, water, and community-approval story.</li>
+<li><strong>Fiber bottlenecks show that AI infrastructure has more choke points than chips:</strong> Networking, optical equipment, and interconnection capacity matter too.</li>
+<li><strong>AI governance rules in schools and professional institutions show adoption is becoming more formal:</strong> The next phase is less about experimentation and more about controlled use.</li>
+<li><strong>AI infrastructure transactions show capital is moving into the physical layer:</strong> Real estate, power access, cooling, and connectivity are becoming part of the AI investment conversation.</li>
+<li><strong>Physical AI may commercialize first through practical task-specific machines:</strong> The near-term opportunity may be in automation that solves narrow labor and throughput problems, not necessarily general-purpose humanoids.</li>
+</ul>
