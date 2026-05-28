@@ -1,0 +1,65 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>May 28, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The day’s strongest signal is that the AI investment cycle is becoming less about model announcements and more about the real-world systems required to deploy AI at scale. Local permitting, power availability, cooling, chip architecture, security, and governance are now shaping how quickly enterprise AI can move from pilots into production. For CPM, advisor, and wholesaler conversations, the key message is that AI exposure is broadening beyond the largest platforms into infrastructure suppliers, compliance layers, workflow software, and physical automation enablers. The market is still tolerating elevated AI capex, but the next phase will likely reward evidence of efficiency, utilization, and durable enterprise demand.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Iron County paused new AI data center proposals:</strong> The county action shows that AI infrastructure growth can be slowed by local zoning, land-use, and community-acceptance constraints, making permitting a portfolio-monitoring issue alongside chips and cloud capex. (Source: KSL.com)</li>
+<li><strong>NVIDIA framed “AI factories” as infrastructure that converts power into intelligence:</strong> The company’s emphasis on cost per token and performance per watt highlights a shift from model capability alone to operating efficiency, with read-throughs to GPUs, networking, power equipment, cooling, and data center design. (Source: NVIDIA Blog)</li>
+<li><strong>South Korea rolled out an AI data roadmap to expand access and ease regulations:</strong> The policy move suggests governments are competing to improve the data and regulatory conditions needed for AI development, with implications for national AI competitiveness and public-private technology investment. (Source: MLex)</li>
+<li><strong>Delos Data advanced a disaggregated server design for more than 1,000 GPUs in a single inference domain:</strong> The development points to the next infrastructure challenge: scaling always-on inference efficiently, not just training larger models, with implications for GPU utilization, networking, memory, and power intensity. (Source: EE Times)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Wix.com announced 1,000 job cuts tied partly to AI growth and currency pressure:</strong> The move is a concrete example of AI becoming an operating-model lever for software companies, supporting advisor discussions about productivity gains, margin ambitions, and workforce restructuring risk. (Source: Reuters)</li>
+<li><strong>The Financial Times highlighted AI’s accountability loophole:</strong> The governance issue matters because enterprises in regulated sectors need clear responsibility, auditability, and liability frameworks before moving AI into production workflows, creating demand for compliance tooling and legal oversight. (Source: Financial Times)</li>
+<li><strong>MarkTechPost published a guide to pgvector-powered semantic and hybrid search:</strong> The technical example shows how AI retrieval can be built on familiar database infrastructure rather than entirely new systems, reinforcing the enterprise adoption path through existing data platforms and developer workflows. (Source: MarkTechPost)</li>
+<li><strong>An arXiv paper examined backdoor attacks on AI-based fault detection in cyber-physical systems:</strong> The research underscores that production AI in utilities, industrial automation, and control systems requires security and data-integrity safeguards, creating monitoring relevance for cybersecurity, industrial software, and governance vendors. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Data Center Dynamics reported a 25MW AI data center planned for McMinnville, Tennessee:</strong> The project shows AI demand moving into regional infrastructure markets, with read-throughs to power access, construction services, electrical equipment, backup power, fiber, and local economic development. (Source: Data Center Dynamics)</li>
+<li><strong>Data Center Dynamics compared single-phase and two-phase direct-to-chip liquid cooling for 2026 AI data centers:</strong> The discussion highlights cooling architecture as a core AI bottleneck as rack density rises, making thermal management a second-derivative area to monitor across data center capex. (Source: Data Center Dynamics)</li>
+<li><strong>Reno City Council prepared to debate a data center moratorium and future regulations:</strong> The local review reinforces that grid capacity, water usage, land use, and community concerns can alter the geography and timing of AI infrastructure expansion. (Source: This Is Reno)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Reuters reported that investors remain calm as the AI capex boom surpasses dotcom-era comparisons:</strong> The market signal suggests investors are still giving large AI spenders room to build, but it raises the importance of tracking utilization, monetization, free cash flow, and capex discipline. (Source: Reuters)</li>
+<li><strong>EE Times described Europe’s post-fab semiconductor strategy around chiplets, advanced packaging, and ecosystems:</strong> The shift matters because AI, robotics, and edge computing may create value beyond leading-edge fabs, with read-throughs to advanced packaging, interoperability standards, design IP, and system-level integration. (Source: EE Times)</li>
+<li><strong>Metro Council moved to consider AI data center regulations:</strong> The local policy discussion points to a capital allocation risk for developers and utilities, because regulatory uncertainty can affect site selection, project timelines, and infrastructure financing assumptions. (Source: WKRN News 2)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>The Hopkins Bloomberg Center detailed state efforts to protect users seeking AI mental health advice:</strong> The policy focus shows that high-risk AI use cases will face closer scrutiny, with implications for healthcare-adjacent AI products, privacy safeguards, liability standards, and enterprise risk controls. (Source: Hopkins Bloomberg Center)</li>
+<li><strong>A Silicon Valley congressman favored technology partnerships over new AI regulations:</strong> The policy stance matters because a partnership-led approach could reduce near-term compliance friction while keeping public-sector adoption and oversight tied closely to industry capabilities. (Source: Palo Alto Online)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>The 2026 Robotics Summit and Expo opened with sessions across humanoids, warehouse robotics, surgical robotics, autonomy, sensing, and commercialization:</strong> The agenda shows physical AI moving from demos toward deployment questions, with read-throughs to sensors, actuators, robotics software, logistics automation, and industrial integration. (Source: The Robot Report)</li>
+<li><strong>The Robot Report highlighted why robots still struggle to see the real world:</strong> The article identifies perception reliability, depth sensing, lighting, dust, vibration, and failure handling as commercialization bottlenecks, implying that sensing and validation infrastructure may be as important as AI models for robotics adoption. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Local data center permitting calendars in fast-growing AI markets:</strong> County and city reviews are becoming an early warning signal for project delays, cost escalation, and geographic shifts in AI infrastructure development. (Source: KSL.com)</li>
+<li><strong>Cloud and semiconductor earnings commentary on inference economics:</strong> Investors should monitor whether companies discuss GPU utilization, cost per token, power efficiency, and monetization of agentic workloads rather than only headline capex. (Source: NVIDIA Blog)</li>
+<li><strong>Enterprise software headcount and margin updates:</strong> Workforce actions tied to AI will help determine whether AI is producing measurable operating leverage or simply adding new product-development expense. (Source: Reuters)</li>
+<li><strong>AI governance language in regulated-industry deployments:</strong> Watch for contracts and product launches that include auditability, permissions, liability allocation, and human oversight, because those features signal movement from pilots to production. (Source: Financial Times)</li>
+<li><strong>Robotics commercialization signals beyond conference demos:</strong> Monitor customer deployments, uptime metrics, perception reliability, safety certification, and integration with warehouse or factory systems to separate prototypes from scalable physical AI. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming a power, permitting, and productivity story:</strong> The investment conversation is broadening beyond model launches to the infrastructure and governance required for scale. (Source: KSL.com)</li>
+<li><strong>Cost per token may become as important as model intelligence:</strong> As AI moves into always-on enterprise use, efficiency can matter as much as raw capability. (Source: NVIDIA Blog)</li>
+<li><strong>Local governments are now part of the AI supply chain:</strong> Zoning, grid capacity, and community approval can influence where AI infrastructure gets built. (Source: This Is Reno)</li>
+<li><strong>AI labor impact is moving from theory to company action:</strong> Job cuts tied partly to AI show why advisors should discuss both productivity upside and workforce transition risk. (Source: Reuters)</li>
+<li><strong>Physical AI still needs better real-world reliability:</strong> Robots need stronger sensing, safety, and integration before broad commercial deployment can match the promise of demos. (Source: The Robot Report)</li>
+</ul>
