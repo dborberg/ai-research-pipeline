@@ -1,0 +1,72 @@
+Beyond the Horizon: Weekly Riffs from the Gen AI Songbook
+Week Ending May 29, 2026
+
+TOP 5 STORIES THIS WEEK
+
+1. Dell raised its forecasts as AI data center buildout strengthened demand, making the AI capex cycle visible in enterprise hardware rather than only in GPUs or cloud platforms. For advisors, the read-through is that servers, storage, networking, power equipment, and integration suppliers are becoming part of the AI demand chain to monitor. (Reuters)
+
+2. Anthropic released Claude Opus 4.8 with stronger coding, reasoning, effort controls, dynamic workflows for large codebases, and live API instruction updates. This matters because model competition is shifting toward production-grade agent workflows where enterprises care about reliability, cost control, governance, and developer integration, not just chatbot quality. (AI News)
+
+3. Google Pay updated its payment infrastructure for AI agents through the Universal Commerce Protocol, a Merchant Commerce Platform server, Android callbacks, and expanded WebView support. The practical change is that AI agents are being prepared to initiate real transactions with human approval, creating read-throughs to payments, identity, fraud prevention, merchant software, and machine-readable commerce. (AI News)
+
+4. Kirkland & Ellis reportedly committed $500 million to build an AI platform for legal work. A major law firm putting that scale of capital behind AI is a clear signal that professional services are moving from experimentation toward workflow infrastructure, with implications for legal-tech vendors, compliance tools, cloud usage, and white-collar productivity. (Bloomberg Law News)
+
+5. Phoenix Investors sold a Memphis X-AI data center to a SpaceX subsidiary for $185 million while multiple local governments advanced or discussed data center moratoriums during the week. The combined message is that AI infrastructure is attracting strategic capital, but power, water, land use, permitting, and community approval are now investment variables, not side issues. (PR Newswire; KATV; Newsday; Tampa Bay 28)
+
+BEYOND THE MAG 7
+
+1. Sortera Technologies moved its second AI-powered aluminum sorting facility in Lebanon, Tennessee toward full operational status, doubling estimated annual processing capacity to 240 million pounds. The productivity impact is tangible: AI, sensors, and analytics are being used to improve industrial throughput for automotive, construction, and aerospace supply chains.
+
+2. eMaxx went live on Majesco’s AI-enabled, cloud-native P&C policy and premium audit platforms. The customer-adoption signal is that AI is entering insurance administration workflows where modernization, auditability, and industry-specific software matter more than generic copilots.
+
+3. Slamcore raised $14 million from investors including ROKStar Ventures, a Rockwell Automation subsidiary, bringing total funding to $40 million. The supplier effect is that industrial automation firms are seeking exposure to spatial intelligence software that can help robots and autonomous systems operate in real environments.
+
+WHAT IS BEING DISRUPTED
+
+1. Digital checkout is being disrupted as Google Pay prepares for AI agents to transact through machine-readable commerce rails instead of only human-facing web pages.
+
+2. Professional-services delivery is being disrupted as Kirkland & Ellis’ reported $500 million AI platform investment turns legal expertise into a scalable software and workflow problem.
+
+3. Data center development assumptions are being disrupted as Pulaski County’s one-year moratorium and other local reviews show that AI capacity can be constrained by zoning, water, power, and community approval.
+
+REGULATORY RADAR
+
+1. Pulaski County enacted a one-year moratorium on data centers while exempting the AVAIO project. The practical relevance is that permitting status and project timing may become differentiators for data center developers, utilities, and infrastructure investors.
+
+2. Brookhaven considered a hearing on a potential moratorium that could pause AI data center plans until 2028. A multi-year local restriction would make site selection, entitlement risk, and regional utility exposure more important in AI infrastructure due diligence.
+
+3. South Africa targeted January 2027 for a revised AI policy after withdrawing an earlier version. The business relevance is that global AI deployment will face uneven policy timelines, affecting public-sector procurement, compliance planning, and cross-border enterprise rollouts.
+
+READY TO USE SOUNDBITES
+
+1. “This week showed AI is moving from demos into systems: agents that can code, agents that can transact, and platforms that can govern them.”
+
+2. “Dell’s forecast raise is a reminder that AI spending is reaching the broader hardware stack, not just the biggest chipmakers.”
+
+3. “Google Pay’s agent-commerce work is important because it moves AI from answering questions toward completing transactions.”
+
+4. “Local data center moratoriums show that AI capacity is approved one community, power connection, and water plan at a time.”
+
+5. “Robotics is becoming more investable where there are real deployments, like Sortera’s capacity expansion and cobot adoption; simulation-to-real research is promising, but still earlier-stage.”
+
+QUESTIONS TO BRING TO YOUR CLIENTS
+
+1. “Are you looking at AI exposure only through the largest platforms, or also through the servers, power systems, cooling, networking, identity, and compliance layers needed to make AI work at scale?”
+
+2. “Which industries in your portfolio could see the biggest workflow change if agents can securely access systems, follow permissions, and complete transactions?”
+
+3. “Over the next 30 to 90 days, should we monitor data center permitting, utility capacity, and local moratoriums as closely as model launches and cloud capex announcements?”
+
+AI PRACTICE TIP OF THE WEEK
+What: Use AI to turn a new client’s intake notes into a “first meeting readiness brief” that surfaces missing information, operational next steps, and the best agenda for onboarding.
+
+Why: Onboarding often stalls because key details are missing before the first real planning meeting. This helps the advisor show up organized, reduce back-and-forth, and make the client feel there is a clear process from day one. This week’s AI themes around agents, permissions, and workflow infrastructure are a good reminder that clean inputs and approvals matter.
+
+How to:
+1. Paste in anonymized intake notes, household details, known accounts, goals, and open questions.
+2. Ask AI to identify missing items, likely friction points, and a tight meeting agenda.
+3. Use the output to prep your team and confirm what the client should bring.
+
+Copy prompt: Act as an experienced financial advisor preparing for a new client onboarding meeting. Using the anonymized intake notes below, create a concise readiness brief with: 1) the top 5 missing or unclear items we need to confirm, 2) likely operational next steps such as documents, account access, beneficiaries, outside professionals, or transfer logistics, 3) a 30-minute onboarding meeting agenda, 4) three client-friendly questions to ask in the meeting, and 5) any items my team should prepare before the meeting. Do not make recommendations. Intake notes: [paste anonymized notes]
+
+Guardrail: Do not include names, account numbers, Social Security numbers, or other sensitive client data. Treat the output as a prep aid only and verify all facts, forms, and next steps through your firm’s approved process.

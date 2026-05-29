@@ -1,0 +1,57 @@
+AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report
+Week Ending 2026-05-29
+
+Purpose:
+This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.
+
+TOP CONVICTION SIGNALS
+
+compute capex reaches hardware and facilities
+Conviction: 6.99
+Strength: 7.30
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+This supports a broader AI-infrastructure beneficiary set spanning servers, networking, optics, data center real estate, utilities, and regional cloud providers. It also reinforces that AI capex signals can move hardware and infrastructure equities beyond the largest chipmakers.
+
+Production agents need identity payments and
+Conviction: 6.58
+Strength: 6.60
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+This points to a new enterprise software stack around agent security, orchestration, auditability, and transaction infrastructure. Identity providers, cloud platforms, developer tooling firms, and payment platforms may gain pricing power as agents become operational.
+
+Vertical deployment in enterprise workflows
+Conviction: 6.13
+Strength: 6.45
+Momentum: 300%
+Velocity: +3 article change
+Why It Matters:
+Scaled spending by professional-services firms and vertical software buyers suggests AI budgets are moving from experimentation into operating infrastructure. This may benefit cloud providers, legal-tech vendors, insurance software platforms, and firms able to convert AI into workflow-level productivity.
+
+ACCELERATING THEMES (BREAKOUTS)
+
+These themes are accelerating fastest relative to prior week.
+
+compute capex reaches hardware and facilities: Momentum 500%, velocity +5. This supports a broader AI-infrastructure beneficiary set spanning servers, networking, optics, data center real estate, utilities, and regional cloud providers
+Production agents need identity payments and: Momentum 500%, velocity +5. This points to a new enterprise software stack around agent security, orchestration, auditability, and transaction infrastructure
+Vertical deployment in enterprise workflows: Momentum 300%, velocity +3. Scaled spending by professional-services firms and vertical software buyers suggests AI budgets are moving from experimentation into operating infrastructure
+
+FADING SIGNALS
+
+No major theme showed week-over-week deterioration in this run.
+
+PORTFOLIO IMPLICATIONS
+
+Structural strengthening is concentrated in compute capex reaches hardware and facilities, Production agents need identity payments and, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in Vertical deployment in enterprise workflows, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in compute capex reaches hardware and facilities, Production agents need identity payments and, supported by rising article volume against the prior week.
+Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
+
+BOTTOM LINE
+
+1. Highest conviction theme: compute capex reaches hardware and facilities
+2. Most important new signal: compute capex reaches hardware and facilities
+3. Biggest acceleration: compute capex reaches hardware and facilities
+4. Key risk / fading area: No material fading area
