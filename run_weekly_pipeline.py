@@ -22,6 +22,12 @@ from app.reporting import (
     save_text_output,
 )
 from app.send_email import send_report
+from app.space_economy import (
+    SPACE_ECONOMY_FILTER_PROMPT,
+    calculate_space_economy_theme_active,
+    ensure_space_metadata,
+    format_space_metadata_lines,
+)
 from app.velocity import apply_velocity_metrics, compute_velocity
 
 WHOLESALER_TYPE = "wholesaler"
@@ -500,7 +506,12 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
                     summary,
                     advisor_relevance,
                     ai_score,
-                    companies
+                    companies,
+                    is_space_economy_related,
+                    space_relevance,
+                    space_ai_connection,
+                    space_time_horizon,
+                    space_investment_layer
                 FROM articles
                 WHERE ai_score >= :high_signal_threshold
                                     AND published_at >= :window_start
@@ -527,7 +538,12 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
                     summary,
                     advisor_relevance,
                     ai_score,
-                    companies
+                    companies,
+                    is_space_economy_related,
+                    space_relevance,
+                    space_ai_connection,
+                    space_time_horizon,
+                    space_investment_layer
                 FROM articles
                 WHERE ai_score >= :score_threshold
                   AND ai_score < :high_signal_threshold
@@ -547,7 +563,7 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
 
     high_signal = []
     for row in high_signal_rows:
-        article = dict(row)
+        article = ensure_space_metadata(dict(row))
         article["signal_tier"] = "HIGH SIGNAL (PRIORITY - FOCUS HERE)"
         article["companies"] = _parse_companies(article.get("companies"))
         article["signal_score"] = float(article.get("signal_score") or article.get("ai_score") or 0)
@@ -559,7 +575,7 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
 
     medium_signal = []
     for row in medium_signal_rows:
-        article = dict(row)
+        article = ensure_space_metadata(dict(row))
         article["signal_tier"] = "MEDIUM SIGNAL"
         article["companies"] = _parse_companies(article.get("companies"))
         article["signal_score"] = float(article.get("signal_score") or article.get("ai_score") or 0)
@@ -570,6 +586,10 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
         medium_signal.append(article)
 
     articles = high_signal + medium_signal
+    space_economy_theme_active = calculate_space_economy_theme_active(
+        articles,
+        quality_filter=lambda article: float(article.get("ai_score") or 0) >= score_threshold,
+    )
 
     print(f"HIGH SIGNAL articles: {len(high_signal)}")
     print(f"MEDIUM SIGNAL articles: {len(medium_signal)}")
@@ -582,6 +602,7 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
         "articles": articles,
         "high_signal": high_signal,
         "medium_signal": medium_signal,
+        "SPACE_ECONOMY_THEME_ACTIVE": space_economy_theme_active,
     }
 
 
@@ -723,6 +744,7 @@ def _build_wholesaler_event_context(article_data):
                     f"SUMMARY: {article.get('summary') or ''}",
                     f"COMPANIES: {', '.join(article.get('companies') or [])}",
                     f"EVENT_PRIORITY: {_weekly_event_priority(article):.2f}",
+                    *format_space_metadata_lines(article),
                 ]
             )
         )
@@ -752,6 +774,7 @@ def cluster_articles(client, articles):
                     f"ADVISOR_RELEVANCE: {article.get('advisor_relevance') or ''}",
                     f"COMPANIES: {', '.join(article.get('companies') or [])}",
                     f"SOURCE: {article.get('source') or ''}",
+                    *format_space_metadata_lines(article),
                 ]
             )
         )
@@ -1064,6 +1087,7 @@ def _build_weekly_cluster_bundle(client, week_start, score_threshold=DEFAULT_SCO
         "clusters": clusters,
         "patterns": patterns,
         "source_context": source_context,
+        "SPACE_ECONOMY_THEME_ACTIVE": article_data.get("SPACE_ECONOMY_THEME_ACTIVE", False),
     }
 
 
@@ -1092,6 +1116,8 @@ def generate_wholesaler_weekly(client, source_context, week_start, article_data=
         primary_context=primary_context,
         supplemental_context=supplemental_context,
     )
+    if (article_data or {}).get("SPACE_ECONOMY_THEME_ACTIVE"):
+        main_user_prompt = f"{main_user_prompt}\n\n{SPACE_ECONOMY_FILTER_PROMPT}"
 
     main_digest = call_chat_model(
         client,
@@ -1256,9 +1282,11 @@ def _build_recent_practice_tip_constraints(recent_tip_history):
     return "\n".join(lines)
 
 
-def generate_thematic_weekly(client, source_context):
+def generate_thematic_weekly(client, source_context, space_economy_theme_active=False):
     system_prompt = _load_weekly_prompt("thematic_system")
     user_prompt = _load_weekly_prompt("thematic_user", source_context=source_context)
+    if space_economy_theme_active:
+        user_prompt = f"{user_prompt}\n\n{SPACE_ECONOMY_FILTER_PROMPT}"
 
     response = call_chat_model(
         client,
@@ -1414,7 +1442,11 @@ def _generate_and_store_weekly_reports(client, week_start):
         week_start,
         article_data=weekly_bundle["article_data"],
     )
-    thematic_content = generate_thematic_weekly(client, source_context)
+    thematic_content = generate_thematic_weekly(
+        client,
+        source_context,
+        space_economy_theme_active=weekly_bundle.get("SPACE_ECONOMY_THEME_ACTIVE", False),
+    )
     wholesaler_content = _with_weekly_report_header(WHOLESALER_TITLE, week_start, wholesaler_content)
     thematic_content = _with_weekly_report_header(THEMATIC_TITLE, week_start, thematic_content)
     save_weekly_clusters(week_start, weekly_bundle["clusters"])

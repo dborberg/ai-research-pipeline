@@ -261,6 +261,11 @@ def init_db():
             ("advisor_relevance", "TEXT"),
             ("ai_score", "INTEGER"),
             ("original_publisher", "TEXT"),
+            ("is_space_economy_related", "INTEGER"),
+            ("space_relevance", "TEXT"),
+            ("space_ai_connection", "TEXT"),
+            ("space_time_horizon", "TEXT"),
+            ("space_investment_layer", "TEXT"),
         ]:
             _add_column_if_missing(conn, "articles", column_name, column_type)
 
@@ -604,7 +609,12 @@ def get_articles_by_ids(article_ids):
                     published_at,
                     summary,
                     advisor_relevance,
-                    ai_score
+                    ai_score,
+                    is_space_economy_related,
+                    space_relevance,
+                    space_ai_connection,
+                    space_time_horizon,
+                    space_investment_layer
                 FROM articles
                 WHERE id IN ({placeholders})
             """),
@@ -702,7 +712,12 @@ def fetch_top_articles(days=7, limit=25):
                     published_at,
                     summary,
                     advisor_relevance,
-                    ai_score
+                    ai_score,
+                    is_space_economy_related,
+                    space_relevance,
+                    space_ai_connection,
+                    space_time_horizon,
+                    space_investment_layer
                 FROM articles
                 WHERE published_at >= :cutoff
                 ORDER BY

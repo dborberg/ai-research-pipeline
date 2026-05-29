@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 from app.branding import MONTHLY_TITLE
 from app.cluster_schema import normalize_cluster_df
-from app.db import fetch_daily_digests, fetch_weekly_digests, get_weekly_clusters, init_db, upsert_monthly_report
+from app.db import fetch_daily_digests, fetch_weekly_digests, get_engine, get_weekly_clusters, init_db, upsert_monthly_report
 from app.reporting import (
     build_monthly_source_context,
     call_chat_model,
@@ -18,6 +18,12 @@ from app.reporting import (
     save_text_output,
 )
 from app.send_email import send_report
+from app.space_economy import (
+    SPACE_ECONOMY_FILTER_PROMPT,
+    calculate_space_economy_theme_active,
+    ensure_space_metadata,
+)
+from sqlalchemy import text
 
 _CENTRAL_TZ = ZoneInfo("America/Chicago")
 
@@ -125,6 +131,49 @@ def _compute_theme_summary(history_df):
     ).reset_index(drop=True)
 
 
+def _load_monthly_articles(report_month):
+    month_start, next_month_start = get_month_bounds(report_month)
+    with get_engine().connect() as conn:
+        rows = conn.execute(
+            text("""
+                SELECT
+                    title,
+                    source,
+                    COALESCE(original_publisher, source) AS original_publisher,
+                    summary,
+                    advisor_relevance,
+                    ai_score,
+                    is_space_economy_related,
+                    space_relevance,
+                    space_ai_connection,
+                    space_time_horizon,
+                    space_investment_layer
+                FROM articles
+                WHERE published_at >= :month_start
+                  AND published_at < :next_month_start
+            """),
+            {
+                "month_start": month_start.isoformat(),
+                "next_month_start": next_month_start.isoformat(),
+            },
+        ).mappings().all()
+    return [ensure_space_metadata(dict(row)) for row in rows]
+
+
+def _monthly_space_quality(article):
+    try:
+        return float(article.get("ai_score") or 0) >= 6
+    except Exception:
+        return False
+
+
+def _monthly_space_theme_active(report_month):
+    return calculate_space_economy_theme_active(
+        _load_monthly_articles(report_month),
+        quality_filter=_monthly_space_quality,
+    )
+
+
 def _build_llm_context(summary_df):
     context_lines = []
     for _, row in summary_df.iterrows():
@@ -175,7 +224,7 @@ def _build_monthly_scorecard(summary_df):
     return "\n".join(lines)
 
 
-def _generate_monthly_synthesis(report_month, client, source_context, summary_df=None):
+def _generate_monthly_synthesis(report_month, client, source_context, summary_df=None, space_economy_theme_active=False):
     context_sections = []
 
     if summary_df is not None and not summary_df.empty:
@@ -235,6 +284,8 @@ Requirements:
 SOURCE MATERIAL:
 {combined_context}
 """
+    if space_economy_theme_active:
+        user_prompt = f"{user_prompt}\n\n{SPACE_ECONOMY_FILTER_PROMPT}"
 
     return call_chat_model(
         client,
@@ -359,7 +410,7 @@ def _should_use_text_history(history_df, minimum_cluster_weeks=3):
     return unique_weeks < minimum_cluster_weeks
 
 
-def generate_monthly_brief_from_text_history(report_month, client):
+def generate_monthly_brief_from_text_history(report_month, client, space_economy_theme_active=False):
     month_start, next_month_start = get_month_bounds(report_month)
     weekly_rows = fetch_weekly_digests(weeks=12, limit=24)
     weekly_rows = [
@@ -376,10 +427,15 @@ def generate_monthly_brief_from_text_history(report_month, client):
         raise RuntimeError("No daily or weekly digest history available for monthly fallback mode")
 
     history_context = _build_text_history_context(weekly_rows, daily_rows)
-    return _generate_monthly_synthesis(report_month, client, history_context)
+    return _generate_monthly_synthesis(
+        report_month,
+        client,
+        history_context,
+        space_economy_theme_active=space_economy_theme_active,
+    )
 
 
-def generate_monthly_brief(summary_df, report_month, client):
+def generate_monthly_brief(summary_df, report_month, client, space_economy_theme_active=False):
     if summary_df.empty:
         return "\n".join([
             "No monthly theme data is available yet.",
@@ -387,7 +443,13 @@ def generate_monthly_brief(summary_df, report_month, client):
 
     summary_df = normalize_cluster_df(summary_df)
     weekly_context = build_monthly_source_context(weeks=6)
-    return _generate_monthly_synthesis(report_month, client, weekly_context, summary_df=summary_df)
+    return _generate_monthly_synthesis(
+        report_month,
+        client,
+        weekly_context,
+        summary_df=summary_df,
+        space_economy_theme_active=space_economy_theme_active,
+    )
 
 
 def main():
@@ -401,12 +463,22 @@ def main():
     report_month = get_latest_completed_month()
     history_df = _load_recent_cluster_history(report_month)
     client = get_openai_client(api_key)
+    SPACE_ECONOMY_THEME_ACTIVE = _monthly_space_theme_active(report_month)
 
     if _should_use_text_history(history_df):
-        monthly_content = generate_monthly_brief_from_text_history(report_month, client)
+        monthly_content = generate_monthly_brief_from_text_history(
+            report_month,
+            client,
+            space_economy_theme_active=SPACE_ECONOMY_THEME_ACTIVE,
+        )
     else:
         summary_df = _compute_theme_summary(history_df)
-        monthly_content = generate_monthly_brief(summary_df, report_month, client)
+        monthly_content = generate_monthly_brief(
+            summary_df,
+            report_month,
+            client,
+            space_economy_theme_active=SPACE_ECONOMY_THEME_ACTIVE,
+        )
 
     monthly_content = _with_monthly_report_header(MONTHLY_TITLE, report_month, monthly_content)
 

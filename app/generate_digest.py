@@ -38,6 +38,12 @@ def generate_daily_digest(report_date=None):
     from app.branding import DAILY_TITLE
     from app.db import get_engine
     from app.pipeline_window import get_pipeline_window
+    from app.space_economy import (
+        SPACE_ECONOMY_FILTER_PROMPT,
+        calculate_space_economy_theme_active,
+        ensure_space_metadata,
+        format_space_metadata_lines,
+    )
 
     _CENTRAL_TZ = ZoneInfo("America/Chicago")
     digest_token_budget = 6000
@@ -330,6 +336,18 @@ def generate_daily_digest(report_date=None):
 
         return score
 
+    def passes_daily_space_quality(article):
+        if not article.get("summary"):
+            return False
+        source_hint = source_quality_hint(article)
+        if source_hint == "lower_confidence":
+            return False
+        try:
+            ai_score = int(article.get("ai_score") or 0)
+        except Exception:
+            ai_score = 0
+        return ai_score >= 6 or bool(str(article.get("advisor_relevance") or "").strip())
+
     def extract_theme_tags(article):
         text = " ".join(
             [
@@ -535,7 +553,21 @@ def generate_daily_digest(report_date=None):
 
         with engine.connect() as conn:
             result = conn.execute(text("""
-                SELECT title, source, COALESCE(original_publisher, source) AS original_publisher, summary, url, published_at, companies, advisor_relevance, ai_score
+                SELECT
+                    title,
+                    source,
+                    COALESCE(original_publisher, source) AS original_publisher,
+                    summary,
+                    url,
+                    published_at,
+                    companies,
+                    advisor_relevance,
+                    ai_score,
+                    is_space_economy_related,
+                    space_relevance,
+                    space_ai_connection,
+                    space_time_horizon,
+                    space_investment_layer
                 FROM articles
                 WHERE published_at >= :window_start
                   AND published_at <= :window_end
@@ -555,12 +587,17 @@ def generate_daily_digest(report_date=None):
             companies = row[6] or ""
             advisor_relevance = row[7] or ""
             ai_score = row[8]
+            is_space_economy_related = row[9]
+            space_relevance = row[10] or ""
+            space_ai_connection = row[11] or ""
+            space_time_horizon = row[12] or ""
+            space_investment_layer = row[13] or ""
 
             # Skip empty/incomplete content per your rule
             if not title or not summary:
                 continue
 
-            articles.append({
+            articles.append(ensure_space_metadata({
                 "title": title,
                 "source": source,
                 "original_publisher": original_publisher,
@@ -570,7 +607,12 @@ def generate_daily_digest(report_date=None):
                 "companies": companies,
                 "advisor_relevance": advisor_relevance,
                 "ai_score": ai_score,
-            })
+                "is_space_economy_related": is_space_economy_related,
+                "space_relevance": space_relevance,
+                "space_ai_connection": space_ai_connection,
+                "space_time_horizon": space_time_horizon,
+                "space_investment_layer": space_investment_layer,
+            }))
 
         articles.sort(
             key=lambda article: (
@@ -697,6 +739,10 @@ def generate_daily_digest(report_date=None):
     }
     theme_signal_block = build_theme_signal_block(all_articles)
     prompt_articles = select_prompt_articles(articles)
+    SPACE_ECONOMY_THEME_ACTIVE = calculate_space_economy_theme_active(
+        all_articles,
+        quality_filter=passes_daily_space_quality,
+    )
 
     if not all_articles:
         return f"""<h2>{DAILY_TITLE}</h2>
@@ -734,6 +780,7 @@ def generate_daily_digest(report_date=None):
                 f"AI_SCORE: {article.get('ai_score') if article.get('ai_score') is not None else ''}",
                 f"ADVISOR_RELEVANCE: {clip_prompt_text(article.get('advisor_relevance'), 220)}",
                 f"SUMMARY: {clip_prompt_text(article['summary'], 420)}",
+                *format_space_metadata_lines(article),
             ]
         )
         for article in prompt_articles
@@ -747,6 +794,8 @@ def generate_daily_digest(report_date=None):
         theme_signal_block=theme_signal_block,
         article_block=article_block,
     )
+    if SPACE_ECONOMY_THEME_ACTIVE:
+        user_prompt = f"{user_prompt}\n\n{SPACE_ECONOMY_FILTER_PROMPT}"
 
     content = ""
     issues = []

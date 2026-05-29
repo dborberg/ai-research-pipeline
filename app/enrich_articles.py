@@ -9,6 +9,7 @@ from sqlalchemy import text
 
 from app.db import get_engine, init_db
 from app.pipeline_window import get_pipeline_window
+from app.space_economy import classify_space_economy_article
 
 load_dotenv()
 
@@ -55,6 +56,11 @@ def _load_articles_to_enrich(limit, max_age_hours):
                    OR companies IS NULL
                    OR advisor_relevance IS NULL
                    OR ai_score IS NULL
+                   OR is_space_economy_related IS NULL
+                   OR space_relevance IS NULL
+                   OR space_ai_connection IS NULL
+                   OR space_time_horizon IS NULL
+                   OR space_investment_layer IS NULL
                 ORDER BY published_at DESC, created_at DESC
                 """
             )
@@ -195,6 +201,15 @@ Return ONLY valid JSON. No extra text.
         companies = parsed.get("companies") or []
         advisor_relevance = parsed.get("advisor_relevance")
         ai_score = parsed.get("ai_score")
+        space_metadata = classify_space_economy_article(
+            {
+                **article,
+                "summary": summary or article.get("summary") or "",
+                "themes": themes,
+                "companies": companies,
+                "advisor_relevance": advisor_relevance or "",
+            }
+        )
 
         # Normalize lists
         if isinstance(themes, str):
@@ -219,7 +234,12 @@ Return ONLY valid JSON. No extra text.
                         themes = :themes,
                         companies = :companies,
                         advisor_relevance = :advisor_relevance,
-                        ai_score = :ai_score
+                        ai_score = :ai_score,
+                        is_space_economy_related = :is_space_economy_related,
+                        space_relevance = :space_relevance,
+                        space_ai_connection = :space_ai_connection,
+                        space_time_horizon = :space_time_horizon,
+                        space_investment_layer = :space_investment_layer
                     WHERE id = :article_id
                     """
                 ),
@@ -229,6 +249,11 @@ Return ONLY valid JSON. No extra text.
                     "companies": json.dumps(companies),
                     "advisor_relevance": advisor_relevance,
                     "ai_score": ai_score,
+                    "is_space_economy_related": 1 if space_metadata["is_space_economy_related"] else 0,
+                    "space_relevance": space_metadata["space_relevance"],
+                    "space_ai_connection": space_metadata["space_ai_connection"],
+                    "space_time_horizon": space_metadata["space_time_horizon"],
+                    "space_investment_layer": space_metadata["space_investment_layer"],
                     "article_id": rowid,
                 },
             )
