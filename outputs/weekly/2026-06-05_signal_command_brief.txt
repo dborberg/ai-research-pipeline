@@ -1,0 +1,73 @@
+AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report
+Week Ending 2026-06-05
+
+Purpose:
+This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.
+
+TOP CONVICTION SIGNALS
+
+compute capex financing
+Conviction: 8.84
+Strength: 9.02
+Momentum: 900%
+Velocity: +9 article change
+Why It Matters:
+This supports a multi-year capex cycle benefiting data center developers, semiconductors, networking, construction, power equipment, and private infrastructure vehicles, while raising scrutiny on shareholder dilution, margins, and labor tradeoffs.
+
+Enterprise agent platform packaging
+Conviction: 7.56
+Strength: 7.53
+Momentum: 700%
+Velocity: +7 article change
+Why It Matters:
+The monetization path for AI is moving toward embedded enterprise infrastructure and workflow platforms, benefiting hyperscalers and AI software ecosystems while pressuring model providers to prove durable revenue, margins, and customer retention.
+
+Physical developer infrastructure
+Conviction: 7.11
+Strength: 7.13
+Momentum: 600%
+Velocity: +6 article change
+Why It Matters:
+Physical AI expands the AI opportunity beyond data center training into edge hardware, robotics software, simulation, networking, advanced packaging, and industrial systems integration, broadening second-derivative beneficiaries.
+
+Robotics deployment for labor productivity
+Conviction: 6.69
+Strength: 6.70
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+Commercial robotics adoption can raise factory utilization and labor productivity, supporting demand for robot arms, grippers, safety systems, teleoperation platforms, machine vision, and automation integrators.
+
+Vertical workflow automation by agents
+Conviction: 6.30
+Strength: 6.61
+Momentum: 300%
+Velocity: +3 article change
+Why It Matters:
+Vertical agent adoption can reduce labor intensity and increase operating leverage in mapping, commerce, customer support, and compliance, creating differentiated software pricing power for platforms that own workflow data and distribution.
+
+ACCELERATING THEMES (BREAKOUTS)
+
+These themes are accelerating fastest relative to prior week.
+
+compute capex financing: Momentum 900%, velocity +9. This supports a multi-year capex cycle benefiting data center developers, semiconductors, networking, construction, power equipment, and private infrastructure vehicles, while raising scrutiny on shareholder dilution, margins, and labor tradeoffs.
+Enterprise agent platform packaging: Momentum 700%, velocity +7. The monetization path for AI is moving toward embedded enterprise infrastructure and workflow platforms, benefiting hyperscalers and AI software ecosystems while pressuring model providers to prove durable revenue, margins, and customer retention.
+Physical developer infrastructure: Momentum 600%, velocity +6. Physical AI expands the AI opportunity beyond data center training into edge hardware, robotics software, simulation, networking, advanced packaging, and industrial systems integration, broadening second-derivative beneficiaries.
+
+FADING SIGNALS
+
+No major theme showed week-over-week deterioration in this run.
+
+PORTFOLIO IMPLICATIONS
+
+Structural strengthening is concentrated in compute capex financing, Enterprise agent platform packaging, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in Robotics deployment for labor productivity, Vertical workflow automation by agents, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in compute capex financing, Enterprise agent platform packaging, supported by rising article volume against the prior week.
+Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
+
+BOTTOM LINE
+
+1. Highest conviction theme: compute capex financing
+2. Most important new signal: compute capex financing
+3. Biggest acceleration: compute capex financing
+4. Key risk / fading area: No material fading area

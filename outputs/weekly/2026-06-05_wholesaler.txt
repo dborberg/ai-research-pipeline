@@ -1,0 +1,72 @@
+Beyond the Horizon: Weekly Riffs from the Gen AI Songbook
+Week Ending June 05, 2026
+
+TOP 5 STORIES THIS WEEK
+
+1. SoftBank advanced a major AI data center push in France, with reports describing plans up to €75 billion and 5GW, while EDF selected SoftBank and Eclairion for AI data center projects at former power-station sites. For advisors, this makes the AI buildout easier to explain as a power, land, grid-connection, construction, and financing cycle, not just a chip or model cycle. (Bloomberg, Data Center Dynamics, WSJ)
+
+2. Alphabet reportedly planned an $80 billion stock sale to help fund AI spending, while Goldman Sachs said private infrastructure and real estate capital will likely play a larger role in financing the AI data center boom. The advisor read-through is that AI leadership is becoming more capital-intensive, with balance-sheet capacity, dilution risk, private credit, project finance, and infrastructure ownership becoming part of the AI investment conversation. (Financial Times, Reuters)
+
+3. NVIDIA and Microsoft partnered on a unified stack for deploying agentic AI across Windows devices, Azure, and local environments, while AWS made OpenAI GPT-5.5, GPT-5.4, and Codex generally available on Amazon Bedrock with security, governance, and pay-per-token controls. This week showed enterprise AI moving from model access toward production plumbing: secure runtimes, governance, identity, cloud distribution, and cost controls. (NVIDIA Blog, AWS News Blog)
+
+4. Microsoft widened testing of Scout across Microsoft 365, and Meta launched Business Agent for conversational commerce across Instagram, Messenger, and eventually WhatsApp. These launches matter because agents are being embedded into daily work and customer-facing commerce workflows, giving advisors a concrete way to discuss AI monetization through productivity platforms, customer support automation, and merchant services. (AI News)
+
+5. NVIDIA released physical AI agent skills for autonomous vehicles, robotics, and vision AI, and updated Jetson tools to bring agentic AI closer to edge and embedded systems. The read-through is that AI is broadening from cloud training into simulation, robotics, industrial automation, autonomous systems, sensors, edge chips, and factory software. (NVIDIA Blog)
+
+BEYOND THE MAG 7
+
+1. TSMC’s European Symposium featured STMicroelectronics, Cisco, and Nordic Semiconductor describing AI as a force pushing chipmakers toward systems engineering, edge AI, robotics, networking, and lifecycle services. The supplier effect is important now because physical AI and agentic workloads need more than GPUs: they require sensors, industrial chips, networking, power delivery, embedded software, and integration support. (EE Times)
+
+2. Generalist AI raised $400 million to scale embodied foundation models for robots, bringing more capital into physical AI beyond the largest software platforms. The productivity impact is still early and should be monitored for real deployments, but the funding points to a new demand pool around robotics data, sensors, edge computing, autonomy software, and industrial automation. (The Robot Report)
+
+3. Bloomberg Industry Group acquired Regology to strengthen AI-driven regulatory change management for compliance teams. The regulatory impact is that AI is becoming embedded in high-value professional workflows where monitoring, auditability, and timely interpretation matter, not just in generic chat applications. (Bloomberg Industry)
+
+WHAT IS BEING DISRUPTED
+
+1. The assumption that data centers can be built wherever capital is available was challenged by New York’s one-year data-center moratorium, Phoenix power-cost scrutiny, and multiple local moratorium debates.
+
+2. The standalone chatbot model was challenged by Microsoft Scout, Meta Business Agent, and OpenAI models on Bedrock, all of which put AI inside existing productivity, commerce, and cloud workflows.
+
+3. Traditional factory labor and machine-tending workflows were challenged by robotic arms being integrated with CNC machines by companies including FANUC, Universal Robots, KUKA, ABB, and RoboDK.
+
+REGULATORY RADAR
+
+1. President Trump signed an AI security executive order that stopped short of mandatory model testing. The practical relevance is that federal policy may support faster deployment, but enterprise buyers will still require security, auditability, and risk controls before scaling AI in sensitive workflows. (Bloomberg, Bloomberg Government)
+
+2. New York State Legislature passed a one-year data-center moratorium, adding to a week of local and state scrutiny around AI infrastructure. The business relevance is straightforward: permitting, power access, water use, and community acceptance can affect where AI capacity is built and how quickly projects convert into revenue. (NEWS10 ABC)
+
+3. Publishers reportedly gained an opt-out path for AI Search under new regulation. That matters because AI discovery is becoming a content-rights and licensing issue, with potential implications for search platforms, media companies, brand visibility, and the cost of sourcing AI-generated answers. (TechCrunch)
+
+READY TO USE SOUNDBITES
+
+1. This week made AI feel less like a software upgrade and more like a capital project: power, land, financing, construction, and permitting are now central to the story.
+
+2. The enterprise AI race is shifting from who has the best model to who can run agents safely inside the systems companies already use.
+
+3. Microsoft and Meta showed the next phase of AI adoption: agents are moving into productivity suites, messaging apps, commerce, and support workflows.
+
+4. Physical AI is becoming a real investment discussion, but the near-term opportunity is likely in sensors, edge chips, robotics software, simulation, safety, and automation integrators rather than sci-fi robots.
+
+5. Regulation is not just an AI safety headline anymore; it is shaping data-center approvals, content rights, health-care adoption, financial-sector cyber controls, and enterprise procurement.
+
+QUESTIONS TO BRING TO YOUR CLIENTS
+
+1. If AI infrastructure is increasingly constrained by power, permitting, and financing, are clients’ AI exposures too concentrated in model companies and not enough in utilities, grid equipment, cooling, data centers, and infrastructure finance?
+
+2. As agents move into Microsoft 365, Bedrock, Instagram, Messenger, and compliance workflows, which software platforms in client portfolios already own the workflow surfaces where AI can be monetized?
+
+3. Over the next 30 to 90 days, should clients be watching data-center moratoriums, grid interconnection news, enterprise agent governance features, and physical AI deployments as better signals than another model benchmark?
+
+AI PRACTICE TIP OF THE WEEK
+What: Use AI to create a “referral handoff prep card” before the first call with a referred prospect.
+
+Why: Referrals often come with just enough context to be useful, but not enough to assume needs or pitch too quickly. A short prep card helps the advisor honor the relationship, open with relevance, and ask better first-meeting questions. This week’s AI infrastructure headlines are a good reminder that many clients are hearing big themes but need help connecting them to practical planning issues.
+
+How to:
+1. Paste in the referral source, what they said about the person, and the meeting format.
+2. Ask AI for a warm opening, likely priorities, and 5 discovery questions.
+3. Review for accuracy and remove anything that sounds assumptive or too sales-focused.
+
+Copy prompt: Create a referral handoff prep card for my first meeting with a referred prospect. Context: [paste only non-sensitive referral notes]. Referrer relationship: [client/COI/friend]. Meeting format: [phone/video/in person]. Include: 1) a respectful opening that acknowledges the referral without oversharing, 2) what I should not assume, 3) 5 discovery questions that connect their likely situation to planning needs, 4) one timely market or AI-related topic I could mention only if relevant, and 5) a simple objective for the meeting. Keep it concise and advisor-friendly.
+
+Guardrail: Do not include private client details, account numbers, or confidential information in the prompt. Treat AI’s output as prep only; verify facts and keep the actual conversation suitability- and compliance-aligned.
