@@ -126,6 +126,16 @@ def generate_daily_digest(report_date=None):
             return "lower_confidence"
         return "general_news"
 
+    def source_quality_rank(article):
+        ranks = {
+            "high_confidence": 5,
+            "credible_industry": 4,
+            "general_news": 3,
+            "useful_careful": 2,
+            "lower_confidence": 1,
+        }
+        return ranks.get(source_quality_hint(article), 3)
+
     def forward_adoption_score(article):
         text = " ".join(
             [
@@ -143,7 +153,9 @@ def generate_daily_digest(report_date=None):
                     "permission", "permissions", "observability", "cost control", "spend control",
                     "auditability", "audit trail", "self-hosted", "self hosted", "sandbox",
                     "integration", "integrations", "deployment", "production workflow",
-                    "risk control", "compliance",
+                    "risk control", "compliance", "identity", "access control", "cost management",
+                    "enterprise system", "enterprise systems", "production deployment",
+                    "production workflows", "governed deployment", "governed deployments",
                 ],
             ),
             "workflow_orchestration": (
@@ -152,7 +164,8 @@ def generate_daily_digest(report_date=None):
                     "multi-agent", "multi agent", "agent team", "agent teams", "orchestration",
                     "coordinated agents", "persistent automation", "end-to-end", "end to end",
                     "workflow automation", "agent coordination", "task execution", "workflow-level",
-                    "workflow level",
+                    "workflow level", "agent platform", "agent platforms", "agentic workflow",
+                    "agentic workflows", "workflow agent", "workflow agents",
                 ],
             ),
             "platform_convergence": (
@@ -161,7 +174,8 @@ def generate_daily_digest(report_date=None):
                     "workspace", "office", "microsoft 365", "google workspace", "operating system",
                     "productivity suite", "cloud ecosystem", "enterprise application", "search",
                     "browser", "device", "devices", "media platform", "embedded ai",
-                    "application suite",
+                    "application suite", "suite", "apps", "ecosystem", "platform integration",
+                    "platform integrations",
                 ],
             ),
             "agent_time_horizon": (
@@ -402,6 +416,21 @@ def generate_daily_digest(report_date=None):
                 tags.append(theme_name)
         return tags
 
+    def repeated_theme_key(article):
+        text = " ".join(
+            [
+                article.get("title") or "",
+                article.get("summary") or "",
+                article.get("advisor_relevance") or "",
+            ]
+        ).lower()
+        if (
+            ("data center" in text or "datacenter" in text)
+            and any(term in text for term in ["permit", "permitting", "zoning", "moratorium", "planning", "county", "city council", "local"])
+        ):
+            return "local_data_center_permitting"
+        return None
+
     def event_anchor(article):
         companies = [company.lower() for company in parse_companies(article.get("companies"))]
         title = (article.get("title") or "").lower()
@@ -476,6 +505,7 @@ def generate_daily_digest(report_date=None):
     def select_prompt_articles(deduped_articles, min_count=12, max_count=18):
         selected_articles = []
         seen_ids = set()
+        repeated_theme_counts = Counter()
         required_themes = [
             "regulation_and_policy",
             "capital_markets_and_investment",
@@ -494,6 +524,9 @@ def generate_daily_digest(report_date=None):
 
                 selected_articles.append(article)
                 seen_ids.add(article_id)
+                key = repeated_theme_key(article)
+                if key:
+                    repeated_theme_counts[key] += 1
                 break
 
         for article in deduped_articles:
@@ -504,11 +537,31 @@ def generate_daily_digest(report_date=None):
             if article_id in seen_ids:
                 continue
 
+            key = repeated_theme_key(article)
+            if (
+                key
+                and repeated_theme_counts[key] >= 2
+                and source_quality_rank(article) < 5
+                and not has_policy_priority(article)
+                and not is_big_story(article)
+                and len(deduped_articles) > min_count
+            ):
+                continue
+
             selected_articles.append(article)
             seen_ids.add(article_id)
+            if key:
+                repeated_theme_counts[key] += 1
 
         if len(selected_articles) < min_count:
-            return deduped_articles[:max_count]
+            for article in deduped_articles:
+                if len(selected_articles) >= min_count:
+                    break
+                article_id = id(article)
+                if article_id in seen_ids:
+                    continue
+                selected_articles.append(article)
+                seen_ids.add(article_id)
 
         return selected_articles
 
@@ -627,9 +680,51 @@ def generate_daily_digest(report_date=None):
 
         return articles
 
+    READ_THROUGH_CATEGORIES = [
+        "private credit",
+        "construction",
+        "construction services",
+        "electrical equipment",
+        "power equipment",
+        "grid",
+        "grid infrastructure",
+        "cooling",
+        "backup power",
+        "fiber",
+        "networking",
+        "utilities",
+        "gpus",
+        "gpu",
+        "ai pcs",
+        "local inference",
+        "enterprise workstations",
+        "hybrid cloud",
+        "semiconductors",
+        "semicap",
+        "memory",
+        "advanced packaging",
+        "optical networking",
+        "data platforms",
+        "governance software",
+        "cybersecurity",
+        "it services",
+        "industrial automation",
+    ]
+
     def _normalize_text(value):
         text_value = unescape(re.sub(r"<[^>]+>", " ", value or ""))
         return " ".join(text_value.lower().split())
+
+    def _read_through_signature(value):
+        normalized = _normalize_text(value)
+        return tuple(category for category in READ_THROUGH_CATEGORIES if category in normalized)
+
+    def _is_local_data_center_permitting_bullet(value):
+        normalized = _normalize_text(value)
+        return (
+            ("data center" in normalized or "datacenter" in normalized)
+            and any(term in normalized for term in ["permit", "permitting", "zoning", "moratorium", "county", "city council", "local"])
+        )
 
     def _extract_digest_bullets(content):
         sections = []
@@ -668,6 +763,11 @@ def generate_daily_digest(report_date=None):
         found_required_sections = [section for section in normalized_found_sections if section in expected_sections]
         if found_required_sections != expected_sections:
             issues.append("Required sections are not in the expected order or old section names were used")
+        duplicate_sections = sorted(
+            section for section in set(normalized_found_sections) if normalized_found_sections.count(section) > 1
+        )
+        if duplicate_sections:
+            issues.append("Duplicate section headings detected: " + ", ".join(duplicate_sections))
 
         top_theme_match = re.search(
             r"<h3>\s*TOP THEME OF THE DAY\s*</h3>\s*<p>.*?</p>",
@@ -702,7 +802,11 @@ def generate_daily_digest(report_date=None):
         if repeated_leads:
             issues.append("Repeated lead phrases suggest the same development is being reused across sections")
 
-        publisher_counts = Counter(bullet["source"] for bullet in bullets if bullet["source"])
+        publisher_counts = Counter(
+            bullet["source"]
+            for bullet in bullets
+            if bullet["source"] and bullet["source"].strip().lower() != "full article set"
+        )
         unique_publishers = len({publisher for publisher in publisher_counts if publisher})
         dominant_publishers = [
             publisher for publisher, count in publisher_counts.items()
@@ -714,6 +818,40 @@ def generate_daily_digest(report_date=None):
                     f"{publisher} ({publisher_counts[publisher]})" for publisher in dominant_publishers
                 )
             )
+
+        sourced_bullet_count = sum(publisher_counts.values())
+        if unique_publishers >= 4 and sourced_bullet_count >= 10:
+            top_publisher, top_count = publisher_counts.most_common(1)[0]
+            if top_count >= 6 and top_count / sourced_bullet_count > 0.4:
+                issues.append(f"Repeated source concentration appears high: {top_publisher} appears {top_count} times")
+
+        category_signatures = Counter()
+        long_read_through_bullets = []
+        local_permitting_count = 0
+        long_bullet_count = 0
+        for bullet in bullets:
+            signature = _read_through_signature(bullet["text"])
+            if len(signature) >= 7:
+                long_read_through_bullets.append(bullet["lead"])
+            if len(signature) >= 5:
+                category_signatures[signature] += 1
+            if _is_local_data_center_permitting_bullet(bullet["text"]):
+                local_permitting_count += 1
+            word_count = len(_normalize_text(bullet["text"]).split())
+            if word_count > 90:
+                long_bullet_count += 1
+            if word_count > 130:
+                issues.append("A bullet is excessively long and should be tightened")
+                break
+
+        if long_read_through_bullets:
+            issues.append("Investment read-through list appears too long in one or more bullets")
+        if any(count > 1 for count in category_signatures.values()):
+            issues.append("Repeated long investment read-through category list detected")
+        if local_permitting_count > 3:
+            issues.append("Too many bullets repeat local data-center permitting language")
+        if long_bullet_count > 3:
+            issues.append("Too many bullets are longer than the concise daily format")
 
         section_story_map = {}
         for bullet in bullets:

@@ -85,9 +85,13 @@ Selection rules:
 - If multiple articles are similar, keep the one with clearer business impact, market impact, source quality, and investment usefulness.
 - Before writing "Nothing to report today." for any section, check whether relevant stories exist elsewhere in the input and include at least one meaningful item if possible.
 - Keep bullets specific, event-driven, and concise.
+- Each bullet should usually be 2 concise sentences after the lead phrase: first, what happened and why it matters; second, the investment, advisor, business-model, policy, or portfolio-monitoring implication. Use a third sentence only when needed for clarity or when the story has multiple distinct investment implications.
+- Avoid long, stacked clauses. Prefer direct sentences.
 - Every bullet should follow this logic: Event + why it matters + investment/advisor implication.
 - Where relevant, include the read-through beyond the obvious company to suppliers, customers, infrastructure providers, software vendors, industrials, utilities, cybersecurity, compliance tools, or physical AI beneficiaries.
+- Limit investment read-through lists to the 4 to 6 most relevant categories. Do not repeat the same long category list across multiple bullets. When several categories overlap, use broader groupings such as power equipment, grid infrastructure, cooling, networking, data platforms, governance software, or industrial automation.
 - For platform convergence stories, include the read-through to firms that control workflow surfaces, operating systems, productivity suites, cloud ecosystems, search, devices, media platforms, and enterprise application layers.
+- Before finalizing ENTERPRISE ADOPTION AND LABOR, CAPITAL MARKETS AND INVESTMENT IMPLICATIONS, WHAT TO WATCH, and ADVISOR / WHOLESALER SOUNDBITES, check whether any article supports Enterprise Production Readiness, Workflow Orchestration, or Platform Convergence. If yes, explicitly reflect the relevant lens in the bullet's implication. Use these lenses only when supported by the input.
 - Do not insert companies mechanically. Mention companies only when the input supports the connection or when they are clearly useful examples of a theme.
 - Each section should include multiple distinct topics rather than repeating one underlying narrative.
 - Once a story appears in TOP STORIES, do not reuse that same underlying development in other analytical sections.
@@ -95,6 +99,11 @@ Selection rules:
 - WHAT TO WATCH and ADVISOR / WHOLESALER SOUNDBITES may synthesize broader themes from earlier sections, but they should not repeat the same named event as a standalone bullet.
 - Ensure diversity across companies, sectors, geographies, and use cases.
 - If several articles cover the same event, include only one and replace the others with different topics.
+- Before finalizing the report, check whether more than three analytical bullets are making the same core point. If so, consolidate overlapping examples and replace one or more with different enterprise, capital markets, labor, platform, semiconductor, physical AI, or governance developments if available.
+- If several local or state data center permitting stories appear in the input, use one or two of the strongest examples in analytical sections, then synthesize the broader pattern in TOP THEME OF THE DAY, WHAT TO WATCH, or ADVISOR / WHOLESALER SOUNDBITES rather than repeating every local example.
+- Do not reuse the same underlying event in multiple analytical sections. If several articles cover separate local examples of the same broader issue, choose the strongest one or two for analytical bullets and synthesize the broader issue in TOP THEME OF THE DAY, WHAT TO WATCH, or ADVISOR / WHOLESALER SOUNDBITES. If the examples represent materially different geographies, policy approaches, financing structures, or company implications, they may be included separately, but each bullet must add a distinct angle.
+- When multiple stories support the same theme, prefer the story with highest source quality, clearest original reporting, broadest market relevance, a named company or named policymaker, and concrete financial, policy, infrastructure, or deployment implication.
+- Local and niche sources may be used when they are the original source of a local event, but avoid using multiple local sources to repeat the same analytical point unless each adds a meaningfully different angle.
 - Each section should re-scan the full dataset independently for relevant stories instead of relying on a single preselected subset.
 - Do not mistake event deduplication for theme suppression. Repeated patterns across distinct events should still appear as synthesized takeaways when supported by the input.
 - Preserve company-specific insight in wording that can roll up cleanly into a weekly internal report for the broader sales group.

@@ -32,6 +32,10 @@ physical AI reading through to robotics, automation, sensors, industrial softwar
 AI regulation reading through to compliance software, auditability, legal services, privacy tools, public-sector procurement, and enterprise adoption hurdles
 platform convergence reading through to firms that control workflow surfaces, operating systems, productivity suites, cloud ecosystems, and enterprise application layers
 
+Limit investment read-through lists to the 4 to 6 most relevant categories. Do not repeat the same long category list across multiple bullets. When several categories overlap, use broader groupings such as power equipment, grid infrastructure, cooling, networking, data platforms, governance software, or industrial automation.
+
+Each bullet should usually be 2 concise sentences after the lead phrase. Sentence 1 should state what happened and why it matters. Sentence 2 should state the investment, advisor, business-model, policy, or portfolio-monitoring implication. A third sentence is allowed only when needed for clarity or when the story has multiple distinct investment implications. Avoid long, stacked clauses. Prefer direct sentences.
+
 FORWARD-LOOKING AI ADOPTION SIGNALS
 When selecting and interpreting stories, elevate developments that show AI moving from experimentation and standalone tools into durable enterprise-grade productivity infrastructure.
 
@@ -59,6 +63,8 @@ Prioritize Enterprise Production Readiness, Workflow Orchestration, and Platform
 
 Do not create separate recurring Daily sections for these six lenses. Use them to improve story selection, TOP THEME OF THE DAY, ENTERPRISE ADOPTION AND LABOR, CAPITAL MARKETS AND INVESTMENT IMPLICATIONS, WHAT TO WATCH, and ADVISOR / WHOLESALER SOUNDBITES.
 
+Before finalizing ENTERPRISE ADOPTION AND LABOR, CAPITAL MARKETS AND INVESTMENT IMPLICATIONS, WHAT TO WATCH, and ADVISOR / WHOLESALER SOUNDBITES, check whether any article supports Enterprise Production Readiness, Workflow Orchestration, or Platform Convergence. If yes, explicitly reflect the relevant lens in the bullet's implication. Use these lenses only when supported by the day's source material. Do not force them.
+
 Prefer high-confidence and credible industry sources when available. High-confidence sources include Reuters, Bloomberg, Financial Times, Wall Street Journal, AP, official government or regulatory sources, company filings, official company announcements, official cloud/provider announcements, major consulting or research firm reports, and credible industry publications.
 
 Use lower-confidence sources cautiously. Do not let weak sources drive TOP THEME OF THE DAY unless corroborated by stronger evidence elsewhere in the dataset. When using lower-confidence sources, use cautious language such as reported, suggests, points to, or worth monitoring. Treat SOURCE as the original publisher when available; FEED_SOURCE may be an aggregator feed and should not be treated as true source diversity.
@@ -77,13 +83,21 @@ Do not exclude or down-rank a story solely because it involves a mega-cap platfo
 
 Do not allow one source, one publication, one company, or one type of content to dominate the output. Prefer real-world developments such as company announcements, policy changes, infrastructure projects, enterprise deployments, capital allocation, financing events, earnings signals, and robotics deployments over technical research. Use technical or research sources only when they add unique insight or when no stronger real-world coverage exists for that section.
 
-If multiple articles say similar things, choose the one with broader market relevance, stronger source quality, clearer real-world impact, and better investment usefulness. If the input is dominated by arXiv, blogs, or niche technical sources, actively rebalance toward business news, policy coverage, capital markets, major company developments, and credible industry publications when those are present.
+If multiple articles say similar things, choose the one with broader market relevance, stronger source quality, clearer original reporting, named company or named policymaker, concrete financial, policy, infrastructure, or deployment implication, and better investment usefulness. If the input is dominated by arXiv, blogs, or niche technical sources, actively rebalance toward business news, policy coverage, capital markets, major company developments, and credible industry publications when those are present.
 
 Treat PRIMARY_SECTION_HINT as the default home for an article unless a stronger strategic reason justifies moving it.
 
 The article set may already be deduplicated at the event level before it reaches you. Treat that as a reduction of duplicate evidence, not a signal to ignore broader thematic patterns.
 
 If multiple distinct events point to the same higher-order theme, preserve that theme explicitly in TOP THEME OF THE DAY, WHAT TO WATCH, and ADVISOR / WHOLESALER SOUNDBITES even when duplicate event articles have been removed.
+
+Before finalizing the report, check whether more than three analytical bullets are making the same core point. If so, consolidate overlapping examples and replace one or more with different enterprise, capital markets, labor, platform, semiconductor, physical AI, or governance developments if available. The goal is not to suppress important themes. The goal is to avoid unnecessary repetition while preserving the broader signal.
+
+Do not reuse the same underlying event in multiple analytical sections. If several articles cover separate local examples of the same broader issue, choose the strongest one or two for analytical bullets and synthesize the broader issue in TOP THEME OF THE DAY, WHAT TO WATCH, or ADVISOR / WHOLESALER SOUNDBITES. If the examples represent materially different geographies, policy approaches, financing structures, or company implications, they may be included separately, but each bullet must add a distinct angle.
+
+If several local or state data center permitting stories appear in the input, use one or two of the strongest examples in analytical sections, then synthesize the broader pattern in TOP THEME OF THE DAY, WHAT TO WATCH, or ADVISOR / WHOLESALER SOUNDBITES rather than repeating every local example.
+
+When multiple stories support the same theme, prefer the story with highest source quality, clearest original reporting, broadest market relevance, a named company or named policymaker, and concrete financial, policy, infrastructure, or deployment implication. Local and niche sources may be used when they are the original source of a local event, but avoid using multiple local sources to repeat the same analytical point unless each adds a meaningfully different angle.
 
 If an article is marked BIG_STORY_HINT: YES, treat it as a high-priority candidate for TOP STORIES. If any BIG story exists in the dataset, at least one BIG story must appear in TOP STORIES.
 
@@ -109,7 +123,8 @@ Before writing, silently:
 9. identify the strongest macro, policy, or capital markets signal
 10. identify the most important infrastructure or power signal
 11. identify any physical AI or robotics signal
-12. build the final briefing from deduplicated event groups rather than selecting bullets one article at a time
+12. check whether more than three candidate bullets make essentially the same core point and consolidate weaker overlapping examples
+13. build the final briefing from deduplicated event groups rather than selecting bullets one article at a time
 
 Do not expose this internal workflow in the final output.
 
@@ -120,6 +135,11 @@ TOP THEME OF THE DAY is present as a paragraph
 every bullet starts with a concrete event, company action, policy action, financing event, deployment, market signal, or named report
 every bullet explains why it matters
 every bullet has an investment, advisor, business-model, policy, or portfolio-monitoring implication
+no more than three analytical bullets make essentially the same point unless the source set overwhelmingly supports that issue and each example adds a distinct angle
+local or niche examples are consolidated when they repeat the same broader theme
+Enterprise Production Readiness, Workflow Orchestration, and Platform Convergence are surfaced when supported by the input
+investment read-through lists are limited to the 4 to 6 most relevant categories
+long category lists are not repeated across multiple bullets
 one publisher, one event, or one topic is not overrepresented
 weak sources are omitted or framed cautiously
 company-specific comments are analytical and not recommendations

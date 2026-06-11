@@ -20,6 +20,36 @@ REQUIRED_HEADINGS = [
     "ADVISOR / WHOLESALER SOUNDBITES",
 ]
 ALLOWED_TAGS = {"h2", "h3", "p", "ul", "li", "strong"}
+READ_THROUGH_CATEGORIES = [
+    "private credit",
+    "construction",
+    "construction services",
+    "electrical equipment",
+    "power equipment",
+    "grid",
+    "grid infrastructure",
+    "cooling",
+    "backup power",
+    "fiber",
+    "networking",
+    "utilities",
+    "gpus",
+    "gpu",
+    "ai pcs",
+    "local inference",
+    "enterprise workstations",
+    "hybrid cloud",
+    "semiconductors",
+    "semicap",
+    "memory",
+    "advanced packaging",
+    "optical networking",
+    "data platforms",
+    "governance software",
+    "cybersecurity",
+    "it services",
+    "industrial automation",
+]
 RECOMMENDATION_RE = re.compile(
     r"(^|\s)(buy|sell|hold|overweight|underweight|price target|guaranteed winner|guaranteed loser)(\s|[.,;:])",
     flags=re.IGNORECASE,
@@ -34,6 +64,23 @@ PHYSICAL_AI_FALLBACK = (
     "and AI-enabled manufacturing for signs that pilots are moving into real deployment. "
     "(Source: Full article set)</li>"
 )
+
+
+def _normalize_text(value):
+    return " ".join(re.sub(r"<[^>]+>", " ", value or "").lower().split())
+
+
+def _read_through_signature(text):
+    normalized = _normalize_text(text)
+    return tuple(category for category in READ_THROUGH_CATEGORIES if category in normalized)
+
+
+def _is_local_data_center_permitting_bullet(text):
+    normalized = _normalize_text(text)
+    return (
+        ("data center" in normalized or "datacenter" in normalized)
+        and any(term in normalized for term in ["permit", "permitting", "zoning", "moratorium", "county", "city council", "local"])
+    )
 
 
 class DigestHtmlParser(HTMLParser):
@@ -84,6 +131,11 @@ def validate_daily_digest_html(html, require_physical_ai_fallback=False):
             "Required h3 headings are missing, renamed, duplicated, or out of order. "
             f"Found: {parser.h3_headings}"
         )
+    duplicate_headings = sorted(
+        heading for heading in set(parser.h3_headings) if parser.h3_headings.count(heading) > 1
+    )
+    if duplicate_headings:
+        issues.append("Duplicate section headings detected: " + ", ".join(duplicate_headings))
 
     top_theme_pattern = re.compile(
         r"<h3>\s*TOP THEME OF THE DAY\s*</h3>\s*<p>.+?</p>",
@@ -126,6 +178,42 @@ def validate_daily_digest_html(html, require_physical_ai_fallback=False):
             if "(Source:" not in item:
                 issues.append(f"Missing Source attribution in {normalized_heading}")
                 break
+
+    source_counts = {}
+    for item in parser.li_items:
+        source_match = re.search(r"\(Source:\s*([^\)]+)\)", item, flags=re.DOTALL | re.IGNORECASE)
+        if not source_match:
+            continue
+        source = " ".join(source_match.group(1).split())
+        if source.lower() == "full article set":
+            continue
+        source_counts[source] = source_counts.get(source, 0) + 1
+    sourced_bullet_count = sum(source_counts.values())
+    if len(source_counts) >= 4 and sourced_bullet_count >= 10:
+        source, count = max(source_counts.items(), key=lambda item: item[1])
+        if count >= 6 and count / sourced_bullet_count > 0.4:
+            issues.append(f"Repeated source concentration appears high: {source} appears {count} times")
+
+    long_category_lists = []
+    category_signatures = {}
+    for item in parser.li_items:
+        signature = _read_through_signature(item)
+        if len(signature) >= 7:
+            long_category_lists.append(item[:80])
+        if len(signature) >= 5:
+            category_signatures[signature] = category_signatures.get(signature, 0) + 1
+    if long_category_lists:
+        issues.append("Investment read-through list appears too long in one or more bullets")
+    if any(count > 1 for count in category_signatures.values()):
+        issues.append("Repeated long investment read-through category list detected")
+
+    local_permitting_count = sum(1 for item in parser.li_items if _is_local_data_center_permitting_bullet(item))
+    if local_permitting_count > 3:
+        issues.append("Too many bullets repeat local data-center permitting language")
+
+    bullet_lengths = [len(_normalize_text(item).split()) for item in parser.li_items]
+    if sum(1 for length in bullet_lengths if length > 90) > 3 or any(length > 130 for length in bullet_lengths):
+        issues.append("Excessive bullet length detected")
 
     if len(html) < 1200:
         issues.append("Output appears unusually short")
