@@ -19,6 +19,8 @@ SECTORS_DIR = PROMPTS_DIR / "sectors"
 CORE_PROMPT_PATH = PROMPTS_DIR / "core_system_prompt.md"
 FRONTIER_SYSTEM_PROMPT_PATH = PROMPTS_DIR / "frontier_system_prompt.md"
 USER_TEMPLATE_PATH = PROMPTS_DIR / "user_prompt_template.md"
+CROSS_SECTOR_SYSTEM_PROMPT_PATH = PROMPTS_DIR / "cross_sector_thematic_system_prompt.txt"
+CROSS_SECTOR_USER_TEMPLATE_PATH = PROMPTS_DIR / "cross_sector_thematic_user_prompt.md"
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "out"
 DEFAULT_REPORT_MODE = "investment_implications"
 BALANCED_FOCUS_LABEL = "a Balanced Sector View"
@@ -40,6 +42,17 @@ REPORT_MODE_ALIASES = {
     "realistic_investable_impact": "investment_implications",
     "investment_implications": "investment_implications",
     "frontier_possibilities": "frontier_possibilities",
+}
+CROSS_SECTOR_REPORT_MODE_OPTIONS = {
+    "Realistic Investable Impact": "Realistic Investable Impact",
+    "Frontier Possibilities": "Frontier Possibilities",
+    "Combined": "Combined",
+}
+CROSS_SECTOR_REPORT_MODE_ALIASES = {
+    "investment_implications": "Realistic Investable Impact",
+    "realistic_investable_impact": "Realistic Investable Impact",
+    "frontier_possibilities": "Frontier Possibilities",
+    "combined": "Combined",
 }
 
 
@@ -85,6 +98,23 @@ def get_report_mode_options() -> dict[str, str]:
         report_mode: str(config["label"])
         for report_mode, config in REPORT_MODE_CONFIG.items()
     }
+
+
+def normalize_cross_sector_report_mode(value: str) -> str:
+    stripped_value = value.strip()
+    if stripped_value in CROSS_SECTOR_REPORT_MODE_OPTIONS:
+        return stripped_value
+
+    normalized_value = normalize_token(stripped_value)
+    if normalized_value in CROSS_SECTOR_REPORT_MODE_ALIASES:
+        return CROSS_SECTOR_REPORT_MODE_ALIASES[normalized_value]
+
+    available_modes = ", ".join(CROSS_SECTOR_REPORT_MODE_OPTIONS)
+    raise ValueError(f"Unsupported cross-sector report mode '{value}'. Available modes: {available_modes}")
+
+
+def get_cross_sector_report_mode_options() -> list[str]:
+    return list(CROSS_SECTOR_REPORT_MODE_OPTIONS)
 
 
 def prettify_token(value: str) -> str:
@@ -259,6 +289,73 @@ def build_prompt_components(
         "prompt_package": prompt_package,
         "system_prompt": system_prompt,
         "sector_adapter": sector_prompt,
+        "user_prompt": user_template,
+        "report_mode": normalized_report_mode,
+    }
+
+
+def build_cross_sector_prompt_components(
+    broad_theme: str,
+    optional_subtheme: str,
+    ai_lens: str,
+    report_mode: str,
+    time_horizon: str,
+    audience: str,
+    small_cap_lens: str,
+    source_material: str = "",
+) -> dict[str, str]:
+    normalized_theme = broad_theme.strip()
+    if not normalized_theme:
+        raise ValueError("Broad Theme is required for cross-sector thematic reports.")
+
+    normalized_report_mode = normalize_cross_sector_report_mode(report_mode)
+    normalized_subtheme = optional_subtheme.strip() or "None specified."
+    normalized_source_material = source_material.strip() or "None supplied."
+    normalized_audience = audience.strip() or "financial advisors and investment professionals"
+    normalized_small_cap_lens = small_cap_lens.strip() or "Not requested."
+
+    replacements = {
+        "broad_theme": normalized_theme,
+        "optional_subtheme": normalized_subtheme,
+        "ai_lens": ai_lens.strip(),
+        "report_mode": normalized_report_mode,
+        "time_horizon": time_horizon.strip(),
+        "audience": normalized_audience,
+        "small_cap_lens": normalized_small_cap_lens,
+        "source_material": normalized_source_material,
+    }
+
+    system_prompt = read_text(CROSS_SECTOR_SYSTEM_PROMPT_PATH)
+    user_template = render_template(read_text(CROSS_SECTOR_USER_TEMPLATE_PATH), replacements)
+    theme_context = "\n".join(
+        [
+            f"Broad Theme: {normalized_theme}",
+            f"Optional Subtheme: {normalized_subtheme}",
+            f"AI Lens: {ai_lens.strip()}",
+            f"Report Mode: {normalized_report_mode}",
+            f"Time Horizon: {time_horizon.strip()}",
+            f"Audience: {normalized_audience}",
+            f"Small-Cap Lens: {normalized_small_cap_lens}",
+            f"Source Material or Theme Adapter: {normalized_source_material}",
+        ]
+    )
+
+    prompt_package = "\n\n".join(
+        [
+            "# Prompt Package",
+            "## Report Scope\n\nAll Sectors / Cross-Sector Theme",
+            f"## Broad Theme\n\n{normalized_theme}",
+            f"## Report Mode\n\n{normalized_report_mode}",
+            "## System Prompt\n\n" + system_prompt,
+            "## Theme Context\n\n" + theme_context,
+            "## User Prompt\n\n" + user_template,
+        ]
+    ).rstrip() + "\n"
+
+    return {
+        "prompt_package": prompt_package,
+        "system_prompt": system_prompt,
+        "theme_context": theme_context,
         "user_prompt": user_template,
         "report_mode": normalized_report_mode,
     }

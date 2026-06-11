@@ -21,6 +21,9 @@ from run_weekly_pipeline import cluster_articles, get_weekly_articles
 from scripts.generate_sector_report import (
     FRONTIER_REQUIRED_HEADINGS,
     DEFAULT_MODEL,
+    FRONTIER_MAX_OUTPUT_TOKENS,
+    generate_cross_sector_with_chat_completions,
+    generate_cross_sector_with_responses_api,
     get_max_output_tokens_for_mode,
     append_missing_frontier_sections,
     generate_missing_frontier_sections,
@@ -32,7 +35,13 @@ from scripts.generate_sector_report import (
     normalize_markdown_output,
     repair_frontier_report,
 )
-from scripts.render_prompt import build_prompt_components, get_report_mode_options, normalize_sector_name
+from scripts.render_prompt import (
+    build_cross_sector_prompt_components,
+    build_prompt_components,
+    get_cross_sector_report_mode_options,
+    get_report_mode_options,
+    normalize_sector_name,
+)
 from scripts.resolve_sector_focus import SECTOR_FOCUS_OPTIONS, build_focus_instruction
 from scripts.send_sector_report import build_subject, html_to_plain_text
 
@@ -50,6 +59,24 @@ STREAMLIT_OUTPUT_DIR = REPO_ROOT / "out" / "streamlit"
 STREAMLIT_STATE_PATH = REPO_ROOT / "data" / "streamlit_ui_state.json"
 DEFAULT_AUDIENCE = "financial advisors and investment professionals"
 DEFAULT_TIME_HORIZON = "1-3 years and 3-7 years"
+CROSS_SECTOR_AI_LENS_OPTIONS = [
+    "Gen AI as Primary Driver",
+    "Gen AI as Important Accelerator",
+    "Gen AI as Supporting Factor",
+    "Do Not Force Gen AI",
+]
+CROSS_SECTOR_TIME_HORIZON_OPTIONS = [
+    "1–3 years",
+    "3–7 years",
+    "7+ years",
+    "Full stack",
+]
+CROSS_SECTOR_AUDIENCE_OPTIONS = [
+    "Financial advisors",
+    "Clients",
+    "Mutual fund wholesalers",
+    "Internal CPM",
+]
 
 
 def _get_db_version():
@@ -311,6 +338,17 @@ def _build_sector_report_output_paths(sector_key: str, report_mode: str, output_
     return prompt_path, report_path
 
 
+def _build_cross_sector_report_output_paths(broad_theme: str, report_mode: str, output_format: str) -> tuple[Path, Path]:
+    STREAMLIT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    theme_key = normalize_sector_name(broad_theme) or "cross_sector_theme"
+    mode_key = normalize_sector_name(report_mode)
+    extension = "html" if output_format == "html" else "md"
+    prompt_path = STREAMLIT_OUTPUT_DIR / f"prompt_cross_sector_{theme_key}_{mode_key}_{timestamp}.md"
+    report_path = STREAMLIT_OUTPUT_DIR / f"report_cross_sector_{theme_key}_{mode_key}_{timestamp}.{extension}"
+    return prompt_path, report_path
+
+
 def _email_sector_report(sector_key: str, html_report: str):
     send_report(
         subject=build_subject(sector_key),
@@ -469,9 +507,203 @@ def generate_sector_report_package(
     }
 
 
+def generate_cross_sector_report_package(
+    api_key: str,
+    broad_theme: str,
+    optional_subtheme: str,
+    ai_lens: str,
+    report_mode: str,
+    time_horizon: str,
+    audience: str,
+    include_small_cap_relevance: bool,
+    source_material: str,
+    model: str,
+    output_format: str,
+) -> dict[str, object]:
+    small_cap_lens = (
+        "Include small-cap relevance where appropriate."
+        if include_small_cap_relevance
+        else "Do not add a dedicated small-cap lens unless it is naturally relevant."
+    )
+    prompt_components = build_cross_sector_prompt_components(
+        broad_theme=broad_theme,
+        optional_subtheme=optional_subtheme,
+        ai_lens=ai_lens,
+        report_mode=report_mode,
+        time_horizon=time_horizon,
+        audience=audience,
+        small_cap_lens=small_cap_lens,
+        source_material=source_material,
+    )
+    prompt_package = str(prompt_components["prompt_package"])
+
+    client = get_openai_client(api_key)
+    generation_errors: list[str] = []
+    max_output_tokens = FRONTIER_MAX_OUTPUT_TOKENS
+
+    try:
+        report = generate_cross_sector_with_responses_api(
+            client=client,
+            system_prompt=str(prompt_components["system_prompt"]),
+            theme_context=str(prompt_components["theme_context"]),
+            user_prompt=str(prompt_components["user_prompt"]),
+            model=model,
+            max_output_tokens=max_output_tokens,
+            output_format=output_format,
+        )
+    except Exception as exc:
+        generation_errors.append(f"Responses API failed: {exc}")
+        try:
+            client = get_openai_client(api_key)
+            report = generate_cross_sector_with_chat_completions(
+                client=client,
+                system_prompt=str(prompt_components["system_prompt"]),
+                theme_context=str(prompt_components["theme_context"]),
+                user_prompt=str(prompt_components["user_prompt"]),
+                model=model,
+                max_output_tokens=max_output_tokens,
+                output_format=output_format,
+            )
+        except Exception as fallback_exc:
+            generation_errors.append(f"Chat Completions fallback failed: {fallback_exc}")
+            raise RuntimeError("\n".join(generation_errors)) from fallback_exc
+
+    if output_format == "html":
+        report = normalize_html_output(report)
+    else:
+        report = normalize_markdown_output(report)
+
+    prompt_path, report_path = _build_cross_sector_report_output_paths(broad_theme, str(prompt_components["report_mode"]), output_format)
+    prompt_path.write_text(prompt_package, encoding="utf-8")
+    report_path.write_text(report.rstrip() + "\n", encoding="utf-8")
+
+    return {
+        "prompt_package": prompt_package,
+        "report": report,
+        "prompt_path": prompt_path,
+        "report_path": report_path,
+        "report_mode": prompt_components["report_mode"],
+    }
+
+
 def render_sector_report_launcher(api_key: str):
     st.subheader("Sector Report Launcher")
     st.caption("This launcher runs against your local repo checkout and writes prompt and report artifacts under out/streamlit.")
+
+    report_scope = st.radio(
+        "Report Scope",
+        options=["Sector / Industry", "All Sectors / Cross-Sector Theme"],
+        horizontal=True,
+        key="sector_report_scope",
+    )
+
+    if report_scope == "All Sectors / Cross-Sector Theme":
+        cross_report_modes = get_cross_sector_report_mode_options()
+        with st.form("cross_sector_report_launcher_form"):
+            broad_theme = st.text_input(
+                "Broad Theme",
+                value="",
+                placeholder="Example: Space Economy, Defense Modernization, Power Grid Modernization, Robotics and Autonomy",
+            )
+            optional_subtheme = st.text_input(
+                "Optional Subtheme",
+                value="",
+                placeholder="Example: Low-earth-orbit satellite networks, AI-enabled geospatial intelligence, small-cap beneficiaries",
+            )
+            ai_lens = st.selectbox(
+                "AI Lens",
+                options=CROSS_SECTOR_AI_LENS_OPTIONS,
+                index=1,
+            )
+            report_mode = st.selectbox(
+                "Report Mode",
+                options=cross_report_modes,
+                index=0,
+            )
+            time_horizon = st.selectbox(
+                "Time Horizon",
+                options=CROSS_SECTOR_TIME_HORIZON_OPTIONS,
+                index=3,
+            )
+            audience_label = st.selectbox(
+                "Audience",
+                options=CROSS_SECTOR_AUDIENCE_OPTIONS,
+                index=0,
+            )
+            include_small_cap_relevance = st.checkbox(
+                "Include small-cap relevance where appropriate",
+                value=False,
+            )
+            source_material = st.text_area(
+                "Source Material or Theme Adapter",
+                value="",
+                height=120,
+            )
+
+            controls_left, controls_right = st.columns(2)
+            model = controls_left.text_input("Model", value=DEFAULT_MODEL)
+            output_format = controls_right.selectbox(
+                "Output Format",
+                options=["html", "markdown"],
+                index=0,
+            )
+
+            submit = st.form_submit_button("Generate Cross-Sector Report")
+
+        if not submit:
+            return
+
+        if not broad_theme.strip():
+            st.error("Broad Theme is required for a cross-sector thematic report.")
+            return
+
+        if not api_key:
+            st.error("OPENAI_API_KEY must be set in your local environment before generating a cross-sector report.")
+            return
+
+        with st.spinner("Generating cross-sector thematic report from your local checkout..."):
+            try:
+                result = generate_cross_sector_report_package(
+                    api_key=api_key,
+                    broad_theme=broad_theme,
+                    optional_subtheme=optional_subtheme,
+                    ai_lens=ai_lens,
+                    report_mode=report_mode,
+                    time_horizon=time_horizon,
+                    audience=audience_label,
+                    include_small_cap_relevance=include_small_cap_relevance,
+                    source_material=source_material,
+                    model=model,
+                    output_format=output_format,
+                )
+            except Exception as exc:
+                st.error(f"Unable to generate the cross-sector report: {exc}")
+                return
+
+        st.success("Cross-sector thematic report generated locally.")
+        st.caption(f"Prompt saved to {result['prompt_path']}")
+        st.caption(f"Report saved to {result['report_path']}")
+
+        with st.expander("Rendered Prompt Package", expanded=False):
+            st.code(str(result["prompt_package"]), language="markdown")
+
+        st.markdown("**Generated Report**")
+        if output_format == "html":
+            components.html(str(result["report"]), height=900, scrolling=True)
+            mime_type = "text/html"
+            download_name = f"cross_sector_report_{normalize_sector_name(broad_theme)}_{normalize_sector_name(str(result['report_mode']))}.html"
+        else:
+            st.markdown(str(result["report"]))
+            mime_type = "text/markdown"
+            download_name = f"cross_sector_report_{normalize_sector_name(broad_theme)}_{normalize_sector_name(str(result['report_mode']))}.md"
+
+        st.download_button(
+            "Download Generated Report",
+            data=str(result["report"]),
+            file_name=download_name,
+            mime=mime_type,
+        )
+        return
 
     sector_label_lookup = _sector_labels()
     sector_keys = list(sector_label_lookup.keys())

@@ -97,6 +97,42 @@ def build_generation_user_prompt(sector_adapter: str, user_prompt: str, output_f
     )
 
 
+def build_cross_sector_generation_user_prompt(theme_context: str, user_prompt: str, output_format: str) -> str:
+    output_instructions = (
+        "Return only the finished cross-sector thematic report in markdown.\n"
+        "- Aim for the lower half of the allowed report length unless the prompt explicitly requires more detail.\n"
+        "- Prioritize a complete report over extra detail if there is any risk of truncation.\n"
+        "- Do not end with unfinished bullets, unfinished sentences, or incomplete sections.\n"
+        "- Do not add meta commentary about the prompt package.\n"
+    )
+
+    if output_format == "html":
+        output_instructions = (
+            "Return only the finished cross-sector thematic report as complete HTML.\n"
+            "- Use semantic tags such as <html>, <body>, <h1>, <h2>, <p>, <ul>, and <li>.\n"
+            "- Make the HTML email-friendly with simple inline styling only.\n"
+            "- Aim for the lower half of the allowed report length unless the prompt explicitly requires more detail.\n"
+            "- Prioritize a complete report over extra detail if there is any risk of truncation.\n"
+            "- Do not end with unfinished bullets, unfinished sentences, incomplete sections, or incomplete HTML.\n"
+            "- Do not wrap the HTML in markdown fences.\n"
+            "- Do not add meta commentary about the prompt package.\n"
+        )
+
+    return (
+        "You are executing a cross-sector thematic report request.\n\n"
+        "Execution rules:\n"
+        "- Treat the system message as the governing instruction layer.\n"
+        "- Treat the 'Theme Context' section below as the run-specific cross-sector context layer.\n"
+        "- Treat the 'User Prompt' section below as the active task and mode-specific requirements.\n"
+        "- Do not require or infer a GICS sector, industry group, industry, or sub-industry.\n"
+        f"{output_instructions}\n"
+        "Theme Context follows:\n\n"
+        f"{theme_context}\n\n"
+        "User Prompt follows:\n\n"
+        f"{user_prompt}"
+    )
+
+
 def extract_text_from_response(response: Any) -> str:
     output_text = getattr(response, "output_text", None)
     if isinstance(output_text, str) and output_text.strip():
@@ -424,6 +460,50 @@ def generate_with_chat_completions(
             {
                 "role": "user",
                 "content": build_generation_user_prompt(sector_adapter, user_prompt, output_format),
+            },
+        ],
+        max_completion_tokens=max_output_tokens,
+    )
+    return extract_text_from_chat_completion(response)
+
+
+def generate_cross_sector_with_responses_api(
+    client: OpenAI,
+    system_prompt: str,
+    theme_context: str,
+    user_prompt: str,
+    model: str,
+    max_output_tokens: int,
+    output_format: str,
+) -> str:
+    response = client.responses.create(
+        model=model,
+        instructions=system_prompt,
+        input=build_cross_sector_generation_user_prompt(theme_context, user_prompt, output_format),
+        max_output_tokens=max_output_tokens,
+    )
+    return extract_text_from_response(response)
+
+
+def generate_cross_sector_with_chat_completions(
+    client: OpenAI,
+    system_prompt: str,
+    theme_context: str,
+    user_prompt: str,
+    model: str,
+    max_output_tokens: int,
+    output_format: str,
+) -> str:
+    response = client.chat.completions.create(
+        model=model,
+        messages=[
+            {
+                "role": "system",
+                "content": system_prompt,
+            },
+            {
+                "role": "user",
+                "content": build_cross_sector_generation_user_prompt(theme_context, user_prompt, output_format),
             },
         ],
         max_completion_tokens=max_output_tokens,
