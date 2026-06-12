@@ -63,11 +63,121 @@ THEME_TERMS = [
     "sector",
     "theme",
 ]
+REQUIRED_WHOLESALER_HEADINGS = [
+    "TOP 5 STORIES THIS WEEK",
+    "BEYOND THE MAG 7",
+    "WHAT IS BEING DISRUPTED",
+    "REGULATORY RADAR",
+    "WHAT TO WATCH NEXT",
+    "READY TO USE SOUNDBITES",
+    "QUESTIONS TO BRING TO YOUR CLIENTS",
+]
+MONITORABLE_TERMS = [
+    "track",
+    "watch",
+    "monitor",
+    "follow",
+    "filings",
+    "aftermarket",
+    "issuance",
+    "loan spreads",
+    "debt",
+    "permits",
+    "permitting",
+    "interconnection",
+    "deployment",
+    "uptime",
+    "unit economics",
+    "approval",
+]
 
 
 def _count_terms(text, terms):
     lowered = text.lower()
     return sum(1 for term in terms if term in lowered)
+
+
+def _find_heading_positions(text, headings):
+    positions = {}
+    for heading in headings:
+        match = re.search(rf"(?im)^\s*{re.escape(heading)}\s*$", text)
+        if match:
+            positions[heading] = match.start()
+    return positions
+
+
+def _section_text(text, heading, following_headings):
+    heading_match = re.search(rf"(?im)^\s*{re.escape(heading)}\s*$", text)
+    if not heading_match:
+        return ""
+    start = heading_match.end()
+    end = len(text)
+    for next_heading in following_headings:
+        next_match = re.search(rf"(?im)^\s*{re.escape(next_heading)}\s*$", text[start:])
+        if next_match:
+            end = start + next_match.start()
+            break
+    return text[start:end].strip()
+
+
+def _numbered_items(section):
+    return [
+        match.group(0).strip()
+        for match in re.finditer(r"(?ms)^\s*\d+\.\s+.*?(?=^\s*\d+\.\s+|\Z)", section)
+    ]
+
+
+def _all_numbered_items(text):
+    return [
+        match.group(0).strip()
+        for match in re.finditer(r"(?ms)^\s*\d+\.\s+.*?(?=^\s*\d+\.\s+|^[A-Z][A-Z0-9 /]+$|\Z)", text)
+    ]
+
+
+def _is_frontier_capital_markets_text(text):
+    lowered = text.lower()
+    capital_terms = [
+        "ipo",
+        "initial public offering",
+        "direct listing",
+        "secondary offering",
+        "tender offer",
+        "private-market liquidity",
+        "private market liquidity",
+        "liquidity event",
+        "funding round",
+        "growth equity",
+        "private credit",
+        "debt facility",
+        "valuation reset",
+        "acquisition",
+        "merger",
+    ]
+    frontier_terms = [
+        "spacex",
+        "starlink",
+        "space technology",
+        "satellite communications",
+        "satellite",
+        "defense",
+        "autonomy",
+        "edge connectivity",
+    ]
+    return any(term in lowered for term in capital_terms) and any(term in lowered for term in frontier_terms)
+
+
+def _has_honest_frontier_framing(text):
+    lowered = text.lower()
+    return any(
+        phrase in lowered
+        for phrase in [
+            "not a pure gen ai story",
+            "ai-adjacent",
+            "ai adjacent",
+            "broader innovation cycle",
+            "frontier technology",
+        ]
+    )
 
 
 def validate_weekly_digest_text(text):
@@ -83,6 +193,43 @@ def validate_weekly_digest_text(text):
         issues.append("Explicit recommendation language detected")
     if PERFORMANCE_PROMISE_RE.search(stripped):
         issues.append("Performance promise language detected")
+
+    heading_positions = _find_heading_positions(stripped, REQUIRED_WHOLESALER_HEADINGS)
+    if heading_positions:
+        missing_headings = [
+            heading for heading in REQUIRED_WHOLESALER_HEADINGS if heading not in heading_positions
+        ]
+        if missing_headings:
+            issues.append("Missing weekly section headings: " + ", ".join(missing_headings))
+        found_in_order = [
+            heading for heading in REQUIRED_WHOLESALER_HEADINGS if heading in heading_positions
+        ]
+        if found_in_order != sorted(found_in_order, key=lambda heading: heading_positions[heading]):
+            issues.append("Weekly section headings are out of expected order")
+
+    watch_section = _section_text(
+        stripped,
+        "WHAT TO WATCH NEXT",
+        ["READY TO USE SOUNDBITES", "QUESTIONS TO BRING TO YOUR CLIENTS", "AI PRACTICE TIP OF THE WEEK"],
+    )
+    if not watch_section:
+        issues.append("WHAT TO WATCH NEXT section missing")
+    else:
+        watch_items = _numbered_items(watch_section)
+        if not 4 <= len(watch_items) <= 6:
+            issues.append("WHAT TO WATCH NEXT should include 4 to 6 monitorable indicators")
+        if watch_items and _count_terms(watch_section, MONITORABLE_TERMS) < 2:
+            issues.append("WHAT TO WATCH NEXT lacks monitorable indicator language")
+
+    frontier_items = [item for item in _all_numbered_items(stripped) if _is_frontier_capital_markets_text(item)]
+    if any(not _has_honest_frontier_framing(item) for item in frontier_items):
+        issues.append("Frontier technology capital markets discussion needs honest AI-adjacent framing")
+
+    local_data_center_mentions = len(
+        re.findall(r"\b(local|county|city council|zoning|permitting)\b.{0,80}\bdata centers?\b|\bdata centers?\b.{0,80}\b(local|county|city council|zoning|permitting)\b", stripped, flags=re.IGNORECASE)
+    )
+    if local_data_center_mentions > 3 and "broader" not in stripped.lower() and "pattern" not in stripped.lower():
+        issues.append("Weekly output may overuse local data-center examples without broader synthesis")
 
     synthesis_score = _count_terms(stripped, SYNTHESIS_TERMS)
     if synthesis_score < 3:

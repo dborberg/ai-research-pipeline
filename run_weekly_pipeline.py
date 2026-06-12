@@ -13,6 +13,10 @@ from sqlalchemy import text
 from app.cluster_schema import normalize_cluster_df
 from app.branding import WEEKLY_THEMATIC_TITLE, WEEKLY_WHOLESALER_TITLE
 from app.db import fetch_daily_digests, fetch_weekly_digests, get_engine, get_weekly_clusters, init_db, save_weekly_clusters, upsert_weekly_digest
+from app.generate_digest import (
+    frontier_technology_capital_markets_score,
+    is_frontier_technology_capital_markets_event,
+)
 from app.reporting import (
     call_chat_model,
     get_month_bounds,
@@ -561,7 +565,51 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
             },
         ).mappings().all()
 
+        frontier_capital_markets_rows = conn.execute(
+            text("""
+                SELECT
+                    id,
+                    title,
+                    source,
+                    url,
+                    published_at,
+                    summary,
+                    advisor_relevance,
+                    ai_score,
+                    companies,
+                    is_space_economy_related,
+                    space_relevance,
+                    space_ai_connection,
+                    space_time_horizon,
+                    space_investment_layer
+                FROM articles
+                WHERE published_at >= :window_start
+                  AND published_at < :window_end
+                  AND (
+                    LOWER(COALESCE(title, '') || ' ' || COALESCE(summary, '') || ' ' || COALESCE(advisor_relevance, '')) LIKE '%ipo%'
+                    OR LOWER(COALESCE(title, '') || ' ' || COALESCE(summary, '') || ' ' || COALESCE(advisor_relevance, '')) LIKE '%initial public offering%'
+                    OR LOWER(COALESCE(title, '') || ' ' || COALESCE(summary, '') || ' ' || COALESCE(advisor_relevance, '')) LIKE '%direct listing%'
+                    OR LOWER(COALESCE(title, '') || ' ' || COALESCE(summary, '') || ' ' || COALESCE(advisor_relevance, '')) LIKE '%tender offer%'
+                    OR LOWER(COALESCE(title, '') || ' ' || COALESCE(summary, '') || ' ' || COALESCE(advisor_relevance, '')) LIKE '%private-market liquidity%'
+                    OR LOWER(COALESCE(title, '') || ' ' || COALESCE(summary, '') || ' ' || COALESCE(advisor_relevance, '')) LIKE '%funding round%'
+                    OR LOWER(COALESCE(title, '') || ' ' || COALESCE(summary, '') || ' ' || COALESCE(advisor_relevance, '')) LIKE '%growth equity%'
+                    OR LOWER(COALESCE(title, '') || ' ' || COALESCE(summary, '') || ' ' || COALESCE(advisor_relevance, '')) LIKE '%debt facility%'
+                    OR LOWER(COALESCE(title, '') || ' ' || COALESCE(summary, '') || ' ' || COALESCE(advisor_relevance, '')) LIKE '%valuation reset%'
+                    OR LOWER(COALESCE(title, '') || ' ' || COALESCE(summary, '') || ' ' || COALESCE(advisor_relevance, '')) LIKE '%acquisition%'
+                    OR LOWER(COALESCE(title, '') || ' ' || COALESCE(summary, '') || ' ' || COALESCE(advisor_relevance, '')) LIKE '%merger%'
+                  )
+                ORDER BY published_at DESC
+                LIMIT :limit
+            """),
+            {
+                "window_start": window_start,
+                "window_end": window_end,
+                "limit": 20,
+            },
+        ).mappings().all()
+
     high_signal = []
+    seen_article_ids = set()
     for row in high_signal_rows:
         article = ensure_space_metadata(dict(row))
         article["signal_tier"] = "HIGH SIGNAL (PRIORITY - FOCUS HERE)"
@@ -572,6 +620,7 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
         article["content_quality"] = float(article.get("content_quality") or len(article.get("summary") or ""))
         article["theme_hint"] = article.get("theme_hint") or " ".join((article.get("title") or "").split()[:5])
         high_signal.append(article)
+        seen_article_ids.add(article.get("id"))
 
     medium_signal = []
     for row in medium_signal_rows:
@@ -584,15 +633,37 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
         article["content_quality"] = float(article.get("content_quality") or len(article.get("summary") or ""))
         article["theme_hint"] = article.get("theme_hint") or " ".join((article.get("title") or "").split()[:5])
         medium_signal.append(article)
+        seen_article_ids.add(article.get("id"))
 
-    articles = high_signal + medium_signal
+    frontier_capital_markets = []
+    for row in frontier_capital_markets_rows:
+        if row["id"] in seen_article_ids:
+            continue
+        article = ensure_space_metadata(dict(row))
+        article["companies"] = _parse_companies(article.get("companies"))
+        if not is_frontier_technology_capital_markets_event(article):
+            continue
+        article["signal_tier"] = "FRONTIER CAPITAL MARKETS OVERRIDE"
+        article["signal_score"] = float(article.get("ai_score") or 0)
+        article["priority_score"] = frontier_technology_capital_markets_score(article)
+        article["source_weight"] = float(article.get("source_weight") or 1)
+        article["content_quality"] = float(article.get("content_quality") or len(article.get("summary") or ""))
+        article["theme_hint"] = "Frontier Technology Capital Markets"
+        frontier_capital_markets.append(article)
+        seen_article_ids.add(article.get("id"))
+
+    articles = high_signal + medium_signal + frontier_capital_markets
     space_economy_theme_active = calculate_space_economy_theme_active(
         articles,
-        quality_filter=lambda article: float(article.get("ai_score") or 0) >= score_threshold,
+        quality_filter=lambda article: (
+            float(article.get("ai_score") or 0) >= score_threshold
+            or is_frontier_technology_capital_markets_event(article)
+        ),
     )
 
     print(f"HIGH SIGNAL articles: {len(high_signal)}")
     print(f"MEDIUM SIGNAL articles: {len(medium_signal)}")
+    print(f"FRONTIER CAPITAL MARKETS override articles: {len(frontier_capital_markets)}")
     print(
         f"Weekly pipeline using {len(articles)} high-quality articles "
         f"(score >= {score_threshold})"
@@ -617,6 +688,8 @@ def _weekly_has_real_world_signal(article):
         return False
 
     return (
+        is_frontier_technology_capital_markets_event(article)
+        or
         bool(proper_nouns)
         or any(term in lowered for term in [
             "capex", "funding", "buildout", "data center", "power", "chip", "fab", "grid",
@@ -629,6 +702,7 @@ def _weekly_has_real_world_signal(article):
 def _weekly_event_priority(article):
     text = f"{article.get('title') or ''} {article.get('summary') or ''} {article.get('advisor_relevance') or ''}".lower()
     score = float(article.get("signal_score") or article.get("ai_score") or 0)
+    score += frontier_technology_capital_markets_score(article)
 
     if any(term in text for term in [
         "tesla", "nvidia", "microsoft", "amazon", "google", "meta", "openai", "softbank",
@@ -744,6 +818,8 @@ def _build_wholesaler_event_context(article_data):
                     f"SUMMARY: {article.get('summary') or ''}",
                     f"COMPANIES: {', '.join(article.get('companies') or [])}",
                     f"EVENT_PRIORITY: {_weekly_event_priority(article):.2f}",
+                    f"FRONTIER_CAPITAL_MARKETS_SCORE: {frontier_technology_capital_markets_score(article)}",
+                    f"FRONTIER_CAPITAL_MARKETS_OVERRIDE: {'YES' if is_frontier_technology_capital_markets_event(article) else 'NO'}",
                     *format_space_metadata_lines(article),
                 ]
             )

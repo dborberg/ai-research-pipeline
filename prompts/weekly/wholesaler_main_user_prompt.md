@@ -34,8 +34,22 @@ Also prioritize themes that show:
 8. professional productivity improving through content, research, communication, and workflow amplification
 9. physical AI and robotics moving from demo to deployment
 10. investment opportunity broadening beyond the largest AI platform companies
+11. major frontier technology capital markets events that affect IPO windows, public/private market risk appetite, private-market liquidity, valuation resets, debt financing, or innovation-cycle funding
 
 Do not exclude or down-rank a story solely because it involves a mega-cap platform, OpenAI, or another widely covered company. If it is one of the most consequential Gen AI developments of the week, it belongs in the digest.
+
+FRONTIER TECHNOLOGY CAPITAL MARKETS WEEKLY OVERRIDE:
+Explicitly check whether any Daily Riffs output or weekly source material included a major capital markets event involving a frontier technology company or AI-adjacent strategic infrastructure company. Relevant events include IPOs, direct listings, secondary offerings, tender offers, private-market liquidity events, major venture rounds, major growth equity rounds, major private credit deals, large debt facilities, convertible issuance, major valuation resets, and major M&A.
+
+Relevant frontier technology areas include artificial intelligence, AI infrastructure, semiconductors, cloud infrastructure, data centers, robotics, autonomy, defense technology, space technology, satellite communications, edge connectivity, energy infrastructure, advanced manufacturing, quantum computing, next-generation networking, and frontier software platforms.
+
+If FRONTIER_CAPITAL_MARKETS_OVERRIDE is YES, evaluate the story for TOP 5 STORIES THIS WEEK. It should be considered Top 5 material if it has unusually large transaction size; major IPO, direct listing, or public offering; strong read-through to public/private market risk appetite; major private-market valuation signal; major debt or credit-market financing; strong read-through to the IPO window, public-market liquidity, or innovation cycle; or strategic relevance to AI infrastructure, defense, autonomy, robotics, edge connectivity, satellite communications, space technology, compute infrastructure, or energy infrastructure.
+
+If important but not Top 5, include it in BEYOND THE MAG 7. If primarily a forward-looking signal, include it in WHAT TO WATCH NEXT. If useful for sales conversations, convert it into READY TO USE SOUNDBITES or QUESTIONS TO BRING TO YOUR CLIENTS. Do not omit a major frontier technology capital markets event merely because it is AI-adjacent rather than pure Gen AI.
+
+For AI-adjacent frontier technology companies, explain the connection clearly and honestly. Do not force a narrow AI link. Use language such as: This is not a pure Gen AI story, but it matters for the broader innovation cycle because...
+
+If multiple frontier technology capital markets events occurred during the week, synthesize them into a broader innovation-cycle or capital-markets theme such as IPO window reopening for frontier technology, private-market liquidity and innovation-cycle risk appetite, capital markets funding physical AI and AI infrastructure buildout, AI-adjacent infrastructure broadening beyond chips and data centers, or strategic infrastructure as an investable frontier technology category.
 
 Treat diversity as a secondary filter: use it to avoid repetitive coverage when stories are similarly important, not to replace the most important stories with less consequential ones.
 
@@ -76,6 +90,16 @@ Write 2 to 3 numbered items.
 Reference only actual policy or regulatory developments from the week.
 No speculation.
 Explain the practical business or investment relevance in plain English.
+
+WHAT TO WATCH NEXT
+Write 4 to 6 numbered items.
+Each item should identify a forward-looking signal to monitor over the next 30 to 90 days.
+Use monitorable indicators, not generic themes or repeated headlines.
+Tie each signal to advisor, wholesaler, investment, capital markets, business-model, or policy relevance.
+Include capital markets indicators when major financing, IPO, liquidity, debt, or valuation events occurred during the week.
+Include infrastructure and permitting indicators when data center stories were major weekly themes.
+Include physical AI commercialization indicators when robotics or autonomy stories were major weekly themes.
+Keep items concise and plain English.
 
 READY TO USE SOUNDBITES
 Write exactly 5 numbered statements.
