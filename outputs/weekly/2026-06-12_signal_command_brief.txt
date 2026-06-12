@@ -1,0 +1,73 @@
+AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report
+Week Ending 2026-06-12
+
+Purpose:
+This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.
+
+TOP CONVICTION SIGNALS
+
+Amazon NVIDIA
+Conviction: 8.30
+Strength: 7.80
+Momentum: 1000%
+Velocity: +10 article change
+Why It Matters:
+AI demand is translating into a long-cycle infrastructure capex theme, but returns will depend on financing costs, utilization, and resource availability. This matters for cloud platforms, data center operators, utilities, construction firms, chip suppliers, and credit-sensitive tech valuations.
+
+Meta Reliance
+Conviction: 7.66
+Strength: 7.40
+Momentum: 800%
+Velocity: +8 article change
+Why It Matters:
+AI infrastructure is becoming a geopolitical and regional development priority, creating demand for data centers, grid equipment, power generation, networking, and local cloud ecosystems. Advisors should also monitor geopolitical risk to chip suppliers and cross-border technology supply chains.
+
+Industrial factory buildout
+Conviction: 7.52
+Strength: 8.18
+Momentum: 400%
+Velocity: +4 article change
+Why It Matters:
+This expands the AI opportunity into industrial automation, sensors, robotics hardware, edge compute, factory software, power systems, and advanced materials. It also supports reshoring and productivity themes as manufacturers seek labor leverage and operational efficiency.
+
+ACME Albertsons Companies
+Conviction: 6.58
+Strength: 6.60
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+This could reshape payments, retail media, checkout, enterprise software, developer tooling, and productivity platforms. The market implication is a shift from AI novelty toward workflow monetization, with value accruing to platforms that control distribution, data, and transaction rails.
+
+Robotics training bottlenecks
+Conviction: 6.58
+Strength: 6.60
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+The bottleneck shifts value toward simulation platforms, robot operating systems, data capture tools, controls software, edge compute, and deployment services. Robotics winners may be those that solve reliability and support economics, not just those with better foundation models.
+
+ACCELERATING THEMES (BREAKOUTS)
+
+These themes are accelerating fastest relative to prior week.
+
+Amazon NVIDIA: Momentum 1000%, velocity +10. AI demand is translating into a long-cycle infrastructure capex theme, but returns will depend on financing costs, utilization, and resource availability
+Meta Reliance: Momentum 800%, velocity +8. AI infrastructure is becoming a geopolitical and regional development priority, creating demand for data centers, grid equipment, power generation, networking, and local cloud ecosystems
+ACME Albertsons Companies: Momentum 500%, velocity +5. This could reshape payments, retail media, checkout, enterprise software, developer tooling, and productivity platforms
+
+FADING SIGNALS
+
+No major theme showed week-over-week deterioration in this run.
+
+PORTFOLIO IMPLICATIONS
+
+Structural strengthening is concentrated in Amazon NVIDIA, Meta Reliance, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in ACME Albertsons Companies, Robotics training bottlenecks, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in Amazon NVIDIA, Meta Reliance, supported by rising article volume against the prior week.
+Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
+
+BOTTOM LINE
+
+1. Highest conviction theme: Amazon NVIDIA
+2. Most important new signal: Amazon NVIDIA
+3. Biggest acceleration: Amazon NVIDIA
+4. Key risk / fading area: No material fading area
