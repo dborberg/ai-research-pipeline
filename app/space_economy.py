@@ -8,6 +8,8 @@ Space-related developments may be considered only when the connection to Gen AI,
 
 Do not include general space-economy stories solely because they are technologically interesting. A rocket launch, satellite deployment, NASA contract, broadband constellation update, or space funding story should appear in the Daily briefing only if it has a meaningful read-through to AI-enabled data intelligence, autonomous systems, defense decision loops, cloud/AI infrastructure, communications resilience, robotics, cybersecurity, or public-market AI beneficiaries.
 
+Exception: a major frontier technology capital markets event, such as a SpaceX IPO-style event, direct listing, tender offer, private-market liquidity event, major funding round, debt facility, valuation reset, or M&A event, may qualify when it is large enough to affect investor risk appetite, IPO market tone, private-market liquidity, strategic infrastructure, satellite communications, defense, autonomy, edge connectivity, or the broader innovation cycle. Explain clearly when the story is AI-adjacent rather than pure Gen AI.
+
 When a space-related story qualifies, frame it through the AI, data, defense, communications, cybersecurity, or infrastructure read-through first, then explain the broader investment implication.
 """
 

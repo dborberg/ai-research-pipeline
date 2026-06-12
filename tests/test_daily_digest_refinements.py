@@ -1,6 +1,10 @@
 import unittest
 from pathlib import Path
 
+from app.generate_digest import (
+    frontier_technology_capital_markets_score,
+    is_frontier_technology_capital_markets_event,
+)
 from scripts.validate_daily_digest_output import validate_daily_digest_html
 
 
@@ -50,6 +54,37 @@ class DailyDigestRefinementTests(unittest.TestCase):
             self.assertIn("Platform Convergence", prompt)
             self.assertIn("4 to 6 most relevant categories", prompt)
             self.assertIn("local or state data center permitting", prompt.lower())
+            self.assertIn("FRONTIER TECHNOLOGY CAPITAL MARKETS DAILY OVERRIDE", prompt)
+            self.assertIn("not a pure Gen AI story", prompt)
+
+    def test_spacex_ipo_style_article_triggers_frontier_capital_markets_override(self):
+        article = {
+            "title": "SpaceX weighs IPO as Starlink expands satellite communications network",
+            "summary": (
+                "The company is considering an initial public offering that could test public-market "
+                "appetite for mega-cap private frontier technology. The story centers on space "
+                "technology, satellite communications, defense connectivity, autonomy, edge "
+                "connectivity, and private-market liquidity."
+            ),
+            "companies": "SpaceX, Starlink",
+            "advisor_relevance": "",
+            "ai_score": 0,
+        }
+
+        self.assertTrue(is_frontier_technology_capital_markets_event(article))
+        self.assertGreaterEqual(frontier_technology_capital_markets_score(article), 80)
+
+    def test_generic_non_frontier_ipo_does_not_trigger_override(self):
+        article = {
+            "title": "Restaurant chain files for IPO",
+            "summary": "The company plans an initial public offering after opening new locations.",
+            "companies": "Example Restaurants",
+            "advisor_relevance": "",
+            "ai_score": 0,
+        }
+
+        self.assertFalse(is_frontier_technology_capital_markets_event(article))
+        self.assertEqual(frontier_technology_capital_markets_score(article), 0)
 
     def test_validator_accepts_clean_daily_digest_shape(self):
         html = _daily_html(
@@ -154,6 +189,75 @@ class DailyDigestRefinementTests(unittest.TestCase):
         issues = validate_daily_digest_html(html)
         self.assertIn("Investment read-through list appears too long in one or more bullets", issues)
         self.assertIn("Repeated long investment read-through category list detected", issues)
+
+    def test_validator_accepts_spacex_ipo_with_honest_ai_adjacent_framing(self):
+        html = _daily_html(
+            {
+                "TOP STORIES": [
+                    "<strong>SpaceX's IPO became a major frontier-technology capital markets signal:</strong> This is not a pure Gen AI story, but it matters for the broader innovation cycle because it tests public-market appetite for mega-cap private technology and connects to satellite communications, defense, autonomy, edge connectivity, and strategic infrastructure. The advisor implication is that AI-adjacent infrastructure may include the communications and defense networks that support autonomy and distributed compute. (Source: Bloomberg)",
+                    "<strong>Reuters reported a cloud provider expanded governed AI deployments:</strong> The move matters because enterprise buyers are asking for security, identity, and cost controls before scaling. The read-through is to data platforms, governance software, and IT services. (Source: Reuters)",
+                    "<strong>AP reported lawmakers advanced an AI procurement bill:</strong> The policy move matters because public-sector rules can shape enterprise governance standards. The implication is stronger demand for auditability and compliance tooling. (Source: AP)",
+                ],
+                "ENTERPRISE ADOPTION AND LABOR": [
+                    "<strong>Microsoft added production controls to an agent platform:</strong> The launch matters because orchestration is moving from demos into governed workflow automation. Advisors can frame this as a platform convergence signal, not just another chatbot feature. (Source: Microsoft)"
+                ],
+                "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": [
+                    "<strong>Financial Times reported a utility signed a data center power agreement:</strong> The agreement matters because compute growth is colliding with grid capacity. The read-through is to power equipment, cooling, networking, and utilities. (Source: Financial Times)"
+                ],
+                "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": [
+                    "<strong>IDC published an enterprise AI spending forecast:</strong> The forecast matters because budgets are shifting toward production systems. Portfolio monitoring should separate durable data-platform demand from speculative application spending. (Source: IDC)"
+                ],
+                "REGULATION, GOVERNANCE AND POLICY": [
+                    "<strong>The White House released AI procurement guidance:</strong> The guidance matters because governance can become a commercial-access requirement. The implication is stronger demand for audit trails, privacy controls, and compliance software. (Source: White House)"
+                ],
+                "PHYSICAL AI AND ROBOTICS": [
+                    "<strong>The Robot Report reported a warehouse automation deployment:</strong> The deployment matters because physical AI is moving from pilots into operational workflows. The read-through is to industrial automation, sensors, and logistics software. (Source: The Robot Report)"
+                ],
+                "WHAT TO WATCH": [
+                    "<strong>IPO market tone:</strong> Watch whether frontier technology listings reopen the private-to-public liquidity window. The signal matters for capital allocation across AI infrastructure and strategic infrastructure. (Source: Full article set)"
+                ],
+                "ADVISOR / WHOLESALER SOUNDBITES": [
+                    "<strong>AI-adjacent infrastructure is broader than chips:</strong> Communications, defense networks, and edge connectivity can matter when autonomy and distributed compute scale. That keeps the innovation-cycle conversation wider but still disciplined. (Source: Full article set)"
+                ],
+            }
+        )
+
+        self.assertEqual(validate_daily_digest_html(html), [])
+
+    def test_validator_flags_frontier_capital_markets_without_honest_framing(self):
+        html = _daily_html(
+            {
+                "TOP STORIES": [
+                    "<strong>SpaceX's IPO became a major satellite communications event:</strong> The deal matters because it connects space technology, defense, autonomy, and edge connectivity. The advisor implication is to monitor private-market liquidity and strategic infrastructure. (Source: Bloomberg)"
+                ],
+                "ENTERPRISE ADOPTION AND LABOR": [
+                    "<strong>Microsoft added production controls to an agent platform:</strong> The launch matters because orchestration is moving from demos into governed workflow automation. Advisors can frame this as a platform convergence signal. (Source: Microsoft)"
+                ],
+                "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": [
+                    "<strong>Financial Times reported a utility signed a data center power agreement:</strong> The agreement matters because compute growth is colliding with grid capacity. The read-through is to power equipment, cooling, networking, and utilities. (Source: Financial Times)"
+                ],
+                "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": [
+                    "<strong>IDC published an enterprise AI spending forecast:</strong> The forecast matters because budgets are shifting toward production systems. Portfolio monitoring should separate durable data-platform demand from speculative application spending. (Source: IDC)"
+                ],
+                "REGULATION, GOVERNANCE AND POLICY": [
+                    "<strong>The White House released AI procurement guidance:</strong> The guidance matters because governance can become a commercial-access requirement. The implication is stronger demand for audit trails and compliance software. (Source: White House)"
+                ],
+                "PHYSICAL AI AND ROBOTICS": [
+                    "<strong>The Robot Report reported a warehouse automation deployment:</strong> The deployment matters because physical AI is moving from pilots into operational workflows. The read-through is to industrial automation. (Source: The Robot Report)"
+                ],
+                "WHAT TO WATCH": [
+                    "<strong>IPO market tone:</strong> Watch whether strategic infrastructure listings reopen the private-to-public liquidity window. The signal matters for capital allocation. (Source: Full article set)"
+                ],
+                "ADVISOR / WHOLESALER SOUNDBITES": [
+                    "<strong>Infrastructure breadth matters:</strong> Communications and defense networks can matter when autonomy scales. That keeps the innovation-cycle conversation wider. (Source: Full article set)"
+                ],
+            }
+        )
+
+        self.assertIn(
+            "Frontier technology capital markets bullet needs honest AI-adjacent framing",
+            validate_daily_digest_html(html),
+        )
 
 
 if __name__ == "__main__":

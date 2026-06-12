@@ -83,6 +83,52 @@ def _is_local_data_center_permitting_bullet(text):
     )
 
 
+def _is_frontier_capital_markets_bullet(text):
+    normalized = _normalize_text(text)
+    capital_terms = [
+        "ipo",
+        "initial public offering",
+        "direct listing",
+        "secondary sale",
+        "tender offer",
+        "private-market liquidity",
+        "private market liquidity",
+        "liquidity event",
+        "funding round",
+        "growth equity",
+        "private credit",
+        "debt facility",
+        "valuation reset",
+        "acquisition",
+        "merger",
+    ]
+    indirect_frontier_terms = [
+        "spacex",
+        "starlink",
+        "space technology",
+        "satellite communications",
+        "satellite",
+        "defense",
+        "autonomy",
+        "edge connectivity",
+    ]
+    return any(term in normalized for term in capital_terms) and any(term in normalized for term in indirect_frontier_terms)
+
+
+def _has_honest_frontier_framing(text):
+    normalized = _normalize_text(text)
+    return any(
+        phrase in normalized
+        for phrase in [
+            "not a pure gen ai story",
+            "ai-adjacent",
+            "ai adjacent",
+            "broader innovation cycle",
+            "frontier technology",
+        ]
+    )
+
+
 class DigestHtmlParser(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -214,6 +260,10 @@ def validate_daily_digest_html(html, require_physical_ai_fallback=False):
     bullet_lengths = [len(_normalize_text(item).split()) for item in parser.li_items]
     if sum(1 for length in bullet_lengths if length > 90) > 3 or any(length > 130 for length in bullet_lengths):
         issues.append("Excessive bullet length detected")
+
+    frontier_capital_bullets = [item for item in parser.li_items if _is_frontier_capital_markets_bullet(item)]
+    if any(not _has_honest_frontier_framing(item) for item in frontier_capital_bullets):
+        issues.append("Frontier technology capital markets bullet needs honest AI-adjacent framing")
 
     if len(html) < 1200:
         issues.append("Output appears unusually short")

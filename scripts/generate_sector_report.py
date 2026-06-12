@@ -11,14 +11,12 @@ from html import escape, unescape
 from pathlib import Path
 from typing import Any
 
-from openai import OpenAI
-
-from app.reporting import get_openai_client
-
 
 DEFAULT_MODEL = "gpt-5.5"
 DEFAULT_MAX_OUTPUT_TOKENS = 2800
 FRONTIER_MAX_OUTPUT_TOKENS = 3600
+OPENAI_REQUEST_TIMEOUT_SECONDS = 90.0
+OPENAI_MAX_RETRIES = 5
 DEFAULT_OUTPUT_FORMAT = "markdown"
 FRONTIER_REQUIRED_HEADINGS = [
     "Executive Summary",
@@ -39,6 +37,22 @@ FRONTIER_SECTION_BUDGET_GUIDANCE = (
     "1 concise paragraph or tight bullets for Reality Check, 4-6 brief bullets for Most Important Boundaries, "
     "and 2-4 short paragraphs for Bottom Line. Do not leave any use case or frontier idea truncated or missing one of its required fields."
 )
+
+
+def get_openai_client(api_key: str):
+    try:
+        from openai import OpenAI
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "The openai package is required for report generation. "
+            "Install project requirements before calling generation functions."
+        ) from exc
+
+    return OpenAI(
+        api_key=api_key,
+        timeout=OPENAI_REQUEST_TIMEOUT_SECONDS,
+        max_retries=OPENAI_MAX_RETRIES,
+    )
 
 
 def get_max_output_tokens_for_mode(report_mode: str) -> int:

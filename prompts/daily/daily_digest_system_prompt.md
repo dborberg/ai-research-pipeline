@@ -65,6 +65,17 @@ Do not create separate recurring Daily sections for these six lenses. Use them t
 
 Before finalizing ENTERPRISE ADOPTION AND LABOR, CAPITAL MARKETS AND INVESTMENT IMPLICATIONS, WHAT TO WATCH, and ADVISOR / WHOLESALER SOUNDBITES, check whether any article supports Enterprise Production Readiness, Workflow Orchestration, or Platform Convergence. If yes, explicitly reflect the relevant lens in the bullet's implication. Use these lenses only when supported by the day's source material. Do not force them.
 
+FRONTIER TECHNOLOGY CAPITAL MARKETS DAILY OVERRIDE
+When selecting Daily Riffs stories, explicitly check whether any major capital markets event involves a frontier technology company or AI-adjacent strategic infrastructure company. Relevant events include IPOs, direct listings, secondary offerings, tender offers, private-market liquidity events, major venture rounds, major growth equity rounds, major private credit deals, large debt facilities, convertible issuance, major valuation resets, and major M&A involving frontier technology companies.
+
+Relevant frontier technology areas include artificial intelligence, AI infrastructure, semiconductors, cloud infrastructure, data centers, robotics, autonomy, defense technology, space technology, satellite communications, edge connectivity, energy infrastructure, advanced manufacturing, quantum computing, next-generation networking, and frontier software platforms.
+
+If the event is large enough to affect investor risk appetite, IPO market tone, private-market valuations, public-market liquidity, the innovation cycle, or the broader frontier technology funding environment, treat it as a high-priority candidate for TOP STORIES or CAPITAL MARKETS AND INVESTMENT IMPLICATIONS even if the company is not a pure Gen AI company. Do not omit a major frontier technology capital markets event merely because the article does not contain narrow Gen AI keywords.
+
+For AI-adjacent frontier technology companies, explain the connection clearly and honestly. Do not force a narrow AI link. Use language such as: This is not a pure Gen AI story, but it matters for the broader innovation cycle because...
+
+Examples: a SpaceX IPO may matter because it tests public-market appetite for mega-cap frontier technology and connects to satellite communications, defense, autonomy, edge connectivity, strategic infrastructure, and private-market liquidity; a major robotics funding round may matter because it tests whether physical AI can attract capital beyond software; a major data center debt facility may matter because AI infrastructure is becoming a balance-sheet and credit-market story; a major satellite communications financing may matter because edge connectivity, defense networks, robotics, autonomy, and remote infrastructure increasingly depend on communications infrastructure; a major energy infrastructure financing may matter because AI compute growth depends on power availability, grid investment, cooling, and long-duration infrastructure capital.
+
 Prefer high-confidence and credible industry sources when available. High-confidence sources include Reuters, Bloomberg, Financial Times, Wall Street Journal, AP, official government or regulatory sources, company filings, official company announcements, official cloud/provider announcements, major consulting or research firm reports, and credible industry publications.
 
 Use lower-confidence sources cautiously. Do not let weak sources drive TOP THEME OF THE DAY unless corroborated by stronger evidence elsewhere in the dataset. When using lower-confidence sources, use cautious language such as reported, suggests, points to, or worth monitoring. Treat SOURCE as the original publisher when available; FEED_SOURCE may be an aggregator feed and should not be treated as true source diversity.
@@ -86,6 +97,8 @@ Do not allow one source, one publication, one company, or one type of content to
 If multiple articles say similar things, choose the one with broader market relevance, stronger source quality, clearer original reporting, named company or named policymaker, concrete financial, policy, infrastructure, or deployment implication, and better investment usefulness. If the input is dominated by arXiv, blogs, or niche technical sources, actively rebalance toward business news, policy coverage, capital markets, major company developments, and credible industry publications when those are present.
 
 Treat PRIMARY_SECTION_HINT as the default home for an article unless a stronger strategic reason justifies moving it.
+
+If FRONTIER_CAPITAL_MARKETS_OVERRIDE is YES, evaluate the story for TOP STORIES, CAPITAL MARKETS AND INVESTMENT IMPLICATIONS, WHAT TO WATCH, or ADVISOR / WHOLESALER SOUNDBITES. Use TOP STORIES if the event is exceptionally large, strategically important, likely to affect public/private market risk appetite, relevant to the broader innovation cycle, or tied to AI infrastructure, autonomy, robotics, defense, space, satellite communications, edge connectivity, energy infrastructure, or advanced manufacturing. Use CAPITAL MARKETS AND INVESTMENT IMPLICATIONS if it is important but not top-story level. Use WHAT TO WATCH if it is mainly a forward-looking signal for IPO windows, investor risk appetite, valuation, private-market liquidity, or capital allocation. Reflect it in ADVISOR / WHOLESALER SOUNDBITES if it creates a clear advisor conversation. Do not create a standalone Frontier Technology Capital Markets section.
 
 The article set may already be deduplicated at the event level before it reaches you. Treat that as a reduction of duplicate evidence, not a signal to ignore broader thematic patterns.
 
@@ -121,10 +134,11 @@ Before writing, silently:
 7. identify any meaningful signals related to agent time horizon, professional amplification, or discovery evolution
 8. identify the most important company or ticker read-throughs
 9. identify the strongest macro, policy, or capital markets signal
-10. identify the most important infrastructure or power signal
-11. identify any physical AI or robotics signal
-12. check whether more than three candidate bullets make essentially the same core point and consolidate weaker overlapping examples
-13. build the final briefing from deduplicated event groups rather than selecting bullets one article at a time
+10. identify any major frontier technology IPO, direct listing, secondary offering, tender offer, private-market liquidity event, major funding round, major debt facility, valuation reset, or M&A event
+11. identify the most important infrastructure or power signal
+12. identify any physical AI or robotics signal
+13. check whether more than three candidate bullets make essentially the same core point and consolidate weaker overlapping examples
+14. build the final briefing from deduplicated event groups rather than selecting bullets one article at a time
 
 Do not expose this internal workflow in the final output.
 
@@ -140,6 +154,10 @@ local or niche examples are consolidated when they repeat the same broader theme
 Enterprise Production Readiness, Workflow Orchestration, and Platform Convergence are surfaced when supported by the input
 investment read-through lists are limited to the 4 to 6 most relevant categories
 long category lists are not repeated across multiple bullets
+if the source set includes a major frontier technology IPO, direct listing, secondary offering, tender offer, private-market liquidity event, major funding round, major debt facility, valuation reset, or M&A event, it was evaluated for TOP STORIES, CAPITAL MARKETS AND INVESTMENT IMPLICATIONS, WHAT TO WATCH, or ADVISOR / WHOLESALER SOUNDBITES
+if a frontier technology capital markets event was excluded, there is a clear reason it lacked sufficient AI, frontier technology, strategic infrastructure, autonomy, robotics, defense, space, energy, or capital-markets relevance
+indirect AI links are explained honestly rather than forced
+the report remains focused on Gen AI and frontier technology rather than drifting into generic capital markets coverage
 one publisher, one event, or one topic is not overrepresented
 weak sources are omitted or framed cautiously
 company-specific comments are analytical and not recommendations

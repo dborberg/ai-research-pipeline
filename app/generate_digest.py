@@ -8,6 +8,100 @@ DAILY_PROMPT_PATHS = {
     "daily_digest_user": DAILY_PROMPTS_DIR / "daily_digest_user_prompt.md",
 }
 
+FRONTIER_CAPITAL_MARKETS_TERMS = [
+    "ipo",
+    "initial public offering",
+    "direct listing",
+    "public offering",
+    "secondary offering",
+    "secondary sale",
+    "tender offer",
+    "private-market liquidity",
+    "private market liquidity",
+    "liquidity event",
+    "valuation",
+    "valuation reset",
+    "funding round",
+    "venture round",
+    "growth equity",
+    "private credit",
+    "debt facility",
+    "convertible",
+    "convertible issuance",
+    "m&a",
+    "acquisition",
+    "merger",
+    "spinout",
+]
+FRONTIER_TECHNOLOGY_TERMS = [
+    "frontier technology",
+    "artificial intelligence",
+    "ai infrastructure",
+    "semiconductor",
+    "semiconductors",
+    "cloud infrastructure",
+    "data center",
+    "datacenter",
+    "robotics",
+    "autonomy",
+    "autonomous",
+    "defense technology",
+    "defense tech",
+    "space technology",
+    "spacex",
+    "starlink",
+    "rocket",
+    "satellite communications",
+    "satellite",
+    "satellites",
+    "edge connectivity",
+    "energy infrastructure",
+    "advanced manufacturing",
+    "quantum computing",
+    "next-generation networking",
+    "next generation networking",
+    "frontier software platform",
+    "frontier software platforms",
+]
+
+
+def _article_signal_text(article):
+    companies = article.get("companies") or ""
+    if isinstance(companies, list):
+        companies = " ".join(str(company) for company in companies)
+    return " ".join(
+        [
+            str(article.get("title") or ""),
+            str(article.get("summary") or ""),
+            str(article.get("advisor_relevance") or ""),
+            str(companies),
+        ]
+    ).lower()
+
+
+def frontier_technology_capital_markets_score(article):
+    """Score major AI-adjacent frontier technology capital markets events."""
+    text = _article_signal_text(article)
+    capital_matches = [term for term in FRONTIER_CAPITAL_MARKETS_TERMS if term in text]
+    frontier_matches = [term for term in FRONTIER_TECHNOLOGY_TERMS if term in text]
+    if not capital_matches or not frontier_matches:
+        return 0
+
+    score = 45 + min(len(capital_matches), 4) * 8 + min(len(frontier_matches), 5) * 5
+    if any(term in text for term in ["ipo", "initial public offering", "direct listing"]):
+        score += 20
+    if any(term in text for term in ["spacex", "starlink"]):
+        score += 12
+    if any(term in text for term in ["billion", "$", "mega-cap", "megacap", "large", "major"]):
+        score += 8
+    if any(term in text for term in ["defense", "autonomy", "satellite communications", "edge connectivity", "strategic infrastructure"]):
+        score += 6
+    return score
+
+
+def is_frontier_technology_capital_markets_event(article):
+    return frontier_technology_capital_markets_score(article) >= 55
+
 
 def _read_daily_prompt_template(name):
     path = DAILY_PROMPT_PATHS[name]
@@ -59,7 +153,7 @@ def generate_daily_digest(report_date=None):
     # -----------------------------
     def is_big_story(article):
         text = f"{article.get('title') or ''} {article.get('summary') or ''}".lower()
-        return any(term in text for term in [
+        return is_frontier_technology_capital_markets_event(article) or any(term in text for term in [
             "nvidia", "microsoft", "amazon", "google", "tesla", "apple", "openai", "tsmc", "asml",
             "government", "policy", "regulation", "white house", "lawmakers",
             "upgrade", "earnings", "index", "investment", "capex", "valuation", "funding",
@@ -243,7 +337,10 @@ def generate_daily_digest(report_date=None):
                 [
                     "capex", "capital expenditure", "bond issuance", "debt financing", "project finance",
                     "data center leasing", "infrastructure funding", "private credit", "sovereign funding",
-                    "multi-year", "balance sheet", "financing",
+                    "multi-year", "balance sheet", "financing", "ipo", "initial public offering",
+                    "direct listing", "public offering", "secondary sale", "tender offer",
+                    "private-market liquidity", "liquidity event", "debt facility", "convertible",
+                    "valuation reset", "growth equity",
                 ],
             ),
             "enterprise_adoption_monetization": (
@@ -292,7 +389,19 @@ def generate_daily_digest(report_date=None):
                 [
                     "scale economies", "data advantage", "supply constraint", "switching cost",
                     "ecosystem", "open-source pressure", "concentration risk", "platform advantage",
-                    "margin durability",
+                    "margin durability", "ipo window", "public-market liquidity", "private-market liquidity",
+                    "innovation cycle", "risk appetite",
+                ],
+            ),
+            "frontier_technology_capital_markets": (
+                24,
+                [
+                    "frontier technology", "space technology", "spacex", "starlink",
+                    "satellite communications", "defense technology", "autonomy", "edge connectivity",
+                    "advanced manufacturing", "quantum computing", "next-generation networking",
+                    "energy infrastructure", "major venture round", "major funding round",
+                    "growth equity", "private credit", "debt facility", "direct listing",
+                    "initial public offering",
                 ],
             ),
             "forward_looking_ai_adoption_signals": (
@@ -326,6 +435,7 @@ def generate_daily_digest(report_date=None):
         score = float(article.get("ai_score") or 0)
         score += investment_theme_score(article)
         score += forward_adoption_score(article)
+        score += frontier_technology_capital_markets_score(article)
 
         if has_policy_priority(article):
             score += 40
@@ -353,6 +463,8 @@ def generate_daily_digest(report_date=None):
     def passes_daily_space_quality(article):
         if not article.get("summary"):
             return False
+        if is_frontier_technology_capital_markets_event(article):
+            return True
         source_hint = source_quality_hint(article)
         if source_hint == "lower_confidence":
             return False
@@ -389,6 +501,9 @@ def generate_daily_digest(report_date=None):
                 "earnings", "revenue", "valuation", "funding", "raised", "investment", "investor",
                 "capital", "stock", "shares", "private equity", "venture", "vc", "lease",
                 "bond", "debt", "private credit", "project finance", "capex", "ipo",
+                "initial public offering", "direct listing", "public offering", "secondary sale",
+                "tender offer", "private-market liquidity", "liquidity event", "growth equity",
+                "debt facility", "convertible", "valuation reset", "m&a", "acquisition", "merger",
             ],
             "regulation_and_policy": [
                 "regulation", "regulatory", "policy", "lawmakers", "congress", "senate", "government",
@@ -399,6 +514,12 @@ def generate_daily_digest(report_date=None):
                 "robot", "robotics", "autonomous", "autonomy", "warehouse automation", "drone", "aviation",
                 "manufacturing", "factory", "humanoid", "inspection", "logistics", "evtol",
                 "lab automation", "surgical automation", "embodied ai", "defense autonomy",
+            ],
+            "frontier_capital_markets": [
+                "frontier technology", "space technology", "satellite communications", "spacex",
+                "starlink", "defense technology", "edge connectivity", "advanced manufacturing",
+                "quantum computing", "next-generation networking", "growth equity", "debt facility",
+                "private-market liquidity", "liquidity event", "initial public offering", "direct listing",
             ],
             "forward_looking_ai_adoption": [
                 "enterprise production", "production readiness", "enterprise-grade", "enterprise grade",
@@ -414,6 +535,10 @@ def generate_daily_digest(report_date=None):
         for theme_name, terms in theme_rules.items():
             if any(term in text for term in terms):
                 tags.append(theme_name)
+        if is_frontier_technology_capital_markets_event(article) and "frontier_capital_markets" not in tags:
+            tags.append("frontier_capital_markets")
+        if is_frontier_technology_capital_markets_event(article) and "capital_markets_and_investment" not in tags:
+            tags.append("capital_markets_and_investment")
         return tags
 
     def repeated_theme_key(article):
@@ -481,6 +606,11 @@ def generate_daily_digest(report_date=None):
         return text_value[: limit - 3].rstrip() + "..."
 
     def primary_section_hint(article):
+        if is_frontier_technology_capital_markets_event(article):
+            if is_big_story(article) and frontier_technology_capital_markets_score(article) >= 80:
+                return "TOP STORIES"
+            return "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS"
+
         preferred_order = [
             "regulation_and_policy",
             "capital_markets_and_investment",
@@ -507,6 +637,7 @@ def generate_daily_digest(report_date=None):
         seen_ids = set()
         repeated_theme_counts = Counter()
         required_themes = [
+            "frontier_capital_markets",
             "regulation_and_policy",
             "capital_markets_and_investment",
             "infrastructure_and_power",
@@ -572,6 +703,7 @@ def generate_daily_digest(report_date=None):
             "capital_markets_and_investment": "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
             "regulation_and_policy": "REGULATION, GOVERNANCE AND POLICY",
             "physical_ai_and_robotics": "PHYSICAL AI AND ROBOTICS",
+            "frontier_capital_markets": "FRONTIER TECHNOLOGY CAPITAL MARKETS DAILY OVERRIDE",
             "forward_looking_ai_adoption": "FORWARD-LOOKING AI ADOPTION SIGNALS",
         }
         theme_examples = {theme_name: [] for theme_name in theme_labels}
@@ -726,6 +858,32 @@ def generate_daily_digest(report_date=None):
             and any(term in normalized for term in ["permit", "permitting", "zoning", "moratorium", "county", "city council", "local"])
         )
 
+    def _is_frontier_capital_markets_bullet(value):
+        normalized = _normalize_text(value)
+        capital_terms = [
+            "ipo", "initial public offering", "direct listing", "secondary sale", "tender offer",
+            "private-market liquidity", "private market liquidity", "liquidity event", "funding round",
+            "growth equity", "private credit", "debt facility", "valuation reset", "acquisition", "merger",
+        ]
+        indirect_frontier_terms = [
+            "spacex", "starlink", "space technology", "satellite communications", "defense",
+            "satellite", "autonomy", "edge connectivity",
+        ]
+        return any(term in normalized for term in capital_terms) and any(term in normalized for term in indirect_frontier_terms)
+
+    def _has_honest_frontier_framing(value):
+        normalized = _normalize_text(value)
+        return any(
+            phrase in normalized
+            for phrase in [
+                "not a pure gen ai story",
+                "ai-adjacent",
+                "ai adjacent",
+                "broader innovation cycle",
+                "frontier technology",
+            ]
+        )
+
     def _extract_digest_bullets(content):
         sections = []
         for section_name, section_body in re.findall(r"<h3>(.*?)</h3>\s*<ul>(.*?)</ul>", content or "", flags=re.DOTALL | re.IGNORECASE):
@@ -853,6 +1011,12 @@ def generate_daily_digest(report_date=None):
         if long_bullet_count > 3:
             issues.append("Too many bullets are longer than the concise daily format")
 
+        frontier_capital_bullets = [
+            bullet for bullet in bullets if _is_frontier_capital_markets_bullet(bullet["text"])
+        ]
+        if any(not _has_honest_frontier_framing(bullet["text"]) for bullet in frontier_capital_bullets):
+            issues.append("Frontier technology capital markets bullet needs honest AI-adjacent framing")
+
         section_story_map = {}
         for bullet in bullets:
             normalized_lead = _normalize_text(bullet["lead"])
@@ -912,6 +1076,8 @@ def generate_daily_digest(report_date=None):
                 f"SOURCE_QUALITY_HINT: {source_quality_hint(article)}",
                 f"INVESTMENT_THEME_SCORE: {investment_theme_score(article)}",
                 f"FORWARD_ADOPTION_SCORE: {forward_adoption_score(article)}",
+                f"FRONTIER_CAPITAL_MARKETS_SCORE: {frontier_technology_capital_markets_score(article)}",
+                f"FRONTIER_CAPITAL_MARKETS_OVERRIDE: {'YES' if is_frontier_technology_capital_markets_event(article) else 'NO'}",
                 f"BIG_STORY_HINT: {'YES' if is_big_story(article) else 'NO'}",
                 f"POLICY_PRIORITY_HINT: {'YES' if has_policy_priority(article) else 'NO'}",
                 f"COMPANIES_MENTIONED: {', '.join(parse_companies(article.get('companies')))}",
