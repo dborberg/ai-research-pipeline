@@ -1,0 +1,64 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>June 13, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s AI cycle looks less like a pure model race and more like a contest over infrastructure access, regulatory permission, and enterprise-grade control. Data center moratoria, bank-regulator scrutiny, and new agentic infrastructure benchmarks all point to the same direction: AI demand is real, but scaling it depends on power, cooling, governance, auditability, and cost efficiency. For CPM, advisor, and wholesaler conversations, the key message is that the AI opportunity is broadening beyond the largest platforms into compliance, data center infrastructure, semiconductors, cooling, power, and workflow-control layers.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>New York’s legislature passed a data center moratorium bill awaiting the governor’s approval:</strong> The move highlights how AI infrastructure growth can be slowed by state-level permitting, power, land-use, and environmental concerns, making regional capacity access a portfolio-monitoring issue for cloud, utility, data center, and electrical-infrastructure exposure. (Source: The National Law Review)</li>
+<li><strong>Reuters reported that U.S. bank regulators are ramping scrutiny of AI use at financial companies:</strong> The action reinforces that regulated enterprises will need stronger model governance, auditability, vendor controls, and risk management before AI moves deeper into production workflows, supporting demand for compliance, cybersecurity, and AI governance tools. (Source: Reuters)</li>
+<li><strong>Artificial Analysis introduced AgentPerf and NVIDIA said Blackwell Ultra NVL72 led the first agentic AI infrastructure benchmark:</strong> The benchmark shifts attention from raw model performance toward agents-per-megawatt and production economics, giving investors a new lens for monitoring GPU platforms, networking, power efficiency, and data center utilization. (Source: NVIDIA Blog)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>AI News reported that Coinbase launched Coinbase for Agents:</strong> The platform connects AI agents to trading, payments, balances, and portfolio actions within user-defined limits, showing agents moving from advice and analysis toward financial execution and raising the importance of permissions, transaction caps, and compliance controls. (Source: AI News)</li>
+<li><strong>Google Research released Gemini-SQL2 for text-to-SQL workflows:</strong> The benchmarked system points to natural-language access to enterprise databases, which could broaden analytics usage beyond technical teams and increase the strategic value of data platforms, business-intelligence software, and governed data architectures. (Source: MarkTechPost)</li>
+<li><strong>MarkTechPost described a spatial graph neural network pipeline for urban function inference:</strong> While technical and early-stage, the example shows AI methods moving into planning and geospatial workflows, with potential read-throughs to public-sector analytics, smart-city software, and professional services that translate complex data into operational decisions. (Source: MarkTechPost)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Data Center Dynamics examined the rise of direct-to-chip liquid cooling for AI workloads:</strong> Denser AI servers are pushing traditional cooling approaches toward their limits, making thermal management a second-derivative AI demand area across cooling systems, pumps, heat exchangers, facilities engineering, and data center design. (Source: Data Center Dynamics)</li>
+<li><strong>Jinko Power reportedly planned a 1GW solar-powered AI data center in western China:</strong> The project links AI compute growth directly to large-scale renewable power development, highlighting the importance of generation access, grid interconnection, storage, and financing capacity in future data center siting decisions. (Source: Data Center Dynamics)</li>
+<li><strong>Montgomery County’s executive signed a data center moratorium executive order:</strong> The local action shows that AI infrastructure constraints are not only technical but also political and community-driven, creating monitoring implications for regional power demand, land-use approvals, and hyperscale development timelines. (Source: Montgomery County, MD)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>QCraft demonstrated urban Navigate-on-Autopilot on Qualcomm’s Snapdragon Ride platform and targeted 2026 global mass production:</strong> The deployment signal ties physical AI to automotive edge compute, with read-throughs to Qualcomm, automotive semiconductors, sensors, embedded AI software, and suppliers positioned around production-grade assisted-driving systems. (Source: Robotics & Automation News)</li>
+<li><strong>A Brazilian agency called for socio-environmental rules for AI data centers:</strong> The proposal underscores that AI infrastructure expansion may face environmental and social licensing costs in emerging markets, making permitting, water use, power sourcing, and community impact part of the investment diligence around data center growth. (Source: BNamericas)</li>
+<li><strong>Food & Water Watch highlighted a new coalition opposing Big Tech AI data centers:</strong> The advocacy push suggests organized local resistance could become a cost, delay, and siting risk for hyperscale infrastructure, with second-order implications for utilities, power equipment, backup generation, cooling, and regional data center developers. (Source: Food & Water Watch)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>KXAN Austin reported on the City of Austin’s AI use policy for employees, vendors, and volunteers:</strong> Local governments formalizing AI rules suggests public-sector adoption will depend on clear acceptable-use standards, vendor accountability, and procurement controls, benefiting tools that support governance, documentation, and audit trails. (Source: KXAN Austin)</li>
+<li><strong>Reuters reported that Canada moved to rein in AI chatbots after a school shooting:</strong> The policy effort highlights rising scrutiny of consumer-facing AI systems and potential loopholes, reinforcing that safety, age-appropriate design, monitoring, and liability questions remain important commercial-access issues for chatbot platforms. (Source: Reuters)</li>
+<li><strong>Nextgov/FCW summarized federal technology bills covering DHS communications and nuclear power for space exploration:</strong> The package is not a direct AI policy action, but it signals continued federal attention to resilient technology infrastructure and energy systems, both of which matter for longer-term AI, autonomy, and secure communications procurement. (Source: Nextgov/FCW)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>IEEE Spectrum highlighted robotics demonstrations from DEEP Robotics, Agility, Toyota, Built Robotics, ROBOTIS, and others:</strong> The roundup points to continued progress in humanoid motion, home assistance, autonomous construction, dexterous manipulation, and developer platforms, keeping physical AI relevant for industrial automation, logistics, defense, and robotics supply-chain monitoring. (Source: IEEE Spectrum)</li>
+<li><strong>IEEE Spectrum profiled Yen-Ling Kuo’s Diff-DAgger robotics research:</strong> The work aims to help robots make better decisions under uncertainty with less human supervision, an early but important step toward more reliable autonomous systems in warehouses, healthcare, manufacturing, and field-service environments. (Source: IEEE Spectrum)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>State and county data center moratorium activity:</strong> Track whether temporary pauses evolve into broader permitting frameworks, because location risk could affect cloud capacity, utility load growth, grid equipment demand, and data center project timing. (Source: Internal synthesis from article set)</li>
+<li><strong>Agentic AI control features in financial platforms:</strong> Monitor transaction limits, asset permissions, audit logs, and supervisory controls, because execution-capable agents will face a higher bar than chatbots in regulated workflows. (Source: Internal synthesis from article set)</li>
+<li><strong>AI infrastructure efficiency metrics:</strong> Watch whether enterprises and hyperscalers adopt benchmarks such as agents-per-megawatt, because power efficiency may become as important as raw compute performance in infrastructure purchasing decisions. (Source: Internal synthesis from article set)</li>
+<li><strong>Cooling and power procurement announcements:</strong> Follow liquid-cooling deployments, renewable power deals, grid interconnection delays, and backup-power orders, because these are leading indicators for second-derivative AI infrastructure demand. (Source: Internal synthesis from article set)</li>
+<li><strong>Public-sector AI use policies:</strong> Watch whether local and national governments standardize AI rules for employees, vendors, and citizens, because policy clarity can either accelerate procurement or slow adoption through compliance friction. (Source: Internal synthesis from article set)</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming a power, permitting, and governance story, not just a chatbot story:</strong> The next phase of adoption depends on infrastructure and trust. (Source: Internal synthesis from article set)</li>
+<li><strong>Agentic AI raises the stakes because it can move from recommending actions to executing them:</strong> That makes permissions, compliance, and auditability central to enterprise adoption. (Source: Internal synthesis from article set)</li>
+<li><strong>Data center growth creates opportunities and bottlenecks beyond semiconductors:</strong> Cooling, grid equipment, power generation, fiber, backup power, and permitting all matter. (Source: Internal synthesis from article set)</li>
+<li><strong>Regulated industries may adopt AI more slowly, but with deeper spending on controls:</strong> Governance can become a budget line, not just a legal checklist. (Source: Internal synthesis from article set)</li>
+<li><strong>Physical AI is still early, but the direction is clear:</strong> Robots are moving from scripted demos toward systems that can adapt in real-world environments. (Source: Internal synthesis from article set)</li>
+</ul>
