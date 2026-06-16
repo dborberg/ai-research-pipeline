@@ -1,0 +1,66 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>June 16, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s AI news points to a maturing investment cycle where the bottleneck is shifting from model capability to deployment capacity: power, water, permitting, governance, and enterprise workflow integration. The strongest cross-story signal is that AI demand is forcing real-world infrastructure decisions by utilities, local governments, data center developers, and corporate technology buyers. For CPM, advisor, and wholesaler conversations, the useful framing is that AI remains a growth story, but the investable map is broadening toward power equipment, cooling, grid infrastructure, compliance software, workflow automation, and physical AI enablers.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Jabil and Adani partnered to build an AI data center infrastructure platform in India:</strong> The Reuters-reported partnership highlights how AI capex is becoming a global physical infrastructure buildout rather than only a U.S. cloud story, with read-throughs to contract manufacturing, electrical systems, data center supply chains, and local power development. (Source: Reuters)</li>
+<li><strong>Reuters reported that power plants are being fast-tracked to support AI electricity demand:</strong> The report underscores that AI infrastructure growth is increasingly tied to permitting speed, generation capacity, public scrutiny, and grid resilience, creating portfolio-monitoring relevance for utilities, independent power producers, power equipment suppliers, and data center operators. (Source: Reuters)</li>
+<li><strong>State governments advanced AI regulations despite federal opposition:</strong> The report signals that enterprise AI deployment may face a fragmented compliance environment, raising the importance of governance, auditability, legal review, and vendor controls as commercial access requirements. (Source: cbs19.tv)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>The University of East London developed DOMUS for the London Borough of Newham:</strong> The AI-powered SaaS system applies rule-based policy filtering and large language model-assisted search to temporary accommodation placement, showing AI moving into governed, high-stakes public-sector workflows where speed must be balanced with auditability and policy constraints. (Source: cs.AI updates on arXiv.org)</li>
+<li><strong>Bloomberg reported that corporate AI faces a human intelligence mining challenge:</strong> The article frames enterprise AI value as dependent on capturing employee expertise, process knowledge, and proprietary data, which matters because the next phase of adoption may favor data platforms, knowledge management, IT services, and workflow redesign over simple chatbot deployment. (Source: Bloomberg)</li>
+<li><strong>AI News published an explainer on AI red teaming:</strong> The article highlights adversarial testing as a practical requirement before AI systems move into production, reinforcing that enterprise readiness increasingly depends on security testing, model risk controls, governance tooling, and compliance workflows. (Source: AI News)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Data Center Dynamics analyzed air versus liquid cooling strategies for AI-ready data centers:</strong> Higher-density AI workloads are making thermal management a strategic bottleneck, with implications for cooling vendors, electrical contractors, facilities engineering, and data center operators balancing performance, cost, and reliability. (Source: Data Center Dynamics)</li>
+<li><strong>Data Center Dynamics examined the rise of decentralized micro Edge data centers:</strong> Moving AI compute closer to users and devices could broaden infrastructure demand beyond hyperscale campuses, creating read-throughs to edge real estate, fiber, networking, power distribution, backup power, and localized cooling. (Source: Data Center Dynamics)</li>
+<li><strong>An arXiv paper flagged energy telemetry gaps in NVIDIA’s flagship edge AI hardware:</strong> The paper argues that limited process-level energy attribution can make it harder for enterprises to manage AI workload costs and sustainability metrics, which is a governance and procurement issue to monitor as agentic workloads move from cloud to local devices. (Source: cs.AI updates on arXiv.org)</li>
+<li><strong>New York Governor Kathy Hochul’s nuclear push collided with a data center moratorium debate:</strong> The policy conflict shows how AI infrastructure expansion is becoming inseparable from long-duration energy planning, with implications for nuclear policy, utility investment, permitting timelines, and data center site selection. (Source: Broadband Breakfast)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>DeepSeek reportedly became China’s most valuable AI startup after a 7.4 billion dollar fundraise:</strong> The financing signals that frontier model development remains highly capital-intensive and strategically important in China, reinforcing the global competition for chips, talent, cloud capacity, and AI application ecosystems. (Source: WSJ)</li>
+<li><strong>Texas’ agriculture commissioner urged a pause on AI data centers over water and power concerns:</strong> The request highlights that local resource constraints can become a capital allocation risk for data center developers, cloud platforms, utilities, and infrastructure suppliers, making permitting and community acceptance key monitoring variables. (Source: KTXS)</li>
+<li><strong>Nashville’s mayor signaled support for a temporary data center moratorium:</strong> The policy stance suggests that zoning and local land-use restrictions may increasingly influence data center development timelines, with implications for infrastructure REITs, construction backlogs, power procurement, and regional AI capacity growth. (Source: Nashville Banner)</li>
+<li><strong>Data Center Dynamics described micro Edge as a reshaping force in the AI data center landscape:</strong> If distributed AI compute gains traction, capital spending may spread across smaller facilities and network nodes rather than concentrating only in mega-campuses, creating a broader second-derivative opportunity set in networking, power, cooling, and edge infrastructure. (Source: Data Center Dynamics)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Michigan Democratic Senate candidates differed on AI and data center rules:</strong> The debate shows that AI infrastructure and data governance are becoming campaign issues, which matters because political outcomes can influence permitting standards, state incentives, energy policy, and corporate compliance obligations. (Source: The Detroit News)</li>
+<li><strong>Renton City Council began moving toward an AI data center moratorium:</strong> The local action adds to evidence that municipalities are scrutinizing AI infrastructure projects, making zoning risk and public engagement increasingly important for developers and infrastructure investors. (Source: Renton Reporter)</li>
+<li><strong>Broken Arrow’s city council approved a data center moratorium:</strong> The vote reinforces that AI buildout is encountering local policy constraints, creating a monitoring point for project delays, utility planning, land availability, and regional competition for data center investment. (Source: 2 News Oklahoma KJRH Tulsa)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>PSYONIC partnered with ABB Robotics to bring tactile dexterity to collaborative robots:</strong> The collaboration combines ABB’s GoFa robot with PSYONIC’s tactile Ability Hand and training links to NVIDIA Isaac Lab and GR00T, pointing to physical AI progress in grasping, handling fragile objects, and expanding automation use cases in factories, logistics, and healthcare. (Source: The Robot Report)</li>
+<li><strong>Indonesia granted AutoFlight’s V2000CG CarryAll an overseas eVTOL type certificate validation:</strong> The regulatory milestone suggests early progress toward international commercialization of autonomous and semi-autonomous aerial logistics systems, with read-throughs to advanced mobility, certification pathways, sensors, batteries, and autonomy software. (Source: Robotics & Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Upcoming municipal votes on data center moratoriums:</strong> More local restrictions would indicate that permitting, water, land use, and grid access are becoming binding constraints on AI capacity expansion, which should be monitored across utilities, data center developers, and power equipment suppliers. (Source: Internal synthesis of article set)</li>
+<li><strong>Second-quarter cloud and hyperscaler capex commentary:</strong> Management updates on AI infrastructure spending, depreciation, power access, and return on invested capital will help determine whether the AI buildout is accelerating smoothly or facing cost and capacity friction. (Source: Internal synthesis of article set)</li>
+<li><strong>Public utility commission and interconnection filings tied to data center demand:</strong> These filings can reveal where AI load growth is creating stress on the grid and where investment may flow into generation, transmission, transformers, backup power, and demand-response systems. (Source: Internal synthesis of article set)</li>
+<li><strong>Enterprise procurement requirements for AI red teaming and auditability:</strong> Rising demand for testing, governance, permissions, observability, and compliance controls would signal that AI tools are moving from pilots into production-grade workflows. (Source: Internal synthesis of article set)</li>
+<li><strong>Certification milestones for robotics, eVTOL, and autonomous systems:</strong> Regulatory approvals and real customer deployments will be key indicators that physical AI is moving from demonstration projects toward commercial markets. (Source: Internal synthesis of article set)</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>Jabil and Adani’s India partnership shows:</strong> The AI story is no longer just about models; it is also about who can build, power, cool, and operate the infrastructure. (Source: Internal synthesis of article set)</li>
+<li><strong>Local data center moratoriums show:</strong> AI demand may be digital, but its constraints are physical: power, water, land, and community approval. (Source: Internal synthesis of article set)</li>
+<li><strong>Enterprise red teaming shows:</strong> Companies are moving from asking whether AI works to asking whether it is safe, auditable, and ready for production. (Source: Internal synthesis of article set)</li>
+<li><strong>DeepSeek’s reported fundraise shows:</strong> AI model competition remains global and capital-intensive, even as the investment opportunity broadens beyond the largest U.S. platforms. (Source: Internal synthesis of article set)</li>
+<li><strong>ABB Robotics and PSYONIC show:</strong> Physical AI is where software intelligence starts to touch factories, logistics, healthcare, and the real economy. (Source: Internal synthesis of article set)</li>
+</ul>
