@@ -55,6 +55,43 @@ Treat diversity as a secondary filter: use it to avoid repetitive coverage when 
 
 The Weekly should not simply list the biggest Daily Riffs headlines. It should explain what the week's events collectively suggest about the AI investment cycle.
 
+TWO-TIER STORY SELECTION REQUIRED:
+
+1. Tier 1 Daily-derived candidates:
+Use the Daily Riffs outputs as the inheritance base. Pull candidate stories and recurring themes from the week's Daily Riffs. Score each candidate with the Weekly Impact Score below. Tier 1 should normally provide 80-90% of the published Weekly Riffs content.
+
+2. Tier 2 Weekly Override candidates:
+Use the independent seven-day weekly source review to identify major Gen AI developments that were absent, underweighted, or fragmented in Daily Riffs. Score each candidate with the same Weekly Impact Score. Tier 2 may provide 10-20% of the published Weekly Riffs content, but only for systemic developments.
+
+Weekly Impact Score:
+Score every Tier 1 and Tier 2 candidate from 0 to 10 across strategic importance, cross-sector relevance, investable read-through, persistence, advisor usefulness, novelty, and magnitude.
+
+Use this scoring guide:
+9-10: Systemic story of the week; should almost always be considered for TOP 5 STORIES THIS WEEK.
+7-8: Important weekly story; strong candidate for Top 5 or major section inclusion.
+5-6: Useful but secondary; may appear in BEYOND THE MAG 7, WHAT IS BEING DISRUPTED, REGULATORY RADAR, WHAT TO WATCH NEXT, READY TO USE SOUNDBITES, or QUESTIONS TO BRING TO YOUR CLIENTS.
+3-4: Interesting but not weekly-defining; include only if it supports a broader theme.
+0-2: Exclude.
+
+Before finalizing TOP 5 STORIES THIS WEEK, independently answer these Weekly Override checks:
+
+1. What was the single most impactful Gen AI story of the past 7 days?
+2. What was the most important AI infrastructure or compute story?
+3. What was the most important AI capital markets or financing story?
+4. What was the most important frontier model competition or AI arms-race story?
+5. What was the most important enterprise adoption or productivity story?
+6. What was the most important regulatory, geopolitical, or model-access story?
+7. What was the most important physical AI, robotics, or automation story?
+
+Then compare those answers against Tier 1 Daily-derived candidates. If a Tier 2 story scores 8 or higher and is not represented in Tier 1, include it somewhere in the Weekly unless there is a clearly documented internal reason to exclude it. If a Tier 2 story scores 9 or higher, strongly consider it for TOP 5 STORIES THIS WEEK even if it did not appear in any Daily Riffs output.
+
+Required AI Arms Race / Frontier Model Competition check:
+Explicitly check OpenAI, Meta, Microsoft, Google / Alphabet, Amazon / AWS, Anthropic, Nvidia, xAI, Oracle, and CoreWeave for major developments involving model releases, talent acquisition, infrastructure commitments, compute partnerships, capital raises or financing, sovereign AI deals, enterprise platform adoption, regulatory/model-access constraints, major customer wins, or strategic restructurings. If a major story such as Meta escalating its AI strategy through talent, compute, infrastructure, or capital deployment is present in either tier, it must be considered for inclusion based on Weekly Impact Score.
+
+Build a combined ranked list of Tier 1 and Tier 2 candidates, deduplicate overlapping stories, merge fragmented Daily stories into broader weekly themes when appropriate, and select TOP 5 STORIES THIS WEEK based on Weekly Impact Score rather than Daily Riffs frequency alone.
+
+Do not show internal scoring in the published Weekly Riffs unless DEBUG_WEEKLY_SCORING is enabled in the input context. If DEBUG_WEEKLY_SCORING is enabled, include an internal-only scoring table with Story, Tier, Daily source coverage, Weekly Impact Score, and Reason for inclusion or exclusion.
+
 Answer these questions across the report:
 
 1. What changed this week?

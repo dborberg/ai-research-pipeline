@@ -35,6 +35,53 @@ Keep interpretation concise and clearly tied to facts in the source material. Av
 
 Across the full digest, aim for a coherent weekly narrative rather than a list of unrelated AI headlines. The digest should help a wholesaler explain what this week revealed about the AI buildout, adoption curve, regulatory environment, and investment opportunity set.
 
+TWO-TIER WEEKLY STORY SELECTION
+Before writing, build a combined ranked candidate list using two tiers:
+
+TIER 1: DAILY-DERIVED CANDIDATES
+Pull candidate stories and themes from the week's Daily Riffs outputs. Preserve the Daily-to-Weekly inheritance model. These candidates should normally supply 80-90% of the Weekly Riffs content.
+
+TIER 2: WEEKLY OVERRIDE CANDIDATES
+Independently assess the prior seven calendar days of Gen AI news and source material, regardless of whether each story appeared in Daily Riffs. Use this tier only to catch major systemic developments that were absent, underweighted, or fragmented across Daily Riffs. These candidates may supply 10-20% of the Weekly Riffs content and should not flood the Weekly with unrelated stories.
+
+WEEKLY IMPACT SCORE
+Assign every Tier 1 and Tier 2 candidate a 0 to 10 Weekly Impact Score before selecting TOP 5 STORIES THIS WEEK. Score each candidate across these dimensions:
+
+1. Strategic importance: Did the story change the competitive, technological, regulatory, or capital markets landscape?
+2. Cross-sector relevance: Does it affect multiple industries, suppliers, customers, or investment themes?
+3. Investable read-through: Does it create clear implications for public companies, supply chains, infrastructure, software platforms, utilities, or capital markets?
+4. Persistence: Is the story likely to matter beyond the current news cycle?
+5. Advisor usefulness: Can an advisor use this story in a client conversation?
+6. Novelty: Did something genuinely new happen, or is it mostly a continuation of an existing theme?
+7. Magnitude: Is the scale large enough to matter financially, operationally, or competitively?
+
+Scoring guidance:
+9-10 means a systemic story of the week that should almost always be considered for Top 5.
+7-8 means an important weekly story and strong candidate for Top 5 or major section inclusion.
+5-6 means useful but secondary and may appear in BEYOND THE MAG 7, WHAT IS BEING DISRUPTED, REGULATORY RADAR, WHAT TO WATCH NEXT, READY TO USE SOUNDBITES, or QUESTIONS TO BRING TO YOUR CLIENTS.
+3-4 means interesting but not weekly-defining; include only if it supports a broader theme.
+0-2 means exclude.
+
+Final selection must be based on Weekly Impact Score, not just frequency of appearance in Daily Riffs. Deduplicate overlapping stories, merge fragmented Daily stories into broader weekly themes when appropriate, and preserve Daily Riffs continuity without allowing Daily omissions to block inclusion of a systemic weekly story.
+
+REQUIRED WEEKLY OVERRIDE CHECKS
+Before finalizing TOP 5 STORIES THIS WEEK, independently answer these questions and compare the answers against Tier 1 Daily-derived candidates:
+
+1. What was the single most impactful Gen AI story of the past 7 days?
+2. What was the most important AI infrastructure or compute story?
+3. What was the most important AI capital markets or financing story?
+4. What was the most important frontier model competition or AI arms-race story?
+5. What was the most important enterprise adoption or productivity story?
+6. What was the most important regulatory, geopolitical, or model-access story?
+7. What was the most important physical AI, robotics, or automation story?
+
+If a Tier 2 story scores 8 or higher and is not represented in Tier 1, include it somewhere in the Weekly unless there is a clearly documented internal reason to exclude it. If a Tier 2 story scores 9 or higher, strongly consider it for TOP 5 STORIES THIS WEEK even if it did not appear in any Daily Riffs output.
+
+AI ARMS RACE / FRONTIER MODEL COMPETITION CHECK
+Explicitly check OpenAI, Meta, Microsoft, Google / Alphabet, Amazon / AWS, Anthropic, Nvidia, xAI, Oracle, and CoreWeave for major developments involving model releases, talent acquisition, infrastructure commitments, compute partnerships, capital raises or financing, sovereign AI deals, enterprise platform adoption, regulatory/model-access constraints, major customer wins, or strategic restructurings. A major story such as Meta escalating its AI strategy through talent, compute, infrastructure, or capital deployment must be captured either through Tier 1 Daily-derived candidates or through the Tier 2 Weekly Override.
+
+Do not show internal scoring in the published Weekly Riffs unless DEBUG_WEEKLY_SCORING is enabled in the input context. If DEBUG_WEEKLY_SCORING is enabled, include an internal-only scoring table with Story, Tier, Daily source coverage, Weekly Impact Score, and Reason for inclusion or exclusion. Otherwise keep the published Weekly advisor-ready, concise, and in the existing Weekly Riffs style.
+
 FORWARD-LOOKING WEEKLY SYNTHESIS LENSES
 When synthesizing the week's Daily Riffs and curated weekly events, look for repeated evidence that AI is moving from tools, pilots, and experiments into durable business infrastructure.
 

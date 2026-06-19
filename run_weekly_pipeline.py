@@ -43,6 +43,44 @@ DEFAULT_SCORE_THRESHOLD = 6
 HIGH_SIGNAL_LIMIT = 25
 MEDIUM_SIGNAL_LIMIT = 15
 MAX_CLUSTERS = 10
+DEBUG_WEEKLY_SCORING = os.getenv("DEBUG_WEEKLY_SCORING", "").strip().lower() in {
+    "1",
+    "true",
+    "yes",
+    "on",
+}
+AI_ARMS_RACE_COMPANIES = [
+    "openai",
+    "meta",
+    "microsoft",
+    "google",
+    "alphabet",
+    "amazon",
+    "aws",
+    "anthropic",
+    "nvidia",
+    "xai",
+    "oracle",
+    "coreweave",
+]
+AI_ARMS_RACE_DEVELOPMENT_TERMS = [
+    "model release",
+    "released a model",
+    "frontier model",
+    "talent acquisition",
+    "hired",
+    "poached",
+    "infrastructure commitment",
+    "compute partnership",
+    "capital raise",
+    "financing",
+    "sovereign ai",
+    "enterprise platform",
+    "model-access",
+    "model access",
+    "customer win",
+    "strategic restructuring",
+]
 PRACTICE_TIP_WORKFLOW_ROTATION = [
     "prospecting",
     "client communication",
@@ -776,6 +814,115 @@ def _weekly_event_priority(article):
     return score
 
 
+def _weekly_impact_dimension_score(text, terms, *, base=0, cap=10, bonus_terms=None):
+    matches = sum(1 for term in terms if term in text)
+    score = base + min(matches, 4) * 2
+    if bonus_terms and any(term in text for term in bonus_terms):
+        score += 2
+    return min(score, cap)
+
+
+def _article_company_text(article):
+    companies = article.get("companies") or []
+    if isinstance(companies, list):
+        return " ".join(str(company) for company in companies)
+    return str(companies)
+
+
+def weekly_impact_score(article):
+    """Return a 0-10 Weekly Impact Score for independent weekly candidates."""
+    text = " ".join(
+        [
+            str(article.get("title") or ""),
+            str(article.get("summary") or ""),
+            str(article.get("advisor_relevance") or ""),
+            _article_company_text(article),
+        ]
+    ).lower()
+    ai_score = float(article.get("signal_score") or article.get("ai_score") or 0)
+
+    strategic_importance = _weekly_impact_dimension_score(
+        text,
+        [
+            "competitive", "frontier model", "model release", "capex", "infrastructure",
+            "regulation", "regulatory", "export control", "capital markets", "funding",
+            "acquisition", "partnership", "sovereign ai", "data center", "compute",
+        ],
+        base=1,
+        bonus_terms=["major", "billion", "systemic", "strategic"],
+    )
+    cross_sector_relevance = _weekly_impact_dimension_score(
+        text,
+        [
+            "supply chain", "supplier", "customer", "industry", "industries", "utilities",
+            "power", "grid", "software", "cloud", "chips", "semiconductor", "enterprise",
+            "healthcare", "financial services", "manufacturing", "robotics",
+        ],
+    )
+    investable_read_through = _weekly_impact_dimension_score(
+        text,
+        [
+            "public companies", "supply chain", "infrastructure", "software platform",
+            "cloud", "data center", "utilities", "power", "capital markets", "financing",
+            "debt", "ipo", "valuation", "margin", "capex", "revenue",
+        ],
+    )
+    persistence = _weekly_impact_dimension_score(
+        text,
+        [
+            "multi-year", "long-term", "durable", "buildout", "deployment", "production",
+            "enterprise", "infrastructure", "regulation", "policy", "platform",
+            "partnership", "contract", "commitment",
+        ],
+    )
+    advisor_usefulness = _weekly_impact_dimension_score(
+        text,
+        [
+            "advisor", "client", "portfolio", "investment", "investor", "theme",
+            "risk", "opportunity", "read-through", "read through", "monitor",
+        ],
+        base=1,
+    )
+    novelty = _weekly_impact_dimension_score(
+        text,
+        [
+            "new", "launch", "launched", "released", "announced", "first", "approval",
+            "deal", "partnership", "acquisition", "raise", "funding", "restriction",
+        ],
+    )
+    magnitude = _weekly_impact_dimension_score(
+        text,
+        [
+            "billion", "$", "major", "large", "largest", "massive", "global",
+            "multi-year", "enterprise-wide", "capex", "capacity", "gigawatt",
+        ],
+    )
+
+    dimension_average = (
+        strategic_importance
+        + cross_sector_relevance
+        + investable_read_through
+        + persistence
+        + advisor_usefulness
+        + novelty
+        + magnitude
+    ) / 7
+    score = (dimension_average * 0.75) + (min(ai_score, 10) * 0.25)
+
+    if is_frontier_technology_capital_markets_event(article):
+        score = max(score, 8.0)
+    if any(company in text for company in AI_ARMS_RACE_COMPANIES) and any(
+        term in text for term in AI_ARMS_RACE_DEVELOPMENT_TERMS
+    ):
+        score = max(score, 7.5)
+    if any(term in text for term in ["meta", "openai", "anthropic", "xai"]) and any(
+        term in text for term in ["talent", "compute", "infrastructure", "capital", "model"]
+    ):
+        score = max(score, 8.0)
+
+    return round(max(0.0, min(score, 10.0)), 1)
+
+
 def _build_wholesaler_event_context(article_data):
     articles = article_data.get("articles") or []
     selected = []
@@ -807,28 +954,69 @@ def _build_wholesaler_event_context(article_data):
 
     blocks = []
     for article in selected:
+        impact_score = weekly_impact_score(article)
+        arms_race_text = " ".join(
+            [
+                str(article.get("title") or ""),
+                str(article.get("summary") or ""),
+                _article_company_text(article),
+            ]
+        ).lower()
+        tier_reason = (
+            "Weekly override candidate: independent seven-day source review, included to catch "
+            "systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs."
+        )
         blocks.append(
             "\n".join(
                 [
+                    "CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE",
                     f"TITLE: {article.get('title') or ''}",
                     f"SOURCE: {article.get('source') or ''}",
                     f"PUBLISHED_AT: {article.get('published_at') or ''}",
                     f"SIGNAL_SCORE: {article.get('signal_score') or article.get('ai_score') or ''}",
+                    f"WEEKLY_IMPACT_SCORE: {impact_score}",
                     f"ADVISOR_RELEVANCE: {article.get('advisor_relevance') or ''}",
                     f"SUMMARY: {article.get('summary') or ''}",
                     f"COMPANIES: {', '.join(article.get('companies') or [])}",
                     f"EVENT_PRIORITY: {_weekly_event_priority(article):.2f}",
                     f"FRONTIER_CAPITAL_MARKETS_SCORE: {frontier_technology_capital_markets_score(article)}",
                     f"FRONTIER_CAPITAL_MARKETS_OVERRIDE: {'YES' if is_frontier_technology_capital_markets_event(article) else 'NO'}",
+                    f"AI_ARMS_RACE_CHECK: {'YES' if any(company in arms_race_text for company in AI_ARMS_RACE_COMPANIES) else 'NO'}",
+                    f"TIER_2_REASON: {tier_reason}",
                     *format_space_metadata_lines(article),
                 ]
             )
         )
 
+    context_lines = [
+        "SUPPLEMENTAL INPUT: TIER 2 WEEKLY OVERRIDE CANDIDATES",
+        "These candidates come from an independent review of the prior seven calendar days of Gen AI and AI-adjacent source material.",
+        "Use them only when they represent systemic weekly developments, not to flood the Weekly with unrelated stories.",
+        "\n\n" + ("\n\n" + ("-" * 80) + "\n\n").join(blocks),
+    ]
+
+    if DEBUG_WEEKLY_SCORING:
+        debug_rows = [
+            "INTERNAL DEBUG WEEKLY SCORING TABLE",
+            "Story | Tier | Daily source coverage | Weekly Impact Score | Reason for inclusion or exclusion",
+        ]
+        for article in selected:
+            debug_rows.append(
+                " | ".join(
+                    [
+                        (article.get("title") or "").replace("|", "/"),
+                        "Tier 2",
+                        "Compare against Tier 1 Daily Riffs before final selection",
+                        f"{weekly_impact_score(article):.1f}",
+                        "Include if score >= 8 and not represented in Tier 1 unless clearly excluded; strongly consider Top 5 if score >= 9.",
+                    ]
+                )
+            )
+        context_lines.extend(["", "\n".join(debug_rows)])
+
     return "\n\n".join(
         [
-            "PRIMARY INPUT: CURATED REAL-WORLD WEEKLY EVENTS",
-            "\n\n" + ("\n\n" + ("-" * 80) + "\n\n").join(blocks),
+            *context_lines,
         ]
     )
 
@@ -1146,15 +1334,20 @@ def _build_weekly_cluster_bundle(client, week_start, score_threshold=DEFAULT_SCO
 
     if clustered_context and digest_context:
         source_context = (
-            "PRIMARY INPUT: CLUSTERED THEMES (HIGH SIGNAL PRIORITIZED)\n"
-            f"{clustered_context}\n\n"
-            "SUPPLEMENTAL INPUT: DAILY DIGESTS\n"
-            f"{digest_context}"
+            "PRIMARY INPUT: TIER 1 DAILY-DERIVED CANDIDATES\n"
+            "These Daily Riffs are the inheritance base and should normally supply 80-90% of the Weekly Riffs content.\n"
+            f"{digest_context}\n\n"
+            "SUPPLEMENTAL INPUT: CLUSTERED THEMES FROM THE WEEKLY ARTICLE SET\n"
+            f"{clustered_context}"
         )
     elif clustered_context:
-        source_context = f"PRIMARY INPUT: CLUSTERED THEMES (HIGH SIGNAL PRIORITIZED)\n{clustered_context}"
+        source_context = f"SUPPLEMENTAL INPUT: CLUSTERED THEMES FROM THE WEEKLY ARTICLE SET\n{clustered_context}"
     elif digest_context:
-        source_context = f"SUPPLEMENTAL INPUT: DAILY DIGESTS\n{digest_context}"
+        source_context = (
+            "PRIMARY INPUT: TIER 1 DAILY-DERIVED CANDIDATES\n"
+            "These Daily Riffs are the inheritance base and should normally supply 80-90% of the Weekly Riffs content.\n"
+            f"{digest_context}"
+        )
     else:
         source_context = ""
 
@@ -1169,10 +1362,10 @@ def _build_weekly_cluster_bundle(client, week_start, score_threshold=DEFAULT_SCO
 
 def generate_wholesaler_weekly(client, source_context, week_start, article_data=None):
     curated_event_context = _build_wholesaler_event_context(article_data or {})
-    primary_context = curated_event_context or source_context
+    primary_context = source_context or curated_event_context
     supplemental_context = ""
     if curated_event_context and source_context:
-        supplemental_context = f"\n\nSUPPLEMENTAL INPUT: CLUSTERED THEMES AND DAILY DIGESTS\n{source_context}"
+        supplemental_context = f"\n\n{curated_event_context}"
 
     recent_tip_history = _get_recent_practice_tip_history(week_start)
     required_workflow = _choose_practice_tip_workflow(week_start, recent_tip_history)
@@ -1192,6 +1385,13 @@ def generate_wholesaler_weekly(client, source_context, week_start, article_data=
         primary_context=primary_context,
         supplemental_context=supplemental_context,
     )
+    if DEBUG_WEEKLY_SCORING:
+        main_user_prompt = (
+            f"{main_user_prompt}\n\n"
+            "DEBUG_WEEKLY_SCORING is enabled. Include an internal-only Weekly Impact Score table "
+            "after the published Weekly Riffs using columns: Story, Tier, Daily source coverage, "
+            "Weekly Impact Score, and Reason for inclusion or exclusion."
+        )
     if (article_data or {}).get("SPACE_ECONOMY_THEME_ACTIVE"):
         main_user_prompt = f"{main_user_prompt}\n\n{SPACE_ECONOMY_FILTER_PROMPT}"
 

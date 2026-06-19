@@ -72,12 +72,31 @@ class WeeklyDigestRefinementTests(unittest.TestCase):
             self.assertIn("not a pure Gen AI story", prompt)
             self.assertIn("WHAT TO WATCH NEXT", prompt)
 
+    def test_weekly_prompts_require_two_tier_scoring_and_arms_race_check(self):
+        system_prompt = (REPO_ROOT / "prompts/weekly/wholesaler_main_system_prompt.md").read_text(encoding="utf-8")
+        user_prompt = (REPO_ROOT / "prompts/weekly/wholesaler_main_user_prompt.md").read_text(encoding="utf-8")
+
+        for prompt in [system_prompt, user_prompt]:
+            self.assertIn("tier 1", prompt.lower())
+            self.assertIn("tier 2", prompt.lower())
+            self.assertIn("Weekly Impact Score", prompt)
+            self.assertIn("arms-race", prompt.lower())
+            self.assertIn("OpenAI, Meta, Microsoft, Google / Alphabet, Amazon / AWS, Anthropic, Nvidia, xAI, Oracle, and CoreWeave", prompt)
+            self.assertIn("DEBUG_WEEKLY_SCORING", prompt)
+
     def test_weekly_runner_emits_frontier_override_metadata(self):
         runner = (REPO_ROOT / "run_weekly_pipeline.py").read_text(encoding="utf-8")
 
         self.assertIn("FRONTIER_CAPITAL_MARKETS_SCORE", runner)
         self.assertIn("FRONTIER_CAPITAL_MARKETS_OVERRIDE", runner)
         self.assertIn("FRONTIER CAPITAL MARKETS OVERRIDE", runner)
+
+    def test_weekly_runner_emits_weekly_impact_metadata(self):
+        runner = (REPO_ROOT / "run_weekly_pipeline.py").read_text(encoding="utf-8")
+
+        self.assertIn("WEEKLY_IMPACT_SCORE", runner)
+        self.assertIn("CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE", runner)
+        self.assertIn("INTERNAL DEBUG WEEKLY SCORING TABLE", runner)
 
     def test_validator_accepts_weekly_spacex_ipo_synthesis(self):
         self.assertEqual(validate_weekly_digest_text(_valid_weekly_text()), [])
