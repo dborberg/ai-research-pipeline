@@ -1,0 +1,65 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>June 19, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s AI news reinforces that the investment cycle is moving from a pure model-and-chip narrative into a broader infrastructure, policy, and deployment-readiness story. Power access, interconnection rules, local permitting, and community resistance are becoming practical constraints on how quickly AI capacity can scale. At the same time, AI is pushing into regulated financial advice, robotics perception, and third-party compute contracting, showing that enterprise adoption increasingly depends on governance, workflow integration, and physical-world execution. For CPM, advisor, and wholesaler conversations, the key point is that AI beneficiaries and risks are spreading beyond mega-cap platforms into utilities, grid equipment, data center operators, compliance tooling, industrial automation, and local policy exposure.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Texas moved forward with new grid rules for data centers:</strong> The state is responding to rising AI-driven electricity demand, making power access and grid compliance a central gating factor for future data center expansion; the investment read-through extends to utilities, transmission equipment, backup power, cooling, and site-selection risk in major compute markets. (Source: Bloomberg Government News)</li>
+<li><strong>Meta signed new AI computing deals with Crusoe, according to a Reuters report citing Bloomberg News:</strong> The reported agreements signal that even the largest platforms continue to seek external AI compute capacity, reinforcing demand for specialized data center providers and the broader supply chain around power, networking, cooling, and real estate. (Source: Reuters)</li>
+<li><strong>RealSense unveiled the AI-native D585 Pro depth camera for robots:</strong> The product points to physical AI moving from software concepts toward deployable sensing components for humanoids, autonomous mobile robots, cobots, inspection systems, and industrial robotics; the portfolio implication is to watch enabling components, edge AI, machine vision, and robotics supply chains rather than only model developers. (Source: The Robot Report)</li>
+<li><strong>Coinbase launched an AI investment adviser, according to a reported industry account:</strong> The move is a concrete test case for AI in regulated financial advice, where suitability, disclosures, audit trails, and supervisory controls will matter as much as user experience; advisors should monitor how fintech experimentation may reshape client service expectations and compliance standards. (Source: digit.fyi)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Amazon investigated engineers who criticized its AI data center expansion:</strong> The reported internal response highlights that AI infrastructure buildout is becoming a workforce, governance, and reputation issue inside large technology companies, not just a capex decision; the business-model implication is that employee relations, public scrutiny, and permitting narratives may increasingly affect AI execution risk. (Source: CNBC)</li>
+<li><strong>EE Times highlighted agentic software environments for physical AI development:</strong> The article frames AI agents as tools that could coordinate hardware choices, data flows, and low-latency optimization for real-world systems, suggesting enterprise AI is moving toward workflow orchestration rather than isolated copilots; the implication is to monitor software platforms that help industrial teams compress development cycles. (Source: EE Times)</li>
+<li><strong>The ENPIRE research paper introduced a closed-loop framework for robot policy self-improvement:</strong> The paper suggests coding agents can iteratively test, verify, and refine robotic manipulation policies with less manual intervention, pointing to longer agent time horizons in real-world tasks; the investment implication is early-stage but relevant for automation, robotics software, lab automation, and industrial AI productivity. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Berea, Ohio passed a data center moratorium while other cities weighed restrictions:</strong> Local restrictions show that AI infrastructure can be slowed by zoning, community concerns, and municipal politics even when demand is strong; the implication is to monitor permitting risk and regional dispersion of data center investment. (Source: Crain's Cleveland)</li>
+<li><strong>Orange County, Hillsborough, and other North Carolina municipalities attempted to pause data center growth:</strong> The actions illustrate how power, land use, water, and community-impact concerns are creating friction in emerging data center markets; the read-through is that utilities, developers, and cloud customers may face longer timelines and higher costs in contested regions. (Source: Daily Tar Heel)</li>
+<li><strong>Seattle maintained a ban on new data centers despite continued company interest:</strong> Demand for urban compute capacity can collide with local policy limits, pushing growth toward jurisdictions with more favorable power, zoning, and community conditions; advisors can frame this as a reminder that AI infrastructure exposure includes location and permitting risk. (Source: KUOW)</li>
+<li><strong>A New York city moratorium affected Digi Power X’s plan to convert a cryptomining site into an AI data center:</strong> The case shows that repurposing energy-intensive crypto infrastructure for AI is not automatic when local rules intervene; the capital-markets implication is to evaluate conversion strategies through permitting, grid access, and community-approval lenses. (Source: Data Center Dynamics)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Reuters reported that space startups are seeking insurance for orbital AI data centers:</strong> The story is early-stage, but it shows AI compute demand stretching into unconventional infrastructure concepts where financing depends on risk transfer, launch reliability, and insurability; the implication is to watch second-derivative beneficiaries in space infrastructure, specialty insurance, satellite operations, and resilient compute architectures. (Source: Reuters)</li>
+<li><strong>Cognex CEO Matt Moschner discussed AI-powered machine vision in industrial automation:</strong> The interview points to AI adoption beyond office software and into factory quality control, inspection, and automation workflows; for portfolio monitoring, Cognex is a useful public-market example of how industrial AI may read through to machine vision, sensors, robotics, and manufacturing productivity tools. (Source: Tech Briefs)</li>
+<li><strong>Tech Policy Press examined how state utility regulators are shaping AI infrastructure deployment:</strong> The report underscores that utility commissions are becoming capital allocators by influencing who pays for grid upgrades, how quickly large loads connect, and where data centers are economically viable; the investment read-through includes regulated utilities, transmission equipment, power management, and regional data center economics. (Source: Tech Policy Press)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>FERC issued large-load interconnection actions tied to grid stress and affordability:</strong> The decision addresses how AI factories, semiconductor facilities, and advanced manufacturing sites connect to the power grid, making federal energy regulation a direct factor in AI infrastructure timing and cost; the policy implication is that grid access is now part of the AI investment diligence checklist. (Source: NVIDIA Blog)</li>
+<li><strong>St. Johns County commissioners weighed a moratorium to block AI data centers:</strong> The local proposal reflects growing community scrutiny of data center siting, resident impact, and infrastructure burden; the implication is that AI infrastructure growth may face more fragmented local approval risk across U.S. counties and municipalities. (Source: firstcoastnews.com)</li>
+<li><strong>Regulators ordered an overhaul of transmission rules to support AI and data center growth, according to the Washington Examiner:</strong> Transmission planning is becoming a policy response to AI-era load growth, with implications for affordability, interconnection queues, and grid reliability; investors should monitor whether rule changes translate into faster project approvals or simply shift costs among customers, utilities, and developers. (Source: Washington Examiner)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>A neuromorphic reinforcement learning paper proposed more efficient pathfinding for robotic mobile fulfillment systems:</strong> The framework reported major energy savings and lower latency versus a GPU baseline while preserving decision quality, pointing to a potential path for warehouse robots that need fast, power-efficient autonomy; the implication is to monitor edge AI chips, warehouse automation, and low-power robotics architectures as physical AI scales. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Large-load interconnection filings over the next 30 to 90 days:</strong> Watch whether new rules shorten grid queues for AI factories and data centers or reveal new cost-sharing disputes; the implication is that power availability may increasingly determine where AI capex is deployed. (Source: NVIDIA Blog)</li>
+<li><strong>Municipal data center votes across Florida, Ohio, North Carolina, New York, and Washington:</strong> Track whether moratoriums remain isolated local actions or become a broader permitting trend; the implication is that geographic exposure matters for data center developers, utilities, and infrastructure suppliers. (Source: firstcoastnews.com; Crain's Cleveland; Daily Tar Heel; Data Center Dynamics; KUOW)</li>
+<li><strong>Third-party AI compute contracting by hyperscalers:</strong> Monitor whether more large platforms use external data center partners to supplement internal capacity; the implication is that AI infrastructure demand may support a wider ecosystem beyond the largest cloud balance sheets. (Source: Reuters)</li>
+<li><strong>Regulated AI advice product disclosures:</strong> Watch how fintech platforms document suitability, supervision, explainability, and auditability as AI enters investment advice; the implication is that governance could become a commercial-access requirement for financial AI tools. (Source: digit.fyi)</li>
+<li><strong>Robotics component shipment timelines into 2027:</strong> Track whether AI-native perception hardware moves from product announcements into volume deployments; the implication is that physical AI adoption will depend on reliable components, edge inference, and industrial integration. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>Power and permitting are becoming part of the AI story:</strong> The next phase of AI growth depends not only on better models, but on whether data centers can get electricity, approvals, and interconnections. (Source: Bloomberg Government News; Tech Policy Press)</li>
+<li><strong>AI infrastructure is creating beneficiaries beyond the largest platforms:</strong> Data center demand can read through to utilities, grid equipment, cooling, backup power, fiber, networking, and specialized compute providers. (Source: Reuters)</li>
+<li><strong>AI in financial advice will be judged by governance as much as convenience:</strong> Suitability, audit trails, disclosures, and supervision may determine how quickly AI advisory tools can scale. (Source: digit.fyi)</li>
+<li><strong>Physical AI is moving from concept to components:</strong> Sensors, machine vision, edge inference, and robot software are becoming important pieces of the broader AI supply chain. (Source: The Robot Report; Tech Briefs)</li>
+<li><strong>Local governments can shape the AI capex map:</strong> Moratoriums and zoning decisions may redirect where data centers are built, which regions benefit, and which projects face delays. (Source: Crain's Cleveland; Daily Tar Heel; KUOW)</li>
+</ul>
