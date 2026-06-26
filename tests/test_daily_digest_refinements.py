@@ -2,6 +2,8 @@ import unittest
 from pathlib import Path
 
 from app.generate_digest import (
+    _is_healthcare_fda_override,
+    _is_major_earnings_override,
     frontier_technology_capital_markets_score,
     is_frontier_technology_capital_markets_event,
 )
@@ -85,6 +87,28 @@ class DailyDigestRefinementTests(unittest.TestCase):
 
         self.assertFalse(is_frontier_technology_capital_markets_event(article))
         self.assertEqual(frontier_technology_capital_markets_score(article), 0)
+
+    def test_major_earnings_override_detected(self):
+        article = {
+            "title": "Micron reports blowout earnings and raises guidance on AI memory demand",
+            "summary": "The quarterly results showed stronger HBM and data center memory demand tied to AI server buildouts.",
+            "companies": "Micron",
+            "advisor_relevance": "This earnings read-through broadens the AI semiconductor conversation beyond GPUs.",
+            "ai_score": 0,
+        }
+
+        self.assertTrue(_is_major_earnings_override(article))
+
+    def test_healthcare_fda_override_detected(self):
+        article = {
+            "title": "FDA clears generative AI radiology workflow assistant for clinical use",
+            "summary": "The approval covers medical imaging workflow support using a generative AI foundation model in hospitals.",
+            "companies": "FDA",
+            "advisor_relevance": "This is a healthcare workflow adoption signal with regulatory relevance.",
+            "ai_score": 0,
+        }
+
+        self.assertTrue(_is_healthcare_fda_override(article))
 
     def test_validator_accepts_clean_daily_digest_shape(self):
         html = _daily_html(

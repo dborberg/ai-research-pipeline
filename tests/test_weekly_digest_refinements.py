@@ -201,6 +201,37 @@ class WeeklyDigestRefinementTests(unittest.TestCase):
         self.assertTrue(run_weekly_pipeline._is_healthcare_fda_override(article))
         self.assertGreaterEqual(run_weekly_pipeline.weekly_impact_score(article), 8.0)
 
+    def test_thematic_weekly_receives_curated_event_context(self):
+        captured = {}
+
+        original_load = run_weekly_pipeline._load_weekly_prompt
+        original_call = run_weekly_pipeline.call_chat_model
+        original_build = run_weekly_pipeline._build_wholesaler_event_context
+        try:
+            def fake_load(name, **replacements):
+                if name == "thematic_user":
+                    captured["source_context"] = replacements["source_context"]
+                return "PROMPT"
+
+            run_weekly_pipeline._load_weekly_prompt = fake_load
+            run_weekly_pipeline.call_chat_model = lambda *args, **kwargs: "THEMATIC OUTPUT"
+            run_weekly_pipeline._build_wholesaler_event_context = lambda article_data: "CURATED EVENTS"
+
+            output = run_weekly_pipeline.generate_thematic_weekly(
+                client=None,
+                source_context="PRIMARY SOURCE",
+                article_data={"weekly_override_candidates": [{"title": "Micron earnings"}]},
+                space_economy_theme_active=False,
+            )
+
+            self.assertEqual(output, "THEMATIC OUTPUT")
+            self.assertIn("PRIMARY SOURCE", captured["source_context"])
+            self.assertIn("CURATED EVENTS", captured["source_context"])
+        finally:
+            run_weekly_pipeline._load_weekly_prompt = original_load
+            run_weekly_pipeline.call_chat_model = original_call
+            run_weekly_pipeline._build_wholesaler_event_context = original_build
+
     def test_validator_accepts_weekly_spacex_ipo_synthesis(self):
         self.assertEqual(validate_weekly_digest_text(_valid_weekly_text()), [])
 

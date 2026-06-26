@@ -79,6 +79,55 @@ def _article_signal_text(article):
     ).lower()
 
 
+def _is_major_earnings_override(article):
+    text = _article_signal_text(article)
+    earnings_terms = [
+        "earnings",
+        "quarterly results",
+        "quarterly revenue",
+        "guidance",
+        "forecast",
+        "blowout",
+        "beat and raise",
+    ]
+    ai_readthrough_terms = [
+        "ai demand",
+        "data center",
+        "hbm",
+        "memory",
+        "dram",
+        "nand",
+        "semiconductor",
+        "gpu",
+        "server",
+        "compute",
+        "inference",
+    ]
+    return any(term in text for term in earnings_terms) and any(
+        term in text for term in ai_readthrough_terms
+    )
+
+
+def _is_healthcare_fda_override(article):
+    text = _article_signal_text(article)
+    regulatory_terms = ["fda", "food and drug administration", "clearance", "approval"]
+    clinical_ai_terms = [
+        "radiology",
+        "medical imaging",
+        "imaging workflow",
+        "clinical workflow",
+        "diagnostic",
+        "hospital",
+        "health system",
+        "healthcare",
+        "clinical",
+    ]
+    generative_ai_terms = ["generative ai", "gen ai", "foundation model", "large language model"]
+    return any(term in text for term in regulatory_terms) and any(
+        term in text for term in clinical_ai_terms
+    ) and any(term in text for term in generative_ai_terms)
+
+
 def frontier_technology_capital_markets_score(article):
     """Score major AI-adjacent frontier technology capital markets events."""
     text = _article_signal_text(article)
@@ -153,14 +202,19 @@ def generate_daily_digest(report_date=None):
     # -----------------------------
     def is_big_story(article):
         text = f"{article.get('title') or ''} {article.get('summary') or ''}".lower()
-        return is_frontier_technology_capital_markets_event(article) or any(term in text for term in [
+        return (
+            is_frontier_technology_capital_markets_event(article)
+            or _is_major_earnings_override(article)
+            or _is_healthcare_fda_override(article)
+            or any(term in text for term in [
             "nvidia", "microsoft", "amazon", "google", "tesla", "apple", "openai", "tsmc", "asml",
             "government", "policy", "regulation", "white house", "lawmakers",
             "upgrade", "earnings", "index", "investment", "capex", "valuation", "funding",
             "data center", "power", "grid", "fab", "fabs", "campus", "semiconductor",
             "cooling", "nuclear", "battery", "batteries", "interconnection", "fiber", "optical",
             "bond issuance", "private credit", "sovereign ai", "agentic", "robotics",
-        ])
+            ])
+        )
 
     def parse_companies(raw_companies):
         if not raw_companies:
@@ -457,6 +511,10 @@ def generate_daily_digest(report_date=None):
         companies = parse_companies(article.get("companies"))
         if companies:
             score += min(len(companies), 5)
+        if _is_major_earnings_override(article):
+            score += 35
+        if _is_healthcare_fda_override(article):
+            score += 35
 
         return score
 
@@ -539,6 +597,13 @@ def generate_daily_digest(report_date=None):
             tags.append("frontier_capital_markets")
         if is_frontier_technology_capital_markets_event(article) and "capital_markets_and_investment" not in tags:
             tags.append("capital_markets_and_investment")
+        if _is_major_earnings_override(article) and "capital_markets_and_investment" not in tags:
+            tags.append("capital_markets_and_investment")
+        if _is_healthcare_fda_override(article):
+            if "enterprise_and_labor" not in tags:
+                tags.append("enterprise_and_labor")
+            if "regulation_and_policy" not in tags:
+                tags.append("regulation_and_policy")
         return tags
 
     def repeated_theme_key(article):
@@ -1078,6 +1143,8 @@ def generate_daily_digest(report_date=None):
                 f"FORWARD_ADOPTION_SCORE: {forward_adoption_score(article)}",
                 f"FRONTIER_CAPITAL_MARKETS_SCORE: {frontier_technology_capital_markets_score(article)}",
                 f"FRONTIER_CAPITAL_MARKETS_OVERRIDE: {'YES' if is_frontier_technology_capital_markets_event(article) else 'NO'}",
+                f"MAJOR_EARNINGS_OVERRIDE: {'YES' if _is_major_earnings_override(article) else 'NO'}",
+                f"HEALTHCARE_FDA_OVERRIDE: {'YES' if _is_healthcare_fda_override(article) else 'NO'}",
                 f"BIG_STORY_HINT: {'YES' if is_big_story(article) else 'NO'}",
                 f"POLICY_PRIORITY_HINT: {'YES' if has_policy_priority(article) else 'NO'}",
                 f"COMPANIES_MENTIONED: {', '.join(parse_companies(article.get('companies')))}",

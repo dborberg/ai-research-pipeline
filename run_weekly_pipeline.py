@@ -1676,9 +1676,14 @@ def _build_recent_practice_tip_constraints(recent_tip_history):
     return "\n".join(lines)
 
 
-def generate_thematic_weekly(client, source_context, space_economy_theme_active=False):
+def generate_thematic_weekly(client, source_context, article_data=None, space_economy_theme_active=False):
+    curated_event_context = _build_wholesaler_event_context(article_data or {})
+    thematic_context = source_context or curated_event_context
+    if curated_event_context and source_context:
+        thematic_context = f"{source_context}\n\n{curated_event_context}"
+
     system_prompt = _load_weekly_prompt("thematic_system")
-    user_prompt = _load_weekly_prompt("thematic_user", source_context=source_context)
+    user_prompt = _load_weekly_prompt("thematic_user", source_context=thematic_context)
     if space_economy_theme_active:
         user_prompt = f"{user_prompt}\n\n{SPACE_ECONOMY_FILTER_PROMPT}"
 
@@ -1839,6 +1844,7 @@ def _generate_and_store_weekly_reports(client, week_start):
     thematic_content = generate_thematic_weekly(
         client,
         source_context,
+        article_data=weekly_bundle["article_data"],
         space_economy_theme_active=weekly_bundle.get("SPACE_ECONOMY_THEME_ACTIVE", False),
     )
     wholesaler_content = _with_weekly_report_header(WHOLESALER_TITLE, week_start, wholesaler_content)
