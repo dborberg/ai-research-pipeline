@@ -1,10 +1,83 @@
 import unittest
 from pathlib import Path
+import sys
+import types
 
 from scripts.validate_weekly_digest_output import validate_weekly_digest_text
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+
+
+def _load_weekly_runner_module():
+    dotenv_module = types.ModuleType("dotenv")
+    dotenv_module.load_dotenv = lambda: None
+    sys.modules.setdefault("dotenv", dotenv_module)
+
+    pandas_module = types.ModuleType("pandas")
+    pandas_module.DataFrame = lambda *args, **kwargs: None
+    sys.modules.setdefault("pandas", pandas_module)
+
+    sqlalchemy_module = types.ModuleType("sqlalchemy")
+    sqlalchemy_module.text = lambda value: value
+    sys.modules.setdefault("sqlalchemy", sqlalchemy_module)
+
+    app_cluster_schema = types.ModuleType("app.cluster_schema")
+    app_cluster_schema.normalize_cluster_df = lambda value: value
+    sys.modules.setdefault("app.cluster_schema", app_cluster_schema)
+
+    app_branding = types.ModuleType("app.branding")
+    app_branding.WEEKLY_THEMATIC_TITLE = "thematic"
+    app_branding.WEEKLY_WHOLESALER_TITLE = "wholesaler"
+    sys.modules.setdefault("app.branding", app_branding)
+
+    app_db = types.ModuleType("app.db")
+    app_db.fetch_daily_digests = lambda *args, **kwargs: []
+    app_db.fetch_weekly_digests = lambda *args, **kwargs: []
+    app_db.get_engine = lambda: None
+    app_db.get_weekly_clusters = lambda *args, **kwargs: []
+    app_db.init_db = lambda: None
+    app_db.save_weekly_clusters = lambda *args, **kwargs: None
+    app_db.upsert_weekly_digest = lambda *args, **kwargs: None
+    sys.modules.setdefault("app.db", app_db)
+
+    app_generate_digest = types.ModuleType("app.generate_digest")
+    app_generate_digest.frontier_technology_capital_markets_score = lambda article: 0.0
+    app_generate_digest.is_frontier_technology_capital_markets_event = lambda article: False
+    sys.modules.setdefault("app.generate_digest", app_generate_digest)
+
+    app_reporting = types.ModuleType("app.reporting")
+    app_reporting.call_chat_model = lambda *args, **kwargs: ""
+    app_reporting.get_month_bounds = lambda *args, **kwargs: None
+    app_reporting.get_openai_client = lambda *args, **kwargs: None
+    app_reporting.get_latest_completed_friday = lambda: None
+    app_reporting.get_weekly_window_bounds = lambda *args, **kwargs: ("", "")
+    app_reporting.save_text_output = lambda *args, **kwargs: None
+    sys.modules.setdefault("app.reporting", app_reporting)
+
+    app_send_email = types.ModuleType("app.send_email")
+    app_send_email.send_report = lambda *args, **kwargs: None
+    sys.modules.setdefault("app.send_email", app_send_email)
+
+    app_space_economy = types.ModuleType("app.space_economy")
+    app_space_economy.SPACE_ECONOMY_FILTER_PROMPT = ""
+    app_space_economy.calculate_space_economy_theme_active = lambda *args, **kwargs: False
+    app_space_economy.ensure_space_metadata = lambda article: article
+    app_space_economy.format_space_metadata_lines = lambda article: []
+    sys.modules.setdefault("app.space_economy", app_space_economy)
+
+    app_velocity = types.ModuleType("app.velocity")
+    app_velocity.apply_velocity_metrics = lambda *args, **kwargs: None
+    app_velocity.compute_velocity = lambda *args, **kwargs: None
+    sys.modules.setdefault("app.velocity", app_velocity)
+
+    import importlib
+
+    sys.modules.pop("run_weekly_pipeline", None)
+    return importlib.import_module("run_weekly_pipeline")
+
+
+run_weekly_pipeline = _load_weekly_runner_module()
 
 
 def _valid_weekly_text(top_story=None):
@@ -97,6 +170,36 @@ class WeeklyDigestRefinementTests(unittest.TestCase):
         self.assertIn("WEEKLY_IMPACT_SCORE", runner)
         self.assertIn("CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE", runner)
         self.assertIn("INTERNAL DEBUG WEEKLY SCORING TABLE", runner)
+
+    def test_weekly_runner_emits_new_override_metadata_and_cli_flag(self):
+        runner = (REPO_ROOT / "run_weekly_pipeline.py").read_text(encoding="utf-8")
+
+        self.assertIn("weekly_override_candidates", runner)
+        self.assertIn("MAJOR_EARNINGS_OVERRIDE", runner)
+        self.assertIn("HEALTHCARE_FDA_OVERRIDE", runner)
+        self.assertIn("--debug-weekly-scoring", runner)
+
+    def test_major_earnings_override_detected(self):
+        article = {
+            "title": "Micron reports blowout earnings and raises guidance on AI memory demand",
+            "summary": "The quarterly results showed stronger HBM and data center memory demand tied to AI server buildouts.",
+            "advisor_relevance": "This earnings read-through broadens the AI semiconductor conversation beyond GPUs.",
+            "companies": ["Micron"],
+        }
+
+        self.assertTrue(run_weekly_pipeline._is_major_earnings_override(article))
+        self.assertGreaterEqual(run_weekly_pipeline.weekly_impact_score(article), 8.0)
+
+    def test_healthcare_fda_override_detected(self):
+        article = {
+            "title": "FDA clears generative AI radiology workflow assistant for clinical use",
+            "summary": "The approval covers medical imaging workflow support using a generative AI foundation model in hospitals.",
+            "advisor_relevance": "This is a healthcare workflow adoption signal with regulatory relevance.",
+            "companies": ["FDA"],
+        }
+
+        self.assertTrue(run_weekly_pipeline._is_healthcare_fda_override(article))
+        self.assertGreaterEqual(run_weekly_pipeline.weekly_impact_score(article), 8.0)
 
     def test_validator_accepts_weekly_spacex_ipo_synthesis(self):
         self.assertEqual(validate_weekly_digest_text(_valid_weekly_text()), [])

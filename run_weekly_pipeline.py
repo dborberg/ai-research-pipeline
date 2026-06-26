@@ -42,6 +42,7 @@ HIGH_SIGNAL_THRESHOLD = 8
 DEFAULT_SCORE_THRESHOLD = 6
 HIGH_SIGNAL_LIMIT = 25
 MEDIUM_SIGNAL_LIMIT = 15
+WEEKLY_OVERRIDE_WINDOW_LIMIT = 250
 MAX_CLUSTERS = 10
 DEBUG_WEEKLY_SCORING = os.getenv("DEBUG_WEEKLY_SCORING", "").strip().lower() in {
     "1",
@@ -537,6 +538,39 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
     window_start, window_end = get_weekly_window_bounds(week_start)
 
     with get_engine().connect() as conn:
+        all_week_rows = conn.execute(
+            text("""
+                SELECT
+                    id,
+                    title,
+                    source,
+                    url,
+                    published_at,
+                    summary,
+                    advisor_relevance,
+                    ai_score,
+                    companies,
+                    is_space_economy_related,
+                    space_relevance,
+                    space_ai_connection,
+                    space_time_horizon,
+                    space_investment_layer
+                FROM articles
+                WHERE published_at >= :window_start
+                  AND published_at < :window_end
+                ORDER BY
+                    CASE WHEN ai_score IS NULL THEN 1 ELSE 0 END,
+                    ai_score DESC,
+                    published_at DESC
+                LIMIT :limit
+            """),
+            {
+                "window_start": window_start,
+                "window_end": window_end,
+                "limit": WEEKLY_OVERRIDE_WINDOW_LIMIT,
+            },
+        ).mappings().all()
+
         high_signal_rows = conn.execute(
             text("""
                 SELECT
@@ -673,6 +707,24 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
         medium_signal.append(article)
         seen_article_ids.add(article.get("id"))
 
+    weekly_override_candidates = []
+    weekly_override_ids = set()
+    for row in all_week_rows:
+        article = ensure_space_metadata(dict(row))
+        article["companies"] = _parse_companies(article.get("companies"))
+        article["signal_tier"] = "TIER 2 SOURCE WINDOW"
+        article["signal_score"] = float(article.get("signal_score") or article.get("ai_score") or 0)
+        article["priority_score"] = float(article.get("priority_score") or 0)
+        article["source_weight"] = float(article.get("source_weight") or 1)
+        article["content_quality"] = float(article.get("content_quality") or len(article.get("summary") or ""))
+        article["theme_hint"] = article.get("theme_hint") or " ".join((article.get("title") or "").split()[:5])
+
+        article_id = article.get("id")
+        if article_id in weekly_override_ids:
+            continue
+        weekly_override_ids.add(article_id)
+        weekly_override_candidates.append(article)
+
     frontier_capital_markets = []
     for row in frontier_capital_markets_rows:
         if row["id"] in seen_article_ids:
@@ -702,6 +754,7 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
     print(f"HIGH SIGNAL articles: {len(high_signal)}")
     print(f"MEDIUM SIGNAL articles: {len(medium_signal)}")
     print(f"FRONTIER CAPITAL MARKETS override articles: {len(frontier_capital_markets)}")
+    print(f"TIER 2 weekly override source candidates: {len(weekly_override_candidates)}")
     print(
         f"Weekly pipeline using {len(articles)} high-quality articles "
         f"(score >= {score_threshold})"
@@ -711,6 +764,7 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
         "articles": articles,
         "high_signal": high_signal,
         "medium_signal": medium_signal,
+        "weekly_override_candidates": weekly_override_candidates,
         "SPACE_ECONOMY_THEME_ACTIVE": space_economy_theme_active,
     }
 
@@ -738,7 +792,7 @@ def _weekly_has_real_world_signal(article):
 
 
 def _weekly_event_priority(article):
-    text = f"{article.get('title') or ''} {article.get('summary') or ''} {article.get('advisor_relevance') or ''}".lower()
+    text = _weekly_article_text(article)
     score = float(article.get("signal_score") or article.get("ai_score") or 0)
     score += frontier_technology_capital_markets_score(article)
 
@@ -810,6 +864,10 @@ def _weekly_event_priority(article):
         "switching cost", "ecosystem control", "platform advantage", "margin durability",
     ]):
         score += 3
+    if _is_major_earnings_override(article):
+        score += 6
+    if _is_healthcare_fda_override(article):
+        score += 6
 
     return score
 
@@ -829,9 +887,8 @@ def _article_company_text(article):
     return str(companies)
 
 
-def weekly_impact_score(article):
-    """Return a 0-10 Weekly Impact Score for independent weekly candidates."""
-    text = " ".join(
+def _weekly_article_text(article):
+    return " ".join(
         [
             str(article.get("title") or ""),
             str(article.get("summary") or ""),
@@ -839,6 +896,61 @@ def weekly_impact_score(article):
             _article_company_text(article),
         ]
     ).lower()
+
+
+def _is_major_earnings_override(article):
+    text = _weekly_article_text(article)
+    earnings_terms = [
+        "earnings",
+        "quarterly results",
+        "quarterly revenue",
+        "guidance",
+        "forecast",
+        "blowout",
+        "beat and raise",
+    ]
+    ai_readthrough_terms = [
+        "ai demand",
+        "data center",
+        "hbm",
+        "memory",
+        "dram",
+        "nand",
+        "semiconductor",
+        "gpu",
+        "server",
+        "compute",
+        "inference",
+    ]
+    return any(term in text for term in earnings_terms) and any(
+        term in text for term in ai_readthrough_terms
+    )
+
+
+def _is_healthcare_fda_override(article):
+    text = _weekly_article_text(article)
+    regulatory_terms = ["fda", "food and drug administration", "clearance", "approval"]
+    clinical_ai_terms = [
+        "radiology",
+        "medical imaging",
+        "imaging workflow",
+        "clinical workflow",
+        "diagnostic",
+        "hospital",
+        "health system",
+        "healthcare",
+        "clinical",
+    ]
+    generative_ai_terms = ["generative ai", "gen ai", "foundation model", "large language model"]
+
+    return any(term in text for term in regulatory_terms) and any(
+        term in text for term in clinical_ai_terms
+    ) and any(term in text for term in generative_ai_terms)
+
+
+def weekly_impact_score(article):
+    """Return a 0-10 Weekly Impact Score for independent weekly candidates."""
+    text = _weekly_article_text(article)
     ai_score = float(article.get("signal_score") or article.get("ai_score") or 0)
 
     strategic_importance = _weekly_impact_dimension_score(
@@ -919,12 +1031,16 @@ def weekly_impact_score(article):
         term in text for term in ["talent", "compute", "infrastructure", "capital", "model"]
     ):
         score = max(score, 8.0)
+    if _is_major_earnings_override(article):
+        score = max(score, 8.0)
+    if _is_healthcare_fda_override(article):
+        score = max(score, 8.0)
 
     return round(max(0.0, min(score, 10.0)), 1)
 
 
 def _build_wholesaler_event_context(article_data):
-    articles = article_data.get("articles") or []
+    articles = article_data.get("weekly_override_candidates") or article_data.get("articles") or []
     selected = []
     seen_titles = set()
 
@@ -981,6 +1097,8 @@ def _build_wholesaler_event_context(article_data):
                     f"EVENT_PRIORITY: {_weekly_event_priority(article):.2f}",
                     f"FRONTIER_CAPITAL_MARKETS_SCORE: {frontier_technology_capital_markets_score(article)}",
                     f"FRONTIER_CAPITAL_MARKETS_OVERRIDE: {'YES' if is_frontier_technology_capital_markets_event(article) else 'NO'}",
+                    f"MAJOR_EARNINGS_OVERRIDE: {'YES' if _is_major_earnings_override(article) else 'NO'}",
+                    f"HEALTHCARE_FDA_OVERRIDE: {'YES' if _is_healthcare_fda_override(article) else 'NO'}",
                     f"AI_ARMS_RACE_CHECK: {'YES' if any(company in arms_race_text for company in AI_ARMS_RACE_COMPANIES) else 'NO'}",
                     f"TIER_2_REASON: {tier_reason}",
                     *format_space_metadata_lines(article),
@@ -1772,9 +1890,19 @@ def _get_stored_weekly_digest_content(week_start, digest_type):
 
 
 def main():
+    global DEBUG_WEEKLY_SCORING
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", required=True)
+    parser.add_argument(
+        "--debug-weekly-scoring",
+        action="store_true",
+        help="Include the internal weekly scoring table and inclusion metadata in the generated weekly report.",
+    )
     args = parser.parse_args()
+
+    if args.debug_weekly_scoring:
+        DEBUG_WEEKLY_SCORING = True
 
     load_dotenv()
     init_db()
