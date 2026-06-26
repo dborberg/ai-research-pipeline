@@ -59,13 +59,13 @@ That structure is designed to keep the report investment-relevant across provide
 Render a prompt package with defaults:
 
 ```bash
-python scripts/render_prompt.py healthcare
+python3 scripts/render_prompt.py healthcare
 ```
 
 Render a prompt package with explicit inputs:
 
 ```bash
-python scripts/render_prompt.py \
+python3 scripts/render_prompt.py \
   --sector-name healthcare \
   --audience "portfolio managers and strategists" \
   --time-horizon "1-3 years and 3-7 years" \
@@ -76,7 +76,7 @@ python scripts/render_prompt.py \
 Render a second healthcare variant by changing only the run-time emphasis:
 
 ```bash
-python scripts/render_prompt.py \
+python3 scripts/render_prompt.py \
   --sector-name healthcare \
   --audience "portfolio managers and strategists" \
   --time-horizon "1-3 years and 3-7 years" \
@@ -87,7 +87,7 @@ python scripts/render_prompt.py \
 Render a frontier possibilities prompt package:
 
 ```bash
-python scripts/render_prompt.py \
+python3 scripts/render_prompt.py \
   --sector-name healthcare \
   --industry-focus biotechnology \
   --report-mode frontier_possibilities
@@ -105,7 +105,7 @@ The workflow validates the sector and industry pairing before prompt rendering. 
 Validate an assembled prompt package before using or publishing it:
 
 ```bash
-python scripts/validate_prompt_package.py \
+python3 scripts/validate_prompt_package.py \
   --prompt-package out/final_prompt_healthcare.md \
   --sector-name healthcare
 ```
@@ -124,8 +124,33 @@ Examples:
 List available sectors:
 
 ```bash
-python scripts/render_prompt.py --list-sectors
+python3 scripts/render_prompt.py --list-sectors
 ```
+
+If your local shell does not expose a `python` alias, use `python3` for manual commands or run the repo virtualenv binary directly, for example `./venv/bin/python3`.
+
+## Replay A Known Week For Audit
+
+Replay Daily Riffs, Weekly Riffs, and Weekly Motifs for a chosen Friday week-ending date without sending email:
+
+```bash
+python3 scripts/replay_weekly_reports.py --week-ending 2026-06-26
+```
+
+Include the internal Weekly Riffs inclusion and exclusion table during the replay:
+
+```bash
+python3 scripts/replay_weekly_reports.py --week-ending 2026-06-26 --debug-weekly-scoring
+```
+
+The replay writes audit artifacts under:
+
+```bash
+outputs/replay/<week-ending>/daily/
+outputs/replay/<week-ending>/weekly/
+```
+
+That folder includes the regenerated Daily Riffs, replayed Weekly Riffs, replayed Weekly Motifs, the combined weekly source context, and the curated Tier 2 event context used for the weekly pass.
 
 ## Use the GitHub Workflow
 
@@ -181,7 +206,7 @@ If you want the app somewhere else, pass a target directory:
    - important KPIs and signals
    - analytical traps to avoid
 3. Add the new sector to the workflow dropdown in `.github/workflows/generate_sector_report.yml`.
-4. Run `python scripts/render_prompt.py --sector-name <new_sector>` to validate the adapter locally.
+4. Run `python3 scripts/render_prompt.py --sector-name <new_sector>` to validate the adapter locally.
 
 ## Modify the Healthcare Logic Over Time
 

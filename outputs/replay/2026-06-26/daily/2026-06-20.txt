@@ -1,0 +1,20 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>June 20, 2026</strong></p>
+<h3>TOP THEME OF THE DAY</h3>
+<p>No meaningful Gen AI developments surfaced in the daily source window, so there is no cross-story investment theme to elevate today.</p>
+<h3>TOP STORIES</h3>
+<ul><li><strong>No major Gen AI stories surfaced:</strong> Continue monitoring company actions, policy moves, infrastructure buildouts, financing events, and enterprise deployments for fresh signals. (Source: Full article set)</li></ul>
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul><li><strong>No major enterprise adoption or labor developments surfaced:</strong> Continue monitoring agentic AI, copilots, workflow redesign, professional services automation, and governance signals. (Source: Full article set)</li></ul>
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul><li><strong>No major infrastructure or power bottleneck developments surfaced:</strong> Continue monitoring data centers, grid capacity, cooling, semiconductors, networking, and permitting constraints. (Source: Full article set)</li></ul>
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul><li><strong>No major capital markets or investment-implication developments surfaced:</strong> Continue monitoring earnings, capex, financing, funding, valuation discipline, and second-derivative beneficiaries. (Source: Full article set)</li></ul>
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul><li><strong>No major regulation, governance, or policy developments surfaced:</strong> Continue monitoring procurement rules, model safety, privacy, export controls, antitrust, and AI hiring rules. (Source: Full article set)</li></ul>
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul><li><strong>No major commercial Physical AI or robotics developments surfaced:</strong> Continue monitoring robotics, autonomous systems, lab automation, industrial automation, and AI-enabled manufacturing for signs that pilots are moving into real deployment. (Source: Full article set)</li></ul>
+<h3>WHAT TO WATCH</h3>
+<ul><li><strong>Fresh source flow:</strong> Watch for new company announcements, policy actions, capex disclosures, infrastructure projects, and enterprise deployments in the next daily window. (Source: Full article set)</li></ul>
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul><li><strong>Quiet days still matter:</strong> When the source window is thin, the discipline is to wait for real events rather than force an AI narrative. (Source: Full article set)</li></ul>

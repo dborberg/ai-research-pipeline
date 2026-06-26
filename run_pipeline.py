@@ -22,6 +22,7 @@ from sqlalchemy import text
 
 from app.db import get_engine, init_db, insert_article, upsert_daily_digest
 from app.pipeline_window import set_pipeline_window
+from app.source_archive import save_daily_source_snapshot
 
 # ✅ Load environment variables (works locally + GitHub Actions)
 load_dotenv()
@@ -138,11 +139,11 @@ def _validate_recent_enrichment(articles):
         )
 
 
-def generate_daily_digest():
+def generate_daily_digest(return_metadata=False):
     logging.info("Starting digest generation")
     print("Generating digest...")
     from app.generate_digest import generate_daily_digest as _generate
-    digest = _generate()
+    digest = _generate(return_metadata=return_metadata)
     logging.info("Digest generation completed")
     return digest
 
@@ -207,10 +208,12 @@ def run(dry_run=False):
 
         # ✅ Generate ONCE and reuse
         try:
-            digest_text = generate_daily_digest()
+            digest_result = generate_daily_digest(return_metadata=True)
+            digest_text = digest_result["content"]
             if not digest_text or not digest_text.strip():
                 raise ValueError("Digest generation returned empty content — aborting to prevent blank output file")
             save_daily_digest(digest_text)
+            save_daily_source_snapshot(_central_today(), digest_result.get("source_articles") or [])
             upsert_daily_digest(_central_today(), digest_text)
         except Exception as e:
             _abort_pipeline(f"Digest generation failed: {e}", exception=e)

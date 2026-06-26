@@ -14,10 +14,11 @@ from dotenv import load_dotenv
 
 from app.cluster_schema import normalize_cluster_df
 from app.db import fetch_weekly_digests, get_articles_by_ids, get_cluster_history, get_database_state_token, get_weekly_clusters, save_weekly_clusters
-from app.reporting import get_openai_client, get_week_start
+from app.reporting import get_latest_completed_friday, get_openai_client, get_week_start
 from app.send_email import send_report
 from app.velocity import apply_velocity_metrics, compute_velocity
 from run_weekly_pipeline import cluster_articles, get_weekly_articles
+from scripts.replay_weekly_reports import replay_weekly_reports
 from scripts.generate_sector_report import (
     FRONTIER_REQUIRED_HEADINGS,
     DEFAULT_MODEL,
@@ -825,6 +826,64 @@ def render_sector_report_launcher(api_key: str):
     )
 
 
+def render_weekly_replay_launcher(api_key: str):
+    st.subheader("Weekly Replay Launcher")
+    st.caption("Replay 7 Daily Riffs plus Weekly Riffs and Weekly Motifs for a chosen Friday week-ending date. Outputs are written under outputs/replay.")
+
+    default_week_ending = get_latest_completed_friday()
+    replay_output = None
+
+    with st.form("weekly_replay_launcher_form"):
+        replay_week_ending = st.date_input(
+            "Friday Week Ending",
+            value=default_week_ending,
+        )
+        debug_weekly_scoring = st.checkbox(
+            "Include internal weekly scoring table",
+            value=False,
+        )
+        submit = st.form_submit_button("Replay Weekly Reports")
+
+    if not submit:
+        return
+
+    if replay_week_ending.weekday() != 4:
+        st.error("Choose a Friday date for the weekly replay.")
+        return
+
+    if not api_key:
+        st.error("OPENAI_API_KEY must be set in your local environment before running a weekly replay.")
+        return
+
+    with st.spinner("Replaying Daily and Weekly reports from your local checkout..."):
+        try:
+            replay_output = replay_weekly_reports(
+                replay_week_ending,
+                debug_weekly_scoring=debug_weekly_scoring,
+            )
+        except Exception as exc:
+            st.error(f"Unable to replay the selected week: {exc}")
+            return
+
+    st.success("Weekly replay completed locally.")
+    st.caption(f"Replay artifacts saved to {replay_output['replay_root']}")
+
+    with st.expander("Replay Paths", expanded=False):
+        st.write(str(replay_output["daily_output_dir"]))
+        st.write(str(replay_output["weekly_output_dir"]))
+        st.write(str(replay_output["source_context_path"]))
+        st.write(str(replay_output["curated_event_context_path"]))
+
+    wholesaler_path = replay_output["wholesaler_path"]
+    thematic_path = replay_output["thematic_path"]
+    if wholesaler_path.exists():
+        with st.expander("Replayed Weekly Riffs", expanded=False):
+            st.text(wholesaler_path.read_text(encoding="utf-8"))
+    if thematic_path.exists():
+        with st.expander("Replayed Weekly Motifs", expanded=False):
+            st.text(thematic_path.read_text(encoding="utf-8"))
+
+
 def render_top_clusters(cluster_df, velocity_df):
     st.subheader("Top Themes By Conviction")
 
@@ -1025,7 +1084,7 @@ def main():
     st.caption("Weekly AI signal detection, thematic momentum, and sector report generation")
 
     api_key = os.getenv("OPENAI_API_KEY")
-    workspace_options = ["Signal Dashboard", "Sector Report Launcher"]
+    workspace_options = ["Signal Dashboard", "Sector Report Launcher", "Weekly Replay Launcher"]
     _restore_widget_value("workspace_view", workspace_options[0], workspace_options)
     view = st.radio(
         "Workspace",
@@ -1037,6 +1096,9 @@ def main():
 
     if view == "Sector Report Launcher":
         render_sector_report_launcher(api_key)
+        return
+    if view == "Weekly Replay Launcher":
+        render_weekly_replay_launcher(api_key)
         return
 
     current_week = get_week_start()

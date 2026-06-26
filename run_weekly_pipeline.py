@@ -26,6 +26,7 @@ from app.reporting import (
     save_text_output,
 )
 from app.send_email import send_report
+from app.source_archive import load_daily_digests_from_files, load_weekly_articles_from_daily_snapshots
 from app.space_economy import (
     SPACE_ECONOMY_FILTER_PROMPT,
     calculate_space_economy_theme_active,
@@ -534,6 +535,16 @@ def _with_weekly_report_header(title, week_start, content):
     ]).strip()
 
 
+def _weekly_article_dedupe_key(article):
+    return "|".join(
+        [
+            str(article.get("url") or "").strip().lower(),
+            str(article.get("title") or "").strip().lower(),
+            str(article.get("published_at") or "").strip(),
+        ]
+    )
+
+
 def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
     window_start, window_end = get_weekly_window_bounds(week_start)
 
@@ -682,6 +693,7 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
 
     high_signal = []
     seen_article_ids = set()
+    selected_article_keys = set()
     for row in high_signal_rows:
         article = ensure_space_metadata(dict(row))
         article["signal_tier"] = "HIGH SIGNAL (PRIORITY - FOCUS HERE)"
@@ -691,6 +703,7 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
         article["source_weight"] = float(article.get("source_weight") or 1)
         article["content_quality"] = float(article.get("content_quality") or len(article.get("summary") or ""))
         article["theme_hint"] = article.get("theme_hint") or " ".join((article.get("title") or "").split()[:5])
+        selected_article_keys.add(_weekly_article_dedupe_key(article))
         high_signal.append(article)
         seen_article_ids.add(article.get("id"))
 
@@ -704,11 +717,15 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
         article["source_weight"] = float(article.get("source_weight") or 1)
         article["content_quality"] = float(article.get("content_quality") or len(article.get("summary") or ""))
         article["theme_hint"] = article.get("theme_hint") or " ".join((article.get("title") or "").split()[:5])
+        article_key = _weekly_article_dedupe_key(article)
+        if article_key in selected_article_keys:
+            continue
+        selected_article_keys.add(article_key)
         medium_signal.append(article)
         seen_article_ids.add(article.get("id"))
 
     weekly_override_candidates = []
-    weekly_override_ids = set()
+    weekly_override_keys = set()
     for row in all_week_rows:
         article = ensure_space_metadata(dict(row))
         article["companies"] = _parse_companies(article.get("companies"))
@@ -719,10 +736,10 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
         article["content_quality"] = float(article.get("content_quality") or len(article.get("summary") or ""))
         article["theme_hint"] = article.get("theme_hint") or " ".join((article.get("title") or "").split()[:5])
 
-        article_id = article.get("id")
-        if article_id in weekly_override_ids:
+        article_key = _weekly_article_dedupe_key(article)
+        if article_key in weekly_override_keys:
             continue
-        weekly_override_ids.add(article_id)
+        weekly_override_keys.add(article_key)
         weekly_override_candidates.append(article)
 
     frontier_capital_markets = []
@@ -739,8 +756,52 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
         article["source_weight"] = float(article.get("source_weight") or 1)
         article["content_quality"] = float(article.get("content_quality") or len(article.get("summary") or ""))
         article["theme_hint"] = "Frontier Technology Capital Markets"
+        article_key = _weekly_article_dedupe_key(article)
+        if article_key in selected_article_keys:
+            continue
+        selected_article_keys.add(article_key)
         frontier_capital_markets.append(article)
         seen_article_ids.add(article.get("id"))
+
+    archived_articles = load_weekly_articles_from_daily_snapshots(week_start)
+    if archived_articles:
+        print(f"Weekly archive fallback candidates: {len(archived_articles)}")
+
+    for archived_article in archived_articles:
+        article = ensure_space_metadata(dict(archived_article))
+        article["companies"] = _parse_companies(article.get("companies"))
+        article["signal_score"] = float(article.get("signal_score") or article.get("ai_score") or 0)
+        article["priority_score"] = float(article.get("priority_score") or 0)
+        article["source_weight"] = float(article.get("source_weight") or 1)
+        article["content_quality"] = float(article.get("content_quality") or len(article.get("summary") or ""))
+        article["theme_hint"] = article.get("theme_hint") or " ".join((article.get("title") or "").split()[:5])
+
+        article_key = _weekly_article_dedupe_key(article)
+        if article_key not in weekly_override_keys:
+            article["signal_tier"] = article.get("signal_tier") or "TIER 2 SOURCE WINDOW"
+            weekly_override_keys.add(article_key)
+            weekly_override_candidates.append(article)
+
+        if article_key in selected_article_keys:
+            continue
+
+        if is_frontier_technology_capital_markets_event(article):
+            article["signal_tier"] = "FRONTIER CAPITAL MARKETS OVERRIDE"
+            article["priority_score"] = frontier_technology_capital_markets_score(article)
+            frontier_capital_markets.append(article)
+            selected_article_keys.add(article_key)
+            continue
+
+        if article["signal_score"] >= HIGH_SIGNAL_THRESHOLD:
+            article["signal_tier"] = "HIGH SIGNAL (PRIORITY - FOCUS HERE)"
+            high_signal.append(article)
+            selected_article_keys.add(article_key)
+            continue
+
+        if article["signal_score"] >= score_threshold:
+            article["signal_tier"] = "MEDIUM SIGNAL"
+            medium_signal.append(article)
+            selected_article_keys.add(article_key)
 
     articles = high_signal + medium_signal + frontier_capital_markets
     space_economy_theme_active = calculate_space_economy_theme_active(
@@ -1360,16 +1421,21 @@ def extract_patterns(client, clusters):
 
 def _format_daily_digest_context(week_start):
     week_window_start = week_start - timedelta(days=6)
-    digests = fetch_daily_digests(days=14, limit=14)
-    digests = [
-        digest for digest in digests
+    db_digests = fetch_daily_digests(days=14, limit=14)
+    digests_by_date = {
+        str(digest["date"]): digest
+        for digest in db_digests
         if week_window_start.isoformat() <= str(digest["date"]) <= week_start.isoformat()
-    ]
+    }
+    for digest in load_daily_digests_from_files(week_start):
+        digests_by_date.setdefault(str(digest["date"]), digest)
+
+    digests = [digests_by_date[key] for key in sorted(digests_by_date.keys())]
     if not digests:
         return ""
 
     digest_blocks = []
-    for digest in reversed(digests):
+    for digest in digests:
         digest_blocks.append(
             "\n".join(
                 [
@@ -1831,6 +1897,7 @@ def generate_signal_command_brief(cluster_df, week_start):
 def _generate_and_store_weekly_reports(client, week_start):
     weekly_bundle = _build_weekly_cluster_bundle(client, week_start, score_threshold=DEFAULT_SCORE_THRESHOLD)
     source_context = weekly_bundle["source_context"]
+    curated_event_context = _build_wholesaler_event_context(weekly_bundle["article_data"])
 
     if not source_context.strip():
         raise RuntimeError("No daily digests or scored articles available for the weekly pipeline")
@@ -1878,6 +1945,16 @@ def _generate_and_store_weekly_reports(client, week_start):
         "outputs/weekly",
         f"{week_start.isoformat()}_signal_command_brief.txt",
         signal_command_brief,
+    )
+    save_text_output(
+        "outputs/weekly",
+        f"{week_start.isoformat()}_source_context.txt",
+        source_context,
+    )
+    save_text_output(
+        "outputs/weekly",
+        f"{week_start.isoformat()}_curated_event_context.txt",
+        curated_event_context,
     )
 
     return {

@@ -167,7 +167,7 @@ def _load_daily_prompt(name, **replacements):
     return prompt
 
 
-def generate_daily_digest(report_date=None):
+def generate_daily_digest(report_date=None, return_metadata=False):
     import json
     import os
     import re
@@ -1112,7 +1112,7 @@ def generate_daily_digest(report_date=None):
     )
 
     if not all_articles:
-        return f"""<h2>{DAILY_TITLE}</h2>
+        content = f"""<h2>{DAILY_TITLE}</h2>
 <p><strong>{today}</strong></p>
 <h3>TOP THEME OF THE DAY</h3>
 <p>No meaningful Gen AI developments surfaced in the daily source window, so there is no cross-story investment theme to elevate today.</p>
@@ -1132,6 +1132,14 @@ def generate_daily_digest(report_date=None):
 <ul><li><strong>Fresh source flow:</strong> Watch for new company announcements, policy actions, capex disclosures, infrastructure projects, and enterprise deployments in the next daily window. (Source: Full article set)</li></ul>
 <h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
 <ul><li><strong>Quiet days still matter:</strong> When the source window is thin, the discipline is to wait for real events rather than force an AI narrative. (Source: Full article set)</li></ul>"""
+        if return_metadata:
+            return {
+                "content": content,
+                "source_articles": [],
+                "prompt_articles": [],
+                "report_date": report_date,
+            }
+        return content
     article_block = "\n\n---\n\n".join(
         "\n".join(
             [
@@ -1241,4 +1249,11 @@ def generate_daily_digest(report_date=None):
     # -----------------------------
     # FINAL OUTPUT
     # -----------------------------
+    if return_metadata:
+        return {
+            "content": content,
+            "source_articles": all_articles,
+            "prompt_articles": prompt_articles,
+            "report_date": report_date,
+        }
     return content

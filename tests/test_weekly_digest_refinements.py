@@ -1,4 +1,5 @@
 import unittest
+from datetime import date
 from pathlib import Path
 import sys
 import types
@@ -231,6 +232,26 @@ class WeeklyDigestRefinementTests(unittest.TestCase):
             run_weekly_pipeline._load_weekly_prompt = original_load
             run_weekly_pipeline.call_chat_model = original_call
             run_weekly_pipeline._build_wholesaler_event_context = original_build
+
+    def test_daily_digest_context_falls_back_to_archived_files(self):
+        original_fetch = run_weekly_pipeline.fetch_daily_digests
+        original_archive = run_weekly_pipeline.load_daily_digests_from_files
+        try:
+            run_weekly_pipeline.fetch_daily_digests = lambda *args, **kwargs: []
+            run_weekly_pipeline.load_daily_digests_from_files = lambda week_start: [
+                {"date": "2026-06-20", "content": "Archived Digest A"},
+                {"date": "2026-06-21", "content": "Archived Digest B"},
+            ]
+
+            context = run_weekly_pipeline._format_daily_digest_context(date(2026, 6, 26))
+
+            self.assertIn("DATE: 2026-06-20", context)
+            self.assertIn("Archived Digest A", context)
+            self.assertIn("DATE: 2026-06-21", context)
+            self.assertIn("Archived Digest B", context)
+        finally:
+            run_weekly_pipeline.fetch_daily_digests = original_fetch
+            run_weekly_pipeline.load_daily_digests_from_files = original_archive
 
     def test_validator_accepts_weekly_spacex_ipo_synthesis(self):
         self.assertEqual(validate_weekly_digest_text(_valid_weekly_text()), [])
