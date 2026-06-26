@@ -1,0 +1,72 @@
+Beyond the Horizon: Weekly Riffs from the Gen AI Songbook
+Week Ending June 26, 2026
+
+TOP 5 STORIES THIS WEEK
+
+1. Microsoft announced a new Pecos, Texas datacenter campus that it says will add roughly 2 gigawatts of capacity, and Chevron reportedly struck a power deal with Microsoft tied to a West Texas AI data center. For advisors, this made the week’s clearest point: AI capacity is now a power, land, grid, cooling, water, and permitting story as much as a cloud or chip story, with read-throughs to utilities, energy procurement, electrical equipment, construction, and thermal management. (The Official Microsoft Blog; WSJ via Google News)
+
+2. NVIDIA and AWS announced a collaboration focused on bringing AI to production at scale, including low-latency inference, vector search, GPU price-performance, and simpler operations. This matters because enterprise monetization depends less on impressive demos and more on reliable, scalable infrastructure that can run AI inside production workflows. (NVIDIA Blog)
+
+3. Samsung Electronics expanded ChatGPT Enterprise and Codex access across all employees in Korea and Device eXperience employees worldwide, while Morningstar expanded AI integrations with Microsoft to bring investment intelligence into enterprise workflows. The advisor takeaway is that AI is moving from optional chatbot use into governed daily work for engineers, investment professionals, and enterprise teams, favoring platforms with data, permissions, compliance, and distribution. (AI News; Business Wire)
+
+4. Qualcomm forecast $15 billion in data center chip sales by 2029, and OpenAI’s reported Jalapeño ASIC work with Broadcom showed large AI customers pursuing custom silicon to manage compute economics. This broadened the AI semiconductor conversation beyond the incumbent GPU leader into accelerators, CPUs, networking, memory, advanced packaging, and customer-specific chip design. (Reuters; AI News)
+
+5. U.S. lawmakers introduced AI data center moratorium and transparency proposals, while the EU joined the U.S.-led “Pax Silica” effort to secure AI and chip supply chains. This week made regulation a direct input into AI infrastructure economics, because permitting, disclosure, grid access, and semiconductor supply-chain coordination can influence where capacity gets built and who can serve global customers. (Data Center Dynamics; Reuters)
+
+BEYOND THE MAG 7
+
+1. Vention expanded its software-defined automation platform through partnerships with FANUC America and Universal Robots, using AI-enabled digital twins, path planning, no-code/Python programming, and NVIDIA Isaac-based perception. The supplier effect is that factory AI is becoming more investable through robotics software, integrators, sensors, and automation platforms that reduce commissioning time and reliance on scarce robot-programming talent.
+
+2. Lytho launched AI Expert Reviewers to embed brand and regulatory compliance checks directly into enterprise content workflows. The productivity and margin implication is that AI value in marketing may come less from generating more content and more from compressing review cycles, reducing compliance friction, and making regulated content operations faster.
+
+3. Mantis Robotics launched the MR-X dual-arm fenceless robot, while FORT Robotics and NVIDIA introduced an Outside-In Safety blueprint for autonomous robots around workers. The new demand pool is human-proximate automation in logistics, manufacturing, and cold storage, where safety software, sensors, edge compute, and certification can become gating requirements for physical AI deployment.
+
+WHAT IS BEING DISRUPTED
+
+1. Data center development assumptions were disrupted as Microsoft’s 2-gigawatt Pecos plan, Chevron’s power deal, and multiple moratorium proposals showed that power access and permitting can matter as much as cloud demand.
+
+2. Professional research workflows were disrupted as Morningstar moved trusted investment intelligence into Microsoft enterprise workflows rather than leaving AI in a separate research or chatbot interface.
+
+3. Factory automation cost structures were disrupted as Vention, FANUC, Universal Robots, Intrinsic, and Foxconn-linked pilots pointed toward less manual robot coding and more software-defined deployment.
+
+REGULATORY RADAR
+
+1. Rep. Alexandria Ocasio-Cortez and Sen. Bernie Sanders introduced the AI Data Center Moratorium Act. The practical relevance is that federal scrutiny of AI infrastructure is rising just as hyperscalers and private capital are committing to larger builds, making permitting and community-impact rules key monitoring variables.
+
+2. The EU joined the U.S.-led “Pax Silica” effort, and the U.S. sought an AI partnership with the EU focused on regulation and supply chains. The relevance is that AI market access is increasingly tied to allied semiconductor policy, export-sensitive supply chains, and common governance expectations.
+
+3. Colorado’s new AI bias law raised trade-secret management concerns, and a U.S. lawmaker introduced a bill requiring AI companies to report critical incidents. The relevance is that auditability, documentation, incident response, and model-risk controls are becoming commercial requirements for AI vendors serving regulated customers.
+
+READY TO USE SOUNDBITES
+
+1. This week showed that the AI bottleneck is not just chips; it is power contracts, utility approvals, water use, cooling, local politics, and the ability to actually build capacity.
+
+2. The enterprise AI story is moving from “who has the best chatbot” to “who can put trusted AI inside the workflows professionals already use.”
+
+3. Qualcomm’s data center target and OpenAI’s reported Broadcom chip work show that the AI hardware profit pool may broaden as customers look for lower-cost, workload-specific compute.
+
+4. Robotics is becoming a second-wave AI conversation: the investable layer is not just the robot, but the software, safety systems, sensors, edge compute, and integrators that make robots usable around people.
+
+5. Some ideas remain too early, like wave-powered AI data centers or orbital data centers; this week’s more investable evidence was terrestrial power, cooling, permitting, semiconductor supply chains, and production workflow adoption.
+
+QUESTIONS TO BRING TO YOUR CLIENTS
+
+1. If AI capacity is increasingly constrained by power and permitting, should your AI conversation include utilities, grid equipment, cooling, energy infrastructure, and data center suppliers in addition to chips and software?
+
+2. Which companies in your clients’ portfolios own the workflow, data, compliance layer, or customer relationship that lets them embed AI into daily professional work rather than offer a standalone tool?
+
+3. Over the next 30 to 90 days, are you watching local data center approvals, hyperscaler capex updates, semiconductor supply-chain policy, and enterprise AI governance rules as closely as model launches?
+
+AI PRACTICE TIP OF THE WEEK
+What: Use AI as a “behavioral bias spotter” to diagnose the emotion behind a client’s headline-driven trade request before you respond.
+
+Why: This week’s AI news mixed excitement with real constraints: power, permitting, regulation, chips, and infrastructure bottlenecks. Clients may react to one headline with action bias, recency bias, or fear of being left behind. This helps the advisor coach the behavior first, instead of debating the investment idea too early.
+
+How to:
+1. Paste anonymized notes from a recent client call or trade request.
+2. Ask AI to identify the likely behavioral bias and the concern behind it.
+3. Use one suggested coaching question in your follow-up conversation.
+
+Copy prompt: Review the anonymized client note below. Do not give investment advice. Identify the likely behavioral bias or emotional driver behind the client’s request, such as recency bias, action bias, loss aversion, fear of missing out, or overconfidence. Then provide: 1) the likely concern the client is trying to solve, 2) one calm coaching question I can ask, 3) one fact or piece of client-specific context I should check before discussing any action, and 4) one thing I should avoid saying because it may escalate the emotion. Client note: [paste anonymized note]
+
+Guardrail: Do not paste names, account numbers, or confidential client details. Treat the output as coaching support, not a recommendation or compliance-approved client communication.

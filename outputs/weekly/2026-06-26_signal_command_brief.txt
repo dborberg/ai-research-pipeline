@@ -1,0 +1,73 @@
+AI SIGNAL COMMAND BRIEF - Conviction & Momentum Report
+Week Ending 2026-06-26
+
+Purpose:
+This report highlights the highest-conviction AI themes based on signal strength, momentum, and persistence.
+
+TOP CONVICTION SIGNALS
+
+Human-safe industrial robotics
+Conviction: 6.80
+Strength: 7.60
+Momentum: 300%
+Velocity: +3 article change
+Why It Matters:
+Certifiable safety and perception systems can expand the addressable market for robotics in logistics, manufacturing, and cold storage. Value may accrue to component suppliers, edge AI platforms, safety software vendors, and industrial automation integrators.
+
+Power and cooling bottlenecks
+Conviction: 6.69
+Strength: 6.70
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+Power availability and operating efficiency may shape where AI capacity gets built and who captures value. This creates second-order opportunities in utilities, energy procurement, thermal management, grid infrastructure, and water-efficient data-center design.
+
+Embedded enterprise workflows
+Conviction: 6.58
+Strength: 6.60
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+The next phase of AI adoption may favor platforms with distribution, workflow control, proprietary data, and compliance features. Advisors should watch software vendors and data providers that can embed AI where professionals already work.
+
+Qualcomm Broadcom
+Conviction: 6.58
+Strength: 6.60
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+The AI hardware profit pool may broaden beyond incumbent GPU leaders as customers pursue custom silicon and new suppliers enter data-center compute, networking, and memory. This has implications for semiconductor margins, bargaining power, and capex-linked equity leadership.
+
+data-center capex cycle
+Conviction: 6.58
+Strength: 6.60
+Momentum: 500%
+Velocity: +5 article change
+Why It Matters:
+This supports a multi-year capital cycle across data centers, semiconductors, power equipment, cooling, networking, and real estate. Advisors can frame AI exposure as extending well beyond software and model providers.
+
+ACCELERATING THEMES (BREAKOUTS)
+
+These themes are accelerating fastest relative to prior week.
+
+Power and cooling bottlenecks: Momentum 500%, velocity +5. Power availability and operating efficiency may shape where AI capacity gets built and who captures value
+Embedded enterprise workflows: Momentum 500%, velocity +5. The next phase of AI adoption may favor platforms with distribution, workflow control, proprietary data, and compliance features
+Qualcomm Broadcom: Momentum 500%, velocity +5. The AI hardware profit pool may broaden beyond incumbent GPU leaders as customers pursue custom silicon and new suppliers enter data-center compute, networking, and memory
+
+FADING SIGNALS
+
+No major theme showed week-over-week deterioration in this run.
+
+PORTFOLIO IMPLICATIONS
+
+Structural strengthening is concentrated in Human-safe industrial robotics, Power and cooling bottlenecks, where conviction and signal quality are both holding up.
+Cyclical noise looks more likely in Production cloud platforms, where momentum is improving faster than underlying strength.
+Conviction is increasing most clearly in Human-safe industrial robotics, Power and cooling bottlenecks, supported by rising article volume against the prior week.
+Risk appears to be fading in last week's weaker themes, where attention is rolling off and replacement risk is increasing.
+
+BOTTOM LINE
+
+1. Highest conviction theme: Human-safe industrial robotics
+2. Most important new signal: Power and cooling bottlenecks
+3. Biggest acceleration: Power and cooling bottlenecks
+4. Key risk / fading area: No material fading area
