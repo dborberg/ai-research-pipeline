@@ -1179,6 +1179,8 @@ def generate_daily_digest(report_date=None, return_metadata=False):
     content = ""
     issues = []
     extra_feedback = ""
+    best_effort_content = ""
+    best_effort_issues = []
     for attempt in range(3):
         print(
             f"Daily digest LLM attempt {attempt + 1}/3 "
@@ -1200,6 +1202,14 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             )
         except APITimeoutError:
             if attempt == 2:
+                if best_effort_content:
+                    print(
+                        "Daily digest final retry timed out; using the best available draft "
+                        "from an earlier attempt."
+                    )
+                    content = best_effort_content
+                    issues = best_effort_issues
+                    break
                 raise
 
             print(
@@ -1229,12 +1239,22 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                     "Return only the finished HTML."
                 )
                 continue
+            if best_effort_content:
+                print(
+                    "Daily digest final retry returned empty content; using the best available "
+                    "draft from an earlier attempt."
+                )
+                content = best_effort_content
+                issues = best_effort_issues
+                break
             raise ValueError(
                 f"LLM returned empty digest content "
                 f"(finish_reason={choice.finish_reason})"
             )
 
         issues = _find_diversity_issues(content, available_publishers)
+        best_effort_content = content
+        best_effort_issues = list(issues)
         if not issues:
             break
 
@@ -1244,6 +1264,12 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             "Rewrite from the same article set and fix these issues:\n- "
             + "\n- ".join(issues)
             + "\nDo not explain the fixes. Return only the corrected HTML."
+        )
+
+    if issues:
+        print(
+            "Daily digest returning best-effort output after validation retries: "
+            + "; ".join(issues)
         )
 
     # -----------------------------

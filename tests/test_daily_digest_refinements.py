@@ -1,9 +1,14 @@
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
+import types
+from unittest.mock import MagicMock
+from unittest.mock import patch
 
 from app.generate_digest import (
     _is_healthcare_fda_override,
     _is_major_earnings_override,
+    generate_daily_digest,
     frontier_technology_capital_markets_score,
     is_frontier_technology_capital_markets_event,
 )
@@ -152,6 +157,153 @@ class DailyDigestRefinementTests(unittest.TestCase):
         )
 
         self.assertEqual(validate_daily_digest_html(html), [])
+
+    def test_generate_daily_digest_returns_best_effort_when_final_retry_is_empty(self):
+        valid_article = {
+            "title": "Data center permitting review expands in Ohio",
+            "source": "Local News",
+            "original_publisher": "Local News",
+            "summary": "Local officials reviewed another AI data center permitting request tied to grid and zoning constraints.",
+            "url": "https://example.com/story",
+            "published_at": "2026-06-29T10:00:00",
+            "companies": "",
+            "advisor_relevance": "Infrastructure approvals can shape AI deployment timing.",
+            "ai_score": 7,
+            "is_space_economy_related": 0,
+            "space_relevance": "",
+            "space_ai_connection": "",
+            "space_time_horizon": "",
+            "space_investment_layer": "",
+        }
+
+        repetitive_html = _daily_html(
+            {
+                "TOP STORIES": [
+                    "<strong>Local officials reviewed a data center permitting request:</strong> The local zoning process matters because permitting can delay AI infrastructure. The implication is to monitor grid infrastructure and utility planning. (Source: Local News)",
+                    "<strong>Local officials reviewed a data center permitting request:</strong> The local zoning process matters because permitting can delay AI infrastructure. The implication is to monitor grid infrastructure and utility planning. (Source: Local News)",
+                    "<strong>Local officials reviewed a data center permitting request:</strong> The local zoning process matters because permitting can delay AI infrastructure. The implication is to monitor grid infrastructure and utility planning. (Source: Local News)",
+                ],
+                "ENTERPRISE ADOPTION AND LABOR": [
+                    "<strong>Workflow controls matter:</strong> Enterprises still need governed production systems. (Source: Gartner)"
+                ],
+                "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": [
+                    "<strong>Local officials reviewed a data center permitting request:</strong> The local zoning process matters because permitting can delay AI infrastructure. The implication is to monitor grid infrastructure and utility planning. (Source: Local News)"
+                ],
+                "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": [
+                    "<strong>Capital intensity remains high:</strong> AI infrastructure still depends on financing and supplier capacity. (Source: Bloomberg)"
+                ],
+                "REGULATION, GOVERNANCE AND POLICY": [
+                    "<strong>State AI policy moved forward:</strong> Policy rules still shape adoption standards. (Source: AP)"
+                ],
+                "PHYSICAL AI AND ROBOTICS": [
+                    "<strong>Warehouse robotics moved ahead:</strong> Automation is still entering production workflows. (Source: The Robot Report)"
+                ],
+                "WHAT TO WATCH": [
+                    "<strong>Permitting concentration:</strong> Watch whether local approvals become a broader infrastructure bottleneck. (Source: Full article set)"
+                ],
+                "ADVISOR / WHOLESALER SOUNDBITES": [
+                    "<strong>Infrastructure is local too:</strong> Permits and grid queues can shape compute capacity. (Source: Full article set)"
+                ],
+            }
+        )
+
+        responses = [
+            SimpleNamespace(
+                choices=[
+                    SimpleNamespace(
+                        message=SimpleNamespace(content=repetitive_html),
+                        finish_reason="stop",
+                    )
+                ]
+            ),
+            SimpleNamespace(
+                choices=[
+                    SimpleNamespace(
+                        message=SimpleNamespace(content=repetitive_html),
+                        finish_reason="stop",
+                    )
+                ]
+            ),
+            SimpleNamespace(
+                choices=[
+                    SimpleNamespace(
+                        message=SimpleNamespace(content=""),
+                        finish_reason="length",
+                    )
+                ]
+            ),
+        ]
+
+        class FakeClient:
+            def __init__(self, queued):
+                self._queued = list(queued)
+                self.chat = SimpleNamespace(completions=self)
+
+            def create(self, **kwargs):
+                return self._queued.pop(0)
+
+        mock_engine = MagicMock()
+        mock_conn = MagicMock()
+        mock_engine.connect.return_value.__enter__.return_value = mock_conn
+        mock_conn.execute.return_value.fetchall.return_value = [
+            (
+                valid_article["title"],
+                valid_article["source"],
+                valid_article["original_publisher"],
+                valid_article["summary"],
+                valid_article["url"],
+                valid_article["published_at"],
+                valid_article["companies"],
+                valid_article["advisor_relevance"],
+                valid_article["ai_score"],
+                valid_article["is_space_economy_related"],
+                valid_article["space_relevance"],
+                valid_article["space_ai_connection"],
+                valid_article["space_time_horizon"],
+                valid_article["space_investment_layer"],
+            )
+        ]
+
+        fake_openai = types.ModuleType("openai")
+        fake_openai.APITimeoutError = type("APITimeoutError", (Exception,), {})
+        fake_openai.OpenAI = lambda *args, **kwargs: FakeClient(responses)
+
+        fake_sqlalchemy = types.ModuleType("sqlalchemy")
+        fake_sqlalchemy.text = lambda value: value
+
+        fake_branding = types.ModuleType("app.branding")
+        fake_branding.DAILY_TITLE = "Beyond the Horizon: Daily Riffs from the Gen AI Songbook"
+
+        fake_db = types.ModuleType("app.db")
+        fake_db.get_engine = lambda: mock_engine
+
+        fake_pipeline_window = types.ModuleType("app.pipeline_window")
+        fake_pipeline_window.get_pipeline_window = lambda hours=24: (
+            SimpleNamespace(isoformat=lambda: "2026-06-28T11:30:00"),
+            SimpleNamespace(isoformat=lambda: "2026-06-29T11:30:00"),
+        )
+
+        fake_space = types.ModuleType("app.space_economy")
+        fake_space.SPACE_ECONOMY_FILTER_PROMPT = ""
+        fake_space.calculate_space_economy_theme_active = lambda *args, **kwargs: False
+        fake_space.ensure_space_metadata = lambda article: article
+        fake_space.format_space_metadata_lines = lambda article: []
+
+        with patch.dict(
+            "sys.modules",
+            {
+                "openai": fake_openai,
+                "sqlalchemy": fake_sqlalchemy,
+                "app.branding": fake_branding,
+                "app.db": fake_db,
+                "app.pipeline_window": fake_pipeline_window,
+                "app.space_economy": fake_space,
+            },
+        ):
+            result = generate_daily_digest(return_metadata=True)
+
+        self.assertEqual(result["content"], repetitive_html)
+        self.assertEqual(result["source_articles"][0]["title"], valid_article["title"])
 
     def test_validator_flags_local_data_center_permitting_repetition(self):
         repeated = "<strong>Local officials reviewed a data center permitting request:</strong> The local zoning process matters because permitting can delay AI infrastructure. The implication is to monitor grid infrastructure and utility planning. (Source: Local News)"
