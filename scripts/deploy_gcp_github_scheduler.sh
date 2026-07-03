@@ -13,7 +13,6 @@ GITHUB_TOKEN="${GITHUB_TOKEN:-}"
 DAILY_CRON="${DAILY_CRON:-30 6 * * *}"
 WEEKLY_WHOLESALER_CRON="${WEEKLY_WHOLESALER_CRON:-0 8 * * 5}"
 WEEKLY_THEMATIC_CRON="${WEEKLY_THEMATIC_CRON:-15 8 * * 5}"
-WEEKLY_SIGNAL_CRON="${WEEKLY_SIGNAL_CRON:-30 8 * * 5}"
 MONTHLY_CRON="${MONTHLY_CRON:-0 10 1 * *}"
 
 if [[ -z "$GITHUB_TOKEN" ]]; then
@@ -86,7 +85,6 @@ main() {
   create_payload "$TEMP_DIR/daily.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"scheduled_run\":\"true\"}}"
   create_payload "$TEMP_DIR/weekly-wholesaler.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"mode\":\"WHOLESALER\",\"scheduled_run\":\"true\"}}"
   create_payload "$TEMP_DIR/weekly-thematic.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"mode\":\"THEMATIC\",\"scheduled_run\":\"true\"}}"
-  create_payload "$TEMP_DIR/weekly-signal.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"mode\":\"SIGNAL\",\"scheduled_run\":\"true\"}}"
   create_payload "$TEMP_DIR/monthly.json" "{\"ref\":\"${GITHUB_REF}\",\"inputs\":{\"scheduled_run\":\"true\"}}"
 
   upsert_http_job \
@@ -109,13 +107,6 @@ main() {
     "Trigger the weekly thematic GitHub workflow from Cloud Scheduler" \
     "${URI_BASE}/weekly_digests.yml/dispatches" \
     "$TEMP_DIR/weekly-thematic.json"
-
-  upsert_http_job \
-    ai-research-gh-weekly-signal \
-    "$WEEKLY_SIGNAL_CRON" \
-    "Trigger the weekly signal GitHub workflow from Cloud Scheduler" \
-    "${URI_BASE}/weekly_digests.yml/dispatches" \
-    "$TEMP_DIR/weekly-signal.json"
 
   upsert_http_job \
     ai-research-gh-monthly \

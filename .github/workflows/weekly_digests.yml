@@ -11,7 +11,6 @@ on:
         options:
           - WHOLESALER
           - THEMATIC
-          - SIGNAL
       scheduled_run:
         description: Set to true when this workflow is dispatched by GCP Cloud Scheduler
         required: false
@@ -79,7 +78,6 @@ jobs:
           case "$TYPE" in
             WHOLESALER) OUTPUT_PATH="outputs/weekly/${WEEK_START}_wholesaler.txt" ;;
             THEMATIC) OUTPUT_PATH="outputs/weekly/${WEEK_START}_thematic.txt" ;;
-            SIGNAL) OUTPUT_PATH="outputs/weekly/${WEEK_START}_signal_command_brief.txt" ;;
             *) OUTPUT_PATH="" ;;
           esac
 

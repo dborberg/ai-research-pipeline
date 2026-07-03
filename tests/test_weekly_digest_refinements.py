@@ -253,6 +253,80 @@ class WeeklyDigestRefinementTests(unittest.TestCase):
             run_weekly_pipeline.fetch_daily_digests = original_fetch
             run_weekly_pipeline.load_daily_digests_from_files = original_archive
 
+    def test_weekly_archive_fallback_respects_signal_caps(self):
+        original_engine = run_weekly_pipeline.get_engine
+        original_archive = run_weekly_pipeline.load_weekly_articles_from_daily_snapshots
+        original_frontier = run_weekly_pipeline.is_frontier_technology_capital_markets_event
+        try:
+            class _FakeResult:
+                def __init__(self, rows):
+                    self._rows = rows
+
+                def mappings(self):
+                    return self
+
+                def all(self):
+                    return list(self._rows)
+
+            class _FakeConnection:
+                def __enter__(self):
+                    return self
+
+                def __exit__(self, exc_type, exc, tb):
+                    return False
+
+                def execute(self, *args, **kwargs):
+                    return _FakeResult([])
+
+            class _FakeEngine:
+                def connect(self):
+                    return _FakeConnection()
+
+            archived_articles = []
+            for index in range(40):
+                archived_articles.append(
+                    {
+                        "id": index + 1,
+                        "title": f"High signal article {index}",
+                        "url": f"https://example.com/high-{index}",
+                        "published_at": f"2026-07-03T{index % 24:02d}:00:00",
+                        "summary": "High signal summary",
+                        "advisor_relevance": "High signal relevance",
+                        "companies": [],
+                        "ai_score": 9,
+                    }
+                )
+            for index in range(40):
+                archived_articles.append(
+                    {
+                        "id": 100 + index,
+                        "title": f"Medium signal article {index}",
+                        "url": f"https://example.com/medium-{index}",
+                        "published_at": f"2026-07-02T{index % 24:02d}:00:00",
+                        "summary": "Medium signal summary",
+                        "advisor_relevance": "Medium signal relevance",
+                        "companies": [],
+                        "ai_score": 7,
+                    }
+                )
+
+            run_weekly_pipeline.get_engine = lambda: _FakeEngine()
+            run_weekly_pipeline.load_weekly_articles_from_daily_snapshots = lambda week_start: archived_articles
+            run_weekly_pipeline.is_frontier_technology_capital_markets_event = lambda article: False
+
+            article_data = run_weekly_pipeline.get_weekly_articles(date(2026, 7, 3))
+
+            self.assertEqual(len(article_data["high_signal"]), run_weekly_pipeline.HIGH_SIGNAL_LIMIT)
+            self.assertEqual(len(article_data["medium_signal"]), run_weekly_pipeline.MEDIUM_SIGNAL_LIMIT)
+            self.assertEqual(
+                len(article_data["articles"]),
+                run_weekly_pipeline.HIGH_SIGNAL_LIMIT + run_weekly_pipeline.MEDIUM_SIGNAL_LIMIT,
+            )
+        finally:
+            run_weekly_pipeline.get_engine = original_engine
+            run_weekly_pipeline.load_weekly_articles_from_daily_snapshots = original_archive
+            run_weekly_pipeline.is_frontier_technology_capital_markets_event = original_frontier
+
     def test_validator_accepts_weekly_spacex_ipo_synthesis(self):
         self.assertEqual(validate_weekly_digest_text(_valid_weekly_text()), [])
 

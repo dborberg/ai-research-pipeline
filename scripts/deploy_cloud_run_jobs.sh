@@ -88,10 +88,6 @@ deploy_job ai-research-weekly-thematic "" \
   --command=python \
   --args=run_weekly_investment_pipeline.py,--mode,THEMATIC
 
-deploy_job ai-research-weekly-signal "" \
-  --command=python \
-  --args=run_weekly_investment_pipeline.py,--mode,SIGNAL
-
 deploy_job ai-research-monthly "" \
   --command=python \
   --args=run_monthly_pipeline.py

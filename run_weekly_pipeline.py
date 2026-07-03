@@ -545,6 +545,21 @@ def _weekly_article_dedupe_key(article):
     )
 
 
+def _weekly_article_rank_key(article):
+    return (
+        float(article.get("signal_score") or article.get("ai_score") or 0),
+        float(article.get("priority_score") or 0),
+        float(article.get("content_quality") or 0),
+        str(article.get("published_at") or ""),
+    )
+
+
+def _limit_weekly_articles(articles, limit):
+    if len(articles) <= limit:
+        return articles
+    return sorted(articles, key=_weekly_article_rank_key, reverse=True)[:limit]
+
+
 def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
     window_start, window_end = get_weekly_window_bounds(week_start)
 
@@ -802,6 +817,9 @@ def get_weekly_articles(week_start, score_threshold=DEFAULT_SCORE_THRESHOLD):
             article["signal_tier"] = "MEDIUM SIGNAL"
             medium_signal.append(article)
             selected_article_keys.add(article_key)
+
+    high_signal = _limit_weekly_articles(high_signal, HIGH_SIGNAL_LIMIT)
+    medium_signal = _limit_weekly_articles(medium_signal, MEDIUM_SIGNAL_LIMIT)
 
     articles = high_signal + medium_signal + frontier_capital_markets
     space_economy_theme_active = calculate_space_economy_theme_active(
@@ -1924,12 +1942,10 @@ def _generate_and_store_weekly_reports(client, week_start):
     previous_cluster_df = normalize_cluster_df(pd.DataFrame(previous_cluster_rows))
 
     velocity_df = compute_velocity(current_cluster_df, previous_cluster_df)
-    current_cluster_df = normalize_cluster_df(apply_velocity_metrics(current_cluster_df, velocity_df))
-    signal_command_brief = generate_signal_command_brief(current_cluster_df, week_start)
+    normalize_cluster_df(apply_velocity_metrics(current_cluster_df, velocity_df))
 
     upsert_weekly_digest(week_start, WHOLESALER_TYPE, wholesaler_content)
     upsert_weekly_digest(week_start, THEMATIC_TYPE, thematic_content)
-    upsert_weekly_digest(week_start, "signal_command_brief", signal_command_brief)
 
     save_text_output(
         "outputs/weekly",
@@ -1940,11 +1956,6 @@ def _generate_and_store_weekly_reports(client, week_start):
         "outputs/weekly",
         f"{week_start.isoformat()}_{THEMATIC_TYPE}.txt",
         thematic_content,
-    )
-    save_text_output(
-        "outputs/weekly",
-        f"{week_start.isoformat()}_signal_command_brief.txt",
-        signal_command_brief,
     )
     save_text_output(
         "outputs/weekly",
@@ -1960,7 +1971,6 @@ def _generate_and_store_weekly_reports(client, week_start):
     return {
         WHOLESALER_TYPE: wholesaler_content,
         THEMATIC_TYPE: thematic_content,
-        "signal_command_brief": signal_command_brief,
     }
 
 
@@ -1994,16 +2004,14 @@ def main():
     digest_type_map = {
         "WHOLESALER": WHOLESALER_TYPE,
         "THEMATIC": THEMATIC_TYPE,
-        "SIGNAL": "signal_command_brief",
     }
     subject_map = {
         "WHOLESALER": WHOLESALER_TITLE,
         "THEMATIC": THEMATIC_TITLE,
-        "SIGNAL": f"[WEEKLY - SIGNAL] AI Signal Command Brief - Week Ending {week_start.isoformat()}",
     }
 
     if args.mode not in digest_type_map:
-        raise RuntimeError("--mode must be one of WHOLESALER, THEMATIC, SIGNAL")
+        raise RuntimeError("--mode must be one of WHOLESALER, THEMATIC")
 
     content = None
 

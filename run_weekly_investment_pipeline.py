@@ -11,7 +11,6 @@ from run_weekly_pipeline import THEMATIC_TITLE, WHOLESALER_TITLE, _generate_and_
 
 WHOLESALER_TYPE = "wholesaler"
 THEMATIC_TYPE = "thematic"
-SIGNAL_TYPE = "signal_command_brief"
 
 
 def _get_stored_weekly_digest_content(week_start, digest_type):
@@ -26,27 +25,23 @@ def _load_or_generate_reports(mode, week_start):
     digest_type_map = {
         "WHOLESALER": WHOLESALER_TYPE,
         "THEMATIC": THEMATIC_TYPE,
-        "SIGNAL": SIGNAL_TYPE,
     }
 
     stored_reports = {
         WHOLESALER_TYPE: _get_stored_weekly_digest_content(week_start, WHOLESALER_TYPE),
         THEMATIC_TYPE: _get_stored_weekly_digest_content(week_start, THEMATIC_TYPE),
-        SIGNAL_TYPE: _get_stored_weekly_digest_content(week_start, SIGNAL_TYPE),
     }
 
     if mode == "WHOLESALER" and all(stored_reports.values()):
         return {
             "wholesaler": stored_reports[WHOLESALER_TYPE],
             "thematic": stored_reports[THEMATIC_TYPE],
-            "signal": stored_reports[SIGNAL_TYPE],
         }
 
     if mode != "WHOLESALER" and stored_reports[digest_type_map[mode]]:
         return {
             "wholesaler": stored_reports[WHOLESALER_TYPE],
             "thematic": stored_reports[THEMATIC_TYPE],
-            "signal": stored_reports[SIGNAL_TYPE],
         }
 
     api_key = os.getenv("OPENAI_API_KEY")
@@ -58,7 +53,6 @@ def _load_or_generate_reports(mode, week_start):
     return {
         "wholesaler": generated[WHOLESALER_TYPE],
         "thematic": generated[THEMATIC_TYPE],
-        "signal": generated[SIGNAL_TYPE],
     }
 
 
@@ -72,20 +66,18 @@ def main():
 
     week_start = get_latest_completed_friday()
 
-    if args.mode not in {"WHOLESALER", "THEMATIC", "SIGNAL"}:
-        raise RuntimeError("--mode must be one of WHOLESALER, THEMATIC, SIGNAL")
+    if args.mode not in {"WHOLESALER", "THEMATIC"}:
+        raise RuntimeError("--mode must be one of WHOLESALER, THEMATIC")
 
     reports = _load_or_generate_reports(args.mode, week_start)
 
     subject_map = {
         "WHOLESALER": WHOLESALER_TITLE,
         "THEMATIC": THEMATIC_TITLE,
-        "SIGNAL": f"[WEEKLY - SIGNAL] AI Signal Command Brief - Week Ending {week_start.isoformat()}",
     }
     content_map = {
         "WHOLESALER": reports["wholesaler"],
         "THEMATIC": reports["thematic"],
-        "SIGNAL": reports["signal"],
     }
 
     send_report(subject_map[args.mode], content_map[args.mode])

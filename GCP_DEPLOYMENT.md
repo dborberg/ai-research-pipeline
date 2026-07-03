@@ -22,8 +22,7 @@ The deploy script updates or creates these Cloud Run Jobs in `us-central1`:
 2. `ai-research-daily-dry-run`
 3. `ai-research-weekly-wholesaler`
 4. `ai-research-weekly-thematic`
-5. `ai-research-weekly-signal`
-6. `ai-research-monthly`
+5. `ai-research-monthly`
 
 All jobs use the same container image and set runtime secrets from Secret Manager.
 
@@ -102,8 +101,7 @@ This creates these Cloud Scheduler jobs in `us-central1` using `America/Chicago`
 1. `ai-research-gh-daily` at `6:30 AM`
 2. `ai-research-gh-weekly-wholesaler` at `8:00 AM Friday`
 3. `ai-research-gh-weekly-thematic` at `8:15 AM Friday`
-4. `ai-research-gh-weekly-signal` at `8:30 AM Friday`
-5. `ai-research-gh-monthly` at `10:00 AM` on the first day of the month
+4. `ai-research-gh-monthly` at `10:00 AM` on the first day of the month
 
 The script is idempotent and updates existing jobs in place.
 
