@@ -1,3 +1,4 @@
+import hashlib
 import json
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -8,6 +9,7 @@ DAILY_OUTPUT_DIR = REPO_ROOT / "outputs" / "daily"
 DAILY_SNAPSHOT_DIR = DAILY_OUTPUT_DIR / "source_snapshots"
 
 _ARCHIVED_ARTICLE_FIELDS = [
+    "id",
     "title",
     "source",
     "original_publisher",
@@ -47,8 +49,24 @@ def _daily_digest_path(snapshot_date):
     return DAILY_OUTPUT_DIR / f"{_normalize_date(snapshot_date)}.txt"
 
 
+def _archived_article_dedupe_key(article):
+    return (
+        str(article.get("url") or "").strip().lower(),
+        str(article.get("title") or "").strip().lower(),
+        str(article.get("published_at") or "").strip(),
+    )
+
+
+def _fallback_article_id(article):
+    digest_source = "|".join(_archived_article_dedupe_key(article))
+    digest = hashlib.sha1(digest_source.encode("utf-8")).hexdigest()
+    return -int(digest[:15], 16)
+
+
 def _normalize_archived_article(article):
     archived = {field: article.get(field) for field in _ARCHIVED_ARTICLE_FIELDS}
+    if archived.get("id") is None:
+        archived["id"] = _fallback_article_id(archived)
     companies = archived.get("companies")
     if isinstance(companies, tuple):
         archived["companies"] = list(companies)
@@ -76,7 +94,7 @@ def load_daily_source_snapshot(snapshot_date):
     articles = payload.get("articles")
     if not isinstance(articles, list):
         return []
-    return articles
+    return [_normalize_archived_article(article) for article in articles]
 
 
 def load_daily_digest_file(snapshot_date):
@@ -103,11 +121,7 @@ def load_weekly_articles_from_daily_snapshots(week_ending):
     for offset in range(6, -1, -1):
         snapshot_date = week_ending - timedelta(days=offset)
         for article in load_daily_source_snapshot(snapshot_date):
-            dedupe_key = (
-                str(article.get("url") or "").strip().lower(),
-                str(article.get("title") or "").strip().lower(),
-                str(article.get("published_at") or "").strip(),
-            )
+            dedupe_key = _archived_article_dedupe_key(article)
             if dedupe_key in seen_keys:
                 continue
             seen_keys.add(dedupe_key)
