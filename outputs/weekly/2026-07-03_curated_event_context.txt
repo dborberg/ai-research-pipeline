@@ -1,0 +1,382 @@
+SUPPLEMENTAL INPUT: TIER 2 WEEKLY OVERRIDE CANDIDATES
+
+These candidates come from an independent review of the prior seven calendar days of Gen AI and AI-adjacent source material.
+
+Use them only when they represent systemic weekly developments, not to flood the Weekly with unrelated stories.
+
+
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: X Square Robot builds a full-stack approach to embodied AI and general-purpose robotics
+SOURCE: Robotics & Automation News
+PUBLISHED_AT: 2026-07-03T06:38:48
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: The article highlights how AI investment is expanding beyond software into physical AI, robotics hardware, data infrastructure and capital-intensive model development. X Square Robot’s funding, valuation and full-stack strategy point to growing investor interest in general-purpose robotics and potential second-order demand for sensors, robotic components, data systems and deployment infrastructure.
+SUMMARY: Shenzhen-based X Square Robot, founded in 2023, has completed four consecutive financing rounds through Series C and is now valued at over RMB20 billion. The company is building a full-stack embodied AI platform spanning foundation models, robotics hardware, data collection infrastructure and commercial deployments for use cases across homes, care facilities, factories and logistics centers.
+COMPANIES: X Square Robot
+EVENT_PRIORITY: 87.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 66
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: Gen AI
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: General Intuition raises $320M to use video game data to train robots
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-06-26T18:38:36
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This highlights continued capital intensity in AI, especially for physical AI and robotics, where companies are seeking differentiated data sources and larger compute budgets to train models that can act in real-world environments. For advisor conversations, it supports the view that AI investment opportunities extend beyond language models into robotics, infrastructure, data platforms, and potential second-derivative beneficiaries tied to compute and automation.
+SUMMARY: General Intuition raised $320 million in Series A funding at a $2.3 billion valuation to build AI models that can perceive, predict, and act in virtual and physical environments. The company uses billions of action-labeled video game clips from Medal to train action and world models for robotics, and plans to scale compute capacity and broaden API availability this summer.
+COMPANIES: General Intuition, Medal, General Catalyst, Amazon, Google, TechCrunch, The Robot Report
+EVENT_PRIORITY: 86.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 66
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: China's embodied AI industry urges faster regulation amid bubble risks - MLex
+SOURCE: "AI regulation" - Google News
+PUBLISHED_AT: 2026-07-03T06:04:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because embodied AI sits at the intersection of robotics, automation, and AI infrastructure, areas that could become important long-term growth themes. However, the emphasis on faster regulation and bubble risks suggests advisors should frame China’s embodied AI opportunity with caution around policy uncertainty, valuation discipline, and uneven commercialization.
+SUMMARY: China's embodied AI industry is calling for faster regulation as concerns grow over potential bubble risks. The article points to governance pressure in a rapidly developing physical AI segment, but the provided text does not include specific companies, policies, or investment figures.
+COMPANIES: 
+EVENT_PRIORITY: 83.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 63
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Synaptics Acquisition by Onsemi Affirms Edge AI Is for Real
+SOURCE: EE Times
+PUBLISHED_AT: 2026-06-26T14:41:31
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because it suggests semiconductor companies are positioning for AI workloads beyond data centers, especially at the edge where sensing, power management, and compute converge. The deal offers a read-through to second-derivative AI beneficiaries tied to physical AI, industrial devices, and edge infrastructure.
+SUMMARY: Onsemi’s acquisition of Synaptics is presented as a move by a power and sensing specialist to add AI-native compute assets. The deal points to growing commercial interest in edge AI and the broader physical AI market.
+COMPANIES: Onsemi, Synaptics
+EVENT_PRIORITY: 79.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 63
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: AI ‘exuberance’ risks ending in lengthy investment bust, BIS warns - Financial Times
+SOURCE: "AI investment" - Google News
+PUBLISHED_AT: 2026-06-28T09:00:07
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters for advisor conversations because it frames AI not only as a growth opportunity but also as a potential source of market-cycle risk. It supports a balanced discussion around concentration, valuation discipline, and the possibility that AI infrastructure and related investments may face a longer digestion period if returns disappoint.
+SUMMARY: The Financial Times reports that the Bank for International Settlements warned AI-related market exuberance could end in a prolonged investment bust. The warning points to risks that current AI optimism and capital spending expectations may run ahead of realized economic returns.
+COMPANIES: 
+EVENT_PRIORITY: 68.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: NVIDIA BioNeMo accelerates Anthropic Claude Science
+SOURCE: AI News
+PUBLISHED_AT: 2026-07-02T14:38:01
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is a concrete example of AI moving from general-purpose chat into production-oriented, domain-specific workflows with enterprise relevance. For advisors, the read-through is that AI monetization may increasingly come from platform convergence: model providers like Anthropic integrating with infrastructure and software ecosystems like NVIDIA’s to automate high-value professional workflows in pharma and biotechnology. The article also reinforces NVIDIA’s position beyond chips, highlighting software, microservices, and domain-specific toolkits as potential drivers of AI infrastructure stickiness.
+SUMMARY: Anthropic’s public beta of Claude Science now integrates NVIDIA’s BioNeMo Agent Toolkit, allowing scientists to use natural language to run end-to-end computational life sciences workflows. The integration exposes NVIDIA-accelerated models, NIM microservices, and high-performance computing tools inside Claude’s agent environment, with reported speedups in genomics, single-cell analysis, and cheminformatics.
+COMPANIES: NVIDIA, Anthropic
+EVENT_PRIORITY: 31.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: AI infrastructure
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Meet WebBrain: An Open-Source, Local-First AI Browser Agent That Reads Pages and Automates Tasks in Chrome and Firefox
+SOURCE: MarkTechPost
+PUBLISHED_AT: 2026-07-03T05:55:47
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 3.4
+ADVISOR_RELEVANCE: This points to continued movement toward AI agents embedded in everyday workflow surfaces such as browsers, with potential implications for productivity software, enterprise automation, and privacy-sensitive AI adoption. However, the article describes an open-source tool rather than a commercial deployment or monetization milestone, so the direct investment relevance is limited.
+SUMMARY: WebBrain is described as a free, MIT-licensed AI browser agent for Chrome and Firefox that can read web pages, extract data, and automate multi-step tasks. It supports Ask and Act modes and can run on local models such as llama.cpp or Ollama for privacy, while also allowing connections to cloud APIs.
+COMPANIES: Ollama, Google Chrome, Mozilla Firefox
+EVENT_PRIORITY: 30.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: AgentBound: Verifiable Behavioral Governance for Autonomous AI Agents
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-07-01T04:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 3.2
+ADVISOR_RELEVANCE: This is an early technical proposal, but it highlights a key adoption bottleneck for enterprise AI agents: organizations need deterministic controls, audit trails, and revocable authority before agents can safely execute consequential workflows. The read-through is that governance, identity, compliance, and workflow orchestration layers may become important parts of enterprise AI infrastructure as agent use cases mature.
+SUMMARY: The paper introduces AgentBound, a runtime governance framework for autonomous AI agents that evaluates proposed actions before execution using delegated authorization, owner-signed behavioral constitutions, and site action contracts. It aims to make agent behavior auditable through cryptographically verifiable governance receipts and supports standing delegation for long-running agents under revocable, bounded authority.
+COMPANIES: 
+EVENT_PRIORITY: 29.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Managed Autonomy at Runtime: Gear-Based Safety and Governance for Single- and Multi-Agent Cyber-Physical Systems
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-07-02T04:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 3.0
+ADVISOR_RELEVANCE: This is an early-stage academic development, but it points to a key adoption bottleneck for autonomous agents and robotics: runtime safety, governance, and fallback controls. If similar approaches mature, they could support broader enterprise deployment of agentic AI and physical automation by reducing operational risk in multi-agent systems.
+SUMMARY: The paper proposes a managed-autonomy runtime for LLM-driven software agents and robotic cyber-physical systems, using five execution “gears,” utility-gated dispatch, and event-driven fallback to reduce unsafe or unstable autonomous behavior. In a three-agent UR5 robotic assembly cell evaluated over 10,000 Monte Carlo episodes, the system reported a 99.6% anomaly detection rate, 3.5x lower detection latency, and a formal physical-workspace safety certificate under stated assumptions.
+COMPANIES: 
+EVENT_PRIORITY: 28.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: Gen AI
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: software-data-analytics
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Japan’s answer to its worker shortage: An AI model for 10 million robots
+SOURCE: AI News
+PUBLISHED_AT: 2026-07-01T11:00:00
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 6.3
+ADVISOR_RELEVANCE: This is a concrete example of AI moving from software and cloud use cases into physical automation, with direct implications for robotics, sensors, industrial hardware, manufacturing, healthcare, food production and labor substitution. The staged public funding structure also highlights how governments may help underwrite capital-intensive AI infrastructure while still requiring milestones, creating potential opportunities for consortium members and second-derivative suppliers if the project advances.
+SUMMARY: Japan has formally commissioned Noetra and AIST to develop a multimodal “physical AI” foundation model intended to support deployment of 10 million AI-powered robots across 18 industries by 2040. The program is backed by up to one trillion yen, or roughly US$6.1 billion, over five years, though only the first two years are locked in and future funding is subject to stage-gate reviews. The effort is aimed at addressing Japan’s worker shortage while building a potentially exportable robotics and AI platform.
+COMPANIES: Noetra, SoftBank, NEC, Sony Group, Honda, Fujitsu, Rakuten, Preferred Networks
+EVENT_PRIORITY: 28.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: JuZhou 1.0 Technical Report: The First Edge-Native Text-to-Image Foundation Model Trained Entirely on China-Developed AI Accelerators
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-06-30T04:00:00
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 4.1
+ADVISOR_RELEVANCE: This report offers a concrete signal that generative AI workloads may increasingly move from cloud-only infrastructure toward edge devices, potentially affecting demand across mobile chips, AI accelerators, smartphones, and privacy-sensitive consumer AI applications. It also highlights China’s push to train advanced AI models on domestic accelerators, which is relevant to discussions around semiconductor supply chains, AI sovereignty, and alternatives to NVIDIA-dependent infrastructure.
+SUMMARY: JuZhou 1.0 is presented as an ultra-lightweight text-to-image foundation model designed for fully offline, on-device execution, with about 0.387B parameters and 4-step inference after distillation. The model was trained and distilled on China-developed Sugon K100 AI accelerators without NVIDIA GPUs, supports direct Chinese prompting, and was validated on Android and iOS generation pipelines, including a reported 4.5-second full Android poetry-to-image pipeline on Xiaomi 17 Pro Max.
+COMPANIES: Sugon, NVIDIA, Qualcomm, Xiaomi, Apple, Google
+EVENT_PRIORITY: 28.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Claude Meets Blackwell Ultra: Anthropic’s Models Now Run on NVIDIA GB300 in Azure
+SOURCE: NVIDIA Blog
+PUBLISHED_AT: 2026-06-29T17:00:19
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This highlights continued convergence between leading AI model providers, cloud platforms, and advanced GPU infrastructure. For advisors, it reinforces the investment relevance of enterprise AI deployment, high-end accelerator demand, and cloud ecosystems as companies move from experimentation toward agent-based AI applications.
+SUMMARY: Anthropic’s Claude models are now generally available in Microsoft Foundry, hosted on Microsoft Azure and running on NVIDIA GB300 Blackwell Ultra GPUs. The offering gives Azure-native enterprises access to advanced compute for building autonomous and domain-specific AI agents.
+COMPANIES: Anthropic, Microsoft, NVIDIA
+EVENT_PRIORITY: 28.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: MBody AI expands service robotics operations to eleven states and Canada
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-06-29T15:41:42
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 4.6
+ADVISOR_RELEVANCE: This highlights a concrete physical AI adoption signal: service robots moving beyond pilots into broader multi-state commercial deployments. The article is relevant for advisor conversations about how AI may create investable opportunities outside software, including robotics platforms, fleet orchestration, labor substitution, predictive maintenance, and industry-specific automation in hospitality, gaming, commercial real estate, healthcare, and data center operations.
+SUMMARY: MBody AI is expanding its enterprise service robotics operations to eleven U.S. states and Canada, including deployments in Florida and California and a pilot in Ontario. Its hardware-agnostic Orchestrator platform coordinates multi-robot fleets, supports remote monitoring, task assignment, deployment optimization, predictive maintenance, and AI-driven operational insights. Check-Cap, which plans to merge with MBody AI, said the combined company is expected to become a publicly traded provider of enterprise-grade AI orchestration for robots across several service-heavy industries.
+COMPANIES: MBody AI Corp., Check-Cap Ltd., Mordor Intelligence, Statista, Nasdaq
+EVENT_PRIORITY: 28.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: HP accelerates enterprise workflows with OpenAI Frontier
+SOURCE: AI News
+PUBLISHED_AT: 2026-06-29T12:22:45
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is a concrete example of a large enterprise moving AI from pilots into broader operations, supporting the investment case that generative AI adoption is progressing into production workflows. It is relevant for conversations about productivity gains, enterprise software integration, cybersecurity use cases, and potential second-order beneficiaries tied to AI-enabled workflow redesign.
+SUMMARY: HP has scaled its OpenAI Frontier integration across global operations after pilots that reportedly produced verified gains in software engineering and cybersecurity remediation. The move indicates a shift from limited AI experimentation toward an enterprise-wide operating model for workflow optimization.
+COMPANIES: HP, OpenAI
+EVENT_PRIORITY: 28.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Automate 2026 show recap
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-07-02T16:35:58
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 4.8
+ADVISOR_RELEVANCE: This matters because the article points to tangible AI adoption in industrial automation, where value may accrue not only to robot makers but also to software orchestration platforms, edge/cloud infrastructure providers, digital twin ecosystems, and automation suppliers. For advisor conversations, the key takeaway is that physical AI is becoming more operationally relevant in manufacturing and logistics, with labor shortages and productivity needs driving adoption beyond early-stage humanoid narratives.
+SUMMARY: The Automate 2026 recap highlights a robotics industry shift from early humanoid hype toward practical deployment of physical AI, edge computing, software orchestration, digital twins, and advanced robot motion. The discussion emphasized real-world automation use cases such as AI-powered palletizing, zero-shot picking, bin picking, natural language robot programming, and factory orchestration aimed at addressing labor shortages and preserving manufacturing knowledge.
+COMPANIES: Boston Dynamics, Agility, ABB Robotics, NVIDIA, FANUC, Sereact, Schneider Electric, Siemens, Rockwell Automation, OTTO Motors, SEW-EURODRIVE, Raymond, Mech-Mind, Vention, Kassow Robots, Tiger Data, TimescaleDB
+EVENT_PRIORITY: 26.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: robotics
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: software-data-analytics
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Luxonis closes Series A round to scale physical AI perception layer
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-07-02T12:00:32
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 7.5
+ADVISOR_RELEVANCE: This is a concrete financing and scaling signal in the physical AI stack, where perception hardware, edge compute, and developer software are becoming enabling layers for robotics and industrial automation. For advisor conversations, the read-through is that AI investment is broadening beyond cloud models into sensors, embedded compute, manufacturing capacity, and real-world automation suppliers.
+SUMMARY: Luxonis raised $14 million in Series A funding to expand commercial operations, R&D, engineering support, and production capacity for its OAK camera platform. The company positions its hardware and DepthAI software as a perception layer for physical AI, supporting robotics and automation deployments across agriculture, defense, industrial automation, medtech, warehousing, and other markets.
+COMPANIES: Luxonis, Denali Growth Partners, Taiwania Capital, NVIDIA, FARM-ING
+EVENT_PRIORITY: 26.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: robotics
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: SceneBot: Contact-Prompted General Humanoid Whole Body Tracking with Scene-Interaction
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-06-29T04:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 3.2
+ADVISOR_RELEVANCE: This is an early-stage robotics research development rather than a commercial deployment, but it points to progress in physical AI: enabling humanoids to interact more reliably with objects, stairs, and uneven environments. For advisor conversations, it supports the broader view that AI opportunities are expanding beyond software into robotics, embodied AI, and long-term automation use cases, though near-term investment implications are indirect.
+SUMMARY: SceneBot is a humanoid robotics research framework designed to improve whole-body tracking in contact-rich settings such as terrain traversal, object manipulation, and carrying items upstairs. The approach conditions a single reinforcement-learning policy on reference motions and per-link contact labels, using reconstructed scene-interaction data to train on 7.5 hours of contact-rich motion. The authors report generalization to unseen motions and environments and plan to open-source the code and data.
+COMPANIES: 
+EVENT_PRIORITY: 25.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: robotics
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: software-data-analytics
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Soft, robotic cells from morph embed physical AI into hardware
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-06-30T12:30:35
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 5.0
+ADVISOR_RELEVANCE: This is an early but concrete example of AI moving from software-only models into embodied systems, with potential read-throughs for robotics, healthcare devices, industrial safety, and suppliers of compute infrastructure used to model and simulate complex physical systems. While morph is private and still early-stage, the article reinforces the broader investment theme that physical AI may require tightly integrated hardware, software, sensing, and manufacturing capabilities.
+SUMMARY: London-based robotics startup morph launched a physically intelligent soft robotics platform that embeds sensing and adaptive control into deformable materials, creating “soft robotic cells” that can change shape or stiffness in real time. The company is pursuing a B2B model as a software, design, and fabrication partner, initially targeting healthcare applications such as athletic performance, injury prevention, and mobility support, with longer-term potential in automotive and industrial safety.
+COMPANIES: morph, 8VC, Copper, Qubit Health Capital, Valia Ventures, Blue Lion, Equinox Group, Google, NVIDIA
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: robotics
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
