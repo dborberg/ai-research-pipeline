@@ -48,6 +48,9 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Fetch latest main for duplicate checks
+        run: git fetch origin main
+
       - name: Determine job type
         id: determine_type
         run: |
@@ -85,7 +88,7 @@ jobs:
             echo "OUTPUT_PATH=$OUTPUT_PATH" >> $GITHUB_ENV
           fi
 
-          if [[ -n "$OUTPUT_PATH" && "${{ github.event.inputs.scheduled_run }}" == "true" ]] && git cat-file -e "HEAD:${OUTPUT_PATH}"; then
+          if [[ -n "$OUTPUT_PATH" && "${{ github.event.inputs.scheduled_run }}" == "true" ]] && git cat-file -e "origin/main:${OUTPUT_PATH}"; then
             if [[ "$TYPE" == "WHOLESALER" ]]; then
               echo "SKIP_RUN=true" >> $GITHUB_ENV
               echo "skip_run=true" >> $GITHUB_OUTPUT
@@ -98,6 +101,17 @@ jobs:
           else
             echo "SKIP_RUN=false" >> $GITHUB_ENV
             echo "skip_run=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Hydrate persisted weekly artifacts
+        if: steps.determine_type.outputs.type != '' && steps.guard.outputs.skip_run != 'true' && github.event.inputs.scheduled_run == 'true'
+        run: |
+          if [[ -n "$OUTPUT_PATH" ]] && git cat-file -e "origin/main:${OUTPUT_PATH}"; then
+            git checkout origin/main -- "$OUTPUT_PATH"
+          fi
+
+          if git cat-file -e "origin/main:data/ai_research.db"; then
+            git checkout origin/main -- data/ai_research.db
           fi
 
       - name: Run weekly pipeline

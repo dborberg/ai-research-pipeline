@@ -1,5 +1,6 @@
 import argparse
 import os
+from pathlib import Path
 
 from dotenv import load_dotenv
 
@@ -11,6 +12,7 @@ from run_weekly_pipeline import THEMATIC_TITLE, WHOLESALER_TITLE, _generate_and_
 
 WHOLESALER_TYPE = "wholesaler"
 THEMATIC_TYPE = "thematic"
+OUTPUTS_DIR = Path(__file__).resolve().parent / "outputs" / "weekly"
 
 
 def _get_stored_weekly_digest_content(week_start, digest_type):
@@ -18,6 +20,13 @@ def _get_stored_weekly_digest_content(week_start, digest_type):
     for row in rows:
         if str(row["week_start"]) == week_start.isoformat():
             return row["content"]
+
+    output_path = OUTPUTS_DIR / f"{week_start.isoformat()}_{digest_type}.txt"
+    if output_path.exists():
+        content = output_path.read_text(encoding="utf-8").strip()
+        if content:
+            return content
+
     return None
 
 
