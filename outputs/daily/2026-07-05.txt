@@ -1,0 +1,66 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>July 05, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s AI news points to an investment cycle increasingly shaped by policy permission, infrastructure access, and capital intensity rather than model releases alone. Governments are moving to either accelerate AI infrastructure through land, power, and permits or slow deployment through labor, advertising, agent, and data center rules. For CPM, advisor, and wholesaler conversations, the key message is that AI adoption is becoming a governed infrastructure buildout, with winners and risks likely to extend beyond mega-cap platforms into power, data centers, compliance, workflow software, and industrial automation.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>South Korea accelerated a future-focused fund and backed AI data centers with power, land, and permits:</strong> The government action matters because it treats AI compute capacity as strategic national infrastructure, not just a private-sector technology project. The investment read-through is to grid infrastructure, power equipment, cooling, telecom networks, and data center developers with access to public-sector support. (Source: Chosunbiz)</li>
+<li><strong>The Australian reported that Labor’s updated policy platform would give unions a veto over AI-related workplace changes:</strong> The move matters because organized labor may become a gating factor for enterprise AI deployment in unionized industries. The advisor implication is that AI productivity gains may arrive unevenly, with adoption speed shaped by labor relations, governance processes, and change-management capacity. (Source: The Australian)</li>
+<li><strong>Global Times reported that Doubao and Qwen will shut down personalized AI agents on July 15 to comply with government regulation:</strong> The action matters because it shows agentic AI features can be restricted directly by local policy even when the technology is available. The business-model implication is that AI-agent monetization may depend on jurisdiction-specific compliance, auditability, and platform controls. (Source: Global Times)</li>
+<li><strong>Applied Digital was reported to be burning through capital as its AI data center buildout accelerates:</strong> The signal matters because AI infrastructure demand is becoming a financing and execution story, not only a revenue-growth story. Portfolio monitoring should focus on balance-sheet capacity, funding costs, customer commitments, and project delivery risk for AI infrastructure operators. (Source: foreignpolicyjournal.com)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>India’s government is set to unveil a draft AI policy in Delhi:</strong> The pending policy matters because national AI frameworks can shape enterprise production readiness through data governance, compliance expectations, and public-sector procurement standards. The implication is that advisors should watch whether India’s policy supports scaled AI adoption or adds new compliance friction for technology, outsourcing, and digital-services firms. (Source: The Times of India)</li>
+<li><strong>Nepal brought social media and AI advertising under a new national policy framework:</strong> The policy matters because AI-generated and AI-targeted advertising is moving into the regulatory perimeter beyond the largest developed markets. The business-model read-through is to media platforms, ad-tech vendors, compliance tools, and brand-governance processes as AI changes how content is created, targeted, and discovered. (Source: The Kathmandu Post)</li>
+<li><strong>Kim Yong-beom urged South Korea to build AI infrastructure while emphasizing fair distribution of AI benefits:</strong> The comments matter because AI adoption is increasingly being framed as both a productivity agenda and a social-policy challenge. The advisor implication is that labor impact, access, and distributional fairness may influence the pace of enterprise workflow redesign. (Source: Chosunbiz)</li>
+<li><strong>Sixth Street’s Chavez criticized a major problem in U.S. AI regulation:</strong> The comments matter because policy uncertainty can slow enterprise production readiness when firms lack clarity on acceptable use, liability, data controls, and governance standards. The portfolio-monitoring implication is to track whether clearer rules favor scaled platforms, compliance software, legal services, and governance tooling. (Source: Memeburn)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>SK Telecom plans to build 15GW of AI data center capacity across Korea by 2035:</strong> The plan matters because it translates AI demand into a long-duration requirement for power, land, cooling, and network capacity. The investment read-through extends beyond compute to utilities, power equipment, electrical infrastructure, cooling systems, and fiber connectivity. (Source: The Korea Times)</li>
+<li><strong>New Mexico lawmakers pushed for a statewide moratorium on data center projects:</strong> The proposal matters because local and state-level restrictions can affect AI infrastructure timelines even when national demand remains strong. The policy and portfolio implication is to monitor permitting risk, water and power constraints, and regional exposure for data center developers and their suppliers. (Source: KTSM 9 News)</li>
+<li><strong>Mark Cuban said the data center fight is really about AI fears rather than infrastructure alone:</strong> The comment matters because public resistance to data centers may increasingly reflect concerns about AI’s social impact, not just land use or utility demand. The advisor implication is that infrastructure growth may require community acceptance, clearer economic benefits, and more transparent power and water planning. (Source: eciks.org)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Applied Digital’s reported capital burn highlighted the balance-sheet burden of AI data center expansion:</strong> The development matters because AI infrastructure companies may need significant external capital before projects generate durable cash flow. The investment implication is to monitor funding access, debt costs, customer concentration, and construction execution across AI data center operators. (Source: foreignpolicyjournal.com)</li>
+<li><strong>India and France were reported to be courting technology CEOs for AI infrastructure investment:</strong> The outreach matters because governments are competing to attract compute, cloud, and data center capital as strategic infrastructure. The read-through is to cloud providers, data center developers, power suppliers, networking vendors, and local construction ecosystems in markets that can offer reliable power and policy support. (Source: Let’s Data Science)</li>
+<li><strong>Sixth Street’s Chavez warned that U.S. AI regulation has a significant problem:</strong> The capital-markets relevance is that regulatory ambiguity can affect investor risk appetite for AI platforms, enterprise software, and infrastructure projects. The implication is to watch whether clearer U.S. rules improve enterprise adoption confidence or increase compliance costs for smaller AI vendors. (Source: Memeburn)</li>
+<li><strong>SK Telecom’s 15GW AI data center ambition underscored the scale of capital allocation moving into Asian AI infrastructure:</strong> The project matters because telecom companies are positioning connectivity, land, and power access as strategic AI assets. The portfolio-monitoring implication is to evaluate second-derivative exposure across power equipment, networking, cooling, and data center supply chains. (Source: The Mountaineer)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Doubao and Qwen will shut down personalized AI agents to comply with Chinese regulation:</strong> The action matters because it directly limits workflow orchestration and agent features in one of the world’s largest AI markets. The policy implication is that agentic AI products may need localized governance, permissions, and content controls before they can scale commercially. (Source: Global Times)</li>
+<li><strong>Australia’s Labor platform reportedly gave unions veto power over AI workplace changes:</strong> The policy shift matters because it places workforce consent closer to the center of enterprise AI deployment decisions. The implication is that companies in regulated or unionized sectors may need stronger auditability, retraining plans, and labor engagement before scaling AI tools. (Source: The Australian)</li>
+<li><strong>Nepal placed social media and AI advertising under a national policy framework:</strong> The move matters because governments are extending AI oversight into content distribution, advertising, and platform accountability. The business implication is that AI-mediated discovery and marketing workflows may face more disclosure, moderation, and compliance requirements across smaller markets as well as major ones. (Source: The Kathmandu Post)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Avride is using cloud-based vision-language models as a safety net for autonomous delivery robots:</strong> The deployment matters because it shows physical AI moving from offline training into live operating workflows where cloud models help flag unusual street scenarios for human review. The investment read-through is to robotics platforms, fleet operations software, edge connectivity, sensor stacks, and safety-governance systems. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>State and local data center restrictions should be monitored over the next 30 to 90 days:</strong> Moratorium proposals and community resistance can delay AI capacity even when cloud demand remains strong. The implication is to track permitting outcomes, utility interconnection queues, and water-use rules in key data center regions. (Source: Full article set)</li>
+<li><strong>Government-backed AI infrastructure programs should be tracked for financing details:</strong> South Korea’s power, land, and permit support shows how public policy can accelerate private AI infrastructure deployment. The implication is to watch which countries convert policy ambition into funded projects, customer commitments, and utility-scale power availability. (Source: Full article set)</li>
+<li><strong>Agentic AI restrictions should be watched across China and other regulated markets:</strong> The Doubao and Qwen shutdowns show that personalized agents may face tighter scrutiny than basic chatbots. The implication is that enterprise production readiness will increasingly depend on permissions, audit trails, localization, and governance controls. (Source: Full article set)</li>
+<li><strong>AI infrastructure balance sheets should be monitored for funding stress:</strong> Rapid data center buildouts can create significant capital needs before revenues are fully visible. The implication is to watch debt issuance, private credit activity, customer prepayments, and project-level financing structures. (Source: Full article set)</li>
+<li><strong>Labor-policy responses to AI should be monitored in unionized sectors:</strong> Australia’s reported union veto proposal highlights how AI adoption can become a workplace negotiation issue. The implication is that productivity assumptions should account for implementation friction, retraining costs, and governance requirements. (Source: Full article set)</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming an infrastructure-and-permission story:</strong> The biggest bottlenecks are not only chips and models, but also power, permits, labor rules, and governance. (Source: Full article set)</li>
+<li><strong>Agentic AI may scale unevenly across countries:</strong> China’s restrictions show that what is technically possible may not always be commercially deployable. (Source: Full article set)</li>
+<li><strong>Data centers are now part of the AI investment conversation:</strong> Power availability, cooling, grid access, and community acceptance can shape the pace of AI growth. (Source: Full article set)</li>
+<li><strong>Enterprise AI adoption is moving from experimentation to governed deployment:</strong> Companies need permissions, auditability, compliance, and workforce buy-in before AI can become durable productivity infrastructure. (Source: Full article set)</li>
+<li><strong>Second-derivative AI beneficiaries matter:</strong> The opportunity set extends beyond models to power equipment, networking, cooling, compliance software, and robotics safety systems. (Source: Full article set)</li>
+</ul>
