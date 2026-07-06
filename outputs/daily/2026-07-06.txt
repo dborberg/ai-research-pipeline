@@ -1,0 +1,64 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>July 06, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The day’s AI news points to an investment cycle moving beyond model excitement into infrastructure constraints, regulated deployment, and capital-market discipline. Data center scale, power access, cooling, storage, and permitting are becoming as important as model quality. At the same time, financial regulators and global policymakers are signaling that enterprise AI adoption will require stronger governance, operational resilience, and controls. For CPM, advisor, and wholesaler conversations, the key message is that AI exposure is broadening, but selectivity matters because the beneficiaries and risks now sit across infrastructure, software governance, semiconductors, utilities, and private-market funding channels.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>SK Telecom reportedly planned a $653 billion AI data center buildout in Korea:</strong> The reported scale underscores how national AI strategies are becoming infrastructure strategies, with compute capacity treated as a strategic asset. The portfolio implication is to monitor not only telecom and cloud operators, but also power equipment, grid infrastructure, cooling, networking, and storage suppliers tied to large-scale AI buildouts. (Source: The Korea Economic Daily Global Edition)</li>
+<li><strong>Bloomberg Government reported growing business pushback against a New York data center moratorium:</strong> The dispute shows that AI infrastructure expansion is running into state-level permitting, land-use, and energy-policy constraints. The advisor implication is that data center growth may remain strong, but the path of capacity additions could shift toward regions with faster approvals, lower power friction, and more business-friendly infrastructure policy. (Source: Bloomberg Government News)</li>
+<li><strong>The Financial Times examined why OpenAI and Anthropic may struggle to pursue public listings:</strong> The report highlights how frontier AI companies face questions around capital intensity, governance, profitability, and public-market readiness. The investment implication is that private AI valuations and future IPO windows should be watched as signals for broader risk appetite across AI software, cloud infrastructure, and venture-backed frontier platforms. (Source: Financial Times)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>A UK regulator warned of an “arms race” to keep up with AI use in financial services:</strong> The warning matters because banks, insurers, asset managers, and supervisors are all trying to adapt as AI moves into production workflows. The implication is that enterprise adoption in financial services will depend on governance, auditability, operational resilience, and model-risk controls, supporting demand for compliance software, data platforms, cybersecurity, and specialist advisory services. (Source: Financial Times)</li>
+<li><strong>Freshfields outlined emerging regulatory expectations for AI governance and operational resilience in financial services:</strong> The analysis reinforces that AI use in regulated industries is moving from experimentation toward controlled deployment. The business-model implication is that enterprise production readiness is becoming a buying criterion, with firms likely to prioritize permissioning, monitoring, accountability, and defensible controls over standalone chatbot functionality. (Source: Freshfields)</li>
+<li><strong>MarkTechPost described a workflow for training Gemma-3 with LoRA adapters and reward-based tuning:</strong> The technical example shows how lightweight model adaptation is becoming more accessible for task-specific enterprise use cases. The implication is to monitor MLOps, data platforms, model governance, and developer-tool vendors that help companies turn open or smaller models into controlled production workflows. (Source: MarkTechPost)</li>
+<li><strong>A call for applications focused on AI in local and regional governance surfaced:</strong> The initiative is a modest signal that public-sector organizations continue to explore AI for administrative and civic workflows. The advisor implication is that government AI adoption may be slower than enterprise adoption, but procurement-ready tools with transparency, security, and workflow integration could gain an advantage. (Source: fundsforNGOs)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Cleveland.com reported that Ohio’s AI data center boom is fueling a natural gas power rush:</strong> The report shows how AI compute demand is translating into regional power-supply decisions, not just cloud capex headlines. The investment read-through extends to gas generation, grid infrastructure, backup power, electrical equipment, and energy services that can support high-load data center campuses. (Source: Cleveland.com)</li>
+<li><strong>EE Times reported that Kioxia is positioning NAND products for AI SSD demand:</strong> The story matters because AI infrastructure requires storage and memory capacity in addition to GPUs and accelerators. The portfolio-monitoring implication is to watch second-derivative semiconductor beneficiaries tied to enterprise SSDs, NAND pricing, data center storage, and high-throughput memory architectures. (Source: EE Times)</li>
+<li><strong>EE Times reported a carbon nanotube pellicle breakthrough with 66 times greater durability for EUV lithography:</strong> More durable pellicles could improve reliability in advanced chip manufacturing, which is critical for AI accelerator supply chains. The implication is to monitor semicap equipment, materials suppliers, advanced lithography ecosystems, and leading-edge foundry capacity as part of the AI infrastructure stack. (Source: EE Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Reuters reported that hedge funds dumped chip stocks for a fourth consecutive week as AI shares sold off:</strong> The move signals near-term institutional de-risking in one of the most crowded AI-linked equity segments. The advisor implication is to frame AI as a durable spending cycle that can still experience valuation resets, positioning swings, and concentration-risk concerns. (Source: Reuters)</li>
+<li><strong>Data Center Dynamics reported that cooling vendor Wafr Technologies raised $100 million:</strong> The financing points to continued capital formation around physical constraints inside high-density data centers. The investment read-through is that AI capex may benefit second-derivative suppliers in liquid cooling, thermal management, power density, data center design, and facilities engineering. (Source: Data Center Dynamics)</li>
+<li><strong>Goldman Sachs reportedly argued that AI bubble fears are overblown and highlighted infrastructure, power, and Big Tech themes:</strong> The report is useful as a market sentiment marker because it links AI durability to ongoing capex rather than only software monetization. The portfolio implication is to balance enthusiasm for platform companies with valuation discipline and exposure to infrastructure enablers that may participate in the buildout. (Source: finance.biggo.com)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Bloomberg reported that ByteDance and Alibaba pulled AI companion products as Beijing tightened rules:</strong> The move shows how quickly consumer AI monetization can be interrupted when platform features collide with content and safety regulation. The implication is that platform convergence in China remains policy-dependent, making governance, approval pathways, and content controls central to the business model for consumer AI features. (Source: Bloomberg)</li>
+<li><strong>Devdiscourse highlighted an urgent call for global AI regulation:</strong> The article offers limited implementation detail, but it adds to the policy drumbeat that AI oversight is moving from a theoretical debate to an active global priority. The implication is to monitor whether future rules create compliance costs, deployment delays, or advantages for vendors that can provide auditability, safety testing, privacy controls, and governance tooling. (Source: Devdiscourse)</li>
+<li><strong>Knoxville City Council prepared to consider a one-year data center moratorium:</strong> The local proposal is smaller than the New York debate, but it reinforces that data center expansion is becoming a municipal policy issue. The policy implication is that permitting risk, community opposition, water use, and power availability may increasingly shape where AI infrastructure capital is deployed. (Source: WATE 6 On Your Side)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>UN News reported that the UN chief issued an urgent governance call covering AI and “killer robots”:</strong> The focus on lethal autonomous weapons shows that physical AI is becoming a policy and security issue, not only an industrial automation theme. The implication is to monitor defense autonomy, drone systems, robotics, command-and-control software, and AI safety rules as governments define acceptable deployment boundaries. (Source: UN News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Upcoming state and city data center votes:</strong> Local permitting calendars will be a key 30- to 90-day indicator for whether AI infrastructure capacity can keep pace with announced demand. The implication is to monitor regional winners and losers across utilities, developers, grid suppliers, and data center operators. (Source: Bloomberg Government News; WATE 6 On Your Side)</li>
+<li><strong>Power procurement and generation announcements tied to AI campuses:</strong> New gas, renewable, nuclear, battery, and backup-power commitments will show where compute capacity can realistically be built. The portfolio-monitoring implication is that power availability may become a gating factor for cloud growth and a catalyst for electrical infrastructure suppliers. (Source: Cleveland.com)</li>
+<li><strong>Public-market readiness signals from frontier AI companies:</strong> Any disclosures on revenue quality, cash burn, compute commitments, or governance structures will shape expectations for future AI IPOs. The implication is that private-market liquidity and public-market risk appetite remain important signals for the broader innovation funding cycle. (Source: Financial Times)</li>
+<li><strong>Enterprise AI control requirements from financial regulators:</strong> New guidance on model risk, operational resilience, audit trails, and accountability would indicate how quickly AI can move into regulated production workflows. The implication is that enterprise production readiness may favor platforms with embedded governance, permissions, monitoring, and compliance features. (Source: Financial Times; Freshfields)</li>
+<li><strong>Semiconductor positioning ahead of AI-related earnings updates:</strong> Hedge fund selling in chip stocks makes order commentary, backlog durability, memory demand, and capex guidance especially important. The implication is to separate cyclical positioning pressure from longer-term demand for accelerators, storage, advanced packaging, and semicap equipment. (Source: Reuters; EE Times)</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>Today’s AI infrastructure message:</strong> AI is no longer just a software story; it is becoming a power, cooling, storage, and permitting story. (Source: Full article set)</li>
+<li><strong>Today’s market message:</strong> The AI theme can be durable while AI-linked stocks still face crowded-positioning pullbacks and valuation discipline. (Source: Full article set)</li>
+<li><strong>Today’s enterprise message:</strong> In regulated industries, the next phase of AI adoption depends on governance, auditability, and operational resilience, not just better chatbots. (Source: Full article set)</li>
+<li><strong>Today’s platform message:</strong> Embedding AI into major consumer and enterprise platforms can expand distribution, but regulation can still determine which features reach users. (Source: Full article set)</li>
+<li><strong>Today’s portfolio message:</strong> The AI opportunity set is broadening beyond the largest platforms into infrastructure, semiconductors, cooling, power systems, and compliance tools. (Source: Full article set)</li>
+</ul>
