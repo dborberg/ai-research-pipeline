@@ -167,6 +167,20 @@ def _load_daily_prompt(name, **replacements):
     return prompt
 
 
+def _fallback_bullet_text(article, *, lead, detail, source):
+    detail_text = " ".join(str(detail or "").split())
+    if not detail_text:
+        detail_text = "Continue monitoring this development for clearer advisor relevance and investment read-throughs."
+    return f"<li><strong>{lead}:</strong> {detail_text} (Source: {source})</li>"
+
+
+def _fallback_section_bucket(article, primary_section_hint):
+    hint = primary_section_hint(article)
+    if hint == "TOP STORIES":
+        return "TOP STORIES"
+    return hint
+
+
 def generate_daily_digest(report_date=None, return_metadata=False):
     import json
     import os
@@ -761,6 +775,287 @@ def generate_daily_digest(report_date=None, return_metadata=False):
 
         return selected_articles
 
+    def build_article_block(
+        prompt_candidate_articles,
+        *,
+        summary_limit=420,
+        advisor_limit=220,
+        include_space_metadata=True,
+    ):
+        return "\n\n---\n\n".join(
+            "\n".join(
+                [
+                    f"TITLE: {article['title']}",
+                    f"SOURCE: {article.get('original_publisher') or article['source']}",
+                    f"PRIMARY_SECTION_HINT: {primary_section_hint(article)}",
+                    f"SOURCE_QUALITY_HINT: {source_quality_hint(article)}",
+                    f"INVESTMENT_THEME_SCORE: {investment_theme_score(article)}",
+                    f"FORWARD_ADOPTION_SCORE: {forward_adoption_score(article)}",
+                    f"FRONTIER_CAPITAL_MARKETS_SCORE: {frontier_technology_capital_markets_score(article)}",
+                    f"FRONTIER_CAPITAL_MARKETS_OVERRIDE: {'YES' if is_frontier_technology_capital_markets_event(article) else 'NO'}",
+                    f"MAJOR_EARNINGS_OVERRIDE: {'YES' if _is_major_earnings_override(article) else 'NO'}",
+                    f"HEALTHCARE_FDA_OVERRIDE: {'YES' if _is_healthcare_fda_override(article) else 'NO'}",
+                    f"BIG_STORY_HINT: {'YES' if is_big_story(article) else 'NO'}",
+                    f"POLICY_PRIORITY_HINT: {'YES' if has_policy_priority(article) else 'NO'}",
+                    f"COMPANIES_MENTIONED: {', '.join(parse_companies(article.get('companies')))}",
+                    f"AI_SCORE: {article.get('ai_score') if article.get('ai_score') is not None else ''}",
+                    f"ADVISOR_RELEVANCE: {clip_prompt_text(article.get('advisor_relevance'), advisor_limit)}",
+                    f"SUMMARY: {clip_prompt_text(article['summary'], summary_limit)}",
+                    *(
+                        format_space_metadata_lines(article)
+                        if include_space_metadata
+                        else []
+                    ),
+                ]
+            )
+            for article in prompt_candidate_articles
+        )
+
+    def estimate_prompt_diagnostics(article_block, user_prompt, prompt_candidate_articles):
+        return {
+            "profile_articles": len(prompt_candidate_articles),
+            "article_block_chars": len(article_block),
+            "user_prompt_chars": len(user_prompt),
+            "theme_signal_chars": len(theme_signal_block),
+        }
+
+    def build_generation_profiles(selected_prompt_articles, base_timeout):
+        full_count = len(selected_prompt_articles)
+        compact_count = min(full_count, max(10, min(12, full_count)))
+        focused_count = min(full_count, max(8, min(9, full_count)))
+        return [
+            {
+                "name": "full",
+                "articles": selected_prompt_articles,
+                "summary_limit": 420,
+                "advisor_limit": 220,
+                "include_space_metadata": True,
+                "max_completion_tokens": 6000,
+                "timeout": base_timeout,
+            },
+            {
+                "name": "compact",
+                "articles": selected_prompt_articles[:compact_count],
+                "summary_limit": 260,
+                "advisor_limit": 160,
+                "include_space_metadata": True,
+                "max_completion_tokens": 7000,
+                "timeout": max(base_timeout, 210.0),
+            },
+            {
+                "name": "focused",
+                "articles": selected_prompt_articles[:focused_count],
+                "summary_limit": 180,
+                "advisor_limit": 120,
+                "include_space_metadata": False,
+                "max_completion_tokens": 6500,
+                "timeout": max(base_timeout, 210.0),
+            },
+        ]
+
+    def _fallback_primary_detail(article, limit=260):
+        detail = clip_prompt_text(article.get("advisor_relevance") or article.get("summary") or "", limit)
+        if not detail:
+            detail = "Continue monitoring this development for clearer advisor relevance and investment read-throughs."
+        return detail.rstrip(".") + "."
+
+    def _fallback_theme_counts(candidate_articles):
+        counts = Counter(
+            theme_name
+            for article in candidate_articles
+            for theme_name in extract_theme_tags(article)
+        )
+        if not counts:
+            counts.update({"enterprise_and_labor": 1, "infrastructure_and_power": 1})
+        return counts
+
+    def _fallback_theme_summary(theme_counts):
+        theme_labels = {
+            "infrastructure_and_power": "infrastructure and power constraints",
+            "enterprise_and_labor": "enterprise workflow adoption",
+            "capital_markets_and_investment": "capital markets and financing",
+            "regulation_and_policy": "policy and governance",
+            "physical_ai_and_robotics": "physical AI and robotics",
+            "frontier_capital_markets": "frontier-technology capital markets",
+            "forward_looking_ai_adoption": "forward-looking adoption signals",
+        }
+        leaders = [theme_labels.get(name, name.replace("_", " ")) for name, _ in theme_counts.most_common(3)]
+        if len(leaders) == 1:
+            joined = leaders[0]
+        elif len(leaders) == 2:
+            joined = f"{leaders[0]} and {leaders[1]}"
+        else:
+            joined = f"{leaders[0]}, {leaders[1]}, and {leaders[2]}"
+        return (
+            f"Today's signal clustered around {joined} rather than isolated product chatter. "
+            "The useful advisor question is which developments point to governed deployment, "
+            "real capital intensity, and durable adoption signals across the AI stack."
+        )
+
+    def _fallback_watch_bullets(theme_counts):
+        watch_templates = {
+            "infrastructure_and_power": (
+                "Infrastructure bottlenecks",
+                "Watch whether power, cooling, and interconnection constraints begin to delay AI infrastructure deployment timelines.",
+            ),
+            "enterprise_and_labor": (
+                "Enterprise production readiness",
+                "Watch whether agent launches include governance, observability, permissions, and workflow controls before broad rollout.",
+            ),
+            "capital_markets_and_investment": (
+                "Financing discipline",
+                "Watch whether new AI capex plans are funded through durable cash flow, project finance, or increasingly expensive outside capital.",
+            ),
+            "regulation_and_policy": (
+                "Policy transmission",
+                "Watch whether public-sector AI rules begin to shape procurement, privacy, and governance standards for enterprise buyers.",
+            ),
+            "physical_ai_and_robotics": (
+                "Physical AI deployment",
+                "Watch for robotics stories that move beyond pilots into measurable throughput, labor, or industrial workflow gains.",
+            ),
+            "frontier_capital_markets": (
+                "AI-adjacent liquidity",
+                "Watch whether frontier-technology financing and liquidity events broaden the AI investment conversation beyond pure software vendors.",
+            ),
+        }
+        bullets = []
+        for theme_name, _ in theme_counts.most_common(3):
+            lead, detail = watch_templates.get(
+                theme_name,
+                (
+                    "Fresh signal quality",
+                    "Watch whether the next daily window adds clearer company, policy, financing, or deployment signals that sharpen the investment read-through.",
+                ),
+            )
+            bullets.append(_fallback_bullet_text({}, lead=lead, detail=detail, source="Full article set"))
+        return bullets or [
+            _fallback_bullet_text(
+                {},
+                lead="Fresh signal quality",
+                detail="Watch whether the next daily window adds clearer company, policy, financing, or deployment signals that sharpen the investment read-through.",
+                source="Full article set",
+            )
+        ]
+
+    def _fallback_soundbite_bullets(theme_counts):
+        soundbite_templates = {
+            "infrastructure_and_power": (
+                "AI capex is still a physical buildout story",
+                "Power, cooling, networking, and permitting remain part of the same deployment conversation as models and software.",
+            ),
+            "enterprise_and_labor": (
+                "Production controls matter more than demos",
+                "The durable adoption question is whether AI can run inside governed workflows with real permissions, auditability, and cost discipline.",
+            ),
+            "capital_markets_and_investment": (
+                "AI financing is becoming a balance-sheet test",
+                "The better read-through is who can fund deployment sustainably, not who can announce the biggest ambition.",
+            ),
+            "regulation_and_policy": (
+                "Governance can become a growth gate",
+                "Policy and procurement rules increasingly shape which AI tools can move from pilots into scaled enterprise use.",
+            ),
+            "physical_ai_and_robotics": (
+                "Physical AI matters when workflows change",
+                "The key signal is not prototype excitement but whether automation is delivering measurable operational throughput.",
+            ),
+            "frontier_capital_markets": (
+                "AI-adjacent stories still belong in the daily mix",
+                "Capital markets events in frontier infrastructure can matter when they expand the real-world systems supporting autonomy, compute, and connectivity.",
+            ),
+        }
+        bullets = []
+        for theme_name, _ in theme_counts.most_common(3):
+            lead, detail = soundbite_templates.get(
+                theme_name,
+                (
+                    "Signal quality matters",
+                    "The most useful daily framing is the set of developments that point to durable deployment rather than broad AI enthusiasm.",
+                ),
+            )
+            bullets.append(_fallback_bullet_text({}, lead=lead, detail=detail, source="Full article set"))
+        return bullets or [
+            _fallback_bullet_text(
+                {},
+                lead="Signal quality matters",
+                detail="The most useful daily framing is the set of developments that point to durable deployment rather than broad AI enthusiasm.",
+                source="Full article set",
+            )
+        ]
+
+    def build_deterministic_fallback_digest(all_candidate_articles, selected_prompt_articles, today):
+        theme_counts = _fallback_theme_counts(all_candidate_articles or selected_prompt_articles)
+        theme_summary = _fallback_theme_summary(theme_counts)
+
+        section_specs = [
+            ("TOP STORIES", 3, lambda article: is_big_story(article) or primary_section_hint(article) == "TOP STORIES"),
+            ("ENTERPRISE ADOPTION AND LABOR", 2, lambda article: "enterprise_and_labor" in extract_theme_tags(article)),
+            ("INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS", 2, lambda article: "infrastructure_and_power" in extract_theme_tags(article)),
+            ("CAPITAL MARKETS AND INVESTMENT IMPLICATIONS", 2, lambda article: "capital_markets_and_investment" in extract_theme_tags(article) or "frontier_capital_markets" in extract_theme_tags(article)),
+            ("REGULATION, GOVERNANCE AND POLICY", 2, lambda article: "regulation_and_policy" in extract_theme_tags(article)),
+            ("PHYSICAL AI AND ROBOTICS", 1, lambda article: "physical_ai_and_robotics" in extract_theme_tags(article)),
+        ]
+        fallback_defaults = {
+            "TOP STORIES": _fallback_bullet_text({}, lead="No single story dominated the window", detail="The stronger signal came from the combined pattern across enterprise adoption, infrastructure, financing, and policy developments rather than one headline.", source="Full article set"),
+            "ENTERPRISE ADOPTION AND LABOR": _fallback_bullet_text({}, lead="No major enterprise adoption or labor development dominated", detail="Continue monitoring governed workflow deployments, professional automation, and labor redesign signals for clearer enterprise read-throughs.", source="Full article set"),
+            "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": _fallback_bullet_text({}, lead="No single infrastructure bottleneck dominated", detail="Continue monitoring power, cooling, semiconductors, networking, and permitting for signs that physical constraints are shaping AI deployment speed.", source="Full article set"),
+            "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": _fallback_bullet_text({}, lead="No single financing event dominated", detail="Continue monitoring capex, funding, private credit, earnings, and supplier read-throughs for clearer investment implications.", source="Full article set"),
+            "REGULATION, GOVERNANCE AND POLICY": _fallback_bullet_text({}, lead="No single policy move dominated", detail="Continue monitoring procurement rules, privacy, export controls, and governance standards for commercial AI implications.", source="Full article set"),
+            "PHYSICAL AI AND ROBOTICS": _fallback_bullet_text({}, lead="No major commercial Physical AI or robotics developments surfaced", detail="Continue monitoring robotics, autonomous systems, lab automation, industrial automation, and AI-enabled manufacturing for signs that pilots are moving into real deployment.", source="Full article set"),
+        }
+
+        used_article_ids = set()
+        section_bullets = {}
+        for section_name, section_limit, predicate in section_specs:
+            bullets = []
+            source_counts = Counter()
+            for article in selected_prompt_articles:
+                article_id = id(article)
+                source = article.get("original_publisher") or article.get("source") or "Unknown"
+                if article_id in used_article_ids:
+                    continue
+                if source_counts[source] >= 2:
+                    continue
+                if not predicate(article):
+                    continue
+                lead = clip_prompt_text(article.get("title") or "Untitled development", 110)
+                detail = _fallback_primary_detail(article)
+                bullets.append(_fallback_bullet_text(article, lead=lead, detail=detail, source=source))
+                used_article_ids.add(article_id)
+                source_counts[source] += 1
+                if len(bullets) >= section_limit:
+                    break
+            if not bullets:
+                bullets = [fallback_defaults[section_name]]
+            section_bullets[section_name] = bullets
+
+        section_bullets["WHAT TO WATCH"] = _fallback_watch_bullets(theme_counts)
+        section_bullets["ADVISOR / WHOLESALER SOUNDBITES"] = _fallback_soundbite_bullets(theme_counts)
+
+        ordered_sections = [
+            "TOP STORIES",
+            "ENTERPRISE ADOPTION AND LABOR",
+            "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS",
+            "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
+            "REGULATION, GOVERNANCE AND POLICY",
+            "PHYSICAL AI AND ROBOTICS",
+            "WHAT TO WATCH",
+            "ADVISOR / WHOLESALER SOUNDBITES",
+        ]
+        parts = [
+            f"<h2>{DAILY_TITLE}</h2>",
+            f"<p><strong>{today}</strong></p>",
+            "<h3>TOP THEME OF THE DAY</h3>",
+            f"<p>{theme_summary}</p>",
+        ]
+        for section_name in ordered_sections:
+            parts.append(f"<h3>{section_name}</h3>")
+            parts.append("<ul>")
+            parts.extend(section_bullets[section_name])
+            parts.append("</ul>")
+        return "\n".join(parts)
+
     def build_theme_signal_block(all_articles):
         theme_labels = {
             "infrastructure_and_power": "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS",
@@ -1106,6 +1401,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
     }
     theme_signal_block = build_theme_signal_block(all_articles)
     prompt_articles = select_prompt_articles(articles)
+    generation_profiles = build_generation_profiles(prompt_articles, digest_request_timeout)
     SPACE_ECONOMY_THEME_ACTIVE = calculate_space_economy_theme_active(
         all_articles,
         quality_filter=passes_daily_space_quality,
@@ -1140,51 +1436,59 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                 "report_date": report_date,
             }
         return content
-    article_block = "\n\n---\n\n".join(
-        "\n".join(
-            [
-                f"TITLE: {article['title']}",
-                f"SOURCE: {article.get('original_publisher') or article['source']}",
-                f"PRIMARY_SECTION_HINT: {primary_section_hint(article)}",
-                f"SOURCE_QUALITY_HINT: {source_quality_hint(article)}",
-                f"INVESTMENT_THEME_SCORE: {investment_theme_score(article)}",
-                f"FORWARD_ADOPTION_SCORE: {forward_adoption_score(article)}",
-                f"FRONTIER_CAPITAL_MARKETS_SCORE: {frontier_technology_capital_markets_score(article)}",
-                f"FRONTIER_CAPITAL_MARKETS_OVERRIDE: {'YES' if is_frontier_technology_capital_markets_event(article) else 'NO'}",
-                f"MAJOR_EARNINGS_OVERRIDE: {'YES' if _is_major_earnings_override(article) else 'NO'}",
-                f"HEALTHCARE_FDA_OVERRIDE: {'YES' if _is_healthcare_fda_override(article) else 'NO'}",
-                f"BIG_STORY_HINT: {'YES' if is_big_story(article) else 'NO'}",
-                f"POLICY_PRIORITY_HINT: {'YES' if has_policy_priority(article) else 'NO'}",
-                f"COMPANIES_MENTIONED: {', '.join(parse_companies(article.get('companies')))}",
-                f"AI_SCORE: {article.get('ai_score') if article.get('ai_score') is not None else ''}",
-                f"ADVISOR_RELEVANCE: {clip_prompt_text(article.get('advisor_relevance'), 220)}",
-                f"SUMMARY: {clip_prompt_text(article['summary'], 420)}",
-                *format_space_metadata_lines(article),
-            ]
-        )
-        for article in prompt_articles
-    )
-
     system_prompt = _load_daily_prompt("daily_digest_system")
-    user_prompt = _load_daily_prompt(
-        "daily_digest_user",
-        daily_title=DAILY_TITLE,
-        today=today,
-        theme_signal_block=theme_signal_block,
-        article_block=article_block,
-    )
-    if SPACE_ECONOMY_THEME_ACTIVE:
-        user_prompt = f"{user_prompt}\n\n{SPACE_ECONOMY_FILTER_PROMPT}"
-
     content = ""
     issues = []
     extra_feedback = ""
     best_effort_content = ""
     best_effort_issues = []
-    for attempt in range(3):
+    generation_mode = "llm_generated"
+    generation_attempts = []
+    for attempt, profile in enumerate(generation_profiles, start=1):
+        article_block = build_article_block(
+            profile["articles"],
+            summary_limit=profile["summary_limit"],
+            advisor_limit=profile["advisor_limit"],
+            include_space_metadata=profile["include_space_metadata"],
+        )
+        user_prompt = _load_daily_prompt(
+            "daily_digest_user",
+            daily_title=DAILY_TITLE,
+            today=today,
+            theme_signal_block=theme_signal_block,
+            article_block=article_block,
+        )
+        if SPACE_ECONOMY_THEME_ACTIVE:
+            user_prompt = f"{user_prompt}\n\n{SPACE_ECONOMY_FILTER_PROMPT}"
+
+        prompt_diagnostics = estimate_prompt_diagnostics(
+            article_block,
+            user_prompt,
+            profile["articles"],
+        )
+
         print(
-            f"Daily digest LLM attempt {attempt + 1}/3 "
-            f"with max_completion_tokens={digest_token_budget}"
+            f"Daily digest LLM attempt {attempt}/{len(generation_profiles)} "
+            f"using {profile['name']} profile "
+            f"({len(profile['articles'])} articles, max_completion_tokens={profile['max_completion_tokens']}, timeout={profile['timeout']:.0f}s)"
+        )
+        print(
+            "Daily digest prompt diagnostics: "
+            f"selected_articles={len(prompt_articles)}, "
+            f"profile_articles={prompt_diagnostics['profile_articles']}, "
+            f"article_block_chars={prompt_diagnostics['article_block_chars']}, "
+            f"user_prompt_chars={prompt_diagnostics['user_prompt_chars']}, "
+            f"system_prompt_chars={len(system_prompt)}, "
+            f"theme_signal_chars={prompt_diagnostics['theme_signal_chars']}"
+        )
+        generation_attempts.append(
+            {
+                "attempt": attempt,
+                "profile": profile["name"],
+                "max_completion_tokens": profile["max_completion_tokens"],
+                "timeout": profile["timeout"],
+                **prompt_diagnostics,
+            }
         )
         request_prompt = user_prompt.strip()
         if extra_feedback:
@@ -1197,11 +1501,11 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                     {"role": "system", "content": system_prompt.strip()},
                     {"role": "user", "content": request_prompt}
                 ],
-                max_completion_tokens=digest_token_budget,
-                timeout=digest_request_timeout,
+                max_completion_tokens=profile["max_completion_tokens"],
+                timeout=profile["timeout"],
             )
         except APITimeoutError:
-            if attempt == 2:
+            if attempt == len(generation_profiles):
                 if best_effort_content:
                     print(
                         "Daily digest final retry timed out; using the best available draft "
@@ -1210,11 +1514,18 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                     content = best_effort_content
                     issues = best_effort_issues
                     break
-                raise
+                print(
+                    "Daily digest timed out across all LLM profiles; using deterministic fallback "
+                    "built from scored articles."
+                )
+                print("DAILY DIGEST FALLBACK MODE: deterministic_html_from_scored_articles")
+                content = build_deterministic_fallback_digest(all_articles, prompt_articles, today)
+                issues = []
+                generation_mode = "deterministic_fallback"
+                break
 
             print(
-                "Daily digest request timed out; retrying with the same prompt "
-                f"and timeout={digest_request_timeout:.0f}s"
+                "Daily digest request timed out; retrying with a more compact generation profile"
             )
             extra_feedback = (
                 "The previous attempt timed out before returning the full HTML digest. "
@@ -1222,16 +1533,43 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                 "source diversity, event specificity, and complete HTML structure. "
                 "Return only the finished HTML."
             )
-            digest_token_budget = min(digest_token_budget, 5000)
+            continue
+        except Exception as exc:
+            if attempt == len(generation_profiles):
+                if best_effort_content:
+                    print(
+                        "Daily digest final retry failed after a generation error; using the best "
+                        "available draft from an earlier attempt."
+                    )
+                    content = best_effort_content
+                    issues = best_effort_issues
+                    break
+                print(
+                    "Daily digest generation failed across all LLM profiles; using deterministic "
+                    f"fallback built from scored articles ({exc})."
+                )
+                print("DAILY DIGEST FALLBACK MODE: deterministic_html_from_scored_articles")
+                content = build_deterministic_fallback_digest(all_articles, prompt_articles, today)
+                issues = []
+                generation_mode = "deterministic_fallback"
+                break
+            print(
+                "Daily digest generation hit an API error; retrying with a more compact generation profile"
+            )
+            extra_feedback = (
+                "The previous attempt failed before returning the full HTML digest. "
+                "Rewrite the full digest more compactly while preserving all required sections, "
+                "source diversity, event specificity, and complete HTML structure. "
+                "Return only the finished HTML."
+            )
             continue
 
         choice = response.choices[0]
         content = (choice.message.content or "").strip()
 
         if not content:
-            if choice.finish_reason == "length" and attempt < 2:
-                print("Daily digest returned empty content due to length; retrying with a larger token budget")
-                digest_token_budget = 7500
+            if choice.finish_reason == "length" and attempt < len(generation_profiles):
+                print("Daily digest returned empty content due to length; retrying with a more compact profile")
                 extra_feedback = (
                     "The previous attempt ran out of output tokens before returning usable HTML. "
                     "Rewrite the full digest more compactly while preserving all required sections, "
@@ -1247,15 +1585,34 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                 content = best_effort_content
                 issues = best_effort_issues
                 break
-            raise ValueError(
-                f"LLM returned empty digest content "
-                f"(finish_reason={choice.finish_reason})"
+            if attempt == len(generation_profiles):
+                print(
+                    "Daily digest returned no usable content across all LLM profiles; using deterministic "
+                    "fallback built from scored articles."
+                )
+                print("DAILY DIGEST FALLBACK MODE: deterministic_html_from_scored_articles")
+                content = build_deterministic_fallback_digest(all_articles, prompt_articles, today)
+                issues = []
+                generation_mode = "deterministic_fallback"
+                break
+            extra_feedback = (
+                "The previous attempt failed to return usable HTML. Rewrite the digest more compactly "
+                "while preserving all required sections, source diversity, and complete HTML structure. "
+                "Return only the finished HTML."
             )
+            continue
 
         issues = _find_diversity_issues(content, available_publishers)
         best_effort_content = content
         best_effort_issues = list(issues)
         if not issues:
+            break
+
+        if attempt == len(generation_profiles):
+            print(
+                "Daily digest returning best-effort output after exhausting validation retries: "
+                + "; ".join(issues)
+            )
             break
 
         print("Daily digest diversity retry triggered: " + "; ".join(issues))
@@ -1281,5 +1638,8 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             "source_articles": all_articles,
             "prompt_articles": prompt_articles,
             "report_date": report_date,
+            "generation_mode": generation_mode,
+            "used_deterministic_fallback": generation_mode == "deterministic_fallback",
+            "generation_attempts": generation_attempts,
         }
     return content

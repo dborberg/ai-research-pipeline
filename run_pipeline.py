@@ -212,6 +212,15 @@ def run(dry_run=False):
             digest_text = digest_result["content"]
             if not digest_text or not digest_text.strip():
                 raise ValueError("Digest generation returned empty content — aborting to prevent blank output file")
+            generation_mode = digest_result.get("generation_mode") or "unknown"
+            generation_attempts = digest_result.get("generation_attempts") or []
+            print(f"Daily digest generation mode: {generation_mode}")
+            logging.info("Daily digest generation mode: %s", generation_mode)
+            print(f"Daily digest generation attempts recorded: {len(generation_attempts)}")
+            logging.info("Daily digest generation attempts recorded: %s", len(generation_attempts))
+            if digest_result.get("used_deterministic_fallback"):
+                print("DAILY DIGEST FALLBACK ACTIVATED: deterministic_html_from_scored_articles")
+                logging.warning("DAILY DIGEST FALLBACK ACTIVATED: deterministic_html_from_scored_articles")
             save_daily_digest(digest_text)
             save_daily_source_snapshot(_central_today(), digest_result.get("source_articles") or [])
             upsert_daily_digest(_central_today(), digest_text)

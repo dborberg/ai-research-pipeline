@@ -305,6 +305,153 @@ class DailyDigestRefinementTests(unittest.TestCase):
         self.assertEqual(result["content"], repetitive_html)
         self.assertEqual(result["source_articles"][0]["title"], valid_article["title"])
 
+    def test_generate_daily_digest_uses_deterministic_fallback_after_repeated_timeouts(self):
+        articles = [
+            {
+                "title": "Microsoft adds governed controls to enterprise agent workflows",
+                "source": "The Official Microsoft Blog",
+                "original_publisher": "The Official Microsoft Blog",
+                "summary": "Microsoft described enterprise controls, permissions, and observability for agent workflows.",
+                "url": "https://example.com/microsoft",
+                "published_at": "2026-06-29T10:00:00",
+                "companies": "[\"Microsoft\"]",
+                "advisor_relevance": "This matters because governed workflow controls are what separate pilot AI tools from real enterprise production deployment.",
+                "ai_score": 8,
+                "is_space_economy_related": 0,
+                "space_relevance": "",
+                "space_ai_connection": "",
+                "space_time_horizon": "",
+                "space_investment_layer": "",
+            },
+            {
+                "title": "Utility signs new power agreement for AI data center campus",
+                "source": "Financial Times",
+                "original_publisher": "Financial Times",
+                "summary": "A utility signed a new agreement tied to AI data center power demand and grid planning.",
+                "url": "https://example.com/utility",
+                "published_at": "2026-06-29T09:00:00",
+                "companies": "[]",
+                "advisor_relevance": "This matters because power and interconnection timelines are becoming gating factors for AI infrastructure deployment.",
+                "ai_score": 8,
+                "is_space_economy_related": 0,
+                "space_relevance": "",
+                "space_ai_connection": "",
+                "space_time_horizon": "",
+                "space_investment_layer": "",
+            },
+            {
+                "title": "Lawmakers advance AI procurement and governance standards",
+                "source": "Reuters",
+                "original_publisher": "Reuters",
+                "summary": "Lawmakers advanced procurement standards that could influence enterprise AI compliance and auditability expectations.",
+                "url": "https://example.com/policy",
+                "published_at": "2026-06-29T08:30:00",
+                "companies": "[]",
+                "advisor_relevance": "This matters because public-sector governance frameworks often become practical templates for enterprise buyer requirements.",
+                "ai_score": 7,
+                "is_space_economy_related": 0,
+                "space_relevance": "",
+                "space_ai_connection": "",
+                "space_time_horizon": "",
+                "space_investment_layer": "",
+            },
+            {
+                "title": "Warehouse robotics rollout shows faster throughput gains",
+                "source": "The Robot Report",
+                "original_publisher": "The Robot Report",
+                "summary": "A warehouse robotics deployment reported higher throughput and reliability in live operations.",
+                "url": "https://example.com/robotics",
+                "published_at": "2026-06-29T08:00:00",
+                "companies": "[\"Example Robotics\"]",
+                "advisor_relevance": "This matters because physical AI becomes investable when automation moves from pilots into measurable operating workflows.",
+                "ai_score": 7,
+                "is_space_economy_related": 0,
+                "space_relevance": "",
+                "space_ai_connection": "",
+                "space_time_horizon": "",
+                "space_investment_layer": "",
+            },
+        ]
+
+        class AlwaysTimeoutClient:
+            def __init__(self, timeout_error):
+                self._timeout_error = timeout_error
+                self.chat = SimpleNamespace(completions=self)
+
+            def create(self, **kwargs):
+                raise self._timeout_error("Request timed out")
+
+        mock_engine = MagicMock()
+        mock_conn = MagicMock()
+        mock_engine.connect.return_value.__enter__.return_value = mock_conn
+        mock_conn.execute.return_value.fetchall.return_value = [
+            (
+                article["title"],
+                article["source"],
+                article["original_publisher"],
+                article["summary"],
+                article["url"],
+                article["published_at"],
+                article["companies"],
+                article["advisor_relevance"],
+                article["ai_score"],
+                article["is_space_economy_related"],
+                article["space_relevance"],
+                article["space_ai_connection"],
+                article["space_time_horizon"],
+                article["space_investment_layer"],
+            )
+            for article in articles
+        ]
+
+        fake_openai = types.ModuleType("openai")
+        timeout_error = type("APITimeoutError", (Exception,), {})
+        fake_openai.APITimeoutError = timeout_error
+        fake_openai.OpenAI = lambda *args, **kwargs: AlwaysTimeoutClient(timeout_error)
+
+        fake_sqlalchemy = types.ModuleType("sqlalchemy")
+        fake_sqlalchemy.text = lambda value: value
+
+        fake_branding = types.ModuleType("app.branding")
+        fake_branding.DAILY_TITLE = "Beyond the Horizon: Daily Riffs from the Gen AI Songbook"
+
+        fake_db = types.ModuleType("app.db")
+        fake_db.get_engine = lambda: mock_engine
+
+        fake_pipeline_window = types.ModuleType("app.pipeline_window")
+        fake_pipeline_window.get_pipeline_window = lambda hours=24: (
+            SimpleNamespace(isoformat=lambda: "2026-06-28T11:30:00"),
+            SimpleNamespace(isoformat=lambda: "2026-06-29T11:30:00"),
+        )
+
+        fake_space = types.ModuleType("app.space_economy")
+        fake_space.SPACE_ECONOMY_FILTER_PROMPT = ""
+        fake_space.calculate_space_economy_theme_active = lambda *args, **kwargs: False
+        fake_space.ensure_space_metadata = lambda article: article
+        fake_space.format_space_metadata_lines = lambda article: []
+
+        with patch.dict(
+            "sys.modules",
+            {
+                "openai": fake_openai,
+                "sqlalchemy": fake_sqlalchemy,
+                "app.branding": fake_branding,
+                "app.db": fake_db,
+                "app.pipeline_window": fake_pipeline_window,
+                "app.space_economy": fake_space,
+            },
+        ):
+            result = generate_daily_digest(return_metadata=True)
+
+        self.assertEqual(validate_daily_digest_html(result["content"]), [])
+        self.assertIn("TOP THEME OF THE DAY", result["content"])
+        self.assertIn("Microsoft adds governed controls", result["content"])
+        self.assertEqual(result["generation_mode"], "deterministic_fallback")
+        self.assertTrue(result["used_deterministic_fallback"])
+        self.assertEqual(len(result["generation_attempts"]), 3)
+        self.assertEqual(result["generation_attempts"][0]["profile"], "full")
+        self.assertIn("user_prompt_chars", result["generation_attempts"][0])
+
     def test_validator_flags_local_data_center_permitting_repetition(self):
         repeated = "<strong>Local officials reviewed a data center permitting request:</strong> The local zoning process matters because permitting can delay AI infrastructure. The implication is to monitor grid infrastructure and utility planning. (Source: Local News)"
         html = _daily_html(

@@ -327,6 +327,66 @@ class WeeklyDigestRefinementTests(unittest.TestCase):
             run_weekly_pipeline.load_weekly_articles_from_daily_snapshots = original_archive
             run_weekly_pipeline.is_frontier_technology_capital_markets_event = original_frontier
 
+    def test_cluster_articles_retries_with_compact_profile_after_length_failure(self):
+        articles = []
+        for index in range(40):
+            articles.append(
+                {
+                    "id": index + 1,
+                    "signal_tier": "HIGH SIGNAL",
+                    "ai_score": 8,
+                    "title": f"Article {index}",
+                    "summary": "Summary " + ("x" * 200),
+                    "advisor_relevance": "Advisor relevance " + ("y" * 120),
+                    "companies": ["Company"],
+                    "source": "Source",
+                }
+            )
+
+        original_call = run_weekly_pipeline.call_chat_model
+        original_load = run_weekly_pipeline._load_weekly_prompt
+        original_parse = run_weekly_pipeline._parse_json_response
+        try:
+            captured_prompts = []
+
+            def fake_load(name, **replacements):
+                if name == "cluster_articles_system":
+                    return "SYSTEM"
+                if name == "cluster_articles_user":
+                    prompt = replacements["article_lines"]
+                    captured_prompts.append(prompt)
+                    return prompt
+                return "PROMPT"
+
+            call_count = {"count": 0}
+
+            def fake_call(client, system_prompt, user_prompt, max_completion_tokens=2200):
+                call_count["count"] += 1
+                if call_count["count"] == 1:
+                    raise ValueError("Chat completion returned empty content (finish_reason=length)")
+                return '{"clusters": [{"label": "Cluster A", "article_ids": [1, 2]}]}'
+
+            def fake_parse(raw_response, fallback):
+                return {"clusters": [{"label": "Cluster A", "article_ids": [1, 2]}]}
+
+            run_weekly_pipeline._load_weekly_prompt = fake_load
+            run_weekly_pipeline.call_chat_model = fake_call
+            run_weekly_pipeline._parse_json_response = fake_parse
+
+            clusters = run_weekly_pipeline.cluster_articles(client=None, articles=articles)
+
+            self.assertEqual(len(clusters), 1)
+            self.assertEqual(call_count["count"], 2)
+            self.assertEqual(len(captured_prompts), 2)
+            self.assertGreater(len(captured_prompts[0]), len(captured_prompts[1]))
+            self.assertIn("ARTICLE_ID: 1", captured_prompts[0])
+            self.assertIn("ARTICLE_ID: 30", captured_prompts[1])
+            self.assertNotIn("ARTICLE_ID: 31", captured_prompts[1])
+        finally:
+            run_weekly_pipeline.call_chat_model = original_call
+            run_weekly_pipeline._load_weekly_prompt = original_load
+            run_weekly_pipeline._parse_json_response = original_parse
+
     def test_validator_accepts_weekly_spacex_ipo_synthesis(self):
         self.assertEqual(validate_weekly_digest_text(_valid_weekly_text()), [])
 

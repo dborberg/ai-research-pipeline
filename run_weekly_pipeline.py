@@ -1222,36 +1222,94 @@ def cluster_articles(client, articles):
     if not articles:
         return []
 
-    article_lines = []
-    for article in articles:
-        article_lines.append(
-            "\n".join(
-                [
-                    f"ARTICLE_ID: {article['id']}",
-                    f"SIGNAL_TIER: {article['signal_tier']}",
-                    f"AI_SCORE: {article.get('ai_score')}",
-                    f"TITLE: {article.get('title') or ''}",
-                    f"SUMMARY: {article.get('summary') or ''}",
-                    f"ADVISOR_RELEVANCE: {article.get('advisor_relevance') or ''}",
-                    f"COMPANIES: {', '.join(article.get('companies') or [])}",
-                    f"SOURCE: {article.get('source') or ''}",
-                    *format_space_metadata_lines(article),
-                ]
+    def _trim_text(value, limit):
+        text_value = " ".join(str(value or "").split())
+        if len(text_value) <= limit:
+            return text_value
+        return text_value[: limit - 3].rstrip() + "..."
+
+    def _build_article_lines(candidate_articles, *, summary_limit, relevance_limit, include_space_metadata):
+        lines = []
+        for article in candidate_articles:
+            lines.append(
+                "\n".join(
+                    [
+                        f"ARTICLE_ID: {article['id']}",
+                        f"SIGNAL_TIER: {article['signal_tier']}",
+                        f"AI_SCORE: {article.get('ai_score')}",
+                        f"TITLE: {_trim_text(article.get('title') or '', 180)}",
+                        f"SUMMARY: {_trim_text(article.get('summary') or '', summary_limit)}",
+                        f"ADVISOR_RELEVANCE: {_trim_text(article.get('advisor_relevance') or '', relevance_limit)}",
+                        f"COMPANIES: {', '.join(article.get('companies') or [])}",
+                        f"SOURCE: {article.get('source') or ''}",
+                        *(format_space_metadata_lines(article) if include_space_metadata else []),
+                    ]
+                )
             )
-        )
+        return lines
 
-        system_prompt = _load_weekly_prompt("cluster_articles_system")
+    cluster_profiles = [
+        {
+            "name": "full",
+            "articles": articles,
+            "summary_limit": 420,
+            "relevance_limit": 280,
+            "include_space_metadata": True,
+        },
+        {
+            "name": "compact",
+            "articles": articles[:30],
+            "summary_limit": 220,
+            "relevance_limit": 160,
+            "include_space_metadata": False,
+        },
+        {
+            "name": "focused",
+            "articles": articles[:24],
+            "summary_limit": 140,
+            "relevance_limit": 100,
+            "include_space_metadata": False,
+        },
+    ]
+
+    system_prompt = _load_weekly_prompt("cluster_articles_system")
+    raw_response = None
+    last_error = None
+    for index, profile in enumerate(cluster_profiles, start=1):
+        article_lines = _build_article_lines(
+            profile["articles"],
+            summary_limit=profile["summary_limit"],
+            relevance_limit=profile["relevance_limit"],
+            include_space_metadata=profile["include_space_metadata"],
+        )
         user_prompt = _load_weekly_prompt(
-                "cluster_articles_user",
-                article_lines="\n".join(article_lines),
+            "cluster_articles_user",
+            article_lines="\n".join(article_lines),
         )
+        print(
+            f"Weekly clustering attempt {index}/{len(cluster_profiles)} using {profile['name']} profile "
+            f"({len(profile['articles'])} articles, article_lines_chars={len(chr(10).join(article_lines))}, "
+            f"user_prompt_chars={len(user_prompt)})"
+        )
+        try:
+            raw_response = call_chat_model(
+                client,
+                system_prompt,
+                user_prompt,
+                max_completion_tokens=2600,
+            )
+            break
+        except ValueError as exc:
+            last_error = exc
+            if "finish_reason=length" not in str(exc) or index == len(cluster_profiles):
+                raise
+            print(
+                "Weekly clustering prompt exceeded model limits; retrying with a more compact clustering profile"
+            )
 
-    raw_response = call_chat_model(
-        client,
-        system_prompt,
-        user_prompt,
-        max_completion_tokens=2600,
-    )
+    if raw_response is None:
+        raise last_error or ValueError("Weekly clustering failed before producing a model response")
+
     parsed = _parse_json_response(raw_response, {"clusters": []})
     raw_clusters = parsed.get("clusters", []) if isinstance(parsed, dict) else []
 
