@@ -1,0 +1,86 @@
+Beyond the Horizon: Weekly Riffs from the Gen AI Songbook
+Week Ending July 10, 2026
+
+TOP 5 STORIES THIS WEEK
+
+1. Reuters reported that TeraWulf surged after a $19 billion data center lease deal with Anthropic, while CPP Investments committed $1.75 billion to EQT and EdgeConneX’s AI data center buildout. This week made AI infrastructure feel less like a chip-only trade and more like a long-duration real-assets financing cycle, with read-through to power, cooling, grid equipment, construction, fiber, and private infrastructure capital. (Reuters; Data Center Dynamics)
+
+2. Reuters reported that U.S. power companies are scrambling to secure grid equipment as data center demand rises, and separate reporting showed AI data centers pushing up power bills for Rust Belt factories. Advisors can use this to explain that AI capacity is now constrained by transformers, interconnection, generation, local rate politics, and permitting, not just GPU supply. (Reuters)
+
+3. Reuters reported that Meta plans to put an in-house AI chip into production in September as it seeks to double computing capacity. The arms-race takeaway is that the largest platforms are trying to control more of the AI stack, which matters for custom silicon, advanced packaging, memory, foundries, networking, and hyperscaler capex discipline. (Reuters)
+
+4. AWS reportedly deployed GraphRAG in pharmaceutical research workflows, cutting drug research cycles by 87% by connecting fragmented proprietary databases into a queryable knowledge graph. This is the kind of production AI example advisors can use because it ties Gen AI to measurable workflow compression, with read-through to cloud platforms, data infrastructure, pharma R&D software, and industry-specific AI applications. (AI News)
+
+5. Quantum Systems raised $1.2 billion in Series D funding at a valuation above $8 billion to expand autonomous drone production, strengthen supply chains, and scale deployments across allied markets. This is not a pure Gen AI story, but it matters for the broader innovation cycle because capital is moving into physical AI, defense autonomy, sensor-rich systems, secure communications, and command-and-control software. (The Robot Report)
+
+BEYOND THE MAG 7
+
+1. SK Telecom plans to build 15GW of AI data center capacity across Korea by 2035, while South Korea also moved to support AI data centers with power, land, and permitting assistance. The supplier effect is clear: AI demand is creating new demand pools for utilities, grid equipment, cooling, telecom networks, construction, and data center engineering.
+
+2. ABB Robotics launched the Flexley Stack F712 autonomous forklift with vSLAM navigation, designed to operate without installed markers or reflectors. The productivity impact is that warehouse and factory automation is becoming easier to deploy, with read-through to sensors, fleet software, systems integrators, and industrial automation vendors.
+
+3. Tesollo began IPO preparations after completing Series B funding to scale humanoid robotic hand production. This is a frontier technology capital-markets signal: investor interest is broadening from full humanoid platforms to component suppliers that solve dexterity, durability, repairability, and cost bottlenecks.
+
+WHAT IS BEING DISRUPTED
+
+1. The assumption that AI data center capacity can scale wherever capital is available was disrupted by grid-equipment shortages, power-bill disputes, and local moratoriums in multiple U.S. jurisdictions.
+
+2. The traditional pharma research workflow was disrupted by AWS’s reported GraphRAG deployment that compressed early data gathering and screening cycles.
+
+3. Fixed-purpose factory automation was disrupted by Intrinsic’s software-defined robot workcell pilot path with Foxconn and ABB’s markerless autonomous forklift launch.
+
+REGULATORY RADAR
+
+1. ByteDance’s Doubao and Alibaba’s Qwen will shut down personalized AI agents in China to comply with government regulation. The practical relevance is that agentic AI features may be commercially limited by local policy even when the technology is available.
+
+2. The Federal Trade Commission sought public comment on an AI policy statement. For businesses, this keeps documentation, data-use controls, transparency, and consumer-protection risk in focus as AI moves into customer-facing workflows.
+
+3. California tightened autonomous vehicle compliance requirements around traffic notices, rapid data reporting, emergency geofencing, first-responder communications, and collision data. The investment relevance is that autonomy is moving toward scaled deployment, but only for operators with mature telemetry, safety, and compliance infrastructure.
+
+WHAT TO WATCH NEXT
+
+1. Data center moratorium outcomes in cities and counties over the next 30 to 90 days. Watch whether temporary pauses become zoning rules, water limits, power requirements, or project-specific approvals.
+
+2. Grid equipment lead times and utility rate cases tied to AI campuses. These will show whether power costs are absorbed by utilities, hyperscalers, industrial customers, or local ratepayers.
+
+3. Follow-through on major AI infrastructure financing, including the Anthropic-TeraWulf lease, CPP’s EdgeConneX commitment, Nscale’s reported $900 million buildout funding, and Carlyle’s $2.6 billion sale of a data center power unit to EQT. These are capital-markets indicators for whether AI infrastructure remains financeable at scale.
+
+4. Meta’s September custom AI chip production timeline and any similar hyperscaler silicon updates. The key question is whether internal chips reduce dependency on merchant GPUs or simply add another layer of capex and execution complexity.
+
+5. Enterprise production AI disclosures that include cost per task, latency, caching, model routing, retrieval, auditability, and workflow integration. These signals will help separate durable adoption from experimentation.
+
+6. Physical AI commercialization milestones from Quantum Systems, Tesollo, ForSight Robotics, Intrinsic, ABB Robotics, and autonomous vehicle operators. Watch for repeat orders, regulatory approvals, factory pilots, safety certifications, and production-volume commitments.
+
+READY TO USE SOUNDBITES
+
+1. This week, AI looked less like a model race and more like an infrastructure-finance race: the bottlenecks are power, permits, grid equipment, cooling, and capital.
+
+2. The Meta chip story is a reminder that the biggest platforms are not just buying AI infrastructure; they are trying to own more of the stack.
+
+3. The AWS pharma example is the kind of AI adoption clients understand: fewer months spent searching disconnected data, more time spent on higher-value research decisions.
+
+4. Local data center moratoriums show that AI growth can be delayed by zoning boards and utility constraints as much as by semiconductor supply.
+
+5. Physical AI is becoming investable in pieces: drones, robotic hands, autonomous forklifts, surgical robotics, sensors, and safety software may matter before general-purpose humanoids fully scale.
+
+QUESTIONS TO BRING TO YOUR CLIENTS
+
+1. If AI infrastructure is increasingly constrained by power, permitting, and grid equipment, are your portfolios only exposed to the obvious AI platforms, or also to the enabling infrastructure?
+
+2. Which companies in your portfolio can turn AI into measurable workflow compression like faster research, better search, lower operating costs, or higher throughput?
+
+3. As regulation affects agents, data centers, autonomous vehicles, and financial services AI, are you distinguishing between firms with governance built in and firms that may face deployment friction?
+
+AI PRACTICE TIP OF THE WEEK
+What: Use AI to build a “prospecting capacity filter” that ranks which niche markets your practice can realistically pursue without overloading your team.
+
+Why: This week’s AI infrastructure stories were a reminder that growth is often constrained by capacity, not demand. Advisors can apply the same logic to prospecting: the best niche is not just attractive, it is one your team can serve consistently, compliantly, and profitably.
+
+How to:
+1. List 3 to 5 prospect niches you are considering.
+2. Add your current team constraints, service model, minimum account size, and strongest referral sources.
+3. Ask AI to rank the niches and suggest one small test for the best fit.
+
+Copy prompt: Act as a practice management consultant for a financial advisory team. I want to choose a prospecting niche based on operational fit, not just market size. Here are the niches I am considering: [insert niches]. Our ideal client profile is: [insert]. Our service model is: [insert]. Our team constraints are: [insert]. Our best referral sources are: [insert]. Our minimum account size or revenue target is: [insert]. Rank these niches using five criteria: ease of access, urgency of need, fit with our expertise, service complexity, and referral potential. Give me the top two niches, one reason to avoid each lower-ranked niche, and one low-risk 30-day test for the best niche.
+
+Guardrail: Do not include client names, account details, or private financial information. Treat the output as a planning aid, not as a substitute for your firm’s marketing, compliance, or segmentation process.
