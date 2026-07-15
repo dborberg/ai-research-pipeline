@@ -358,6 +358,20 @@ def _email_sector_report(sector_key: str, html_report: str):
     )
 
 
+def _build_cross_sector_subject(broad_theme: str, report_mode: str) -> str:
+    mode_label = report_mode.replace("_", " ").title()
+    theme_label = broad_theme.strip()
+    return f"[CROSS-SECTOR REPORT] {mode_label} - {theme_label}"
+
+
+def _email_cross_sector_report(broad_theme: str, report_mode: str, html_report: str):
+    send_report(
+        subject=_build_cross_sector_subject(broad_theme, report_mode),
+        body_text=html_to_plain_text(html_report),
+        body_html=html_report,
+    )
+
+
 def _validate_generated_report(report_mode: str, report_text: str):
     if report_mode != "frontier_possibilities":
         return
@@ -681,9 +695,20 @@ def render_sector_report_launcher(api_key: str):
                 st.error(f"Unable to generate the cross-sector report: {exc}")
                 return
 
-        st.success("Cross-sector thematic report generated locally.")
+        if output_format == "html":
+            try:
+                _email_cross_sector_report(broad_theme, str(result["report_mode"]), str(result["report"]))
+            except Exception as exc:
+                st.error(f"Cross-sector report generated locally, but email delivery failed: {exc}")
+            else:
+                st.success("Cross-sector thematic report generated, saved locally, and emailed.")
+        else:
+            st.success("Cross-sector thematic report generated locally.")
+
         st.caption(f"Prompt saved to {result['prompt_path']}")
         st.caption(f"Report saved to {result['report_path']}")
+        if output_format == "html":
+            st.caption("Email delivery uses the same Gmail environment variables as the production workflow: EMAIL_USER, EMAIL_PASSWORD, and EMAIL_TO.")
 
         with st.expander("Rendered Prompt Package", expanded=False):
             st.code(str(result["prompt_package"]), language="markdown")
