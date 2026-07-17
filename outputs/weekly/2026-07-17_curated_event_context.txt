@@ -1,0 +1,362 @@
+SUPPLEMENTAL INPUT: TIER 2 WEEKLY OVERRIDE CANDIDATES
+
+These candidates come from an independent review of the prior seven calendar days of Gen AI and AI-adjacent source material.
+
+Use them only when they represent systemic weekly developments, not to flood the Weekly with unrelated stories.
+
+
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: XTEND secures U.S. patent for autonomous navigation technology
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-07-10T21:31:28
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This highlights continued commercialization of physical AI in defense and security, where autonomy is being used to extend operator reach and reduce workload in complex environments. The pending merger and planned Nasdaq listing provide a potential public-market example of how defense robotics companies are seeking capital and scale, while XTEND’s defense orders and participation in the Drone Dominance Program point to real-world adoption signals rather than purely experimental AI.
+SUMMARY: XTEND secured a U.S. patent, with corresponding protection in Israel, for technology that enables drones to autonomously navigate toward operator-designated mission objectives while reducing operator workload. The company says the technology supports its XOS autonomy platform across defense, law enforcement, private security, and other mission environments, and it is also progressing toward an all-stock merger with JFB Construction Holdings to form a publicly traded defense robotics company.
+COMPANIES: XTEND Reality Inc., JFB Construction Holdings, Unusual Machines, American Ventures, Protego Ventures, Aliya Capital, XTEND AI Robotics
+EVENT_PRIORITY: 88.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 74
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Is the AI Data Center Boom Creating a Debt Bubble? Here's What Investors Need to Know. - The Globe and Mail
+SOURCE: "AI investment" - Google News
+PUBLISHED_AT: 2026-07-11T16:35:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters for advisor conversations because AI infrastructure is a major driver of market enthusiasm, but the financing behind data center expansion may introduce credit, valuation, and concentration risks. Without more article detail, the main takeaway is to frame AI exposure not only around growth potential, but also around balance sheet quality and funding sustainability.
+SUMMARY: The article appears to examine whether the AI-driven data center buildout is contributing to excessive debt issuance or bubble-like financing conditions. Based on the available excerpt, the focus is on what investors should understand about the risks tied to AI infrastructure expansion and capital intensity.
+COMPANIES: 
+EVENT_PRIORITY: 85.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 71
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: The agent evaluation gap: Enterprise AI organizations have a reality-alignment problem, not a coverage problem — and most are shipping to production anyway
+SOURCE: AI | VentureBeat
+PUBLISHED_AT: 2026-07-16T16:40:48
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This highlights a key adoption bottleneck for enterprise AI: companies want to scale agentic workflows, but reliability, monitoring, and governance remain underdeveloped. For advisor conversations, the read-through is that enterprise AI adoption is progressing beyond pilots, but monetization and deployment may increasingly depend on observability, evaluation, risk management, and human-in-the-loop controls. The survey also supports the case for second-derivative beneficiaries in AI assurance and workflow governance, even though the article does not name specific vendors.
+SUMMARY: VentureBeat Pulse Research found that enterprises are increasing AI agent autonomy faster than they trust the evaluation systems meant to control risk. Across 157 enterprises, 50% reported shipping an agent or LLM feature that passed internal evaluations but later caused a customer-facing failure, while only 5% fully trust automated evaluation today. Despite that, 66% either already allow or are building toward zero-human-in-the-loop deployment for low-risk agents within twelve months.
+COMPANIES: VentureBeat
+EVENT_PRIORITY: 80.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 64
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Investors sell longer-dated AI debt amid Big Tech borrowing spree - Financial Times
+SOURCE: "AI investment" - Google News
+PUBLISHED_AT: 2026-07-10T16:29:50
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because AI investment is increasingly being financed through debt markets, not just cash flow. Advisor conversations can focus on whether rising AI capex creates opportunities in infrastructure and technology beneficiaries while also introducing duration, credit supply, and valuation risks in longer-dated bonds.
+SUMMARY: Investors are selling longer-dated debt tied to the AI borrowing wave as Big Tech increases issuance to fund AI-related spending. The move suggests bond markets are becoming more selective about the duration and financing risks associated with the AI infrastructure buildout.
+COMPANIES: 
+EVENT_PRIORITY: 70.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: The agent security gap: 54% of enterprises have already had an AI agent incident, and most still let agents share credentials
+SOURCE: AI | VentureBeat
+PUBLISHED_AT: 2026-07-16T19:02:38
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because it highlights a real enterprise adoption bottleneck for AI agents: security, identity, and governance. For advisor conversations, the read-through is that AI monetization may increasingly depend not only on model capability, but also on the security stack needed to safely deploy agents across business workflows. It also points to potential second-derivative beneficiaries in cybersecurity, identity management, cloud security, and agent-governance tooling.
+SUMMARY: VentureBeat Pulse Research found that 54% of surveyed enterprises have already experienced an AI agent security incident or near-miss, while many are giving agents real access to systems and data without mature identity and isolation controls. Only 32% give every agent its own scoped identity, most still allow some credential sharing, and just 30% isolate their highest-risk agents in sandboxes.
+COMPANIES: OpenAI, Google, Microsoft, Anthropic, VentureBeat
+EVENT_PRIORITY: 29.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: NVIDIA Introduces New Jetson Thor Computers to Advance Mainstream Robotics and Edge AI
+SOURCE: NVIDIA Blog
+PUBLISHED_AT: 2026-07-15T23:00:54
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 5.0
+ADVISOR_RELEVANCE: This is a concrete product launch from a leading AI infrastructure company that points to expanding AI demand beyond data centers into robotics and edge devices. It supports advisor conversations around physical AI, second-wave AI infrastructure opportunities, and the potential for AI compute platforms to become embedded in autonomous machines.
+SUMMARY: NVIDIA introduced the Jetson Thor T3000 and T2000 modules, new edge AI computers based on its Thor architecture. The products are aimed at enabling general-purpose robots and autonomous machines to run foundation models locally as robotics moves from research labs toward broader real-world deployment.
+COMPANIES: NVIDIA
+EVENT_PRIORITY: 29.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: AI infrastructure
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Agentic Service-Oriented Computing: A Manifesto for the Next Frontier of Service-Oriented Computing
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-07-15T04:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 3.4
+ADVISOR_RELEVANCE: This is an early-stage research manifesto rather than a commercial deployment, but it highlights the engineering requirements likely to shape enterprise agent adoption. For advisor conversations, it supports the view that monetization of agentic AI will depend not only on model capability, but also on platforms, tooling, governance, security, and observability layers that make agents reliable in production.
+SUMMARY: The paper proposes Agentic Service-Oriented Computing as a framework for turning LLM-powered agents from isolated prototypes into dependable enterprise-grade services. It emphasizes orchestration, interoperability, lifecycle management, governance, cybersecurity, observability, accountability, and quality-of-service as necessary foundations for agent-based workflows.
+COMPANIES: 
+EVENT_PRIORITY: 26.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Seeing is Free, Speaking is Not: Uncovering the True Energy Bottleneck in Edge VLM Inference
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-07-13T04:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 3.4
+ADVISOR_RELEVANCE: This research is relevant to conversations about the physical and energy constraints of AI deployment at the edge, including robotics and embodied AI. It suggests that optimization efforts may need to shift from reducing visual inputs toward managing model outputs and decoding efficiency, which could influence future edge AI software design and hardware demand. The investment read-through is useful but indirect, as this is an academic paper rather than a commercial deployment or company announcement.
+SUMMARY: A new arXiv paper profiles energy use for on-device Vision-Language Model inference across five models, multiple resolutions, and NVIDIA RTX 3070 and Jetson Orin NX hardware. The authors find that power draw is relatively constant, while latency and energy are driven primarily by output token generation rather than visual processing, with each output token taking 11 to 39 times longer than each input token. The paper argues that controlling output length can save far more energy than visual token pruning, especially as model size increases.
+COMPANIES: NVIDIA
+EVENT_PRIORITY: 26.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: How Path Robotics uses AI to optimize robotic welding
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-07-10T23:02:23
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This highlights a concrete example of AI moving from software into physical industrial workflows, where automation can address complex manufacturing tasks such as welding. For advisors, it supports conversations around AI beneficiaries beyond semiconductors and cloud platforms, including robotics, industrial automation, advanced manufacturing, and companies enabling real-world production deployment.
+SUMMARY: Path Robotics is applying AI and real-time vision guidance to robotic welding, enabling robots to identify torch paths and maintain optimal movement through welding operations. The company is focused on adaptive, AI-driven systems for real-world manufacturing environments and is deploying Boston Dynamics’ Spot robots for mobile welding applications in shipbuilding.
+COMPANIES: Path Robotics, Boston Dynamics, Tiger Data
+EVENT_PRIORITY: 26.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: YES
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: TerraFirma raises $115M to build robotic infrastructure for construction
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-07-16T18:51:40
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 5.4
+ADVISOR_RELEVANCE: This article highlights a concrete example of AI moving into physical infrastructure and labor-intensive industries, where automation may address productivity constraints and skilled labor bottlenecks. TerraFirma’s funded expansion, commercial projects, and government work suggest that AI-enabled robotics is progressing beyond prototypes into field deployment, with potential read-throughs for construction productivity, industrial automation, infrastructure spending, and second-derivative suppliers tied to heavy equipment, software, sensors, and power-related project development.
+SUMMARY: TerraFirma raised $115 million in Series A funding to expand its teams and continue developing semi-autonomous heavy equipment for construction. Its platform combines AI-enabled pre-construction software, a remote command-and-control center, and retrofitted machinery so operators can manage fleets across earthworks and site operations.
+COMPANIES: TerraFirma, Kleiner Perkins, Bain Capital Ventures, Glade Brook Capital Partners, BANNER VC, Saga Ventures, Trust Ventures, Definition, PEAK6, Magnetar Capital, Ravelin Capital, SpaceX, Anduril, Base Power, Shinkei, Hadrian, Goldman Sachs, Starbucks
+EVENT_PRIORITY: 25.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: autonomy
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: lunar-cislunar
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: AWS and Bluesight build AI for hospital 340B compliance
+SOURCE: AI News
+PUBLISHED_AT: 2026-07-14T15:54:39
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 3.9
+ADVISOR_RELEVANCE: This is a concrete example of AI moving from experimentation into production workflows in a regulated enterprise setting, with 20 health systems using the ControlCheck assistant. It highlights how cloud platforms, agent frameworks, and vertical software vendors may capture value by automating data-heavy compliance processes while keeping human oversight and deterministic controls in place. The planned 340B GPO agent is forward-looking but should be viewed cautiously because reported accuracy metrics are based on synthetic testing, not production customer performance.
+SUMMARY: AWS detailed how Bluesight built Prism, an AI layer connecting hospital pharmacy and compliance data, with Prism Assistant for ControlCheck now generally available across 20 health systems. The system uses Amazon Bedrock, AgentCore, Lambda-wrapped APIs, and a constrained agent design to reduce manual compliance workflows, while a broader 340B GPO compliance agent remains planned for release in 2026 and has only been tested on synthetic data so far.
+COMPANIES: AWS, Amazon Web Services, Bluesight, Anthropic, TechForge Media
+EVENT_PRIORITY: 25.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: DataDome Report: AI Agent Traffic Surged 45% in Q2, Driving a Wave of Agent Trust Policy Adoption - Business Wire
+SOURCE: "AI policy" - Google News
+PUBLISHED_AT: 2026-07-16T10:00:00
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.7
+ADVISOR_RELEVANCE: The report points to a practical second-order impact of AI adoption: as AI agents become more active online, enterprises may need new controls for identity, trust, security, and policy enforcement. This is relevant for advisor conversations around AI beneficiaries beyond model providers and chipmakers, particularly cybersecurity and digital infrastructure companies exposed to AI-driven traffic management.
+SUMMARY: DataDome reported that AI agent traffic increased 45% in Q2. The company says this growth is driving adoption of agent trust policies, highlighting a shift from general AI experimentation toward managing and governing autonomous web activity.
+COMPANIES: DataDome
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Agentic orchestration: Enterprise AI organizations have a deployment problem, not a platform problem — and most are calling chatbots agents
+SOURCE: AI | VentureBeat
+PUBLISHED_AT: 2026-07-15T22:24:17
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is a useful signal that enterprise AI spending is moving beyond standalone chat interfaces toward orchestration layers, workflow tooling, security, and governance. The data supports advisor conversations about platform convergence around leading model providers, while also highlighting that monetization and productivity gains may take time because many deployed agents are still basic chatbot wrappers rather than fully orchestrated business processes.
+SUMMARY: VentureBeat survey data from 101 enterprises suggests agent orchestration is consolidating around major model-provider platforms, with Anthropic’s Claude cited as the primary platform by 40% of respondents, ahead of Microsoft at 18% and OpenAI at 13%. However, enterprise deployment remains early: 71% say a quarter or fewer of their deployed “agents” are true multi-step workflows rather than chatbot wrappers, and only 10% report that more than half of deployed agents meet that standard.
+COMPANIES: Anthropic, Microsoft, OpenAI, Google, Amazon, LangChain
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Google Releases LiteRT.js: A JavaScript Binding of LiteRT That Runs .tflite Models in Browsers via WebGPU
+SOURCE: MarkTechPost
+PUBLISHED_AT: 2026-07-15T07:36:17
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 5.0
+ADVISOR_RELEVANCE: This matters as a signal that AI workloads are continuing to move beyond centralized cloud infrastructure toward browsers and edge devices. For advisors, the read-through is that AI adoption may increasingly depend on software runtimes, hardware acceleration standards, and device-level compute capabilities, not only large data center buildouts.
+SUMMARY: Google released LiteRT.js, a JavaScript binding for its LiteRT on-device inference library, enabling .tflite models to run directly in browsers using WebAssembly, CPU acceleration via XNNPACK, GPU acceleration via WebGPU, and experimental NPU support through WebNN. Google reports performance gains of up to 3x versus other web runtimes and 5–60x for GPU or NPU paths versus its own CPU path, though tensors require manual management.
+COMPANIES: Google
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: NVIDIA shares how to evaluate general-purpose robot policies for real-world deployment
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-07-14T20:08:27
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 4.1
+ADVISOR_RELEVANCE: This highlights NVIDIA’s push beyond chips into the software and simulation layers needed to commercialize robotics and physical AI. For advisor conversations, it supports the view that AI infrastructure is expanding into testing, validation, and deployment tooling, which may become critical as robotics foundation models move closer to real-world use.
+SUMMARY: NVIDIA introduced RoboLab, a simulation benchmarking platform designed to evaluate general-purpose robot policies more rigorously before real-world deployment. The platform addresses current benchmark weaknesses such as visual domain overlap, static task sets, limited diagnostic insight, and insufficient statistical confidence, while supporting robot-agnostic testing and agentic AI workflows for rapid task generation.
+COMPANIES: NVIDIA, Franka
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: AI infrastructure
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: software-data-analytics
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Ondas acquires DZYNE for $875.8M, expanding its defense capabilities
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-07-13T22:16:05
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 4.6
+ADVISOR_RELEVANCE: This deal highlights how AI-enabled robotics and autonomous systems are moving from niche defense tools toward scaled operating platforms with revenue targets, integrated product portfolios, and government customer demand. It provides a concrete example of AI adoption in physical systems, where investment relevance may extend beyond software to drones, sensors, networking, mission software, manufacturing, and defense modernization.
+SUMMARY: Ondas acquired DZYNE Technologies for $875.8 million in a cash-and-stock deal to expand its autonomous defense capabilities across ISR, counter-UAS, precision strike, mission intelligence, and autonomous systems. DZYNE brings AI-enabled long-endurance aircraft, autonomous navigation, video processing, tracking and targeting capabilities, and counter-drone systems, with Ondas expecting DZYNE to generate $191 million in 2026 revenue and more than $300 million in 2027.
+COMPANIES: Ondas Inc., DZYNE Technologies LLC, World View, Ondas Autonomous Systems, Ondas Networks, Ondas Sentinel
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: White House to rally utilities, data centers over AI power costs - Reuters
+SOURCE: "AI data center" - Google News
+PUBLISHED_AT: 2026-07-13T10:06:17
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 4.8
+ADVISOR_RELEVANCE: This matters because AI growth is increasingly constrained by power availability and electricity costs, making utilities, grid infrastructure, and data center economics important second-order investment themes. Federal coordination suggests policymakers view AI power demand as a material economic and infrastructure issue, but limited article detail warrants a conservative interpretation.
+SUMMARY: The White House is set to bring together utilities and data center operators to discuss power costs tied to AI growth. The article points to rising policy attention around the electricity demands of AI infrastructure, though the provided excerpt does not include details on participants, proposals, or timing.
+COMPANIES: 
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Medicaroid receives CE marking for hinotori surgical robot system
+SOURCE: Robotics & Automation News
+PUBLISHED_AT: 2026-07-17T10:45:22
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.9
+ADVISOR_RELEVANCE: This is a concrete regulatory milestone in surgical robotics, a segment tied to hospital automation, precision procedures, and potential long-term shifts in healthcare capital spending. While the article does not provide financial details or AI-specific functionality, CE marking expands Medicaroid's addressable market and signals continued global competition in robotic surgery platforms.
+SUMMARY: Medicaroid received CE marking under the EU Medical Device Regulation for its hinotori Surgical Robot System. The approval allows the company to market the surgical robotics platform across EU member states and selected non-EU countries, supporting its international expansion beyond current markets.
+COMPANIES: Medicaroid
+EVENT_PRIORITY: 22.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
