@@ -1,0 +1,65 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>July 18, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s AI tape shows the investment cycle broadening from model performance and mega-cap leadership into physical deployment, infrastructure constraints, and policy friction. Local data center moratoriums are becoming a practical bottleneck for AI capacity, while ASML’s outlook shows that AI demand is still translating into upstream semiconductor equipment needs. At the same time, Toyota’s expanded Nvidia partnership and robotics funding signals point to AI moving into vehicles, factories, construction, and healthcare workflows. For CPM, advisor, and wholesaler conversations, the key message is that AI is no longer just a software story; it is increasingly a power, permitting, semicap, industrial automation, governance, and platform-distribution story.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Hagar Township approved a data center moratorium:</strong> The local action matters because AI infrastructure buildouts can be slowed or redirected by zoning, permitting, power, and community resistance. The portfolio-monitoring implication is to track where compute capacity can actually be built, not just where cloud and AI demand is strongest. (Source: WSJM)</li>
+<li><strong>Toyota and Nvidia expanded their partnership:</strong> Toyota plans to use Nvidia technology across next-generation vehicles, manufacturing, robotics, and city infrastructure, showing physical AI moving closer to industrial production systems. The read-through extends beyond Nvidia to auto compute, industrial software, robotics simulation, sensors, and factory automation. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Bloomberg reported that Moonshot AI released a stronger Chinese model:</strong> The model reportedly narrows the performance gap with leading U.S. rivals, reinforcing that frontier AI competition remains global despite export controls and supply constraints. The implication is to monitor U.S.-China AI competition through cloud demand, semiconductor access, model pricing, and policy risk. (Source: Bloomberg.com)</li>
+<li><strong>IEEE Spectrum highlighted humanoid surgical teleoperation progress:</strong> UC San Diego’s evaluation of humanoid robots for laparoscopic teleoperation points to physical AI entering highly skilled professional workflows, even if commercialization is still early. This is not a traditional public-equity event, but it matters for the frontier technology cycle because healthcare robotics, autonomy, sensors, and surgical workflow software remain watchlist areas. (Source: IEEE Spectrum)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Toyota selected Nvidia systems for vehicles, factories, and city use cases:</strong> The partnership points to AI moving from isolated pilots into governed industrial workflows where safety, simulation, operating systems, and embedded compute matter. The business-model implication is that enterprise production readiness increasingly depends on platform ecosystems that can connect software, hardware, and real-world operations. (Source: Robotics &amp; Automation News)</li>
+<li><strong>UC San Diego evaluated humanoid robots for laparoscopic teleoperation:</strong> The study suggests AI-enabled robotics may amplify skilled professionals rather than simply replace labor, especially in healthcare settings where remote operation and precision are valuable. Advisors can frame this as an early signal that AI labor impact may show up through workflow redesign, training, and specialized equipment adoption. (Source: IEEE Spectrum)</li>
+<li><strong>Indonesia backed WAICO for inclusive global AI governance:</strong> The government support shows that AI governance discussions are expanding beyond the U.S., Europe, and China into broader international rule-setting. The enterprise implication is that global AI deployment may increasingly require auditability, compliance tools, privacy controls, and region-specific governance processes. (Source: ANTARA News)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>ASML raised its outlook and planned more EUV capacity:</strong> The company cited AI-driven demand and intends to expand lithography capacity through at least 2028, underscoring that AI compute demand is still flowing upstream into advanced semiconductor manufacturing. The investment read-through includes semicap equipment, advanced logic, memory, advanced packaging, and foundry supply chains. (Source: EE Times)</li>
+<li><strong>A Planning and Zoning Commission began discussing data center rules and timelines:</strong> The local process highlights how AI infrastructure growth increasingly depends on permitting, zoning, power access, and community acceptance. The portfolio implication is to monitor data center exposure alongside grid infrastructure, cooling, networking, and regional utility constraints. (Source: Times Republican)</li>
+<li><strong>A taxpayer group warned that New York’s AI data center moratorium could cost jobs and investment:</strong> The warning shows how state-level infrastructure policy can become a competitive variable in attracting AI-related capital spending. The advisor implication is that data center growth may increasingly favor jurisdictions with faster permitting, available power, and clearer regulatory frameworks. (Source: Baltimore Sun)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Reuters reported that Apple overtook Nvidia as the world’s most valuable company:</strong> The move shows that AI leadership expectations can rotate between infrastructure leaders and consumer or device platforms with large distribution surfaces. The portfolio-monitoring implication is to keep valuation discipline around mega-cap AI exposure while watching platform convergence across devices, operating systems, productivity tools, and cloud ecosystems. (Source: Reuters)</li>
+<li><strong>Monumental raised $32 million in Series B funding to bring construction robots to the U.S.:</strong> The financing is a frontier technology capital markets signal because it shows investor interest in applying autonomy and robotics to labor-constrained physical industries. The read-through is to construction automation, industrial robotics, sensors, machine vision, and workflow software for contractors. (Source: The Robot Report)</li>
+<li><strong>The Indianapolis Business Journal argued that a data center moratorium could risk local investment:</strong> The editorial reflects a growing capital allocation debate around whether regions want the jobs, tax base, and infrastructure load tied to AI compute buildouts. The implication is that AI infrastructure has become a municipal finance and regional economic development issue, not just a cloud capex issue. (Source: Indianapolis Business Journal)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Hagar Township approved a moratorium on data centers:</strong> The action is a concrete example of local governments asserting control over AI-adjacent infrastructure development. The policy implication is that permitting risk, zoning rules, and community opposition can shape where AI compute capacity is deployed. (Source: WSJM)</li>
+<li><strong>Indonesia supported WAICO to advance inclusive global AI governance:</strong> The move signals that AI governance norms are becoming more internationally distributed rather than concentrated only in major developed markets. The commercial implication is that multinational AI providers and enterprise users may need stronger governance software, documentation, compliance processes, and public-sector engagement. (Source: ANTARA News)</li>
+<li><strong>Bloomberg reported that China’s Moonshot AI narrowed the model gap with U.S. rivals:</strong> The development may intensify policy scrutiny around export controls, domestic AI capabilities, and access to advanced compute. The implication is to monitor how regulation affects semiconductor supply chains, cloud infrastructure, and cross-border AI competition. (Source: Bloomberg.com)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Monumental raised funding to expand construction robots into the U.S.:</strong> The company’s autonomous electric robots use computer vision, sensors, and crane-like systems to automate construction tasks, starting with bricklaying and expanding into broader site work. The business-model implication is that physical AI may enter labor-constrained industries through subcontractor-style services rather than only equipment sales. (Source: The Robot Report)</li>
+<li><strong>IEEE Spectrum’s robotics roundup highlighted surgical and humanoid robotics demonstrations:</strong> The roundup points to continued progress in embodied AI systems that can operate in more complex environments than traditional fixed automation. The investment implication is to monitor healthcare robotics, humanoid systems, autonomy software, sensors, and safety validation as pilots move toward commercial deployment. (Source: IEEE Spectrum)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Local data center moratorium votes:</strong> Track whether more towns and states introduce pauses, zoning reviews, or restrictions on data center development. The key implication is whether permitting becomes a bigger constraint on AI capacity than chip availability in some regions. (Source: Full article set)</li>
+<li><strong>ASML’s EUV capacity expansion timeline:</strong> Watch whether AI demand continues to support longer-cycle semiconductor equipment orders through 2028. The portfolio implication is that upstream semicap signals can confirm or challenge the durability of AI infrastructure spending. (Source: EE Times)</li>
+<li><strong>Industrial AI partnerships like Toyota and Nvidia:</strong> Monitor whether large manufacturers move from announcements into scaled deployments across factories, vehicles, and logistics networks. The implication is that enterprise production readiness will be measured by integration, safety validation, observability, and cost control, not just model capability. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Frontier model competition from China:</strong> Watch whether new Chinese models pressure pricing, accelerate open-model adoption, or trigger additional policy responses. The implication is that AI platform economics may be shaped by geopolitics as much as by technical benchmarks. (Source: Bloomberg.com)</li>
+<li><strong>Robotics funding rounds and U.S. deployments:</strong> Track whether companies like Monumental can convert venture funding into repeatable commercial deployments in labor-intensive industries. The implication is that physical AI adoption will be judged by uptime, safety, unit economics, and customer willingness to redesign workflows. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>Apple’s market-cap move:</strong> AI leadership is not just about who sells the chips; it is also about who controls the device, operating system, and workflow surfaces. (Source: Reuters)</li>
+<li><strong>Hagar Township’s moratorium:</strong> The AI buildout increasingly depends on local permits, power availability, and community acceptance, not just cloud demand. (Source: WSJM)</li>
+<li><strong>ASML’s raised outlook:</strong> AI demand is still showing up deep in the semiconductor supply chain, especially where advanced manufacturing capacity is scarce. (Source: EE Times)</li>
+<li><strong>Toyota’s Nvidia partnership:</strong> The next phase of AI may be less about chatbots and more about cars, factories, robots, and real-world operating systems. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Monumental’s funding round:</strong> Physical AI is starting to attract capital because investors see automation moving into labor-constrained industries like construction. (Source: The Robot Report)</li>
+</ul>
