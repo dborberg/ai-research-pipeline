@@ -1,0 +1,66 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>July 19, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s strongest signal is that the AI investment cycle is becoming less about model releases and more about access, governance, siting, power, and physical deployment. Regulators and local governments are increasingly shaping who can use data, where compute can be built, and what environmental costs must be addressed. For CPM, advisor, and wholesaler conversations, the key message is that AI remains a growth theme, but the bottlenecks are moving into policy, infrastructure, and enterprise readiness. That favors portfolio monitoring beyond the largest platforms, including grid infrastructure, power systems, governance software, robotics, and compliance-heavy enterprise platforms.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>The EU reportedly compelled Google to share Android and Search data with rival AI assistants:</strong> The action matters because it targets the platform and data advantages that support AI discovery, assistant distribution, and search monetization. The implication is to monitor Alphabet’s regulatory exposure, competitive AI assistant dynamics, and the read-through to firms controlling operating systems, search surfaces, cloud ecosystems, and enterprise application layers. (Source: Unite.AI)</li>
+<li><strong>A Wisconsin village approved a one-year data center moratorium:</strong> The decision highlights how local health, safety, and environmental concerns can slow the physical buildout needed for AI compute. The implication is that AI infrastructure growth increasingly depends on permitting, local politics, utility capacity, and community acceptance, not just cloud capex budgets. (Source: The Cool Down)</li>
+<li><strong>Faraday Future highlighted robotics expansion and a shipment milestone at Automate 2026:</strong> The company’s AI subsidiary said it is expanding from education-focused robotics into commercial and industrial robotics, with first-half deliveries expected to exceed prior levels. The implication is that physical AI remains early, but investors should monitor whether shipment milestones translate into repeatable demand for industrial automation, sensors, edge AI, and robotics software. (Source: Robotics &amp; Automation News)</li>
+<li><strong>China proposed a new global governance framework for artificial intelligence:</strong> The proposal frames AI ethics and governance as part of international power competition, not just a technical safety debate. The implication is that multinational enterprises may face more fragmented AI rules, creating demand for auditability, compliance tooling, model governance, and regional deployment strategies. (Source: Pressenza - International Press Agency)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>The EU’s Google data-access action put platform convergence in focus:</strong> If rival AI assistants gain access to Android and Search data, enterprise and consumer workflows could become less dependent on a single dominant discovery layer. The implication is to watch whether AI assistants become embedded across operating systems, productivity tools, search, and enterprise applications rather than remaining standalone chatbots. (Source: Unite.AI)</li>
+<li><strong>The Daily Star argued that Bangladesh’s AI policy must account for environmental costs:</strong> The article points to a broader enterprise issue: AI deployment requires not only model performance but also cost control, energy awareness, and responsible operating practices. The implication is that enterprise production readiness may increasingly include sustainability reporting, compute governance, and procurement standards. (Source: The Daily Star)</li>
+<li><strong>ABC News aired a segment on AI regulation through political cartoons:</strong> While not a deployment story, the segment shows AI regulation moving into mainstream public communication and political culture. The implication for advisors is that client questions may increasingly focus on labor, trust, and guardrails rather than only on productivity upside. (Source: ABC News &amp; Headlines - Australian Broadcasting Corporation)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Blakeman criticized Gov. Hochul’s data center moratorium and called data centers the future:</strong> The New York political debate shows that data center policy is becoming a state-level economic development issue. The implication is to monitor which jurisdictions compete for AI infrastructure and which restrict it, with read-through to utilities, grid infrastructure, cooling, and construction services. (Source: Syracuse.com)</li>
+<li><strong>The Des Moines Register published letters showing skepticism among Iowans about data center development:</strong> The local response matters because community resistance can delay projects even when demand for AI compute remains strong. The implication is that data center growth should be monitored through permitting risk, water usage concerns, power availability, and local tax negotiations. (Source: The Des Moines Register)</li>
+<li><strong>Bloom Energy was described as facing regulatory headwinds as the AI data center power story lost momentum:</strong> The headline underscores that power providers tied to AI infrastructure can face policy and sentiment risk even when the demand narrative is favorable. The implication is to separate durable AI power demand from company-specific execution, valuation, and regulatory risks. (Source: foreignpolicyjournal.com)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Bloom Energy’s reported regulatory headwinds created a market-discipline signal for AI power exposure:</strong> The story suggests that investors may scrutinize AI-linked infrastructure narratives more carefully when permitting, regulation, or customer timing becomes less certain. The implication is to monitor second-derivative beneficiaries with valuation discipline, especially power equipment, fuel cells, backup power, and grid-adjacent infrastructure. (Source: foreignpolicyjournal.com)</li>
+<li><strong>Faraday Future’s robotics shipment milestone gave a small-cap physical AI read-through:</strong> This is not a pure Gen AI software story, but it matters because physical AI needs commercial shipments, not only demonstrations. The implication is to monitor whether robotics firms can convert pilots into recurring industrial demand across automation, edge compute, sensors, and service models. (Source: Robotics &amp; Automation News)</li>
+<li><strong>The Wisconsin data center moratorium highlighted capex timing risk for AI infrastructure:</strong> Even when hyperscaler demand is strong, local delays can affect project schedules and the pace at which compute capacity comes online. The implication is that advisor conversations should distinguish long-term AI demand from near-term bottlenecks in permitting, power interconnection, and community approval. (Source: The Cool Down)</li>
+<li><strong>The EU’s reported Google data-sharing mandate raised a platform valuation question:</strong> Regulatory pressure on Android and Search data could reduce the scarcity value of platform-controlled distribution in AI assistants. The implication is to monitor competitive positioning across search, mobile operating systems, app ecosystems, and AI-native assistant providers. (Source: Unite.AI)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>China proposed a global AI governance framework:</strong> The proposal matters because AI standards are becoming part of geopolitical strategy, with potential implications for cross-border enterprise deployment. The policy implication is that companies operating globally may need region-specific governance, safety, data, and audit practices. (Source: Pressenza - International Press Agency)</li>
+<li><strong>Bangladesh’s AI policy debate centered on environmental costs:</strong> The discussion shows that emerging-market AI strategies may increasingly include energy, water, and sustainability constraints. The implication is that AI policy is likely to influence infrastructure planning, procurement standards, and public-sector adoption hurdles. (Source: The Daily Star)</li>
+<li><strong>New York’s data center moratorium debate became part of the governor’s race:</strong> Blakeman’s criticism of Hochul’s stance shows that AI infrastructure policy is becoming campaign material. The implication is to monitor state-level permitting and political risk as a factor in where AI compute capacity, utility investment, and related jobs are located. (Source: Syracuse.com)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Faraday Future highlighted FFAI’s move into commercial and industrial robotics:</strong> The company’s Automate 2026 update points to physical AI moving beyond education-oriented robots toward business and industrial use cases. The implication is to watch whether robotics suppliers can demonstrate repeatable deployments, service revenue, and integration with industrial automation workflows. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Faraday Future linked its robotics push to AI-enabled automation markets:</strong> The development matters because embodied AI requires hardware reliability, software integration, and customer proof points before scaling. The implication is to monitor adjacent beneficiaries in sensors, edge AI chips, industrial software, automation components, and robotics services. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Local data center moratorium votes:</strong> More municipal pauses would signal that AI infrastructure growth is facing a permitting and community-trust bottleneck. The implication is to monitor project delays, utility interconnection timelines, and state-level incentives over the next 30 to 90 days. (Source: The Cool Down; Syracuse.com)</li>
+<li><strong>AI data-access remedies in Europe:</strong> Follow whether the reported Google action becomes a durable precedent for forcing dominant platforms to share data with rival assistants. The implication is that platform convergence may become more open, but also more regulated, affecting search, mobile, and AI assistant economics. (Source: Unite.AI)</li>
+<li><strong>Environmental conditions in national AI policies:</strong> Bangladesh’s policy debate is a reminder that AI adoption may face energy and sustainability guardrails outside the United States and Europe. The implication is to monitor whether environmental standards become part of enterprise AI procurement and public-sector AI approvals. (Source: The Daily Star)</li>
+<li><strong>Regulatory headlines around AI power suppliers:</strong> Bloom Energy’s reported headwinds show that AI infrastructure exposure can be volatile when company-specific regulation intersects with a popular theme. The implication is to separate broad power-demand tailwinds from execution, permitting, financing, and valuation risk. (Source: foreignpolicyjournal.com)</li>
+<li><strong>Physical AI shipment milestones:</strong> Faraday Future’s robotics update is worth tracking for evidence that robotics demand is shifting from pilots to scaled commercial deployment. The implication is to watch backlog quality, repeat customers, gross margin trajectory, and integration partnerships. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>Wisconsin’s data center moratorium is a reminder:</strong> AI growth is no longer just a chip story; it is also a permitting, power, and community-approval story. (Source: The Cool Down)</li>
+<li><strong>The EU’s reported Google action shows:</strong> Control of data and distribution may be just as important as model quality in the AI assistant race. (Source: Unite.AI)</li>
+<li><strong>Faraday Future’s robotics update suggests:</strong> The next phase of AI may include machines doing physical work, not only software helping office workers. (Source: Robotics &amp; Automation News)</li>
+<li><strong>China’s AI governance proposal highlights:</strong> AI rules are becoming part of geopolitics, which can raise compliance complexity for global companies. (Source: Pressenza - International Press Agency)</li>
+<li><strong>Bloom Energy’s reported headwinds show:</strong> AI-linked infrastructure themes still require valuation discipline and careful monitoring of regulation, execution, and customer timing. (Source: foreignpolicyjournal.com)</li>
+</ul>
