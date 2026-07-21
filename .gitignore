@@ -10,3 +10,4 @@ data/.last_refresh
 data/streamlit_ui_state.json
 out/streamlit/
 out/test_*.md
+outputs/replay/*

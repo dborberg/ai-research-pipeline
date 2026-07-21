@@ -25,6 +25,7 @@ def _load_replay_module():
     sys.modules["dotenv"] = dotenv_module
 
     app_db = types.ModuleType("app.db")
+    app_db.get_sqlite_db_path = lambda *args, **kwargs: None
     app_db.init_db = lambda: None
     sys.modules["app.db"] = app_db
 

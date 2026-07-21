@@ -2,6 +2,7 @@
 
 import argparse
 import os
+import shutil
 import sys
 from datetime import date, datetime, time, timedelta
 from pathlib import Path
@@ -16,7 +17,7 @@ if str(REPO_ROOT) not in sys.path:
 
 load_dotenv(REPO_ROOT / ".env")
 
-from app.db import init_db
+from app.db import get_sqlite_db_path, init_db
 from app.reporting import get_openai_client, save_text_output
 from app.runtime_secrets import get_openai_api_key
 from app.source_archive import load_daily_digest_file, load_daily_source_snapshot
@@ -111,22 +112,39 @@ def parse_args(argv=None):
     return parser.parse_args(argv)
 
 
+def _prepare_replay_database(replay_root: Path) -> str:
+    replay_db_path = replay_root / "replay.db"
+    source_sqlite_path = get_sqlite_db_path()
+
+    replay_root.mkdir(parents=True, exist_ok=True)
+
+    if source_sqlite_path and Path(source_sqlite_path).exists():
+        shutil.copy2(source_sqlite_path, replay_db_path)
+    elif replay_db_path.exists():
+        replay_db_path.unlink()
+
+    return f"sqlite:///{replay_db_path}"
+
+
 def replay_weekly_reports(week_ending: date, *, debug_weekly_scoring: bool = False):
     api_key = get_openai_api_key(default="")
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY must be set")
 
-    init_db()
-    client = get_openai_client(api_key)
     replay_root = REPO_ROOT / "outputs" / "replay" / week_ending.isoformat()
     daily_output_dir = replay_root / "daily"
     weekly_output_dir = replay_root / "weekly"
 
+    original_db_url = os.getenv("DB_URL")
     original_window_start = os.getenv(PIPELINE_WINDOW_START_ENV)
     original_window_end = os.getenv(PIPELINE_WINDOW_END_ENV)
 
     daily_digests = []
     try:
+        os.environ["DB_URL"] = _prepare_replay_database(replay_root)
+        init_db()
+        client = get_openai_client(api_key)
+
         for target_date in _week_dates(week_ending):
             window_start, window_end = _build_utc_window_for_central_date(target_date)
             os.environ[PIPELINE_WINDOW_START_ENV] = window_start.isoformat()
@@ -194,6 +212,11 @@ def replay_weekly_reports(week_ending: date, *, debug_weekly_scoring: bool = Fal
         }
 
     finally:
+        if original_db_url is None:
+            os.environ.pop("DB_URL", None)
+        else:
+            os.environ["DB_URL"] = original_db_url
+
         if original_window_start is None:
             os.environ.pop(PIPELINE_WINDOW_START_ENV, None)
         else:
