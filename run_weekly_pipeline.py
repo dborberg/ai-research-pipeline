@@ -2074,7 +2074,9 @@ def main():
     content = None
 
     if args.mode == "WHOLESALER":
-        api_key = os.getenv("OPENAI_API_KEY")
+        from app.runtime_secrets import get_openai_api_key
+
+        api_key = get_openai_api_key(default="")
         if not api_key:
             raise RuntimeError("OPENAI_API_KEY must be set")
         client = get_openai_client(api_key)
@@ -2085,7 +2087,9 @@ def main():
         content = _get_stored_weekly_digest_content(week_start, digest_type)
 
         if content is None:
-            api_key = os.getenv("OPENAI_API_KEY")
+            from app.runtime_secrets import get_openai_api_key
+
+            api_key = get_openai_api_key(default="")
             if not api_key:
                 raise RuntimeError("OPENAI_API_KEY must be set")
             client = get_openai_client(api_key)

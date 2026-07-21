@@ -11,6 +11,12 @@ from html import escape, unescape
 from pathlib import Path
 from typing import Any
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from app.runtime_secrets import get_openai_api_key
+
 
 DEFAULT_MODEL = "gpt-5.5"
 DEFAULT_MAX_OUTPUT_TOKENS = 2800
@@ -566,7 +572,7 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
 
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = get_openai_api_key(default="")
     if not api_key:
         print(
             "OPENAI_API_KEY must be set to generate a sector report.",

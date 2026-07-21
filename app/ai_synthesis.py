@@ -3,9 +3,11 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 
+from app.runtime_secrets import get_openai_api_key
+
 load_dotenv()
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key=get_openai_api_key(default=""))
 
 # Debug output path (used by dashboard to show last synthesis)
 LOG_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "logs"))

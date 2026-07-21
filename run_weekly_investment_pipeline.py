@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 from app.db import fetch_weekly_digests, init_db
 from app.reporting import get_latest_completed_friday, get_openai_client
+from app.runtime_secrets import get_openai_api_key
 from app.send_email import send_report
 from run_weekly_pipeline import THEMATIC_TITLE, WHOLESALER_TITLE, _generate_and_store_weekly_reports
 
@@ -53,7 +54,7 @@ def _load_or_generate_reports(mode, week_start):
             "thematic": stored_reports[THEMATIC_TYPE],
         }
 
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = get_openai_api_key(default="")
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY must be set")
 

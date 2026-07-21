@@ -9,6 +9,7 @@ from sqlalchemy import text
 
 from app.db import get_engine, init_db
 from app.pipeline_window import get_pipeline_window
+from app.runtime_secrets import get_openai_api_key
 from app.space_economy import classify_space_economy_article
 
 load_dotenv()
@@ -24,7 +25,7 @@ BASE_RETRY_DELAY_SECONDS = max(1.0, float(os.getenv("OPENAI_ENRICH_RETRY_BASE_SE
 
 
 def get_openai_client():
-    return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    return OpenAI(api_key=get_openai_api_key())
 
 
 def get_db_engine():

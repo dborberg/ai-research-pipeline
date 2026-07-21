@@ -15,6 +15,7 @@ from dotenv import load_dotenv
 from app.cluster_schema import normalize_cluster_df
 from app.db import fetch_weekly_digests, get_articles_by_ids, get_cluster_history, get_database_state_token, get_weekly_clusters, save_weekly_clusters
 from app.reporting import get_latest_completed_friday, get_openai_client, get_week_start
+from app.runtime_secrets import get_openai_api_key
 from app.send_email import send_report
 from app.velocity import apply_velocity_metrics, compute_velocity
 from run_weekly_pipeline import cluster_articles, get_weekly_articles
@@ -1108,7 +1109,7 @@ def main():
     st.title("AI Signal Command Center")
     st.caption("Weekly AI signal detection, thematic momentum, and sector report generation")
 
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = get_openai_api_key(default="")
     workspace_options = ["Signal Dashboard", "Sector Report Launcher", "Weekly Replay Launcher"]
     _restore_widget_value("workspace_view", workspace_options[0], workspace_options)
     view = st.radio(

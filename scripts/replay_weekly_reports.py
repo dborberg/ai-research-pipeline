@@ -18,6 +18,7 @@ load_dotenv(REPO_ROOT / ".env")
 
 from app.db import init_db
 from app.reporting import get_openai_client, save_text_output
+from app.runtime_secrets import get_openai_api_key
 from app.source_archive import load_daily_digest_file, load_daily_source_snapshot
 from app.pipeline_window import PIPELINE_WINDOW_END_ENV, PIPELINE_WINDOW_START_ENV
 from run_weekly_pipeline import (
@@ -111,7 +112,7 @@ def parse_args(argv=None):
 
 
 def replay_weekly_reports(week_ending: date, *, debug_weekly_scoring: bool = False):
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = get_openai_api_key(default="")
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY must be set")
 

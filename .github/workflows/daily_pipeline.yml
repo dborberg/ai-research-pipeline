@@ -18,23 +18,35 @@ concurrency:
 
 permissions:
   contents: write
+  id-token: write
+
+env:
+  PROJECT_ID: ai-research-pipeline
 
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
-    env:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      EMAIL_USER: ${{ secrets.EMAIL_USER }}
-      EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-      EMAIL_TO: ${{ secrets.EMAIL_TO }}
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_DEPLOYER_SERVICE_ACCOUNT }}
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v3
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+
+      - name: Export runtime secrets from GCP
+        run: bash scripts/export_gcp_runtime_secrets.sh
 
       - name: Set up Python
         uses: actions/setup-python@v6

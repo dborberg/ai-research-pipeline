@@ -6,6 +6,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from app.branding import DAILY_TITLE, KNOWN_REPORT_TITLES
+from app.runtime_secrets import get_email_settings
 
 
 def _looks_like_html(text):
@@ -156,9 +157,7 @@ def send_report(subject, body_text, body_html=None):
 
     smtp_server = "smtp.gmail.com"
     smtp_port = 465
-    sender_email = os.environ.get("EMAIL_USER")
-    receiver_email = os.environ.get("EMAIL_TO")
-    app_password = os.environ.get("EMAIL_PASSWORD")
+    sender_email, receiver_email, app_password = get_email_settings()
 
     if not sender_email or not app_password or not receiver_email:
         raise RuntimeError("EMAIL_USER, EMAIL_PASSWORD, and EMAIL_TO must be set")

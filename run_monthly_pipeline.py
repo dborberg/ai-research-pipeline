@@ -17,6 +17,7 @@ from app.reporting import (
     get_openai_client,
     save_text_output,
 )
+from app.runtime_secrets import get_openai_api_key
 from app.send_email import send_report
 from app.space_economy import (
     SPACE_ECONOMY_FILTER_PROMPT,
@@ -456,7 +457,7 @@ def main():
     load_dotenv()
     init_db()
 
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = get_openai_api_key(default="")
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY must be set")
 

@@ -189,6 +189,10 @@ gcloud projects add-iam-policy-binding ai-research-pipeline \
 gcloud projects add-iam-policy-binding ai-research-pipeline \
   --member="serviceAccount:github-deployer@ai-research-pipeline.iam.gserviceaccount.com" \
   --role="roles/iam.serviceAccountUser"
+
+gcloud projects add-iam-policy-binding ai-research-pipeline \
+  --member="serviceAccount:github-deployer@ai-research-pipeline.iam.gserviceaccount.com" \
+  --role="roles/secretmanager.secretAccessor"
 ```
 
 Grant the runtime service account permissions:
@@ -240,6 +244,8 @@ Expected values:
 1. `GCP_WORKLOAD_IDENTITY_PROVIDER`: `projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/github-pool/providers/github-provider`
 2. `GCP_DEPLOYER_SERVICE_ACCOUNT`: `github-deployer@ai-research-pipeline.iam.gserviceaccount.com`
 3. `CLOUD_RUN_JOB_SERVICE_ACCOUNT`: `cloud-run-job-runner@ai-research-pipeline.iam.gserviceaccount.com`
+
+The daily, weekly, monthly, and sector-report GitHub workflows now fetch `OPENAI_API_KEY`, `EMAIL_USER`, `EMAIL_PASSWORD`, and `EMAIL_TO` directly from GCP Secret Manager at runtime after Workload Identity authentication. Those application secrets no longer need to be stored separately as GitHub repository secrets.
 
 ## Local deploy validation
 

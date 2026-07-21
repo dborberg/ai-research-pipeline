@@ -195,6 +195,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
     from app.branding import DAILY_TITLE
     from app.db import get_engine
     from app.pipeline_window import get_pipeline_window
+    from app.runtime_secrets import get_openai_api_key
     from app.space_economy import (
         SPACE_ECONOMY_FILTER_PROMPT,
         calculate_space_economy_theme_active,
@@ -206,7 +207,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
     digest_token_budget = 6000
     digest_request_timeout = float(os.getenv("OPENAI_DIGEST_TIMEOUT_SECONDS", "150"))
     client = OpenAI(
-        api_key=os.getenv("OPENAI_API_KEY"),
+        api_key=get_openai_api_key(),
         timeout=digest_request_timeout,
         max_retries=0,
     )

@@ -17,6 +17,16 @@ The system is intentionally simple and modular:
 - `.github/workflows/generate_sector_report.yml`: A manual GitHub Actions workflow that renders the prompt package, validates it, generates the report, emails it, and uploads both artifacts.
 - `examples/`: Sample assembled prompt packages for inspection.
 
+## Runtime Secrets
+
+The production source of truth for runtime secrets is GCP Secret Manager.
+
+- Cloud Run Jobs already read `OPENAI_API_KEY`, `EMAIL_USER`, `EMAIL_PASSWORD`, and `EMAIL_TO` from Secret Manager.
+- GitHub Actions workflows now authenticate to GCP with Workload Identity and export those same secrets at runtime instead of storing duplicate GitHub repository secret copies.
+- Local Streamlit and local report scripts prefer existing environment variables, then fall back to GCP Secret Manager through your local `gcloud` authentication.
+
+This keeps one centralized secret store while preserving local development fallback via `.env` when needed.
+
 ## How the Modular Prompt System Works
 
 The design separates stable instruction logic from sector-specific context:

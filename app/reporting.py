@@ -5,6 +5,7 @@ from zoneinfo import ZoneInfo
 from openai import OpenAI
 
 from app.db import fetch_daily_digests, fetch_top_articles, fetch_weekly_digests
+from app.runtime_secrets import get_openai_api_key
 
 MODEL_NAME = "gpt-5.5"
 _CENTRAL_TZ = ZoneInfo("America/Chicago")
@@ -13,9 +14,10 @@ OPENAI_MAX_RETRIES = 5
 OPENAI_TEXT_RETRY_MAX_TOKENS = 7500
 
 
-def get_openai_client(api_key):
+def get_openai_client(api_key=None):
+    resolved_api_key = api_key or get_openai_api_key()
     return OpenAI(
-        api_key=api_key,
+        api_key=resolved_api_key,
         timeout=OPENAI_REQUEST_TIMEOUT_SECONDS,
         max_retries=OPENAI_MAX_RETRIES,
     )
