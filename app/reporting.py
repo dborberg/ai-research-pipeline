@@ -5,6 +5,7 @@ from zoneinfo import ZoneInfo
 from openai import OpenAI
 
 from app.db import fetch_daily_digests, fetch_top_articles, fetch_weekly_digests
+from app.source_archive import load_weekly_digests_from_files
 from app.runtime_secrets import get_openai_api_key
 
 MODEL_NAME = "gpt-5.5"
@@ -133,6 +134,21 @@ def build_weekly_source_context(days=7, digest_limit=7, article_limit=15):
 
 def build_monthly_source_context(weeks=4):
     weekly_rows = fetch_weekly_digests(weeks=weeks, limit=weeks * 4)
+    weekly_by_key = {
+        (str(row["week_start"]), str(row["type"])): row
+        for row in weekly_rows
+    }
+
+    current_date = get_central_now().date()
+    month_candidates = {
+        get_latest_completed_month(current_date),
+        get_latest_completed_month(current_date - timedelta(days=32)),
+    }
+    for report_month in sorted(month_candidates):
+        for row in load_weekly_digests_from_files(report_month):
+            weekly_by_key.setdefault((str(row["week_start"]), str(row["type"])), row)
+
+    weekly_rows = list(weekly_by_key.values())
     if not weekly_rows:
         return ""
 

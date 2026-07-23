@@ -100,3 +100,36 @@ class SourceArchiveTests(unittest.TestCase):
             finally:
                 source_archive.DAILY_OUTPUT_DIR = original_daily_output_dir
                 source_archive.DAILY_SNAPSHOT_DIR = original_daily_snapshot_dir
+
+    def test_load_monthly_digest_files_returns_daily_and_weekly_history(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            original_daily_output_dir = source_archive.DAILY_OUTPUT_DIR
+            original_daily_snapshot_dir = source_archive.DAILY_SNAPSHOT_DIR
+            original_weekly_output_dir = source_archive.WEEKLY_OUTPUT_DIR
+            try:
+                source_archive.DAILY_OUTPUT_DIR = Path(tmpdir) / "daily"
+                source_archive.DAILY_SNAPSHOT_DIR = source_archive.DAILY_OUTPUT_DIR / "source_snapshots"
+                source_archive.WEEKLY_OUTPUT_DIR = Path(tmpdir) / "weekly"
+
+                source_archive.DAILY_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+                source_archive.WEEKLY_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+                (source_archive.DAILY_OUTPUT_DIR / "2026-06-01.txt").write_text("Daily A", encoding="utf-8")
+                (source_archive.DAILY_OUTPUT_DIR / "2026-06-15.txt").write_text("Daily B", encoding="utf-8")
+                (source_archive.WEEKLY_OUTPUT_DIR / "2026-06-05_wholesaler.txt").write_text("Weekly W", encoding="utf-8")
+                (source_archive.WEEKLY_OUTPUT_DIR / "2026-06-12_thematic.txt").write_text("Weekly T", encoding="utf-8")
+
+                daily_rows = source_archive.load_daily_digests_for_month("2026-06")
+                weekly_rows = source_archive.load_weekly_digests_from_files("2026-06")
+
+                self.assertEqual(
+                    [row["date"] for row in daily_rows],
+                    ["2026-06-01", "2026-06-15"],
+                )
+                self.assertEqual(
+                    {(row["week_start"], row["type"]) for row in weekly_rows},
+                    {("2026-06-05", "wholesaler"), ("2026-06-12", "thematic")},
+                )
+            finally:
+                source_archive.DAILY_OUTPUT_DIR = original_daily_output_dir
+                source_archive.DAILY_SNAPSHOT_DIR = original_daily_snapshot_dir
+                source_archive.WEEKLY_OUTPUT_DIR = original_weekly_output_dir

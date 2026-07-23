@@ -7,6 +7,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DAILY_OUTPUT_DIR = REPO_ROOT / "outputs" / "daily"
 DAILY_SNAPSHOT_DIR = DAILY_OUTPUT_DIR / "source_snapshots"
+WEEKLY_OUTPUT_DIR = REPO_ROOT / "outputs" / "weekly"
 
 _ARCHIVED_ARTICLE_FIELDS = [
     "id",
@@ -47,6 +48,29 @@ def _daily_snapshot_path(snapshot_date):
 
 def _daily_digest_path(snapshot_date):
     return DAILY_OUTPUT_DIR / f"{_normalize_date(snapshot_date)}.txt"
+
+
+def _weekly_digest_path(week_start, digest_type):
+    return WEEKLY_OUTPUT_DIR / f"{_normalize_date(week_start)}_{digest_type}.txt"
+
+
+def _month_bounds(report_month):
+    month_start = datetime.strptime(str(report_month), "%Y-%m").date().replace(day=1)
+    if month_start.month == 12:
+        next_month_start = date(month_start.year + 1, 1, 1)
+    else:
+        next_month_start = date(month_start.year, month_start.month + 1, 1)
+    return month_start, next_month_start
+
+
+def _iter_fridays_in_month(report_month):
+    month_start, next_month_start = _month_bounds(report_month)
+    first_friday_offset = (4 - month_start.weekday()) % 7
+    current_friday = month_start + timedelta(days=first_friday_offset)
+
+    while current_friday < next_month_start:
+        yield current_friday
+        current_friday += timedelta(days=7)
 
 
 def _archived_article_dedupe_key(article):
@@ -104,6 +128,13 @@ def load_daily_digest_file(snapshot_date):
     return path.read_text(encoding="utf-8").strip()
 
 
+def load_weekly_digest_file(week_start, digest_type):
+    path = _weekly_digest_path(week_start, digest_type)
+    if not path.exists():
+        return ""
+    return path.read_text(encoding="utf-8").strip()
+
+
 def load_daily_digests_from_files(week_ending):
     digests = []
     for offset in range(6, -1, -1):
@@ -111,6 +142,34 @@ def load_daily_digests_from_files(week_ending):
         content = load_daily_digest_file(snapshot_date)
         if content:
             digests.append({"date": snapshot_date.isoformat(), "content": content})
+    return digests
+
+
+def load_daily_digests_for_month(report_month):
+    month_start, next_month_start = _month_bounds(report_month)
+    digests = []
+    snapshot_date = month_start
+    while snapshot_date < next_month_start:
+        content = load_daily_digest_file(snapshot_date)
+        if content:
+            digests.append({"date": snapshot_date.isoformat(), "content": content})
+        snapshot_date += timedelta(days=1)
+    return digests
+
+
+def load_weekly_digests_from_files(report_month, digest_types=("wholesaler", "thematic")):
+    digests = []
+    for week_start in _iter_fridays_in_month(report_month):
+        for digest_type in digest_types:
+            content = load_weekly_digest_file(week_start, digest_type)
+            if content:
+                digests.append(
+                    {
+                        "week_start": week_start.isoformat(),
+                        "type": digest_type,
+                        "content": content,
+                    }
+                )
     return digests
 
 

@@ -19,6 +19,7 @@ from app.reporting import (
 )
 from app.runtime_secrets import get_openai_api_key
 from app.send_email import send_report
+from app.source_archive import load_daily_digests_for_month, load_weekly_digests_from_files
 from app.space_economy import (
     SPACE_ECONOMY_FILTER_PROMPT,
     calculate_space_economy_theme_active,
@@ -400,6 +401,26 @@ def _build_text_history_context(weekly_rows, daily_rows):
     return "\n".join(sections).strip()
 
 
+def _merge_monthly_history_rows(report_month, weekly_rows, daily_rows):
+    weekly_by_key = {
+        (str(row["week_start"]), str(row["type"])): row
+        for row in (weekly_rows or [])
+    }
+    for row in load_weekly_digests_from_files(report_month):
+        weekly_by_key.setdefault((str(row["week_start"]), str(row["type"])), row)
+
+    daily_by_date = {
+        str(row["date"]): row
+        for row in (daily_rows or [])
+    }
+    for row in load_daily_digests_for_month(report_month):
+        daily_by_date.setdefault(str(row["date"]), row)
+
+    merged_weekly_rows = [weekly_by_key[key] for key in sorted(weekly_by_key.keys())]
+    merged_daily_rows = [daily_by_date[key] for key in sorted(daily_by_date.keys())]
+    return merged_weekly_rows, merged_daily_rows
+
+
 def _should_use_text_history(history_df, minimum_cluster_weeks=3):
     if history_df.empty:
         return True
@@ -423,6 +444,7 @@ def generate_monthly_brief_from_text_history(report_month, client, space_economy
         row for row in daily_rows
         if month_start.isoformat() <= str(row["date"]) < next_month_start.isoformat()
     ]
+    weekly_rows, daily_rows = _merge_monthly_history_rows(report_month, weekly_rows, daily_rows)
 
     if not weekly_rows and not daily_rows:
         raise RuntimeError("No daily or weekly digest history available for monthly fallback mode")
