@@ -109,7 +109,8 @@ Selection rules:
 - Do not reuse the same underlying event in multiple analytical sections. If several articles cover separate local examples of the same broader issue, choose the strongest one or two for analytical bullets and synthesize the broader issue in TOP THEME OF THE DAY, WHAT TO WATCH, or ADVISOR / WHOLESALER SOUNDBITES. If the examples represent materially different geographies, policy approaches, financing structures, or company implications, they may be included separately, but each bullet must add a distinct angle.
 - When multiple stories support the same theme, prefer the story with highest source quality, clearest original reporting, broadest market relevance, a named company or named policymaker, and concrete financial, policy, infrastructure, or deployment implication.
 - Local and niche sources may be used when they are the original source of a local event, but avoid using multiple local sources to repeat the same analytical point unless each adds a meaningfully different angle.
-- Each section should re-scan the full dataset independently for relevant stories instead of relying on a single preselected subset.
+- Use the section-specific candidate pools below as the primary source material for each section instead of treating one mixed article list as generic filler.
+- Do not pull a candidate from one section's pool into another analytical section unless the event clearly fits both and no stronger in-section candidate exists.
 - Do not mistake event deduplication for theme suppression. Repeated patterns across distinct events should still appear as synthesized takeaways when supported by the input.
 - Preserve company-specific insight in wording that can roll up cleanly into a weekly internal report for the broader sales group.
 
@@ -144,5 +145,5 @@ Fill rule:
 THEME SIGNALS FROM THE FULL, PRE-DEDUPED ARTICLE SET:
 {{theme_signal_block}}
 
-ARTICLES:
+SECTION CANDIDATE POOLS:
 {{article_block}}

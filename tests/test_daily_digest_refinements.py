@@ -64,6 +64,9 @@ class DailyDigestRefinementTests(unittest.TestCase):
             self.assertIn("FRONTIER TECHNOLOGY CAPITAL MARKETS DAILY OVERRIDE", prompt)
             self.assertIn("not a pure Gen AI story", prompt)
 
+        self.assertIn("section-specific candidate pools", user_prompt)
+        self.assertIn("SECTION CANDIDATE POOLS:", user_prompt)
+
     def test_spacex_ipo_style_article_triggers_frontier_capital_markets_override(self):
         article = {
             "title": "SpaceX weighs IPO as Starlink expands satellite communications network",
@@ -158,16 +161,177 @@ class DailyDigestRefinementTests(unittest.TestCase):
 
         self.assertEqual(validate_daily_digest_html(html), [])
 
-    def test_generate_daily_digest_returns_best_effort_when_final_retry_is_empty(self):
+    def test_generate_daily_digest_rejects_section_fit_mismatch(self):
+        enterprise_article = {
+            "title": "Microsoft adds governed controls to enterprise agent workflows",
+            "source": "The Official Microsoft Blog",
+            "original_publisher": "The Official Microsoft Blog",
+            "summary": "Microsoft described enterprise controls, permissions, and observability for agent workflows.",
+            "url": "https://example.com/microsoft",
+            "published_at": "2026-06-29T10:00:00",
+            "companies": "Microsoft",
+            "advisor_relevance": "This matters because governed workflow controls are what separate pilot AI tools from real enterprise production deployment.",
+            "ai_score": 8,
+            "is_space_economy_related": 0,
+            "space_relevance": "",
+            "space_ai_connection": "",
+            "space_time_horizon": "",
+            "space_investment_layer": "",
+        }
+        infrastructure_article = {
+            "title": "Edgewater residents to vote on potential AI data center bans this November",
+            "source": "WFTV",
+            "original_publisher": "WFTV",
+            "summary": "Residents are voting on potential AI data center restrictions tied to local land use and power concerns.",
+            "url": "https://example.com/edgewater",
+            "published_at": "2026-06-29T09:00:00",
+            "companies": "",
+            "advisor_relevance": "This matters because data center buildout depends on local permitting, power access, and siting approvals.",
+            "ai_score": 7,
+            "is_space_economy_related": 0,
+            "space_relevance": "",
+            "space_ai_connection": "",
+            "space_time_horizon": "",
+            "space_investment_layer": "",
+        }
+
+        misplaced_html = _daily_html(
+            {
+                "TOP STORIES": [
+                    "<strong>Microsoft adds governed controls to enterprise agent workflows:</strong> The launch matters because orchestration is moving from demos into governed workflow automation. The read-through is to data platforms, governance software, and IT services. (Source: The Official Microsoft Blog)",
+                    "<strong>Warehouse automation deployment expanded in live operations:</strong> The rollout matters because physical AI becomes investable when automation moves from pilots into measurable workflows. The read-through is to industrial automation and logistics software. (Source: The Robot Report)",
+                    "<strong>Lawmakers advanced AI procurement standards:</strong> The policy move matters because public-sector rules can shape enterprise governance standards. The implication is stronger demand for auditability and compliance tooling. (Source: Reuters)",
+                ],
+                "ENTERPRISE ADOPTION AND LABOR": [
+                    "<strong>Edgewater residents to vote on potential AI data center bans this November:</strong> This matters because AI growth depends on physical infrastructure, including data centers, power access, land use approvals, and local permitting. Even without named companies, local votes like this highlight potential bottlenecks for data center buildouts. (Source: WFTV)"
+                ],
+                "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": [
+                    "<strong>Utility filings highlighted power upgrades for AI campuses:</strong> The filings matter because grid capacity and interconnection timelines can gate compute growth. The implication is to monitor power equipment, utilities, cooling, and networking suppliers. (Source: Financial Times)"
+                ],
+                "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": [
+                    "<strong>Capital intensity remains high:</strong> AI infrastructure still depends on financing and supplier capacity. (Source: Bloomberg)"
+                ],
+                "REGULATION, GOVERNANCE AND POLICY": [
+                    "<strong>State AI policy moved forward:</strong> Policy rules still shape adoption standards. (Source: AP)"
+                ],
+                "PHYSICAL AI AND ROBOTICS": [
+                    "<strong>Warehouse robotics moved ahead:</strong> Automation is still entering production workflows. (Source: The Robot Report)"
+                ],
+                "WHAT TO WATCH": [
+                    "<strong>Enterprise production controls:</strong> Watch whether new agent deployments include identity, observability, and cost controls. (Source: Full article set)"
+                ],
+                "ADVISOR / WHOLESALER SOUNDBITES": [
+                    "<strong>Governance can be a growth gate:</strong> Companies that solve auditability and permissions may help AI move from pilots to scale. (Source: Full article set)"
+                ],
+            }
+        )
+
+        responses = [
+            SimpleNamespace(
+                choices=[
+                    SimpleNamespace(
+                        message=SimpleNamespace(content=misplaced_html),
+                        finish_reason="stop",
+                    )
+                ]
+            ),
+            SimpleNamespace(
+                choices=[
+                    SimpleNamespace(
+                        message=SimpleNamespace(content=""),
+                        finish_reason="length",
+                    )
+                ]
+            ),
+        ]
+
+        class FakeClient:
+            def __init__(self, queued):
+                self._queued = list(queued)
+                self.chat = SimpleNamespace(completions=self)
+
+            def create(self, **kwargs):
+                return self._queued.pop(0)
+
+        mock_engine = MagicMock()
+        mock_conn = MagicMock()
+        mock_engine.connect.return_value.__enter__.return_value = mock_conn
+        mock_conn.execute.return_value.fetchall.return_value = [
+            (
+                article["title"],
+                article["source"],
+                article["original_publisher"],
+                article["summary"],
+                article["url"],
+                article["published_at"],
+                article["companies"],
+                article["advisor_relevance"],
+                article["ai_score"],
+                article["is_space_economy_related"],
+                article["space_relevance"],
+                article["space_ai_connection"],
+                article["space_time_horizon"],
+                article["space_investment_layer"],
+            )
+            for article in [enterprise_article, infrastructure_article]
+        ]
+
+        fake_openai = types.ModuleType("openai")
+        fake_openai.APITimeoutError = type("APITimeoutError", (Exception,), {})
+        fake_openai.OpenAI = lambda *args, **kwargs: FakeClient(responses)
+
+        fake_sqlalchemy = types.ModuleType("sqlalchemy")
+        fake_sqlalchemy.text = lambda value: value
+
+        fake_branding = types.ModuleType("app.branding")
+        fake_branding.DAILY_TITLE = "Beyond the Horizon: Daily Riffs from the Gen AI Songbook"
+
+        fake_db = types.ModuleType("app.db")
+        fake_db.get_engine = lambda: mock_engine
+
+        fake_pipeline_window = types.ModuleType("app.pipeline_window")
+        fake_pipeline_window.get_pipeline_window = lambda hours=24: (
+            SimpleNamespace(isoformat=lambda: "2026-06-28T11:30:00"),
+            SimpleNamespace(isoformat=lambda: "2026-06-29T11:30:00"),
+        )
+
+        fake_space = types.ModuleType("app.space_economy")
+        fake_space.SPACE_ECONOMY_FILTER_PROMPT = ""
+        fake_space.calculate_space_economy_theme_active = lambda *args, **kwargs: False
+        fake_space.ensure_space_metadata = lambda article: article
+        fake_space.format_space_metadata_lines = lambda article: []
+
+        with patch.dict(
+            "sys.modules",
+            {
+                "openai": fake_openai,
+                "sqlalchemy": fake_sqlalchemy,
+                "app.branding": fake_branding,
+                "app.db": fake_db,
+                "app.pipeline_window": fake_pipeline_window,
+                "app.space_economy": fake_space,
+            },
+        ):
+            result = generate_daily_digest(return_metadata=True)
+
+        self.assertNotEqual(result["content"], misplaced_html)
+        self.assertIn(
+            "No major enterprise adoption or labor development dominated",
+            result["content"],
+        )
+        self.assertEqual(result["generation_mode"], "deterministic_fallback")
+        self.assertTrue(result["used_deterministic_fallback"])
+
+    def test_generate_daily_digest_falls_back_on_repeated_event_when_final_retry_is_empty(self):
         valid_article = {
-            "title": "Data center permitting review expands in Ohio",
-            "source": "Local News",
-            "original_publisher": "Local News",
-            "summary": "Local officials reviewed another AI data center permitting request tied to grid and zoning constraints.",
+            "title": "Microsoft and Mistral expanded their strategic partnership for governed frontier AI",
+            "source": "Microsoft Source",
+            "original_publisher": "Microsoft Source",
+            "summary": "The companies said they will give enterprises and regulated industries more controllable access to frontier AI across production workflows.",
             "url": "https://example.com/story",
             "published_at": "2026-06-29T10:00:00",
-            "companies": "",
-            "advisor_relevance": "Infrastructure approvals can shape AI deployment timing.",
+            "companies": "Microsoft, Mistral",
+            "advisor_relevance": "This matters because enterprise AI monetization increasingly depends on governed deployment, permissions, and workflow control.",
             "ai_score": 7,
             "is_space_economy_related": 0,
             "space_relevance": "",
@@ -179,15 +343,15 @@ class DailyDigestRefinementTests(unittest.TestCase):
         repetitive_html = _daily_html(
             {
                 "TOP STORIES": [
-                    "<strong>Local officials reviewed a data center permitting request:</strong> The local zoning process matters because permitting can delay AI infrastructure. The implication is to monitor grid infrastructure and utility planning. (Source: Local News)",
-                    "<strong>Local officials reviewed a data center permitting request:</strong> The local zoning process matters because permitting can delay AI infrastructure. The implication is to monitor grid infrastructure and utility planning. (Source: Local News)",
-                    "<strong>Local officials reviewed a data center permitting request:</strong> The local zoning process matters because permitting can delay AI infrastructure. The implication is to monitor grid infrastructure and utility planning. (Source: Local News)",
+                    "<strong>Microsoft and Mistral expanded their strategic partnership:</strong> The companies said they will give enterprises and regulated industries more controllable access to frontier AI. The implication is that governed workflow deployment is becoming a commercial requirement. (Source: Microsoft Source)",
+                    "<strong>State officials advanced an AI procurement review:</strong> The policy move matters because enterprise governance standards can tighten procurement expectations. The implication is stronger demand for auditability and compliance tooling. (Source: AP)",
+                    "<strong>Warehouse automation deployment expanded in live operations:</strong> The rollout matters because physical AI becomes investable when automation moves from pilots into measurable workflows. The read-through is to industrial automation and logistics software. (Source: The Robot Report)",
                 ],
                 "ENTERPRISE ADOPTION AND LABOR": [
-                    "<strong>Workflow controls matter:</strong> Enterprises still need governed production systems. (Source: Gartner)"
+                    "<strong>Microsoft and Mistral expanded their strategic partnership:</strong> The partnership points to AI moving from standalone tools toward governed deployment inside cloud and regulated-industry environments. The business-model implication favors platforms that combine model choice with security, compliance, and workflow integration. (Source: Microsoft Source)"
                 ],
                 "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": [
-                    "<strong>Local officials reviewed a data center permitting request:</strong> The local zoning process matters because permitting can delay AI infrastructure. The implication is to monitor grid infrastructure and utility planning. (Source: Local News)"
+                    "<strong>Utility filings highlighted power upgrades for AI campuses:</strong> The filings matter because grid capacity and interconnection timelines can gate compute growth. The implication is to monitor power equipment, utilities, cooling, and networking suppliers. (Source: Financial Times)"
                 ],
                 "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": [
                     "<strong>Capital intensity remains high:</strong> AI infrastructure still depends on financing and supplier capacity. (Source: Bloomberg)"
@@ -302,7 +466,17 @@ class DailyDigestRefinementTests(unittest.TestCase):
         ):
             result = generate_daily_digest(return_metadata=True)
 
-        self.assertEqual(result["content"], repetitive_html)
+        self.assertNotEqual(result["content"], repetitive_html)
+        self.assertNotIn(
+            "Microsoft and Mistral expanded their strategic partnership:</strong> The partnership points to AI moving from standalone tools toward governed deployment inside cloud and regulated-industry environments.",
+            result["content"],
+        )
+        self.assertIn(
+            "No major enterprise adoption or labor development dominated",
+            result["content"],
+        )
+        self.assertEqual(result["generation_mode"], "deterministic_fallback")
+        self.assertTrue(result["used_deterministic_fallback"])
         self.assertEqual(result["source_articles"][0]["title"], valid_article["title"])
 
     def test_generate_daily_digest_uses_deterministic_fallback_after_repeated_timeouts(self):
@@ -451,6 +625,131 @@ class DailyDigestRefinementTests(unittest.TestCase):
         self.assertEqual(len(result["generation_attempts"]), 3)
         self.assertEqual(result["generation_attempts"][0]["profile"], "full")
         self.assertIn("user_prompt_chars", result["generation_attempts"][0])
+
+    def test_deterministic_fallback_deduplicates_named_funding_events(self):
+        articles = [
+            {
+                "title": "U.K.-based Humanoid secures $152M in Series A funding",
+                "source": "The Robot Report",
+                "original_publisher": "The Robot Report",
+                "summary": "The funding round highlights growing investor and corporate interest in physical AI and industrial robotics.",
+                "url": "https://example.com/humanoid-series-a",
+                "published_at": "2026-07-22T09:00:00",
+                "companies": "[]",
+                "advisor_relevance": "This funding round is a signal that physical AI is attracting strategic capital and could matter for industrial automation supply chains.",
+                "ai_score": 8,
+                "is_space_economy_related": 0,
+                "space_relevance": "",
+                "space_ai_connection": "",
+                "space_time_horizon": "",
+                "space_investment_layer": "",
+            },
+            {
+                "title": "Humanoid raises $152 million at $1.35 billion valuation, becoming Europe's first pure-play humanoid robotics unicorn",
+                "source": "Robotics & Automation News",
+                "original_publisher": "Robotics & Automation News",
+                "summary": "The raise underscores investor appetite for humanoid robotics and physical AI commercialization.",
+                "url": "https://example.com/humanoid-unicorn",
+                "published_at": "2026-07-22T08:45:00",
+                "companies": "[]",
+                "advisor_relevance": "This is the same funding event viewed through a second source and should not create a second top-story slot in fallback.",
+                "ai_score": 8,
+                "is_space_economy_related": 0,
+                "space_relevance": "",
+                "space_ai_connection": "",
+                "space_time_horizon": "",
+                "space_investment_layer": "",
+            },
+            {
+                "title": "Generative Bionics unveils humanoid robot with full-body tactile sensing",
+                "source": "The Robot Report",
+                "original_publisher": "The Robot Report",
+                "summary": "The launch is another physical AI signal tied to industrial workflows and robotics components.",
+                "url": "https://example.com/generative-bionics",
+                "published_at": "2026-07-22T08:15:00",
+                "companies": "[]",
+                "advisor_relevance": "This matters because the story points to embodied AI moving toward industrial use cases.",
+                "ai_score": 7,
+                "is_space_economy_related": 0,
+                "space_relevance": "",
+                "space_ai_connection": "",
+                "space_time_horizon": "",
+                "space_investment_layer": "",
+            },
+        ]
+
+        class AlwaysTimeoutClient:
+            def __init__(self, timeout_error):
+                self._timeout_error = timeout_error
+                self.chat = SimpleNamespace(completions=self)
+
+            def create(self, **kwargs):
+                raise self._timeout_error("Request timed out")
+
+        mock_engine = MagicMock()
+        mock_conn = MagicMock()
+        mock_engine.connect.return_value.__enter__.return_value = mock_conn
+        mock_conn.execute.return_value.fetchall.return_value = [
+            (
+                article["title"],
+                article["source"],
+                article["original_publisher"],
+                article["summary"],
+                article["url"],
+                article["published_at"],
+                article["companies"],
+                article["advisor_relevance"],
+                article["ai_score"],
+                article["is_space_economy_related"],
+                article["space_relevance"],
+                article["space_ai_connection"],
+                article["space_time_horizon"],
+                article["space_investment_layer"],
+            )
+            for article in articles
+        ]
+
+        fake_openai = types.ModuleType("openai")
+        fake_openai.APITimeoutError = type("APITimeoutError", (Exception,), {})
+        fake_openai.OpenAI = lambda *args, **kwargs: AlwaysTimeoutClient(fake_openai.APITimeoutError)
+
+        fake_sqlalchemy = types.ModuleType("sqlalchemy")
+        fake_sqlalchemy.text = lambda value: value
+
+        fake_branding = types.ModuleType("app.branding")
+        fake_branding.DAILY_TITLE = "Beyond the Horizon: Daily Riffs from the Gen AI Songbook"
+
+        fake_db = types.ModuleType("app.db")
+        fake_db.get_engine = lambda: mock_engine
+
+        fake_pipeline_window = types.ModuleType("app.pipeline_window")
+        fake_pipeline_window.get_pipeline_window = lambda hours=24: (
+            SimpleNamespace(isoformat=lambda: "2026-07-21T11:30:00"),
+            SimpleNamespace(isoformat=lambda: "2026-07-22T11:30:00"),
+        )
+
+        fake_space = types.ModuleType("app.space_economy")
+        fake_space.SPACE_ECONOMY_FILTER_PROMPT = ""
+        fake_space.calculate_space_economy_theme_active = lambda *args, **kwargs: False
+        fake_space.ensure_space_metadata = lambda article: article
+        fake_space.format_space_metadata_lines = lambda article: []
+
+        with patch.dict(
+            "sys.modules",
+            {
+                "openai": fake_openai,
+                "sqlalchemy": fake_sqlalchemy,
+                "app.branding": fake_branding,
+                "app.db": fake_db,
+                "app.pipeline_window": fake_pipeline_window,
+                "app.space_economy": fake_space,
+            },
+        ):
+            result = generate_daily_digest(return_metadata=True)
+
+        self.assertEqual(result["generation_mode"], "deterministic_fallback")
+        self.assertEqual(result["content"].count("Humanoid"), 1)
+        self.assertIn("Generative Bionics unveils humanoid robot", result["content"])
 
     def test_validator_flags_local_data_center_permitting_repetition(self):
         repeated = "<strong>Local officials reviewed a data center permitting request:</strong> The local zoning process matters because permitting can delay AI infrastructure. The implication is to monitor grid infrastructure and utility planning. (Source: Local News)"

@@ -90,7 +90,12 @@ def main():
 
             print(f"=== REPLAY {target_date.isoformat()} ===")
             print(f"Window UTC: {window_start.isoformat()} -> {window_end.isoformat()}")
-            digest_text = generate_daily_digest(report_date=target_date)
+            digest_result = generate_daily_digest(report_date=target_date, return_metadata=True)
+            digest_text = digest_result["content"]
+            generation_mode = digest_result.get("generation_mode") or "unknown"
+            print(f"Generation mode: {generation_mode}")
+            if digest_result.get("used_deterministic_fallback"):
+                print("DAILY DIGEST FALLBACK ACTIVATED: deterministic_html_from_scored_articles")
 
             if args.dry_run:
                 print("DRY RUN: generated digest but did not persist file or database row")

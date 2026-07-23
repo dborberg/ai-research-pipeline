@@ -530,6 +530,12 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             score += 35
         if _is_healthcare_fda_override(article):
             score += 35
+        if repeated_theme_key(article) == "local_data_center_permitting":
+            score -= 18
+            if source_quality_rank(article) <= 2:
+                score -= 12
+            if not has_named_event_anchor(article):
+                score -= 8
 
         return score
 
@@ -638,6 +644,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
 
     def event_anchor(article):
         companies = [company.lower() for company in parse_companies(article.get("companies"))]
+        raw_title = article.get("title") or ""
         title = (article.get("title") or "").lower()
         normalized_title = re.sub(r"[^a-z0-9\s]", " ", title)
         stopwords = {
@@ -646,6 +653,11 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             "reported", "announced", "launches", "launch", "launching", "new", "its", "are", "now",
             "more", "than", "into", "using", "use", "shows",
         }
+        title_entities = [
+            token.lower()
+            for token in re.findall(r"\b[A-Z][A-Za-z0-9&.-]{2,}\b", raw_title)
+            if token.lower() not in stopwords and token.lower() not in {"europe", "uk", "u.k", "first"}
+        ]
         title_tokens = [
             token for token in normalized_title.split()
             if len(token) > 2 and token not in stopwords and not token.isdigit()
@@ -654,6 +666,8 @@ def generate_daily_digest(report_date=None, return_metadata=False):
 
         if companies:
             return "company|" + "|".join(companies[:2] + theme_tags[:2])
+        if title_entities:
+            return "named|" + "|".join(title_entities[:2] + theme_tags[:2])
         if title_tokens:
             return "title|" + "|".join(title_tokens[:6] + theme_tags[:2])
         return "fallback|" + (article.get("url") or article.get("published_at") or "")
@@ -685,180 +699,459 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             return text_value
         return text_value[: limit - 3].rstrip() + "..."
 
+    def clip_sentence_text(value, limit):
+        text_value = " ".join(str(value or "").split())
+        if not text_value:
+            return ""
+        if len(text_value) <= limit:
+            return text_value
+        sentence_matches = list(re.finditer(r"[.!?](?:\s|$)", text_value))
+        for match in sentence_matches:
+            if match.end() <= limit:
+                candidate = text_value[:match.end()].strip()
+                if candidate:
+                    return candidate
+        trimmed = text_value[:limit].rsplit(" ", 1)[0].strip()
+        if not trimmed:
+            trimmed = text_value[:limit].strip()
+        return trimmed.rstrip(",;:") + "."
+
+    analytical_section_order = [
+        "ENTERPRISE ADOPTION AND LABOR",
+        "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS",
+        "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
+        "REGULATION, GOVERNANCE AND POLICY",
+        "PHYSICAL AI AND ROBOTICS",
+    ]
+    section_theme_tags = {
+        "TOP STORIES": None,
+        "ENTERPRISE ADOPTION AND LABOR": {"enterprise_and_labor", "forward_looking_ai_adoption"},
+        "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": {"infrastructure_and_power"},
+        "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": {"capital_markets_and_investment", "frontier_capital_markets"},
+        "REGULATION, GOVERNANCE AND POLICY": {"regulation_and_policy"},
+        "PHYSICAL AI AND ROBOTICS": {"physical_ai_and_robotics"},
+    }
+
+    def analytical_section_score(article, section_name):
+        score = article_priority_score(article)
+        themes = set(extract_theme_tags(article))
+        text = " ".join(
+            [
+                article.get("title") or "",
+                article.get("summary") or "",
+                article.get("advisor_relevance") or "",
+            ]
+        ).lower()
+        is_local_permitting_story = repeated_theme_key(article) == "local_data_center_permitting"
+
+        if themes & section_theme_tags[section_name]:
+            score += 32
+        else:
+            score -= 85
+
+        if section_name == "ENTERPRISE ADOPTION AND LABOR":
+            score += forward_adoption_score(article)
+            if "enterprise_and_labor" not in themes:
+                score -= 45
+            if not any(
+                term in text for term in [
+                    "workflow", "agent", "copilot", "employee", "labor", "hiring", "workforce",
+                    "productivity", "governance", "compliance", "enterprise", "permissions",
+                    "auditability", "observability", "production readiness",
+                ]
+            ):
+                score -= 35
+        elif section_name == "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS":
+            if "infrastructure_and_power" in themes:
+                score += 18
+            if any(term in text for term in ["data center", "gpu", "gpus", "power", "grid", "ups", "cooling", "networking"]):
+                score += 12
+        elif section_name == "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS":
+            if is_frontier_technology_capital_markets_event(article):
+                score += 20
+            if _is_major_earnings_override(article):
+                score += 18
+            if any(term in text for term in ["funding", "raised", "valuation", "investment", "invest", "deal", "capex", "financing"]):
+                score += 10
+        elif section_name == "REGULATION, GOVERNANCE AND POLICY":
+            if has_policy_priority(article):
+                score += 28
+            if any(term in text for term in ["policy", "regulation", "regulatory", "lawmakers", "procurement", "privacy", "compliance", "governance"]):
+                score += 12
+            if "regulation_and_policy" not in themes:
+                score -= 22
+        elif section_name == "PHYSICAL AI AND ROBOTICS":
+            if "physical_ai_and_robotics" in themes:
+                score += 20
+            if not any(term in text for term in ["robot", "robotics", "humanoid", "drone", "warehouse", "industrial automation", "manufacturing"]):
+                score -= 55
+
+        if is_local_permitting_story:
+            if section_name == "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS":
+                score += 8
+            elif section_name == "REGULATION, GOVERNANCE AND POLICY":
+                score += 2
+            else:
+                score -= 95
+
+        return score
+
+    def analytical_section_hint(article):
+        best_section = None
+        best_score = None
+        for section_name in analytical_section_order:
+            score = analytical_section_score(article, section_name)
+            if best_score is None or score > best_score:
+                best_section = section_name
+                best_score = score
+        return best_section or "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS"
+
+    def cross_cutting_priority_score(article):
+        score = article_priority_score(article)
+        major_themes = {
+            "enterprise_and_labor",
+            "infrastructure_and_power",
+            "capital_markets_and_investment",
+            "regulation_and_policy",
+            "physical_ai_and_robotics",
+            "frontier_capital_markets",
+        }
+        theme_count = len(set(extract_theme_tags(article)) & major_themes)
+        score += max(0, theme_count - 1) * 12
+        if source_quality_rank(article) >= 4:
+            score += 10
+        if has_policy_priority(article):
+            score += 10
+        if is_frontier_technology_capital_markets_event(article):
+            score += 12
+        if repeated_theme_key(article) == "local_data_center_permitting" and source_quality_rank(article) < 5:
+            score -= 40
+        return score
+
     def primary_section_hint(article):
         if is_frontier_technology_capital_markets_event(article):
             if is_big_story(article) and frontier_technology_capital_markets_score(article) >= 80:
                 return "TOP STORIES"
             return "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS"
 
-        preferred_order = [
-            "regulation_and_policy",
-            "capital_markets_and_investment",
-            "infrastructure_and_power",
-            "enterprise_and_labor",
-            "physical_ai_and_robotics",
-        ]
-        label_map = {
-            "regulation_and_policy": "REGULATION, GOVERNANCE AND POLICY",
-            "capital_markets_and_investment": "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
-            "infrastructure_and_power": "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS",
-            "enterprise_and_labor": "ENTERPRISE ADOPTION AND LABOR",
-            "physical_ai_and_robotics": "PHYSICAL AI AND ROBOTICS",
-        }
+        if is_big_story(article) and cross_cutting_priority_score(article) >= 125:
+            return "TOP STORIES"
 
-        themes = extract_theme_tags(article)
-        for theme_name in preferred_order:
-            if theme_name in themes:
-                return label_map[theme_name]
-        return "TOP STORIES"
+        return analytical_section_hint(article)
+
+    def section_candidate_score(article, section_name):
+        score = article_priority_score(article)
+        hint = analytical_section_hint(article)
+        is_local_permitting_story = repeated_theme_key(article) == "local_data_center_permitting"
+
+        if section_name == "TOP STORIES":
+            score = cross_cutting_priority_score(article)
+            if is_big_story(article):
+                score += 24
+            if is_local_permitting_story and source_quality_rank(article) < 5 and not is_big_story(article):
+                score -= 65
+            return score
+
+        score = analytical_section_score(article, section_name)
+        if hint == section_name:
+            score += 18
+        return score
+
+    def build_section_candidate_pools(deduped_articles):
+        pool_limits = {
+            "TOP STORIES": 4,
+            "ENTERPRISE ADOPTION AND LABOR": 3,
+            "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": 3,
+            "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": 3,
+            "REGULATION, GOVERNANCE AND POLICY": 3,
+            "PHYSICAL AI AND ROBOTICS": 2,
+        }
+        pools = {section_name: [] for section_name in ["TOP STORIES", *analytical_section_order]}
+        top_story_event_keys = set()
+        analytical_event_keys = set()
+
+        top_story_candidates = sorted(
+            deduped_articles,
+            key=lambda article: section_candidate_score(article, "TOP STORIES"),
+            reverse=True,
+        )
+        local_permitting_top_story_count = 0
+        for article in top_story_candidates:
+            if len(pools["TOP STORIES"]) >= pool_limits["TOP STORIES"]:
+                break
+            event_key = event_anchor(article)
+            if event_key in top_story_event_keys:
+                continue
+            if repeated_theme_key(article) == "local_data_center_permitting":
+                if local_permitting_top_story_count >= 1:
+                    continue
+                if source_quality_rank(article) < 5 and not is_big_story(article):
+                    continue
+                local_permitting_top_story_count += 1
+            pools["TOP STORIES"].append(article)
+            top_story_event_keys.add(event_key)
+
+        for section_name in analytical_section_order:
+            candidates = sorted(
+                deduped_articles,
+                key=lambda article: section_candidate_score(article, section_name),
+                reverse=True,
+            )
+            local_permitting_count = 0
+            source_counts = Counter()
+            for article in candidates:
+                if len(pools[section_name]) >= pool_limits[section_name]:
+                    break
+                event_key = event_anchor(article)
+                source = article.get("original_publisher") or article.get("source") or "Unknown"
+                score = section_candidate_score(article, section_name)
+                if score < 35:
+                    continue
+                if event_key in top_story_event_keys or event_key in analytical_event_keys:
+                    continue
+                if source_counts[source] >= 2:
+                    continue
+                if repeated_theme_key(article) == "local_data_center_permitting":
+                    if local_permitting_count >= 1:
+                        continue
+                    if source_quality_rank(article) < 4 and score < 60:
+                        continue
+                    local_permitting_count += 1
+                pools[section_name].append(article)
+                analytical_event_keys.add(event_key)
+                source_counts[source] += 1
+
+        return pools
+
+    def flatten_section_candidate_pools(section_candidate_pools):
+        flattened = []
+        seen_article_ids = set()
+        for section_name in ["TOP STORIES", *analytical_section_order]:
+            for article in section_candidate_pools.get(section_name, []):
+                article_id = id(article)
+                if article_id in seen_article_ids:
+                    continue
+                flattened.append(article)
+                seen_article_ids.add(article_id)
+        return flattened
 
     def select_prompt_articles(deduped_articles, min_count=12, max_count=18):
-        selected_articles = []
-        seen_ids = set()
-        repeated_theme_counts = Counter()
-        required_themes = [
-            "frontier_capital_markets",
-            "regulation_and_policy",
-            "capital_markets_and_investment",
-            "infrastructure_and_power",
-            "physical_ai_and_robotics",
-            "enterprise_and_labor",
-        ]
+        section_candidate_pools = build_section_candidate_pools(deduped_articles)
+        selected_articles = flatten_section_candidate_pools(section_candidate_pools)
+        if len(selected_articles) >= min_count:
+            return selected_articles[:max_count]
 
-        for theme_name in required_themes:
-            for article in deduped_articles:
-                article_id = id(article)
-                if article_id in seen_ids:
-                    continue
-                if theme_name not in extract_theme_tags(article):
-                    continue
-
-                selected_articles.append(article)
-                seen_ids.add(article_id)
-                key = repeated_theme_key(article)
-                if key:
-                    repeated_theme_counts[key] += 1
-                break
-
+        seen_ids = {id(article) for article in selected_articles}
         for article in deduped_articles:
             if len(selected_articles) >= max_count:
                 break
-
             article_id = id(article)
             if article_id in seen_ids:
                 continue
-
-            key = repeated_theme_key(article)
-            if (
-                key
-                and repeated_theme_counts[key] >= 2
-                and source_quality_rank(article) < 5
-                and not has_policy_priority(article)
-                and not is_big_story(article)
-                and len(deduped_articles) > min_count
-            ):
+            if repeated_theme_key(article) == "local_data_center_permitting" and source_quality_rank(article) < 4:
                 continue
-
             selected_articles.append(article)
             seen_ids.add(article_id)
-            if key:
-                repeated_theme_counts[key] += 1
-
-        if len(selected_articles) < min_count:
-            for article in deduped_articles:
-                if len(selected_articles) >= min_count:
-                    break
-                article_id = id(article)
-                if article_id in seen_ids:
-                    continue
-                selected_articles.append(article)
-                seen_ids.add(article_id)
 
         return selected_articles
 
     def build_article_block(
-        prompt_candidate_articles,
+        section_candidate_pools,
         *,
-        summary_limit=420,
-        advisor_limit=220,
+        summary_limit=260,
+        advisor_limit=140,
         include_space_metadata=True,
     ):
-        return "\n\n---\n\n".join(
-            "\n".join(
-                [
-                    f"TITLE: {article['title']}",
-                    f"SOURCE: {article.get('original_publisher') or article['source']}",
-                    f"PRIMARY_SECTION_HINT: {primary_section_hint(article)}",
-                    f"SOURCE_QUALITY_HINT: {source_quality_hint(article)}",
-                    f"INVESTMENT_THEME_SCORE: {investment_theme_score(article)}",
-                    f"FORWARD_ADOPTION_SCORE: {forward_adoption_score(article)}",
-                    f"FRONTIER_CAPITAL_MARKETS_SCORE: {frontier_technology_capital_markets_score(article)}",
-                    f"FRONTIER_CAPITAL_MARKETS_OVERRIDE: {'YES' if is_frontier_technology_capital_markets_event(article) else 'NO'}",
-                    f"MAJOR_EARNINGS_OVERRIDE: {'YES' if _is_major_earnings_override(article) else 'NO'}",
-                    f"HEALTHCARE_FDA_OVERRIDE: {'YES' if _is_healthcare_fda_override(article) else 'NO'}",
-                    f"BIG_STORY_HINT: {'YES' if is_big_story(article) else 'NO'}",
-                    f"POLICY_PRIORITY_HINT: {'YES' if has_policy_priority(article) else 'NO'}",
-                    f"COMPANIES_MENTIONED: {', '.join(parse_companies(article.get('companies')))}",
-                    f"AI_SCORE: {article.get('ai_score') if article.get('ai_score') is not None else ''}",
-                    f"ADVISOR_RELEVANCE: {clip_prompt_text(article.get('advisor_relevance'), advisor_limit)}",
-                    f"SUMMARY: {clip_prompt_text(article['summary'], summary_limit)}",
-                    *(
-                        format_space_metadata_lines(article)
-                        if include_space_metadata
-                        else []
-                    ),
-                ]
-            )
-            for article in prompt_candidate_articles
-        )
+        section_blocks = []
+        for section_name in ["TOP STORIES", *analytical_section_order]:
+            prompt_candidate_articles = section_candidate_pools.get(section_name, [])
+            if not prompt_candidate_articles:
+                continue
+            article_lines = [f"{section_name} CANDIDATES:"]
+            for index, article in enumerate(prompt_candidate_articles, start=1):
+                flags = []
+                if is_big_story(article):
+                    flags.append("BIG_STORY")
+                if has_policy_priority(article):
+                    flags.append("POLICY_PRIORITY")
+                if is_frontier_technology_capital_markets_event(article):
+                    flags.append("FRONTIER_CAPITAL_MARKETS_OVERRIDE")
+                if _is_major_earnings_override(article):
+                    flags.append("MAJOR_EARNINGS_OVERRIDE")
+                if _is_healthcare_fda_override(article):
+                    flags.append("HEALTHCARE_FDA_OVERRIDE")
+                article_lines.extend(
+                    [
+                        f"{index}. TITLE: {clip_prompt_text(article['title'], 120)}",
+                        f"SOURCE: {article.get('original_publisher') or article['source']}",
+                        f"SOURCE_QUALITY_HINT: {source_quality_hint(article)}",
+                        f"PRIMARY_SECTION_HINT: {primary_section_hint(article)}",
+                        f"THEME_TAGS: {', '.join(extract_theme_tags(article)[:3])}",
+                        f"FLAGS: {', '.join(flags) if flags else 'NONE'}",
+                        f"SUMMARY: {clip_prompt_text(article['summary'], summary_limit)}",
+                        f"ADVISOR_RELEVANCE: {clip_prompt_text(article.get('advisor_relevance'), advisor_limit)}",
+                        *(format_space_metadata_lines(article) if include_space_metadata else []),
+                        "",
+                    ]
+                )
+            section_blocks.append("\n".join(article_lines).strip())
+        return "\n\n---\n\n".join(section_blocks)
 
-    def estimate_prompt_diagnostics(article_block, user_prompt, prompt_candidate_articles):
+    def estimate_prompt_diagnostics(article_block, user_prompt, prompt_candidate_articles, section_candidate_pools):
         return {
             "profile_articles": len(prompt_candidate_articles),
+            "profile_sections": sum(1 for articles in section_candidate_pools.values() if articles),
             "article_block_chars": len(article_block),
             "user_prompt_chars": len(user_prompt),
             "theme_signal_chars": len(theme_signal_block),
         }
 
-    def build_generation_profiles(selected_prompt_articles, base_timeout):
-        full_count = len(selected_prompt_articles)
-        compact_count = min(full_count, max(10, min(12, full_count)))
-        focused_count = min(full_count, max(8, min(9, full_count)))
+    def _trim_section_candidate_pools(section_candidate_pools, limits):
+        return {
+            section_name: section_candidate_pools.get(section_name, [])[: limits.get(section_name, 0)]
+            for section_name in ["TOP STORIES", *analytical_section_order]
+        }
+
+    def build_generation_profiles(section_candidate_pools, base_timeout):
+        full_pools = _trim_section_candidate_pools(
+            section_candidate_pools,
+            {
+                "TOP STORIES": 4,
+                "ENTERPRISE ADOPTION AND LABOR": 2,
+                "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": 3,
+                "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": 2,
+                "REGULATION, GOVERNANCE AND POLICY": 2,
+                "PHYSICAL AI AND ROBOTICS": 2,
+            },
+        )
+        compact_pools = _trim_section_candidate_pools(
+            section_candidate_pools,
+            {
+                "TOP STORIES": 3,
+                "ENTERPRISE ADOPTION AND LABOR": 2,
+                "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": 2,
+                "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": 2,
+                "REGULATION, GOVERNANCE AND POLICY": 2,
+                "PHYSICAL AI AND ROBOTICS": 1,
+            },
+        )
+        focused_pools = _trim_section_candidate_pools(
+            section_candidate_pools,
+            {
+                "TOP STORIES": 3,
+                "ENTERPRISE ADOPTION AND LABOR": 1,
+                "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": 1,
+                "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": 1,
+                "REGULATION, GOVERNANCE AND POLICY": 1,
+                "PHYSICAL AI AND ROBOTICS": 1,
+            },
+        )
         return [
             {
                 "name": "full",
-                "articles": selected_prompt_articles,
-                "summary_limit": 420,
-                "advisor_limit": 220,
+                "section_pools": full_pools,
+                "articles": flatten_section_candidate_pools(full_pools),
+                "summary_limit": 260,
+                "advisor_limit": 140,
                 "include_space_metadata": True,
                 "max_completion_tokens": 6000,
                 "timeout": base_timeout,
             },
             {
                 "name": "compact",
-                "articles": selected_prompt_articles[:compact_count],
-                "summary_limit": 260,
-                "advisor_limit": 160,
-                "include_space_metadata": True,
+                "section_pools": compact_pools,
+                "articles": flatten_section_candidate_pools(compact_pools),
+                "summary_limit": 220,
+                "advisor_limit": 120,
+                "include_space_metadata": False,
                 "max_completion_tokens": 7000,
                 "timeout": max(base_timeout, 210.0),
             },
             {
                 "name": "focused",
-                "articles": selected_prompt_articles[:focused_count],
-                "summary_limit": 180,
-                "advisor_limit": 120,
+                "section_pools": focused_pools,
+                "articles": flatten_section_candidate_pools(focused_pools),
+                "summary_limit": 160,
+                "advisor_limit": 90,
                 "include_space_metadata": False,
                 "max_completion_tokens": 6500,
                 "timeout": max(base_timeout, 210.0),
             },
         ]
 
-    def _fallback_primary_detail(article, limit=260):
-        detail = clip_prompt_text(article.get("advisor_relevance") or article.get("summary") or "", limit)
+    def _fallback_primary_detail(article, limit=220):
+        detail = clip_sentence_text(article.get("advisor_relevance") or article.get("summary") or "", limit)
         if not detail:
             detail = "Continue monitoring this development for clearer advisor relevance and investment read-throughs."
         return detail.rstrip(".") + "."
+
+    def _fallback_event_key(article):
+        repeated_theme = repeated_theme_key(article)
+        if repeated_theme:
+            return f"theme|{repeated_theme}"
+
+        subject_candidates = [company.lower() for company in parse_companies(article.get("companies"))]
+        raw_title = article.get("title") or ""
+        normalized_title = re.sub(r"[^a-z0-9\s]", " ", raw_title.lower())
+        title_tokens = [token for token in normalized_title.split() if len(token) > 2]
+        subject_stopwords = {
+            "the", "and", "for", "with", "from", "into", "after", "amid", "over", "under", "that",
+            "this", "will", "would", "could", "about", "their", "they", "says", "said", "report",
+            "reported", "announced", "launches", "launch", "launching", "new", "its", "are", "now",
+            "more", "than", "using", "use", "shows", "based", "series", "funding", "raises",
+            "raised", "secures", "secured", "million", "billion", "valuation", "becoming", "first",
+            "pure", "play", "unicorn", "europe", "europes", "robotics", "robotic", "u", "k", "uk",
+        }
+        significant_title_tokens = [
+            token
+            for token in title_tokens
+            if token not in subject_stopwords and not any(character.isdigit() for character in token)
+        ]
+
+        subject = None
+        if significant_title_tokens:
+            subject = significant_title_tokens[0]
+        elif subject_candidates:
+            subject = subject_candidates[0]
+        elif title_tokens:
+            subject = "-".join(title_tokens[:3])
+        else:
+            subject = article.get("url") or article.get("published_at") or "unknown"
+
+        text = " ".join(
+            [
+                article.get("title") or "",
+                article.get("summary") or "",
+                article.get("advisor_relevance") or "",
+            ]
+        ).lower()
+        qualifiers = []
+        if any(term in text for term in ["series a", "series b", "funding", "raised", "raises", "valuation", "backed"]):
+            qualifiers.append("funding")
+        if any(term in text for term in ["data center", "datacenter", "power", "grid", "cooling", "ups"]):
+            qualifiers.append("infrastructure")
+        if any(term in text for term in ["robot", "robotics", "humanoid", "drone", "automation"]):
+            qualifiers.append("robotics")
+        if any(term in text for term in ["policy", "regulation", "regulatory", "bill", "moratorium", "permit", "permitting"]):
+            qualifiers.append("policy")
+
+        return "fallback|" + "|".join([subject, *qualifiers[:2]])
+
+    def _is_acceptable_fallback_candidate(article, section_name):
+        thresholds = {
+            "TOP STORIES": 95,
+            "ENTERPRISE ADOPTION AND LABOR": 65,
+            "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": 60,
+            "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": 60,
+            "REGULATION, GOVERNANCE AND POLICY": 65,
+            "PHYSICAL AI AND ROBOTICS": 60,
+        }
+        score = section_candidate_score(article, section_name)
+        if score < thresholds[section_name]:
+            return False
+        if section_name != "TOP STORIES" and analytical_section_hint(article) != section_name:
+            return False
+        return True
 
     def _fallback_theme_counts(candidate_articles):
         counts = Counter(
@@ -985,7 +1278,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             )
         ]
 
-    def build_deterministic_fallback_digest(all_candidate_articles, selected_prompt_articles, today):
+    def build_deterministic_fallback_digest(all_candidate_articles, selected_prompt_articles, today, section_candidate_pools=None):
         theme_counts = _fallback_theme_counts(all_candidate_articles or selected_prompt_articles)
         theme_summary = _fallback_theme_summary(theme_counts)
 
@@ -1006,24 +1299,34 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             "PHYSICAL AI AND ROBOTICS": _fallback_bullet_text({}, lead="No major commercial Physical AI or robotics developments surfaced", detail="Continue monitoring robotics, autonomous systems, lab automation, industrial automation, and AI-enabled manufacturing for signs that pilots are moving into real deployment.", source="Full article set"),
         }
 
-        used_article_ids = set()
+        section_candidates = {
+            "TOP STORIES": list((section_candidate_pools or {}).get("TOP STORIES", [])) or selected_prompt_articles,
+            "ENTERPRISE ADOPTION AND LABOR": list((section_candidate_pools or {}).get("ENTERPRISE ADOPTION AND LABOR", [])) or selected_prompt_articles,
+            "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": list((section_candidate_pools or {}).get("INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS", [])) or selected_prompt_articles,
+            "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": list((section_candidate_pools or {}).get("CAPITAL MARKETS AND INVESTMENT IMPLICATIONS", [])) or selected_prompt_articles,
+            "REGULATION, GOVERNANCE AND POLICY": list((section_candidate_pools or {}).get("REGULATION, GOVERNANCE AND POLICY", [])) or selected_prompt_articles,
+            "PHYSICAL AI AND ROBOTICS": list((section_candidate_pools or {}).get("PHYSICAL AI AND ROBOTICS", [])) or selected_prompt_articles,
+        }
+        used_event_keys = set()
         section_bullets = {}
         for section_name, section_limit, predicate in section_specs:
             bullets = []
             source_counts = Counter()
-            for article in selected_prompt_articles:
-                article_id = id(article)
+            for article in section_candidates[section_name]:
+                event_key = _fallback_event_key(article)
                 source = article.get("original_publisher") or article.get("source") or "Unknown"
-                if article_id in used_article_ids:
+                if event_key in used_event_keys:
                     continue
                 if source_counts[source] >= 2:
                     continue
                 if not predicate(article):
                     continue
-                lead = clip_prompt_text(article.get("title") or "Untitled development", 110)
+                if not _is_acceptable_fallback_candidate(article, section_name):
+                    continue
+                lead = " ".join(str(article.get("title") or "Untitled development").split())
                 detail = _fallback_primary_detail(article)
                 bullets.append(_fallback_bullet_text(article, lead=lead, detail=detail, source=source))
-                used_article_ids.add(article_id)
+                used_event_keys.add(event_key)
                 source_counts[source] += 1
                 if len(bullets) >= section_limit:
                     break
@@ -1083,8 +1386,8 @@ def generate_daily_digest(report_date=None, return_metadata=False):
         )
 
         lines = []
-        for theme_name, count in theme_counts.most_common():
-            examples = ", ".join(theme_examples[theme_name][:4])
+        for theme_name, count in theme_counts.most_common(5):
+            examples = ", ".join(theme_examples[theme_name][:2])
             lines.append(
                 f"THEME_SIGNAL: {theme_labels[theme_name]} | corroborating_articles={count} | representative_examples={examples}"
             )
@@ -1256,10 +1559,246 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                         "section": unescape(section_name.strip()),
                         "lead": unescape((lead_match.group(1) if lead_match else item).strip()),
                         "source": unescape((source_match.group(1) if source_match else "").strip()),
+                        "raw": item,
                         "text": _normalize_text(item),
                     }
                 )
         return sections
+
+    def _significant_story_tokens(value):
+        stopwords = {
+            "the", "and", "for", "with", "from", "that", "this", "into", "after", "before",
+            "over", "under", "while", "where", "when", "what", "said", "says", "report", "reported",
+            "announced", "launches", "launched", "expands", "expanded", "plans", "planning", "global",
+            "new", "more", "than", "amid", "across", "about", "their", "they", "will", "would",
+            "could", "should", "today", "daily", "riffs", "gen", "songbook",
+        }
+        return {
+            token for token in re.findall(r"[a-z0-9]+", _normalize_text(value))
+            if len(token) > 2 and token not in stopwords and not token.isdigit()
+        }
+
+    def _build_story_match_signatures(prompt_candidate_articles):
+        signatures = []
+        for article in prompt_candidate_articles:
+            company_tokens = set()
+            for company in parse_companies(article.get("companies")):
+                company_tokens.update(_significant_story_tokens(company))
+            signatures.append(
+                {
+                    "event_key": event_anchor(article),
+                    "source": _normalize_text(article.get("original_publisher") or article.get("source") or ""),
+                    "title_tokens": _significant_story_tokens(article.get("title") or ""),
+                    "company_tokens": company_tokens,
+                    "primary_section": primary_section_hint(article),
+                    "analytical_section": analytical_section_hint(article),
+                }
+            )
+        return signatures
+
+    def _infer_bullet_event_key(bullet, story_signatures):
+        bullet_tokens = _significant_story_tokens(
+            " ".join(filter(None, [bullet.get("lead"), bullet.get("text")]))
+        )
+        if not bullet_tokens:
+            return None
+
+        bullet_source = _normalize_text(bullet.get("source") or "")
+        best_match = None
+        best_score = 0
+        for signature in story_signatures:
+            company_overlap = bullet_tokens & signature["company_tokens"]
+            title_overlap = bullet_tokens & signature["title_tokens"]
+            if not company_overlap and len(title_overlap) < 2:
+                continue
+
+            score = len(company_overlap) * 5 + len(title_overlap) * 2
+            if bullet_source and bullet_source == signature["source"]:
+                score += 2
+            if bullet.get("section") in {signature["primary_section"], signature["analytical_section"]}:
+                score += 1
+
+            if score > best_score:
+                best_score = score
+                best_match = signature["event_key"]
+
+        if best_score < 6:
+            return None
+        return best_match
+
+    def _find_story_signature_for_bullet(bullet, story_signatures):
+        bullet_tokens = _significant_story_tokens(
+            " ".join(filter(None, [bullet.get("lead"), bullet.get("text")]))
+        )
+        if not bullet_tokens:
+            return None
+
+        bullet_source = _normalize_text(bullet.get("source") or "")
+        best_signature = None
+        best_score = 0
+        for signature in story_signatures:
+            company_overlap = bullet_tokens & signature["company_tokens"]
+            title_overlap = bullet_tokens & signature["title_tokens"]
+            if not company_overlap and len(title_overlap) < 2:
+                continue
+
+            score = len(company_overlap) * 5 + len(title_overlap) * 2
+            if bullet_source and bullet_source == signature["source"]:
+                score += 2
+            if bullet.get("section") in {signature["primary_section"], signature["analytical_section"]}:
+                score += 1
+
+            if score > best_score:
+                best_score = score
+                best_signature = signature
+
+        if best_score < 6:
+            return None
+        return best_signature
+
+    def _extract_section_list_items(content):
+        section_items = {}
+        for section_name, section_body in re.findall(r"<h3>(.*?)</h3>\s*<ul>(.*?)</ul>", content or "", flags=re.DOTALL | re.IGNORECASE):
+            normalized_section = unescape(section_name.strip()).upper()
+            section_items[normalized_section] = re.findall(
+                r"<li>.*?</li>",
+                section_body,
+                flags=re.DOTALL | re.IGNORECASE,
+            )
+        return section_items
+
+    def _are_similar_story_bullets(left_bullet, right_bullet):
+        left_source = _normalize_text(left_bullet.get("source") or "")
+        right_source = _normalize_text(right_bullet.get("source") or "")
+        if not left_source or left_source != right_source or left_source == "full article set":
+            return False
+
+        left_tokens = _significant_story_tokens(left_bullet.get("lead") or left_bullet.get("text") or "")
+        right_tokens = _significant_story_tokens(right_bullet.get("lead") or right_bullet.get("text") or "")
+        if not left_tokens or not right_tokens:
+            return False
+
+        overlap = left_tokens & right_tokens
+        if len(overlap) < 2:
+            return False
+
+        return True
+
+    def _repair_duplicate_analytical_sections(content, fallback_content, prompt_candidate_articles):
+        expected_sections = [
+            "TOP THEME OF THE DAY",
+            "TOP STORIES",
+            "ENTERPRISE ADOPTION AND LABOR",
+            "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS",
+            "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
+            "REGULATION, GOVERNANCE AND POLICY",
+            "PHYSICAL AI AND ROBOTICS",
+            "WHAT TO WATCH",
+            "ADVISOR / WHOLESALER SOUNDBITES",
+        ]
+        analytical_sections = expected_sections[1:7]
+        title_match = re.search(
+            r"\A\s*(<h2>.*?</h2>\s*<p><strong>.*?</strong></p>)",
+            content or "",
+            flags=re.DOTALL | re.IGNORECASE,
+        )
+        top_theme_match = re.search(
+            r"(<h3>\s*TOP THEME OF THE DAY\s*</h3>\s*<p>.*?</p>)",
+            content or "",
+            flags=re.DOTALL | re.IGNORECASE,
+        )
+        if not title_match or not top_theme_match:
+            return content
+
+        story_signatures = _build_story_match_signatures(prompt_candidate_articles)
+        current_items = _extract_section_list_items(content)
+        fallback_items = _extract_section_list_items(fallback_content)
+
+        used_event_keys = set()
+        used_leads = set()
+        kept_bullets = []
+        rebuilt_sections = {}
+        for section_name in analytical_sections:
+            rebuilt_items = []
+            for item_html in current_items.get(section_name, []):
+                bullet = _extract_digest_bullets(f"<h3>{section_name}</h3><ul>{item_html}</ul>")[0]
+                lead_key = _normalize_text(bullet["lead"])
+                event_key = _infer_bullet_event_key(bullet, story_signatures)
+                if (
+                    (event_key and event_key in used_event_keys)
+                    or (lead_key and lead_key in used_leads)
+                    or any(_are_similar_story_bullets(bullet, kept_bullet) for kept_bullet in kept_bullets)
+                ):
+                    continue
+                rebuilt_items.append(item_html)
+                if event_key:
+                    used_event_keys.add(event_key)
+                if lead_key:
+                    used_leads.add(lead_key)
+                kept_bullets.append(bullet)
+
+            fallback_pool = fallback_items.get(section_name, [])
+            while not rebuilt_items and fallback_pool:
+                item_html = fallback_pool.pop(0)
+                bullet = _extract_digest_bullets(f"<h3>{section_name}</h3><ul>{item_html}</ul>")[0]
+                lead_key = _normalize_text(bullet["lead"])
+                event_key = _infer_bullet_event_key(bullet, story_signatures)
+                if (
+                    (event_key and event_key in used_event_keys)
+                    or (lead_key and lead_key in used_leads)
+                    or any(_are_similar_story_bullets(bullet, kept_bullet) for kept_bullet in kept_bullets)
+                ):
+                    continue
+                rebuilt_items.append(item_html)
+                if event_key:
+                    used_event_keys.add(event_key)
+                if lead_key:
+                    used_leads.add(lead_key)
+                kept_bullets.append(bullet)
+
+            rebuilt_sections[section_name] = rebuilt_items
+
+        parts = [title_match.group(1).strip(), top_theme_match.group(1).strip()]
+        for section_name in expected_sections[1:]:
+            if section_name in analytical_sections:
+                items = rebuilt_sections.get(section_name, [])
+            else:
+                items = current_items.get(section_name, [])
+            parts.append(f"<h3>{section_name}</h3>")
+            parts.append("<ul>")
+            parts.extend(items)
+            parts.append("</ul>")
+        return "\n".join(parts)
+
+    def _has_duplicate_story_issue(issues):
+        duplicate_markers = (
+            "Repeated lead phrases suggest the same development is being reused across sections",
+            "The same underlying development appears in multiple sections",
+            "The same underlying development appears in multiple analytical sections",
+            "The same source event appears in multiple analytical sections",
+        )
+        return any(any(marker in issue for marker in duplicate_markers) for issue in issues)
+
+    def _has_section_fit_issue(issues):
+        return any("Analytical bullet appears in the wrong section" in issue for issue in issues)
+
+    def _has_truncation_issue(issues):
+        return any("Bullet appears truncated or clipped" in issue for issue in issues)
+
+    def _has_blocking_quality_issue(issues):
+        return _has_duplicate_story_issue(issues) or _has_section_fit_issue(issues) or _has_truncation_issue(issues)
+
+    def _has_empty_analytical_section(content):
+        analytical_sections = [
+            "TOP STORIES",
+            "ENTERPRISE ADOPTION AND LABOR",
+            "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS",
+            "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
+            "REGULATION, GOVERNANCE AND POLICY",
+            "PHYSICAL AI AND ROBOTICS",
+        ]
+        section_items = _extract_section_list_items(content)
+        return any(not section_items.get(section_name) for section_name in analytical_sections)
 
     def _find_diversity_issues(content, available_publishers):
         expected_sections = [
@@ -1356,6 +1895,13 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                 category_signatures[signature] += 1
             if _is_local_data_center_permitting_bullet(bullet["text"]):
                 local_permitting_count += 1
+            if (
+                "..." in (bullet.get("lead") or "")
+                or "..." in (bullet.get("raw") or "")
+                or re.search(r"\b[a-z]{1,4}\.\s*\(Source:", bullet.get("raw") or "")
+            ):
+                issues.append("Bullet appears truncated or clipped")
+                break
             word_count = len(_normalize_text(bullet["text"]).split())
             if word_count > 90:
                 long_bullet_count += 1
@@ -1388,6 +1934,67 @@ def generate_daily_digest(report_date=None, return_metadata=False):
         if cross_section_repeats:
             issues.append("The same underlying development appears in multiple sections")
 
+        story_signatures = _build_story_match_signatures(prompt_articles)
+        section_event_map = {}
+        for bullet in bullets:
+            if bullet["section"].upper() not in {
+                "TOP STORIES",
+                "ENTERPRISE ADOPTION AND LABOR",
+                "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS",
+                "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
+                "REGULATION, GOVERNANCE AND POLICY",
+                "PHYSICAL AI AND ROBOTICS",
+            }:
+                continue
+            event_key = _infer_bullet_event_key(bullet, story_signatures)
+            if not event_key:
+                continue
+            section_event_map.setdefault(event_key, set()).add(bullet["section"])
+        duplicated_events = [event_key for event_key, sections in section_event_map.items() if len(sections) > 1]
+        if duplicated_events:
+            issues.append("The same underlying development appears in multiple analytical sections")
+
+        analytical_bullets = [
+            bullet for bullet in bullets
+            if bullet["section"].upper() in {
+                "TOP STORIES",
+                "ENTERPRISE ADOPTION AND LABOR",
+                "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS",
+                "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
+                "REGULATION, GOVERNANCE AND POLICY",
+                "PHYSICAL AI AND ROBOTICS",
+            }
+        ]
+        for index, left_bullet in enumerate(analytical_bullets):
+            for right_bullet in analytical_bullets[index + 1:]:
+                if left_bullet["section"] == right_bullet["section"]:
+                    continue
+                if _are_similar_story_bullets(left_bullet, right_bullet):
+                    issues.append("The same source event appears in multiple analytical sections")
+                    return issues
+
+        section_fit_mismatches = []
+        for bullet in analytical_bullets:
+            signature = _find_story_signature_for_bullet(bullet, story_signatures)
+            if not signature:
+                continue
+            actual_section = bullet["section"].upper()
+            expected_section = signature["analytical_section"].upper()
+            if actual_section == expected_section:
+                continue
+            if actual_section == "TOP STORIES":
+                continue
+            if expected_section == "TOP STORIES":
+                continue
+            section_fit_mismatches.append(
+                f"{bullet['lead']} -> expected {expected_section}, found {actual_section}"
+            )
+
+        if section_fit_mismatches:
+            issues.append(
+                "Analytical bullet appears in the wrong section: " + "; ".join(section_fit_mismatches[:3])
+            )
+
         return issues
 
     all_articles = get_recent_articles()
@@ -1401,8 +2008,9 @@ def generate_daily_digest(report_date=None, return_metadata=False):
         if article.get("original_publisher") or article.get("source")
     }
     theme_signal_block = build_theme_signal_block(all_articles)
-    prompt_articles = select_prompt_articles(articles)
-    generation_profiles = build_generation_profiles(prompt_articles, digest_request_timeout)
+    section_candidate_pools = build_section_candidate_pools(articles)
+    prompt_articles = flatten_section_candidate_pools(section_candidate_pools)
+    generation_profiles = build_generation_profiles(section_candidate_pools, digest_request_timeout)
     SPACE_ECONOMY_THEME_ACTIVE = calculate_space_economy_theme_active(
         all_articles,
         quality_filter=passes_daily_space_quality,
@@ -1447,7 +2055,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
     generation_attempts = []
     for attempt, profile in enumerate(generation_profiles, start=1):
         article_block = build_article_block(
-            profile["articles"],
+            profile["section_pools"],
             summary_limit=profile["summary_limit"],
             advisor_limit=profile["advisor_limit"],
             include_space_metadata=profile["include_space_metadata"],
@@ -1466,6 +2074,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             article_block,
             user_prompt,
             profile["articles"],
+            profile["section_pools"],
         )
 
         print(
@@ -1477,6 +2086,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             "Daily digest prompt diagnostics: "
             f"selected_articles={len(prompt_articles)}, "
             f"profile_articles={prompt_diagnostics['profile_articles']}, "
+            f"profile_sections={prompt_diagnostics['profile_sections']}, "
             f"article_block_chars={prompt_diagnostics['article_block_chars']}, "
             f"user_prompt_chars={prompt_diagnostics['user_prompt_chars']}, "
             f"system_prompt_chars={len(system_prompt)}, "
@@ -1507,7 +2117,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             )
         except APITimeoutError:
             if attempt == len(generation_profiles):
-                if best_effort_content:
+                if best_effort_content and not _has_blocking_quality_issue(best_effort_issues):
                     print(
                         "Daily digest final retry timed out; using the best available draft "
                         "from an earlier attempt."
@@ -1520,7 +2130,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                     "built from scored articles."
                 )
                 print("DAILY DIGEST FALLBACK MODE: deterministic_html_from_scored_articles")
-                content = build_deterministic_fallback_digest(all_articles, prompt_articles, today)
+                content = build_deterministic_fallback_digest(all_articles, prompt_articles, today, section_candidate_pools)
                 issues = []
                 generation_mode = "deterministic_fallback"
                 break
@@ -1537,7 +2147,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             continue
         except Exception as exc:
             if attempt == len(generation_profiles):
-                if best_effort_content:
+                if best_effort_content and not _has_blocking_quality_issue(best_effort_issues):
                     print(
                         "Daily digest final retry failed after a generation error; using the best "
                         "available draft from an earlier attempt."
@@ -1550,7 +2160,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                     f"fallback built from scored articles ({exc})."
                 )
                 print("DAILY DIGEST FALLBACK MODE: deterministic_html_from_scored_articles")
-                content = build_deterministic_fallback_digest(all_articles, prompt_articles, today)
+                content = build_deterministic_fallback_digest(all_articles, prompt_articles, today, section_candidate_pools)
                 issues = []
                 generation_mode = "deterministic_fallback"
                 break
@@ -1578,7 +2188,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                     "Return only the finished HTML."
                 )
                 continue
-            if best_effort_content:
+            if best_effort_content and not _has_blocking_quality_issue(best_effort_issues):
                 print(
                     "Daily digest final retry returned empty content; using the best available "
                     "draft from an earlier attempt."
@@ -1592,7 +2202,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                     "fallback built from scored articles."
                 )
                 print("DAILY DIGEST FALLBACK MODE: deterministic_html_from_scored_articles")
-                content = build_deterministic_fallback_digest(all_articles, prompt_articles, today)
+                content = build_deterministic_fallback_digest(all_articles, prompt_articles, today, section_candidate_pools)
                 issues = []
                 generation_mode = "deterministic_fallback"
                 break
@@ -1604,6 +2214,21 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             continue
 
         issues = _find_diversity_issues(content, available_publishers)
+        fallback_content = build_deterministic_fallback_digest(all_articles, prompt_articles, today, section_candidate_pools)
+        repaired_content = _repair_duplicate_analytical_sections(
+            content,
+            fallback_content,
+            prompt_articles,
+        )
+        if repaired_content != content:
+            if _has_empty_analytical_section(repaired_content):
+                repaired_content = fallback_content
+            repaired_issues = _find_diversity_issues(repaired_content, available_publishers)
+            if len(repaired_issues) <= len(issues):
+                content = repaired_content
+                issues = repaired_issues
+                if content == fallback_content:
+                    generation_mode = "deterministic_fallback"
         best_effort_content = content
         best_effort_issues = list(issues)
         if not issues:
@@ -1623,6 +2248,11 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             + "\n- ".join(issues)
             + "\nDo not explain the fixes. Return only the corrected HTML."
         )
+
+    if issues and _has_blocking_quality_issue(issues):
+        content = build_deterministic_fallback_digest(all_articles, prompt_articles, today, section_candidate_pools)
+        issues = []
+        generation_mode = "deterministic_fallback"
 
     if issues:
         print(
