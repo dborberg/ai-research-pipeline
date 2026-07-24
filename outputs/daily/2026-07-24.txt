@@ -1,0 +1,44 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>July 24, 2026</strong></p>
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today's signal clustered around capital markets and financing, policy and governance, and infrastructure and power constraints rather than isolated product chatter. The useful advisor question is which developments point to governed deployment, real capital intensity, and durable adoption signals across the AI stack.</p>
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>AMD unveils Kria module for real-time control, unified memory for robots:</strong> This is a concrete example of AI moving from cloud training and inference into physical systems such as industrial robots, autonomous mobile robots, and humanoids. (Source: The Robot Report)</li>
+<li><strong>Uber co-founder raises $1.7B for new robotics startup ATOMS:</strong> The funding highlights continued investor appetite for capital-intensive robotics and physical AI platforms aimed at automating real-world industrial workflows. (Source: The Robot Report)</li>
+<li><strong>India's HCLTech to invest $1.48 bln in AI data center, open 5,000-seat tech hub - Reuters:</strong> This is a concrete example of AI-related capital spending moving beyond U.S. (Source: Reuters)</li>
+</ul>
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Connecting the Factory Floor and Back Office: The Next Step in End-to-End Automation:</strong> This points to a continued automation opportunity beyond robotics hardware, with potential demand for software, systems integration, industrial data platforms, and workflow automation tools. (Source: Robotics & Automation News)</li>
+<li><strong>Beyond SBDD: Geometric Deep Learning in Polypharmacology and Multi-target Drug Design:</strong> This is an early-stage technical review rather than a commercial deployment, but it signals continued evolution of AI-mediated drug discovery toward more complex therapeutic design problems. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Trump Expands AI Data Center Pledge in Bid to Ease Power Costs - Bloomberg.com:</strong> This matters because AI data center growth is increasingly tied to electricity availability and cost, making power infrastructure a key bottleneck and potential investment theme. (Source: Bloomberg.com)</li>
+</ul>
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>AT&T and Microsoft scale trillion-token workloads with Microsoft Foundry and AMD:</strong> This is a concrete example of a large enterprise moving AI workloads to trillion-token scale, reinforcing the investment relevance of cloud platforms, managed AI infrastructure, and GPU suppliers. (Source: Microsoft Azure Blog)</li>
+</ul>
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>CrowdStrike and Schwarz Digits Expand Strategic Partnership to Deliver Sovereign Cybersecurity Across Europe - CrowdStrike:</strong> This matters as another signal that European enterprises and institutions are prioritizing sovereign, locally controlled cybersecurity solutions. (Source: CrowdStrike)</li>
+<li><strong>Loudoun Supervisors Eye Data Centers Moratorium, More Regulations - LoudounNow.com:</strong> This matters because AI growth depends on continued data center expansion, and local moratoriums or tighter rules can affect project timelines, costs, and capacity availability. (Source: LoudounNow.com)</li>
+</ul>
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Nvidia bets physical AI can solve healthcare robotics’ data problem:</strong> This matters because it highlights Nvidia’s effort to extend AI infrastructure beyond language models into robotics and healthcare simulation. (Source: AI News)</li>
+</ul>
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Financing discipline:</strong> Watch whether new AI capex plans are funded through durable cash flow, project finance, or increasingly expensive outside capital. (Source: Full article set)</li>
+<li><strong>Policy transmission:</strong> Watch whether public-sector AI rules begin to shape procurement, privacy, and governance standards for enterprise buyers. (Source: Full article set)</li>
+<li><strong>Infrastructure bottlenecks:</strong> Watch whether power, cooling, and interconnection constraints begin to delay AI infrastructure deployment timelines. (Source: Full article set)</li>
+</ul>
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI financing is becoming a balance-sheet test:</strong> The better read-through is who can fund deployment sustainably, not who can announce the biggest ambition. (Source: Full article set)</li>
+<li><strong>Governance can become a growth gate:</strong> Policy and procurement rules increasingly shape which AI tools can move from pilots into scaled enterprise use. (Source: Full article set)</li>
+<li><strong>AI capex is still a physical buildout story:</strong> Power, cooling, networking, and permitting remain part of the same deployment conversation as models and software. (Source: Full article set)</li>
+</ul>
