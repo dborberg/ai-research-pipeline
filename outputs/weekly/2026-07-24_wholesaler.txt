@@ -1,0 +1,86 @@
+Beyond the Horizon: Weekly Riffs from the Gen AI Songbook
+Week Ending July 24, 2026
+
+TOP 5 STORIES THIS WEEK
+
+1. Google reportedly raised its 2026 capex plan to $195 billion to $205 billion as NVIDIA said Vera Rubin systems are moving into production at CoreWeave, Google Cloud, Microsoft Azure, and Oracle Cloud Infrastructure. Advisors can frame this as AI moving deeper into a capital-intensive buildout where semiconductors, rack-scale systems, memory, networking, cooling, power, and grid access all matter, not just model quality. (Sources: Data Center Dynamics; NVIDIA Blog)
+
+2. AMD agreed to invest up to $5 billion in Anthropic as part of an AI infrastructure deal tied to up to two gigawatts of AMD Instinct MI450 accelerator capacity, with the first gigawatt expected in the first half of 2027. This matters because frontier model competition is becoming a compute, power, semiconductor diversification, and balance-sheet contest, with read-throughs to advanced packaging, high-bandwidth memory, data centers, and cloud infrastructure suppliers. (Source: AI News)
+
+3. Hut 8 signed a $9.8 billion AI data center lease while Nashville approved data center regulations and a moratorium, and Loudoun supervisors weighed more data center restrictions. The week showed that AI infrastructure demand is real, but project economics increasingly depend on permitting, power interconnection, local politics, credit quality, and long-duration customer commitments. (Sources: Reuters; WPLN News; Nashville Scene; LoudounNow.com)
+
+4. Microsoft and Mistral expanded their partnership for controllable enterprise AI, OpenAI launched Presence with forward-deployed engineers, and AT&T scaled trillion-token workloads using Microsoft Foundry and AMD infrastructure. The advisor takeaway is that enterprise AI is moving from self-serve tools toward governed workflows that require integration, model choice, cost control, compliance, and measurable productivity outcomes. (Sources: Microsoft Source; AI News; Microsoft Azure Blog)
+
+5. Physical AI attracted major capital and product activity as ATOMS raised $1.7 billion, Humanoid raised $152 million at a $1.35 billion valuation, and AMD launched its Kria robotics module for real-time control. This is not just a robotics headline; it shows the AI opportunity set broadening into industrial automation, edge chips, sensors, simulation, motion control, warehouse software, construction, mining, and healthcare robotics. (Sources: The Robot Report; Robotics & Automation News)
+
+BEYOND THE MAG 7
+
+1. Bristol Myers Squibb is building a second NVIDIA DGX SuperPOD for drug discovery, while Medtronic previewed Touch Surgery Aide for operating-room AI workflows. The customer adoption signal is that AI infrastructure is moving into regulated healthcare workflows where proprietary data, real-time compute, auditability, and FDA-cleared use cases can matter as much as generic model access.
+
+2. HCLTech said it will invest $1.48 billion in an AI data center and open a 5,000-seat technology hub in India. The new demand pool is global enterprise AI infrastructure, with read-throughs to regional data centers, power availability, IT services, cloud migration, and sovereign or locally controlled AI capacity.
+
+3. Blackstone reported quarterly profit boosted by AI investment gains, and The Robot Report highlighted more than $23 billion in 2026 venture funding for physical AI firms. The capital markets implication is that AI exposure is showing up beyond public mega-cap technology through private markets, infrastructure, real estate, robotics, and alternative asset platforms.
+
+WHAT IS BEING DISRUPTED
+
+1. The assumption that AI capacity can be built wherever capital is available was challenged by Nashville, Monroe County, Loudoun, Hagar Township, and Wisconsin data center moratorium or restriction activity.
+
+2. The self-serve software rollout model is being disrupted by OpenAI Presence and the Microsoft-Mistral partnership, which point to enterprise AI needing engineers, controls, governance, and workflow integration.
+
+3. The idea that AI is only a knowledge-work tool was challenged by ATOMS funding, Humanoid’s financing, AMD’s Kria robotics module, Toyota’s expanded NVIDIA partnership, and Medtronic’s operating-room AI platform.
+
+REGULATORY RADAR
+
+1. State attorneys general began scrutinizing AI use under existing authority before a new federal AI law is in place. For businesses, that means AI compliance risk is already active and may require audit trails, privacy controls, disclosures, model-risk management, and state-by-state legal review. (Source: Reuters)
+
+2. Nashville’s Metro Council approved data center regulations and a moratorium, while Monroe County passed an 18-month moratorium on data center and battery storage permits. The practical relevance is that local governments are becoming part of the AI supply chain because zoning, power, land use, and community acceptance can alter data center timelines. (Sources: WPLN News; Nashville Scene; news8000.com)
+
+3. China’s post-July 15 AI rules reportedly pushed Doubao and Qwen agents offline while allowing elderly care robots to move forward. The business relevance is that governance can decide which AI products reach market, especially for higher-autonomy agents and physical AI systems. (Source: 36Kr)
+
+WHAT TO WATCH NEXT
+
+1. Hyperscaler capex revisions and language around utilization, depreciation, and return on AI investment. This will help advisors separate durable infrastructure demand from spending that may need clearer monetization proof.
+
+2. Data center permitting calendars in Nashville, Loudoun, Monroe County, Maryland, Wisconsin, and other active jurisdictions. More pauses or stricter power rules would make grid access, cooling, interconnection, and site selection bigger variables in the AI buildout.
+
+3. Follow-through on AMD and Anthropic’s two-gigawatt infrastructure plan, especially accelerator availability, power procurement, deployment timing, and customer workload migration. This is a key test of whether AI compute competition broadens beyond the current dominant GPU ecosystem.
+
+4. Enterprise agent economics from OpenAI Presence, Microsoft-Mistral, AT&T, and Cursor Router. Watch for evidence of lower inference costs, stronger governance, repeatable deployment playbooks, and measurable productivity rather than just agent demos.
+
+5. Physical AI commercialization after the ATOMS, Humanoid, Monumental, and Gritt funding events. The useful indicators are repeat customers, uptime, safety performance, gross margin, robotics-as-a-service adoption, and deployment in factories, warehouses, construction, mining, and healthcare.
+
+6. Healthcare AI workflow adoption at Bristol Myers Squibb and Medtronic. More dedicated AI factories or FDA-cleared surgical AI applications would signal that regulated industries are moving from pilots to production-grade AI infrastructure.
+
+READY TO USE SOUNDBITES
+
+1. This week made AI look less like a software upgrade and more like an industrial buildout that needs chips, power, permits, financing, cooling, and customers willing to sign long contracts.
+
+2. The AMD-Anthropic deal shows the frontier model race is also a power and semiconductor race, not just a benchmark race.
+
+3. Data center demand is strong, but local governments are becoming a real constraint; the AI supply chain now includes zoning boards and utility commissions.
+
+4. Enterprise AI is moving from “give employees a chatbot” to “deploy governed workflows with engineers, controls, cost routing, and audit trails.”
+
+5. Physical AI is becoming investable because capital is moving into robots that can work in construction, factories, operating rooms, warehouses, mining, and infrastructure maintenance.
+
+QUESTIONS TO BRING TO YOUR CLIENTS
+
+1. Are you looking at AI exposure only through the largest platform companies, or also through the infrastructure layers that must be built, powered, cooled, financed, and permitted?
+
+2. Which companies in your portfolio are most likely to turn AI from a pilot into a governed workflow with measurable productivity, cost control, and compliance?
+
+3. If physical AI moves from demos into real deployments, where could the biggest second-order opportunities emerge: robotics components, sensors, industrial software, medtech, warehouse automation, construction services, or edge semiconductors?
+
+AI PRACTICE TIP OF THE WEEK
+What: Use AI to create a “first onboarding meeting control sheet” that turns a new client’s intake notes into the decisions, missing documents, and handoffs you need to resolve before implementation starts.
+
+Why: Onboarding often stalls because small gaps are discovered too late: beneficiary details, outside account access, tax documents, cost basis, estate documents, employer plan rules, or risk tolerance conflicts. This week’s AI theme is governed workflows, and the same idea applies here: use AI to make the onboarding meeting more controlled, sequenced, and complete.
+
+How to:
+1. Paste anonymized intake notes, stated goals, known accounts, and documents received.
+2. Ask AI to identify missing items, decision points, dependencies, and questions for the meeting.
+3. Convert the output into a one-page internal prep sheet for the advisor and service team.
+
+Copy prompt: Act as an experienced financial advisor preparing for a first client onboarding meeting. Using the anonymized intake information below, create a one-page internal control sheet with: 1) the top items to confirm in the meeting, 2) missing documents or data, 3) decisions the client needs to make, 4) dependencies that could delay implementation, 5) service team follow-ups, and 6) three plain-English questions I should ask to uncover hidden complexity. Do not make recommendations. Intake information: [paste anonymized notes].
+
+Guardrail: Do not enter names, account numbers, Social Security numbers, or other sensitive client data. Treat the output as a prep aid only; verify all facts and keep recommendations within your firm’s approved planning and compliance process.
