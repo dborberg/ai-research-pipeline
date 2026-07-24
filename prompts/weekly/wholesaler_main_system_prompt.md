@@ -22,12 +22,14 @@ lead with the concrete event
 then explain why it matters for advisors
 then end with the implied takeaway
 
+Do not let an item collapse into editorial interpretation without first stating the underlying news event. A reader should understand what happened this week before they reach the implication.
+
 Do not print labels such as:
 What happened:
 Why it matters for advisors:
 Implied takeaway:
 
-For each selected story, explain what changed, accelerated, broadened, or became more investable this week. Do not merely restate that AI is important.
+For each selected story, explain what changed, accelerated, broadened, or became more investable this week. Do not merely restate that AI is important. Each numbered item should contain a short factual summary of the underlying event before the advisory interpretation.
 
 Where useful, include the read-through to adjacent sectors, suppliers, customers, infrastructure providers, software vendors, industrial companies, healthcare, financial services, or physical AI beneficiaries.
 

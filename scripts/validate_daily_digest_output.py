@@ -64,6 +64,18 @@ PHYSICAL_AI_FALLBACK = (
     "and AI-enabled manufacturing for signs that pilots are moving into real deployment. "
     "(Source: Full article set)</li>"
 )
+ANALYTICAL_SECTIONS = {
+    "TOP STORIES",
+    "ENTERPRISE ADOPTION AND LABOR",
+    "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS",
+    "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
+    "REGULATION, GOVERNANCE AND POLICY",
+    "PHYSICAL AI AND ROBOTICS",
+}
+SYNTHETIC_SECTIONS = {
+    "WHAT TO WATCH",
+    "ADVISOR / WHOLESALER SOUNDBITES",
+}
 
 
 def _normalize_text(value):
@@ -201,16 +213,7 @@ def validate_daily_digest_html(html, require_physical_ai_fallback=False):
     if RECOMMENDATION_RE.search(html):
         issues.append("Explicit recommendation language detected")
 
-    bullet_sections = {
-        "TOP STORIES",
-        "ENTERPRISE ADOPTION AND LABOR",
-        "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS",
-        "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS",
-        "REGULATION, GOVERNANCE AND POLICY",
-        "PHYSICAL AI AND ROBOTICS",
-        "WHAT TO WATCH",
-        "ADVISOR / WHOLESALER SOUNDBITES",
-    }
+    bullet_sections = ANALYTICAL_SECTIONS | SYNTHETIC_SECTIONS
     section_blocks = re.findall(
         r"<h3>(.*?)</h3>\s*(?:<p>.*?</p>\s*)?(?:<ul>(.*?)</ul>)?",
         html,
@@ -221,8 +224,48 @@ def validate_daily_digest_html(html, require_physical_ai_fallback=False):
         if normalized_heading not in bullet_sections:
             continue
         for item in re.findall(r"<li>.*?</li>", body or "", flags=re.DOTALL | re.IGNORECASE):
-            if "(Source:" not in item:
+            if normalized_heading in ANALYTICAL_SECTIONS and "(Source:" not in item:
                 issues.append(f"Missing Source attribution in {normalized_heading}")
+                break
+            if normalized_heading in SYNTHETIC_SECTIONS and "(Source:" in item:
+                issues.append(f"Source attribution should not appear in {normalized_heading}")
+                break
+
+    for heading, body in section_blocks:
+        normalized_heading = " ".join(re.sub(r"<[^>]+>", "", heading).split()).upper()
+        if normalized_heading not in ANALYTICAL_SECTIONS:
+            continue
+        for item in re.findall(r"<li>(.*?)</li>", body or "", flags=re.DOTALL | re.IGNORECASE):
+            cleaned = " ".join(re.sub(r"<[^>]+>", " ", item).split())
+            cleaned = re.sub(r"\(Source:\s*[^\)]+\)", "", cleaned, flags=re.IGNORECASE).strip()
+            if ":" in cleaned:
+                _, body_text = cleaned.split(":", 1)
+            else:
+                body_text = cleaned
+            first_sentence_match = re.search(r"(.+?[.!?])(?:\s|$)", body_text.strip())
+            first_sentence = (first_sentence_match.group(1) if first_sentence_match else body_text.strip()).lower()
+            if not first_sentence:
+                issues.append(f"Analytical bullet in {normalized_heading} is missing a concrete event summary")
+                break
+            if any(
+                first_sentence.startswith(prefix)
+                for prefix in [
+                    "this matters because",
+                    "the implication is",
+                    "the read-through is",
+                    "the takeaway is",
+                    "watch whether",
+                    "continue monitoring",
+                    "the better read-through is",
+                ]
+            ):
+                issues.append(f"Analytical bullet in {normalized_heading} is missing a concrete event summary")
+                break
+            if not re.search(
+                r"\b(announced|launch(?:ed|es)?|unveil(?:ed|s)?|released|reported|raised|invest|fund(?:ed|ing)?|signed|expanded|opened|built|deployed|approved|cleared|introduced|passed|filed|partner(?:ed|s)?|agreed|pledged|published|disclosed|plans? to|will|added|showed|advanced|made|kept|moved|described|covered|highlighted|reviewed|secured|weighs|weighed|surfaced|dominated|rose|rises|surged|jumped|fell|slides?|gained|boosted|bolstered|researching|considering)\b",
+                first_sentence,
+            ):
+                issues.append(f"Analytical bullet in {normalized_heading} is missing a concrete event summary")
                 break
 
     source_counts = {}

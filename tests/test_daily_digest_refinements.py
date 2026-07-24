@@ -50,22 +50,23 @@ def _daily_html(section_bullets):
 
 
 class DailyDigestRefinementTests(unittest.TestCase):
-    def test_daily_prompts_include_new_concentration_and_adoption_audits(self):
+    def test_daily_prompts_preserve_adoption_lenses_and_relevance_first_priority(self):
         system_prompt = (REPO_ROOT / "prompts/daily/daily_digest_system_prompt.md").read_text(encoding="utf-8")
         user_prompt = (REPO_ROOT / "prompts/daily/daily_digest_user_prompt.md").read_text(encoding="utf-8")
 
-        for prompt in [system_prompt, user_prompt]:
-            self.assertIn("more than three analytical bullets", prompt)
-            self.assertIn("Enterprise Production Readiness", prompt)
-            self.assertIn("Workflow Orchestration", prompt)
-            self.assertIn("Platform Convergence", prompt)
-            self.assertIn("4 to 6 most relevant categories", prompt)
-            self.assertIn("local or state data center permitting", prompt.lower())
-            self.assertIn("FRONTIER TECHNOLOGY CAPITAL MARKETS DAILY OVERRIDE", prompt)
-            self.assertIn("not a pure Gen AI story", prompt)
+        self.assertIn("Materiality, source quality, specificity, and investment usefulness", system_prompt)
+        self.assertIn("stable reading lenses, not quotas", system_prompt)
+        self.assertIn("Enterprise Production Readiness", system_prompt)
+        self.assertIn("Workflow Orchestration", system_prompt)
+        self.assertIn("Platform Convergence", system_prompt)
+        self.assertIn("frontier technology capital-markets events", system_prompt)
+        self.assertIn("Do not use buy, sell, hold", system_prompt)
 
-        self.assertIn("section-specific candidate pools", user_prompt)
-        self.assertIn("SECTION CANDIDATE POOLS:", user_prompt)
+        self.assertIn("relevance-first daily briefing", user_prompt)
+        self.assertIn("not a category-completion exercise", user_prompt)
+        self.assertIn("Do not force a marginal story", user_prompt)
+        self.assertIn("SECTION-TAGGED CANDIDATE SLATE:", user_prompt)
+        self.assertIn("Do not add source attributions", user_prompt)
 
     def test_spacex_ipo_style_article_triggers_frontier_capital_markets_override(self):
         article = {
@@ -122,39 +123,39 @@ class DailyDigestRefinementTests(unittest.TestCase):
         html = _daily_html(
             {
                 "TOP STORIES": [
-                    "<strong>Reuters reported a cloud provider expanded governed AI deployments:</strong> The move matters because enterprise buyers are asking for security, identity, and cost controls before scaling. The read-through is to data platforms, governance software, and IT services. (Source: Reuters)",
-                    "<strong>Bloomberg reported a chip supplier raised AI infrastructure guidance:</strong> The update matters because backlog is still tied to real capacity rather than broad AI enthusiasm. Portfolio teams should monitor networking, memory, and advanced packaging exposure. (Source: Bloomberg)",
-                    "<strong>AP reported lawmakers advanced an AI procurement bill:</strong> The policy move matters because public-sector rules can shape enterprise governance standards. The implication is stronger demand for auditability and compliance tooling. (Source: AP)",
+                    "<strong>Reuters reported a cloud provider expanded governed AI deployments:</strong> Reuters reported that the provider expanded governed AI deployments with stronger identity, security, and cost controls for enterprise customers. The move matters because enterprise buyers are asking for those controls before scaling. The read-through is to data platforms, governance software, and IT services. (Source: Reuters)",
+                    "<strong>Bloomberg reported a chip supplier raised AI infrastructure guidance:</strong> Bloomberg reported that the supplier raised AI infrastructure guidance after backlog and order trends stayed strong. The update matters because demand is still tied to real capacity rather than broad AI enthusiasm. Portfolio teams should monitor networking, memory, and advanced packaging exposure. (Source: Bloomberg)",
+                    "<strong>AP reported lawmakers advanced an AI procurement bill:</strong> AP reported that lawmakers advanced an AI procurement bill that would set stricter purchasing standards for public-sector buyers. The policy move matters because those rules can shape enterprise governance standards. The implication is stronger demand for auditability and compliance tooling. (Source: AP)",
                 ],
                 "ENTERPRISE ADOPTION AND LABOR": [
-                    "<strong>Microsoft added production controls to an agent platform:</strong> The launch matters because orchestration is moving from demos into governed workflow automation. Advisors can frame this as a platform convergence signal, not just another chatbot feature. (Source: Microsoft)",
-                    "<strong>Gartner published a report on AI workflow redesign:</strong> The report matters because labor impact is shifting toward process change and quality control. The implication is to monitor services firms that can implement production workflows. (Source: Gartner)",
+                    "<strong>Microsoft added production controls to an agent platform:</strong> Microsoft added production controls, permissions, and observability features to an enterprise agent platform. The launch matters because orchestration is moving from demos into governed workflow automation. Advisors can frame this as a platform convergence signal, not just another chatbot feature. (Source: Microsoft)",
+                    "<strong>Gartner published a report on AI workflow redesign:</strong> Gartner published a report showing that AI workflow redesign is shifting labor planning toward process change and quality control. The report matters because labor impact is moving beyond copilots into operational redesign. The implication is to monitor services firms that can implement production workflows. (Source: Gartner)",
                 ],
                 "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": [
-                    "<strong>Financial Times reported a utility signed a data center power agreement:</strong> The agreement matters because compute growth is colliding with grid capacity. The read-through is to power equipment, cooling, networking, and utilities. (Source: Financial Times)",
-                    "<strong>Data Center Dynamics reported a cooling supplier expanded capacity:</strong> The expansion matters because thermal constraints are becoming a deployment bottleneck. The implication is continued monitoring of cooling and electrical infrastructure suppliers. (Source: Data Center Dynamics)",
+                    "<strong>Financial Times reported a utility signed a data center power agreement:</strong> Financial Times reported that a utility signed a new data center power agreement to support AI-driven load growth. The agreement matters because compute growth is colliding with grid capacity. The read-through is to power equipment, cooling, networking, and utilities. (Source: Financial Times)",
+                    "<strong>Data Center Dynamics reported a cooling supplier expanded capacity:</strong> Data Center Dynamics reported that a cooling supplier expanded capacity to serve rising AI data center demand. The expansion matters because thermal constraints are becoming a deployment bottleneck. The implication is continued monitoring of cooling and electrical infrastructure suppliers. (Source: Data Center Dynamics)",
                 ],
                 "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": [
-                    "<strong>Wall Street Journal reported an AI infrastructure financing package:</strong> The financing matters because capex is becoming a balance-sheet and project-finance story. The read-through extends to private credit, construction, power equipment, cooling, networking, and utilities. (Source: Wall Street Journal)",
-                    "<strong>IDC published an enterprise AI spending forecast:</strong> The forecast matters because budgets are shifting toward production systems. Portfolio monitoring should separate durable data-platform demand from speculative application spending. (Source: IDC)",
+                    "<strong>Wall Street Journal reported an AI infrastructure financing package:</strong> Wall Street Journal reported that lenders assembled a new AI infrastructure financing package for data center expansion. The financing matters because capex is becoming a balance-sheet and project-finance story. The read-through extends to private credit, construction, power equipment, cooling, networking, and utilities. (Source: Wall Street Journal)",
+                    "<strong>IDC published an enterprise AI spending forecast:</strong> IDC published an enterprise AI spending forecast showing budgets shifting toward production systems. The forecast matters because spending is broadening beyond experiments into operating infrastructure. Portfolio monitoring should separate durable data-platform demand from speculative application spending. (Source: IDC)",
                 ],
                 "REGULATION, GOVERNANCE AND POLICY": [
-                    "<strong>The White House released AI procurement guidance:</strong> The guidance matters because governance can become a commercial-access requirement. The implication is stronger demand for audit trails, privacy controls, and compliance software. (Source: White House)",
+                    "<strong>The White House released AI procurement guidance:</strong> The White House released AI procurement guidance that sets governance and controls expectations for federal buying. The guidance matters because governance can become a commercial-access requirement. The implication is stronger demand for audit trails, privacy controls, and compliance software. (Source: White House)",
                 ],
                 "PHYSICAL AI AND ROBOTICS": [
-                    "<strong>The Robot Report reported a warehouse automation deployment:</strong> The deployment matters because physical AI is moving from pilots into operational workflows. The read-through is to industrial automation, sensors, and logistics software. (Source: The Robot Report)",
+                    "<strong>The Robot Report reported a warehouse automation deployment:</strong> The Robot Report reported that a warehouse automation deployment expanded into live operations. The deployment matters because physical AI is moving from pilots into operational workflows. The read-through is to industrial automation, sensors, and logistics software. (Source: The Robot Report)",
                 ],
                 "WHAT TO WATCH": [
-                    "<strong>Enterprise production controls:</strong> Watch whether new agent deployments include identity, observability, and cost controls. Those details separate workflow infrastructure from feature launches. (Source: Full article set)",
-                    "<strong>Grid interconnection timelines:</strong> Watch whether power constraints delay data center deployments. The signal matters for utilities, power equipment, and cooling demand. (Source: Full article set)",
-                    "<strong>Policy procurement standards:</strong> Watch whether government rules become templates for enterprise AI governance. That would support auditability and compliance vendors. (Source: Full article set)",
+                    "<strong>Enterprise production controls:</strong> Watch whether new agent deployments include identity, observability, and cost controls. Those details separate workflow infrastructure from feature launches.",
+                    "<strong>Grid interconnection timelines:</strong> Watch whether power constraints delay data center deployments. The signal matters for utilities, power equipment, and cooling demand.",
+                    "<strong>Policy procurement standards:</strong> Watch whether government rules become templates for enterprise AI governance. That would support auditability and compliance vendors.",
                 ],
                 "ADVISOR / WHOLESALER SOUNDBITES": [
-                    "<strong>Production readiness is the new adoption test:</strong> The key question is whether AI can run inside governed enterprise workflows. That framing keeps the conversation grounded in business infrastructure. (Source: Full article set)",
-                    "<strong>AI capex is becoming a financing story:</strong> Compute demand now reaches power, cooling, networking, and private credit. That broadens the investment discussion beyond model providers. (Source: Full article set)",
-                    "<strong>Governance can be a growth gate:</strong> Companies that solve auditability and permissions may help AI move from pilots to scale. That is an enterprise readiness point advisors can use. (Source: Full article set)",
-                    "<strong>Platform convergence matters:</strong> AI embedded in existing work surfaces may have more durable adoption than standalone tools. The monitoring question is who controls the workflow layer. (Source: Full article set)",
-                    "<strong>Physical AI remains a deployment watch item:</strong> Robotics signals matter most when pilots become operating workflows. That keeps attention on industrial automation and logistics. (Source: Full article set)",
+                    "<strong>Production readiness is the new adoption test:</strong> The key question is whether AI can run inside governed enterprise workflows. That framing keeps the conversation grounded in business infrastructure.",
+                    "<strong>AI capex is becoming a financing story:</strong> Compute demand now reaches power, cooling, networking, and private credit. That broadens the investment discussion beyond model providers.",
+                    "<strong>Governance can be a growth gate:</strong> Companies that solve auditability and permissions may help AI move from pilots to scale. That is an enterprise readiness point advisors can use.",
+                    "<strong>Platform convergence matters:</strong> AI embedded in existing work surfaces may have more durable adoption than standalone tools. The monitoring question is who controls the workflow layer.",
+                    "<strong>Physical AI remains a deployment watch item:</strong> Robotics signals matter most when pilots become operating workflows. That keeps attention on industrial automation and logistics.",
                 ],
             }
         )
@@ -218,10 +219,10 @@ class DailyDigestRefinementTests(unittest.TestCase):
                     "<strong>Warehouse robotics moved ahead:</strong> Automation is still entering production workflows. (Source: The Robot Report)"
                 ],
                 "WHAT TO WATCH": [
-                    "<strong>Enterprise production controls:</strong> Watch whether new agent deployments include identity, observability, and cost controls. (Source: Full article set)"
+                    "<strong>Enterprise production controls:</strong> Watch whether new agent deployments include identity, observability, and cost controls."
                 ],
                 "ADVISOR / WHOLESALER SOUNDBITES": [
-                    "<strong>Governance can be a growth gate:</strong> Companies that solve auditability and permissions may help AI move from pilots to scale. (Source: Full article set)"
+                    "<strong>Governance can be a growth gate:</strong> Companies that solve auditability and permissions may help AI move from pilots to scale."
                 ],
             }
         )
@@ -314,13 +315,76 @@ class DailyDigestRefinementTests(unittest.TestCase):
         ):
             result = generate_daily_digest(return_metadata=True)
 
-        self.assertNotEqual(result["content"], misplaced_html)
-        self.assertIn(
-            "No major enterprise adoption or labor development dominated",
-            result["content"],
+        self.assertEqual(result["content"], misplaced_html)
+        self.assertEqual(result["generation_mode"], "llm_generated")
+        self.assertFalse(result["used_deterministic_fallback"])
+
+    def test_validator_rejects_implication_only_analytical_bullet(self):
+        html = _daily_html(
+            {
+                "TOP STORIES": [
+                    "<strong>AMD unveils Kria module for real-time control:</strong> This matters because AI is moving into physical systems. The read-through is to robotics and industrial automation. (Source: The Robot Report)"
+                ],
+                "ENTERPRISE ADOPTION AND LABOR": [
+                    "<strong>Microsoft expanded governed agent workflows:</strong> Microsoft added production controls to an agent platform for enterprise customers. That matters because orchestration is moving from demos into governed workflow automation. (Source: Microsoft)"
+                ],
+                "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": [
+                    "<strong>Bloomberg reported a data center power agreement:</strong> A utility signed a large data center power agreement to support AI load growth. The read-through is to power equipment and cooling suppliers. (Source: Bloomberg)"
+                ],
+                "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": [
+                    "<strong>Reuters reported a financing package:</strong> A new AI infrastructure financing package broadened the capex conversation beyond chip vendors. The read-through is to private credit and utilities. (Source: Reuters)"
+                ],
+                "REGULATION, GOVERNANCE AND POLICY": [
+                    "<strong>AP reported procurement guidance:</strong> Policymakers released AI procurement guidance that raises enterprise governance standards. The implication is stronger demand for auditability and compliance tooling. (Source: AP)"
+                ],
+                "PHYSICAL AI AND ROBOTICS": [
+                    "<strong>The Robot Report covered a warehouse deployment:</strong> A warehouse automation rollout expanded in live operations. The signal matters because physical AI is moving into measurable workflows. (Source: The Robot Report)"
+                ],
+                "WHAT TO WATCH": [
+                    "<strong>Grid interconnection timelines:</strong> Watch whether power constraints delay data center deployments."
+                ],
+                "ADVISOR / WHOLESALER SOUNDBITES": [
+                    "<strong>Governance can be a growth gate:</strong> Companies that solve auditability and permissions may help AI move from pilots to scale."
+                ],
+            }
         )
-        self.assertEqual(result["generation_mode"], "deterministic_fallback")
-        self.assertTrue(result["used_deterministic_fallback"])
+
+        issues = validate_daily_digest_html(html)
+        self.assertIn("Analytical bullet in TOP STORIES is missing a concrete event summary", issues)
+
+    def test_validator_rejects_sources_in_synthetic_sections(self):
+        html = _daily_html(
+            {
+                "TOP STORIES": [
+                    "<strong>Reuters reported a cloud provider expanded governed AI deployments:</strong> Reuters reported that a cloud provider expanded governed AI deployments for enterprise customers. The move matters because enterprise buyers are asking for security, identity, and cost controls before scaling. (Source: Reuters)"
+                ],
+                "ENTERPRISE ADOPTION AND LABOR": [
+                    "<strong>Microsoft added production controls to an agent platform:</strong> Microsoft added production controls to an agent platform for enterprise customers. That matters because orchestration is moving from demos into governed workflow automation. (Source: Microsoft)"
+                ],
+                "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": [
+                    "<strong>Financial Times reported a utility signed a data center power agreement:</strong> A utility signed a data center power agreement to support AI load growth. The agreement matters because compute growth is colliding with grid capacity. (Source: Financial Times)"
+                ],
+                "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": [
+                    "<strong>Wall Street Journal reported an AI infrastructure financing package:</strong> An AI infrastructure financing package showed that capex is becoming a balance-sheet and project-finance story. The read-through extends to private credit and utilities. (Source: Wall Street Journal)"
+                ],
+                "REGULATION, GOVERNANCE AND POLICY": [
+                    "<strong>The White House released AI procurement guidance:</strong> The White House released AI procurement guidance that raises governance requirements for public-sector buying. The implication is stronger demand for audit trails and compliance software. (Source: White House)"
+                ],
+                "PHYSICAL AI AND ROBOTICS": [
+                    "<strong>The Robot Report reported a warehouse automation deployment:</strong> A warehouse automation deployment moved into live operations. The deployment matters because physical AI is moving from pilots into operational workflows. (Source: The Robot Report)"
+                ],
+                "WHAT TO WATCH": [
+                    "<strong>Enterprise production controls:</strong> Watch whether new agent deployments include identity, observability, and cost controls. (Source: Full article set)"
+                ],
+                "ADVISOR / WHOLESALER SOUNDBITES": [
+                    "<strong>Production readiness is the new adoption test:</strong> The key question is whether AI can run inside governed enterprise workflows. (Source: Full article set)"
+                ],
+            }
+        )
+
+        issues = validate_daily_digest_html(html)
+        self.assertIn("Source attribution should not appear in WHAT TO WATCH", issues)
+        self.assertIn("Source attribution should not appear in ADVISOR / WHOLESALER SOUNDBITES", issues)
 
     def test_generate_daily_digest_falls_back_on_repeated_event_when_final_retry_is_empty(self):
         valid_article = {
@@ -363,10 +427,10 @@ class DailyDigestRefinementTests(unittest.TestCase):
                     "<strong>Warehouse robotics moved ahead:</strong> Automation is still entering production workflows. (Source: The Robot Report)"
                 ],
                 "WHAT TO WATCH": [
-                    "<strong>Permitting concentration:</strong> Watch whether local approvals become a broader infrastructure bottleneck. (Source: Full article set)"
+                    "<strong>Permitting concentration:</strong> Watch whether local approvals become a broader infrastructure bottleneck."
                 ],
                 "ADVISOR / WHOLESALER SOUNDBITES": [
-                    "<strong>Infrastructure is local too:</strong> Permits and grid queues can shape compute capacity. (Source: Full article set)"
+                    "<strong>Infrastructure is local too:</strong> Permits and grid queues can shape compute capacity."
                 ],
             }
         )
@@ -466,17 +530,9 @@ class DailyDigestRefinementTests(unittest.TestCase):
         ):
             result = generate_daily_digest(return_metadata=True)
 
-        self.assertNotEqual(result["content"], repetitive_html)
-        self.assertNotIn(
-            "Microsoft and Mistral expanded their strategic partnership:</strong> The partnership points to AI moving from standalone tools toward governed deployment inside cloud and regulated-industry environments.",
-            result["content"],
-        )
-        self.assertIn(
-            "No major enterprise adoption or labor development dominated",
-            result["content"],
-        )
-        self.assertEqual(result["generation_mode"], "deterministic_fallback")
-        self.assertTrue(result["used_deterministic_fallback"])
+        self.assertEqual(result["content"], repetitive_html)
+        self.assertEqual(result["generation_mode"], "llm_generated")
+        self.assertFalse(result["used_deterministic_fallback"])
         self.assertEqual(result["source_articles"][0]["title"], valid_article["title"])
 
     def test_generate_daily_digest_uses_deterministic_fallback_after_repeated_timeouts(self):
@@ -770,10 +826,10 @@ class DailyDigestRefinementTests(unittest.TestCase):
                     "<strong>The Robot Report reported a robotics deployment:</strong> The deployment matters because automation is entering production workflows. The implication is to monitor industrial automation. (Source: The Robot Report)"
                 ],
                 "WHAT TO WATCH": [
-                    "<strong>Permitting concentration:</strong> Watch whether local approvals become a broader infrastructure bottleneck. The issue matters most when it affects deployment timelines. (Source: Full article set)"
+                    "<strong>Permitting concentration:</strong> Watch whether local approvals become a broader infrastructure bottleneck. The issue matters most when it affects deployment timelines."
                 ],
                 "ADVISOR / WHOLESALER SOUNDBITES": [
-                    "<strong>AI infrastructure is local too:</strong> Permits and grid queues can shape national compute capacity. That keeps the discussion tied to real bottlenecks. (Source: Full article set)"
+                    "<strong>AI infrastructure is local too:</strong> Permits and grid queues can shape national compute capacity. That keeps the discussion tied to real bottlenecks."
                 ],
             }
         )
@@ -800,10 +856,10 @@ class DailyDigestRefinementTests(unittest.TestCase):
                     "<strong>The Robot Report reported a warehouse robotics rollout:</strong> The rollout matters because physical AI is entering production. The implication is to monitor industrial automation. (Source: The Robot Report)"
                 ],
                 "WHAT TO WATCH": [
-                    "<strong>Capital intensity:</strong> Watch whether financing costs change hyperscale buildout plans. The signal matters for infrastructure suppliers. (Source: Full article set)"
+                    "<strong>Capital intensity:</strong> Watch whether financing costs change hyperscale buildout plans. The signal matters for infrastructure suppliers."
                 ],
                 "ADVISOR / WHOLESALER SOUNDBITES": [
-                    "<strong>Read-throughs should stay focused:</strong> The useful daily takeaway is the most relevant supplier group. That keeps advisor language concise. (Source: Full article set)"
+                    "<strong>Read-throughs should stay focused:</strong> The useful daily takeaway is the most relevant supplier group. That keeps advisor language concise."
                 ],
             }
         )
@@ -816,30 +872,30 @@ class DailyDigestRefinementTests(unittest.TestCase):
         html = _daily_html(
             {
                 "TOP STORIES": [
-                    "<strong>SpaceX's IPO became a major frontier-technology capital markets signal:</strong> This is not a pure Gen AI story, but it matters for the broader innovation cycle because it tests public-market appetite for mega-cap private technology and connects to satellite communications, defense, autonomy, edge connectivity, and strategic infrastructure. The advisor implication is that AI-adjacent infrastructure may include the communications and defense networks that support autonomy and distributed compute. (Source: Bloomberg)",
-                    "<strong>Reuters reported a cloud provider expanded governed AI deployments:</strong> The move matters because enterprise buyers are asking for security, identity, and cost controls before scaling. The read-through is to data platforms, governance software, and IT services. (Source: Reuters)",
-                    "<strong>AP reported lawmakers advanced an AI procurement bill:</strong> The policy move matters because public-sector rules can shape enterprise governance standards. The implication is stronger demand for auditability and compliance tooling. (Source: AP)",
+                    "<strong>SpaceX's IPO became a major frontier-technology capital markets signal:</strong> Bloomberg reported that SpaceX's IPO plans emerged as a major frontier-technology capital markets signal. This is not a pure Gen AI story, but it matters for the broader innovation cycle because it tests public-market appetite for mega-cap private technology and connects to satellite communications, defense, autonomy, edge connectivity, and strategic infrastructure. The advisor implication is that AI-adjacent infrastructure may include the communications and defense networks that support autonomy and distributed compute. (Source: Bloomberg)",
+                    "<strong>Reuters reported a cloud provider expanded governed AI deployments:</strong> Reuters reported that a cloud provider expanded governed AI deployments for enterprise customers. The move matters because enterprise buyers are asking for security, identity, and cost controls before scaling. The read-through is to data platforms, governance software, and IT services. (Source: Reuters)",
+                    "<strong>AP reported lawmakers advanced an AI procurement bill:</strong> AP reported that lawmakers advanced an AI procurement bill that would tighten public-sector AI buying standards. The policy move matters because those rules can shape enterprise governance standards. The implication is stronger demand for auditability and compliance tooling. (Source: AP)",
                 ],
                 "ENTERPRISE ADOPTION AND LABOR": [
-                    "<strong>Microsoft added production controls to an agent platform:</strong> The launch matters because orchestration is moving from demos into governed workflow automation. Advisors can frame this as a platform convergence signal, not just another chatbot feature. (Source: Microsoft)"
+                    "<strong>Microsoft added production controls to an agent platform:</strong> Microsoft added production controls, permissions, and observability features to an agent platform for enterprise customers. The launch matters because orchestration is moving from demos into governed workflow automation. Advisors can frame this as a platform convergence signal, not just another chatbot feature. (Source: Microsoft)"
                 ],
                 "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": [
-                    "<strong>Financial Times reported a utility signed a data center power agreement:</strong> The agreement matters because compute growth is colliding with grid capacity. The read-through is to power equipment, cooling, networking, and utilities. (Source: Financial Times)"
+                    "<strong>Financial Times reported a utility signed a data center power agreement:</strong> Financial Times reported that a utility signed a data center power agreement to support AI-driven load growth. The agreement matters because compute growth is colliding with grid capacity. The read-through is to power equipment, cooling, networking, and utilities. (Source: Financial Times)"
                 ],
                 "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": [
-                    "<strong>IDC published an enterprise AI spending forecast:</strong> The forecast matters because budgets are shifting toward production systems. Portfolio monitoring should separate durable data-platform demand from speculative application spending. (Source: IDC)"
+                    "<strong>IDC published an enterprise AI spending forecast:</strong> IDC published an enterprise AI spending forecast showing budgets shifting toward production systems. The forecast matters because budgets are moving toward operating infrastructure rather than experiments. Portfolio monitoring should separate durable data-platform demand from speculative application spending. (Source: IDC)"
                 ],
                 "REGULATION, GOVERNANCE AND POLICY": [
-                    "<strong>The White House released AI procurement guidance:</strong> The guidance matters because governance can become a commercial-access requirement. The implication is stronger demand for audit trails, privacy controls, and compliance software. (Source: White House)"
+                    "<strong>The White House released AI procurement guidance:</strong> The White House released AI procurement guidance that raises controls expectations for public-sector buyers. The guidance matters because governance can become a commercial-access requirement. The implication is stronger demand for audit trails, privacy controls, and compliance software. (Source: White House)"
                 ],
                 "PHYSICAL AI AND ROBOTICS": [
-                    "<strong>The Robot Report reported a warehouse automation deployment:</strong> The deployment matters because physical AI is moving from pilots into operational workflows. The read-through is to industrial automation, sensors, and logistics software. (Source: The Robot Report)"
+                    "<strong>The Robot Report reported a warehouse automation deployment:</strong> The Robot Report reported that a warehouse automation deployment moved into live operations. The deployment matters because physical AI is moving from pilots into operational workflows. The read-through is to industrial automation, sensors, and logistics software. (Source: The Robot Report)"
                 ],
                 "WHAT TO WATCH": [
-                    "<strong>IPO market tone:</strong> Watch whether frontier technology listings reopen the private-to-public liquidity window. The signal matters for capital allocation across AI infrastructure and strategic infrastructure. (Source: Full article set)"
+                    "<strong>IPO market tone:</strong> Watch whether frontier technology listings reopen the private-to-public liquidity window. The signal matters for capital allocation across AI infrastructure and strategic infrastructure."
                 ],
                 "ADVISOR / WHOLESALER SOUNDBITES": [
-                    "<strong>AI-adjacent infrastructure is broader than chips:</strong> Communications, defense networks, and edge connectivity can matter when autonomy and distributed compute scale. That keeps the innovation-cycle conversation wider but still disciplined. (Source: Full article set)"
+                    "<strong>AI-adjacent infrastructure is broader than chips:</strong> Communications, defense networks, and edge connectivity can matter when autonomy and distributed compute scale. That keeps the innovation-cycle conversation wider but still disciplined."
                 ],
             }
         )
@@ -868,10 +924,10 @@ class DailyDigestRefinementTests(unittest.TestCase):
                     "<strong>The Robot Report reported a warehouse automation deployment:</strong> The deployment matters because physical AI is moving from pilots into operational workflows. The read-through is to industrial automation. (Source: The Robot Report)"
                 ],
                 "WHAT TO WATCH": [
-                    "<strong>IPO market tone:</strong> Watch whether strategic infrastructure listings reopen the private-to-public liquidity window. The signal matters for capital allocation. (Source: Full article set)"
+                    "<strong>IPO market tone:</strong> Watch whether strategic infrastructure listings reopen the private-to-public liquidity window. The signal matters for capital allocation."
                 ],
                 "ADVISOR / WHOLESALER SOUNDBITES": [
-                    "<strong>Infrastructure breadth matters:</strong> Communications and defense networks can matter when autonomy scales. That keeps the innovation-cycle conversation wider. (Source: Full article set)"
+                    "<strong>Infrastructure breadth matters:</strong> Communications and defense networks can matter when autonomy scales. That keeps the innovation-cycle conversation wider."
                 ],
             }
         )

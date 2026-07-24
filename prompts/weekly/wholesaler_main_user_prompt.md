@@ -1,5 +1,7 @@
 Use the curated weekly source material below to produce a wholesaler-ready weekly digest.
 
+Each advisor-facing item must still preserve the underlying news event. Do not reduce items to interpretation without a short factual description of what actually happened.
+
 Select only stories that meet at least one of these:
 
 * named company or institution
@@ -108,6 +110,7 @@ TOP 5 STORIES THIS WEEK
 Write exactly 5 numbered items.
 Each item must be 2 to 3 sentences.
 Each item must include a specific event, why it matters for advisors, and source attribution in parentheses.
+The first sentence must briefly summarize the actual development from the source material before moving into interpretation.
 Where relevant, include the read-through beyond the named company.
 This section should capture the most consequential Gen AI developments of the week, even when some come from the largest platform or model companies.
 
@@ -115,6 +118,7 @@ BEYOND THE MAG 7
 Write 2 to 3 numbered items.
 Each item must be anchored to a named company, sector, industry group, or real-world development outside the obvious mega-cap AI names.
 Explain why it matters now using one of these lenses: supplier effect, customer adoption, productivity impact, margin implication, competitive threat, regulatory impact, or new demand pool.
+Do not turn the item into generic commentary without first stating what happened.
 
 WHAT IS BEING DISRUPTED
 Write exactly 3 numbered items.

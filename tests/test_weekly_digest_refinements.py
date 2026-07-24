@@ -83,7 +83,7 @@ run_weekly_pipeline = _load_weekly_runner_module()
 
 def _valid_weekly_text(top_story=None):
     top_story = top_story or (
-        "1. SpaceX's IPO became a major frontier-technology capital markets signal, even though it is not a pure Gen AI story. "
+        "1. Bloomberg reported that SpaceX's IPO became a major frontier-technology capital markets signal, even though it is not a pure Gen AI story. "
         "The offering matters for the broader innovation cycle because it tests public-market appetite for mega-cap private technology and connects to satellite communications, defense, autonomy, edge connectivity, strategic infrastructure, and private-market liquidity."
     )
     return f"""
@@ -93,14 +93,14 @@ Week Ending June 12, 2026
 TOP 5 STORIES THIS WEEK
 {top_story}
 2. Microsoft expanded governed agent workflows for enterprise customers, showing that production readiness is becoming a practical adoption test. The advisor takeaway is that workflow orchestration, identity, auditability, and cost control are now part of the AI infrastructure conversation.
-3. A major data center financing package showed that AI infrastructure is becoming a balance-sheet and credit-market story across the week. The portfolio conversation is broadening from chips to power equipment, cooling, networking, utilities, and private credit.
-4. Regulators advanced AI procurement and disclosure rules, reinforcing the pattern that governance is becoming a commercial-access requirement. The wholesaler angle is that compliance, audit trails, and privacy controls can shape which platforms enterprises trust.
-5. Robotics deployments moved from demonstrations toward production workflows in logistics and manufacturing. That signal matters because physical AI commercialization depends on uptime, safety approvals, and unit economics rather than funding headlines alone.
+3. Reuters reported that a major data center financing package expanded funding for AI infrastructure buildout across the week. The portfolio conversation is broadening from chips to power equipment, cooling, networking, utilities, and private credit.
+4. Policymakers advanced AI procurement and disclosure rules, reinforcing the pattern that governance is becoming a commercial-access requirement. The wholesaler angle is that compliance, audit trails, and privacy controls can shape which platforms enterprises trust.
+5. The Robot Report showed that robotics deployments moved from demonstrations toward production workflows in logistics and manufacturing. That signal matters because physical AI commercialization depends on uptime, safety approvals, and unit economics rather than funding headlines alone.
 
 BEYOND THE MAG 7
-1. Frontier technology capital markets broadened beyond the largest AI platform names as satellite communications, defense networks, and edge connectivity became part of the AI-adjacent infrastructure discussion. This matters now because private-market liquidity and IPO tone can influence risk appetite across the innovation cycle.
-2. Power equipment, cooling, networking, and utility suppliers remained central to the week's infrastructure pattern. The supplier effect is that AI demand is showing up as grid, thermal, and interconnection pressure rather than only cloud software demand.
-3. Governance software and implementation partners gained relevance as enterprises asked for production controls. The customer adoption lens is that AI spending is shifting toward systems that can run inside regulated workflows.
+1. Bloomberg and Reuters showed that frontier technology capital markets broadened beyond the largest AI platform names as satellite communications, defense networks, and edge connectivity entered the AI-adjacent infrastructure discussion. This matters now because private-market liquidity and IPO tone can influence risk appetite across the innovation cycle.
+2. Utility filings and financing updates kept power equipment, cooling, networking, and utility suppliers central to the week's infrastructure pattern. The supplier effect is that AI demand is showing up as grid, thermal, and interconnection pressure rather than only cloud software demand.
+3. Enterprise platform updates made governance software and implementation partners more relevant as enterprises asked for production controls. The customer adoption lens is that AI spending is shifting toward systems that can run inside regulated workflows.
 
 WHAT IS BEING DISRUPTED
 1. The old assumption that AI infrastructure means only chips is being disrupted by financing, power, cooling, satellite communications, and defense connectivity signals.
@@ -108,7 +108,7 @@ WHAT IS BEING DISRUPTED
 3. Robotics hype is being disrupted by the need for real deployments, uptime, safety approvals, and measurable unit economics.
 
 REGULATORY RADAR
-1. AI procurement guidance from policymakers made governance a practical buying requirement rather than a theoretical policy issue. Advisors can frame this as a business-model signal for auditability and compliance infrastructure.
+1. Policymakers released AI procurement guidance that made governance a practical buying requirement rather than a theoretical policy issue. Advisors can frame this as a business-model signal for auditability and compliance infrastructure.
 2. Local permitting and interconnection debates around data centers showed that infrastructure policy can influence how quickly AI capacity becomes buildable supply. The investment relevance is that power availability and local approvals may shape deployment timelines.
 
 WHAT TO WATCH NEXT
@@ -145,6 +145,9 @@ class WeeklyDigestRefinementTests(unittest.TestCase):
             self.assertIn("FRONTIER TECHNOLOGY CAPITAL MARKETS WEEKLY OVERRIDE", prompt)
             self.assertIn("not a pure Gen AI story", prompt)
             self.assertIn("WHAT TO WATCH NEXT", prompt)
+            self.assertIn("underlying news event", prompt)
+
+        self.assertIn("actual development", user_prompt)
 
     def test_weekly_prompts_require_two_tier_scoring_and_arms_race_check(self):
         system_prompt = (REPO_ROOT / "prompts/weekly/wholesaler_main_system_prompt.md").read_text(encoding="utf-8")
@@ -389,6 +392,17 @@ class WeeklyDigestRefinementTests(unittest.TestCase):
 
     def test_validator_accepts_weekly_spacex_ipo_synthesis(self):
         self.assertEqual(validate_weekly_digest_text(_valid_weekly_text()), [])
+
+    def test_validator_rejects_eventless_weekly_item(self):
+        text = _valid_weekly_text(
+            top_story=(
+                "1. This matters because frontier capital markets are reopening for private technology companies. "
+                "The offering matters for the broader innovation cycle because it tests public-market appetite for mega-cap private technology and connects to satellite communications, defense, autonomy, edge connectivity, strategic infrastructure, and private-market liquidity."
+            )
+        )
+
+        issues = validate_weekly_digest_text(text)
+        self.assertIn("TOP 5 STORIES THIS WEEK includes an item that lacks a concrete event summary", issues)
 
     def test_validator_requires_what_to_watch_next(self):
         text = _valid_weekly_text().replace(

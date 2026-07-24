@@ -284,7 +284,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
         ]):
             return "useful_careful"
         if any(term in source for term in [
-            "medium", "substack", "blog", "aggregator", "crypto", "coin",
+            "medium", "substack", "blog", "aggregator", "crypto", "coin", "marktechpost", "careers",
         ]):
             return "lower_confidence"
         return "general_news"
@@ -298,6 +298,52 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             "lower_confidence": 1,
         }
         return ranks.get(source_quality_hint(article), 3)
+
+    def _has_daily_event_signal(article):
+        text = " ".join([
+            article.get("title") or "",
+            article.get("summary") or "",
+        ]).lower()
+        return bool(re.search(
+            r"\b(announc(?:ed|es)?|launch(?:ed|es)?|unveil(?:ed|s)?|releas(?:ed|es)|report(?:ed|s)|raise[sd]?|invest(?:ed|s)?|fund(?:ed|ing)?|sign(?:ed|s)|expand(?:ed|s)|open(?:ed|s)|build(?:s|ing|t)|deploy(?:ed|s)|approv(?:ed|es)|clear(?:ed|s)|introduc(?:ed|es)|pass(?:ed|es)|file(?:d|s)|partner(?:ed|s)|agree(?:d|s)|pledge(?:d|s)|publish(?:ed|es)|disclos(?:ed|es)|outlin(?:ed|es)|vote(?:d|s)|researching|considering|weighs|weighed|soars?|rose|rises|surged?|jumps?|fell|falls?|slid(?:e|es)?|gained|boost(?:ed|s)|bolster(?:ed|s))\b",
+            text,
+        ))
+
+    def _is_daily_explainer_or_research(article):
+        title = (article.get("title") or "").strip().lower()
+        source = (article.get("original_publisher") or article.get("source") or "").strip().lower()
+        feed_bucket = (article.get("feed_bucket") or "").strip().lower()
+        if feed_bucket == "research" or "arxiv" in source:
+            return True
+        if "careers" in source or " job " in f" {title} " or title.endswith(" careers"):
+            return True
+        if any(pattern in title for pattern in [
+            "how to ",
+            "what is ",
+            "explainer",
+            "explains why",
+            "the next step in",
+            "new math for",
+            "guide to ",
+        ]):
+            return True
+        return False
+
+    def _is_strong_daily_analytical_candidate(article, section_name):
+        if section_name == "TOP STORIES":
+            return True
+        if source_quality_rank(article) <= 1:
+            return False
+        if _is_daily_explainer_or_research(article):
+            return False
+        if _has_daily_event_signal(article):
+            return True
+        return any([
+            has_policy_priority(article),
+            is_frontier_technology_capital_markets_event(article),
+            _is_major_earnings_override(article),
+            _is_healthcare_fda_override(article),
+        ])
 
     def forward_adoption_score(article):
         text = " ".join(
@@ -907,6 +953,8 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                 score = section_candidate_score(article, section_name)
                 if score < 35:
                     continue
+                if not _is_strong_daily_analytical_candidate(article, section_name):
+                    continue
                 if event_key in top_story_event_keys or event_key in analytical_event_keys:
                     continue
                 if source_counts[source] >= 2:
@@ -1080,7 +1128,11 @@ def generate_daily_digest(report_date=None, return_metadata=False):
         ]
 
     def _fallback_primary_detail(article, limit=220):
-        detail = clip_sentence_text(article.get("advisor_relevance") or article.get("summary") or "", limit)
+        summary_text = clip_sentence_text(article.get("summary") or "", limit)
+        advisor_text = clip_sentence_text(article.get("advisor_relevance") or "", limit)
+        detail = summary_text or advisor_text
+        if summary_text and advisor_text and _normalize_text(advisor_text) != _normalize_text(summary_text):
+            detail = clip_sentence_text(f"{summary_text} {advisor_text}", limit)
         if not detail:
             detail = "Continue monitoring this development for clearer advisor relevance and investment read-throughs."
         return detail.rstrip(".") + "."
@@ -1150,6 +1202,8 @@ def generate_daily_digest(report_date=None, return_metadata=False):
         if score < thresholds[section_name]:
             return False
         if section_name != "TOP STORIES" and analytical_section_hint(article) != section_name:
+            return False
+        if not _is_strong_daily_analytical_candidate(article, section_name):
             return False
         return True
 
@@ -1222,14 +1276,9 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                     "Watch whether the next daily window adds clearer company, policy, financing, or deployment signals that sharpen the investment read-through.",
                 ),
             )
-            bullets.append(_fallback_bullet_text({}, lead=lead, detail=detail, source="Full article set"))
+            bullets.append(f"<li><strong>{lead}:</strong> {detail}</li>")
         return bullets or [
-            _fallback_bullet_text(
-                {},
-                lead="Fresh signal quality",
-                detail="Watch whether the next daily window adds clearer company, policy, financing, or deployment signals that sharpen the investment read-through.",
-                source="Full article set",
-            )
+            "<li><strong>Fresh signal quality:</strong> Watch whether the next daily window adds clearer company, policy, financing, or deployment signals that sharpen the investment read-through.</li>"
         ]
 
     def _fallback_soundbite_bullets(theme_counts):
@@ -1268,14 +1317,9 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                     "The most useful daily framing is the set of developments that point to durable deployment rather than broad AI enthusiasm.",
                 ),
             )
-            bullets.append(_fallback_bullet_text({}, lead=lead, detail=detail, source="Full article set"))
+            bullets.append(f"<li><strong>{lead}:</strong> {detail}</li>")
         return bullets or [
-            _fallback_bullet_text(
-                {},
-                lead="Signal quality matters",
-                detail="The most useful daily framing is the set of developments that point to durable deployment rather than broad AI enthusiasm.",
-                source="Full article set",
-            )
+            "<li><strong>Signal quality matters:</strong> The most useful daily framing is the set of developments that point to durable deployment rather than broad AI enthusiasm.</li>"
         ]
 
     def build_deterministic_fallback_digest(all_candidate_articles, selected_prompt_articles, today, section_candidate_pools=None):
@@ -1291,12 +1335,12 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             ("PHYSICAL AI AND ROBOTICS", 1, lambda article: "physical_ai_and_robotics" in extract_theme_tags(article)),
         ]
         fallback_defaults = {
-            "TOP STORIES": _fallback_bullet_text({}, lead="No single story dominated the window", detail="The stronger signal came from the combined pattern across enterprise adoption, infrastructure, financing, and policy developments rather than one headline.", source="Full article set"),
-            "ENTERPRISE ADOPTION AND LABOR": _fallback_bullet_text({}, lead="No major enterprise adoption or labor development dominated", detail="Continue monitoring governed workflow deployments, professional automation, and labor redesign signals for clearer enterprise read-throughs.", source="Full article set"),
-            "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": _fallback_bullet_text({}, lead="No single infrastructure bottleneck dominated", detail="Continue monitoring power, cooling, semiconductors, networking, and permitting for signs that physical constraints are shaping AI deployment speed.", source="Full article set"),
-            "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": _fallback_bullet_text({}, lead="No single financing event dominated", detail="Continue monitoring capex, funding, private credit, earnings, and supplier read-throughs for clearer investment implications.", source="Full article set"),
-            "REGULATION, GOVERNANCE AND POLICY": _fallback_bullet_text({}, lead="No single policy move dominated", detail="Continue monitoring procurement rules, privacy, export controls, and governance standards for commercial AI implications.", source="Full article set"),
-            "PHYSICAL AI AND ROBOTICS": _fallback_bullet_text({}, lead="No major commercial Physical AI or robotics developments surfaced", detail="Continue monitoring robotics, autonomous systems, lab automation, industrial automation, and AI-enabled manufacturing for signs that pilots are moving into real deployment.", source="Full article set"),
+            "TOP STORIES": _fallback_bullet_text({}, lead="No single story dominated the window", detail="No single story dominated the daily source window, and the stronger signal came from the combined pattern across enterprise adoption, infrastructure, financing, and policy developments rather than one headline.", source="Full article set"),
+            "ENTERPRISE ADOPTION AND LABOR": _fallback_bullet_text({}, lead="No major enterprise adoption or labor development dominated", detail="No major enterprise adoption or labor development surfaced in the daily source window. Continue monitoring governed workflow deployments, professional automation, and labor redesign signals for clearer enterprise read-throughs.", source="Full article set"),
+            "INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS": _fallback_bullet_text({}, lead="No single infrastructure bottleneck dominated", detail="No single infrastructure bottleneck dominated the daily source window. Continue monitoring power, cooling, semiconductors, networking, and permitting for signs that physical constraints are shaping AI deployment speed.", source="Full article set"),
+            "CAPITAL MARKETS AND INVESTMENT IMPLICATIONS": _fallback_bullet_text({}, lead="No single financing event dominated", detail="No single financing event dominated the daily source window. Continue monitoring capex, funding, private credit, earnings, and supplier read-throughs for clearer investment implications.", source="Full article set"),
+            "REGULATION, GOVERNANCE AND POLICY": _fallback_bullet_text({}, lead="No single policy move dominated", detail="No single policy move dominated the daily source window. Continue monitoring procurement rules, privacy, export controls, and governance standards for commercial AI implications.", source="Full article set"),
+            "PHYSICAL AI AND ROBOTICS": _fallback_bullet_text({}, lead="No major commercial Physical AI or robotics developments surfaced", detail="No major commercial Physical AI or robotics development surfaced in the daily source window. Continue monitoring robotics, autonomous systems, lab automation, industrial automation, and AI-enabled manufacturing for signs that pilots are moving into real deployment.", source="Full article set"),
         }
 
         section_candidates = {
@@ -1667,6 +1711,15 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             )
         return section_items
 
+    def _is_fallback_analytical_bullet(bullet):
+        lead = _normalize_text(bullet.get("lead") or "")
+        source = _normalize_text(bullet.get("source") or "")
+        return (
+            lead.startswith("no major ")
+            or lead.startswith("no single ")
+            or source == "full article set"
+        )
+
     def _are_similar_story_bullets(left_bullet, right_bullet):
         left_source = _normalize_text(left_bullet.get("source") or "")
         right_source = _normalize_text(right_bullet.get("source") or "")
@@ -1785,8 +1838,47 @@ def generate_daily_digest(report_date=None, return_metadata=False):
     def _has_truncation_issue(issues):
         return any("Bullet appears truncated or clipped" in issue for issue in issues)
 
+    def _has_missing_event_summary_issue(issues):
+        return any("Analytical bullet is missing a concrete event summary" in issue for issue in issues)
+
     def _has_blocking_quality_issue(issues):
-        return _has_duplicate_story_issue(issues) or _has_section_fit_issue(issues) or _has_truncation_issue(issues)
+        hard_issue_prefixes = (
+            "Missing required sections:",
+            "Required sections are not in the expected order",
+            "Duplicate section headings detected:",
+            "TOP THEME OF THE DAY must be",
+            "HTML includes disallowed tags:",
+            "Output includes explicit recommendation language",
+            "Output includes arrows",
+            "Analytical section bullets must include Source attribution",
+            "WHAT TO WATCH and ADVISOR / WHOLESALER SOUNDBITES should not include Source attribution",
+        )
+        return any(issue.startswith(hard_issue_prefixes) for issue in issues)
+
+    def _build_daily_revision_feedback(issues):
+        guidance = []
+        if _has_missing_event_summary_issue(issues):
+            guidance.extend([
+                "For any analytical bullet that lacks a concrete event summary, replace that bullet with a different candidate from the same section candidate pool instead of rewriting the same weak item.",
+                "Do not use research papers, explainers, career pages, generic trend commentary, or thin thought-leadership items in analytical sections when stronger event-driven candidates are available.",
+                "The first sentence of every analytical bullet must say what happened: a named company action, funding event, policy move, deployment, earnings update, partnership, market move, or infrastructure project.",
+            ])
+        if _has_section_fit_issue(issues):
+            guidance.extend([
+                "If a bullet does not fit its analytical section, replace it with the next-best candidate from that section pool rather than moving a weak-fit story across sections.",
+                "If PHYSICAL AI AND ROBOTICS has no valid event-driven candidate, use the exact Physical AI fallback rather than forcing a non-robotics story into that section.",
+            ])
+        if _has_duplicate_story_issue(issues):
+            guidance.append(
+                "When two bullets point to the same underlying event, keep the strongest one and replace the weaker one with a different section-appropriate candidate."
+            )
+        if _has_truncation_issue(issues):
+            guidance.append(
+                "If any bullet is truncated or clipped, replace it with a shorter same-section candidate rather than compressing the broken bullet."
+            )
+        if not guidance:
+            return ""
+        return "Additional rewrite instructions:\n- " + "\n- ".join(guidance)
 
     def _has_empty_analytical_section(content):
         analytical_sections = [
@@ -1854,6 +1946,13 @@ def generate_daily_digest(report_date=None, return_metadata=False):
         ]
         if bullets_missing_sources:
             issues.append("Analytical section bullets must include Source attribution")
+
+        synthetic_sections_with_sources = [
+            bullet["lead"] for bullet in bullets
+            if bullet["section"].upper() in {"WHAT TO WATCH", "ADVISOR / WHOLESALER SOUNDBITES"} and bullet["source"]
+        ]
+        if synthetic_sections_with_sources:
+            issues.append("WHAT TO WATCH and ADVISOR / WHOLESALER SOUNDBITES should not include Source attribution")
 
         lead_counts = Counter(_normalize_text(bullet["lead"]) for bullet in bullets if bullet["lead"])
         repeated_leads = [lead for lead, count in lead_counts.items() if lead and count > 1]
@@ -1946,6 +2045,8 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                 "PHYSICAL AI AND ROBOTICS",
             }:
                 continue
+            if _is_fallback_analytical_bullet(bullet):
+                continue
             event_key = _infer_bullet_event_key(bullet, story_signatures)
             if not event_key:
                 continue
@@ -1965,6 +2066,43 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                 "PHYSICAL AI AND ROBOTICS",
             }
         ]
+        event_summary_failures = []
+        generic_implication_starters = (
+            "this matters because",
+            "the implication is",
+            "the read-through is",
+            "the takeaway is",
+            "watch whether",
+            "continue monitoring",
+            "the better read-through is",
+        )
+        for bullet in analytical_bullets:
+            normalized_raw = _normalize_text(bullet.get("raw") or "")
+            body_text = normalized_raw
+            lead_normalized = _normalize_text(bullet.get("lead") or "")
+            if lead_normalized and body_text.startswith(lead_normalized):
+                body_text = body_text[len(lead_normalized):].lstrip(" :.-")
+            source_normalized = _normalize_text(bullet.get("source") or "")
+            if source_normalized:
+                body_text = body_text.replace(f"(source: {source_normalized})", " ")
+            first_sentence_match = re.search(r"(.+?[.!?])(?:\s|$)", body_text)
+            first_sentence = (first_sentence_match.group(1) if first_sentence_match else body_text).strip()
+            if not first_sentence:
+                event_summary_failures.append(bullet["lead"])
+                continue
+            if any(first_sentence.startswith(starter) for starter in generic_implication_starters):
+                event_summary_failures.append(bullet["lead"])
+                continue
+            if not re.search(
+                r"\b(announced|launch(?:ed|es)?|unveil(?:ed|s)?|released|reported|raised|invest|fund(?:ed|ing)?|signed|expanded|opened|built|deployed|approved|cleared|introduced|passed|filed|partner(?:ed|s)?|agreed|pledged|published|disclosed|plans? to|will|added|showed|advanced|made|kept|moved|described|covered|highlighted|reviewed|secured|weighs|weighed|surfaced|dominated|rose|rises|surged|jumped|fell|slides?|gained|boosted|bolstered|researching|considering)\b",
+                first_sentence,
+            ):
+                event_summary_failures.append(bullet["lead"])
+        if event_summary_failures:
+            issues.append(
+                "Analytical bullet is missing a concrete event summary: "
+                + "; ".join(event_summary_failures[:3])
+            )
         for index, left_bullet in enumerate(analytical_bullets):
             for right_bullet in analytical_bullets[index + 1:]:
                 if left_bullet["section"] == right_bullet["section"]:
@@ -1975,6 +2113,8 @@ def generate_daily_digest(report_date=None, return_metadata=False):
 
         section_fit_mismatches = []
         for bullet in analytical_bullets:
+            if _is_fallback_analytical_bullet(bullet):
+                continue
             signature = _find_story_signature_for_bullet(bullet, story_signatures)
             if not signature:
                 continue
@@ -2034,9 +2174,9 @@ def generate_daily_digest(report_date=None, return_metadata=False):
 <h3>PHYSICAL AI AND ROBOTICS</h3>
 <ul><li><strong>No major commercial Physical AI or robotics developments surfaced:</strong> Continue monitoring robotics, autonomous systems, lab automation, industrial automation, and AI-enabled manufacturing for signs that pilots are moving into real deployment. (Source: Full article set)</li></ul>
 <h3>WHAT TO WATCH</h3>
-<ul><li><strong>Fresh source flow:</strong> Watch for new company announcements, policy actions, capex disclosures, infrastructure projects, and enterprise deployments in the next daily window. (Source: Full article set)</li></ul>
+<ul><li><strong>Fresh source flow:</strong> Watch for new company announcements, policy actions, capex disclosures, infrastructure projects, and enterprise deployments in the next daily window.</li></ul>
 <h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
-<ul><li><strong>Quiet days still matter:</strong> When the source window is thin, the discipline is to wait for real events rather than force an AI narrative. (Source: Full article set)</li></ul>"""
+<ul><li><strong>Quiet days still matter:</strong> When the source window is thin, the discipline is to wait for real events rather than force an AI narrative.</li></ul>"""
         if return_metadata:
             return {
                 "content": content,
@@ -2214,24 +2354,14 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             continue
 
         issues = _find_diversity_issues(content, available_publishers)
-        fallback_content = build_deterministic_fallback_digest(all_articles, prompt_articles, today, section_candidate_pools)
-        repaired_content = _repair_duplicate_analytical_sections(
-            content,
-            fallback_content,
-            prompt_articles,
-        )
-        if repaired_content != content:
-            if _has_empty_analytical_section(repaired_content):
-                repaired_content = fallback_content
-            repaired_issues = _find_diversity_issues(repaired_content, available_publishers)
-            if len(repaired_issues) <= len(issues):
-                content = repaired_content
-                issues = repaired_issues
-                if content == fallback_content:
-                    generation_mode = "deterministic_fallback"
         best_effort_content = content
         best_effort_issues = list(issues)
-        if not issues:
+        if not _has_blocking_quality_issue(issues):
+            if issues:
+                print(
+                    "Daily digest accepted with editorial audit notes: "
+                    + "; ".join(issues)
+                )
             break
 
         if attempt == len(generation_profiles):
@@ -2241,11 +2371,13 @@ def generate_daily_digest(report_date=None, return_metadata=False):
             )
             break
 
-        print("Daily digest diversity retry triggered: " + "; ".join(issues))
+        print("Daily digest hard-validation retry triggered: " + "; ".join(issues))
+        revision_guidance = _build_daily_revision_feedback(issues)
         extra_feedback = (
-            "The previous draft did not satisfy diversity requirements. "
+            "The previous draft did not satisfy required output requirements. "
             "Rewrite from the same article set and fix these issues:\n- "
             + "\n- ".join(issues)
+            + (f"\n{revision_guidance}" if revision_guidance else "")
             + "\nDo not explain the fixes. Return only the corrected HTML."
         )
 
@@ -2256,7 +2388,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
 
     if issues:
         print(
-            "Daily digest returning best-effort output after validation retries: "
+            "Daily digest completed with editorial audit notes: "
             + "; ".join(issues)
         )
 

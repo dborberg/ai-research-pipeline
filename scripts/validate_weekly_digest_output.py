@@ -134,6 +134,29 @@ def _all_numbered_items(text):
     ]
 
 
+def _missing_event_summary(item):
+    body = re.sub(r"\([^\)]*Source[^\)]*\)", "", item, flags=re.IGNORECASE)
+    body = re.sub(r"^\s*\d+\.\s*", "", body).strip()
+    first_sentence_match = re.search(r"(.+?[.!?])(?:\s|$)", body)
+    first_sentence = (first_sentence_match.group(1) if first_sentence_match else body).strip().lower()
+    if not first_sentence:
+        return True
+    generic_starts = [
+        "this matters because",
+        "the implication is",
+        "the read-through is",
+        "the takeaway is",
+        "watch whether",
+        "the better read-through is",
+    ]
+    if any(first_sentence.startswith(prefix) for prefix in generic_starts):
+        return True
+    return not re.search(
+        r"\b(announced|launch(?:ed|es)?|unveil(?:ed|s)?|released|reported|raised|invest|fund(?:ed|ing)?|signed|expanded|opened|built|deployed|approved|cleared|introduced|passed|filed|partner(?:ed|s)?|agreed|pledged|published|disclosed|plans? to|will|added|showed|advanced|made|kept|moved|described|covered|highlighted|reviewed|secured|weighs|weighed|surfaced|dominated|rose|rises|surged|jumped|fell|slides?|gained|boosted|bolstered|researching|considering)\b",
+        first_sentence,
+    )
+
+
 def _is_frontier_capital_markets_text(text):
     lowered = text.lower()
     capital_terms = [
@@ -206,6 +229,17 @@ def validate_weekly_digest_text(text):
         ]
         if found_in_order != sorted(found_in_order, key=lambda heading: heading_positions[heading]):
             issues.append("Weekly section headings are out of expected order")
+
+    for heading in ["TOP 5 STORIES THIS WEEK", "BEYOND THE MAG 7", "REGULATORY RADAR"]:
+        section = _section_text(
+            stripped,
+            heading,
+            REQUIRED_WHOLESALER_HEADINGS[REQUIRED_WHOLESALER_HEADINGS.index(heading) + 1 :],
+        )
+        for item in _numbered_items(section):
+            if _missing_event_summary(item):
+                issues.append(f"{heading} includes an item that lacks a concrete event summary")
+                break
 
     watch_section = _section_text(
         stripped,
