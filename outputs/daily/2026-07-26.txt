@@ -1,0 +1,55 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>July 26, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s strongest signal is that the AI investment cycle is moving further from model excitement into capital intensity, permitting friction, governance discipline, and platform execution. For advisors, the conversation is less about whether AI demand exists and more about which companies, regions, and infrastructure layers can convert demand into durable, compliant, and economically productive deployment.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Nvidia and SK Group reportedly entered a $500 billion AI infrastructure partnership:</strong> The plan centers on next-generation memory and large-scale AI factories, underscoring how frontier AI growth increasingly depends on memory bandwidth, supply-chain scale, and physical infrastructure rather than chips alone. The investment read-through extends to high-bandwidth memory, advanced packaging, power systems, cooling, and data-center buildout capacity. (Source: Tom's Hardware)</li>
+<li><strong>DeepSeek reportedly paused funding discussions after viral posts drew attention:</strong> The Bloomberg report highlights how quickly private AI financing dynamics can shift when high-profile model companies face sudden public scrutiny. For advisors, it is a reminder that private-market AI valuations may be highly sensitive to narrative risk, regulatory attention, and questions about sustainable differentiation. (Source: Bloomberg.com)</li>
+<li><strong>Georgia commissioners shelved proposed data-center rules and extended a moratorium by 60 days:</strong> Local public pushback delayed the policy path for new data-center development, showing that AI infrastructure timelines can be constrained by zoning, water, power, and community acceptance. The portfolio implication is that data-center demand may remain strong while project timing and regional economics become more uneven. (Source: The Cool Down)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>CrowdStrike announced a partnership with Cerebras to power Falcon AIDR:</strong> The deal links a cybersecurity platform with specialized AI compute, pointing to platform convergence as enterprise AI moves into security operations and automated response workflows. The useful read-through is that production AI adoption may favor vendors that combine domain data, orchestration, governance, and compute access rather than standalone model capability. (Source: CrowdStrike.com)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Eaton’s AI data-center exposure and higher dividend drew investor attention:</strong> The article framed Eaton around AI-related electrical infrastructure demand, reinforcing that power management and electrification suppliers are increasingly part of the AI capex discussion. Advisors can use this as a second-derivative AI example while also stressing valuation discipline and the need to distinguish confirmed backlog from thematic enthusiasm. (Source: simplywall.st)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Investors reportedly used crypto exchanges to bypass Chinese controls on AI stock exposure:</strong> The Financial Times report points to strong demand for AI-linked equities even when formal capital channels are restricted. The implication is two-sided: AI remains a powerful investor appetite theme, but regulatory arbitrage and offshore access channels can introduce liquidity, compliance, and market-structure risks. (Source: Financial Times)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>South Africa reportedly withdrew an AI policy after hallucinated content was found:</strong> The incident shows that public-sector AI use can create governance failures when generated content is not properly verified. For enterprises and governments, it reinforces the need for audit trails, human review, source validation, and compliance controls before AI outputs enter official workflows. (Source: Mashable)</li>
+<li><strong>China’s reported WAICO alliance raised questions about fragmented AI governance:</strong> The article frames WAICO as a potential Chinese-led AI governance bloc, although details on membership, funding, and enforceable standards remain limited. The advisor relevance is geopolitical: divergent standards could affect cross-border model deployment, data governance, semiconductor access, and multinational compliance costs. (Source: Modern Diplomacy)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Johnson &amp; Johnson MedTech unveiled the Ottava surgical robot after FDA de novo authorization:</strong> The table-integrated soft-tissue robotic system embeds four arms into the operating table and is designed to reduce operating-room footprint versus larger robotic configurations. This is a concrete Physical AI signal in healthcare, where robotics, sensors, software, and workflow redesign can support professional amplification rather than simple labor replacement. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>AI infrastructure permitting:</strong> Watch whether local moratoriums, zoning reviews, and community opposition begin to slow announced data-center timelines in key U.S. regions.</li>
+<li><strong>Memory and power-equipment supply:</strong> Monitor signs of bottlenecks or pricing pressure in high-bandwidth memory, electrical gear, transformers, cooling, and grid interconnection queues.</li>
+<li><strong>Private AI financing discipline:</strong> Track whether prominent model companies continue to command premium valuations or face more scrutiny around revenue durability, compute cost, and governance.</li>
+<li><strong>Enterprise production controls:</strong> Look for adoption signals tied to auditability, cybersecurity, workflow orchestration, and human-in-the-loop validation rather than simple chatbot deployment.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>“AI is becoming a physical-infrastructure story.”</strong> The next phase depends on memory, power, permitting, cooling, and grid capacity, not just model innovation.</li>
+<li><strong>“The winners may not all be model companies.”</strong> Infrastructure suppliers, cybersecurity platforms, workflow software, and governance tools can all participate in the AI buildout.</li>
+<li><strong>“Governance is now part of adoption.”</strong> The South Africa policy issue is a reminder that AI productivity gains require verification, controls, and accountability.</li>
+<li><strong>“Private-market AI excitement still needs discipline.”</strong> Investor appetite remains high, but financing events can change quickly when scrutiny rises.</li>
+<li><strong>“Robotics is one place where AI becomes tangible.”</strong> Surgical and industrial systems show how AI-enabled automation can augment skilled professionals inside real workflows.</li>
+</ul>
