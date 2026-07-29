@@ -1,0 +1,60 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>July 29, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s strongest through-line is that Gen AI is moving from model excitement into production constraints: data-center capacity, regulated workflow deployment, edge compute, security operations, and physical automation. For advisor conversations, the opportunity set is broadening beyond model developers toward infrastructure operators, power and permitting exposure, enterprise software vendors, semiconductor inspection, robotics-enablement software, and governance tools, while policy and local infrastructure resistance remain key risks.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>AMD signed an AI data-center deal with Core Scientific:</strong> Reuters reported that AMD entered an AI data-center agreement with Core Scientific, reinforcing that AI infrastructure demand continues to pull together chip suppliers and large-scale compute-site operators. The read-through is that AI capacity remains a binding constraint, with implications for data-center conversion, power access, networking, cooling, and financing discipline across the infrastructure stack. (Source: Reuters)</li>
+<li><strong>Ontario Power Generation used agentic retrieval for regulatory compliance:</strong> An arXiv paper described a production AI retrieval pipeline at Ontario Power Generation for regulatory compliance and rate-case analysis under Ontario Energy Board reporting requirements. This is a practical Enterprise Production Readiness signal because the use case sits in a high-stakes, document-heavy, regulated workflow where accuracy, traceability, and governance matter more than novelty. (Source: cs.AI updates on arXiv.org)</li>
+<li><strong>NVIDIA pushed Jetson as compact edge AI infrastructure:</strong> NVIDIA highlighted Jetson as a platform for building AI applications outside centralized data centers, positioning it for distributed real-world environments such as machines, devices, and autonomous systems. The advisor read-through is that AI compute demand may increasingly split between hyperscale training and edge inference, supporting a broader ecosystem of embedded compute, sensors, robotics, and industrial automation. (Source: NVIDIA Blog)</li>
+<li><strong>Datadog embedded an AI agent into security-event investigation:</strong> Datadog promoted an AI agent for investigating security events while trying to avoid the cost burden of frontier-model usage. This points to Workflow Orchestration becoming a monetizable enterprise-software layer, especially in security operations where customers need faster triage, lower analyst burden, and auditable escalation paths. (Source: Datadog)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>AI moved deeper into regulated utility workflows:</strong> Ontario Power Generation’s retrieval pipeline shows enterprise AI being applied to compliance and rate-case analysis rather than generic chat productivity. The labor implication is professional amplification: AI is being positioned to help analysts, lawyers, regulatory teams, and finance staff navigate large evidence bases with better context engineering and review controls. (Source: cs.AI updates on arXiv.org)</li>
+<li><strong>AI security agents targeted analyst workload and cost control:</strong> Datadog’s security-investigation agent is notable because it addresses both labor scarcity in cybersecurity and the economics of applying expensive frontier models to high-volume operational tasks. The business-model implication is that enterprise AI adoption may favor vendors that package AI into existing workflows with measurable cost, speed, and governance benefits. (Source: Datadog)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>AI infrastructure demand continued to reshape data-center strategy:</strong> AMD’s reported deal with Core Scientific underscores how AI compute buildout is creating demand for large power-connected facilities and specialized infrastructure partners. For portfolios, this keeps attention on power availability, interconnection queues, facility conversion economics, and whether compute capacity can be delivered at attractive margins. (Source: Reuters)</li>
+<li><strong>Advanced semiconductor inspection grew more data-intensive:</strong> EE Times highlighted a white paper on building a server-grade automated optical inspection platform capable of 100Gbps image acquisition for next-generation semiconductor inspection. The investment read-through is that AI-era chip manufacturing is not just about fabs and GPUs; it also increases demand for inspection bandwidth, thermal management, high-speed networking, and precision automation across the semiconductor equipment chain. (Source: EE Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Robotics deployment software emerged as a second-derivative opportunity:</strong> The Robot Report said Agency Tool Co. launched ATC Deploy to simplify over-the-air software updates for robots operating in the field. This is relevant because physical AI companies need fleet-management, update, safety, and reliability infrastructure to move from prototypes to commercial deployments, creating opportunities beyond robot hardware itself. (Source: The Robot Report)</li>
+<li><strong>AI compute partnerships remained a frontier-infrastructure financing signal:</strong> AMD’s Core Scientific agreement points to continued convergence between semiconductor suppliers and data-center asset owners. Advisors should watch whether such arrangements improve capacity availability or introduce new financing, counterparty, and utilization risks as AI infrastructure buildout scales. (Source: Reuters)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>The Trump administration reportedly banned new Chinese humanoid robots:</strong> Reuters reported that the administration banned new Chinese humanoid robots, framing the move as protection for the U.S. AI buildout. If implemented broadly, the policy could reshape robotics supply chains, raise compliance requirements, and increase strategic value for domestic or allied physical-AI platforms. (Source: Reuters)</li>
+<li><strong>Local data-center moratorium risk widened:</strong> A Florida city is considering a data-center moratorium that could extend across its utility service area, highlighting how local power, land-use, and community concerns can affect AI infrastructure deployment. This is a policy risk for the AI cycle because permitting friction can shift capacity to more receptive regions and affect timelines for compute-heavy enterprise adoption. (Source: Yahoo)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>ENvue Medical unveiled a robotic-assisted feeding-tube placement system:</strong> The Robot Report said ENvue Medical introduced ENvue Drive, built on its FDA-cleared electromagnetic navigation platform and combining AI navigation software, sensor guidance, and robotic-assisted execution. The implication is that physical AI is extending into routine clinical workflows, where adoption will depend on safety validation, clinician trust, reimbursement, and hospital workflow integration. (Source: The Robot Report)</li>
+<li><strong>Tacta Systems introduced an AI-powered robotic hand for manufacturing:</strong> Robotics &amp; Automation News reported that Tacta Systems unveiled TactaBot, combining a robotic hand, wearable skill-capture system, and AI engine for high-value manufacturing applications. The read-through is that dexterous automation remains an important frontier for physical AI, especially where labor availability, precision handling, and flexible production are economic pain points. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>AI infrastructure deal terms:</strong> Monitor whether chipmakers, data-center operators, and power-linked asset owners disclose clearer economics, capacity commitments, utilization assumptions, or financing structures.</li>
+<li><strong>Permitting and power constraints:</strong> Watch for additional state or municipal data-center moratoria, utility-service-area restrictions, or interconnection delays that could slow AI capacity deployment.</li>
+<li><strong>Enterprise AI proof points:</strong> Look for regulated-industry deployments that show measurable reductions in review time, compliance burden, incident-response latency, or analyst workload while maintaining auditability.</li>
+<li><strong>Physical AI commercialization:</strong> Track whether robotics announcements move from product unveils to signed customers, fleet deployments, safety certifications, and service revenue.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming an infrastructure story as much as a software story:</strong> The bottlenecks are increasingly power, facilities, networking, cooling, and permitting, not just model capability.</li>
+<li><strong>The next phase of enterprise AI is about production workflows:</strong> The most useful signals are deployments in regulated, high-value processes where accuracy, governance, and cost control matter.</li>
+<li><strong>Edge AI broadens the opportunity set:</strong> As inference moves into devices, machines, hospitals, factories, and robots, the AI ecosystem extends beyond hyperscale cloud providers.</li>
+<li><strong>Policy can change the AI map:</strong> Robotics restrictions, data-center moratoria, and local power politics can influence which regions and suppliers benefit from the buildout.</li>
+<li><strong>Robotics is still early, but the enabling layer matters:</strong> Fleet updates, safety systems, sensors, and deployment software may become important picks-and-shovels as physical AI scales.</li>
+</ul>
