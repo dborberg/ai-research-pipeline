@@ -1,0 +1,53 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>July 31, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s dominant theme is the rising balance-sheet intensity of AI: frontier models, cloud platforms, and chip suppliers are translating AI demand into very large data-center leases, debt discussions, and infrastructure spending plans. For advisors, the opportunity is broadening beyond model providers into power, cooling, networking, semiconductors, and construction capacity, while the risk is that cash-flow discipline, financing costs, and policy friction increasingly determine which AI winners can scale profitably.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Amazon reportedly lifts AI infrastructure spending to $220 billion:</strong> Amazon’s planned AI infrastructure spend underscores that hyperscale platforms are still treating compute capacity as a strategic moat, not a discretionary experiment. The advisor read-through is that AI demand remains supportive for data-center supply chains, but the scale also raises questions about free cash flow, depreciation, and return on invested capital. (Source: Financial Times)</li>
+<li><strong>Meta discloses $279 billion in future AI data-center leases:</strong> Meta’s reported lease obligations show that AI infrastructure commitments are becoming long-duration liabilities, not just annual capital expenditure headlines. This reinforces the importance of monitoring cloud and platform balance sheets, while also supporting demand visibility for data-center developers, power equipment, and cooling providers. (Source: Bloomberg)</li>
+<li><strong>Banks discuss a $15 billion Anthropic data-center loan backed by Google:</strong> The reported financing talks point to frontier AI moving deeper into project-finance-style capital structures as model companies seek dedicated compute. For advisors, this is a sign that AI infrastructure is becoming a credit-market story as well as an equity-market story, with implications for lenders, cloud partners, and private-market valuation discipline. (Source: The Wall Street Journal)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>AI regulatory conflict raises corporate execution risk:</strong> Bloomberg Law reports that major technology companies’ disputes over AI regulation are increasing legal and governance uncertainty for corporations. The Enterprise Production Readiness implication is that companies adopting AI at scale may need stronger compliance, model-risk, and workflow controls before productivity gains translate cleanly into earnings. (Source: Bloomberg Law News)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>DeepSeek is reportedly developing a large AI data center in Inner Mongolia:</strong> Bloomberg reports that DeepSeek is building a major AI data-center project, adding another signal that frontier AI capacity expansion is global and highly power-sensitive. The investment read-through is continued pressure on energy availability, grid interconnection, and regional permitting as AI compute clusters chase lower-cost power and land. (Source: Bloomberg)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>MediaTek reportedly plans $5 billion in financing for AI data-center chips:</strong> Reuters reports that MediaTek is pursuing financing tied to AI data-center chip development, highlighting how semiconductor participation in AI requires substantial capital commitments. The portfolio-monitoring implication is that AI chip competition may broaden, but financing access, advanced packaging, and customer commitments will separate scalable contenders from aspirants. (Source: Reuters)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Governors discuss AI and data-center policy at the National Governors Association meeting:</strong> State leaders addressed AI and data-center policy issues, signaling that infrastructure permitting, power demand, and local economic development are moving higher on state policy agendas. For advisors, state-level decisions may increasingly influence where AI capacity gets built and which utilities, contractors, and communities bear the costs and benefits. (Source: KOCO)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>DoorDash receives FAA certification for its own drone delivery program:</strong> DoorDash obtained FAA Part 135 air carrier certification, allowing it to operate a commercial drone delivery program through DoorDash Air. This is a concrete Physical AI milestone because regulated autonomy is moving from pilot projects toward operational logistics, with read-throughs for last-mile delivery models, autonomy software, and airspace compliance systems. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>AI infrastructure financing terms:</strong> Watch whether large data-center loans, leases, and vendor-financing structures tighten or broaden, because funding costs may become a key limiter of AI capacity growth.</li>
+<li><strong>Hyperscaler cash-flow discipline:</strong> Track whether cloud platforms can show revenue pull-through from AI capex fast enough to reassure investors about depreciation, lease obligations, and margins.</li>
+<li><strong>Power and permitting constraints:</strong> Monitor state-level data-center rules, grid interconnection delays, and utility rate debates as early indicators of where AI infrastructure expansion may slow.</li>
+<li><strong>Regulated autonomy milestones:</strong> Follow drone delivery, warehouse robotics, and autonomous logistics approvals for signs that Physical AI is moving from demos into scaled commercial deployment.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming a balance-sheet story:</strong> The next phase is not just better models; it is who can fund, power, and monetize the infrastructure needed to run them.</li>
+<li><strong>Capex is both the opportunity and the risk:</strong> Data-center spending supports many suppliers, but investors still need to ask whether the returns justify the scale of commitments.</li>
+<li><strong>Regulation is now part of AI execution:</strong> Companies that want to use AI in real workflows may need governance and compliance capabilities as much as model access.</li>
+<li><strong>Physical AI is showing early commercial signs:</strong> Drone certification suggests autonomy is gradually moving into regulated operations, though broad profitability remains a watch item.</li>
+</ul>
