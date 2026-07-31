@@ -1,0 +1,347 @@
+SUPPLEMENTAL INPUT: TIER 2 WEEKLY OVERRIDE CANDIDATES
+
+These candidates come from an independent review of the prior seven calendar days of Gen AI and AI-adjacent source material.
+
+Use them only when they represent systemic weekly developments, not to flood the Weekly with unrelated stories.
+
+
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Kraken Technology raises Series B funding for autonomous vessels
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-07-27T14:02:10
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is a concrete example of capital flowing into physical AI and defense autonomy, with real contracts, deployment in active conflict contexts, and manufacturing partnerships across allied markets. It supports advisor conversations about AI extending beyond software into robotics, defense modernization, supply-chain localization, and second-derivative beneficiaries tied to sensors, payloads, shipbuilding, and autonomous systems production.
+SUMMARY: Kraken Technology raised $175 million in Series B funding at a $1 billion valuation to accelerate development and global production of autonomous maritime vessels. The company has secured contracts with the U.K. Ministry of Defence, NATO European partners, and USSOCOM, and is building localized manufacturing partnerships in Germany, the U.S., Canada, and other planned regions.
+COMPANIES: Kraken Technology Group Ltd., Digital Transformation Capital Partners GmbH, Rheinmetall, Anduril Industries, Inocea Group, Davie Shipbuilding, British Business Bank, NATO Innovation Fund, HICO, Thesiger Capital Group, BOKA Capital, Supernova Invest, Hakluyt Capital, SmartCap, Notion Capital, Speedinvest, PJT Partners, Clifford Chance, Kraken Robotics
+EVENT_PRIORITY: 106.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 82
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: CXMT IPO: Where China’s Largest DRAM Maker Stands?
+SOURCE: EE Times
+PUBLISHED_AT: 2026-07-27T07:20:00
+SIGNAL_SCORE: 5.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters as a signal of capital formation in China’s semiconductor supply chain during a severe memory shortage. While the excerpt does not directly address AI, DRAM availability and financing for memory capacity can have indirect relevance for broader compute infrastructure and technology supply chains.
+SUMMARY: CXMT, described as China’s largest DRAM maker, is reportedly eyeing one of China’s largest semiconductor IPOs. The potential listing comes amid what the excerpt characterizes as a once-in-four-decades memory shortage.
+COMPANIES: CXMT
+EVENT_PRIORITY: 95.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 86
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: South Korea's Naver jumps 10% on Nvidia's $1 billion investment plan - ETEnterpriseai.com
+SOURCE: "AI investment" - Google News
+PUBLISHED_AT: 2026-07-27T05:31:49
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because a large planned investment from Nvidia into a named platform company suggests continued capital intensity and strategic positioning around AI ecosystems. For advisor conversations, it highlights how AI-related financing announcements can quickly affect equity valuations, especially for companies perceived as beneficiaries of Nvidia-linked AI infrastructure or platform development.
+SUMMARY: South Korea's Naver shares rose 10% following news of Nvidia's planned $1 billion investment. The article provides limited detail beyond the headline, but the market reaction indicates investors viewed the potential Nvidia involvement as meaningful for Naver's AI positioning.
+COMPANIES: Naver, Nvidia
+EVENT_PRIORITY: 85.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 66
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: GMEX Robotics to acquire MediaMeta.ai for social intelligence
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-07-29T14:53:15
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This highlights a developing area of physical AI: robots that can interpret social context and human behavioral cues, which may be important for adoption in healthcare, assisted living, hospitality, education, and retail. The transaction also shows how robotics firms may seek differentiated AI capabilities through acquisitions and licensing, though commercialization remains subject to integration, testing, and revenue execution.
+SUMMARY: GMEX Robotics entered a definitive share-purchase agreement to acquire an initial 30% fully diluted equity interest in MediaMeta.ai, with an option to acquire additional shares that could provide control. GMEX plans to integrate MediaMeta’s human behavioral modeling and social-context AI into service robots for consumer, hospitality, education, healthcare, assisted-living, retail, and other environments, subject to closing and successful development, testing, and commercialization.
+COMPANIES: GMEX Robotics Corp., MediaMeta.ai, Alpha Meta AI Pte. Ltd., MetaGen AI Ltd., Fitell Corp.
+EVENT_PRIORITY: 76.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: How to Build a 100Gbps Server-Grade AOI Platform for Next-Generation Semiconductor Inspection
+SOURCE: EE Times
+PUBLISHED_AT: 2026-07-28T14:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is relevant as a signal that semiconductor manufacturing and inspection processes are becoming more data- and compute-intensive, creating potential demand for GPUs, high-speed data movement, advanced imaging, and industrial AI infrastructure. However, the article is technical and does not cite specific deployments, customers, or companies, limiting direct investment applicability.
+SUMMARY: The article highlights a white paper on building a server-grade automated optical inspection platform capable of 100Gbps image acquisition for advanced semiconductor inspection. It focuses on addressing bandwidth, scalability, thermal, and system-integration challenges using high-speed frame grabbers and GPU computing for AI-powered AOI.
+COMPANIES: 
+EVENT_PRIORITY: 76.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 63
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: SymmGrid: Super-Scaling On-Robot Learning with Parallelized Symmetries and Egocentric-Exocentric Visual Perception
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-07-31T04:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is an early-stage technical robotics development, but it points to a potentially important adoption bottleneck: reducing the time and data needed to train robots in real-world settings. Faster on-robot learning could eventually support broader deployment of robotic arms and humanoids in manufacturing, logistics, and other physical automation markets, though the article does not identify commercial partners or near-term monetization.
+SUMMARY: The paper introduces SymmGrid, a trajectory-level augmentation framework designed to accelerate reinforcement learning directly on physical robots by using parallelized symmetry transformations across egocentric and exocentric visual inputs. In real robot manipulation tasks such as peg insertion, cable routing, and object relocation, SymmGrid reportedly improved training convergence speed by 1.37x to 2.17x versus state of the art and improved evaluation success rates by 1.09x to 1.27x.
+COMPANIES: 
+EVENT_PRIORITY: 74.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Experts react to FCC limits on U.S. imports of new humanoid and mobile robots
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-07-29T14:11:19
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 5.2
+ADVISOR_RELEVANCE: This is an investment-relevant policy development for the physical AI and robotics supply chain. It highlights how national security concerns may shape market access, domestic manufacturing incentives, and competitive dynamics in humanoid and mobile robots, while also underscoring potential second-derivative beneficiaries in components, localization, cybersecurity, and allied robotics suppliers.
+SUMMARY: The FCC is restricting U.S. imports of certain foreign-made advanced robotic devices, including humanoid and quadruped mobile robots, citing cybersecurity, supply chain, and critical infrastructure risks. Industry reactions are mixed: some U.S. robotics executives see the move as support for domestic manufacturing, while others warn it could slow physical AI innovation and does not by itself solve upstream dependencies in components such as actuators, batteries, sensors, and rare-earth magnets.
+COMPANIES: Standard Bots, Agility, Novanta, Unitree, ABB, FANUC, Yaskawa, KUKA, Teradyne Robotics, DJI, Skydio, Qualcomm
+EVENT_PRIORITY: 31.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Building a Policy-Governed Multi-Agent Financial Research Workflow with Omnigent
+SOURCE: MarkTechPost
+PUBLISHED_AT: 2026-07-31T04:44:12
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 2.4
+ADVISOR_RELEVANCE: This is a narrow but relevant example of how agentic AI could be applied to financial research workflows with built-in governance, cost controls, and audit-oriented delegation. For advisors, it highlights the direction of AI adoption toward controlled workflow automation rather than standalone chat tools, though the article is tutorial-oriented and does not provide evidence of commercial deployment or market traction.
+SUMMARY: The article describes a tutorial for building a policy-governed multi-agent financial research workflow using Omnigent in an isolated Python environment. The workflow includes live exchange-rate data integration, hierarchical agent delegation for financial text auditing, and governance controls such as cost budgets and tool-call limits within Google Colab.
+COMPANIES: Omnigent, Google
+EVENT_PRIORITY: 28.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: From Naive RAG to Deep Agentic Retrieval: An Evolving Context Engineering Pipeline for Regulatory Compliance
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-07-29T04:00:00
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 3.7
+ADVISOR_RELEVANCE: This is a concrete example of enterprise AI moving beyond pilots into production workflows for complex, regulated document analysis. It supports the view that near-term AI monetization may come from workflow-specific orchestration, retrieval, governance, and cost optimization rather than only from larger models or fine-tuning.
+SUMMARY: The paper describes the evolution of a production AI retrieval pipeline at Ontario Power Generation for regulatory compliance and rate case analysis under Ontario Energy Board reporting requirements. It argues that enterprise retrieval is moving from basic RAG toward agentic, multi-step systems that plan, reformulate queries, synthesize tools, and escalate to full-document review only when justified by cost and evidence value.
+COMPANIES: Ontario Power Generation
+EVENT_PRIORITY: 27.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Video Friday: An Italian Humanoid Comes to Life
+SOURCE: IEEE Spectrum
+PUBLISHED_AT: 2026-07-24T15:30:01
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 4.1
+ADVISOR_RELEVANCE: This is relevant as a snapshot of how AI is moving from software into physical systems, with examples spanning humanoids, embodied foundation models, autonomous freight, drone delivery, and simulation-based training. The clearest investment read-throughs are continued demand for AI compute and simulation platforms, robotics hardware innovation, and commercialization of autonomous logistics and healthcare delivery workflows, though many examples remain demos rather than scaled deployments.
+SUMMARY: IEEE Spectrum’s robotics roundup highlights multiple Physical AI and robotics developments, including Generative Bionics’ GENE.01 humanoid platform, Generalist’s GEN-1 embodied foundation model for varied robotic hands and tools, and Flexion’s use of Niantic Spatial and Nvidia tools for real-world site scanning and reinforcement-learning policy transfer. The article also notes real-world deployment signals such as Wing drone delivery of urgent NHS pathology samples in South West London and Aurora’s next-generation autonomous freight driver targeting lower hardware cost and longer durability.
+COMPANIES: Generative Bionics, Generalist, AIR Lab, MEVION, Niantic Spatial, Nvidia, Flexion, LimX Dynamics, PNDbotics, EngineAI, Sharpa, Wing, Aurora, Robotics and AI Institute
+EVENT_PRIORITY: 27.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: $\pi\mathbf{R}^2$: Reactive Real-time Flow Policies
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-07-29T04:00:00
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.2
+ADVISOR_RELEVANCE: This is early-stage research, but it points to an important adoption bottleneck for robotics AI: making large multimodal models fast and reactive enough for real-world manipulation. The read-through is most relevant to physical AI, robotics platforms, GPU-enabled inference, and future automation use cases where latency and reliability determine commercial viability.
+SUMMARY: The paper introduces πR², a robotics control approach designed to make large action-chunking manipulation policies more reactive in real time. It separates fast proprioceptive feedback from slower vision-language processing and uses a latency-adaptive flow schedule, enabling roughly 4x faster closed-loop replanning than the base policy on a real robot setup.
+COMPANIES: 
+EVENT_PRIORITY: 26.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Powerful Compute So Compact, It’s Clutch — Build AI Anywhere With NVIDIA Jetson
+SOURCE: NVIDIA Blog
+PUBLISHED_AT: 2026-07-28T15:00:19
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 4.1
+ADVISOR_RELEVANCE: This matters because edge AI platforms like NVIDIA Jetson point to AI adoption moving beyond cloud data centers into devices, machines, and distributed physical environments. For advisors, it supports conversations about NVIDIA’s broader AI ecosystem and the potential for second-order beneficiaries tied to edge computing, robotics, and embedded AI, though the article is promotional and provides limited commercial detail.
+SUMMARY: NVIDIA highlighted its Jetson platform as a compact edge AI compute solution that can support building AI applications outside centralized data centers. The article frames Jetson as a portable platform for deploying AI in more distributed, real-world environments, with commentary from AI investor Sarah Guo.
+COMPANIES: NVIDIA, Conviction
+EVENT_PRIORITY: 26.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: 5 Physical AI infrastructure platforms shaping robotics in 2026
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-07-30T20:01:22
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 4.4
+ADVISOR_RELEVANCE: This matters because physical AI and robotics appear to be creating investable infrastructure layers beyond model training, including accelerated computing, simulation, validation, data pipelines, and edge deployment. The article reinforces the idea that beneficiaries may include not only robot makers, but also platform companies that provide reusable development infrastructure across industries.
+SUMMARY: The article frames physical AI infrastructure as a broader stack than compute, spanning simulation, data operations, validation, deployment, and continuous learning for robots and autonomous machines. It highlights NVIDIA, Applied Intuition, and Scale AI as key horizontal platforms addressing different bottlenecks in robotics development, from accelerated simulation to real-world validation and training data production.
+COMPANIES: Lightwheel, NVIDIA, Google DeepMind, Disney Research, Linux Foundation, Applied Intuition, Scale AI
+EVENT_PRIORITY: 25.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Banks in talks to lend $15 billion for Anthropic data center backed by Google, WSJ reports - Reuters
+SOURCE: "AI data center" - Google News
+PUBLISHED_AT: 2026-07-30T18:25:00
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is a clear signal that leading AI companies may require very large debt financing packages to support data center expansion. For advisors, it reinforces that AI adoption is not only a software story but also a capital-intensive infrastructure cycle with implications for lenders, cloud platforms, data center operators, power demand, and related suppliers.
+SUMMARY: Banks are reportedly in talks to provide $15 billion in lending for an Anthropic data center backed by Google, according to a Wall Street Journal report cited by Reuters. The discussions point to the scale of financing being considered to support AI infrastructure buildout, though the report indicates talks rather than a completed transaction.
+COMPANIES: Anthropic, Google
+EVENT_PRIORITY: 25.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Google DeepMind Ships Three Physical AI Models For Whole Body Control, Dexterity And Multi Robot Collaboration
+SOURCE: MarkTechPost
+PUBLISHED_AT: 2026-07-30T17:20:50
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 3.9
+ADVISOR_RELEVANCE: This highlights continued progress in physical AI, where foundation-model capabilities are moving from software workflows into robotics control, dexterity, and coordination. For advisors, the read-through is that AI adoption may increasingly affect automation, humanoid robotics, industrial productivity, and the suppliers or platforms positioned around next-generation robot intelligence, though commercial availability appears limited because only ER 2 is publicly available.
+SUMMARY: Google DeepMind released Gemini Robotics 2, a next-generation robotics intelligence layer consisting of three models for humanoid control, embodied reasoning, task orchestration, and on-device adaptation. The system includes a vision-language-action model for whole-body control, Gemini Robotics ER 2 for embodied reasoning, and an on-device VLA that can adapt to new robot bodies in hours; only ER 2 is publicly available.
+COMPANIES: Google DeepMind, Apptronik, Franka
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Google AI Overviews become more common in search
+SOURCE: AI News
+PUBLISHED_AT: 2026-07-29T10:00:00
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.0
+ADVISOR_RELEVANCE: This suggests generative AI is becoming a more prominent layer within mainstream search behavior, with potential implications for digital advertising, web traffic patterns, and how information is discovered online. For advisors, the key investment read-through is that large platform companies are embedding AI directly into core user workflows rather than treating it as a standalone product.
+SUMMARY: Google’s AI-generated Overviews appeared in 43% of measured US searches, up from 15% a year earlier, according to Similarweb’s 2026 Generative AI Landscape report. The report also distinguishes AI Overviews within traditional search results from AI Mode, which offers a more conversational interface for longer questions and follow-up prompts.
+COMPANIES: Google, Similarweb
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Nvidia to Invest $1 Billion in Naver’s AI Project - WSJ
+SOURCE: "artificial intelligence" - Google News
+PUBLISHED_AT: 2026-07-27T02:46:00
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 7.5
+ADVISOR_RELEVANCE: A $1 billion AI investment by Nvidia would reinforce the scale of capital being directed toward AI initiatives and the strategic importance of partnerships across the AI value chain. For advisors, it provides another example of how leading technology companies are using balance sheets and ecosystem investments to shape AI adoption and competitive positioning.
+SUMMARY: Nvidia is reportedly set to invest $1 billion in an AI project led by Naver. The report points to a sizable strategic AI financing commitment involving two named technology companies, though project details are not provided in the excerpt.
+COMPANIES: Nvidia, Naver
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Microsoft AI Releases MAI-Cyber-1-Flash: A 5B-Active-Parameter Cyber Model That Pushes MDASH to 95.95% on CyberGym
+SOURCE: MarkTechPost
+PUBLISHED_AT: 2026-07-28T08:33:30
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 7.5
+ADVISOR_RELEVANCE: This points to continued specialization of AI models for enterprise security workflows, with Microsoft embedding model capability into an agentic scanning system rather than offering it as a standalone endpoint. For advisor conversations, it reinforces the investment theme that AI monetization may come through integrated enterprise platforms and workflow automation, particularly in cybersecurity where productivity, speed, and coverage are valuable.
+SUMMARY: Microsoft AI released MAI-Cyber-1-Flash, its first cyber-defense-specific model, built as a 137B total, 5B active sparse MoE fine-tune of MAI-Code-1-Flash with a 256k context window. The model operates inside MDASH, Microsoft’s multi-model agentic scanning harness, where it reportedly handles up to 90% of tasks and helps MDASH reach 95.95% on CyberGym.
+COMPANIES: Microsoft
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
