@@ -1,0 +1,55 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>August 01, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s strongest signal is that the AI investment cycle is broadening from model access into hard constraints: capital commitments, power availability, data-center siting, advanced packaging, and governance controls. For advisors, the conversation is shifting from “who has the best model” to which companies, utilities, suppliers, and platforms can turn AI demand into durable production capacity without running into policy, safety, or return-on-capital friction.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Amazon deepens the frontier-model capital race:</strong> Financial Times reported that Amazon completed a $50 billion investment in OpenAI, underscoring how hyperscale platforms are still willing to commit very large sums to secure strategic AI positioning. The advisor read-through is that AI leadership increasingly depends on balance-sheet scale, cloud distribution, and partner access, while also raising questions about concentration risk, antitrust scrutiny, and long-term monetization discipline. (Source: Financial Times)</li>
+<li><strong>NextEra and Brookfield tie AI growth to power infrastructure:</strong> Daily Energy Insider reported that NextEra and Brookfield are leading a $100 billion plan for an AI data-center campus at a former Kentucky nuclear site. The project highlights how AI demand is becoming an energy, land, transmission, and permitting story, with read-throughs for utilities, grid equipment, cooling, construction, and large-scale infrastructure financing. (Source: Daily Energy Insider)</li>
+<li><strong>Amazon reportedly raises AI capex while remaining capacity-constrained:</strong> Data Center Knowledge reported that Amazon lifted its 2026 AI capital-expenditure plan to $220 billion and still faces capacity limits. The key implication is that hyperscaler spending may remain elevated even after a large buildout phase, but investors will need to monitor whether revenue growth, utilization, and pricing power justify the scale of infrastructure outlays. (Source: Data Center Knowledge)</li>
+<li><strong>Alphabet rolls back a Google Earth AI feature:</strong> Reuters reported that Alphabet pulled back AI image-generation capabilities in Google Earth after policy violations. This is a reminder that platform convergence between generative AI and consumer products can face real governance, safety, and reputational setbacks, making production readiness and control systems as important as model capability. (Source: Reuters)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>KUKA deploys automation orchestration in auto production:</strong> The Robot Report said KUKA deployed its Automation Management Platform at its Toledo, Ohio, production operation, a facility with 285 robots and more than 60,000 connected devices producing over 300 vehicle bodies per day. This is a concrete enterprise-production-readiness example: value is shifting toward workflow orchestration layers that coordinate robots, factory data, and maintenance rather than standalone automation hardware alone. (Source: The Robot Report)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>CEA-Leti highlights memory and power limits in AI scaling:</strong> EE Times reported that CEA-Leti is emphasizing 3D stacking, chiplets, and lower-power architectures as AI workloads run into memory-bandwidth and energy constraints. The investment implication is that advanced packaging and system-level integration are becoming central bottlenecks in AI infrastructure, with relevance beyond leading-edge chips to packaging tools, substrates, interconnect, and thermal-management ecosystems. (Source: EE Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>South Korea exports beat forecasts on AI-linked demand:</strong> Reuters reported that South Korea’s July exports exceeded expectations, supported by robust demand tied to AI investments. As a major technology supply-chain barometer, South Korea’s trade data can help advisors monitor whether AI capex is flowing through to semiconductors, components, and electronics demand rather than remaining confined to company announcements. (Source: Reuters)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Farmers’ group seeks a data-center moratorium:</strong> The Center Square reported that a 24,000-member farmers’ group is seeking a moratorium on data centers amid eminent-domain concerns. The policy read-through is that AI infrastructure expansion increasingly faces local land-use, water, power, and community-consent risks, which can affect project timelines and raise the value of sites with clearer permitting paths. (Source: The Center Square)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Atlas Energy expands autonomous industrial trucking:</strong> Robotics & Automation News reported that Atlas Energy Solutions is expanding Kodiak-powered autonomous proppant delivery in the Permian Basin, adding a second load-out point and targeting growth from 28 driverless trucks to 100 vehicles by 2027. This is a meaningful physical-AI deployment signal because autonomy is being applied to a defined industrial route network with measurable utilization, labor, safety, and logistics implications. (Source: Robotics & Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>AI capex conversion:</strong> Monitor whether hyperscaler infrastructure spending translates into higher cloud AI revenue, stronger utilization, and visible customer adoption rather than only larger construction backlogs.</li>
+<li><strong>Power and permitting friction:</strong> Watch for more data-center projects tied to nuclear, gas, renewables, or behind-the-meter power, as well as local moratoriums that could slow site approvals.</li>
+<li><strong>Governance as a deployment gate:</strong> Track whether major platforms delay, roll back, or restrict generative AI features, especially in consumer, mapping, search, education, and regulated workflows.</li>
+<li><strong>Physical AI moving from pilots to fleets:</strong> Look for robotics and autonomy deployments with clear unit economics, repeatable routes, service contracts, and production-scale operating data.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming an infrastructure cycle, not just a software cycle:</strong> The next phase depends on power, data centers, chips, packaging, cooling, and permitting as much as model quality.</li>
+<li><strong>Big AI spending is not automatically the same as big AI returns:</strong> The key question for clients is whether companies can convert capex into durable revenue, productivity, or platform control.</li>
+<li><strong>Governance risk is now part of the AI product cycle:</strong> Even leading technology firms may need to pause or revise AI features when safety policies, user trust, or regulatory expectations are not met.</li>
+<li><strong>Industrial AI may be quieter but more measurable:</strong> Factory automation and autonomous logistics deployments can offer clearer productivity metrics than many consumer-facing AI tools.</li>
+<li><strong>Data-center debates are becoming local investment variables:</strong> Land use, eminent domain, power access, and community pushback can influence which infrastructure projects move fastest.</li>
+</ul>
