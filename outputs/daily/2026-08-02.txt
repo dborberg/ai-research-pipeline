@@ -1,0 +1,54 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>August 02, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The dominant theme is that AI’s next investment phase is being shaped as much by deployment constraints as by model capability. Europe’s stricter AI rules, local data-center moratoriums, tighter credit scrutiny, and robotics funding momentum all point to a market where production readiness, permitting, governance, and capital access determine which AI opportunities can scale.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>EU AI rules moved into a stricter operating phase:</strong> European AI regulation is entering a stage with mandatory transparency requirements and prohibitions on manipulative AI systems. For advisors, this reinforces that Enterprise Production Readiness now includes auditability, disclosure, model-governance workflows, and market-access planning, not just model performance. (Source: informat.ro)</li>
+<li><strong>DeKalb extended its data-center moratorium to 2027:</strong> Local officials prolonged a pause on data-center development while regulatory debate continues, adding another example of community and zoning constraints slowing AI infrastructure buildout. The read-through is that compute demand may remain strong, but permitting, grid capacity, water usage, and local politics can alter the timing and economics for developers, utilities, and power-equipment suppliers. (Source: WABE)</li>
+<li><strong>Robotics capital formation broadened the AI cycle:</strong> The Robot Report’s July roundup highlighted major robotics funding rounds, humanoid and mobile-robot launches, reinforcement-learning advances, and robotics training-infrastructure activity. This keeps physical AI on the investable-theme radar, but the key diligence question is whether capital is producing repeatable customer deployments rather than demonstrations. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>NVIDIA’s NeMo team released Molt for agentic reinforcement learning:</strong> NVIDIA reportedly released Molt, an Apache-2.0 PyTorch-native framework designed to simplify agentic reinforcement-learning research by combining tools such as Ray, vLLM, and NVIDIA AutoModel. This is not a near-term enterprise revenue signal by itself, but it shows platform convergence around training, inference, and workflow orchestration for longer-horizon AI agents. (Source: MarkTechPost)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>A Georgia city halted new data centers for 12 months:</strong> A local pause on new data-center development followed community backlash, underscoring that AI compute expansion is increasingly constrained by local approval, land use, noise, water, and power concerns. Advisors should frame AI infrastructure as a physical buildout cycle with permitting risk, not just a cloud-demand story. (Source: The Cool Down)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Credit discipline is becoming part of the AI-infrastructure conversation:</strong> Bloomberg reported that loan investors are pushing back as fear rises in the loan market, without tying the move to a specific AI financing. The advisor read-through is that tighter scrutiny in leveraged credit could matter for capital-intensive data-center, power, and connectivity projects that depend on repeated access to funding. (Source: Bloomberg.com)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>US AI regulation remains a watch item rather than a new rule:</strong> A Forbes analysis argued that AI regulation is likely to come to the United States and outlined possible timing and policy pathways, but the available article details did not point to a specific enacted measure. The practical implication is that governance software, legal review, model-risk management, and compliance readiness may become more important enterprise buying criteria even before federal rules are finalized. (Source: Forbes)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Physical AI signal was concentrated in funding and launch activity:</strong> The most relevant robotics development in the window was the July robotics roundup covered above, while no additional single commercial deployment materially changed the thesis. Continue monitoring whether humanoid and mobile-robot announcements convert into paid manufacturing, logistics, healthcare, defense, or field-service workflows. (Source: Full article set)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>AI Act implementation details:</strong> Watch how large model providers and enterprise software vendors translate transparency and manipulation restrictions into product changes, documentation, customer contracts, and compliance tooling.</li>
+<li><strong>Local data-center permitting:</strong> Track whether moratoriums remain isolated local actions or become a broader pattern in high-growth power markets, especially where grid capacity and community resistance are already tight.</li>
+<li><strong>Robotics proof points:</strong> Look for customer orders, fleet utilization, repeat deployments, safety certifications, and service revenue rather than prototype launches alone.</li>
+<li><strong>Credit availability for infrastructure:</strong> Monitor whether loan-market caution raises financing costs for data centers, power projects, cooling systems, and network buildouts tied to AI demand.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is moving from model excitement to execution risk:</strong> The winners may be those that can deploy safely, comply with rules, secure power, and finance infrastructure at scale.</li>
+<li><strong>Regulation is not only a risk:</strong> Clearer rules can raise compliance costs, but they can also favor companies with strong governance, audit trails, and enterprise-grade controls.</li>
+<li><strong>Data centers are local political assets now:</strong> Compute demand is global, but approvals happen city by city, making permitting and community acceptance key variables.</li>
+<li><strong>Robotics is becoming a real AI-adjacent theme:</strong> The opportunity is compelling, but advisors should separate durable deployments from eye-catching demonstrations.</li>
+<li><strong>Capital intensity matters:</strong> AI growth depends on chips, power, facilities, cooling, networks, and credit markets, so the investment conversation should extend beyond software platforms.</li>
+</ul>
