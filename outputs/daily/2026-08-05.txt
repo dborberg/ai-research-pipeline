@@ -1,0 +1,56 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>August 05, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>AI investment attention is broadening from model breakthroughs to the physical, geographic, and regulatory capacity needed to turn demand into revenue. For advisor conversations, today’s slate reinforces a disciplined message: infrastructure expansion, supplier participation, and public-sector AI adoption remain powerful themes, but investor expectations, local permitting, and execution bottlenecks are becoming more important risk filters.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>CoreWeave entered Asia-Pacific with an Indonesia data center plan:</strong> CoreWeave announced its first data center in the Asia-Pacific region, extending its AI-focused cloud footprint beyond existing markets. The read-through is that AI compute demand is still globalizing, with potential implications for data center developers, power infrastructure, networking, and regional cloud competition. (Source: Reuters)</li>
+<li><strong>AMD’s AI revenue outlook did not satisfy investors:</strong> AMD’s AI-powered revenue forecast failed to impress the market, signaling that AI exposure alone is no longer enough when expectations are already elevated. The advisor takeaway is that the AI trade is becoming more selective, with earnings quality, forecast credibility, supply capacity, and customer traction likely to matter more than thematic association. (Source: Reuters)</li>
+<li><strong>NIST joined the National Genesis Mission for applied AI innovation:</strong> NIST and the DOE Office of Science signed an MOU to collaborate on a whole-of-government AI effort aimed at accelerating U.S. scientific discovery and innovation. The policy read-through is that federal support is moving toward applied AI in manufacturing, robotics, cyber defense, and advanced science, which may support long-cycle demand for AI tools, measurement standards, and mission-critical infrastructure. (Source: NIST News)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Yusen Logistics moved AI into warehouse coordination:</strong> Yusen Logistics Americas entered a strategic collaboration with Destro AI to deploy an AI-powered human-robot collaboration and physical AI platform for warehouse operations. This is a practical Workflow Orchestration signal: AI adoption is moving from knowledge-worker copilots into operational environments where productivity gains depend on coordinating people, robots, inventory, and workflows. (Source: Robotics & Automation News)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Infineon pointed to AI-driven chip demand beyond the obvious leaders:</strong> Infineon forecast strong revenue growth tied to booming AI demand, indicating that the infrastructure cycle may be supporting a broader set of semiconductor suppliers. For portfolios, the implication is that AI infrastructure exposure may extend into power semiconductors, sensors, industrial chips, and other enabling components rather than remaining confined to accelerator vendors. (Source: WSJ)</li>
+<li><strong>Charlotte updated data center rules during a moratorium:</strong> Charlotte revised data center regulations while its moratorium remained in place, underscoring that AI infrastructure expansion is increasingly constrained by local land-use, power, water, and community concerns. The investment read-through is that permitting and siting risk can affect data center timelines and costs, making geography and local policy part of the AI infrastructure diligence process. (Source: WSOC TV)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>SpaceX linked heavy spending to AI-related revenue growth:</strong> SpaceX said its spending spree is supercharging AI revenues, according to the reported headline, though the available excerpt does not provide scale or segment detail. The AI-adjacent implication is that frontier technology platforms with connectivity, data, and infrastructure assets may increasingly frame capital intensity as a path to AI-enabled revenue, but investors still need evidence on margins, payback periods, and durability. (Source: WSJ)</li>
+<li><strong>PhyAI proposed a unified runtime for physical AI workloads:</strong> The PhyAI paper described an inference engine spanning model evaluation, cloud reinforcement-learning rollouts, edge GPU serving, and onboard deployment for physical AI systems. This is early-stage and not a commercial earnings signal, but it highlights a possible Platform Convergence trend in robotics and autonomy software infrastructure across cloud training and edge deployment. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Oregon moved toward statewide data center regulation:</strong> Oregon cities are pushing back against data center development, and a committee is set to propose statewide regulations. For AI investors, this reinforces that the next phase of compute buildout may be shaped as much by state and local governance as by chip supply, with implications for project timing, power access, tax incentives, and community acceptance. (Source: Oregon Public Broadcasting)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>NVIDIA released an autonomous-vehicle model for commercial use:</strong> NVIDIA made Alpamayo 2 Super, described as a frontier open model for robotaxis and autonomous vehicles, available for commercial use. The development is a Physical AI signal that autonomy vendors are pushing models from research toward production readiness, especially for rare and complex driving scenarios that have historically limited deployment confidence. (Source: NVIDIA Blog)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>AI earnings threshold:</strong> Monitor whether upcoming semiconductor, cloud, and infrastructure results show revenue conversion that matches elevated AI expectations, not just optimistic demand commentary.</li>
+<li><strong>Data center permitting friction:</strong> Watch for more city and state actions on data center moratoriums, power interconnection rules, water use, and tax incentives, as these can reshape where AI capacity gets built.</li>
+<li><strong>Physical AI commercialization:</strong> Track whether autonomous-vehicle, warehouse, industrial, and robotics platforms move from demos and pilots into repeatable commercial deployments with measurable productivity or safety outcomes.</li>
+<li><strong>Public-sector AI programs:</strong> Watch federal AI initiatives for procurement details, standards development, and funded projects that could translate policy ambition into vendor revenue opportunities.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming an execution story:</strong> The market is starting to reward proof of revenue, capacity, and customer adoption more than broad AI branding.</li>
+<li><strong>Infrastructure is the bottleneck and the opportunity:</strong> Data centers, power, cooling, networking, and permitting are now central to the AI cycle, not background details.</li>
+<li><strong>Policy risk is moving local:</strong> AI regulation is not only about model safety; city and state rules can materially affect where compute capacity gets built.</li>
+<li><strong>Physical AI is early but important:</strong> Robotics, autonomy, and warehouse coordination show how AI may expand from screens into real-world operations, though commercialization remains uneven.</li>
+<li><strong>Diversification still matters:</strong> AI beneficiaries may include less obvious suppliers and infrastructure enablers, but valuation discipline and earnings validation are becoming more important.</li>
+</ul>
