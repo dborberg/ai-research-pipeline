@@ -1,0 +1,56 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>August 07, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The dominant theme is that AI is becoming a capital-intensive infrastructure cycle as much as a software cycle. The strongest stories point to rising semiconductor capacity commitments, production-grade agent infrastructure, data center financing, and growing grid and permitting friction, giving advisors a useful way to frame both the opportunity and the execution risks behind AI-related investment enthusiasm.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>SK Hynix commits to a major capacity buildout:</strong> SK Hynix plans to invest $38 billion to expand chip production capacity, underscoring continued confidence in demand for advanced memory and semiconductor inputs tied to AI infrastructure. The advisor read-through is that the AI cycle remains deeply dependent on upstream manufacturing capacity, with implications beyond chip designers for equipment, materials, packaging, and power-intensive fab ecosystems. (Source: WSJ)</li>
+<li><strong>AWS pushes agents toward production infrastructure:</strong> AWS announced runtime instances in Amazon Bedrock AgentCore, providing persistent managed EC2 infrastructure for production AI agents, including multi-agent collaboration, GPU-backed workloads, and sessions lasting up to 14 days. This is a concrete Enterprise Production Readiness signal: hyperscalers are moving from model access to workflow execution infrastructure, making orchestration, reliability, security, and cloud consumption the next adoption battleground. (Source: AWS News Blog)</li>
+<li><strong>Texas data center pause highlights physical bottlenecks:</strong> BloombergNEF reported that a pause affecting Texas data center development could put 20% of the U.S. data center pipeline at risk of delay. For advisors, this reinforces that AI infrastructure growth is constrained not only by chips and capital, but also by power availability, grid interconnection, permitting, and local political tolerance. (Source: Utility Dive)</li>
+<li><strong>Fed officials are watching AI capex:</strong> Reuters reported that the furious pace of AI investment is now on the radar of some Federal Reserve officials. That matters because AI spending is becoming large enough to enter macro policy discussions, raising the importance of monitoring whether capex supports productivity growth or contributes to overheating, concentration risk, and financial-cycle vulnerability. (Source: Reuters)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>ASTELD offers a framework for evaluating autonomous agents:</strong> The ASTELD article introduced a six-axis classification framework for autonomous AI agent platforms across architecture, security, tool integration, execution, autonomy, and deployment, and applied it to eight platforms and more than 50 OpenClaw benchmarks. While academic rather than a commercial deployment, it highlights the practical evaluation gap enterprises face as agents move into real workflows, where security, auditability, tool access, and execution boundaries may matter as much as model quality. (Source: Design, Evaluation, and an OpenClaw Case Study)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Microsoft expands Indian AI cloud capacity:</strong> Microsoft opened its largest data center hub in India as the AI infrastructure race intensifies. The move points to continued hyperscaler capital deployment in high-growth markets and supports a broader read-through to cloud platforms, local connectivity, power infrastructure, and enterprise AI adoption in emerging digital economies. (Source: Reuters)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Bank of America sees a robust AI data center deal pipeline:</strong> BloombergNEF highlighted Bank of America’s view that its AI data center deal pipeline remains robust, pointing to sustained financing demand around AI infrastructure. The investment implication is that AI capex is increasingly intermediated through large-scale project finance, credit, real estate, utilities, and infrastructure markets, not only through public semiconductor and software equities. (Source: BloombergNEF)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Lochbuie, Colorado imposes a five-year data center moratorium:</strong> The town passed a five-year pause on data center development, adding to evidence that local governments are scrutinizing data center land use, power demand, water usage, and community impact. For portfolio monitoring, permitting and municipal policy are becoming material variables in the AI infrastructure buildout, especially for developers and suppliers exposed to specific geographies. (Source: Data Center Dynamics)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Brain Corp reports scaled autonomous robot deployment:</strong> Brain Corp said BrainOS-powered robots grew 68% year over year in the first half of 2026 and surpassed 50,000 autonomous robots worldwide across retail, logistics, airports, commercial cleaning, and related settings. This is a useful Physical AI signal because it suggests autonomous systems are moving beyond pilots into repeatable commercial operations, with labor, fleet management, maintenance, and workflow integration becoming key adoption variables. (Source: Robotics & Automation News)</li>
+<li><strong>Tate uses cobots to relieve data center supply-chain constraints:</strong> Data center infrastructure company Tate deployed 58 Hirebotics Cobot Welder systems across facilities in Arkansas, Virginia, and Kentucky, with a reported 12-fold increase in per-welder throughput. The read-through is that AI infrastructure bottlenecks may be eased partly through automation inside the supply chain itself, benefiting manufacturers that can scale production of racks, enclosures, cooling-related components, and other physical data center inputs. (Source: Robotics & Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Grid and permitting friction:</strong> Watch whether Texas-style delays and local moratoriums spread to other high-growth data center markets, especially where power interconnection queues are already tight.</li>
+<li><strong>AI capex and macro policy:</strong> Monitor whether central bank commentary shifts from curiosity about AI investment to concern about inflation, credit conditions, financial concentration, or productivity assumptions.</li>
+<li><strong>Agent infrastructure adoption:</strong> Track whether enterprises move from testing chatbots to deploying persistent, tool-using agents with measurable workflow ownership, audit controls, and longer execution windows.</li>
+<li><strong>Financing durability:</strong> Watch data center debt, private credit, utility interconnection funding, and hyperscaler lease commitments for signs that AI infrastructure appetite remains disciplined rather than speculative.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is no longer just a model story:</strong> The investment cycle increasingly runs through chips, power, data centers, financing, permitting, and enterprise workflow integration.</li>
+<li><strong>Infrastructure is both the opportunity and the constraint:</strong> Demand for AI capacity remains strong, but grid access and local approvals can determine how quickly that demand becomes revenue.</li>
+<li><strong>Production agents need more than intelligence:</strong> Enterprises will care about reliability, security, orchestration, and governance before they hand real workflows to autonomous systems.</li>
+<li><strong>AI capex is now macro-relevant:</strong> When Federal Reserve officials are watching AI investment, advisors should connect AI enthusiasm to broader questions about growth, productivity, rates, and capital discipline.</li>
+<li><strong>Physical automation is part of the AI buildout:</strong> Robotics and cobots may help relieve labor and manufacturing bottlenecks in the same infrastructure supply chains that support AI demand.</li>
+</ul>
