@@ -1,0 +1,54 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>August 10, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The AI investment cycle is increasingly being shaped by bottlenecks outside the model itself: distribution control, content economics, power availability, financing discipline, local politics, and governance rules. For advisor conversations, the key point is that opportunity is broadening beyond chips and software, but so are the execution risks tied to infrastructure, regulation, and who captures value in AI-enabled workflows.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Google’s AI search pressure on the open web intensified:</strong> Bloomberg reported that Google’s AI features are putting pressure on web publishers and other online participants, who are beginning to push back against traffic and monetization changes. This matters because AI answers could reshape search economics, digital advertising, content licensing, and platform power, making distribution control a central investment risk and opportunity. (Source: Bloomberg.com)</li>
+<li><strong>U.S. data center financing faced tougher lender scrutiny:</strong> Reuters reported that lenders are scrutinizing U.S. data center financing more closely as community opposition to new projects builds. The read-through is that AI infrastructure demand remains strong, but project timelines, financing costs, utility access, and local permitting are becoming critical variables for data center developers, power providers, and grid equipment suppliers. (Source: Reuters)</li>
+<li><strong>China’s humanoid robotics listing race moved into focus:</strong> Reuters highlighted Unitree and the broader push by Chinese humanoid robot makers to pursue public listings. The development points to rising capital-market activity around physical AI, but advisors should separate long-term automation potential from near-term questions about unit economics, manufacturing scale, safety, and commercialization timelines. (Source: Reuters)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Agentic AI governance became a production-readiness issue:</strong> An arXiv paper argued that whether agentic AI empowers users will depend less on model capability alone and more on APIs, protocols, standards, and default configurations. The implication is that enterprise adoption may favor workflow orchestration, auditability, and governance layers that let firms control agent behavior rather than accept closed-platform defaults. (Source: arXiv.org)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Nvidia was reported to be backing AI power infrastructure:</strong> MarketScreener reported that Nvidia could invest up to $3 billion in Lancium for AI data center power infrastructure. If confirmed, the deal would reinforce that power availability is becoming a strategic constraint in AI buildout, with investment read-throughs extending to energy procurement, grid interconnection, power management, and data center site selection. (Source: marketscreener.com)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Frontier AI capital markets remained selective:</strong> Beyond the Unitree listing theme and the reported Nvidia-Lancium infrastructure investment, the article set did not provide additional high-confidence AI financing, IPO, M&amp;A, or debt-facility details with concrete terms. For portfolios, the practical takeaway is to monitor where capital is moving from model hype into assets with clearer constraints and monetization paths, especially robotics, power, and data center infrastructure. (Source: Full article set)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Ohio data center politics became more restrictive:</strong> Ohio Capital Journal reported that all candidates for Ohio governor have called for restrictions on the state’s data center boom. This highlights a growing policy risk for AI infrastructure: state and local governments can affect the pace, geography, cost, and permitting certainty of compute expansion even when end-demand for AI capacity remains high. (Source: Ohio Capital Journal)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Analog Devices renewed support for robotics startups:</strong> The Robot Report said Analog Devices returned as a strategic sponsor of MassRobotics, giving startups access to technical expertise, mentorship, seed funding, engineering resources, and sensor, signal-processing, and power-management technologies. The investment relevance is that physical AI depends on more than models; sensing, control, power efficiency, and industrial-grade components are key enablers for moving robotics from prototypes into deployment. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Data center financing conditions:</strong> Watch loan spreads, construction delays, interconnection queues, local moratoria, and community challenges as early indicators of whether AI infrastructure capex can proceed on expected timelines.</li>
+<li><strong>AI search and content monetization:</strong> Monitor whether publishers and web platforms secure licensing, revenue-sharing, or traffic-preservation agreements as AI answers change the economics of search.</li>
+<li><strong>Humanoid robotics disclosures:</strong> Watch for Unitree or peer prospectuses that reveal revenue quality, backlog, gross margins, safety records, component sourcing, and customer concentration.</li>
+<li><strong>AI governance frameworks:</strong> Track federal, state, and international policy proposals that could define liability, transparency, data use, cybersecurity, and agentic AI control requirements.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>The AI story is broadening:</strong> The next phase is not just about better models; it is also about power, permitting, financing, data rights, and workflow control.</li>
+<li><strong>Infrastructure is a growth opportunity with friction:</strong> Demand for AI compute remains significant, but local opposition and lender scrutiny can affect which projects actually get built.</li>
+<li><strong>AI search may redistribute value online:</strong> If users get answers without clicking through, publishers, advertisers, and platforms may need new economic arrangements.</li>
+<li><strong>Robotics is moving onto the capital-markets radar:</strong> Humanoid robots are a compelling physical AI theme, but investors should look for proof of commercial deployment rather than demonstrations alone.</li>
+<li><strong>Agentic AI needs governance to scale:</strong> Enterprises may adopt AI agents faster when they can audit, control, and integrate them into real workflows safely.</li>
+</ul>
