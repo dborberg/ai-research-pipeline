@@ -1,0 +1,362 @@
+SUPPLEMENTAL INPUT: TIER 2 WEEKLY OVERRIDE CANDIDATES
+
+These candidates come from an independent review of the prior seven calendar days of Gen AI and AI-adjacent source material.
+
+Use them only when they represent systemic weekly developments, not to flood the Weekly with unrelated stories.
+
+
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Unitree targets $9 billion valuation in landmark IPO as humanoid robot race accelerates
+SOURCE: Robotics & Automation News
+PUBLISHED_AT: 2026-08-07T13:07:50
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because it shows investor appetite for physical AI and humanoid robotics moving from private speculation toward public-market financing. Unitree's revenue growth, planned manufacturing expansion, and strategic investment from DeepSeek point to accelerating commercialization, while margin pressure and regulatory risk highlight the capital intensity and geopolitical uncertainty around the sector.
+SUMMARY: Unitree has priced a Shanghai STAR Market IPO valuing the Chinese humanoid robotics company at about $9 billion, with plans to raise roughly $900 million for robot hardware, software, new products, and manufacturing expansion. The listing gives public-market investors one of the first direct exposures to a humanoid robotics manufacturer, even as profitability has weakened due to higher R&D and marketing spend and US-China technology restrictions create market-access risk.
+COMPANIES: Unitree, DeepSeek, Tesla, Bank of America, Morgan Stanley
+EVENT_PRIORITY: 115.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 94
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: robotics
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Unitree IPO oversubscribed more than 5,000 times as investors pile into humanoid robotics
+SOURCE: Robotics & Automation News
+PUBLISHED_AT: 2026-08-14T11:09:07
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This highlights strong investor appetite for physical AI and humanoid robotics, an area that could become an important extension of the broader AI investment theme beyond software and data centers. The scale of demand, capital raised, and valuation suggest the market is assigning meaningful growth potential to robotics companies, with possible read-throughs for automation, components, sensors, and AI hardware ecosystems.
+SUMMARY: Unitree Robotics’ IPO was reportedly oversubscribed more than 5,000 times, reflecting intense investor demand for one of China’s best-known humanoid robotics companies. The Hangzhou-based firm priced shares at 150.8 yuan, raised approximately $900 million, and reached a valuation of around $9 billion, according to CNBC.
+COMPANIES: Unitree Robotics, CNBC
+EVENT_PRIORITY: 114.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 99
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: EXCLUSIVE: Vantage Data Centers explores IPO at $100 billion valuation or sale, sources say - Reuters
+SOURCE: "AI data center" - Google News
+PUBLISHED_AT: 2026-08-13T10:08:55
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because data centers are a key physical bottleneck and investment channel for AI growth. A potential $100 billion valuation or sale would signal strong market appetite for AI-adjacent infrastructure assets and may support advisor conversations around capital spending, infrastructure funds, utilities, power demand, and second-derivative beneficiaries.
+SUMMARY: Reuters reports that Vantage Data Centers is exploring either an IPO at a potential $100 billion valuation or a sale, according to sources. The potential transaction highlights continued investor interest in large-scale data center infrastructure tied to rising compute demand.
+COMPANIES: Vantage Data Centers, Reuters
+EVENT_PRIORITY: 109.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 94
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Defense drone developer Cambridge Aerospace raises $300M
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-08-11T20:34:25
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This highlights accelerating private capital formation around defense autonomy, where AI-enabled drones and counter-drone systems are moving from development into contracted production. For advisor conversations, the read-through is that physical AI is becoming a national security priority, with potential beneficiaries across defense technology, autonomous systems, sensors, manufacturing capacity, and aerospace supply chains.
+SUMMARY: Cambridge Aerospace raised $300 million in Series C funding at a $3.4 billion valuation, just months after a $200 million Series B, to expand manufacturing and deliver on defense contracts. The company is developing Skyhammer, a drone-based air defense system designed to intercept drones and low-speed missiles, and has received contracts from the U.K. Ministry of Defence.
+COMPANIES: Cambridge Aerospace Ltd., DFJ Growth, Lux, Accel, Lakestar, Never Lift, Ora Global, Elad Gil & Co., Ondas Inc., DZYNE Technologies LLC, Quantum Systems, Mach Industries, HavocAI Inc.
+EVENT_PRIORITY: 106.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 87
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: autonomy
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Strengthening U.S. Army sustainment: TALUS to deliver autonomous distribution
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-08-12T13:36:55
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This highlights continued defense-sector demand for autonomous systems that reduce personnel risk and improve logistics resilience. While the contract value is modest, the Army’s move toward operational evaluation shows a concrete use case for physical AI, robotics integration, and autonomous mobility in mission-critical environments, with potential read-throughs to defense technology suppliers and specialized autonomy platforms.
+SUMMARY: The U.S. Army awarded a Stratom-led team a Project Sustainment contract to develop TALUS, a modular autonomous logistics system for resupplying dispersed forces in contested environments. The 18-month, $15.9 million prototype effort will integrate autonomy, mobility, cargo handling, and systems engineering capabilities for soldier evaluation and potential broader fielding decisions.
+COMPANIES: Stratom Inc., ND Defense, Forterra, GS Engineering, Waltonen Engineering
+EVENT_PRIORITY: 102.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 92
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: The CASE Framework: A Multi-Disciplinary Control Architecture for Governing Enterprise Agentic AI
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-08-12T04:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because governance may become a key bottleneck to enterprise AI agent adoption and monetization. The article suggests that current tools and practices may not be sufficient for production-scale autonomous AI, creating potential demand for platforms that provide monitoring, orchestration, compliance, evaluation, and operational controls. For advisors, it supports the view that enterprise AI adoption is moving beyond model capability toward workflow governance, risk management, and production readiness.
+SUMMARY: The paper proposes the CASE framework for governing enterprise agentic AI across four layers: individual agents, agent collectives, human-agent teams, and operational fleets. It argues that current enterprise governance practices and tools are inadequate for autonomous agents, citing evidence that most documented production failures span multiple layers and that public deployments remain at low maturity. The authors highlight the EU AI Act’s human oversight requirements as a regulatory driver for more rigorous agent governance architectures.
+COMPANIES: 
+EVENT_PRIORITY: 87.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Exclusive | Situational Awareness Bets $400 Million on Stealth Chip Startup After Crash - WSJ
+SOURCE: "AI investment" - Google News
+PUBLISHED_AT: 2026-08-07T22:31:00
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because large private investments in AI chip startups signal continued demand for alternatives and capacity expansion in AI compute infrastructure. For advisors, it supports conversations about the capital intensity of AI, the importance of semiconductor supply chains, and the risk-return profile of early-stage AI infrastructure bets.
+SUMMARY: WSJ reports that Situational Awareness is making a $400 million bet on a stealth chip startup following a crash. The limited excerpt indicates a significant AI infrastructure financing event tied to semiconductor development, but does not provide details on the startup, technology, valuation, or crash circumstances.
+COMPANIES: Situational Awareness, WSJ
+EVENT_PRIORITY: 82.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 71
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Wall Street giants bet Nvidia’s AI chips will defy the laws of finance - Financial Times
+SOURCE: "AI regulation" - Google News
+PUBLISHED_AT: 2026-08-12T21:11:50
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: Nvidia remains a central bellwether for AI infrastructure spending and equity market enthusiasm around generative AI. Advisor conversations should balance the strength of AI chip demand against valuation risk and the possibility that expectations for AI monetization may already be embedded in market prices.
+SUMMARY: The article centers on Wall Street expectations that Nvidia’s AI chips can continue supporting exceptional financial performance despite normal valuation and finance constraints. Based on the available excerpt, the key issue is whether AI infrastructure demand can justify sustained optimism around Nvidia.
+COMPANIES: Nvidia
+EVENT_PRIORITY: 74.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: What is Unitree and why are China’s humanoid robot makers racing to list? - Reuters
+SOURCE: "artificial intelligence" - Google News
+PUBLISHED_AT: 2026-08-10T02:36:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because humanoid robotics is an emerging area of physical AI that may require significant capital for product development, manufacturing scale-up, and commercialization. Potential listings by Chinese robotics companies could give investors more visibility into the sector, but the limited excerpt does not provide enough detail to assess fundamentals or near-term investability.
+SUMMARY: Reuters highlights Unitree and the broader push by China’s humanoid robot makers to pursue public listings. The article points to growing capital-market activity around humanoid robotics, though the provided excerpt does not include details on timing, valuation, customers, or deployment scale.
+COMPANIES: Unitree
+EVENT_PRIORITY: 70.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: VicOne releases free NVIDIA Isaac Sim cybersecurity extension based on DEF CON 34 research
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-08-10T17:07:10
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.5
+ADVISOR_RELEVANCE: This highlights a maturing layer of the physical AI stack: cybersecurity and safety validation before robots are deployed at scale. It supports the broader investment narrative that robotics adoption will require not only AI models and hardware, but also simulation, security, compliance, and system-level validation tools, with read-throughs to NVIDIA’s robotics software ecosystem and specialized cybersecurity providers.
+SUMMARY: VicOne released a free Radeis Extension for NVIDIA Isaac Sim that lets robotics developers test cyber-safety scenarios against their own robot models before deployment. The tool translates findings from VicOne’s DEF CON robotics hacking research into repeatable simulation workflows covering risks such as manipulated visual inputs, hijacked commands, poisoned AI policies, and exploited connected interfaces.
+COMPANIES: VicOne, NVIDIA, Trend Micro
+EVENT_PRIORITY: 34.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: AMD Challenges GPU-Centric Architectures as It Takes Aim at Nvidia in Robotics
+SOURCE: EE Times
+PUBLISHED_AT: 2026-08-11T14:09:45
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 4.1
+ADVISOR_RELEVANCE: This matters because robotics is an emerging AI adoption frontier, and AMD’s integrated CPU-GPU-NPU design suggests potential competition against Nvidia’s dominant GPU-led architecture. For advisors, the key read-through is that AI infrastructure competition may extend beyond data centers into robotics and edge devices, creating potential implications for semiconductor market share and ecosystem positioning.
+SUMMARY: AMD introduced a new system-on-chip for robotics that combines CPU, GPU, and NPU capabilities on one chip with unified memory. The move positions AMD as challenging Nvidia’s GPU-centric approach in robotics AI architectures.
+COMPANIES: AMD, Nvidia
+EVENT_PRIORITY: 27.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Analog Devices returns as strategic sponsor to aid MassRobotics startups
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-08-09T12:30:42
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 5.4
+ADVISOR_RELEVANCE: This highlights how AI and robotics adoption depends on physical infrastructure, including sensors, signal processing, and power management, not just software models. For advisors, ADI’s role points to potential second-derivative beneficiaries of robotics growth and reinforces the importance of semiconductor suppliers in enabling intelligent edge and automation use cases.
+SUMMARY: Analog Devices has renewed its role as a strategic sponsor of MassRobotics, giving robotics startups access to ADI’s technical expertise, mentorship, seed funding, engineering resources, and sensor, signal processing, and power management technologies. The partnership is aimed at helping startups overcome hardware bottlenecks and move physical robotics systems from proof of concept toward pilots and commercialization.
+COMPANIES: Analog Devices, MassRobotics, Analog Garage, Amazon Robotics
+EVENT_PRIORITY: 27.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: AI infrastructure
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Using Agents to Maximize NVIDIA Jetson Memory Usage at the Edge
+SOURCE: EE Times
+PUBLISHED_AT: 2026-08-13T12:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 3.4
+ADVISOR_RELEVANCE: This matters because software-driven efficiency gains can reduce hardware costs and expand the practical use cases for edge AI. For advisors, the read-through is that AI adoption is not only about larger data centers; optimization at the device level may support broader deployment in embedded, industrial, robotics, and physical AI applications.
+SUMMARY: EE Times highlights how NVIDIA Jetson's software optimization stack can reclaim memory for edge AI systems. The implication is that teams may be able to run larger AI workloads on lower-cost Jetson modules, improving edge deployment economics.
+COMPANIES: NVIDIA
+EVENT_PRIORITY: 26.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Experts look ahead at the next 20 years of robotics at RoboBusiness
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-08-08T12:30:52
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 3.4
+ADVISOR_RELEVANCE: The article is primarily an event preview, but it points to several investable AI themes: robotics moving from research into commercial deployment, humanoids entering logistics, and automation spreading across labor-intensive industries. For advisor conversations, it supports the view that AI is increasingly extending from software into physical-world automation, with potential implications for productivity, labor redesign, and industrial technology ecosystems.
+SUMMARY: RoboBusiness 2026 will feature an opening keynote on the next 20 years of robotics, with speakers from Robust AI, Agility Robotics, and UC Berkeley discussing technologies, markets, opportunities, and challenges shaping the sector. The article highlights robotics’ expansion across manufacturing, logistics, healthcare, agriculture, defense, and fulfillment, including commercially deployed humanoid robots and human-centered intelligent powered carts.
+COMPANIES: Robust AI, Agility Robotics, MassRobotics
+EVENT_PRIORITY: 26.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Google AI health coach to use Abbott glucose data
+SOURCE: AI News
+PUBLISHED_AT: 2026-08-14T10:00:00
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 3.7
+ADVISOR_RELEVANCE: This is a concrete example of large technology and medical-device companies combining AI models, consumer health platforms, and continuous biometric data to create subscription-based digital health services. It highlights potential read-throughs for Alphabet’s Gemini ecosystem, Abbott’s Lingo and FreeStyle Libre technology base, and broader adoption of AI-enabled wellness tools, while also underscoring regulatory and liability limits around non-medical AI recommendations.
+SUMMARY: Abbott and Google signed a multiyear agreement to integrate Abbott’s Lingo continuous glucose monitor data into the Google Health app and Gemini-powered Google Health Coach. The service will use glucose trends alongside activity, sleep, wellness, and medical-record data to provide personalized recommendations, while Google emphasizes the tool is not intended for medical use and may be inaccurate or incomplete.
+COMPANIES: Abbott, Google, Zocdoc, Novo Nordisk, AWS
+EVENT_PRIORITY: 25.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Robot orders increase to $622 million in Q2 as automation demand broadens across industries
+SOURCE: Robotics & Automation News
+PUBLISHED_AT: 2026-08-13T10:09:30
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.5
+ADVISOR_RELEVANCE: The data provides a concrete signal that automation spending remains active across multiple industries, supporting advisor conversations around robotics, industrial automation, and second-derivative beneficiaries such as component suppliers, systems integrators, and factory technology providers. The lack of named company detail limits direct stock-specific read-throughs, but the order value and sector breadth are useful indicators of ongoing physical automation adoption.
+SUMMARY: North American companies ordered 8,940 robots valued at $622 million in Q2 2026, according to data from the Association for Advancing Automation. The growth was broad-based across semiconductors/electronics, automotive components, food and consumer goods, metals, and life sciences, suggesting automation demand is extending beyond traditional manufacturing use cases.
+COMPANIES: 
+EVENT_PRIORITY: 25.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: NeuroPilot: An Agent-Driven Smart Pipeline for Processing, Quality Control, and Managing Neuroimages
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-08-11T04:00:00
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 2.8
+ADVISOR_RELEVANCE: This is a concrete example of agentic AI being applied to a complex, specialized professional workflow rather than a generic chatbot use case. While not directly tied to a public company, it supports the broader investment thesis that AI agents can improve productivity in healthcare, research, and data-intensive enterprise processes by automating orchestration, quality control, and expert decision routing.
+SUMMARY: NeuroPilot is a multi-agent, LLM-driven system designed to automate neuroimage data standardization, preprocessing, quality control, and data management. The system was deployed across 17 cohorts with more than 123,000 subjects and reportedly reduced a traditional 2–3 month staff-training and dataset-processing timeline to about one week.
+COMPANIES: 
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: NVIDIA AI Factory Compute Is Becoming an Investable Asset Class
+SOURCE: NVIDIA Blog
+PUBLISHED_AT: 2026-08-12T00:38:21
+SIGNAL_SCORE: 10.0
+WEEKLY_IMPACT_SCORE: 7.5
+ADVISOR_RELEVANCE: This matters because it suggests the AI infrastructure buildout is moving beyond corporate balance sheets into large-scale institutional financing structures. For advisors, the announcement highlights potential long-term opportunities and risks tied to AI compute demand, infrastructure capex, private capital involvement, and second-derivative beneficiaries across data centers, power, and related supply chains.
+SUMMARY: NVIDIA announced partnerships with Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs and KKR to create independent financing platforms for AI infrastructure. The platforms are designed to mobilize more than $500 billion of third-party capital over time, signaling that AI factory compute is being positioned as an investable asset class.
+COMPANIES: NVIDIA, Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs, KKR
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
