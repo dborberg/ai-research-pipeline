@@ -1,0 +1,43 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>August 16, 2026</strong></p>
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today's signal clustered around policy and governance, capital markets and financing, and infrastructure and power constraints rather than isolated product chatter. The useful advisor question is which developments point to governed deployment, real capital intensity, and durable adoption signals across the AI stack.</p>
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Nvidia eyes investing $3 billion in SB Energy under OpenAI data center deal, Information says - Reuters:</strong> Reuters reports that Nvidia is considering a $3 billion investment in SB Energy as part of an OpenAI data center deal, citing The Information. (Source: Reuters)</li>
+<li><strong>North Dakota AI and Data Center Committee asked to work toward child AI use regulations - InForum:</strong> North Dakota’s AI and Data Center Committee has been asked to work toward regulations governing children’s use of AI. (Source: InForum)</li>
+<li><strong>Ex-farm bureau chief invites AI data center developers to buy his land —argues blocked $6.3B project will just move to willing neighbors, defies 500-jurisdiction moratorium wave and 70% public opposition - Tom's Hardware:</strong> A former farm bureau chief is inviting AI data center developers to buy his land after a $6.3 billion project was reportedly blocked. (Source: Tom's Hardware)</li>
+</ul>
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>No major enterprise adoption or labor development dominated:</strong> No major enterprise adoption or labor development surfaced in the daily source window. Continue monitoring governed workflow deployments, professional automation, and labor redesign signals for clearer enterprise read-throughs. (Source: Full article set)</li>
+</ul>
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Are orbital AI data centers the next frontier for compute infrastructure? - Data Center Dynamics:</strong> The article raises the question of whether orbital AI data centers could become a future frontier for compute infrastructure. (Source: Data Center Dynamics)</li>
+<li><strong>‘Toxic Tom’ Tiffany accepted campaign contribution from data center lobbyist, voted for more AI infrastructure - milwaukeecourier.com:</strong> The article reports that Rep. This matters as a signal that AI infrastructure expansion is increasingly tied to policy, lobbying, and public scrutiny. (Source: milwaukeecourier.com)</li>
+</ul>
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>No single financing event dominated:</strong> No single financing event dominated the daily source window. Continue monitoring capex, funding, private credit, earnings, and supplier read-throughs for clearer investment implications. (Source: Full article set)</li>
+</ul>
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>No single policy move dominated:</strong> No single policy move dominated the daily source window. Continue monitoring procurement rules, privacy, export controls, and governance standards for commercial AI implications. (Source: Full article set)</li>
+</ul>
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>No major commercial Physical AI or robotics developments surfaced:</strong> No major commercial Physical AI or robotics development surfaced in the daily source window. Continue monitoring robotics, autonomous systems, lab automation, industrial automation, and AI-enabled manufacturing for signs that pilots are moving into real deployment. (Source: Full article set)</li>
+</ul>
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Policy transmission:</strong> Watch whether public-sector AI rules begin to shape procurement, privacy, and governance standards for enterprise buyers.</li>
+<li><strong>Financing discipline:</strong> Watch whether new AI capex plans are funded through durable cash flow, project finance, or increasingly expensive outside capital.</li>
+<li><strong>Infrastructure bottlenecks:</strong> Watch whether power, cooling, and interconnection constraints begin to delay AI infrastructure deployment timelines.</li>
+</ul>
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>Governance can become a growth gate:</strong> Policy and procurement rules increasingly shape which AI tools can move from pilots into scaled enterprise use.</li>
+<li><strong>AI financing is becoming a balance-sheet test:</strong> The better read-through is who can fund deployment sustainably, not who can announce the biggest ambition.</li>
+<li><strong>AI capex is still a physical buildout story:</strong> Power, cooling, networking, and permitting remain part of the same deployment conversation as models and software.</li>
+</ul>
