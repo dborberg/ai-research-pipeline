@@ -1,0 +1,58 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>August 17, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>AI investment attention is broadening from model leaders toward the enabling stack: chips, data centers, power resilience, governance, and enterprise trust. For advisor conversations, the key point is that the AI cycle is becoming less about a single product category and more about whether companies can fund, govern, power, and operationalize AI at scale.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Investors look beyond the first AI winners:</strong> Reuters reported that large investors are searching for the next group of AI beneficiaries as concern over AI capital spending eases. The advisor implication is that portfolio conversations may shift from whether AI capex is excessive toward which parts of the value chain can convert spending into durable revenue and margin support. (Source: Reuters)</li>
+<li><strong>Texas heat tests the data-center growth model:</strong> Bloomberg Law News reported that data-center expansion and historic heat are putting pressure on Texas’ business strategy. This reinforces that AI infrastructure is constrained by power reliability, cooling economics, permitting, and climate resilience, not just access to chips. (Source: Bloomberg Law News)</li>
+<li><strong>Anthropic pushes provenance into the boardroom:</strong> Forbes highlighted Anthropic’s provenance policy as a signal that AI accountability is becoming a board-level governance issue. For enterprises, provenance can become part of production readiness, compliance review, vendor diligence, and customer trust rather than a purely technical feature. (Source: Forbes)</li>
+<li><strong>Semiconductor demand expectations rise on AI and HPC:</strong> ET Datacenters reported that global semiconductor forecasts have been upgraded as AI and high-performance computing demand strengthens. The read-through extends beyond leading accelerators to memory, advanced packaging, networking, foundry capacity, and the broader equipment ecosystem supporting AI infrastructure. (Source: ET Datacenters)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Anthropic frames AI backlash as a trust problem:</strong> TechCrunch reported that Anthropic’s CEO described AI backlash as fundamentally a “crisis of trust.” That matters because enterprise adoption is likely to depend not only on model capability, but also on auditability, safety controls, provenance, and clear accountability for AI-driven workflows. (Source: TechCrunch)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>L&amp;T data-center unit to host Nvidia hardware for Together AI:</strong> Data Center Dynamics reported that L&amp;T’s data-center business will host Nvidia hardware for Together AI. The development points to continued demand for specialized AI compute capacity and reinforces the role of regional data-center operators as critical distribution points for AI infrastructure. (Source: Data Center Dynamics)</li>
+<li><strong>Leviton expands capacity for data-center customers:</strong> Data Center Dynamics reported that Leviton Network Solutions is expanding capacity to serve global data-center customers. This is a practical supply-chain signal that AI and cloud buildouts are supporting demand for less visible infrastructure components such as cabling, connectivity, and network systems. (Source: Data Center Dynamics)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>AI capex debate shifts toward second-order beneficiaries:</strong> The Reuters report on large investors hunting for tomorrow’s AI winners suggests the market is looking for monetization beyond the most obvious mega-cap platforms. Advisors can use this to discuss valuation discipline, earnings follow-through, and whether AI spending is flowing into suppliers with pricing power or simply into capacity expansion. (Source: Reuters)</li>
+<li><strong>Semiconductor cycle gains AI support:</strong> ET Datacenters’ report of upgraded semiconductor forecasts highlights how AI and HPC demand are shaping expectations for the chip cycle. The investment implication is that AI infrastructure remains a multi-layer theme, but investors still need to separate secular demand from cyclical inventory, pricing, and capacity risks. (Source: ET Datacenters)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Anthropic CEO defends regulation as a competition safeguard:</strong> NDTV Profit reported that Dario Amodei argued AI regulation can help protect the market from corporate monopolies. The policy read-through is that governance debates may increasingly focus on market structure, data access, compute concentration, and whether rules reinforce or weaken incumbent advantages. (Source: NDTV Profit)</li>
+<li><strong>Cross-border scraping remains a governance gap:</strong> Columbia Undergraduate Law Review discussed generative AI, web scraping, and the limits of cross-border governance. While not a market-moving policy action, the issue remains relevant for advisors because data rights, training practices, and jurisdictional complexity can affect litigation risk and enterprise adoption timelines. (Source: Columbia Undergraduate Law Review)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>No major commercial Physical AI or robotics developments surfaced:</strong> Continue monitoring robotics, autonomous systems, lab automation, industrial automation, and AI-enabled manufacturing for signs that pilots are moving into real deployment. (Source: Full article set)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>AI capex conversion:</strong> Watch whether hyperscalers and AI platforms show clearer revenue, productivity, or customer-retention returns from infrastructure spending.</li>
+<li><strong>Power and cooling stress:</strong> Monitor grid reliability, heat-related operating costs, permitting friction, and local opposition in major data-center markets.</li>
+<li><strong>Governance as a buying criterion:</strong> Track whether provenance, audit trails, model-risk controls, and data-rights assurances become requirements in enterprise AI procurement.</li>
+<li><strong>Semiconductor breadth:</strong> Watch whether AI demand continues to broaden from accelerators into memory, networking, packaging, power management, and manufacturing equipment.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming an infrastructure cycle:</strong> The opportunity is no longer just the model; it includes chips, data centers, power, cooling, connectivity, and governance tools.</li>
+<li><strong>Trust is an adoption bottleneck:</strong> Enterprises may slow or scale AI deployments based on whether systems can be audited, explained, secured, and governed.</li>
+<li><strong>Second-order beneficiaries need scrutiny:</strong> As investors look beyond the first AI leaders, the key question is which suppliers have durable demand and pricing power.</li>
+<li><strong>Physical constraints are investment constraints:</strong> Heat, electricity, water, and permitting can shape where AI capacity gets built and who benefits from that buildout.</li>
+<li><strong>Regulation can cut both ways:</strong> AI rules may reduce risk and improve trust, but they can also reshape competition and raise compliance costs.</li>
+</ul>
