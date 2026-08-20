@@ -1,0 +1,54 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>August 20, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>AI’s investment cycle is increasingly being defined by who can finance, power, permit, and operationalize real-world deployment. The strongest stories today point to capital intensity in AI infrastructure, revenue read-throughs beyond headline GPU names, and early commercial movement in physical AI, giving advisors a useful framework for discussing both opportunity and bottleneck risk.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Nebius upsized a $5 billion debt sale:</strong> Nebius increased its debt financing to fund data centers and its AI platform, highlighting how AI infrastructure expansion is moving deeper into large-scale credit markets. The advisor read-through is that AI growth is not only an equity story; funding costs, balance-sheet capacity, and data-center utilization are becoming key indicators for the next phase of the cycle. (Source: Reuters)</li>
+<li><strong>Analog Devices reported stronger results tied to AI data-center demand:</strong> Analog Devices posted higher profit and revenue, with demand from AI data centers cited as a driver. This broadens the investment discussion beyond accelerator chips to analog, power, and signal-chain components that are needed to make AI infrastructure operate reliably. (Source: WSJ)</li>
+<li><strong>Serve Robotics expanded autonomous delivery through major marketplaces:</strong> Serve Robotics announced a Grubhub partnership for sidewalk robot deliveries in Chicago, Los Angeles, and Alexandria, Va., while also expanding DoorDash-linked service into Washington, D.C., and San Jose. The development is a tangible Physical AI deployment signal, but advisors should frame it around commercialization milestones, city-level operating permissions, and unit economics rather than assuming rapid national scaling. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Enterprise AI deployment signals were more operational than software-led:</strong> The strongest adoption-related item in the slate came from autonomous systems in logistics and delivery rather than a new broad enterprise Gen AI rollout. For advisor conversations, that reinforces the idea that AI productivity gains may appear first in specific workflows where tasks are repetitive, measurable, and easier to orchestrate. (Source: Full article set)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>TerraPower’s reactor design was framed as relevant to AI data-center power needs:</strong> TechCrunch reported that TerraPower’s nuclear reactor architecture includes features positioned as useful for powering AI data centers. The read-through is that dependable, dispatchable power is becoming a strategic input for AI compute, keeping nuclear, grid equipment, cooling, and power-management infrastructure in focus. (Source: TechCrunch)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>IBM advanced modular quantum cryogenics but scaling hurdles remain:</strong> IBM introduced a modular cryogenic architecture aimed at addressing one obstacle to fault-tolerant quantum computing, while EE Times noted unresolved challenges around wiring, control, interconnects, and reliability. This is a long-duration frontier-compute signal rather than a near-term Gen AI catalyst, useful mainly for monitoring adjacent infrastructure, advanced packaging, and specialized electronics ecosystems. (Source: EE Times)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Lyon County passed a data-center moratorium ordinance:</strong> Local officials unanimously approved a moratorium tied to concerns in the Lake Barkley area, adding to evidence that data-center growth can face community-level resistance. The implication is that permitting, water use, land use, and grid pressure are becoming portfolio-relevant risks for AI infrastructure developers and their suppliers. (Source: The Paducah Sun)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Pudu Robotics launched an autonomous pallet-handling forklift:</strong> Pudu introduced the MP2000, an AI-powered autonomous forklift for manufacturing and logistics environments with 3D lidar, depth cameras, onboard perception, obstacle avoidance, and fleet-level coordination. The key investment lens is Workflow Orchestration: value will depend on whether robots can integrate into warehouse operations, reduce labor bottlenecks, and scale from task automation to coordinated fleets. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>AI infrastructure credit conditions:</strong> Track whether more AI platform and data-center operators use large debt facilities, and whether investors demand wider spreads as capital needs rise.</li>
+<li><strong>Permitting and local pushback:</strong> Watch for additional data-center moratoriums, water-use restrictions, or state-level interventions that could shift where AI capacity gets built.</li>
+<li><strong>Power procurement strategy:</strong> Monitor nuclear, gas, renewable, battery, and grid-upgrade announcements tied directly to AI data centers.</li>
+<li><strong>Physical AI conversion rates:</strong> Look for evidence that robot delivery and autonomous material-handling deployments are moving from launches to sustained utilization, repeat orders, and measurable labor savings.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming a financing story:</strong> The next phase is not just about model quality; it is about who can fund and operate the infrastructure at scale.</li>
+<li><strong>The AI supply chain is broadening:</strong> Strong data-center demand can benefit less obvious suppliers such as analog semiconductors, power equipment, cooling, and grid infrastructure.</li>
+<li><strong>Permitting is now an AI risk factor:</strong> Local data-center restrictions can affect buildout timelines just as much as chip availability or model demand.</li>
+<li><strong>Physical AI is moving into real workflows:</strong> Delivery robots and autonomous forklifts are early signs that AI is leaving the screen and entering logistics, mobility, and warehouse operations.</li>
+<li><strong>Valuation discipline still matters:</strong> Large addressable markets do not eliminate the need to track financing costs, deployment pace, margins, and regulatory friction.</li>
+</ul>
