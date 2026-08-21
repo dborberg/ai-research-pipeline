@@ -1,0 +1,377 @@
+SUPPLEMENTAL INPUT: TIER 2 WEEKLY OVERRIDE CANDIDATES
+
+These candidates come from an independent review of the prior seven calendar days of Gen AI and AI-adjacent source material.
+
+Use them only when they represent systemic weekly developments, not to flood the Weekly with unrelated stories.
+
+
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Robots on Wall Street: Non-traditional paths to public markets for robotics companies
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-08-14T12:30:40
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This highlights how robotics and physical AI companies may need alternative financing structures to reach scale before profitability, creating implications for public-market access, valuation discipline, and second-derivative beneficiaries such as strategic investors, component suppliers, and automation platforms. It also reinforces that labor scarcity and onshoring remain important demand drivers for robotics deployment.
+SUMMARY: Agility Robotics agreed to go public through a SPAC merger with Churchill Capital Corp XI at a $2.5 billion pre-money equity valuation, with expected gross proceeds of about $620 million including a $200 million PIPE led by Foxconn. The article frames Agility’s deal and Serve Robotics’ earlier reverse merger as examples of robotics companies using non-traditional public-market routes to fund capital-intensive scaling when traditional IPO conditions remain difficult.
+COMPANIES: Agility Robotics, Churchill Capital Corp XI, Foxconn, DCVC, NVIDIA, Amazon, SoftBank Vision Fund 2, Schaeffler, Playground Global, Serve Robotics, Patricia Acquisition Corp., Uber, Wavemaker Partners, Berkshire Grey, Sarcos, Symbotic, Vicarious Surgical, SpaceX, Anthropic, OpenAI
+EVENT_PRIORITY: 147.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 127
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: autonomy
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: other
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: FORT Robotics to take safety stack public via SPAC merger
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-08-18T15:24:13
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is a concrete example of capital flowing into the enabling infrastructure for robotics and physical AI, not just robot manufacturers themselves. FORT’s safety-certified, machine-agnostic platform addresses a key adoption bottleneck: how autonomous systems operate safely around humans in industrial and shared environments. For advisors, the read-through is that robotics adoption may create investable opportunities in horizontal software, safety, compliance, observability, cybersecurity, and interoperability layers that support broader physical AI deployment.
+SUMMARY: FORT Robotics plans to go public through a SPAC merger with Newbury Street II Acquisition Corp., valuing the combined company at about $556.6 million and expected to deliver roughly $201 million in gross proceeds. The company provides a safety and trust layer for physical AI and robotics, with more than 19,500 units deployed globally, 600 customers, and stated revenue growth of 62% in 2025.
+COMPANIES: FORT Robotics Inc., Newbury Street II Acquisition Corp., FORT Robotics Holdings Inc., Humanistic Robotics, Mapless AI, NVIDIA, Agility, Google DeepMind, Cobot, Zoox, RIVR, Carnegie Robotics, Textron, Forterra, Genie, Ocado, Oxa, DoorDash, Tiger Global, Prologis Ventures
+EVENT_PRIORITY: 106.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 79
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: autonomy
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Neros Technologies raises $250M to deploy its defense drones by the end of 2026
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-08-14T17:38:49
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: The article highlights rising capital intensity and investor interest in defense-focused autonomous systems, with Neros moving from funding to planned deployment and scaled manufacturing. It provides a concrete example of AI extending into physical systems, robotics, and defense supply chains, with potential read-throughs for aerospace and defense contractors, component suppliers, compute providers, and companies positioned around autonomous platforms.
+SUMMARY: Neros raised $250 million in Series C funding at a $2.5 billion valuation to accelerate development and production of defense drone platforms Archer AI and Bandit. The company plans combat-theater deployments by the end of 2026 and targets production of 1 million drones per year by 2028 through vertical integration and domestic manufacturing capacity.
+COMPANIES: Neros, Sequoia Capital, American Strategic Technology Fund, Interlagos, Valor Equity Partners, Allen & Co., Thiel Capital, Spark Capital, Cambridge Aerospace, Quantum Systems, Mach Industries, HavocAI, Ondas Inc., DZYNE Technologies
+EVENT_PRIORITY: 96.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 77
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: autonomy
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: defense
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Chip designer Velaura AI valued at more than $1 billion in funding round - Reuters
+SOURCE: "AI data center" - Google News
+PUBLISHED_AT: 2026-08-18T23:16:57
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: The funding round suggests private capital remains willing to back AI chip designers as demand for AI compute infrastructure expands. For advisor conversations, this supports the broader theme that AI investment is extending beyond software models into semiconductors and infrastructure, although the limited available detail makes company-specific implications unclear.
+SUMMARY: Reuters reports that chip designer Velaura AI was valued at more than $1 billion in a funding round. The report points to continued investor interest in AI semiconductor companies, though the provided excerpt does not include details on the round size, investors, customers, or product roadmap.
+COMPANIES: Velaura AI
+EVENT_PRIORITY: 82.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 71
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Your AI research is your responsibility — California court sanctions attorney for delegating AI citation verification to paralegal - Reuters
+SOURCE: "artificial intelligence" - Google News
+PUBLISHED_AT: 2026-08-20T16:05:56
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 2.4
+ADVISOR_RELEVANCE: This matters as a real-world example of how AI adoption in high-trust professional workflows requires controls, supervision, and liability frameworks. It reinforces that enterprise AI monetization may depend not only on tool capability, but also on governance, auditability, and user training.
+SUMMARY: A California court sanctioned an attorney in a case involving AI-assisted legal research, emphasizing that lawyers remain responsible for verifying citations even when work is delegated to a paralegal. The case highlights continuing governance and accountability risks as professional services firms adopt generative AI tools.
+COMPANIES: 
+EVENT_PRIORITY: 26.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: ATDev gives update on its journey building autonomous wheelchairs
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-08-20T17:39:25
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This article highlights a real-world example of AI and robotics moving into healthcare and assistive mobility, where aging demographics could create long-term demand. While ATDev appears early-stage and the market is constrained by FDA approval and insurance reimbursement, the development points to broader investment themes around physical AI, medical robotics, sensorized mobility platforms, and the use of large AI models in specialized devices.
+SUMMARY: ATDev is developing an autonomous power wheelchair with a coordinated robotic arm under the ARPA-H-funded RAMMP program led by the University of Pittsburgh. The system is designed for shared autonomy, helping users with reaching, lifting, eating, drinking, opening doors, and potentially teleoperated tasks such as retrieving items from another room. ATDev is also working with Meta to apply AI models to the chairs and is exploring federated learning so chairs can share learned capabilities across users.
+COMPANIES: Assistive Technology Development Inc., ATDev, Meta
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: autonomy
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: software-data-analytics
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Gravis Robotics raises $200 million to scale its construction robotics business
+SOURCE: Robotics & Automation News
+PUBLISHED_AT: 2026-08-17T15:38:43
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 6.1
+ADVISOR_RELEVANCE: This highlights a concrete AI monetization use case in a physical, capital-intensive industry that is central to data centers, energy grids, housing, transit and other infrastructure projects. The funding also shows investor interest in robotics as a second-derivative beneficiary of AI infrastructure demand, with potential read-throughs to equipment makers, construction productivity, labor redesign and infrastructure execution bottlenecks.
+SUMMARY: Gravis Robotics raised $200 million in Series A funding from SoftBank to expand its autonomous heavy machinery technology across global construction sites. The company’s physical AI software can retrofit mixed fleets of excavators and other equipment, with claimed productivity gains of up to 30% and deployments already spanning four continents.
+COMPANIES: Gravis Robotics, SoftBank, Caterpillar, Case, Develon, John Deere, JCB, Hitachi, Sumitomo, Yanmar, Volvo, Flannery Plant Hire
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Nvidia pledges $100bn backing for OpenAI data centre in Ohio - ft.com
+SOURCE: "AI data center" - Google News
+PUBLISHED_AT: 2026-08-17T13:57:59
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: The reported $100bn commitment highlights the scale of capital required to support next-generation AI compute and reinforces the importance of data centers, GPUs, power, and related infrastructure in the AI investment cycle. For advisors, it supports conversations about AI moving from software experimentation toward large physical infrastructure deployment with potential implications across semiconductors, cloud infrastructure, utilities, construction, and financing.
+SUMMARY: Nvidia has pledged $100bn in backing for an OpenAI data centre in Ohio, according to the article title and excerpt. The report points to another large-scale AI infrastructure commitment involving a leading chip supplier and a major AI platform company.
+COMPANIES: Nvidia, OpenAI
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Gravis Robotics raises $200M for autonomous construction
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-08-17T13:00:16
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 7.0
+ADVISOR_RELEVANCE: This is a concrete example of AI moving from software into physical infrastructure workflows, with potential read-throughs for construction productivity, data center buildout capacity, equipment automation, and labor substitution. The funding size, SoftBank involvement, multi-continent deployments, and retrofit model for mixed fleets suggest growing investor interest in second-derivative AI beneficiaries beyond semiconductors and cloud platforms.
+SUMMARY: Gravis Robotics raised $200 million from SoftBank in a Series A round to scale autonomous construction equipment globally. The company retrofits existing excavators and heavy machinery with its Gravis Rack autonomy kit and software, targeting bottlenecks in earthmoving for infrastructure repair, energy grids, data centers, reshoring, and defense-related construction.
+COMPANIES: Gravis Robotics, SoftBank, ETH Zurich, Caterpillar, Case, Develon, John Deere, JCB, Hitachi, Sumitomo, Yanmar, Volvo, Flannery Plant Hire
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: LG to unveil new Nvidia-powered humanoid robot in early 2027
+SOURCE: Robotics & Automation News
+PUBLISHED_AT: 2026-08-14T11:36:06
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 5.7
+ADVISOR_RELEVANCE: This article highlights AI moving from software models into physical-world deployment, with named corporate investment in robotics, AI factory infrastructure, and autonomous vehicle platforms. The planned Tennessee factory validation and 80 MW AI factory in Korea provide concrete read-throughs to capital intensity, infrastructure demand, robotics adoption, and supplier ecosystems tied to AI compute, power, cooling, batteries, sensors, and manufacturing automation.
+SUMMARY: LG and Nvidia signed an agreement to expand collaboration across humanoid robotics, wheel-based factory robots, AI factories, and AI-defined vehicles. LG plans to unveil a Nvidia Isaac GR00T-powered humanoid in the first quarter of next year, validate LG CLOiD robots at its Tennessee washing machine plant, build Nvidia-based AI factory reference sites, and develop a next-generation vehicle platform using Nvidia DRIVE Hyperion.
+COMPANIES: LG, LG Corp, LG Electronics, LG Innotek, LG Energy Solution, LG CNS, Nvidia
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: AI infrastructure
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: software-data-analytics
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Waymo reveals Nvidia-powered compute system behind its robotaxis
+SOURCE: Robotics & Automation News
+PUBLISHED_AT: 2026-08-21T08:48:31
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 4.6
+ADVISOR_RELEVANCE: This highlights the capital- and compute-intensive nature of autonomous driving, with investment read-throughs to AI semiconductors, edge inference hardware, and physical AI deployment. Waymo’s disclosure also reinforces that robotaxi commercialization depends not only on software models but on ruggedized, high-performance onboard infrastructure.
+SUMMARY: Waymo disclosed technical details of the onboard compute system behind its robotaxis, including a purpose-built 5 nm ASIC delivering more than 1,000 TOPS of machine learning performance. The architecture is designed for millisecond-level response times and reliability under vehicle operating conditions such as vibration and temperature extremes.
+COMPANIES: Waymo, Nvidia
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: VentureBeat names Rob Strechay as its first Lead Analyst, expanding its enterprise AI research push
+SOURCE: AI | VentureBeat
+PUBLISHED_AT: 2026-08-19T14:18:12
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: The article is mainly an organizational announcement, but it highlights real enterprise pain points that matter for AI investing conversations: infrastructure waste, security gaps in agentic workflows, multi-vendor model strategies, and the shift from AI pilots to production deployments. These themes support advisor discussions around AI monetization moving beyond model providers toward infrastructure, observability, security, orchestration, and data-layer beneficiaries.
+SUMMARY: VentureBeat named Rob Strechay as its first Lead Analyst and a founding analyst of VentureBeat Research, expanding its focus on enterprise AI research for CIOs, CTOs, and technical buyers. The research effort will emphasize production AI deployment issues including multi-vendor orchestration, agentic security, GPU utilization, AI infrastructure, observability, and RAG/context layers.
+COMPANIES: VentureBeat, theCUBE Research, SiliconANGLE, Zerto, Amazon Web Services, Enterprise Strategy Group, Anthropic, YouTube
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Trump’s China Memory Policy Strengthens Micron but Raises Apple’s AI Costs - Dr. Robert Castellano's Semiconductor Deep Dive Newsletter
+SOURCE: "AI policy" - Google News
+PUBLISHED_AT: 2026-08-17T20:08:50
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.7
+ADVISOR_RELEVANCE: This matters because AI adoption depends on memory availability and cost, and policy-driven shifts in semiconductor supply chains can create winners and losers. Micron may benefit from a more favorable competitive environment, while Apple could face higher input costs for AI-capable products, with potential implications for margins and device pricing.
+SUMMARY: The article indicates that a Trump-era China memory policy could benefit Micron while increasing AI-related costs for Apple. The key implication is that semiconductor trade policy may shift competitive dynamics in memory markets and affect the cost structure of AI-enabled devices.
+COMPANIES: Micron, Apple
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: AWS Weekly Roundup: EC2 application status checks, IAM role manager, OpenAI Daybreak on Bedrock, and more (August 17, 2026)
+SOURCE: AWS News Blog
+PUBLISHED_AT: 2026-08-17T16:02:36
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: The most relevant AI signal is the mention of OpenAI Daybreak on Amazon Bedrock, which points to continued AI platform convergence within major cloud ecosystems. However, the article is a brief roundup with limited detail, so the investment read-through is modest and mainly supports ongoing monitoring of cloud AI adoption and developer infrastructure trends.
+SUMMARY: AWS highlighted several weekly updates, including EC2 application status checks, an IAM role manager, and an OpenAI Daybreak item on Amazon Bedrock. The post also noted AWS contributors participating with the OpenSearch and Valkey communities at Open Source Summit Korea 2026 and MCP DevSummit Seoul 2026.
+COMPANIES: AWS, OpenAI
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: 10 Best AI Video Tools That Automate Your Creative Workflow in 2026
+SOURCE: Robotics & Automation News
+PUBLISHED_AT: 2026-08-15T19:56:47
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 2.4
+ADVISOR_RELEVANCE: This is a useful signal of AI adoption moving beyond novelty generation toward workflow-level productivity in marketing, ecommerce, and media production. However, the article is a product ranking rather than a financial or market analysis, so investment implications are indirect and mainly point to continued demand for AI creative platforms, model routing, and tools that reduce labor and production time.
+SUMMARY: The article reviews AI video tools positioned to automate more of the creative production workflow, moving from single-clip generation toward integrated systems for briefs, references, generation, revision, and export. It ranks Topview highest for workflow automation, with other tools differentiated by strengths such as professional editing controls, photoreal motion, social content creation, cinematic camera language, and last-mile publishing polish.
+COMPANIES: Topview, Seedance 2.5, Runway, Kling, Pika, Luma Dream Machine, CapCut, Veo
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Universitas Gadjah Mada, Indosat and NVIDIA Open Indonesia’s First University AI Center to Develop Local AI Talent
+SOURCE: NVIDIA Blog
+PUBLISHED_AT: 2026-08-14T17:13:05
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 4.7
+ADVISOR_RELEVANCE: This is a concrete example of AI ecosystem buildout in an emerging market, with NVIDIA participating alongside a telecom operator, university and government ministry. While the article does not provide financial terms or deployment scale, it supports the broader investment narrative that AI adoption requires local talent pipelines, institutional partnerships and infrastructure beyond the largest developed markets.
+SUMMARY: Indonesia’s Ministry of Communication and Digital Affairs, Indosat Ooredoo Hutchison, NVIDIA and Universitas Gadjah Mada launched the UGM Indosat NVIDIA AI Technology Center in Yogyakarta. The center is described as Indonesia’s first university-based AI technology center and is intended to support local AI talent development.
+COMPANIES: Indosat Ooredoo Hutchison, NVIDIA
+EVENT_PRIORITY: 22.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: AI infrastructure
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Vadym Shashkov: “Autonomous AI Can Now Run an Insurance Agency’s Entire Sales Cycle — From the First Call to a Bound Policy” - The AI Journal
+SOURCE: "AI policy" - Google News
+PUBLISHED_AT: 2026-08-18T11:09:50
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 3.0
+ADVISOR_RELEVANCE: This matters because insurance is a large, process-heavy market where AI could reduce manual sales and administrative work if end-to-end automation proves viable. However, the available information is limited to a broad claim, so advisor conversations should frame it as an example of where AI adoption may be headed rather than as confirmed evidence of scaled deployment.
+SUMMARY: The article presents Vadym Shashkov’s claim that autonomous AI can manage an insurance agency’s full sales cycle, from initial customer contact through to a bound policy. The excerpt suggests a move from point-solution automation toward end-to-end agentic workflows in insurance sales, though no implementation details or company deployments are provided.
+COMPANIES: 
+EVENT_PRIORITY: 21.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Is Shipyard Welding the Right First Job for Humanoid Robots?
+SOURCE: IEEE Spectrum
+PUBLISHED_AT: 2026-08-17T15:33:42
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 4.6
+ADVISOR_RELEVANCE: This article highlights a more investment-relevant path for humanoid robotics: targeting constrained, high-value skilled labor rather than generic low-wage tasks. Shipyard welding offers a concrete use case where robots may expand production capacity rather than simply reduce labor costs, with potential read-throughs for industrial automation, robotics suppliers, shipbuilders, and companies exposed to physical AI adoption.
+SUMMARY: Persona AI is targeting shipyard welding as the first commercial use case for its humanoid robots, focusing on long, linear welds that are common in shipbuilding and well-suited to robotic precision. The company has public partnerships with HD Hyundai and POSCO and is prioritizing labor-constrained industrial customers that could potentially deploy hundreds of robots per location.
+COMPANIES: Persona AI, HD Hyundai, POSCO, Nauticus Robotics, Figure
+EVENT_PRIORITY: 21.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
