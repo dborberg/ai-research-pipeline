@@ -1,0 +1,59 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>August 24, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The AI investment cycle is still being pulled forward by large-scale capital formation, but the bottlenecks are shifting from model excitement to production capacity, power access, governance, and valuation discipline. For advisor conversations, the useful framing is that AI remains a broad infrastructure and platform-convergence buildout, not just a software theme, while policy friction and elevated private-market pricing are becoming more important risk monitors.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Nvidia reportedly weighs Perplexity investment at a $30 billion-plus valuation:</strong> Nvidia has discussed investing in AI search startup Perplexity at a valuation above $30 billion, according to Reuters citing The Information. The read-through is that capital is still flowing aggressively into AI-native application layers, while Nvidia may be using strategic investments to extend influence beyond chips into inference demand, search workflows, and AI distribution. (Source: Reuters)</li>
+<li><strong>Alibaba reportedly plans a $10.20 billion AI-focused share placement:</strong> Alibaba is raising external capital to fund AI investment, underscoring how expensive the next phase of cloud, model, and infrastructure competition has become. For portfolios, the signal is that large platforms may keep prioritizing AI capex even when it requires balance-sheet flexibility or shareholder dilution, with implications for cloud, semiconductors, networking, and power demand. (Source: WSJ)</li>
+<li><strong>US AI investment lead over Europe reportedly widens:</strong> The Financial Times reports that the US is widening its AI-driven investment gap with Europe, pointing to regional divergence in capital formation around the technology cycle. This matters for advisors because AI exposure may increasingly reflect where capital, talent, compute, and regulatory clarity cluster, not just which companies have attractive products. (Source: Financial Times)</li>
+<li><strong>Texas data center backlash highlights power as an AI constraint:</strong> Axios reports that Texas Gov. Greg Abbott criticized data centers after the state had welcomed AI-driven buildout, saying the sector had “dug their own grave.” The investment implication is that power availability, grid cost allocation, and permitting politics are moving from background issues to core variables for AI infrastructure economics. (Source: Axios)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Major content platforms tighten AI-content labeling expectations:</strong> YouTube, LinkedIn, and Substack are reportedly flagging AI-generated content, increasing pressure on brands to define public AI-use policies. This is an Enterprise Production Readiness signal: companies using AI in marketing, communications, research, and client engagement need disclosure standards, approval workflows, and reputational-risk controls, not just productivity tools. (Source: inc.com)</li>
+<li><strong>Chinese workers report concern about AI job displacement:</strong> ABC News reports that workers in China are worried about being replaced as AI affects job tasks and expectations. The item is broad rather than company-specific, but it reinforces the advisor discussion that AI adoption is a labor-market transition story as much as a technology-spending story, with potential second-order effects on training, wage pressure, and social policy. (Source: ABC News)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Queensland prepares national-cabinet fight over AI data center power demand:</strong> Queensland is reportedly raising concerns over the electricity requirements of AI data centers at Australia’s national cabinet. The read-through is that grid capacity, generation mix, and power pricing are becoming gating factors for AI deployment, supporting closer monitoring of utilities, grid equipment, backup power, and data-center siting risk. (Source: AFR)</li>
+<li><strong>State-level opposition to AI data centers spreads in New York:</strong> WHEC reports that State Sen. Kristen Gonzalez is bringing a “NY Fights AI Data Centers” tour to Genesee County. While local in scope, the development adds to evidence that community opposition and permitting scrutiny can slow AI infrastructure rollout or raise costs in key regions. (Source: WHEC.com)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>UK digital investment reportedly returns to dot-com-era levels on AI rollout:</strong> Bloomberg reports that UK digital investment has risen to levels last seen during the dot-com boom, driven by AI adoption. The constructive signal is that AI is translating into measurable capital spending, but the dot-com comparison also gives advisors a useful reminder to distinguish durable cash-flow beneficiaries from speculative enthusiasm. (Source: Bloomberg.com)</li>
+<li><strong>Nvidia reportedly explores a deeper inference-chip relationship with Rebellions:</strong> EE Times reports that Nvidia is in talks with Korean inference-chip startup Rebellions regarding a potential technical partnership, investment, or acquisition. The strategic implication is that inference is becoming a more important battleground as AI moves from training to deployment, with read-throughs for accelerator design, memory bandwidth, software stacks, and edge or regional compute ecosystems. (Source: EE Times)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Taiwan issues indictments over alleged illegal AI-server exports to China:</strong> Reuters reports that Taiwan has issued indictments tied to alleged illegal exports of AI servers to China. This reinforces that AI hardware supply chains are now a central enforcement area in technology geopolitics, with potential implications for server makers, distributors, cloud capacity planning, and compliance controls. (Source: Reuters)</li>
+<li><strong>AI disclosure becomes a platform-governance issue:</strong> As YouTube, LinkedIn, and Substack flag AI-generated content, companies face rising pressure to treat AI labeling as part of brand governance and public trust. The policy read-through is that voluntary platform standards can shape enterprise behavior before formal regulation fully arrives, especially in marketing, media, recruiting, and investor communications. (Source: inc.com)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Neura acquires Adlatus Robotics to expand autonomous cleaning deployments:</strong> Neura Mobile Robots is acquiring 100% of Adlatus Robotics, a provider of autonomous cleaning robots with hundreds of deployed systems across industrial, logistics, healthcare, commercial, and public-space settings. The deal is a concrete Physical AI signal because it combines robotics hardware, deployed service use cases, and AI-enabled platform integration, suggesting that commercial automation may advance first in repeatable facility workflows before broader humanoid adoption. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>AI financing terms:</strong> Monitor whether large AI capital raises and private valuations continue clearing at premium levels, or whether investors demand clearer revenue quality, unit economics, and infrastructure cost visibility.</li>
+<li><strong>Power and permitting friction:</strong> Watch for data-center moratoriums, grid-cost allocation rules, interconnection delays, or state-level political pushback in major compute markets.</li>
+<li><strong>Inference economics:</strong> Track whether strategic chip partnerships, acquisitions, or funding rounds shift from training-scale accelerators toward lower-cost, high-volume inference platforms.</li>
+<li><strong>Enterprise governance standards:</strong> Watch whether AI-content labeling, disclosure policies, and audit trails become procurement requirements for enterprise AI tools.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is moving from promise to production constraints:</strong> The conversation is less about whether companies will use AI and more about who can secure compute, power, data, governance, and distribution at scale.</li>
+<li><strong>Capital is still available, but selectivity matters:</strong> Large AI financings show continued conviction, yet elevated valuations make cash-flow discipline and competitive durability more important.</li>
+<li><strong>Power is becoming part of the AI investment thesis:</strong> Data centers tie AI growth to utilities, grid equipment, cooling, and permitting, so physical infrastructure now belongs in the AI discussion.</li>
+<li><strong>Governance is becoming a feature, not a footnote:</strong> As platforms label AI-generated content, enterprises need policies that make AI use transparent, auditable, and brand-safe.</li>
+<li><strong>Robotics may commercialize through narrow workflows first:</strong> Cleaning, logistics, inspection, and facility automation can provide clearer near-term deployment paths than broad general-purpose humanoid use cases.</li>
+</ul>
