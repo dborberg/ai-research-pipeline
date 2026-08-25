@@ -1,0 +1,54 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>August 25, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s strongest signal is that AI is moving deeper into production infrastructure, distribution channels, and physical systems. For advisors, the conversation is shifting from “who has the best model” to who can finance, deploy, govern, and scale AI across real workflows, data centers, and robotics platforms.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>XPeng’s Dogotix raised more than $900 million for humanoid robotics:</strong> XPeng Motors’ humanoid robotics subsidiary raised an initial funding round valuing the business above $6.3 billion, with capital earmarked for hardware, software, data collection, and talent. This is a major physical-AI financing signal, with read-throughs to robotics supply chains, machine vision, sensors, batteries, actuators, and industrial automation, while also raising valuation-discipline questions in a still-early commercial market. (Source: The Robot Report)</li>
+<li><strong>Scalable opened its investment platform to major AI chatbots:</strong> The German broker is allowing large AI chatbot systems to connect with its investment platform, creating a potential new access point for retail investors. This points to platform convergence in wealth management, where AI assistants may influence discovery, onboarding, product comparison, and client engagement, increasing the importance of advisor differentiation, compliance controls, and trusted human context. (Source: Reuters)</li>
+<li><strong>NVIDIA framed AI infrastructure as an output-driven “AI factory”:</strong> NVIDIA emphasized that large-scale AI infrastructure should be measured by tokens per second, tokens per watt, cost per token, utilization, and uptime rather than chip performance alone. The investment implication is that AI infrastructure economics increasingly depend on full-system design, including networking, power delivery, cooling, scheduling software, and operational reliability. (Source: NVIDIA Blog)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Researchers developed an edge AI medical-device workflow for breast cancer team meetings:</strong> The system transcribes multidisciplinary discussions, structures clinical information, and generates guideline-grounded recommendations without sending patient data to the cloud. This supports the Enterprise Production Readiness lens in regulated sectors, where privacy-preserving, on-device AI may be a practical adoption path for healthcare providers, clinical software vendors, and compliance-focused IT services. (Source: arXiv.org)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Davidson County commissioners rejected a six-month data center moratorium:</strong> Local officials voted against pausing new data center projects, while separately ending the county’s Flock camera contract. The decision underscores that AI infrastructure expansion is increasingly shaped by county-level politics, community acceptance, land use, power availability, and public-sector technology trust. (Source: WXII)</li>
+<li><strong>CIO Dive reported that AI data center spending is supporting semiconductor market growth:</strong> The report connects expanding AI infrastructure budgets with continued demand for chips and related data center technology. The advisor read-through is that AI capital spending remains broader than model developers, extending into semiconductor equipment, memory, networking, and power-intensive compute infrastructure. (Source: CIO Dive)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>European infrastructure equities were framed as second-derivative AI beneficiaries:</strong> A market commentary argued that AI demand still depends on physical inputs such as steel, chips, power grids, and semiconductor equipment. While the source is less definitive than primary filings or earnings reports, the theme is useful for client conversations about broadening AI exposure beyond software into the industrial and infrastructure layers that enable compute growth. (Source: Moomoo)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Raeden challenged a Michigan moratorium affecting a planned data center:</strong> The company claimed that a local moratorium unlawfully stopped its Gibraltar data center development. This highlights a growing policy risk for the AI buildout: even when capital and demand are available, permitting disputes, local moratoriums, and municipal governance can delay capacity and alter project economics. (Source: Data Center Dynamics)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>NEC invested in humanoid robotics startup Dexmate:</strong> NEC’s corporate venture fund invested in the U.S.-based developer of the VEGA humanoid robot and a physical-AI development platform. The deal is smaller than the XPeng financing but shows continued strategic interest from established technology companies in turning AI from digital assistance into deployable automation across industrial and service environments. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Humanoid robotics milestones:</strong> Monitor whether large funding rounds translate into commercial deployments, measurable unit economics, safety certifications, and repeat customers rather than prototype demonstrations.</li>
+<li><strong>AI assistants in financial distribution:</strong> Watch how brokers, asset managers, and regulators handle chatbot-driven product discovery, suitability, disclosure, and accountability.</li>
+<li><strong>Data center permitting and power access:</strong> Track local moratoriums, utility interconnection queues, community opposition, and power procurement as leading indicators of AI infrastructure bottlenecks.</li>
+<li><strong>Infrastructure economics:</strong> Look for companies to report AI capacity in terms of utilization, energy efficiency, cost per token, uptime, and return on deployed capital, not just gross capex.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>“AI is becoming a physical infrastructure story, not just a software story.”</strong> The buildout now depends on data centers, power, chips, networking, and increasingly robotics hardware.</li>
+<li><strong>“The next phase of AI may be judged by production economics.”</strong> Investors should listen for cost per output, uptime, utilization, and energy efficiency rather than only model announcements.</li>
+<li><strong>“AI chatbots could become a new front door to investing.”</strong> That raises opportunities for platform engagement but also new questions around advice quality, compliance, and trust.</li>
+<li><strong>“Local policy is becoming a real AI infrastructure risk.”</strong> Permitting, moratoriums, and power access can matter as much as demand when evaluating the pace of capacity expansion.</li>
+</ul>
