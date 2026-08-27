@@ -1,0 +1,55 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>August 27, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The strongest through-line is that the AI investment cycle is moving from model excitement toward production infrastructure, workflow integration, and real-world deployment constraints. For advisor conversations, the key message is valuation discipline: durable opportunity may depend less on any single model launch and more on who controls memory, interconnect, data center capacity, enterprise workflow distribution, and the physical systems needed to turn AI into measurable productivity.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>NVIDIA pushed deeper into AI infrastructure integration:</strong> NVIDIA said NVLink Fusion is expanding with NVHBM custom high-bandwidth memory as AI agents and trillion-parameter workloads increase pressure on memory bandwidth and system architecture, not just raw compute. The read-through is that the AI infrastructure stack is becoming more vertically optimized, which keeps attention on high-bandwidth memory, advanced packaging, networking, and data center system design as potential bottlenecks and value pools. (Source: NVIDIA Blog)</li>
+<li><strong>SK Telecom moved to separate an AI data center infrastructure business:</strong> SK Telecom plans to create a company focused on AI data centers, signaling that telecom operators are repositioning around compute infrastructure and not just connectivity. This supports the Platform Convergence lens: network owners, cloud infrastructure, and data center capacity are increasingly intertwined, with implications for power procurement, real estate, cooling, and carrier capital allocation. (Source: WSJ)</li>
+<li><strong>Salesforce and Anthropic announced Claudeforce:</strong> Salesforce and Anthropic positioned their collaboration as a combination of Anthropic’s AI capabilities with Salesforce’s AI CRM platform. Even with limited implementation detail in the excerpt, the announcement reinforces enterprise AI’s shift toward embedded workflow distribution, where CRM, service, and sales systems become the practical control layer for model adoption. (Source: Salesforce)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>No additional material enterprise deployment details surfaced beyond the Salesforce-Anthropic platform announcement:</strong> The source window contained vendor commentary on custom AI apps for enterprise workflows, but limited evidence of named customer rollouts, productivity metrics, pricing, or measurable labor impact. Advisors should watch for customer-level proof that workflow AI is moving from demos into governed production systems with budget ownership and measurable return on investment. (Source: Full article set)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Production-line ramp delays highlighted non-model bottlenecks:</strong> Robotics &amp; Automation News argued that new production lines often miss initial timelines because of logistics, power infrastructure, regulatory paperwork, and process integration rather than automation performance alone. The investment implication is that AI-enabled automation depends on surrounding physical infrastructure, making permitting, grid readiness, industrial engineering, and supply-chain execution central to adoption timing. (Source: Robotics &amp; Automation News)</li>
+<li><strong>Data center capacity continued to attract dedicated corporate structures:</strong> SK Telecom’s AI data center company points to rising strategic focus on purpose-built infrastructure for AI workloads. For portfolios, this keeps the monitor list broad but concrete: power availability, interconnection queues, cooling efficiency, and telecom or broadband operators’ ability to monetize infrastructure adjacency. (Source: Data Center Dynamics)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Gatik raised $200 million to expand autonomous trucking operations:</strong> Gatik’s Series D financing will support high-frequency regional freight routes, with the company reporting more than $600 million in contracted revenue and 85,000 fully driverless commercial miles. This is a meaningful frontier capital-markets signal because investors are funding autonomy where routes are constrained, repeatable, and commercially contracted, offering a more disciplined read-through than broad robotaxi narratives. (Source: The Robot Report)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>AI regulation became a campaign issue tied to data center scrutiny:</strong> Democratic candidates in key House and Senate races signed an AI regulation pledge as public attention around AI data centers increases. This matters because AI policy risk is broadening from model safety into local infrastructure impacts, energy use, community approvals, and permitting timelines. (Source: The Hill)</li>
+<li><strong>A local data center moratorium advanced in Sun Prairie:</strong> Sun Prairie’s Plan Commission recommended approval of a data center development moratorium, reflecting rising municipal scrutiny of AI-related infrastructure growth. While local and project-specific, these actions are important leading indicators for hyperscalers, data center developers, utilities, and grid equipment suppliers because community resistance can affect site selection and deployment speed. (Source: hngnews.com)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Bedrock Robotics deployed operator-free excavators on active infrastructure sites:</strong> Bedrock Robotics has retrofitted autonomous excavators for projects in Texas and Nevada, including water treatment and large-scale earthwork sites, and is backed by $350 million in venture capital. The commercial relevance is that physical AI is starting to target labor-constrained, repetitive construction tasks tied to infrastructure demand, creating watchpoints around safety validation, fleet utilization, insurance, and contractor adoption. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>AI infrastructure bottlenecks:</strong> Track whether memory bandwidth, advanced packaging, interconnect, power availability, and cooling become the limiting factors for next-generation AI deployments.</li>
+<li><strong>Enterprise workflow proof points:</strong> Watch for named customers, renewal behavior, usage metrics, and measurable productivity gains from AI embedded in CRM, IT service, and back-office workflow platforms.</li>
+<li><strong>Data center permitting and political risk:</strong> Monitor local moratoriums, state-level energy policy, campaign proposals, and utility interconnection constraints as potential deployment-speed risks.</li>
+<li><strong>Commercial autonomy discipline:</strong> Look for autonomy companies with contracted revenue, narrow operating domains, safety records, and repeatable routes or tasks rather than broad claims of general autonomy.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>“The AI story is becoming an infrastructure story.”</strong> The next leg of opportunity may depend on memory, networking, power, cooling, and data center execution as much as on model quality.</li>
+<li><strong>“Enterprise AI needs workflow ownership.”</strong> Platforms that already sit inside sales, service, IT, and finance processes may have an advantage turning models into daily business tools.</li>
+<li><strong>“Policy risk is moving closer to the power meter.”</strong> AI regulation is no longer only about model safety; local data center approvals, energy demand, and community pushback are becoming investable risks to monitor.</li>
+<li><strong>“Physical AI is most credible where the job is constrained and repeatable.”</strong> Autonomous trucking routes and construction equipment deployments look more commercially grounded when they target narrow, high-frequency tasks with real customers.</li>
+</ul>
