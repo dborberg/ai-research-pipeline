@@ -1,0 +1,58 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>August 28, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The day’s strongest theme is that AI investment is moving deeper into control points: custom silicon, supply-chain financing, data-center permitting, and policy influence. For advisors, the useful framing is that the AI cycle is less about model announcements alone and more about whether compute, power, regulation, and enterprise governance can scale fast enough to support durable monetization.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Anthropic explored chip-design acceleration with MatX:</strong> Anthropic is in talks with chip startup MatX to speed up chip design, signaling that leading AI labs are looking further into the semiconductor stack as compute constraints persist. The investment read-through extends beyond model providers to custom ASIC design, semiconductor IP, electronic design automation, and advanced packaging capacity. (Source: Reuters)</li>
+<li><strong>OpenAI’s Jalapeño ASIC surfaced in early benchmark discussion:</strong> EE Times reported that OpenAI’s clean-sheet general-purpose AI accelerator ASIC, Jalapeño, was discussed at Hot Chips 2026. The implication is continued pressure on the current accelerator supply chain as frontier AI companies seek more control over performance, cost, and availability. (Source: EE Times)</li>
+<li><strong>Vietnam pushed Qualcomm and Samsung for more AI and chip investment:</strong> Vietnam urged Qualcomm and Samsung to deepen AI and semiconductor investment as it seeks to upgrade its technology sector. This reinforces the sovereign competition for AI supply chains and highlights policy as a driver of where future chip, assembly, and AI infrastructure capital may land. (Source: Reuters)</li>
+<li><strong>Palm Beach County advanced a hyperscale AI data-center moratorium:</strong> County commissioners gave initial approval to a one-year moratorium on new hyperscale AI data centers. Local permitting and community pushback are becoming material bottlenecks for AI infrastructure, with implications for data-center developers, power providers, grid equipment, and regional economic-development strategies. (Source: WPTV)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>K-12 AI spending shifted toward governance and proof:</strong> MarketScale reported that school-district AI spending is moving from standalone classroom apps toward vetting, policy development, and evidence of effectiveness. This is an Enterprise Production Readiness signal: buyers are asking for compliance, oversight, and measurable outcomes before scaling AI tools. (Source: MarketScale)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Indosat’s fiber spin-off launched an AI-ready infrastructure offering:</strong> Infra Fiber Teknologi, an Indosat spin-off, launched RAIA Grid as an AI-ready offering. The announcement points to telecom and fiber operators repositioning connectivity assets as part of the AI infrastructure layer, where latency, reliability, and data movement become investable bottlenecks. (Source: Data Center Dynamics)</li>
+<li><strong>NewPower Worldwide expanded its credit facility to $750 million:</strong> NewPower increased its committed credit facility to support inventory, customer growth, and global electronics supply-chain demand. While not pure Gen AI, the financing is relevant because AI hardware cycles depend on working-capital capacity across component distribution and logistics. (Source: EE Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>AI infrastructure financing broadened beyond the hyperscalers:</strong> NewPower’s larger credit facility shows how balance-sheet capacity is becoming part of the AI supply-chain story, not just data-center capex or GPU procurement. Advisors can use this as a reminder that the AI capital cycle includes distributors, component suppliers, logistics providers, and inventory financing. (Source: EE Times)</li>
+<li><strong>NVIDIA expanded GeForce NOW and DLSS controls at Gamescom:</strong> NVIDIA announced broader GeForce NOW support, additional cloud gaming content, and new DLSS 4.5 controls. The direct AI read-through is narrower than data-center AI, but it illustrates Platform Convergence as GPU software, cloud distribution, and AI-enhanced rendering reinforce ecosystem lock-in. (Source: NVIDIA Blog)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>NVIDIA formed a PAC to influence chips and AI policy:</strong> NVIDIA created a political action committee aimed at strengthening its voice in Washington on semiconductor and AI policy. This underscores that export controls, subsidy design, energy policy, and AI regulation are now central variables for leading AI infrastructure companies. (Source: Moomoo)</li>
+<li><strong>Eureka weighed a data-center moratorium while drafting rules:</strong> Eureka’s City Council is set to consider a 45-day moratorium on data centers while staff develops new regulations. Together with other local actions, this suggests data-center growth may increasingly depend on local zoning, water, power, noise, and community-benefit negotiations. (Source: Lost Coast Outpost)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Carbon Robotics moved toward in-field AI customization:</strong> Carbon Robotics partnered with iMerit and replaced crop-specific vision models with a large plant foundation model that farmers can customize by tagging examples through an iPad app. This is a practical Physical AI signal because model flexibility can reduce retraining friction and make robotics more usable in variable real-world environments. (Source: The Robot Report)</li>
+<li><strong>Teradyne Robotics escalated IP enforcement in cobots:</strong> Teradyne Robotics, parent of Universal Robots, filed a patent infringement lawsuit against the German subsidiary of Chinese cobot maker JAKA. The case highlights that collaborative robotics competition is shifting from hardware availability to defensible software, safety systems, and intellectual property. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Custom silicon milestones:</strong> Watch whether AI labs move from discussions and benchmark disclosures to foundry commitments, packaging partnerships, or production timelines.</li>
+<li><strong>Local data-center approvals:</strong> Track whether moratoriums remain isolated local disputes or become a broader permitting pattern affecting hyperscale capacity additions.</li>
+<li><strong>Enterprise governance budgets:</strong> Monitor whether AI spending in regulated or public-sector markets continues shifting from experimentation to vetting, workflow control, and auditability.</li>
+<li><strong>AI supply-chain financing:</strong> Watch for more credit facilities, inventory financing, and logistics capacity tied to accelerators, networking, power equipment, and electronics distribution.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming an infrastructure story:</strong> The bottlenecks are increasingly chips, power, permitting, networking, and supply-chain financing, not just model quality.</li>
+<li><strong>Policy is now part of the AI investment cycle:</strong> Local zoning decisions and national chip strategies can shape where AI capacity gets built and who captures the economics.</li>
+<li><strong>Enterprise buyers are asking harder questions:</strong> AI adoption is moving toward proof, governance, and workflow integration, which may favor vendors that can support production readiness.</li>
+<li><strong>Physical AI is still early but becoming more practical:</strong> Robotics examples in agriculture and cobots show how foundation models and defensible IP could matter in real-world automation.</li>
+</ul>
