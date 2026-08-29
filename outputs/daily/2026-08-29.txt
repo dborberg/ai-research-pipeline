@@ -1,0 +1,55 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>August 29, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The day’s strongest signal is that the AI investment cycle is moving beyond model enthusiasm toward production readiness, infrastructure scarcity, and policy friction. For advisors, the conversation is less about whether AI demand exists and more about which businesses can convert it into durable workflows, which bottlenecks constrain deployment, and how regulation, power, connectivity, and capital-market expectations shape risk.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>EXL bought iMerit to deepen governed AI production:</strong> EXL completed its acquisition of iMerit Technology, adding model training, evaluation, reinforcement learning, and multimodal data annotation capabilities to EXL’s enterprise data and workflow base. The deal reinforces that value is shifting toward making AI systems reliable, auditable, and usable inside regulated business processes, with read-through to data governance, evaluation tooling, and AI services platforms. (Source: The Robot Report)</li>
+<li><strong>Sen. Warnock called for a Georgia data-center moratorium after visiting a future OpenAI site:</strong> The U.S. Senate item highlights rising political scrutiny around large AI data centers and the pace of infrastructure approval. For investors, this underscores that AI growth depends not only on chips and cloud demand, but also on local permitting, grid capacity, community acceptance, and utility planning. (Source: U.S. Senate)</li>
+<li><strong>Google’s Marvell relationship pointed to broader custom-silicon demand:</strong> EE Times reported that Google’s expanded relationship with Marvell shows custom silicon spreading beyond core AI accelerators such as TPUs into the broader data-movement stack. The investment implication is that AI infrastructure opportunities may increasingly include networking, memory, storage, and connectivity silicon rather than only headline GPUs. (Source: EE Times)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Deere paired resilient earnings with an autonomy-focused R&amp;D partnership:</strong> Deere reported Q3 2026 net income of $1.379 billion, raised full-year net income guidance to $4.75 billion to $5 billion, and announced a $10 million Reservoir R&amp;D partnership despite weakness in Production and Precision Agriculture. The read-through is that industrial incumbents are using AI, autonomy, and connected software to defend margins and create new productivity tools through cyclical end-market pressure. (Source: The Robot Report)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Fiber connectivity emerged as another AI scaling constraint:</strong> Data Center Dynamics highlighted the fiber connectivity challenge behind AI at scale, emphasizing that data-center expansion depends on more than compute availability. The advisor takeaway is that AI infrastructure bottlenecks include transmission, interconnects, and network architecture, creating a broader watchlist than chips, power, and cooling alone. (Source: Data Center Dynamics)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>JPMorgan Private Bank linked rising yields to AI productivity expectations:</strong> Reuters reported JPMorgan Private Bank’s view that bond markets may be starting to price in AI-driven productivity gains as yields rise. This matters because AI is increasingly entering macro assumptions, not just equity narratives, with implications for growth expectations, discount rates, and balanced-portfolio discussions. (Source: Reuters)</li>
+<li><strong>Andreessen Horowitz launched a “Machine Age” fund aimed at AI supply bottlenecks:</strong> The Wall Street Journal reported that Andreessen Horowitz launched a fund focused on constraints tied to the AI buildout. The signal is continued private-capital appetite for the physical and infrastructure layers of AI, including areas where supply shortages can shape pricing power and deployment timelines. (Source: The Wall Street Journal)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Florida moved toward AI rules across education:</strong> Route Fifty reported that the DeSantis administration is moving to regulate AI from pre-K through higher education, though the available excerpt did not provide detailed policy mechanics. The development points to a widening state-level governance patchwork that could influence AI adoption, compliance needs, education technology procurement, and workforce preparation. (Source: Route Fifty)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Microduck showed the low-cost developer edge of physical AI:</strong> IEEE Spectrum highlighted Microduck, a 25 cm, 780 g open-source robot on pre-order for $399 with walking, object pickup, fall recovery, sensors, wireless connectivity, and autonomous behaviors. The investment relevance is early-stage rather than near-term earnings-driven, but low-cost platforms can expand experimentation in robotics software, embodied AI, and developer ecosystems. (Source: IEEE Spectrum)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Data-center permitting friction:</strong> Monitor whether Georgia’s moratorium debate remains symbolic or becomes a template for other states facing AI power, land-use, and utility-capacity concerns.</li>
+<li><strong>AI infrastructure breadth:</strong> Watch whether investor attention continues shifting from GPUs alone toward networking, fiber, memory, storage, cooling, and grid equipment.</li>
+<li><strong>Production-readiness spending:</strong> Track acquisitions and partnerships around model evaluation, data annotation, reinforcement learning, compliance, and workflow integration as signs of enterprise AI moving from pilots to governed deployment.</li>
+<li><strong>Macro repricing of AI productivity:</strong> Watch whether fixed-income commentary increasingly treats AI as a driver of real growth, inflation assumptions, and long-rate expectations.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming a real-asset and infrastructure story:</strong> The bottlenecks are no longer just chips; they include power, fiber, permitting, and local political acceptance.</li>
+<li><strong>Enterprise AI value is shifting toward reliability:</strong> Companies are spending to make AI accurate, governed, and embedded in workflows, not just to access larger models.</li>
+<li><strong>Industrial AI may be a through-cycle productivity tool:</strong> Deere’s update shows how autonomy and software can remain strategic even when an end market is cyclical.</li>
+<li><strong>AI is entering macro conversations:</strong> If markets start pricing productivity gains into yields, AI becomes relevant to asset allocation, not only technology-stock selection.</li>
+<li><strong>Policy risk is now part of the AI buildout:</strong> Advisors can frame regulation as a deployment variable that may affect timing, costs, and regional winners rather than simply as a headline risk.</li>
+</ul>
