@@ -1,0 +1,56 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>September 03, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s strongest theme is that the AI investment cycle is broadening from model and chip leadership into the harder constraints of power, cooling, permitting, data rights, and production workflow readiness. For advisor conversations, the key point is that AI opportunity is increasingly tied to infrastructure execution and governance clarity, while risks are shifting toward bottlenecks, local policy friction, and uneven commercialization outside the largest platforms.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>AI infrastructure beneficiaries widened beyond Nvidia:</strong> Reuters reported that the AI-driven data center boom is lifting power and cooling companies as part of a trillion-dollar buildout. The advisor read-through is that AI exposure is becoming more multi-layered, with electrical equipment, thermal management, and grid-adjacent suppliers becoming important indicators of whether compute growth can keep scaling. (Source: Reuters)</li>
+<li><strong>Washington pushed a permissive global training-data stance:</strong> Reuters reported that the U.S. is urging G20 countries to allow AI systems to train on creators’ work. The policy implication is material because copyright rules could shape model-development costs, licensing markets, litigation exposure, and the relative advantage of firms with proprietary data or stronger legal resources. (Source: Reuters)</li>
+<li><strong>AI drug discovery hit a validation bottleneck:</strong> Bloomberg reported that AI is accelerating the generation of drug ideas but creating costly testing constraints. This supports a more disciplined investment framing: AI may improve discovery productivity, but value capture still depends on lab capacity, clinical validation, regulatory execution, and tools that relieve downstream bottlenecks. (Source: Bloomberg.com)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>CrowdStrike moved agentic AI into identity security:</strong> CrowdStrike announced an Agentic Identity Provider, positioning identity as a control layer for AI-enabled enterprise environments. The implication is that enterprise production readiness for AI agents may increase demand for cybersecurity tools that manage permissions, authentication, and machine-to-machine activity. (Source: CrowdStrike)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Infineon and Skeleton targeted AI data center power systems:</strong> Data Center Dynamics reported that Infineon and Skeleton Technologies partnered on power systems for AI data centers. The business read-through is that power delivery, reliability, and efficiency are becoming investable chokepoints alongside GPUs and networking. (Source: Data Center Dynamics)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>A Mercedes chiplet spinout shut down after financing pressure:</strong> EE Times reported that Athos, a Mercedes spinout commercializing chiplet-based technology, closed after failing to secure needed funding. The investment implication is that advanced semiconductor and packaging concepts remain capital-intensive, and commercialization risk can be high even when the technology aligns with AI infrastructure demand. (Source: EE Times)</li>
+<li><strong>Legal-sector AI attracted a new investment platform:</strong> Bloomberg Law reported that Keller Postman founders started an AI platform intended to invest in law firms. This points to AI-enabled professional amplification moving into financing and ownership models, but advisors should watch for proof of workflow adoption, margin improvement, and regulatory fit in legal services. (Source: Bloomberg Law)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Sedgwick County extended its data center moratorium:</strong> The Wichita Eagle reported that Sedgwick County again extended a moratorium while it develops rules for data centers. The portfolio-monitoring implication is that local zoning, water, land-use, and power concerns can slow or redirect AI infrastructure projects even when national demand remains strong. (Source: Wichita Eagle)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>AIR selected Elmo Motion Control for uncrewed cargo aircraft:</strong> The Robot Report reported that AIR VEV will integrate Elmo’s Gold HV servo drives into its AIR 120D heavy-lift uncrewed cargo aircraft. This is a concrete physical-AI deployment signal where autonomy depends on propulsion control, safety, thermal design, and reliability rather than software alone. (Source: The Robot Report)</li>
+<li><strong>NexCOBOT highlighted staged adoption hurdles for physical AI:</strong> The Robot Report reported that NexCOBOT sees rising Big Tech interest in humanoid and legged robotics but emphasized reliability, functional safety, modularity, and industrial deployment requirements. The advisor takeaway is that physical AI may be a long-duration opportunity, but commercialization is likely to proceed through constrained industrial use cases before broad humanoid adoption. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Data center permitting and power access:</strong> Monitor whether local moratoriums and zoning rules become isolated frictions or a broader constraint on AI infrastructure expansion.</li>
+<li><strong>Copyright and training-data policy:</strong> Watch G20 responses to the U.S. position, especially whether major economies converge on permissive training rules or move toward licensing-heavy regimes.</li>
+<li><strong>Enterprise agent governance:</strong> Track whether agentic identity, access controls, and auditability become standard buying requirements as companies move from pilots to production AI workflows.</li>
+<li><strong>AI discovery bottlenecks:</strong> Watch whether lab automation, CRO capacity, and validation tooling receive more investment as drug-discovery models produce more candidate ideas.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming an infrastructure story, not just a chip story:</strong> Power, cooling, and permitting are increasingly central to whether AI demand can translate into deployed capacity.</li>
+<li><strong>Policy is becoming part of the AI cost curve:</strong> Copyright and data-use rules may influence which model companies can scale most efficiently.</li>
+<li><strong>Enterprise AI needs control layers:</strong> As agents move into real workflows, identity, permissions, and cybersecurity become critical to adoption.</li>
+<li><strong>Physical AI is promising but not instant:</strong> Robotics and autonomous systems still need reliability, safety, and industrial proof points before broad commercialization.</li>
+<li><strong>AI can move bottlenecks rather than eliminate them:</strong> In areas like drug discovery, faster idea generation can create new constraints in testing, validation, and execution.</li>
+</ul>
