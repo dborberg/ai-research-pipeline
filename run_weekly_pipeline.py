@@ -1318,18 +1318,27 @@ def cluster_articles(client, articles):
                 (isinstance(exc, ValueError) and "finish_reason=length" in str(exc))
                 or _is_retryable_model_transport_error(exc)
             )
-            if not can_retry or index == len(cluster_profiles):
+            if not can_retry:
                 raise
+            if index == len(cluster_profiles):
+                break
             print(
                 "Weekly clustering model call failed before returning usable clusters; "
                 "retrying with a more compact clustering profile"
             )
 
     if raw_response is None:
-        raise last_error or ValueError("Weekly clustering failed before producing a model response")
-
-    parsed = _parse_json_response(raw_response, {"clusters": []})
-    raw_clusters = parsed.get("clusters", []) if isinstance(parsed, dict) else []
+        if last_error and _is_retryable_model_transport_error(last_error):
+            print(
+                "Weekly clustering model calls timed out across all profiles; "
+                "using deterministic fallback clustering"
+            )
+            raw_clusters = []
+        else:
+            raise last_error or ValueError("Weekly clustering failed before producing a model response")
+    else:
+        parsed = _parse_json_response(raw_response, {"clusters": []})
+        raw_clusters = parsed.get("clusters", []) if isinstance(parsed, dict) else []
 
     article_map = {article["id"]: article for article in articles}
     assigned_ids = set()

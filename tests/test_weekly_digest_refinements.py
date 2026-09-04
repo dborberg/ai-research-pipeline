@@ -447,6 +447,53 @@ class WeeklyDigestRefinementTests(unittest.TestCase):
             run_weekly_pipeline._load_weekly_prompt = original_load
             run_weekly_pipeline._parse_json_response = original_parse
 
+    def test_cluster_articles_uses_fallback_after_all_timeout_profiles_fail(self):
+        articles = []
+        for index in range(6):
+            articles.append(
+                {
+                    "id": index + 1,
+                    "signal_tier": "HIGH SIGNAL",
+                    "ai_score": 8,
+                    "signal_score": 8,
+                    "title": f"Article {index} about AI infrastructure",
+                    "summary": "Summary about AI infrastructure funding",
+                    "advisor_relevance": "Advisor relevance for infrastructure demand",
+                    "companies": ["Company"],
+                    "source": "Source",
+                    "published_at": f"2026-09-0{index + 1}T12:00:00",
+                }
+            )
+
+        original_call = run_weekly_pipeline.call_chat_model
+        original_load = run_weekly_pipeline._load_weekly_prompt
+        try:
+            timeout_error = type("APITimeoutError", (Exception,), {})
+            call_count = {"count": 0}
+
+            def fake_load(name, **replacements):
+                if name == "cluster_articles_system":
+                    return "SYSTEM"
+                if name == "cluster_articles_user":
+                    return replacements["article_lines"]
+                return "PROMPT"
+
+            def fake_call(client, system_prompt, user_prompt, max_completion_tokens=2200, **kwargs):
+                call_count["count"] += 1
+                raise timeout_error("Request timed out.")
+
+            run_weekly_pipeline._load_weekly_prompt = fake_load
+            run_weekly_pipeline.call_chat_model = fake_call
+
+            clusters = run_weekly_pipeline.cluster_articles(client=None, articles=articles)
+
+            self.assertEqual(call_count["count"], 3)
+            self.assertGreaterEqual(len(clusters), 1)
+            self.assertIn("articles", clusters[0])
+        finally:
+            run_weekly_pipeline.call_chat_model = original_call
+            run_weekly_pipeline._load_weekly_prompt = original_load
+
     def test_validator_accepts_weekly_spacex_ipo_synthesis(self):
         self.assertEqual(validate_weekly_digest_text(_valid_weekly_text()), [])
 
