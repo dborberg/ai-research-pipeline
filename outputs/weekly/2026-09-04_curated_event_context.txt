@@ -1,0 +1,367 @@
+SUPPLEMENTAL INPUT: TIER 2 WEEKLY OVERRIDE CANDIDATES
+
+These candidates come from an independent review of the prior seven calendar days of Gen AI and AI-adjacent source material.
+
+Use them only when they represent systemic weekly developments, not to flood the Weekly with unrelated stories.
+
+
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: EXL acquires physical AI model developer iMerit
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-08-28T17:36:09
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This acquisition highlights a shift in AI value creation from simply building large models toward making AI reliable, governed, and usable in real enterprise workflows. It is relevant for advisor conversations because it points to second-derivative beneficiaries in AI services, data quality, model evaluation, compliance, and physical AI enablement, particularly as enterprises and robotics developers seek production-ready systems.
+SUMMARY: EXL completed its acquisition of iMerit Technology, combining EXL’s enterprise data and industry workflow expertise with iMerit’s AI model training, evaluation, reinforcement learning, and multimodal data annotation capabilities. The companies position the deal as a way to help enterprises move AI from pilots to production by improving trust, domain-specific performance, safety, and compliance, including in robotics and autonomous systems.
+COMPANIES: EXL, ExlService Holdings Inc., iMerit Technology, Carbon Robotics
+EVENT_PRIORITY: 97.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 79
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: autonomy
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: NVIDIA plans to acquire Hugging Face and keep AI development platform open
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-09-03T15:28:02
+SIGNAL_SCORE: 10.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: The acquisition would give NVIDIA deeper influence over a major AI development hub while reinforcing demand for its compute stack without making NVIDIA hardware mandatory. For advisor conversations, the read-through is that AI value creation is moving beyond chips into platforms, developer ecosystems, open-model distribution, enterprise deployment workflows, and robotics infrastructure. It also highlights competitive dynamics across accelerators, cloud infrastructure, and open versus closed AI models.
+SUMMARY: NVIDIA said it plans to acquire Hugging Face for $12.9 billion while keeping the AI developer platform open, multi-cloud, and multi-accelerator. Hugging Face has more than 18 million users, over 3 million models, 500,000 datasets, 1 million applications, and more than 200,000 company users. The deal extends NVIDIA’s software and ecosystem strategy across open models, enterprise AI deployment, edge AI, and robotics tooling.
+COMPANIES: NVIDIA, Hugging Face, AMD, OpenAI, TechCrunch, CNBC
+EVENT_PRIORITY: 96.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 71
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: AI infrastructure
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Visko launches Orbis live model and closes pre-seed funding round
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-09-01T16:00:01
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is an early but concrete example of AI moving from short-form content generation toward persistent, interactive world models that could support robotics, autonomous systems, and simulation workflows. For advisors, the key read-through is that physical AI may create demand for new model architectures, synthetic data generation, simulation platforms, sensor integration, and robotics-enabling infrastructure, though Visko remains a pre-seed company and commercial adoption is still unproven.
+SUMMARY: Visko opened public access to Orbis, a real-time AI foundation model that streams interactive 4K video at 24 frames per second and is designed to sustain hour-scale generation without drift. The Sunnyvale startup also raised $10 million in pre-seed funding led by Llama Ventures and is positioning Orbis for use cases such as robotics training, simulation, autonomous-vehicle corner cases, gaming, education, live commerce, and creative media.
+COMPANIES: Visko Platform Inc., Llama Ventures, Apple, Google DeepMind, Meta, Amazon, Tesla, Google, Reactor
+EVENT_PRIORITY: 93.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 71
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: Gen AI
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: NVIDIA to acquire Hugging Face for $12.93B
+SOURCE: AI News
+PUBLISHED_AT: 2026-09-03T15:50:31
+SIGNAL_SCORE: 10.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is a major example of AI stack convergence, with NVIDIA extending beyond accelerators into developer platforms, model distribution, evaluation, and deployment workflows. The deal highlights the strategic value of open model repositories as enterprise AI adoption scales, while also reinforcing ongoing investment demand for AI infrastructure and tooling.
+SUMMARY: NVIDIA has agreed to acquire Hugging Face for $12.93 billion to expand the open-source AI model platform’s infrastructure, reliability, evaluation tooling, inference execution, and deployment pipelines. Hugging Face will retain its independent brand and remain hardware-neutral, multi-cloud, and open to third-party models and accelerators, according to NVIDIA.
+COMPANIES: NVIDIA, Hugging Face
+EVENT_PRIORITY: 88.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 66
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: NexCOBOT discusses physical AI market hurdles and acceleration
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-09-02T19:45:19
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This article supports the view that physical AI is moving from research toward industrial deployment, but adoption will likely be staged because hardware, safety certification, and reliability remain bottlenecks. It also points to potential beneficiaries beyond robot makers, including motion control, functional safety, modular platform, and integration suppliers that help shorten development cycles and enable commercialization.
+SUMMARY: NexCOBOT says physical AI and humanoid/legged robotics are seeing increased Big Tech interest, including recent acquisitions by Mobileye, Amazon, and Meta. The company highlights that industrial adoption still depends on reliability, functional safety, modular platforms, and open control ecosystems that can let faster-moving AI software scale across slower-moving robotics hardware cycles.
+COMPANIES: NexCOBOT, NEXCOM Group, Mobileye, Mentee Robotics, Amazon, Fauna Robotics, Meta, Assured Robot Intelligence
+EVENT_PRIORITY: 82.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: RIFT-Bench: Dynamic Red-teaming For Agentic AI Systems
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-09-01T04:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: The paper highlights that as AI agents become more autonomous, security evaluation will need to evolve beyond traditional LLM testing. While not directly investable, it points to growing demand for AI governance, safety tooling, and enterprise risk controls as agentic systems move closer to real-world deployment.
+SUMMARY: RIFT-Bench is a proposed benchmark and methodology for dynamically red-teaming agentic AI systems, aimed at evaluating security risks across different agent architectures. It uses a two-phase process—Discovery to extract system structure and Scanning to run 105 adaptive adversarial probes—and was demonstrated across 45 agentic systems.
+COMPANIES: 
+EVENT_PRIORITY: 74.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Guest opinion: Big Tech wants Wisconsin land for data centers. Voters are saying ‘Yeah, no.’ - Wisconsin Watch
+SOURCE: "data center moratorium" - Google News
+PUBLISHED_AT: 2026-08-31T17:35:47
+SIGNAL_SCORE: 5.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because AI infrastructure growth depends not only on chips and capital, but also on access to land, power, water, and local approvals. Community resistance in states targeted for data center development could slow timelines, raise costs, or shift where hyperscale infrastructure is built.
+SUMMARY: A Wisconsin Watch guest opinion argues that Big Tech data center land acquisitions in Wisconsin are facing voter and community resistance. The article points to local opposition as a potential constraint on data center buildout, though the provided text does not name specific companies or project details.
+COMPANIES: 
+EVENT_PRIORITY: 72.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 63
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: AI Chip Stocks Investment 2026: Nvidia vs AMD vs Broadcom Analysis - Intellectia AI
+SOURCE: "AI investment" - Google News
+PUBLISHED_AT: 2026-08-30T08:12:13
+SIGNAL_SCORE: 5.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: The topic is relevant for advisor conversations because AI chipmakers remain central to AI infrastructure buildout and investor interest. However, the available article text provides only the headline and no supporting analysis, limiting its usefulness for differentiated portfolio or market insights.
+SUMMARY: The article appears to compare AI chip investment opportunities for 2026 across Nvidia, AMD, and Broadcom. The provided excerpt does not include details on financials, market share, product roadmaps, or valuation, so investment conclusions cannot be assessed from the available text.
+COMPANIES: Nvidia, AMD, Broadcom
+EVENT_PRIORITY: 72.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Mercedes Spinout Athos Closes Its Doors
+SOURCE: EE Times
+PUBLISHED_AT: 2026-09-02T17:07:04
+SIGNAL_SCORE: 4.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters as a reminder that advanced semiconductor and chiplet technologies can be capital-intensive and difficult to commercialize, particularly for startups without sufficient financing. For advisor conversations, it supports a cautious view on early-stage hardware exposure and highlights the importance of balance-sheet strength, scale, and funding access in AI-adjacent infrastructure markets.
+SUMMARY: Mercedes spinout Athos has closed after being unable to secure the financing needed to continue commercializing its chiplet-based technology. The available article detail is limited, but the closure points to funding and commercialization challenges for semiconductor startups.
+COMPANIES: Athos, Mercedes
+EVENT_PRIORITY: 66.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Meta AI Released Muse Spark 1.3: An Agentic Coding Model That Uses ~20% Fewer Tool Calls and ~25% Fewer Tokens Than Muse Spark 1.2
+SOURCE: MarkTechPost
+PUBLISHED_AT: 2026-09-03T18:51:52
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is a concrete example of AI platforms moving beyond pure cloud inference toward hybrid architectures that balance capability, latency, privacy, and cost. For advisors, it highlights potential adoption drivers in enterprise AI where sensitive workflows require local processing, while also reinforcing the importance of advanced client hardware and privacy controls as AI usage scales.
+SUMMARY: The article text describes Perplexity launching hybrid compute for its Mac app, allowing a single task to move between frontier cloud models and a compact on-device model without losing context. The system includes an on-device privacy gate that can keep data local, mask it, refuse transfer, or ask for consent, and is live for Pro, Max, and Enterprise users on Apple silicon Macs with 24GB of unified memory.
+COMPANIES: Perplexity, Apple, Meta AI
+EVENT_PRIORITY: 29.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Workload Identification with Physical Side Channels for AI Governance
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-09-02T04:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 4.5
+ADVISOR_RELEVANCE: This is an early technical signal that AI governance may increasingly focus on monitoring how advanced GPUs are used, not just who owns them. If such methods mature, they could influence compliance requirements for frontier AI labs, cloud operators, and data center infrastructure providers, but the current work remains academic and not yet a commercial or regulatory deployment.
+SUMMARY: Researchers show that GPU workloads on an NVIDIA H200 can be classified using external power-draw traces, distinguishing AI training, AI inference, and non-AI computation with 97% accuracy in their test corpus. The work suggests physical side channels could support AI compute verification for governance because they are harder to spoof than on-chip telemetry, though adversarial evasion remains an open challenge.
+COMPANIES: NVIDIA
+EVENT_PRIORITY: 27.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: The differences between decentralized and centralized power in swarm robotics
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-08-29T12:25:31
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.7
+ADVISOR_RELEVANCE: This matters because swarm robotics is a practical example of AI moving into physical operations, especially logistics, fulfillment, and industrial automation. The discussion points to investment-relevant bottlenecks around power architecture, communications congestion, infrastructure design, and fleet orchestration as robotic deployments scale.
+SUMMARY: The article explains how centralized, decentralized, and hybrid power architectures affect coordination, latency, fault tolerance, and scalability in swarm robotics. It highlights real-world logistics and fulfillment deployments, including Amazon Robotics and Ocado Technology, where centralized orchestration and AI-driven coordination support high-density robotic operations.
+COMPANIES: Amazon Robotics, Ocado Technology
+EVENT_PRIORITY: 25.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Sparks Fly: NVIDIA Accelerates Local AI at IFA 2026
+SOURCE: NVIDIA Blog
+PUBLISHED_AT: 2026-09-03T16:00:59
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 4.3
+ADVISOR_RELEVANCE: This points to continued platform convergence around local AI, where inference workloads may shift closer to end users on PCs and edge devices. For advisors, the read-through is potential demand for AI-capable hardware, software tools that simplify agent deployment, and broader consumer/developer adoption beyond centralized cloud infrastructure.
+SUMMARY: NVIDIA says it is working with Microsoft and partners to accelerate local AI inference and make AI agents easier to set up and run on NVIDIA hardware. The company also announced compact NVIDIA RTX Spark Windows PCs expected in October for AI enthusiasts, developers and creators.
+COMPANIES: NVIDIA, Microsoft
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Sen. Warnock calls for statewide data center moratorium after regulators approved massive OpenAI facility - CBS News
+SOURCE: "data center moratorium" - Google News
+PUBLISHED_AT: 2026-08-28T21:13:14
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because AI data center growth is increasingly intersecting with state-level regulation, utility capacity, and community concerns. For advisors, it is a reminder that AI infrastructure beneficiaries may face permitting delays, political pushback, and power-related constraints even as demand for compute continues to rise.
+SUMMARY: Sen. Warnock called for a statewide moratorium on data centers after regulators approved a massive OpenAI facility. The development highlights growing policy scrutiny around large-scale AI infrastructure expansion.
+COMPANIES: OpenAI
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: CrowdStrike Extends Falcon Platform Capabilities Across Google Cloud’s Enterprise AI Ecosystem - CrowdStrike
+SOURCE: "site:crowdstrike.com AI security enterprise" - Google News
+PUBLISHED_AT: 2026-09-01T16:58:57
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.5
+ADVISOR_RELEVANCE: This matters because enterprise AI adoption is increasing the need for security tools that can operate across cloud AI platforms. For advisors, the announcement supports discussion around cybersecurity as a potential second-derivative beneficiary of AI adoption and highlights continued platform convergence between cloud providers and security vendors.
+SUMMARY: CrowdStrike announced an extension of its Falcon platform capabilities across Google Cloud’s enterprise AI ecosystem. The release points to closer integration between cybersecurity platforms and cloud-based enterprise AI environments.
+COMPANIES: CrowdStrike, Google Cloud
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Palo Alto Networks Acquires Console to Agentify Security - Palo Alto Networks
+SOURCE: "site:paloaltonetworks.com AI security platform" - Google News
+PUBLISHED_AT: 2026-09-01T20:29:23
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 4.3
+ADVISOR_RELEVANCE: This matters because cybersecurity is one of the enterprise software categories where AI agents may be adopted to automate workflows and improve analyst productivity. Palo Alto Networks’ acquisition signals that large security platforms are using M&A to add AI-agent capabilities, which may support advisor discussions around enterprise AI monetization and software platform convergence.
+SUMMARY: Palo Alto Networks announced it has acquired Console in a move described as aimed at “agentifying” security. The limited article text does not provide transaction terms or product details, but the acquisition points to continued cybersecurity platform investment around AI-enabled agent workflows.
+COMPANIES: Palo Alto Networks, Console
+EVENT_PRIORITY: 22.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Texas' halt on powering data centers reflects US reckoning over 'ghost' demand - Reuters
+SOURCE: "AI data center" - Google News
+PUBLISHED_AT: 2026-09-01T20:38:01
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because AI growth increasingly depends on access to power, grid interconnection, and infrastructure planning. For advisors, the article supports conversations about second-derivative beneficiaries and risks across utilities, power equipment, data center operators, and AI infrastructure supply chains, while also highlighting that some demand forecasts may prove overstated.
+SUMMARY: Reuters reports that Texas has halted powering some data centers, reflecting broader U.S. concern that projected electricity demand may include “ghost” demand that does not ultimately materialize. The development highlights growing scrutiny around data center power requests and the physical infrastructure constraints tied to AI-era compute expansion.
+COMPANIES: 
+EVENT_PRIORITY: 21.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: YES
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: OneRail uses Nvidia AI for real-time last-mile delivery optimisation
+SOURCE: AI News
+PUBLISHED_AT: 2026-09-03T16:07:18
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 5.2
+ADVISOR_RELEVANCE: This is a concrete example of AI moving from prediction into real-time operational decision-making, where faster optimisation can directly affect margins in costly logistics workflows. It also reinforces Nvidia’s role beyond model training, showing GPU acceleration being applied to enterprise optimisation problems such as routing, pricing, and fulfillment-mode selection. For advisor conversations, the read-through is that AI adoption may create value not only for chip and infrastructure providers, but also for logistics platforms, retailers, distributors, and other companies with complex physical operations.
+SUMMARY: OneRail launched OmniSTAR, an AI-powered last-mile delivery optimisation platform using Nvidia cuOpt, cuDF, and accelerated computing to evaluate delivery modes such as owned fleets, couriers, parcel carriers, and other options in real time. The company says the system can cut certain computation times by up to 10x, enabling live operational decisions that balance delivery cost and service levels. OmniSTAR is already deployed with selected enterprise customers, with OneRail citing margin improvements at US Foods and self-reported run-rate savings for an unnamed tire distributor.
+COMPANIES: OneRail, Nvidia, US Foods, FedEx, CNBC
+EVENT_PRIORITY: 20.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: Gen AI
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
