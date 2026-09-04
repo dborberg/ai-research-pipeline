@@ -363,7 +363,7 @@ class WeeklyDigestRefinementTests(unittest.TestCase):
 
             call_count = {"count": 0}
 
-            def fake_call(client, system_prompt, user_prompt, max_completion_tokens=2200):
+            def fake_call(client, system_prompt, user_prompt, max_completion_tokens=2200, **kwargs):
                 call_count["count"] += 1
                 if call_count["count"] == 1:
                     raise ValueError("Chat completion returned empty content (finish_reason=length)")
@@ -385,6 +385,63 @@ class WeeklyDigestRefinementTests(unittest.TestCase):
             self.assertIn("ARTICLE_ID: 1", captured_prompts[0])
             self.assertIn("ARTICLE_ID: 30", captured_prompts[1])
             self.assertNotIn("ARTICLE_ID: 31", captured_prompts[1])
+        finally:
+            run_weekly_pipeline.call_chat_model = original_call
+            run_weekly_pipeline._load_weekly_prompt = original_load
+            run_weekly_pipeline._parse_json_response = original_parse
+
+    def test_cluster_articles_retries_with_compact_profile_after_timeout(self):
+        articles = []
+        for index in range(36):
+            articles.append(
+                {
+                    "id": index + 1,
+                    "signal_tier": "HIGH SIGNAL",
+                    "ai_score": 8,
+                    "title": f"Article {index}",
+                    "summary": "Summary " + ("x" * 200),
+                    "advisor_relevance": "Advisor relevance " + ("y" * 120),
+                    "companies": ["Company"],
+                    "source": "Source",
+                }
+            )
+
+        original_call = run_weekly_pipeline.call_chat_model
+        original_load = run_weekly_pipeline._load_weekly_prompt
+        original_parse = run_weekly_pipeline._parse_json_response
+        try:
+            captured_kwargs = []
+
+            def fake_load(name, **replacements):
+                if name == "cluster_articles_system":
+                    return "SYSTEM"
+                if name == "cluster_articles_user":
+                    return replacements["article_lines"]
+                return "PROMPT"
+
+            timeout_error = type("APITimeoutError", (Exception,), {})
+            call_count = {"count": 0}
+
+            def fake_call(client, system_prompt, user_prompt, max_completion_tokens=2200, **kwargs):
+                call_count["count"] += 1
+                captured_kwargs.append(kwargs)
+                if call_count["count"] == 1:
+                    raise timeout_error("Request timed out.")
+                return '{"clusters": [{"label": "Cluster A", "article_ids": [1, 2]}]}'
+
+            def fake_parse(raw_response, fallback):
+                return {"clusters": [{"label": "Cluster A", "article_ids": [1, 2]}]}
+
+            run_weekly_pipeline._load_weekly_prompt = fake_load
+            run_weekly_pipeline.call_chat_model = fake_call
+            run_weekly_pipeline._parse_json_response = fake_parse
+
+            clusters = run_weekly_pipeline.cluster_articles(client=None, articles=articles)
+
+            self.assertEqual(len(clusters), 1)
+            self.assertEqual(call_count["count"], 2)
+            self.assertEqual(captured_kwargs[0]["request_timeout"], 60)
+            self.assertEqual(captured_kwargs[0]["request_max_retries"], 0)
         finally:
             run_weekly_pipeline.call_chat_model = original_call
             run_weekly_pipeline._load_weekly_prompt = original_load

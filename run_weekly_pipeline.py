@@ -496,6 +496,17 @@ def _parse_json_response(raw_text, fallback):
     return fallback
 
 
+def _is_retryable_model_transport_error(exc):
+    error_name = exc.__class__.__name__.lower()
+    error_text = str(exc).lower()
+    return (
+        "timeout" in error_name
+        or "connection" in error_name
+        or "timeout" in error_text
+        or "read operation timed out" in error_text
+    )
+
+
 def _parse_companies(raw_value):
     if not raw_value:
         return []
@@ -1297,14 +1308,21 @@ def cluster_articles(client, articles):
                 system_prompt,
                 user_prompt,
                 max_completion_tokens=2600,
+                request_timeout=60,
+                request_max_retries=0,
             )
             break
-        except ValueError as exc:
+        except Exception as exc:
             last_error = exc
-            if "finish_reason=length" not in str(exc) or index == len(cluster_profiles):
+            can_retry = (
+                (isinstance(exc, ValueError) and "finish_reason=length" in str(exc))
+                or _is_retryable_model_transport_error(exc)
+            )
+            if not can_retry or index == len(cluster_profiles):
                 raise
             print(
-                "Weekly clustering prompt exceeded model limits; retrying with a more compact clustering profile"
+                "Weekly clustering model call failed before returning usable clusters; "
+                "retrying with a more compact clustering profile"
             )
 
     if raw_response is None:

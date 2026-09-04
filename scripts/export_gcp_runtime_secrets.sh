@@ -20,6 +20,8 @@ for secret_name in "$@"; do
     exit 1
   fi
 
+  echo "::add-mask::$secret_value"
+
   {
     echo "${secret_name}<<EOF"
     echo "$secret_value"

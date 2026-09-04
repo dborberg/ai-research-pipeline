@@ -168,16 +168,31 @@ def build_monthly_source_context(weeks=4):
     return "\n\n" + ("\n\n" + ("=" * 80) + "\n\n").join(blocks)
 
 
-def call_chat_model(client, system_prompt, user_prompt, max_completion_tokens=2200):
+def call_chat_model(
+    client,
+    system_prompt,
+    user_prompt,
+    max_completion_tokens=2200,
+    request_timeout=None,
+    request_max_retries=None,
+):
     token_budget = max_completion_tokens
     revision_feedback = ""
+    request_client = client
+    request_options = {}
+    if request_timeout is not None:
+        request_options["timeout"] = request_timeout
+    if request_max_retries is not None:
+        request_options["max_retries"] = request_max_retries
+    if request_options and hasattr(client, "with_options"):
+        request_client = client.with_options(**request_options)
 
     for attempt in range(3):
         request_prompt = user_prompt.strip()
         if revision_feedback:
             request_prompt = f"{request_prompt}\n\nREVISION FEEDBACK:\n{revision_feedback}"
 
-        response = client.chat.completions.create(
+        response = request_client.chat.completions.create(
             model=MODEL_NAME,
             messages=[
                 {"role": "system", "content": system_prompt.strip()},
