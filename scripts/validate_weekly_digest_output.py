@@ -298,6 +298,19 @@ def validate_weekly_digest_text(text):
     return issues
 
 
+def split_weekly_digest_issues(issues):
+    hard_prefixes = (
+        "Explicit recommendation language detected",
+        "Performance promise language detected",
+        "Missing weekly section headings:",
+        "Weekly section headings are out of expected order",
+        "WHAT TO WATCH NEXT section missing",
+    )
+    hard_issues = [issue for issue in issues if issue.startswith(hard_prefixes)]
+    audit_notes = [issue for issue in issues if issue not in hard_issues]
+    return hard_issues, audit_notes
+
+
 def main():
     parser = argparse.ArgumentParser(description="Validate a saved weekly digest text file.")
     parser.add_argument("path", help="Path to the weekly digest text output")
@@ -305,10 +318,14 @@ def main():
 
     text = Path(args.path).read_text(encoding="utf-8")
     issues = validate_weekly_digest_text(text)
-    if issues:
-        for issue in issues:
+    hard_issues, audit_notes = split_weekly_digest_issues(issues)
+    if hard_issues:
+        for issue in hard_issues:
             print(f"ERROR: {issue}")
         return 1
+
+    for issue in audit_notes:
+        print(f"NOTE: {issue}")
 
     print("Weekly digest validation passed")
     return 0

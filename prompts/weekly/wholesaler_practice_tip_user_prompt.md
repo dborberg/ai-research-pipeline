@@ -12,6 +12,7 @@ CRITICAL REQUIREMENTS:
 - REQUIRED WORKFLOW FOR THIS WEEK: {{required_workflow}}
 - REQUIRED IDEA FAMILY FOR THIS WEEK: {{required_concept}}
 - Do NOT reuse or closely mimic any recent practice tip ideas listed below
+- The new What line must describe a meaningfully different advisor job-to-be-done from every recent tip, not merely use different wording
 - If a recent tip covered portfolio review, holdings review, concentration mapping, or exposure mapping, do not return another variant of that same concept
 - If a recent tip covered behavioral coaching, pause scripts, premortems, FOMO control, or decision framing, do not return another variant of that same concept
 - Prefer a different advisor job-to-be-done than the last 3 tips, even if the wording would be different

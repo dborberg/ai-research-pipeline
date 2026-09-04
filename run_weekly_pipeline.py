@@ -102,6 +102,8 @@ PRACTICE_TIP_CONCEPT_ROTATION = [
     "portfolio exposure mapping",
     "behavioral coaching",
 ]
+PRACTICE_TIP_HISTORY_LIMIT = 6
+PRACTICE_TIP_SIMILARITY_THRESHOLD = 0.5
 PRACTICE_TIP_CONCEPT_KEYWORDS = {
     "behavioral coaching": [
         "behavioral", "coaching", "fomo", "recency bias", "decision premortem",
@@ -1706,6 +1708,20 @@ def generate_wholesaler_weekly(client, source_context, week_start, article_data=
         tip_user_prompt,
         max_completion_tokens=500,
     )
+    if _is_practice_tip_too_similar(practice_tip, recent_tip_history):
+        retry_prompt = (
+            f"{tip_user_prompt}\n\n"
+            "The prior draft was rejected because its What line is too similar to a recent tip. "
+            "Choose a meaningfully different advisor job-to-be-done and return a new complete tip."
+        )
+        practice_tip = call_chat_model(
+            client,
+            tip_system_prompt,
+            retry_prompt,
+            max_completion_tokens=500,
+        )
+    if _is_practice_tip_too_similar(practice_tip, recent_tip_history):
+        raise RuntimeError("Generated practice tip duplicates recent weekly tip history")
 
     return "\n\n".join([main_digest.strip(), practice_tip.strip()]).strip()
 
@@ -1744,6 +1760,34 @@ def _extract_practice_tip_what(content):
     return first_line
 
 
+def _practice_tip_terms(text):
+    stop_words = {
+        "a", "an", "and", "as", "at", "by", "for", "from", "in", "into", "of",
+        "on", "or", "the", "to", "use", "with", "your",
+    }
+    return {
+        term
+        for term in re.findall(r"[a-z0-9]+", str(text or "").lower())
+        if len(term) >= 3 and term not in stop_words
+    }
+
+
+def _is_practice_tip_too_similar(practice_tip, recent_tip_history):
+    candidate = _practice_tip_terms(_extract_practice_tip_what(practice_tip))
+    if not candidate:
+        return True
+
+    for item in recent_tip_history:
+        prior = _practice_tip_terms(item.get("what"))
+        if not prior:
+            continue
+        overlap = len(candidate & prior) / max(1, len(candidate | prior))
+        if overlap >= PRACTICE_TIP_SIMILARITY_THRESHOLD:
+            return True
+
+    return False
+
+
 def _infer_practice_tip_workflow(text):
     normalized = str(text or "").lower()
     if not normalized:
@@ -1768,7 +1812,7 @@ def _infer_practice_tip_concept(text):
     return "general"
 
 
-def _get_recent_practice_tip_history(week_start, limit=4):
+def _get_recent_practice_tip_history(week_start, limit=PRACTICE_TIP_HISTORY_LIMIT):
     rows = fetch_weekly_digests(digest_type=WHOLESALER_TYPE, limit=12)
     history = []
 
