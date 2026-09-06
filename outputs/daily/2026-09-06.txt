@@ -1,0 +1,54 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>September 06, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The day’s strongest signal is that AI’s investment cycle is being shaped less by model announcements and more by the operating constraints around production deployment: data-center capital, power availability, permitting, governance, and policy engagement. For advisors, the practical takeaway is to discuss AI exposure as an ecosystem trade-off across compute infrastructure, regulated deployment, and selective workflow automation rather than as a single software theme.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>TCS unit plans up to $7.4 billion AI data-center campus:</strong> A unit of India’s TCS plans to invest up to $7.4 billion in an AI data-center campus, underscoring the continued capital intensity of the AI buildout. The advisor read-through is that compute demand remains robust, but returns will increasingly depend on power access, utilization, financing discipline, and local approval dynamics. (Source: Reuters)</li>
+<li><strong>Power availability moves to the center of the AI race:</strong> Data Center Dynamics framed electrical power access as a decisive constraint for AI data-center expansion. This supports a portfolio-monitoring focus beyond chips and cloud platforms toward grid capacity, power equipment, cooling, and site selection as potential bottlenecks and beneficiaries. (Source: Data Center Dynamics)</li>
+<li><strong>G20 AI agenda highlights regulation, data-center backlash, and China rivalry:</strong> DigiTimes reported that AI is on the G20 agenda, with the U.S. favoring a light-touch regulatory posture while data-center opposition and China competition intensify. The implication is that policy risk is becoming part of the AI infrastructure cost curve, especially where permitting, energy use, and geopolitical controls intersect. (Source: DigiTimes)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>OpenAI acknowledged a transparency gap after a “wiki incident”:</strong> OpenAI said unintended AI behavior requires more transparency, reinforcing that trust, reliability, and auditability remain barriers to enterprise production readiness. For advisors, this is a reminder that adoption may favor vendors with stronger governance controls, monitoring, and workflow integration rather than just frontier-model performance. (Source: Reuters)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Morgan Stanley is tracking midterm races tied to the data-center boom:</strong> Business Insider reported that Morgan Stanley is watching specific races for implications around AI and data-center development. This makes local and federal politics a leading indicator for infrastructure timelines, power access, permitting friction, and the pace at which AI capacity can actually come online. (Source: Business Insider)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>AI capital allocation remains concentrated in enabling infrastructure:</strong> Across the day’s article set, the most investable signals centered on data centers, power constraints, and targeted automation assets rather than broad consumer AI headlines. Advisors can use this to frame valuation discipline: the opportunity is real, but the market may increasingly reward companies that convert AI demand into financed, permitted, and utilized capacity. (Source: Full article set)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>OpenAI expanded its policy team amid legislative pressure:</strong> Axios reported that OpenAI is adding policy capacity as AI-related legislative headwinds build. The business-model implication is that regulatory engagement is becoming a core operating function for leading AI developers, not a peripheral public-affairs activity. (Source: Axios)</li>
+<li><strong>West Virginia data-center opposition signals local permitting risk:</strong> The WV NAACP demanded a moratorium on data centers and microgrids and opposed HB 2014, according to a local report. While the source is local and details are limited, the event fits a broader pattern: communities may challenge AI infrastructure projects on power, land, environmental, or equity grounds. (Source: The Real WV)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Enovis agreed to acquire eCential Robotics:</strong> Enovis plans to acquire surgical-technology provider eCential Robotics for an upfront payment cited at €155 million, with closing expected by the end of 2026 and additional milestone-based consideration. The deal shows physical AI and robotics moving deeper into healthcare workflows through M&amp;A, with read-throughs for surgical navigation, hospital automation, and regulated clinical deployment. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Power and permitting timelines:</strong> Track whether announced AI data-center campuses secure utility commitments, grid interconnection, cooling capacity, and local approvals on schedule.</li>
+<li><strong>Policy escalation around AI infrastructure:</strong> Watch for state, local, and national rules that affect data-center siting, microgrids, water use, emissions, and electricity pricing.</li>
+<li><strong>Enterprise governance standards:</strong> Monitor whether transparency incidents push large customers toward stricter model-audit, observability, and vendor-risk requirements.</li>
+<li><strong>Robotics M&amp;A follow-through:</strong> Watch whether surgical, industrial, and lab-automation acquisitions translate into scaled deployments rather than isolated pilot programs.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming an infrastructure story:</strong> The next phase is about power, permitting, cooling, and utilization, not just better models.</li>
+<li><strong>Governance is part of adoption:</strong> Enterprises may slow or redirect spending if AI systems cannot be monitored, explained, and controlled inside real workflows.</li>
+<li><strong>Policy is now an investment variable:</strong> Data-center economics increasingly depend on local acceptance, grid access, and regulatory direction.</li>
+<li><strong>Robotics is a selective AI-adjacent opportunity:</strong> Healthcare and industrial automation can offer tangible deployment paths, but commercialization timelines and regulation matter.</li>
+</ul>
