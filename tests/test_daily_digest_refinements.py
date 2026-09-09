@@ -60,6 +60,7 @@ class DailyDigestRefinementTests(unittest.TestCase):
         self.assertIn("Workflow Orchestration", system_prompt)
         self.assertIn("Platform Convergence", system_prompt)
         self.assertIn("frontier technology capital-markets events", system_prompt)
+        self.assertIn("consequential frontier-model launch", system_prompt)
         self.assertIn("Do not use buy, sell, hold", system_prompt)
 
         self.assertIn("relevance-first daily briefing", user_prompt)

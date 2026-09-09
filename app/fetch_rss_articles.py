@@ -63,6 +63,15 @@ FEED_BUCKETS = {
         "https://cloud.google.com/blog/products/ai-machine-learning/rss/",
         "https://azure.microsoft.com/en-us/blog/feed/",
     ],
+    "frontier_labs": [
+        "https://news.google.com/rss/search?q=site%3Aopenai.com%2Findex+OR+site%3Aopenai.com%2Fnews",
+        "https://news.google.com/rss/search?q=site%3Aanthropic.com%2Fnews+OR+site%3Aanthropic.com%2Fresearch",
+        "https://news.google.com/rss/search?q=site%3Ablog.google%2Ftechnology%2Fai+OR+site%3Adeepmind.google%2Fdiscover%2Fblog",
+        "https://news.google.com/rss/search?q=site%3Aai.meta.com%2Fblog+OR+site%3Aabout.fb.com%2Fnews%2Fcategory%2Ftechnology",
+        "https://news.google.com/rss/search?q=site%3Ax.ai%2Fnews+OR+site%3Ax.ai%2Fblog",
+        "https://news.google.com/rss/search?q=site%3Amistral.ai%2Fnews+OR+site%3Acohere.com%2Fblog+OR+site%3Aperplexity.ai%2Fhub%2Fblog",
+        "https://news.google.com/rss/search?q=%28OpenAI+OR+Anthropic+OR+Google+DeepMind+OR+Meta+AI+OR+xAI+OR+Mistral%29+%28model+launch+OR+model+release+OR+announces+model%29",
+    ],
     "research": [
         "https://arxiv.org/rss/cs.AI",
     ],
@@ -96,6 +105,7 @@ MAX_BUCKET_ARTICLES = {
     "business_markets": 10,
     "physical_ai_robotics": 8,
     "official_company": 8,
+    "frontier_labs": 12,
     "research": 2,
     "google_gap_filler": MAX_GOOGLE_GAP_FILLER_ARTICLES,
 }
@@ -119,6 +129,14 @@ HIGH_QUALITY_SOURCES = {
     "IEEE Spectrum": 3,
     "Google Cloud": 3,
     "Azure": 3,
+    "OpenAI": 3,
+    "Anthropic": 3,
+    "Google DeepMind": 3,
+    "Meta AI": 3,
+    "xAI": 3,
+    "Mistral AI": 3,
+    "Cohere": 3,
+    "Perplexity": 3,
     "The White House": 3,
     "Federal Register": 3,
     "NIST": 3,
@@ -174,6 +192,14 @@ STRONG_SOURCE_PATTERNS = [
     "robot report",
     "google cloud",
     "azure",
+    "openai",
+    "anthropic",
+    "google deepmind",
+    "meta ai",
+    "xai",
+    "mistral ai",
+    "cohere",
+    "perplexity",
     "white house",
     "federal register",
     "nist",
@@ -360,6 +386,17 @@ def _compute_priority_score(title: str, summary: str) -> int:
         "embodied ai", "edge ai", "sensor", "uav", "drone"
     ]):
         score += 2
+
+    frontier_labs = [
+        "openai", "chatgpt", "anthropic", "claude", "google deepmind", "gemini",
+        "meta ai", "llama", "xai", "grok", "mistral", "cohere", "perplexity",
+    ]
+    release_terms = [
+        "model launch", "model release", "launches", "launched", "releases", "released",
+        "unveils", "unveiled", "introduces", "introduced", "announces", "announced",
+    ]
+    if any(lab in text for lab in frontier_labs) and any(term in text for term in release_terms):
+        score += 10
 
     return score
 
