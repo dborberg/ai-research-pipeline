@@ -1,0 +1,56 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>September 11, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The dominant signal is that AI is becoming a physical-capital cycle as much as a software cycle. Hyperscale data-center capacity, power sourcing, geopolitical siting risk, rack-scale networking, and real-world automation are now central to advisor conversations about where AI investment opportunity and bottleneck risk may migrate next.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Microsoft’s reported 38-gigawatt data-center plan reframes AI scale:</strong> Microsoft plans to have 38 gigawatts of data-center capacity by 2032, according to Bloomberg News as reported by Reuters. The advisor read-through is that AI demand is translating into multi-year power, grid, cooling, equipment, and financing needs that extend beyond chipmakers and cloud software platforms. (Source: Reuters)</li>
+<li><strong>UAE data-center revisions highlight geopolitical infrastructure risk:</strong> The UAE revised an AI data-center plan after Iranian attacks, according to Reuters. This underscores that AI infrastructure siting is increasingly tied to national security, energy resilience, and regional stability, making concentration risk and sovereign alignment more important portfolio-monitoring variables. (Source: Reuters)</li>
+<li><strong>Comau and Decathlon show Physical AI entering fulfillment workflows:</strong> Comau designed and validated an AI-enabled robotic order-preparation system for Decathlon’s e-commerce operations, combining collaborative robotics, ROS 2 architecture, AI vision, and adaptive grasping. The business implication is that robotics is moving from fixed automation toward more flexible warehouse workflows where labor availability, throughput, and ergonomics matter. (Source: The Robot Report)</li>
+<li><strong>d-Matrix’s NVIDIA NVLink Fusion integration points to inference-platform convergence:</strong> d-Matrix will use NVIDIA NVLink Fusion to connect its next-generation Raptor XPUs into NVIDIA’s broader AI infrastructure stack. This reinforces that AI compute competition is not only about accelerators but also about rack-scale interconnect, networking, and systems integration for production inference. (Source: NVIDIA Blog)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Helios targets finance workflow automation:</strong> Helios introduced conversational expense reporting and AI-based policy checks for enterprise users. The item is narrow and has limited adoption detail, but it fits the broader Enterprise Production Readiness trend of embedding AI into compliance-heavy back-office workflows where measurable productivity gains may be easier to track. (Source: WBOC TV)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>China’s inland data-center buildout shows infrastructure as AI strategy:</strong> Bloomberg reported that China is accelerating AI ambitions through data-center development in inland regions. The investment implication is that national AI competition is increasingly about power availability, land, fiber, regional incentives, and operating-cost optimization, not only model quality. (Source: Bloomberg)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Google’s reported Finland commitment links AI capital spending to power procurement:</strong> Google is reported to be making a EUR13 billion AI-related investment in Finland tied to data centers, a nuclear power purchase agreement, and job creation. If confirmed at scale, the read-through is that hyperscalers may increasingly secure long-duration clean-power arrangements alongside data-center expansion, supporting attention on energy infrastructure and permitting risk. (Source: IndexBox)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>AI watermarking research questions verification, not disclosure:</strong> An arXiv paper examined text watermarking after the EU AI Act’s Article 50 obligations, including Anthropic’s disclosed Claude watermarking and Google’s SynthID-Text deployment in Gemini. The policy implication is that AI governance may shift from whether firms label AI content to whether regulators, customers, and auditors can independently verify those claims. (Source: cs.AI updates on arXiv.org)</li>
+<li><strong>Anthropic published sensitive-capability evaluation work:</strong> Anthropic released material on measuring AI capabilities related to intelligence targeting and conventional weapons. This points to a governance frontier where model labs, enterprise customers, and policymakers will need more formal evaluation frameworks before deploying advanced AI in defense-adjacent or national-security contexts. (Source: Anthropic)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Skild AI launched a robot foundation model for one-video learning:</strong> Skild AI introduced its S1 robot foundation model, designed to learn previously unseen long-horizon tasks from a single video demonstration using NVIDIA physical AI technology. The key watchpoint is whether such models can reduce programming friction enough to expand robotics adoption in warehouses, manufacturing, and other variable physical environments. (Source: NVIDIA Blog)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Power procurement and permitting:</strong> Track whether hyperscalers announce more nuclear, renewable, grid, or behind-the-meter power deals alongside data-center capacity targets.</li>
+<li><strong>Geopolitical siting risk:</strong> Watch for delays, redesigns, or security-driven relocations of AI data centers in regions exposed to military, cyber, or energy-disruption risk.</li>
+<li><strong>Enterprise proof points:</strong> Look for customer adoption metrics, productivity data, renewal rates, and compliance approvals that distinguish production AI workflows from pilots.</li>
+<li><strong>Robotics deployment evidence:</strong> Monitor whether one-video learning, adaptive grasping, and robot foundation models move from demos into paid warehouse and factory rollouts.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming a power-and-infrastructure story:</strong> The investment discussion is expanding from chips and models to electricity, cooling, grid equipment, and data-center execution.</li>
+<li><strong>Geography now matters for AI exposure:</strong> Where data centers are built may affect cost, reliability, regulation, and geopolitical risk.</li>
+<li><strong>Enterprise AI winners will need proof, not just demos:</strong> Investors should watch for measurable workflow adoption, compliance fit, and customer retention.</li>
+<li><strong>Robotics is the next test of AI’s physical-world payoff:</strong> The opportunity is large, but the key question is whether flexible robots can handle messy real-world tasks economically.</li>
+<li><strong>Governance is becoming part of the product:</strong> Watermarking, auditability, and sensitive-capability testing may become table stakes for enterprise and government AI adoption.</li>
+</ul>
