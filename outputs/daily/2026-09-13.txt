@@ -1,0 +1,51 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>September 13, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The day’s strongest signal is that physical AI progress still depends on solving unglamorous sensing and manipulation bottlenecks, not just larger models. For advisor conversations, this reinforces a disciplined view of the AI cycle: durable investment opportunities may emerge not only in model labs and chips, but also in enabling components that help AI systems operate reliably in the physical world.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>UltraSense highlights ultrasound tactile sensing as a physical-AI enabler:</strong> The Robot Report profiled UltraSense’s view that protected sub-surface ultrasound sensing could help robots and humanoid hands detect force, texture, presence, and grip conditions in ways that are more scalable than exposed tactile sensors. The investment implication is that real-world robotics adoption may hinge on component-level breakthroughs in sensing, durability, and integration, creating a watchlist beyond obvious humanoid platforms. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Enterprise deployment remains constrained by physical reliability:</strong> The source window did not show a major new enterprise rollout, but the UltraSense discussion underscores that robots in logistics, service, and industrial settings need dependable tactile feedback before they can take on broader workflows. Advisors can frame this as an Enterprise Production Readiness issue: physical AI must prove it can handle messy real-world tasks before labor-substitution narratives become investable at scale. (Source: The Robot Report)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Physical bottlenecks extend beyond data centers:</strong> No material new AI power, grid, or data-center infrastructure development surfaced in the source window, but the tactile-sensing story is a reminder that AI’s physical-world bottlenecks include sensors, materials, packaging, and ruggedized hardware. Portfolio monitoring should include enabling technologies that translate intelligence into action, not only compute supply chains. (Source: Full article set)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>No major financing or transaction surfaced:</strong> The source window did not include a material AI capital raise, IPO, M&amp;A deal, or valuation reset. The practical implication is watchlist-oriented rather than transaction-driven: sensing, actuation, and industrial automation suppliers may become more relevant if robotics moves from demonstrations toward repeatable commercial deployment. (Source: Full article set)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>No new AI policy action surfaced:</strong> The source window did not include a material regulatory, standards, or governance development. For physical AI, the policy watch remains safety certification, workplace deployment rules, liability, and human-machine interaction standards as robots move closer to public and industrial environments. (Source: Full article set)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>No major commercial Physical AI or robotics developments surfaced:</strong> Continue monitoring robotics, autonomous systems, lab automation, industrial automation, and AI-enabled manufacturing for signs that pilots are moving into real deployment. (Source: Full article set)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Commercial proof points:</strong> Look for tactile-sensing suppliers to announce named customers, production contracts, or integration into robotic hands, grippers, logistics robots, or industrial systems.</li>
+<li><strong>Durability and cost curves:</strong> Monitor whether next-generation tactile sensors can survive harsh operating conditions at costs that support scaled deployment rather than high-end demonstrations.</li>
+<li><strong>Workflow orchestration in robotics:</strong> Watch for systems that combine perception, tactile feedback, planning, and task execution into repeatable workflows with measurable productivity benefits.</li>
+<li><strong>Standards and safety:</strong> Track emerging safety frameworks for robots working around people, especially in warehouses, factories, hospitals, and service environments.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>Physical AI is not just about smarter models:</strong> Robots also need better senses, stronger hardware, and safer ways to interact with the real world.</li>
+<li><strong>The investable AI stack is broadening:</strong> Enabling components such as sensors, actuation, industrial controls, and automation software may matter if robotics adoption accelerates.</li>
+<li><strong>Demonstrations are not deployments:</strong> Advisors should distinguish impressive robot videos from durable, low-cost, repeatable commercial use cases.</li>
+<li><strong>AI infrastructure has a physical-world layer:</strong> Beyond chips and data centers, real-world AI may require new supply chains in sensing, materials, and ruggedized systems.</li>
+</ul>

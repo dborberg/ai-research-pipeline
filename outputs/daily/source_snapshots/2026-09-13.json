@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-13",
+  "article_count": 1,
+  "articles": [
+    {
+      "id": -632082013935172177,
+      "title": "Ultrasound offers a scalable path to tactile intelligence for physical AI",
+      "source": "The Robot Report",
+      "original_publisher": "The Robot Report",
+      "summary": "The article argues that tactile sensing is a key bottleneck for physical AI systems such as humanoid hands, dexterous grippers, logistics robots, service robots, and industrial systems. UltraSense says protected sub-surface ultrasound sensing could scale better than surface-coupled electronic skin by reducing exposure to abrasion, compression, contamination, drift, and recalibration burden. Ultrasound can potentially support multi-parameter touch data, including contact, force distribution, shear, slip, and material interaction.",
+      "url": "https://www.therobotreport.com/ultrasound-offers-scalable-path-tactile-intelligence-physical-ai/",
+      "published_at": "2026-09-12T12:35:38",
+      "companies": "[\"UltraSense\"]",
+      "advisor_relevance": "This matters because manipulation remains a major constraint for real-world robotics adoption, and durable tactile sensing could be an enabling component for humanoids, grippers, logistics automation, service robots, and industrial systems. The article highlights a potential shift from exposed electronic-skin approaches toward protected sensing architectures, which may be relevant for identifying component-level beneficiaries as physical AI moves toward commercial deployment. However, the piece is primarily technical and does not provide customer deployments, revenue traction, financing, or market sizing.",
+      "ai_score": 7,
+      "signal_score": null,
+      "signal_tier": null,
+      "priority_score": null,
+      "source_weight": null,
+      "content_quality": null,
+      "theme_hint": null,
+      "is_space_economy_related": 0,
+      "space_relevance": "none",
+      "space_ai_connection": "none",
+      "space_time_horizon": "none",
+      "space_investment_layer": "none"
+    }
+  ]
+}
