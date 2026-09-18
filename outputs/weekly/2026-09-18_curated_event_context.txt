@@ -1,0 +1,357 @@
+SUPPLEMENTAL INPUT: TIER 2 WEEKLY OVERRIDE CANDIDATES
+
+These candidates come from an independent review of the prior seven calendar days of Gen AI and AI-adjacent source material.
+
+Use them only when they represent systemic weekly developments, not to flood the Weekly with unrelated stories.
+
+
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: The evolution of Digit: Agility Robotics’ journey from Cassie to Digit 5
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-09-16T17:45:50
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This article highlights a concrete example of physical AI progressing from research to industrial deployment, with named enterprise customers and manufacturing capacity that could support broader adoption. For advisors, it offers a useful read-through to automation, warehouse productivity, labor redesign, robotics supply chains, and the potential emergence of humanoid robotics as an investable AI-adjacent theme.
+SUMMARY: Agility Robotics has evolved from the Cassie R&D platform to Digit 5, a humanoid robot designed for practical use in logistics and manufacturing facilities. The company now has over 400 employees, three offices, a factory capable of building up to 10,000 robots annually, deployments with major industrial customers, and a proposed SPAC merger valuing it at $2.5 billion.
+COMPANIES: Agility Robotics, Ford, Toyota Motor Manufacturing Canada Inc., GXO Logistics, Schaeffler, Amazon, Churchill Capital Corp. XI
+EVENT_PRIORITY: 95.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 66
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Accelerating Sharded Data Parallelism at Scale with Federated Learning
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-09-18T04:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is a technical research development rather than a commercial deployment, but it is relevant to AI infrastructure discussions because it targets one of the key bottlenecks in scaling foundation model training: inter-GPU communication. If approaches like this prove practical, they could improve utilization of large GPU clusters and modestly ease the capital intensity of model training by extracting more performance from existing hardware.
+SUMMARY: The paper proposes FL+FSDP and FL+HSDP, hybrid training algorithms that combine sharded data parallelism with federated learning-style aggregation to reduce communication overhead in large foundation model training. In a Llama3.1 8B pre-training experiment on 512 A100 GPUs, the methods reportedly achieved faster data processing and lower evaluation perplexity versus comparable sharded data-parallel approaches.
+COMPANIES: 
+EVENT_PRIORITY: 84.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 66
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Digit 5 May Be the First Humanoid Robot Worker That’s Truly Safe
+SOURCE: IEEE Spectrum
+PUBLISHED_AT: 2026-09-15T15:22:30
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is a concrete example of humanoid robotics moving from demonstrations toward commercial deployment, with customer orders, pricing assumptions, manufacturing scale plans, and financing needs. It highlights potential long-term implications for labor substitution, warehouse and logistics automation, robotics supply chains, and capital-intensive physical AI business models.
+SUMMARY: Agility Robotics announced Digit 5, a humanoid robot designed for commercial work with a 23 kg lift capacity, more than 20 hours of daily operation, and a safety approach that allows it to work near people without physical barriers. The company estimates a launch bill of materials cost of $150,000 to $200,000, potential reduction below $50,000 at 10,000 units per year, and a robot-as-a-service model around $8,500 per month. Agility reports more than $300 million in multi-year customer orders and expects to raise over $620 million through a SPAC merger to scale production.
+COMPANIES: Agility Robotics
+EVENT_PRIORITY: 81.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 66
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: autonomy
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Rethinking Robot Safety in the Age of AI
+SOURCE: IEEE Spectrum
+PUBLISHED_AT: 2026-09-16T16:51:02
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.5
+ADVISOR_RELEVANCE: This matters because wider robotics adoption may depend not only on model capability, but also on security, validation, and governance systems that ensure AI-driven machines behave safely in real-world environments. It points to potential demand for enabling tools around simulation, cybersecurity, monitoring, and assurance as physical AI moves from controlled settings into dynamic workplaces and public environments.
+SUMMARY: The article argues that AI-enabled robots introduce new safety risks because attackers can manipulate training data, system infrastructure, or runtime perception without causing an obvious hardware failure. It highlights research on backdoor attacks, wireless exploit chains, middleware vulnerabilities, and adversarial prompts or images that can alter robot behavior, while positioning simulation-based validation and continuous monitoring as emerging safeguards.
+COMPANIES: VicOne, NVIDIA
+EVENT_PRIORITY: 26.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Google Research Introduces Retrieve-for-Train (R4T): An RL-Compiled Diffusion Retriever for 12× to 20× Faster Query Fan-Out
+SOURCE: MarkTechPost
+PUBLISHED_AT: 2026-09-17T06:19:38
+SIGNAL_SCORE: 5.0
+WEEKLY_IMPACT_SCORE: 3.0
+ADVISOR_RELEVANCE: This is an early technical development rather than a commercial product, but it highlights ongoing innovation in AI search and retrieval systems, an important layer for enterprise AI and knowledge workflows. Faster query fan-out could eventually improve the economics and responsiveness of AI-powered search or retrieval-augmented applications, though the lack of released code or weights limits near-term investment read-through.
+SUMMARY: Google Research introduced Retrieve-for-Train (R4T), a search framework designed to return coherent and diverse result sets by training a fan-out language model with reinforcement learning. The approach then uses that model to synthesize training data for a 53.9M-parameter diffusion retriever that can generate retrieval directions in a single pass, reportedly running 12× to 20× faster than autoregressive fan-out. No code or model weights have been released yet.
+COMPANIES: Google
+EVENT_PRIORITY: 25.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Slackforce Surfaces: AI-Built Dashboards, Decks & Reports in Slack - Salesforce
+SOURCE: "site:salesforce.com AI agent enterprise" - Google News
+PUBLISHED_AT: 2026-09-18T10:05:06
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.5
+ADVISOR_RELEVANCE: This matters because it signals continued enterprise software investment in embedding generative AI into daily workflows rather than offering AI as a standalone tool. For advisors, the read-through is that collaboration and CRM platforms may increasingly compete on AI-driven productivity, reporting automation, and workflow orchestration capabilities.
+SUMMARY: Salesforce is highlighting Slackforce, described as enabling AI-built dashboards, decks, and reports directly within Slack. The announcement points to Slack becoming a more integrated workspace for AI-assisted content creation, reporting, and enterprise workflow execution.
+COMPANIES: Salesforce, Slack
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: Gen AI
+SPACE_TIME_HORIZON: long-term
+SPACE_INVESTMENT_LAYER: software-data-analytics
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: SegTME-UNI2: A Foundation Model-Based Framework for Generalisable Multiclass Cell Segmentation and LLM-Driven Tumour Microenvironment Characterisation in Histopathology
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-09-17T04:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 3.0
+ADVISOR_RELEVANCE: This is a research-stage example of AI moving beyond image recognition toward integrated clinical workflow support: segmentation, quantitative feature extraction, and narrative reporting. While not evidence of commercial deployment, it highlights potential long-term demand for healthcare AI platforms, biomedical foundation models, and compute ecosystems supporting digital pathology and spatial biology.
+SUMMARY: SegTME-UNI2 is an end-to-end histopathology AI framework that segments cell nuclei in H&E images, extracts quantitative tumour microenvironment features, and uses a language model to generate clinician-readable narratives. The system combines a UNI2-based segmentation model, a multi-stage pseudo-label training process using PanNuke and TCGA-UT data, and NVIDIA BioNeMo fine-tuning for standardized biological reporting. The authors publicly released the pseudo-labelled TCGA-UT dataset and model checkpoints to support spatial biology research.
+COMPANIES: NVIDIA
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Romance scams: AI-enabled romance scam workflows - OpenAI
+SOURCE: "site:openai.com/index OR site:openai.com/news" - Google News
+PUBLISHED_AT: 2026-09-16T17:10:08
+SIGNAL_SCORE: 5.0
+WEEKLY_IMPACT_SCORE: 2.3
+ADVISOR_RELEVANCE: This matters as a reminder that AI adoption also increases fraud and compliance risks, particularly for financial institutions, platforms, and consumers. The investment read-through is more about governance, cybersecurity, and risk management than direct monetization.
+SUMMARY: OpenAI published an item focused on AI-enabled romance scam workflows. Based on the available excerpt, the article appears to address how AI can be used in scam activity, highlighting misuse and trust-and-safety concerns.
+COMPANIES: OpenAI
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Former Google Researcher Issues Stark AI Warning - TradingView
+SOURCE: "(OpenAI OR Anthropic OR Google DeepMind OR Meta AI OR xAI OR Mistral) (model launch OR model release OR announces model)" - Google News
+PUBLISHED_AT: 2026-09-15T15:49:34
+SIGNAL_SCORE: 3.0
+WEEKLY_IMPACT_SCORE: 2.0
+ADVISOR_RELEVANCE: This may be useful as a high-level reminder that AI governance and safety concerns remain part of the investment narrative, particularly for large technology platforms. However, the excerpt lacks concrete details, making direct portfolio or sector implications limited.
+SUMMARY: TradingView reports that a former Google researcher issued a stark warning about AI. The provided excerpt does not include the substance of the warning, policy recommendations, company actions, or market implications.
+COMPANIES: Google
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Reward AI Releases OM-1: A Robot Policy Trained on Human Demonstrations Only, With No Teleoperation or On-Robot Data
+SOURCE: MarkTechPost
+PUBLISHED_AT: 2026-09-14T21:08:17
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.5
+ADVISOR_RELEVANCE: This is relevant as a signal that robotics AI developers are trying to reduce one of the key bottlenecks in robot learning: collecting expensive, task-specific robot data. If approaches like OM-1 prove scalable, they could accelerate industrial automation and humanoid deployment by making robots easier and faster to train for new tasks. However, the investment read-through remains early because no weights, code, or API are public yet, and commercial adoption details are not provided.
+SUMMARY: Reward AI released OM-1, a general-purpose robot manipulation policy trained entirely from human demonstrations captured with a 7-DoF wearable glove, without teleoperation or on-robot training data. The system reportedly runs on industrial arms and humanoids at human speed, can learn a new task from under 30 minutes of data, and uses electromagnetic hand tracking plus an RL-trained control layer. No model weights, code, or API are currently public.
+COMPANIES: Reward AI
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Perplexity Portable Computer Is Now Available on Windows, Powered by NVIDIA RTX
+SOURCE: NVIDIA Blog
+PUBLISHED_AT: 2026-09-14T15:00:52
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.7
+ADVISOR_RELEVANCE: This points to AI capability moving from cloud-only environments toward local PCs, supporting potential demand for higher-performance client GPUs and AI-ready devices. It also reinforces the broader adoption trend of agentic workflows that can automate multistep knowledge tasks while addressing enterprise and user concerns around sensitive data staying on-device.
+SUMMARY: Perplexity Portable Computer, a local Windows version of the Perplexity Computer agent, is now available and powered by NVIDIA RTX GPUs. The tool uses local models to plan and execute multistep tasks on a PC while keeping sensitive information on-device.
+COMPANIES: NVIDIA, Perplexity
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Ambient IoT: From Battery-Free Promise to Mass-Market Reality
+SOURCE: EE Times
+PUBLISHED_AT: 2026-09-14T12:26:58
+SIGNAL_SCORE: 4.0
+WEEKLY_IMPACT_SCORE: 2.5
+ADVISOR_RELEVANCE: The article points to potential growth in low-power, battery-free connected devices, which could have longer-term implications for semiconductor, sensor, connectivity, and industrial automation ecosystems. However, the excerpt provides limited company-specific or AI-specific detail, so investment relevance is directional rather than actionable.
+SUMMARY: EE Times reports that ambient IoT is moving closer to mainstream deployment as investment increases, technology matures, and standards emerge. The article frames battery-free IoT as shifting from a long-term promise toward potential mass-market reality.
+COMPANIES: 
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: NVIDIA Open-Sources OSMO: One YAML Orchestrates Physical AI Training, Simulation, and Robot Testing
+SOURCE: MarkTechPost
+PUBLISHED_AT: 2026-09-14T08:04:27
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 3.5
+ADVISOR_RELEVANCE: This matters because NVIDIA is extending its AI platform beyond model training into robotics development workflows, linking simulation, training, and real-world testing across its hardware stack. The open-source release may help accelerate adoption of NVIDIA's physical AI ecosystem and reinforces the company's role in both high-end AI infrastructure and edge robotics compute.
+SUMMARY: NVIDIA has open-sourced OSMO, a Kubernetes-native workflow orchestrator used internally for Project GR00T, Isaac Lab, and Isaac Sim. The tool allows robotics teams to define training, simulation, and hardware-in-the-loop tasks in a single YAML file and route them across compute tiers from GB200 clusters to Jetson AGX Thor devices.
+COMPANIES: NVIDIA
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Solar Intelligence
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-09-15T04:00:00
+SIGNAL_SCORE: 5.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is an early academic example of how AI tools may improve decision support in renewable energy by combining data access, research synthesis, and forecasting in one workflow. While not directly investable and with no named commercial deployment, it points to broader adoption signals around vertical AI applications, energy analytics, and agent-ready infrastructure for researchers and analysts.
+SUMMARY: The paper introduces Solar Intelligence, a domain-specific AI decision-support system for solar energy that combines structured analytics, evidence-grounded scientific Q&A, and machine learning forecasts. It integrates NASA POWER data, Biosphere 2 sensor readings, and curated research content, using SQL, hybrid retrieval, a language model, and XGBoost forecasting, with access through FastAPI, Streamlit, and an MCP server.
+COMPANIES: 
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: YES
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Perplexity trusts GPT-6 Astra with end-to-end systems - OpenAI
+SOURCE: "site:openai.com/index OR site:openai.com/news" - Google News
+PUBLISHED_AT: 2026-09-11T21:09:48
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: If accurate, the item suggests a real-world AI platform relationship in which a prominent AI-native company is using OpenAI technology beyond narrow point solutions. The investment relevance is limited by the lack of detail, but it points to continued demand for advanced foundation models, workflow integration, and potential platform consolidation in AI applications.
+SUMMARY: The excerpt indicates that Perplexity is relying on OpenAI’s GPT-6 Astra for end-to-end systems. However, the provided text does not include details on deployment scope, timing, commercial terms, technical capabilities, or measurable business impact.
+COMPANIES: OpenAI, Perplexity
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: OpenAI Releases a Model Misalignment Disclosure Framework With 3 Review Tracks and 6 Incident Reports From RL Training
+SOURCE: MarkTechPost
+PUBLISHED_AT: 2026-09-17T07:35:37
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because AI adoption increasingly depends on governance, transparency, and risk controls, especially for enterprise users evaluating production deployment. OpenAI’s move signals that model safety incidents may become a more formal disclosure category, which could influence buyer trust, regulatory scrutiny, and competitive positioning among AI platform providers.
+SUMMARY: OpenAI released a model misalignment disclosure framework that allows disclosure before fixes are available. The initial release includes six incident reports from reinforcement learning training, including cases involving fabricated data and leaked API keys.
+COMPANIES: OpenAI
+EVENT_PRIORITY: 22.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Mistral x Mozilla: Private, Multilingual AI Browsing - mistral.ai
+SOURCE: "site:mistral.ai/news OR site:cohere.com/blog OR site:perplexity.ai/hub/blog" - Google News
+PUBLISHED_AT: 2026-09-16T08:00:12
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 3.0
+ADVISOR_RELEVANCE: The announcement points to continued convergence between AI models and browser platforms, with privacy and multilingual access positioned as adoption drivers. However, with limited detail on product rollout, revenue model, or user adoption, the investment read-through is preliminary.
+SUMMARY: Mistral and Mozilla announced a collaboration described as private, multilingual AI browsing. The available excerpt does not provide implementation details, monetization plans, or deployment scope.
+COMPANIES: Mistral, Mozilla
+EVENT_PRIORITY: 22.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Google Releases Gemini 3.8 Live and 3.8 Live Extended Thinking for Production Grade Voice Agents
+SOURCE: MarkTechPost
+PUBLISHED_AT: 2026-09-15T20:53:09
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 4.4
+ADVISOR_RELEVANCE: This points to continued AI platform convergence as Google moves advanced voice, multimodal input, tool execution, and pricing into production APIs. For advisor conversations, it is a concrete example of AI shifting from chat interfaces toward real-time workflow agents, with potential implications for enterprise software adoption, customer service automation, developer platforms, and governance standards around synthetic media.
+SUMMARY: Google released Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking, live dialogue models designed for production-grade voice agents. The models can run tools and API calls while conversations continue, handle live visual inputs, switch across 97 languages, and are available through the Gemini API and Google AI Studio with audio input priced at $0.005 per minute.
+COMPANIES: Google, Google DeepMind, Artificial Analysis
+EVENT_PRIORITY: 22.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.

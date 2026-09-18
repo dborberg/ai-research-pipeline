@@ -1,0 +1,86 @@
+Beyond the Horizon: Weekly Riffs from the Gen AI Songbook
+Week Ending September 18, 2026
+
+TOP 5 STORIES THIS WEEK
+
+1. Crusoe raised $3.9 billion for an AI data center build-out, while GlobalFoundries and Marvell expanded a chip-capacity deal for AI data center connectivity. Advisors can frame this as the AI buildout moving deeper into private credit, infrastructure finance, foundries, networking silicon, power access, and utilization risk rather than staying confined to GPUs and hyperscalers. (Data Center Dynamics; Reuters)
+
+2. Adecco Group began rolling out Salesforce Agentforce Coworker to 27,000 employees in more than 40 countries, while Google released Gemini 3.8 Live voice-agent models and AWS highlighted OpenAI GPT-6 Astra availability on Bedrock. The practical shift is that agentic AI is moving into enterprise distribution channels where workflow integration, security, evaluation, and platform lock-in matter more than standalone chatbot usage. (AI News; MarkTechPost; AWS News Blog)
+
+3. OpenAI adopted new safety-incident reporting rules and disclosed six concerning model-behavior incidents, including issues from reinforcement-learning training. This matters because enterprise buyers, regulators, and boards are likely to treat AI transparency, auditability, and incident response as commercial-access requirements, not just public-relations issues. (Wall Street Journal; NBC News; MarkTechPost)
+
+4. Data center power and permitting constraints intensified as the House considered shielding consumers from data center energy costs, Schneider Electric debuted 2.5MW power modules for AI data centers, and local moratorium or guardrail efforts surfaced in multiple jurisdictions. The advisor takeaway is that AI capacity growth increasingly depends on electricity, cooling, grid flexibility, land use, and local politics, creating both demand for infrastructure suppliers and risk to project timelines. (CoStar; Data Center Dynamics; WSAV; WMTV; Santa Fe New Mexican)
+
+5. Agility Robotics advanced Digit 5 toward commercial humanoid work, Lidl began daily autonomous truck deliveries in Germany with Einride, and U.S. Sugar deployed a large autonomous farming fleet with Autonomous Solutions Inc. These are tangible physical-AI signals because robotics and autonomy are being judged on uptime, safety, fleet orchestration, labor substitution, and repeatable customer deployment rather than demos alone. (IEEE Spectrum; The Robot Report; AI News)
+
+BEYOND THE MAG 7
+
+1. Morgan & Morgan said it has invested $1 billion in AI and plans to sell its platform to other law firms. This matters as a competitive-threat and productivity-impact story because a large professional-services firm is trying to turn internal AI workflow automation into a vertical software business.
+
+2. Z.AI launched $5 billion in Hong Kong share and convertible bond sales. This is a capital-markets signal that AI financing remains global and large, but it also raises advisor watchpoints around dilution, liquidity, China exposure, and geopolitical risk.
+
+3. Schneider Electric introduced 2.5MW power modules aimed at AI data centers. The supplier effect is straightforward: denser AI workloads are pulling electrical equipment, power management, and grid-adjacent infrastructure into the AI investment conversation.
+
+WHAT IS BEING DISRUPTED
+
+1. Legal-services operating models are being challenged by Morgan & Morgan’s plan to commercialize a $1 billion AI platform for other law firms.
+
+2. The assumption that data centers can scale wherever demand exists was challenged by House energy-cost discussions and local moratorium activity in Chatham County, Sauk County, Philadelphia, and New Mexico politics.
+
+3. Physical labor workflows in warehouses, retail logistics, and agriculture were disrupted by Agility’s Digit 5, Lidl’s daily autonomous truck route, and U.S. Sugar’s autonomous farming fleet.
+
+REGULATORY RADAR
+
+1. U.S. Senate negotiators considered requiring AI companies to mitigate known major risks. If this moves forward, frontier model firms and enterprise deployers could face higher testing, documentation, safety, and governance burdens.
+
+2. Politico reported that Republican- and Democratic-led states are advancing their own AI rules despite limited federal action. The business relevance is a more fragmented compliance map, which can raise costs but also increase demand for governance, audit, and risk-management software.
+
+3. Local data center oversight broadened through moratoriums, task forces, and guardrail proposals in places including Chatham County, Sauk County, Philadelphia, and New Mexico. For advisors, this makes permitting, utility rates, water access, and community acceptance key variables in the AI infrastructure thesis.
+
+WHAT TO WATCH NEXT
+
+1. Watch whether Crusoe’s $3.9 billion raise, Z.AI’s $5 billion financing, data center bond-market activity, and Agility’s proposed SPAC path translate into durable investor appetite for frontier technology financing.
+
+2. Track data center interconnection queues, utility tariffs, water-use rules, moratorium extensions, and power-purchase announcements as indicators of where AI infrastructure can actually be built.
+
+3. Monitor enterprise agent deployments for named customers, renewal data, pricing, productivity metrics, security controls, and audit trails, especially after Adecco’s Agentforce rollout and new agent offerings from Google, AWS, OpenAI, and Salesforce.
+
+4. Watch whether AI networking and connectivity bottlenecks worsen through optical equipment availability, GlobalFoundries-Marvell capacity signals, advanced packaging constraints, and hyperscaler supply-chain commentary.
+
+5. Track physical-AI commercialization through repeat orders, safety certifications, robot-as-a-service pricing, fleet uptime, and multi-site rollouts from Agility, Einride, Pony.ai, U.S. Sugar, Universal Robots, Arm, and InOrbit.AI.
+
+6. Watch whether OpenAI’s incident-reporting approach becomes a standard enterprise procurement requirement or a trigger for more formal regulation.
+
+READY TO USE SOUNDBITES
+
+1. This week showed that AI is becoming a financed infrastructure cycle, not just a software upgrade cycle.
+
+2. The bottleneck is no longer only chips; it is also power, permitting, networking, cooling, local politics, and capital-market tolerance.
+
+3. Enterprise AI is moving from chatbots toward agents embedded in CRM, cloud, voice, desktop, and collaboration workflows.
+
+4. Governance is becoming a buying criterion: companies want AI that can be monitored, audited, secured, and explained before they scale it.
+
+5. Physical AI is getting more real, but the proof points to watch are repeat orders, uptime, safety approvals, and customer economics, not robot videos.
+
+QUESTIONS TO BRING TO YOUR CLIENTS
+
+1. If AI infrastructure is moving into power, real estate credit, networking silicon, and permitting risk, is your portfolio exposure too concentrated in the most obvious AI names?
+
+2. As agents move into Salesforce, Slack, AWS, Google, and desktop workflows, which companies in your portfolio are likely to gain productivity and which may face margin pressure from automation?
+
+3. With OpenAI incident reporting, state-level AI rules, and local data center restrictions all advancing this week, are you evaluating AI opportunities through a governance and regulatory-risk lens as well as a growth lens?
+
+AI PRACTICE TIP OF THE WEEK
+What: Use AI to create a new-client onboarding exception tracker that spots missing documents, stalled tasks, ownership gaps, and compliance-sensitive items before they delay account opening.
+
+Why: This week’s AI news reinforced that workflow integration, auditability, and controls matter as much as the technology itself. For advisors, onboarding is where small operational misses create friction, rework, and a poor first impression. A simple AI-generated tracker can help the team see what is incomplete, who owns it, and what needs attention next.
+
+How to:
+1. List your standard onboarding steps and documents without client-sensitive details.
+2. Paste the list into ChatGPT and ask it to organize the process into an exception tracker.
+3. Use the output in your next team huddle to assign owners and clear blockers.
+
+Copy prompt: Create a new-client onboarding exception tracker for a financial advisory practice. Use the onboarding steps below and turn them into a table with these columns: onboarding item, current status, owner, what could block completion, next action, target date, and compliance note. Flag any items that commonly cause delays or NIGO issues. Keep it practical and operational, not client-facing. Here are our steps: [paste your onboarding checklist].
+
+Guardrail: Do not paste client names, account numbers, Social Security numbers, or other personal data into a public AI tool. Have your compliance or operations lead review the tracker before making it part of your official process.
