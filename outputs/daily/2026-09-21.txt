@@ -1,0 +1,55 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>September 21, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The dominant theme is that the AI investment cycle is becoming more physical, political, and operational at the same time. Data-center siting, optical interconnects, regulation, and professional training all point to the same advisor takeaway: AI opportunity is broadening beyond model headlines, but execution risk is increasingly tied to power, infrastructure, governance, and real workflow adoption.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Meta’s Alberta data-center activity lifted regional hyperscaler interest:</strong> Capital Power said Meta’s data-center presence is making Alberta more attractive to hyperscale operators, reinforcing that power availability and regional infrastructure are becoming central variables in AI capacity planning. For advisors, the read-through extends beyond cloud platforms to utilities, grid assets, power developers, and data-center permitting risk. (Source: Reuters)</li>
+<li><strong>Microsoft’s AI chief argued against using China as a reason to avoid regulation:</strong> Microsoft’s AI leader said geopolitical competition should not become an excuse to forgo AI safeguards, keeping governance in the foreground even as companies race to commercialize the technology. The advisor implication is that policy risk remains a core part of the AI platform story, especially for large firms selling enterprise AI into regulated sectors. (Source: Bloomberg.com)</li>
+<li><strong>Marvell announced 2nm optical technology demos for AI data-center infrastructure:</strong> Marvell said it will showcase industry-first 2nm optical technology demonstrations at ECOC 2026, highlighting the growing importance of high-speed connectivity inside AI clusters. This supports the view that AI infrastructure bottlenecks are not just about accelerators, but also optical networking, interconnect density, and data movement efficiency. (Source: Business Wire)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>U.S. law schools adjusted AI-era training and classroom rules:</strong> Law schools are adding technology-focused courses while some restrict laptops and AI-assisted shortcuts, showing that professional education is already adapting to generative AI’s impact on knowledge work. This is an early labor-market signal for advisors: AI adoption will likely change credentialing, training, and productivity expectations before it fully displaces professional roles. (Source: Reuters)</li>
+<li><strong>Researchers proposed a privacy-preserving clinical-document method:</strong> The G-RELIC paper introduced a graph-based approach for relexicalizing clinical documents while preserving entity relationships and temporal consistency, aiming to make sensitive medical text more usable for AI development. While still academic, it highlights Enterprise Production Readiness in healthcare, where privacy, data quality, and workflow trust remain major adoption bottlenecks. (Source: cs.AI updates on arXiv.org)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Compute constraints remained a limiting factor for AI scale:</strong> EE Times reported that AI and crypto hardware demand are exposing global compute-infrastructure constraints, including semiconductor bottlenecks, foundry lead times, and trade friction. The investment implication is that AI demand may remain structurally strong, but supply-chain concentration, fabrication capacity, and regional access to chips can shape margins, deployment timelines, and geopolitical risk. (Source: EE Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Market commentary continued to frame AI as a macro-sensitive trade:</strong> Bloomberg highlighted BofA commentary on markets, the AI trade, and central-bank policy, underscoring that AI-linked valuations are being assessed alongside rates, liquidity, and broader risk appetite. For advisor conversations, the key is separating durable AI spending trends from market-cycle enthusiasm around the same theme. (Source: Bloomberg.com)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>AI and data-center concerns featured prominently in Washington discussions:</strong> CNBC reported that AI and data-center alarms were major topics during Congressional Black Caucus week, reflecting rising political attention to infrastructure, community impact, and technology governance. This matters because future permitting, power access, environmental review, and local-benefit requirements could become material constraints on data-center expansion. (Source: CNBC)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>No major commercial Physical AI or robotics developments surfaced:</strong> Continue monitoring robotics, autonomous systems, lab automation, industrial automation, and AI-enabled manufacturing for signs that pilots are moving into real deployment. (Source: Full article set)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Data-center siting and power access:</strong> Watch whether more hyperscalers cluster around regions with surplus power, favorable permitting, and utility partners able to support large AI loads.</li>
+<li><strong>AI infrastructure breadth:</strong> Monitor whether spending momentum expands from GPUs into optical networking, interconnects, cooling, grid equipment, and power generation.</li>
+<li><strong>Regulation versus competitiveness:</strong> Track whether policymakers frame AI safeguards as compatible with national competitiveness or as a drag on innovation.</li>
+<li><strong>Professional workflow adoption:</strong> Watch law, healthcare, finance, and education for signs that AI moves from ad hoc usage into formal training, compliance, and productivity systems.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming an infrastructure story, not just a software story:</strong> The next bottlenecks may be power, networking, cooling, and permitting.</li>
+<li><strong>Regulation is not necessarily anti-AI:</strong> For enterprise buyers, clearer rules can sometimes increase confidence and speed adoption.</li>
+<li><strong>Professional work is being redesigned gradually:</strong> Law schools and healthcare data researchers show that AI adoption starts with training, governance, and workflow controls.</li>
+<li><strong>Valuation discipline still matters:</strong> Strong AI demand does not remove exposure to interest rates, market sentiment, or execution risk.</li>
+<li><strong>Look for second-order beneficiaries:</strong> AI infrastructure growth may support companies tied to connectivity, power reliability, and data-center buildout, not only the most visible platform names.</li>
+</ul>
