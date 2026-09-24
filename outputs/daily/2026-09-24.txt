@@ -1,0 +1,57 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>September 24, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The dominant theme is that the AI cycle is becoming a financing, infrastructure, and governance story as much as a model-capability story. Large data center transactions, high-yield debt issuance, and warnings about systemic risk suggest advisors should frame AI opportunity alongside balance-sheet quality, capital intensity, power availability, and policy fragmentation.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>AI buildout financing risk moved into the financial-stability conversation:</strong> Reuters reported that a researcher warned the historic U.S. AI infrastructure buildout could raise systemic risks. The advisor read-through is that AI capex remains a powerful growth driver, but financing structures, leverage, utilization assumptions, and refinancing conditions are becoming key portfolio-monitoring variables. (Source: Reuters)</li>
+<li><strong>A CoreWeave-tied data center raised $1.1 billion in junk bonds:</strong> Bloomberg reported that a data center linked to CoreWeave tapped the high-yield market for AI infrastructure financing. This underscores strong investor appetite for compute exposure while also highlighting credit-cycle sensitivity, tenant concentration, and cash-flow durability as risks to watch. (Source: Bloomberg)</li>
+<li><strong>BlackRock and IFM neared a $25 billion Asia data center deal:</strong> Bloomberg reported that the firms were close to a major Asian data center transaction. The scale suggests institutional capital increasingly views AI-driven compute capacity as strategic infrastructure, with read-throughs to power access, cooling, land, fiber, and regional regulatory approvals. (Source: Bloomberg)</li>
+<li><strong>U.S. and Chinese AI governance visions diverged at the UN:</strong> Politico reported that the two countries presented sharply different approaches to AI regulation at a United Nations meeting. For investors and advisors, policy fragmentation could affect market access, compliance costs, export controls, and the operating models of global AI platforms. (Source: Politico)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>U.S. TRANSCOM deployed randomized AI for military logistics:</strong> AI News reported that U.S. Transportation Command is using AI to make distribution networks harder for adversaries to track and disrupt. The business read-through is that enterprise AI value is expanding beyond productivity into resilience, security, and workflow orchestration in mission-critical operations. (Source: AI News)</li>
+<li><strong>Google reportedly raised security thresholds for dangerous AI capabilities:</strong> PPC Land reported that Google moved three types of potentially dangerous AI capability to a higher security standard, though the excerpt did not specify the capability categories. The useful advisor angle is that enterprise production readiness increasingly depends on governance, access controls, and safety gating, not just model performance. (Source: PPC Land)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Arduino opened pre-orders for an edge AI robotics board built on Qualcomm technology:</strong> The Robot Report said Arduino, now a Qualcomm Technologies subsidiary, launched pre-orders for VENTUNO Q, a robotics platform combining AI compute, real-time control, Ubuntu, Arduino tooling, ROS, and container support. This points to platform convergence at the edge, where local inference, latency, reliability, and developer ecosystems matter for robotics and industrial AI adoption. (Source: The Robot Report)</li>
+<li><strong>Indian semiconductor startups face a post-seed funding gap:</strong> EE Times reported from SEMICON India 2026 that silicon startups need capital beyond prototypes and tape-out to reach volume production. The AI infrastructure implication is that chip supply-chain ambitions require patient growth capital, not just early-stage funding, and bottlenecks can appear between design innovation and manufacturable scale. (Source: EE Times)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>AI infrastructure demand continued to pull private and public capital into higher-risk structures:</strong> The combined slate included large data center transactions, high-yield debt issuance, and warnings about systemic risk. Advisors should separate durable infrastructure demand from financing fragility, especially where valuations assume sustained hyperscaler demand and cheap refinancing. (Source: Full article set)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>OpenAI published Sam Altman’s remarks to the UN Security Council:</strong> OpenAI’s publication signals that frontier AI safety and governance remain active topics in high-level international forums. The investment implication is not an immediate rule change, but a continued path toward formal security expectations, disclosure norms, and procurement standards for advanced AI systems. (Source: OpenAI)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>Helicon Industries emerged from stealth with $16 million to automate composites manufacturing:</strong> The Robot Report said the seed round, led by AlleyCorp, will support automation for high-volume composite production, starting with carbon fiber, with a goal of cutting long lead times. This is an early but concrete example of physical AI and automation targeting manufacturing bottlenecks in areas such as aerospace, defense, mobility, and advanced industrial materials. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>AI credit-market stress signals:</strong> Monitor spreads, refinancing activity, tenant concentration, and utilization assumptions for AI data center debt.</li>
+<li><strong>Power and permitting constraints:</strong> Watch whether data center deals increasingly depend on grid interconnection, dedicated power procurement, cooling availability, and local political approvals.</li>
+<li><strong>Policy fragmentation:</strong> Track whether U.S., Chinese, and multilateral AI governance positions translate into procurement rules, export controls, model disclosure requirements, or compliance burdens.</li>
+<li><strong>Physical AI commercialization:</strong> Look for signs that robotics, edge AI boards, and industrial automation startups are moving from pilots and seed rounds into repeatable deployments and revenue visibility.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is no longer just a software story:</strong> The opportunity set increasingly includes data centers, power, cooling, networking, semiconductors, and industrial automation.</li>
+<li><strong>The financing model matters:</strong> High-yield debt and mega-infrastructure deals can validate demand, but they also introduce leverage, refinancing, and utilization risks.</li>
+<li><strong>Governance is becoming part of the moat:</strong> Companies that can deploy AI safely, securely, and within evolving rules may have an advantage over firms focused only on raw model performance.</li>
+<li><strong>Physical AI is still early, but increasingly tangible:</strong> Robotics and automation are beginning to target real manufacturing and logistics bottlenecks, not just lab demos.</li>
+<li><strong>Advisor conversations should balance excitement with discipline:</strong> AI remains a major innovation cycle, but valuation, capital intensity, policy risk, and execution quality are now central to the discussion.</li>
+</ul>
