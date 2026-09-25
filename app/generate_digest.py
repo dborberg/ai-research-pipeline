@@ -215,10 +215,42 @@ def generate_daily_digest(report_date=None, return_metadata=False):
     # -----------------------------
     # GET ARTICLES
     # -----------------------------
+    def quantified_adoption_inflection_score(article):
+        text = _article_signal_text(article)
+        metric_terms = [
+            "downloads", "downloaded", "monthly active users", "daily active users",
+            "paid subscribers", "subscribers", "user growth", "usage growth",
+            "adoption rate", "conversion rate", "transactions", "actions processed",
+            "enterprise seats", "customers",
+        ]
+        velocity_terms = [
+            "million", "billion", "record", "fastest", "surged", "soared",
+            "doubled", "tripled", "in days", "in weeks", "number one", "#1", "top app",
+        ]
+        monetization_terms = [
+            "revenue", "monetization", "paid", "subscription", "pricing", "arr",
+            "annual recurring revenue", "commerce", "advertising",
+        ]
+        metric_matches = sum(1 for term in metric_terms if term in text)
+        velocity_matches = sum(1 for term in velocity_terms if term in text)
+        monetization_matches = sum(1 for term in monetization_terms if term in text)
+        if not metric_matches:
+            return 0
+        score = 25 + min(metric_matches, 3) * 10
+        if velocity_matches:
+            score += 25 + min(velocity_matches - 1, 2) * 5
+        if monetization_matches:
+            score += 10
+        return score
+
+    def is_quantified_adoption_inflection(article):
+        return quantified_adoption_inflection_score(article) >= 60
+
     def is_big_story(article):
         text = f"{article.get('title') or ''} {article.get('summary') or ''}".lower()
         return (
-            is_frontier_technology_capital_markets_event(article)
+            is_quantified_adoption_inflection(article)
+            or is_frontier_technology_capital_markets_event(article)
             or _is_major_earnings_override(article)
             or _is_healthcare_fda_override(article)
             or any(term in text for term in [
@@ -464,6 +496,9 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                     "agentic", "agent", "copilot", "workflow automation", "saas", "pricing", "roi",
                     "customer adoption", "retention", "observability", "identity", "security", "governance",
                     "spend controls", "compliance tool", "professional services automation",
+                    "downloads", "monthly active users", "daily active users", "paid subscribers",
+                    "subscribers", "user growth", "usage growth", "adoption rate", "conversion rate",
+                    "transactions", "actions processed", "enterprise seats",
                 ],
             ),
             "second_derivative_beneficiaries": (
@@ -551,6 +586,7 @@ def generate_daily_digest(report_date=None, return_metadata=False):
         score += investment_theme_score(article)
         score += forward_adoption_score(article)
         score += frontier_technology_capital_markets_score(article)
+        score += quantified_adoption_inflection_score(article)
 
         if has_policy_priority(article):
             score += 40
@@ -615,6 +651,9 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                 "interconnection", "permitting", "zoning", "transformer", "switchgear",
             ],
             "enterprise_and_labor": [
+                "downloads", "monthly active users", "daily active users", "paid subscribers",
+                "subscribers", "user growth", "usage growth", "adoption rate", "conversion rate",
+                "transactions", "actions processed", "enterprise seats",
                 "hiring", "layoff", "layoffs", "job", "jobs", "workforce", "productivity", "automation",
                 "employee", "employees", "coding", "developer", "software development", "copilot",
                 "agentic", "agent", "workflow", "governance", "compliance", "spend control",
@@ -1028,6 +1067,8 @@ def generate_daily_digest(report_date=None, return_metadata=False):
                     flags.append("MAJOR_EARNINGS_OVERRIDE")
                 if _is_healthcare_fda_override(article):
                     flags.append("HEALTHCARE_FDA_OVERRIDE")
+                if is_quantified_adoption_inflection(article):
+                    flags.append("QUANTIFIED_ADOPTION_INFLECTION")
                 article_lines.extend(
                     [
                         f"{index}. TITLE: {clip_prompt_text(article['title'], 120)}",

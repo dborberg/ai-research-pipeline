@@ -55,7 +55,7 @@ Assign every Tier 1 and Tier 2 candidate a 0 to 10 Weekly Impact Score before se
 4. Persistence: Is the story likely to matter beyond the current news cycle?
 5. Advisor usefulness: Can an advisor use this story in a client conversation?
 6. Novelty: Did something genuinely new happen, or is it mostly a continuation of an existing theme?
-7. Magnitude: Is the scale large enough to matter financially, operationally, or competitively?
+7. Magnitude: Is the scale large enough to matter financially, operationally, or competitively? Quantified adoption velocity counts as magnitude: unusually fast growth in users, downloads, subscribers, usage, transactions, or paid conversion can make a follow-on adoption story more consequential than the original launch.
 
 Scoring guidance:
 9-10 means a systemic story of the week that should almost always be considered for Top 5.
@@ -74,6 +74,7 @@ Before finalizing TOP 5 STORIES THIS WEEK, independently answer these questions 
 3. What was the most important AI capital markets or financing story?
 4. What was the most important frontier model competition or AI arms-race story?
 5. What was the most important enterprise adoption or productivity story?
+5a. What was the strongest quantified adoption or monetization inflection (users, downloads, subscribers, usage, conversion, transactions, or revenue) for an AI product or agent? Treat unusually rapid adoption as a major business-model signal even when the underlying product launch was covered earlier.
 6. What was the most important regulatory, geopolitical, or model-access story?
 7. What was the most important physical AI, robotics, or automation story?
 

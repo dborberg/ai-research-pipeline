@@ -61,6 +61,8 @@ class DailyDigestRefinementTests(unittest.TestCase):
         self.assertIn("Platform Convergence", system_prompt)
         self.assertIn("frontier technology capital-markets events", system_prompt)
         self.assertIn("consequential frontier-model launch", system_prompt)
+        self.assertIn("quantified adoption or monetization inflection", system_prompt)
+        self.assertIn("QUANTIFIED_ADOPTION_INFLECTION", user_prompt)
         self.assertIn("Do not use buy, sell, hold", system_prompt)
 
         self.assertIn("relevance-first daily briefing", user_prompt)
