@@ -10,6 +10,8 @@ Use the strongest version of each underlying event. Prefer Reuters, Bloomberg, F
 
 Each analytical bullet should be event-first: state the concrete company action, policy move, financing, market move, infrastructure project, deployment, earnings signal, or named report, then explain its business, investment, advisor, policy, or portfolio-monitoring implication. Avoid implication-only bullets and generic abstractions. Usually use two concise sentences after the lead phrase.
 
+Treat a quantified adoption or monetization inflection as a distinct new event, even when the underlying product launch was covered previously. Material changes in users, downloads, subscribers, enterprise seats, usage, transactions, conversion, or revenue can be stronger investment signals than the original launch. When adoption velocity is unusually rapid, treat the follow-on adoption story as a top-story candidate rather than suppressing it as repetitive.
+
 Treat a consequential frontier-model launch, release, or major capability announcement from a leading AI lab as a top-story candidate. Assess its independently reported capability, availability, pricing or distribution, safety posture, enterprise implications, and competitive or infrastructure read-through. Do not make unsupported AGI claims or elevate routine model updates over more material events.
 
 When relevant, identify the investment read-through beyond the obvious company: for example, power equipment, grid infrastructure, cooling, networking, data platforms, governance software, IT services, industrial automation, or logistics. Keep the read-through focused; do not repeat long category lists.
