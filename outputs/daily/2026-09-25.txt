@@ -1,0 +1,53 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>September 25, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>AI investment debate is shifting from model enthusiasm to execution constraints: power access, project financing, local permitting, and operational integration. For advisors, the key conversation is that the AI cycle is broadening beyond chips and software into infrastructure, credit risk, grid readiness, governance, and automation tools that make deployment easier inside real-world workflows.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+  <li><strong>Oracle reportedly invoked force majeure over data-center power delays:</strong> Oracle triggered a force majeure clause on a data center project because of power-related delays, according to Reuters. This is a clear signal that electricity availability can become a binding constraint on AI and cloud capacity growth, making grid equipment, power procurement, site selection, and utility interconnection timelines critical portfolio-monitoring variables. (Source: Reuters)</li>
+  <li><strong>Japan increased scrutiny of AI data-center financing:</strong> Japan’s regulator is boosting oversight of financing tied to AI data centers, according to Bloomberg. The development highlights that AI infrastructure is becoming a credit and financial-stability issue, not just a technology story, with implications for project finance, bank exposure, private credit, and the cost of capital for large-scale buildouts. (Source: Bloomberg.com)</li>
+  <li><strong>Epson launched a no-code collaborative robot for compact workspaces:</strong> Epson Robots introduced the AX6, a six-axis cobot with a 900 mm reach, 6 kg payload, power- and force-limited operation, browser-based controls, and no-code programming. The product shows robotics vendors lowering deployment barriers for smaller facilities and non-specialist operators, supporting the broader Enterprise Production Readiness theme in automation. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+  <li><strong>AWS enhanced EventBridge for enterprise-scale event-driven applications:</strong> Amazon introduced enhanced custom event buses that can be shared across AWS accounts in an organization and support more scalable event-driven architectures. This matters because agentic and AI-enabled workflows depend on reliable orchestration across teams, applications, and data systems, reinforcing cloud platforms’ role as the integration layer for enterprise AI. (Source: AWS News Blog)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+  <li><strong>Maryland moved toward AI and data-center guardrails:</strong> Maryland is reportedly setting AI-related guardrails as states respond to data-center growth tied to AI demand. The policy signal matters because local and state-level rules can influence where AI infrastructure gets built, how quickly projects are approved, and which operators can manage community, water, power, and permitting concerns. (Source: Newsweek)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+  <li><strong>No additional high-specificity AI capital-markets transaction stood out beyond data-center financing scrutiny:</strong> The strongest investment read-through in the slate was not a new financing round or public-market deal, but rising regulatory attention to the financing structures behind AI infrastructure. Advisors should frame this as a reminder that the AI buildout increasingly depends on funding durability, project-level risk controls, and credit discipline. (Source: Full article set)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+  <li><strong>Palm Beach County shifted its AI data-center review process to consultants:</strong> The county scrapped a resident task force focused on AI data centers and plans to hire consultants instead. The move shows local governments seeking more specialized expertise as they evaluate infrastructure, land-use, power, and community impacts, making municipal approval processes an important friction point for AI capacity expansion. (Source: WPTV)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+  <li><strong>ANYbotics advanced industrial robot workflow integration:</strong> ANYbotics partnered with dormakaba and LEGIC Identsystems so its ANYmal inspection robots can pass through unlocked and access-controlled doors using retrofitted operators and secure credentials, with GE Vernova testing the system. This is a practical step from robotics pilots toward real industrial workflow integration, where autonomy depends on access control, facility systems, and operational reliability as much as robot mobility. (Source: The Robot Report)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+  <li><strong>Power-delay disclosures:</strong> Watch for more cloud or data-center operators citing grid interconnection, power procurement, or equipment delays in project updates.</li>
+  <li><strong>AI infrastructure financing standards:</strong> Monitor whether regulators in Japan and other markets push banks, private credit funds, or developers toward tighter disclosure and risk controls for data-center lending.</li>
+  <li><strong>Local permitting friction:</strong> Track state and county actions on data centers, especially rules tied to energy use, water consumption, tax incentives, and community review.</li>
+  <li><strong>Automation deployment signals:</strong> Look for robotics vendors moving from product launches to repeat orders, facilities integration, and measurable labor-productivity outcomes.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+  <li><strong>AI is becoming a power-and-permits story:</strong> The next phase of the AI cycle may depend as much on electricity, grid access, and local approvals as on model capability.</li>
+  <li><strong>Infrastructure financing is now part of AI risk:</strong> Data centers are capital-intensive assets, so funding structure and regulatory scrutiny matter for the durability of the buildout.</li>
+  <li><strong>Enterprise AI needs orchestration, not just models:</strong> Cloud tools that connect events, applications, and teams are becoming important plumbing for production AI workflows.</li>
+  <li><strong>Robotics adoption is about usability:</strong> No-code programming, facility access, and workflow integration are key signs that physical AI is moving closer to mainstream deployment.</li>
+</ul>
