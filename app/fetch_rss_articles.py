@@ -25,6 +25,12 @@ FEED_BUCKETS = {
         "https://www.semiconductors.org/feed/",
         "https://blogs.nvidia.com/feed/",
     ],
+    "adoption_monetization": [
+        "https://news.google.com/rss/search?q=AI+adoption+users+downloads+subscribers",
+        "https://news.google.com/rss/search?q=AI+agent+users+downloads+adoption",
+        "https://news.google.com/rss/search?q=AI+usage+revenue+monetization+Reuters",
+        "https://news.google.com/rss/search?q=AI+downloads+users+subscribers+Reuters",
+    ],
     "enterprise_labor": [
         "https://www.artificialintelligence-news.com/feed/",
         "https://www.marktechpost.com/feed/",
@@ -101,6 +107,7 @@ MAX_GOOGLE_GAP_FILLER_ARTICLES = 6
 MAX_BUCKET_ARTICLES = {
     "policy_regulation": 10,
     "infrastructure_power": 10,
+    "adoption_monetization": 10,
     "enterprise_labor": 12,
     "business_markets": 10,
     "physical_ai_robotics": 8,
@@ -110,6 +117,7 @@ MAX_BUCKET_ARTICLES = {
     "google_gap_filler": MAX_GOOGLE_GAP_FILLER_ARTICLES,
 }
 REQUIRED_THEMES = [
+    "adoption_monetization",
     "infrastructure",
     "enterprise",
     "capital_markets",
@@ -368,6 +376,21 @@ def _compute_priority_score(title: str, summary: str) -> int:
     if any(keyword in text for keyword in ["enterprise", "roi", "productivity", "automation"]):
         score += 2
 
+    # Quantified adoption / monetization inflections
+    adoption_metric_terms = [
+        "downloads", "downloaded", "users", "monthly active users", "daily active users",
+        "subscribers", "paid subscribers", "seats", "usage", "transactions", "actions processed",
+        "revenue", "annual recurring revenue", "arr", "conversion rate", "adoption rate",
+    ]
+    adoption_velocity_terms = [
+        "record", "fastest", "surged", "soared", "doubled", "tripled", "million", "billion",
+        "in days", "in weeks", "number one", "#1", "top app",
+    ]
+    if any(keyword in text for keyword in adoption_metric_terms):
+        score += 4
+        if any(keyword in text for keyword in adoption_velocity_terms):
+            score += 4
+
     # Labor + macro impact
     if any(keyword in text for keyword in ["labor", "jobs", "hiring", "workforce"]):
         score += 1
@@ -497,6 +520,14 @@ def _get_theme_key(article):
 
     if any(k in text for k in ["data center", "power", "grid", "electricity"]):
         return "infrastructure"
+
+    adoption_metric_terms = [
+        "downloads", "monthly active users", "daily active users", "paid subscribers",
+        "subscribers", "user growth", "usage growth", "transactions", "actions processed",
+        "adoption rate", "conversion rate",
+    ]
+    if any(k in text for k in adoption_metric_terms):
+        return "adoption_monetization"
 
     if any(k in text for k in ["enterprise", "software", "roi", "productivity", "automation"]):
         return "enterprise"
