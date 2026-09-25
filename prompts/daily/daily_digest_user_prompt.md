@@ -21,7 +21,7 @@ Use a <ul> with <li> items under every heading except TOP THEME OF THE DAY. Use 
 EDITORIAL PRIORITY
 This is a relevance-first daily briefing, not a category-completion exercise. Select the strongest distinct events in the full candidate slate. The candidate groups are directional tags, not hard boundaries. A compact briefing of strong developments is better than broad but low-value coverage.
 
-TOP STORIES: Use 2 to 4 of the most consequential developments.
+TOP STORIES: Use 2 to 4 of the most consequential developments. Explicitly consider any QUANTIFIED_ADOPTION_INFLECTION candidate. A major change in users, downloads, subscribers, enterprise seats, usage, transactions, conversion, or revenue is a new event and may belong in TOP STORIES even if the product launch itself was covered on an earlier day.
 
 OTHER ANALYTICAL SECTIONS: Include 1 to 2 bullets only when the source window contains a material, distinct development that belongs there. Do not force a marginal story into a thin section. When a section has no material new development, use one brief monitor note rather than inventing a new event. For PHYSICAL AI AND ROBOTICS, use this exact fallback when no meaningful commercial development exists:
 <li><strong>No major commercial Physical AI or robotics developments surfaced:</strong> Continue monitoring robotics, autonomous systems, lab automation, industrial automation, and AI-enabled manufacturing for signs that pilots are moving into real deployment. (Source: Full article set)</li>
