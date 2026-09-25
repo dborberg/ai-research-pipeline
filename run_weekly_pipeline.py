@@ -1099,6 +1099,8 @@ def weekly_impact_score(article):
         [
             "billion", "$", "major", "large", "largest", "massive", "global",
             "multi-year", "enterprise-wide", "capex", "capacity", "gigawatt",
+            "million users", "million downloads", "monthly active users",
+            "daily active users", "paid subscribers", "record adoption",
         ],
     )
 
@@ -1127,6 +1129,25 @@ def weekly_impact_score(article):
         score = max(score, 8.0)
     if _is_healthcare_fda_override(article):
         score = max(score, 8.0)
+
+    adoption_metric_terms = [
+        "downloads", "monthly active users", "daily active users", "paid subscribers",
+        "subscribers", "user growth", "usage growth", "adoption rate", "conversion rate",
+        "transactions", "actions processed",
+    ]
+    adoption_velocity_terms = [
+        "million", "billion", "record", "fastest", "surged", "soared", "doubled",
+        "tripled", "in days", "in weeks", "number one", "#1", "top app",
+    ]
+    monetization_terms = [
+        "revenue", "monetization", "paid", "subscription", "pricing", "arr",
+        "annual recurring revenue", "commerce", "advertising",
+    ]
+    has_adoption_metric = any(term in text for term in adoption_metric_terms)
+    has_adoption_velocity = any(term in text for term in adoption_velocity_terms)
+    has_monetization_readthrough = any(term in text for term in monetization_terms)
+    if has_adoption_metric and has_adoption_velocity:
+        score = max(score, 8.2 if has_monetization_readthrough else 8.0)
 
     return round(max(0.0, min(score, 10.0)), 1)
 
