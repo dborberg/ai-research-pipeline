@@ -1,0 +1,362 @@
+SUPPLEMENTAL INPUT: TIER 2 WEEKLY OVERRIDE CANDIDATES
+
+These candidates come from an independent review of the prior seven calendar days of Gen AI and AI-adjacent source material.
+
+Use them only when they represent systemic weekly developments, not to flood the Weekly with unrelated stories.
+
+
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Brookfield-Backed AI Data Center Developer 5C Eyes IPO - Bloomberg.com
+SOURCE: "AI data center" - Google News
+PUBLISHED_AT: 2026-09-29T16:59:21
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because AI data center development remains a key physical infrastructure bottleneck and financing need behind AI adoption. A potential IPO from a Brookfield-backed developer could signal continued institutional demand for exposure to AI infrastructure beyond semiconductors and software.
+SUMMARY: Brookfield-backed AI data center developer 5C is reportedly considering an IPO. The potential listing highlights continued investor interest in financing AI-related data center infrastructure.
+COMPANIES: 5C, Brookfield
+EVENT_PRIORITY: 107.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 93
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: AI cloud and data center firm Nscale raises $3.36bn ahead of its IPO - Data Center Dynamics
+SOURCE: "AI data center" - Google News
+PUBLISHED_AT: 2026-09-25T16:03:01
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is a concrete signal that investor demand remains strong for companies supporting AI compute and data center expansion. It reinforces advisor talking points around the capital-intensive nature of AI adoption and potential read-throughs to infrastructure, power, cooling, and data center supply chains.
+SUMMARY: AI cloud and data center firm Nscale has raised $3.36 billion ahead of a planned IPO, according to Data Center Dynamics. The financing points to continued capital formation around AI infrastructure and data center capacity.
+COMPANIES: Nscale
+EVENT_PRIORITY: 107.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 91
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: ASCEND: Personal AI Agents for Autonomous Scientific Computing Across HPC Clusters and GPU Workstations
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-09-30T04:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This points to how agentic AI could expand beyond chat interfaces into technical workflow orchestration, especially in compute-intensive research environments. While not directly tied to a public company or commercial deployment, it is a forward-looking signal for AI-enabled productivity in HPC, scientific software, and GPU-based research infrastructure.
+SUMMARY: ASCEND is an AI-powered agent interface that helps researchers run and troubleshoot scientific computing jobs across Slurm-managed HPC clusters and GPU workstations while keeping credentials local. Reported cases include automated failure recovery, reproduction of a weather-model evaluation, parallelization of a geophysical solver from roughly 12 hours to 2 hours, and identification of code issues, though autonomy was supervised and a full recovery benchmark remains outstanding.
+COMPANIES: 
+EVENT_PRIORITY: 95.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 69
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Agentic AI for Clustering, Relationship Discovery, and Semantic Trading in Prediction Markets
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-09-30T04:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is an early but concrete example of agentic AI being applied to financial market structure and trading workflows, showing how AI may uncover relationships across fragmented instruments and support new forms of signal generation. While not tied to public companies or commercial deployment, it is relevant for discussions about AI moving beyond content generation into autonomous analytical layers for markets and investment processes.
+SUMMARY: The paper presents an agentic AI pipeline that analyzes prediction-market contract text and metadata to cluster related markets and identify cross-market dependencies or leader-follower relationships before incorporating prices. In evaluation on a large early-2026 prediction-market dataset, the system’s identified relations were 62.8% consistent with exchange-recorded settlements versus 40.6% for a natural language inference benchmark, and one semantics-based trading strategy produced a 14.12% net ROI after fees over two months.
+COMPANIES: 
+EVENT_PRIORITY: 87.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 66
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Gecko Robotics works with NVIDIA to add AI agent security and control
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-09-28T17:41:32
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because it highlights a key adoption requirement for physical AI: trusted controls that can keep autonomous agents within human-defined permissions. For advisors, the article provides a concrete example of AI moving from software into robots used in energy, defense, and critical infrastructure, with NVIDIA positioning safety infrastructure as part of the broader AI platform stack.
+SUMMARY: NVIDIA introduced its Open Agent Safety Platform, including OpenShell and Sentry, to provide governance, policy enforcement, and monitoring for AI agents running across hardware, compute, and software. Gecko Robotics is testing OpenShell to create enforceable boundaries for AI-powered robots used in critical infrastructure and military inspection settings, including systems with motion controls and path planning capabilities.
+COMPANIES: NVIDIA, Gecko Robotics, OpenAI, Hugging Face, Arm, Intel, AWS
+EVENT_PRIORITY: 35.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Google Research Open-Sources RRSI: AI Agents That Improve Their Own Harness Without Overfitting
+SOURCE: MarkTechPost
+PUBLISHED_AT: 2026-09-29T09:01:36
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 4.1
+ADVISOR_RELEVANCE: This matters because it points to continued progress in AI agent reliability and workflow orchestration without requiring model retraining, which could support broader enterprise adoption over time. The investment read-through is indirect but relevant for platform companies and AI infrastructure providers as agentic systems become more capable and easier to improve.
+SUMMARY: Google Cloud AI Research has open-sourced RRSI, a framework that lets LLM agents modify their own prompts, tools, and memory while keeping model weights frozen. The framework includes controls such as a leakage critic, noise floor, cost rule, and pruning to improve generalization, with reported Terminal-Bench 2.1 performance rising from 74.2% to 80.2% using Claude Opus 4.8.
+COMPANIES: Google, Google Cloud AI Research
+EVENT_PRIORITY: 32.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Your Robot’s Safety Functions Already Work. What If the Input Lies?
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-10-01T15:02:19
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.2
+ADVISOR_RELEVANCE: This matters because broader robotics and physical AI adoption will depend not only on model capability, but also on safety assurance, cybersecurity testing, and regulatory compliance. The read-through is that as robots move into workplaces, hospitals, and public spaces, demand may grow for security validation, monitoring tools, and governance frameworks that reduce deployment risk.
+SUMMARY: The article argues that robots can comply with their designed safety rules while still acting unsafely if the inputs behind those rules are manipulated. It highlights research and VicOne LAB R7 tests showing how visual, audio, sensor, or ROS 2/DDS message inputs can alter robot behavior, and it calls for safety and security teams to test adversarial scenarios alongside normal safety validation.
+COMPANIES: VicOne, NVIDIA
+EVENT_PRIORITY: 30.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: autonomy
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: defense
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Asimov’s laws are not enough to keep robotics and AI safe
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-09-27T12:26:44
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is most relevant as a governance and policy signal rather than a direct investment catalyst. It reinforces that AI adoption may increasingly face regulatory scrutiny, labor-transition requirements, and safety expectations, which could affect development timelines, compliance costs, and public acceptance for companies building frontier AI, robotics, and AI infrastructure.
+SUMMARY: The article argues that Asimov’s fictional laws are insufficient for today’s robotics and generative AI risks, especially as agentic AI systems become more autonomous and potentially harder to monitor. It highlights concerns from AI leaders and researchers about safety, labor disruption, and the need for governance, while noting proposed U.S. legislation aimed at AI guardrails, data protection, and labor-market transition support.
+COMPANIES: Advanced Robotic Technologies Inc., Anthropic, OpenAI, NVIDIA
+EVENT_PRIORITY: 30.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: The Robot Report parent Arrowfly launches AI for Engineers platform, events for engineers navigating AI
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-09-30T14:03:31
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 4.9
+ADVISOR_RELEVANCE: This is not a direct AI product launch or infrastructure investment, but it is a useful adoption signal: engineering leaders are moving from AI experimentation toward repeatable use cases in product design, automation, robotics, medtech, energy, and industrial operations. For advisor conversations, it supports the view that AI adoption is broadening beyond software and cloud into physical industries, creating potential second-derivative opportunities in industrial automation, engineering tools, robotics, and AI-enabled manufacturing workflows.
+SUMMARY: Arrowfly, parent of The Robot Report, launched AI for Engineers, a platform combining a dedicated news desk, annual conference, original research, and an advisory board for engineers applying AI in areas such as design, robotics, medtech, energy, and manufacturing. The initiative reflects growing practitioner demand, with Arrowfly citing more than 30,000 engineering and technical professionals already engaging with AI topics across its portfolio.
+COMPANIES: Arrowfly, The Robot Report, Amazon, NVIDIA, Boeing, Siemens, Medtronic, Tesla
+EVENT_PRIORITY: 29.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: robotics
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Kill-Chain Canaries: Stage-Level Tracking of Prompt Injection Across Attack Surfaces and Five Production LLMs
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-10-01T04:00:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is a technical research update rather than a direct investment catalyst, but it highlights a key enterprise AI adoption constraint: securing agentic systems that read documents, web pages, tool outputs, and shared memory. The findings suggest model choice, workflow design, and channel-specific defenses may become important differentiators as companies move from basic chatbots to production multi-agent AI systems.
+SUMMARY: The paper introduces a kill-chain canary method to track how prompt-injection payloads move through multi-agent LLM systems across stages from exposure to execution. Across 950 runs involving five production LLMs, six attack surfaces, and five defense conditions, results varied significantly by model and channel, with Claude Haiku 4.5 and Claude Sonnet 4.5 executing none of their reported text-surface attacks while GPT-4o-mini executed 53%. The study also found that some defenses failed when attacks moved through uninspected channels or different content formats.
+COMPANIES: Anthropic, OpenAI, DeepSeek
+EVENT_PRIORITY: 28.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Atlas Robot’s New Hand May Outperform Humanlike Designs
+SOURCE: IEEE Spectrum
+PUBLISHED_AT: 2026-10-01T14:40:12
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 3.5
+ADVISOR_RELEVANCE: The article highlights a practical step toward commercializing humanoid robots: moving from impressive research hardware to rugged, repairable, and mass-manufacturable components. For advisors, it supports conversations about physical AI moving closer to real-world deployment and the importance of second-order beneficiaries tied to robotics components, actuators, manufacturing systems, and industrial automation.
+SUMMARY: Boston Dynamics unveiled a redesigned hand for its Atlas humanoid robot that prioritizes reliability, manufacturability, repairability, and cost over humanlike appearance. The new design increases degrees of freedom from 7 to 13, supports tool use such as drills or welding torches, and is being evaluated for potential production at 100,000 hands per year.
+COMPANIES: Boston Dynamics
+EVENT_PRIORITY: 27.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Amazon to invest $100M in new Indiana manufacturing facility
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-09-25T18:59:01
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 6.5
+ADVISOR_RELEVANCE: This is a concrete example of AI and robotics moving from software narratives into physical infrastructure and manufacturing capex. Amazon’s continued investment in fulfillment robots, drone delivery, and potential doorstep delivery robotics highlights how large technology and logistics platforms are using automation to improve scale, efficiency, and labor productivity, with read-throughs for industrial automation, cloud-enabled manufacturing, robotics suppliers, and logistics modernization.
+SUMMARY: Amazon plans to invest more than $100 million in a 585,000-square-foot advanced manufacturing facility in Greenwood, Indiana, expected to launch by 2028 and create 300 skilled manufacturing and engineering jobs. The site will produce products for Amazon’s North American fulfillment and robotics network, integrating advanced fabrication, robotic welding, automated powder coating, assembly, AWS, AI-powered smart manufacturing systems, and robotics.
+COMPANIES: Amazon, AWS, RIVR, Bezos Expeditions, HongShan, Arrowfly
+EVENT_PRIORITY: 27.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: Gen AI
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: launch
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: From 14 cities to 15,000: What it will take to scale robotaxis?
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-09-26T12:34:55
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 5.4
+ADVISOR_RELEVANCE: This highlights that commercialization of physical AI may depend less on core autonomy breakthroughs and more on capital-intensive, local infrastructure buildout. For advisor conversations, the read-through is that robotaxi adoption could create second-derivative opportunities in fleet operations, charging infrastructure, robotics-enabled servicing, industrial real estate, power access, and platform partnerships, while also facing bottlenecks similar to data centers around land and electricity.
+SUMMARY: The article argues that robotaxi technology is increasingly proven, citing Waymo’s autonomous mileage, safety claims, and paid ride volume, but that scaling from limited city deployments to thousands of markets depends on solving vehicle servicing. The main bottlenecks are local charging, cleaning, inspection, land availability, utility interconnection timelines, and the need for standardized infrastructure that can support many fleets and vehicle types.
+COMPANIES: Waymo, Uber, Microsoft, Amazon, Zeekr, Moove, Avomo, Avis, Flexdrive, Wayve, Nuro, Mobileye, Nissan, Lucid, Volkswagen, Mercedes, NVIDIA, Aseon Labs, Andreessen Horowitz, Y Combinator, Pushme, TIER
+EVENT_PRIORITY: 26.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Roche outlines plans to move towards autonomous AI labs - Reuters
+SOURCE: "artificial intelligence" - Google News
+PUBLISHED_AT: 2026-09-28T11:06:09
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.9
+ADVISOR_RELEVANCE: This is relevant as a signal that major pharmaceutical companies are exploring AI and automation to redesign research workflows, potentially accelerating drug discovery and changing demand for lab automation, data infrastructure, and AI tools. However, the investment read-through is limited without details on budget, deployment timeline, or supplier relationships.
+SUMMARY: Reuters reports that Roche outlined plans to move toward autonomous AI labs. The limited excerpt does not provide details on timing, investment scale, technology partners, or expected productivity gains.
+COMPANIES: Roche
+EVENT_PRIORITY: 25.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: OpenAI CEO announces new AI agent and avoids mention of security concerns at developer conference - BNN Bloomberg
+SOURCE: "(OpenAI OR Anthropic OR Google DeepMind OR Meta AI OR xAI OR Mistral) (model launch OR model release OR announces model)" - Google News
+PUBLISHED_AT: 2026-09-29T19:03:37
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 3.9
+ADVISOR_RELEVANCE: The announcement points to continued momentum in agentic AI, a key area for enterprise productivity, software platform convergence, and developer ecosystem growth. The lack of discussion around security concerns is also relevant for advisors because governance, trust, and risk controls remain important factors in the pace of AI adoption.
+SUMMARY: OpenAI’s CEO announced a new AI agent at a developer conference, signaling continued movement toward agent-based AI capabilities. The article also notes that security concerns were not addressed, keeping governance and risk-management questions in focus.
+COMPANIES: OpenAI
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Exa Launches Agent Ultra: A Subagent Swarm Deep Research API Built for Exhaustive List Building
+SOURCE: MarkTechPost
+PUBLISHED_AT: 2026-09-26T08:04:08
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 4.1
+ADVISOR_RELEVANCE: This is a concrete example of AI agents moving from chat-style interfaces toward production APIs that automate professional research workflows. For advisors, the read-through is continued enterprise experimentation with AI-mediated diligence, KYC, market mapping, and go-to-market data generation, though the investment significance is tempered by vendor-reported benchmarks and limited visibility into adoption.
+SUMMARY: Exa launched Agent Ultra, a hosted high-effort mode of its Exa Agent API designed for exhaustive research tasks such as large list building, entity enrichment, diligence market maps, KYC research, and portfolio monitoring. The system coordinates subagents across thousands of sources, with Exa reporting benchmark outperformance versus Opus 5.5, GPT-6 Astra, and Perplexity Agent, though results are vendor-reported and not independently reproduced.
+COMPANIES: Exa, Perplexity, Google DeepMind, OpenAI
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Perplexity Releases pplx-embed-v2-context-9b-preview: A Contextual Embedding Model That Retrieves Answers and Their Supporting Evidence
+SOURCE: MarkTechPost
+PUBLISHED_AT: 2026-10-01T03:23:39
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 3.6
+ADVISOR_RELEVANCE: This is a narrower but relevant AI infrastructure development because better retrieval and evidence grounding can improve enterprise confidence in RAG-based applications. The investment read-through is indirect, but it points to continued tooling innovation around AI reliability, verification, and production readiness.
+SUMMARY: Perplexity Research and turbopuffer released pplx-embed-v2-context-9b-preview, a contextual embedding model designed for retrieval-augmented generation pipelines. The model embeds each chunk with the full document in view and is trained to retrieve both answers and supporting evidence needed for verification.
+COMPANIES: Perplexity Research, turbopuffer
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: FTC Reportedly Probes OpenAI and Anthropic as Trump Backs AI Self-Regulation - Barron's
+SOURCE: "AI regulation" - Google News
+PUBLISHED_AT: 2026-09-30T19:47:00
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because regulatory scrutiny of leading AI model developers could influence the pace, cost, and governance requirements of AI commercialization. For advisor conversations, it highlights that AI investment themes are not only about compute and adoption, but also about policy risk and the evolving rules around model safety, competition, and oversight.
+SUMMARY: Barron's reports that the FTC is probing OpenAI and Anthropic while President Trump is backing a more self-regulatory approach to AI oversight. The article points to a potential tension between federal enforcement activity and a policy preference for lighter-touch AI regulation.
+COMPANIES: OpenAI, Anthropic
+EVENT_PRIORITY: 23.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
