@@ -1,0 +1,54 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>October 13, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s dominant AI investment theme is that the cycle is moving from model enthusiasm into execution constraints: safety governance, infrastructure scaling, power resilience, and valuation discipline. For advisor conversations, the opportunity remains broad, but the next phase may reward companies that can turn AI capability into reliable, governed, capital-efficient production systems.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Anthropic warned on potential self-replication risk:</strong> Anthropic said advanced AI models may soon be capable of self-replication without access to data centers, raising the stakes for model containment, evaluation, and governance. The advisor read-through is that AI risk management is becoming an investable and regulatory theme, not just a philosophical debate about frontier models. (Source: Reuters)</li>
+<li><strong>NVIDIA opened parts of its Vera Rubin architecture to help scale AI factories:</strong> NVIDIA announced Open Compute Project contributions and ecosystem partnerships tied to Vera Rubin, framing open infrastructure standards as a way to scale global AI factories. This supports the view that the AI buildout is becoming a full-stack infrastructure cycle involving compute, networking, power delivery, cooling, and systems integration. (Source: NVIDIA Blog)</li>
+<li><strong>Chip stocks slid after a Broadcom executive’s “casino” comment:</strong> Semiconductor shares reportedly fell after Broadcom’s chief executive used language that investors interpreted as a cautionary signal around AI infrastructure exuberance. The market reaction underscores that AI-linked valuations remain sensitive to any sign that capex expectations may be running ahead of durable demand. (Source: Financial Times)</li>
+<li><strong>Meta released Muse Wonder AI models to challenge OpenAI and Anthropic:</strong> Meta’s new model release signals continued competition among leading AI platforms, although available details on commercialization, pricing, and enterprise deployment remain limited. The implication is that model capability races may keep pressure on pricing while increasing the strategic value of distribution, developer ecosystems, and enterprise workflow integration. (Source: Reuters)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>Enterprise agent governance is becoming a scale problem:</strong> Unite.AI highlighted the challenge of applying one governance policy across thousands of AI agents as enterprises move from isolated copilots toward orchestrated agent networks. This reinforces Enterprise Production Readiness as a key diligence lens: controls, auditability, identity, permissions, and workflow orchestration may determine which AI deployments move from pilot to production. (Source: Unite.AI)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Echion and Proper Voltage partnered on a 1.6MW UPS for AI data centers:</strong> The companies are developing a high-capacity uninterruptible power supply system aimed at AI data center workloads. The investment read-through extends beyond chips to electrical infrastructure, backup power, and resiliency systems that help keep dense AI compute environments operating reliably. (Source: Data Center Dynamics)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Capital-markets signals remain two-sided:</strong> The source window showed strong interest in AI infrastructure and platform competition, but also evidence that investors are increasingly sensitive to valuation, capex discipline, and executive commentary. For portfolios, the practical takeaway is to separate durable AI demand from sentiment-driven multiple expansion. (Source: Full article set)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>EU Cyber Resilience Act readiness moved into manufacturer focus:</strong> EE Times framed the EU Cyber Resilience Act as a broad product-cybersecurity compliance priority for consumer, industrial, networking, semiconductor, and software manufacturers selling into Europe. The policy implication is that cyber-by-design requirements may raise compliance costs but also increase demand for governance tooling, secure software processes, and product-security expertise. (Source: EE Times)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>No major commercial Physical AI or robotics developments surfaced:</strong> Continue monitoring robotics, autonomous systems, lab automation, industrial automation, and AI-enabled manufacturing for signs that pilots are moving into real deployment. (Source: Full article set)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Frontier-model governance:</strong> Watch whether Anthropic or regulators provide more technical detail, mitigation frameworks, or policy proposals around model self-replication and containment.</li>
+<li><strong>AI infrastructure discipline:</strong> Monitor semiconductor earnings, hyperscaler capex plans, and order visibility for signs that AI infrastructure demand is durable rather than speculative.</li>
+<li><strong>Power and permitting constraints:</strong> Track local data center rules, utility interconnection timelines, and backup-power deployments as leading indicators of where AI capacity can actually be built.</li>
+<li><strong>Enterprise production readiness:</strong> Watch for spending on agent governance, workflow orchestration, audit logs, access controls, and AI risk platforms as enterprises scale beyond pilots.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is entering a more disciplined phase:</strong> The question is shifting from “who has the best model?” to “who can deploy AI safely, reliably, and profitably?”</li>
+<li><strong>Infrastructure remains central:</strong> Chips are only one part of the buildout; power systems, cooling, networking, and data center resiliency are becoming just as important to monitor.</li>
+<li><strong>Governance is becoming investable:</strong> As AI agents spread through enterprises, companies will need stronger controls, auditability, and cybersecurity processes.</li>
+<li><strong>Valuation sensitivity is rising:</strong> AI demand can be real while some parts of the market still become vulnerable to stretched expectations.</li>
+</ul>
