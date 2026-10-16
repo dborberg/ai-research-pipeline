@@ -1,0 +1,362 @@
+SUPPLEMENTAL INPUT: TIER 2 WEEKLY OVERRIDE CANDIDATES
+
+These candidates come from an independent review of the prior seven calendar days of Gen AI and AI-adjacent source material.
+
+Use them only when they represent systemic weekly developments, not to flood the Weekly with unrelated stories.
+
+
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Nscale's Data Centers Hit by Fires, Angry Workers Ahead of IPO - Bloomberg.com
+SOURCE: "AI data center" - Google News
+PUBLISHED_AT: 2026-10-15T21:00:02
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because data centers are central to AI infrastructure buildout, but incidents such as fires and worker unrest can highlight execution, safety, labor, and governance risks. For advisors, it is a reminder that AI infrastructure opportunities may carry significant physical-asset and operational due-diligence considerations, especially around IPO candidates.
+SUMMARY: Bloomberg reports that Nscale’s data centers have faced fires and worker anger ahead of a planned IPO. The limited available text points to operational and labor issues at a data-center operator as it approaches public-market scrutiny.
+COMPANIES: Nscale
+EVENT_PRIORITY: 97.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 83
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-10-15T10:59:24
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: The announcement highlights how physical AI adoption depends not only on robot intelligence but also on enabling infrastructure such as batteries, charging systems, and safety platforms. For advisors, it provides a concrete example of how humanoid robotics may create investment read-throughs across automation, advanced batteries, warehouse productivity, and suppliers that improve utilization and total cost of ownership. Agility’s planned SPAC merger and Nyobolt’s recent $1 billion valuation also point to continued capital market interest in commercial robotics ecosystems.
+SUMMARY: Agility Robotics selected Nyobolt to provide an ultra-fast charging battery system for its Digit 5 humanoid robot, targeting more than 20 hours of productive work per day. The system is expected to deliver 90 minutes of runtime with a nine-minute charge, improving the run-to-charge ratio from Digit 4’s 2:1 to 10:1. Early access is expected in the first half of 2027, with broader availability over the following six to nine months.
+COMPANIES: Agility Robotics, Nyobolt, Symbotic Inc., Churchill Capital Corp XI, FORT Robotics
+EVENT_PRIORITY: 92.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 74
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Stryker invests $400M into CMR Surgical
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-10-15T16:54:14
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This highlights continued capital deployment into physical robotics within healthcare, with Stryker entering soft-tissue robotics through a structured investment, sales partnership, and potential acquisition path. For advisors, the key read-through is that large medtech companies are positioning for growth in robotic-assisted surgery, where adoption, regulatory clearances, and hospital workflow integration can influence long-term market share and procedure volume opportunities.
+SUMMARY: Stryker invested about $400 million in CMR Surgical and secured an exclusive option to acquire the company’s remaining equity. The companies also formed an exclusive U.S. commercial agency agreement for CMR’s Versius surgical robotics portfolio, which has been used in 45,000 cases across more than 30 countries and recently received FDA 510(k) clearance for cholecystectomy.
+COMPANIES: Stryker, CMR Surgical
+EVENT_PRIORITY: 84.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 66
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Nvidia in talks to invest further in Reflection AI or buy it, FT reports - Reuters
+SOURCE: "AI investment" - Google News
+PUBLISHED_AT: 2026-10-10T19:33:44
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because Nvidia’s potential investment or acquisition activity can indicate where the company sees strategic value beyond chips, including AI software, models, or platform capabilities. For advisors, it reinforces the theme that leading AI infrastructure companies may use capital and acquisitions to extend their competitive positioning across the AI stack, though the report remains preliminary and lacks financial details.
+SUMMARY: Reuters reports that Nvidia is in talks to either make an additional investment in Reflection AI or potentially acquire the company, citing the Financial Times. The report signals continued strategic interest by Nvidia in expanding its AI ecosystem, though details on valuation, timing, or deal structure are not provided.
+COMPANIES: Nvidia, Reflection AI
+EVENT_PRIORITY: 82.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 66
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Nvidia in talks to acquire US ‘open’ model start-up Reflection AI - Financial Times
+SOURCE: "AI investment" - Google News
+PUBLISHED_AT: 2026-10-10T18:14:28
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because Nvidia’s potential acquisition interest could signal continued expansion from GPUs and infrastructure into broader AI software and model capabilities. For advisors, it reinforces the importance of monitoring how leading AI infrastructure companies may seek to capture more of the AI value chain through M&A.
+SUMMARY: Nvidia is reportedly in talks to acquire Reflection AI, a US start-up focused on “open” AI models. The report suggests Nvidia may be looking to extend its role beyond AI infrastructure into the model layer, though no deal terms or confirmation are provided in the available text.
+COMPANIES: Nvidia, Reflection AI
+EVENT_PRIORITY: 82.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 66
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Athanor: An Agent-Native System for Autonomous Post-Training Research
+SOURCE: cs.AI updates on arXiv.org
+PUBLISHED_AT: 2026-10-16T04:00:00
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This is not a commercial deployment, but it is a concrete signal that frontier agents may increasingly automate parts of AI model development, including data construction, training algorithm changes, hyperparameter tuning, evaluation, and iterative research decisions. If such systems scale, they could accelerate model improvement cycles, increase demand for compute infrastructure, and reshape AI labor needs in research and engineering teams.
+SUMMARY: The paper introduces Athanor, an open agent-native system for autonomous post-training research in which frontier AI agents independently improve a raw base model using public data and real GPU infrastructure. In a 104-hour campaign, four Claude Opus 5.5 agents improved Qwen3-4B-Base to performance levels that matched or slightly exceeded the official instruct version on average across reported development and held-out suites.
+COMPANIES: 
+EVENT_PRIORITY: 80.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Chip stocks slide in wake of ‘casino’ comment by Broadcom boss - Financial Times
+SOURCE: "AI investment" - Google News
+PUBLISHED_AT: 2026-10-13T02:58:54
+SIGNAL_SCORE: 5.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because Broadcom is a major semiconductor company tied to AI infrastructure sentiment, and leadership comments can influence perceptions of valuation risk and capital-cycle sustainability in chip stocks. However, the excerpt lacks detail on the comment’s context or the specific stocks affected, limiting the strength of any advisor conclusion.
+SUMMARY: Chip stocks reportedly declined after Broadcom’s chief executive made a “casino” comment, according to the Financial Times headline and excerpt. The available text does not provide the full context of the remark or quantify the market move, so the investment read-through should be treated cautiously.
+COMPANIES: Broadcom
+EVENT_PRIORITY: 80.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 71
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: OpenAI’s $20 billion revenue gap rattles the AI trade - TheStreet
+SOURCE: "AI investment" - Google News
+PUBLISHED_AT: 2026-10-11T14:07:00
+SIGNAL_SCORE: 6.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because OpenAI is a key reference point for the broader AI ecosystem, and concerns about its revenue trajectory can influence investor confidence across AI infrastructure, software, and platform beneficiaries. Advisors can use this as a prompt to discuss valuation discipline, the difference between AI adoption and monetization, and the importance of focusing on companies with visible revenue, cash flow, and durable competitive advantages.
+SUMMARY: The article flags concern around an alleged $20 billion revenue gap at OpenAI and its impact on sentiment toward the broader AI trade. Based on the available excerpt, the focus appears to be investor unease over whether AI revenue growth can support current expectations.
+COMPANIES: OpenAI
+EVENT_PRIORITY: 80.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 66
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Symbotic acquires cellumation to expand warehouse automation portfolio
+SOURCE: Robotics & Automation News
+PUBLISHED_AT: 2026-10-13T15:10:47
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: The acquisition highlights continued investment in physical AI and robotics for supply chain automation, an area tied to productivity improvement, labor redesign, and enterprise logistics modernization. While financial terms and customer impact are not provided, the deal offers a concrete signal of portfolio expansion and consolidation in warehouse automation.
+SUMMARY: Symbotic has acquired cellumation, a Bremen-based automation company behind the patented celluveyor sortation system. The technology uses hundreds of independently controlled omnidirectional cells to move items in multiple directions, expanding Symbotic’s AI-enabled warehouse automation portfolio.
+COMPANIES: Symbotic, cellumation
+EVENT_PRIORITY: 75.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: South Korea's KOSPI closes at 6-month low as chipmakers slump on AI worries - Reuters
+SOURCE: "AI investment" - Google News
+PUBLISHED_AT: 2026-10-15T04:54:00
+SIGNAL_SCORE: 5.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters because AI-related expectations have become a key driver of semiconductor and market performance, including in AI supply-chain-heavy markets like South Korea. For advisor conversations, it highlights that AI beneficiaries may face volatility when investors question growth assumptions, capex durability, or chip demand momentum.
+SUMMARY: South Korea's KOSPI closed at a six-month low as chipmakers declined amid worries related to AI. The article signals that investor sentiment around AI-linked semiconductor demand or valuation risk is affecting equity market performance, though the provided text does not include company-specific details.
+COMPANIES: 
+EVENT_PRIORITY: 67.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Brutal session for chip stocks shows AI trade is turning - Reuters
+SOURCE: "artificial intelligence" - Google News
+PUBLISHED_AT: 2026-10-13T18:04:55
+SIGNAL_SCORE: 5.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters for advisors because semiconductor stocks have been a core expression of the AI investment theme, and a broad selloff may signal changing investor expectations around AI growth, valuation, or capex durability. However, without company-level detail or stated catalysts, it is best framed as a sentiment and positioning signal rather than evidence of a fundamental AI slowdown.
+SUMMARY: Reuters reports that chip stocks had a sharp selloff, suggesting the market’s AI-related semiconductor trade may be shifting. The available excerpt does not provide company-specific details, causes, or performance figures, so the investment read-through should be treated cautiously.
+COMPANIES: 
+EVENT_PRIORITY: 67.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 58
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: YES
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: How ADI is helping robotics startups scale
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-10-15T16:39:38
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This highlights how robotics and physical AI adoption may depend on enabling infrastructure beyond software, including sensors, semiconductors, power management, validation, and supply chain support. For advisor conversations, ADI’s initiative is a useful example of second-derivative AI beneficiaries positioning around robotics commercialization, though the program appears early and broader external participation is not expected until late 2026.
+SUMMARY: Analog Devices Inc. is developing an Emerging Tech Hub within its Analog Garage to help robotics startups and established companies move from prototype to production. The initiative is intended to provide access to ADI engineers, prototyping and testing resources, validation support, sourcing guidance, and expertise across sensing, control, edge AI, power, and system integration, with wider external applications expected to open by the end of 2026.
+COMPANIES: Analog Devices Inc., ADI
+EVENT_PRIORITY: 28.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: YES
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: From Earth to Orbit, France’s Ecosystem Delivers Agentic Computing at Scale With NVIDIA
+SOURCE: NVIDIA Blog
+PUBLISHED_AT: 2026-10-13T05:00:31
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 7.5
+ADVISOR_RELEVANCE: This matters because it points to continued AI adoption beyond U.S. hyperscalers, with France positioning around compute infrastructure and agentic AI applications. For advisor conversations, it supports the view that AI investment themes include sovereign AI buildouts, enterprise workflow automation and infrastructure demand, though the article provides limited company-specific financial detail.
+SUMMARY: NVIDIA says France’s AI ecosystem is moving from ambition to application, with companies deploying agentic computing across space, financial services, the public sector and scientific research. The article ties this progress to national AI initiatives and compute commitments anchored by the AI Action Summit and Choose France Summits.
+COMPANIES: NVIDIA
+EVENT_PRIORITY: 28.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: AI infrastructure
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: other
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: RoboBusiness 2026 panel to discuss reshoring with robots
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-10-14T15:08:59
+SIGNAL_SCORE: 5.0
+WEEKLY_IMPACT_SCORE: 7.5
+ADVISOR_RELEVANCE: The article highlights robotics as a potential enabler of U.S. manufacturing reshoring, with implications for industrial automation demand, workforce redesign, supply chain localization, and policy-driven investment priorities. However, it is primarily a conference preview rather than a concrete deployment, financing event, or company-specific commercial update.
+SUMMARY: RoboBusiness 2026 will host a panel on how robotics can support reshoring of U.S. manufacturing, including policy tools such as tariffs and FCC import restrictions. Speakers from Vecna Robotics, UC San Diego, Google, and Boston Dynamics will discuss software advances, workforce development, supply chain challenges, cybersecurity, geopolitical concerns, and the need for a national robotics strategy.
+COMPANIES: Vecna Robotics, Google, Microsoft, Boston Dynamics, Qualcomm, Arrowfly
+EVENT_PRIORITY: 27.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models
+SOURCE: NVIDIA Blog
+PUBLISHED_AT: 2026-10-15T15:00:24
+SIGNAL_SCORE: 8.0
+WEEKLY_IMPACT_SCORE: 5.0
+ADVISOR_RELEVANCE: This matters because NVIDIA is extending its AI platform beyond data center acceleration into open models and edge-capable agentic workloads, reinforcing potential demand for AI infrastructure across both cloud and local computing environments. The release also signals continued movement toward specialized, always-on agents and more efficient models, which are important adoption indicators for enterprise and device-level AI use cases.
+SUMMARY: NVIDIA released Nemotron 3.5 Super VL, an open 120-billion-parameter model positioned for high-efficiency, always-on specialized agents. It also introduced two edge-focused Nemotron 3.5 Bolt models designed to support local agentic workloads with different memory and performance profiles.
+COMPANIES: NVIDIA
+EVENT_PRIORITY: 25.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: How Third Moment Research runs 10,000 agents for 36+ hours - OpenAI
+SOURCE: "site:openai.com/index OR site:openai.com/news" - Google News
+PUBLISHED_AT: 2026-10-14T15:19:43
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 8.0
+ADVISOR_RELEVANCE: This matters as an example of AI agents moving from small demos toward sustained, large-scale operation, which may have implications for compute consumption, AI platform adoption, and enterprise workflow automation. However, the investment read-through is limited because the excerpt does not provide economics, infrastructure partners, or measurable business impact.
+SUMMARY: OpenAI highlights Third Moment Research running 10,000 AI agents continuously for more than 36 hours. The limited available context suggests a large-scale agent orchestration use case, but provides no details on workload, costs, infrastructure, or commercial outcomes.
+COMPANIES: OpenAI, Third Moment Research
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: YES
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: Promise Robotics partners with D.R. Horton on physical AI for homebuilding
+SOURCE: The Robot Report
+PUBLISHED_AT: 2026-10-13T13:00:05
+SIGNAL_SCORE: 9.0
+WEEKLY_IMPACT_SCORE: 5.7
+ADVISOR_RELEVANCE: This is a concrete example of AI moving from software pilots into physical production workflows. The partnership with the largest U.S. homebuilder by volume suggests potential real-world demand for robotics-enabled construction capacity, with read-throughs to automation providers, industrial robotics, housing supply chains, and companies addressing labor and cost bottlenecks in fragmented industries.
+SUMMARY: Promise Robotics signed a multi-year agreement with D.R. Horton to use its Factory-as-a-Service model to produce more than 1,250 homes in the U.S. The company combines robotics, AI, software, simulations, and manufacturing systems to translate home designs into robotic production plans and automate key building-component manufacturing steps.
+COMPANIES: Promise Robotics, D.R. Horton, KUKA
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: Gen AI
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: software-data-analytics
+
+--------------------------------------------------------------------------------
+
+CANDIDATE_TIER: TIER 2 - WEEKLY OVERRIDE CANDIDATE
+TITLE: UK’s National Composites Centre to lead business support for new £9.8 million Greater South West robotics hub
+SOURCE: Robotics & Automation News
+PUBLISHED_AT: 2026-10-09T20:13:50
+SIGNAL_SCORE: 7.0
+WEEKLY_IMPACT_SCORE: 4.3
+ADVISOR_RELEVANCE: This is a practical example of government-backed efforts to move robotics from experimentation into business adoption, particularly across manufacturing, energy, food and drink, maritime, aerospace and healthcare. While the funding is modest and regional, it points to continued policy support for automation as a productivity and labor-pressure solution, with potential read-throughs for robotics suppliers, industrial automation providers and firms enabling implementation services.
+SUMMARY: The UK’s National Composites Centre will lead one-to-one business advisory services for the new £9.8 million Greater South West Robotics Adoption Hub. The hub, led by Bristol Robotics Laboratory with University of Bristol, UWE Bristol and 23 partners, will help regional businesses assess automation opportunities, build investment cases and connect with robotics expertise, finance and demonstrations ahead of full operation by January 2027.
+COMPANIES: National Composites Centre, Bristol Robotics Laboratory, University of Bristol, UWE Bristol, Innovate UK, Oxford Innovation Advice, Made Smarter
+EVENT_PRIORITY: 24.00
+FRONTIER_CAPITAL_MARKETS_SCORE: 0
+FRONTIER_CAPITAL_MARKETS_OVERRIDE: NO
+MAJOR_EARNINGS_OVERRIDE: NO
+HEALTHCARE_FDA_OVERRIDE: NO
+AI_ARMS_RACE_CHECK: NO
+TIER_2_REASON: Weekly override candidate: independent seven-day source review, included to catch systemic Gen AI developments that may be absent, underweighted, or fragmented in Daily Riffs.
+IS_SPACE_ECONOMY_RELATED: 1
+SPACE_RELEVANCE: high
+SPACE_AI_CONNECTION: robotics
+SPACE_TIME_HORIZON: near-term
+SPACE_INVESTMENT_LAYER: other
