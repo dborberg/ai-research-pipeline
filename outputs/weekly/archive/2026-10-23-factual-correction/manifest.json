@@ -3,7 +3,8 @@
   "generation": "editorially regenerated from audited sources; no unrestricted model rerun",
   "supersedes_commit": "af29417796eea21616ea03ad6ae331dc92d14c5d",
   "sha256": "2942f202682bc318275c7b6e339478bbbb3c1c834283f738af2638554f53bd84",
-  "status": "archived; delivery pending",
+  "status": "archived; corrected edition accepted by SMTP server",
   "scope": "Weekly Riffs wholesaler only; thematic report unchanged",
-  "policy": "attributed facts only; company announcements explicitly labeled; no investment inference"
+  "policy": "attributed facts only; company announcements explicitly labeled; no investment inference",
+  "delivery_receipt": "delivery-receipt.json"
 }

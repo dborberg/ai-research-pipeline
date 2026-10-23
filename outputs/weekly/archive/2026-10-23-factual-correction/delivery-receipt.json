@@ -1,0 +1,9 @@
+{
+  "status": "accepted by configured SMTP server",
+  "timestamp_utc": "2026-10-23T15:56:55.437423+00:00",
+  "report_sha256": "2942f202682bc318275c7b6e339478bbbb3c1c834283f738af2638554f53bd84",
+  "archive_commit": "af58cdc",
+  "recipient": "configured EMAIL_TO",
+  "sender": "existing Weekly Riffs send_report",
+  "inbox_delivery_confirmed": false
+}
