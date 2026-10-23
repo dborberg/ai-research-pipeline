@@ -1,0 +1,7 @@
+{
+  "status": "SMTP accepted",
+  "timestamp_utc": "2026-10-23T16:02:38.355738+00:00",
+  "report_sha256": "68d2735f7aba2c1fb852ff4ccf133d8c7e7d0455d4cb9dc5bb0f3cf0a6e614f0",
+  "recipient": "configured EMAIL_TO",
+  "inbox_delivery_confirmed": false
+}
