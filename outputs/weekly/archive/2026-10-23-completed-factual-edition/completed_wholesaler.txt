@@ -1,0 +1,165 @@
+Beyond the Horizon: Weekly Riffs from the Gen AI Songbook
+Week Ending October 23, 2026
+
+COMPLETED CORRECTED EDITION — ATTRIBUTABLE NEWS AND DATA
+
+This edition supersedes the earlier October 23 Weekly Riffs. It contains dated company announcements and attributed news reporting. Company-reported figures and product descriptions are identified as such; they are not independently audited operating results. News and datapoints are attributable to the linked sources. Suggested monitoring, client questions and practice guidance are explicitly labeled as editorial suggestions, not reported outcomes or predictions.
+
+TOP 5 STORIES THIS WEEK
+
+1. OpenAI announces additional advertising markets.
+On October 21, OpenAI announced that ChatGPT Ads was expanding to 26 additional countries, bringing availability to 89 countries. OpenAI reported that more than 100,000 advertisers had run campaigns since launch. The advertiser figure is cumulative and company-reported; it does not establish current active advertisers, retention or revenue.
+Source: OpenAI, October 21, 2026 — company announcement.
+https://openai.com/index/chatgpt-ads-expands-26-new-countries/
+
+2. Meta announces plans for nonvoting shares.
+Reuters reported on October 21 that Meta was organizing its AI strategy around Muse and planned to issue nonvoting Class C shares in January 2027, effectively a two-for-one split, to support acquisitions and talent retention while maintaining Mark Zuckerberg's control. The share structure is an announced plan; the report does not establish a completed cash fundraising.
+Source: Reuters, October 21 US dateline; syndicated page dated October 22, 2026.
+https://live.euronext.com/en/financial-news/meta-puts-muse-agent-heart-ai-strategy-plans-new-stock-power-investments
+
+3. NextDC and Elice record sharp trading moves.
+Reuters reported that NextDC shares closed down 41.7% on October 21 after electricity-network delays at its M3 Melbourne project prompted lower forecasts and deferred contracted revenue. The same article reported that Elice fell 32% on its October 20 trading debut and rebounded 30% on October 21. These are date-specific price changes, not week-ending returns.
+Source: Reuters, October 21, 2026.
+https://live.euronext.com/en/financial-news/australian-ai-data-centre-operator-nextdc-shares-shed-42-revenue-delay-future-plans
+
+4. Carrier announces a Fort Worth manufacturing investment.
+On October 22, Carrier announced plans to invest more than $600 million over three years in a manufacturing and engineering center in Fort Worth, Texas. Carrier said the facility would expand commercial chiller production for data centers and other markets, with operations expected to begin in 2027. These are announced investment and operating plans.
+Source: Carrier, October 22, 2026 — company announcement.
+https://www.carrier.com/us/en/news/corporate/2026/carrierto-invest-more-than-600-million-to-expand-advanced-us-manufacturing-and-engineering-capacity/
+
+5. AGCO announces a humanoid robot pilot agreement.
+On October 20, AGCO announced a commercial agreement with Agility Robotics for a Digit pilot at its Hesston, Kansas manufacturing facility. AGCO said the pilot was expected to start in 2027 and initially support parts sorting, stacking and tote placement. The announcement concerns a future pilot, not an operating deployment or measured productivity result.
+Source: AGCO, October 20, 2026 — company announcement.
+https://agco.gcs-web.com/news-releases/news-release-details/agco-and-agility-robotics-advance-smart-manufacturing-humanoid
+
+BEYOND THE MAG 7
+
+1. Uber workplace rollout.
+OpenAI announced on October 22 that Uber was rolling out ChatGPT Work companywide, making it available to more than 30,000 employees after a 1,000-person pilot. These are announced availability figures; they do not establish active usage by every employee or measured productivity gains.
+Source: OpenAI, October 22, 2026 — company announcement.
+https://openai.com/index/uber-chatgpt-work-rollout/
+
+2. Snowflake sensitive-data reports.
+Snowflake's October 20 release notes state that its Sensitive Data Entitlement and Sensitive Data Access reports became generally available. The reports identify access privileges and historical access to sensitive-data tables. Snowflake specifies Enterprise Edition or higher. These are reporting features, not evidence of new access-enforcement controls or measured risk reduction.
+Source: Snowflake documentation, October 20, 2026.
+https://docs.snowflake.com/en/release-notes/2026/other/2026-10-20-sensitive-data-entitlement-access-reports-ga
+
+3. NVIDIA Minerva announcement.
+NVIDIA announced Minerva on October 22, describing it as an AIOps platform combining infrastructure and workload telemetry for AI factories. This verifies NVIDIA's announcement and stated product purpose; this edition makes no claim of independently measured uptime or financial improvements.
+Source: NVIDIA, October 22, 2026 — company announcement.
+https://blogs.nvidia.com/blog/minerva-platform-infrastructure/
+
+4. NVIDIA DSX update.
+In an October 21 update, NVIDIA described DSX tools for simulating infrastructure and coordinating AI-factory demand with grid conditions. This was an update on an existing platform, not evidence that DSX itself first launched that week.
+Source: NVIDIA, October 21, 2026 — company update.
+https://blogs.nvidia.com/blog/dsx-power/
+
+WHAT IS BEING DISRUPTED
+
+Documented workflow changes; no claim of measured industry disruption.
+
+1. Workplace tasks: OpenAI's October 22 Uber announcement describes ChatGPT Work connecting to workplace tools to research information, prepare materials and complete workflows. This is a company-described capability, not evidence of measured labor displacement.
+Source: OpenAI, October 22, 2026.
+https://openai.com/index/uber-chatgpt-work-rollout/
+
+2. Factory handling: AGCO's October 20 announcement identifies parts sorting, stacking and tote placement as initial tasks for its planned Digit pilot. The pilot is expected in 2027; these are planned activities.
+Source: AGCO, October 20, 2026.
+https://agco.gcs-web.com/news-releases/news-release-details/agco-and-agility-robotics-advance-smart-manufacturing-humanoid
+
+3. Infrastructure monitoring: NVIDIA's October 22 Minerva announcement describes combining infrastructure and workload telemetry. This is NVIDIA's product description; no independent operating improvement is asserted.
+Source: NVIDIA, October 22, 2026.
+https://blogs.nvidia.com/blog/minerva-platform-infrastructure/
+
+REGULATORY RADAR
+
+1. Lancaster County begins task-force review.
+An October 21 Lincoln Journal Star article, distributed by Tribune Content Agency and republished by GovTech, reported that Lancaster County, Nebraska's data-center task force held its first meeting on October 20 to study regulations and develop recommendations. This is a review process, not adoption of new rules.
+Source: Lincoln Journal Star / TNS via GovTech, October 21, 2026.
+https://www.govtech.com/artificial-intelligence/lancaster-county-neb-working-on-rural-data-center-regulations
+
+2. Investors discuss election-related data-center risk.
+Reuters reported on October 22 that investors were monitoring public opposition to data centers ahead of the U.S. midterm elections. The article discusses potential scrutiny and restrictions; it does not establish that new national restrictions have been enacted or predict an election result.
+Source: Reuters via MarketScreener, October 22, 2026.
+https://in.marketscreener.com/news/investors-see-risk-from-us-midterms-to-ai-trade-as-data-center-backlash-builds-ce785cd9d081f521
+
+3. Unverified local-policy items excluded.
+The earlier Irondale claim is not included as news because its precise October source remains unverified. The Portland/Westbrook item is also omitted from this edition because full-source inspection was unavailable during the audit. These exclusions do not establish that the underlying stories are false.
+
+WHAT TO WATCH NEXT
+
+Editorial monitoring suggestions based on announced plans; these are not forecasts.
+
+1. Lancaster County's next task-force meeting: the October 21 report says it is scheduled for November 3. Check the county's agenda for changes and any resulting recommendations.
+Source: Lincoln Journal Star / TNS via GovTech, October 21, 2026.
+https://www.govtech.com/artificial-intelligence/lancaster-county-neb-working-on-rural-data-center-regulations
+
+2. Meta's planned Class C shares: Reuters reports an intended January 2027 issuance. Look for subsequent company filings confirming the terms and implementation.
+Source: Reuters, October 21 US dateline.
+https://live.euronext.com/en/financial-news/meta-puts-muse-agent-heart-ai-strategy-plans-new-stock-power-investments
+
+3. AGCO's planned Digit pilot: the company expects a 2027 start. Look for confirmation that the pilot begins and for any disclosed operating results; the announcement does not establish those results.
+Source: AGCO, October 20, 2026.
+https://agco.gcs-web.com/news-releases/news-release-details/agco-and-agility-robotics-advance-smart-manufacturing-humanoid
+
+4. Carrier's Fort Worth center: the company expects operations to begin in 2027. Look for construction and opening updates rather than assuming the announced timetable has been met.
+Source: Carrier, October 22, 2026.
+https://www.carrier.com/us/en/news/corporate/2026/carrierto-invest-more-than-600-million-to-expand-advanced-us-manufacturing-and-engineering-capacity/
+
+READY TO USE SOUNDBITES
+
+Editorial paraphrases of sourced facts; not quotations from company executives.
+
+1. OpenAI reports that ChatGPT Ads is available in 89 countries after adding 26 markets; its advertiser count is company-reported.
+Source: OpenAI, October 21, 2026.
+https://openai.com/index/chatgpt-ads-expands-26-new-countries/
+
+2. Carrier announced more than $600 million over three years for its Fort Worth manufacturing and engineering center; operations are expected in 2027.
+Source: Carrier, October 22, 2026.
+https://www.carrier.com/us/en/news/corporate/2026/carrierto-invest-more-than-600-million-to-expand-advanced-us-manufacturing-and-engineering-capacity/
+
+3. AGCO's Digit announcement is a pilot agreement with a planned 2027 start, not evidence of a completed factory rollout.
+Source: AGCO, October 20, 2026.
+https://agco.gcs-web.com/news-releases/news-release-details/agco-and-agility-robotics-advance-smart-manufacturing-humanoid
+
+4. Snowflake's sensitive-data reports became generally available October 20 for Enterprise Edition or higher, according to its release notes.
+Source: Snowflake documentation, October 20, 2026.
+https://docs.snowflake.com/en/release-notes/2026/other/2026-10-20-sensitive-data-entitlement-access-reports-ga
+
+5. Reuters reported a 41.7% NextDC closing decline on October 21; that is a single-day price change, not a weekly return.
+Source: Reuters, October 21, 2026.
+https://live.euronext.com/en/financial-news/australian-ai-data-centre-operator-nextdc-shares-shed-42-revenue-delay-future-plans
+
+QUESTIONS TO BRING TO YOUR CLIENTS
+
+Suggested discussion questions, not factual findings or investment recommendations.
+
+1. When reviewing an AI headline, would you like us to distinguish a company announcement from independently measured results?
+
+2. Which evidence would you want before treating a planned pilot as a successful commercial deployment?
+
+3. Would a review of implementation dates, financing status and source quality help you evaluate the AI news you receive?
+
+AI PRACTICE TIP OF THE WEEK
+
+Editorial suggestion: create a source card for each AI story before using it in a client discussion.
+
+What: Record the original URL, publisher, event date, specific datapoint and whether it is company-reported, independently reported, disputed or unverified.
+
+Why: The source card is a proposed review aid. No measured productivity, accuracy or investment benefit is asserted.
+
+How to:
+1. Open the original source and locate the passage supporting the proposed statement.
+2. Record the value, unit, date and qualifications exactly; distinguish announced plans from completed events.
+3. Omit unsupported statements or label their uncertainty explicitly. Review any AI-created source card against the underlying document.
+
+Copy prompt: Using only the source text I provide, create a source card listing publisher, URL, publication date, event date, each factual claim and its exact supporting passage. Identify company-reported figures and future plans. Mark any claim without supporting text as unsupported. Do not infer missing facts, predict outcomes or add investment implications.
+
+Guardrail: Do not enter client personal information. Treat the source card as draft research documentation requiring review, not an independent verification certificate.
+
+EDITORIAL CORRECTIONS AND EXCLUSIONS
+
+Origin's October 15 announcement of $20 million in total funding remains excluded from this week's news. AWS Continuum remains excluded because the dated general-availability notice conflicts with preview wording on its product page. Other earlier items were omitted where sufficiently direct evidence was not retained.
+
+Company announcements establish what a company said or planned; they do not independently audit advertiser counts, customer usage, deployment performance or investment outcomes. Speculative investment implications and unsupported factual statements remain excluded.
+
+END OF REPORT
