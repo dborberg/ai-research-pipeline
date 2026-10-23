@@ -1,0 +1,68 @@
+Beyond the Horizon: Weekly Riffs from the Gen AI Songbook
+Week Ending October 23, 2026
+
+CORRECTED EDITION — ATTRIBUTABLE FACTS ONLY
+
+This edition supersedes the earlier October 23 Weekly Riffs. It contains dated company announcements and attributed news reporting. Company-reported figures and product descriptions are identified as such; they are not independently audited operating results. Investment implications, forecasts, inferred disruption and speculative soundbites have been removed.
+
+TOP 5 STORIES THIS WEEK
+
+1. OpenAI announces additional advertising markets.
+On October 21, OpenAI announced that ChatGPT Ads was expanding to 26 additional countries, bringing availability to 89 countries. OpenAI reported that more than 100,000 advertisers had run campaigns since launch. The advertiser figure is cumulative and company-reported; it does not establish current active advertisers, retention or revenue.
+Source: OpenAI, October 21, 2026 — company announcement.
+https://openai.com/index/chatgpt-ads-expands-26-new-countries/
+
+2. Meta announces plans for nonvoting shares.
+Reuters reported on October 21 that Meta was organizing its AI strategy around Muse and planned to issue nonvoting Class C shares in January 2027, effectively a two-for-one split, to support acquisitions and talent retention while maintaining Mark Zuckerberg's control. The share structure is an announced plan; the report does not establish a completed cash fundraising.
+Source: Reuters, October 21 US dateline; syndicated page dated October 22, 2026.
+https://live.euronext.com/en/financial-news/meta-puts-muse-agent-heart-ai-strategy-plans-new-stock-power-investments
+
+3. NextDC and Elice record sharp trading moves.
+Reuters reported that NextDC shares closed down 41.7% on October 21 after electricity-network delays at its M3 Melbourne project prompted lower forecasts and deferred contracted revenue. The same article reported that Elice fell 32% on its October 20 trading debut and rebounded 30% on October 21. These are date-specific price changes, not week-ending returns.
+Source: Reuters, October 21, 2026.
+https://live.euronext.com/en/financial-news/australian-ai-data-centre-operator-nextdc-shares-shed-42-revenue-delay-future-plans
+
+4. Carrier announces a Fort Worth manufacturing investment.
+On October 22, Carrier announced plans to invest more than $600 million over three years in a manufacturing and engineering center in Fort Worth, Texas. Carrier said the facility would expand commercial chiller production for data centers and other markets, with operations expected to begin in 2027. These are announced investment and operating plans.
+Source: Carrier, October 22, 2026 — company announcement.
+https://www.carrier.com/us/en/news/corporate/2026/carrierto-invest-more-than-600-million-to-expand-advanced-us-manufacturing-and-engineering-capacity/
+
+5. AGCO announces a humanoid robot pilot agreement.
+On October 20, AGCO announced a commercial agreement with Agility Robotics for a Digit pilot at its Hesston, Kansas manufacturing facility. AGCO said the pilot was expected to start in 2027 and initially support parts sorting, stacking and tote placement. The announcement concerns a future pilot, not an operating deployment or measured productivity result.
+Source: AGCO, October 20, 2026 — company announcement.
+https://agco.gcs-web.com/news-releases/news-release-details/agco-and-agility-robotics-advance-smart-manufacturing-humanoid
+
+ENTERPRISE AND INFRASTRUCTURE ANNOUNCEMENTS
+
+1. Uber workplace rollout.
+OpenAI announced on October 22 that Uber was rolling out ChatGPT Work companywide, making it available to more than 30,000 employees after a 1,000-person pilot. These are announced availability figures; they do not establish active usage by every employee or measured productivity gains.
+Source: OpenAI, October 22, 2026 — company announcement.
+https://openai.com/index/uber-chatgpt-work-rollout/
+
+2. Snowflake sensitive-data reports.
+Snowflake's October 20 release notes state that its Sensitive Data Entitlement and Sensitive Data Access reports became generally available. The reports identify access privileges and historical access to sensitive-data tables. Snowflake specifies Enterprise Edition or higher. These are reporting features, not evidence of new access-enforcement controls or measured risk reduction.
+Source: Snowflake documentation, October 20, 2026.
+https://docs.snowflake.com/en/release-notes/2026/other/2026-10-20-sensitive-data-entitlement-access-reports-ga
+
+3. NVIDIA Minerva announcement.
+NVIDIA announced Minerva on October 22, describing it as an AIOps platform combining infrastructure and workload telemetry for AI factories. This verifies NVIDIA's announcement and stated product purpose; this edition makes no claim of independently measured uptime or financial improvements.
+Source: NVIDIA, October 22, 2026 — company announcement.
+https://blogs.nvidia.com/blog/minerva-platform-infrastructure/
+
+4. NVIDIA DSX update.
+In an October 21 update, NVIDIA described DSX tools for simulating infrastructure and coordinating AI-factory demand with grid conditions. This was an update on an existing platform, not evidence that DSX itself first launched that week.
+Source: NVIDIA, October 21, 2026 — company update.
+https://blogs.nvidia.com/blog/dsx-power/
+
+REGULATORY RADAR
+
+1. Lancaster County begins task-force review.
+An October 21 Lincoln Journal Star article, distributed by Tribune Content Agency and republished by GovTech, reported that Lancaster County, Nebraska's data-center task force held its first meeting on October 20 to study regulations and develop recommendations. This is a review process, not adoption of new rules.
+Source: Lincoln Journal Star / TNS via GovTech, October 21, 2026.
+https://www.govtech.com/artificial-intelligence/lancaster-county-neb-working-on-rural-data-center-regulations
+
+EDITORIAL CORRECTIONS AND EXCLUSIONS
+
+The earlier edition's Origin item was excluded from this week's news: Origin's original announcement was October 15 and described $20 million in total funding. The current Irondale statement was excluded because its precise October source could not be verified. AWS Continuum was excluded because the dated general-availability notice conflicts with preview wording on the product page. Other items were omitted where this edition did not retain sufficiently direct, accessible evidence.
+
+This facts-only edition omits the earlier investment interpretations, disruption claims, watchlist forecasts, client questions, soundbites and practice tip. No claim of independently audited advertiser counts, deployment performance or investment outcomes is made.
