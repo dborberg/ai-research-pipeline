@@ -1,0 +1,59 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>October 24, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>The AI investment story is increasingly shifting from model excitement to execution capacity: data centers, storage, power, fuel cells, permitting, and secure frontier-model operations. For advisor conversations, the key point is that AI opportunity now extends beyond software leaders into infrastructure and energy ecosystems, while risks are rising around capital intensity, local opposition, cybersecurity, and regulatory bottlenecks.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>BofA projected data center spending will more than double to $2.1 trillion by 2028:</strong> Reuters reported that BofA sees data center spending rising sharply as AI demand drives a large physical infrastructure buildout. The investment read-through is that AI capex remains a multi-year theme, but one that requires discipline around power availability, utilization, financing costs, and valuation expectations across the supply chain. (Source: Reuters)</li>
+<li><strong>OpenAI said it is scaling online storage to serve more than 1 billion ChatGPT users:</strong> The company’s update points to a quantified adoption inflection, showing that consumer AI usage has reached a scale where storage, reliability, and backend architecture become strategic differentiators. For advisors, this supports the view that monetization and infrastructure demand can follow usage intensity, but it also highlights rising operating complexity and cost. (Source: OpenAI)</li>
+<li><strong>AI data centers are boosting fuel-cell demand:</strong> Reuters reported that power needs from AI data centers are contributing to increased interest in fuel cells as alternative or supplemental energy sources. This broadens the AI infrastructure conversation beyond chips and servers to onsite power, grid resiliency, and energy systems that may benefit if traditional utility interconnection timelines remain slow. (Source: Reuters)</li>
+<li><strong>The FCC restricted imports of certain foreign-made advanced robots:</strong> The Robot Report highlighted a webinar on how the FCC ruling affects automation buyers, including implications for mobile and legged robots. The development matters because physical AI adoption is becoming tied to cybersecurity, supply-chain sourcing, and regulatory compliance, not only labor savings or warehouse productivity. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>ServiceNow described how it built enterprise AI agents:</strong> The company’s discussion of enterprise agents reinforces the direction of travel from simple copilots toward workflow orchestration inside established software platforms. The advisor-relevant implication is that enterprise AI monetization may depend less on novelty and more on whether vendors can embed agents into governed, repeatable business processes. (Source: ServiceNow)</li>
+<li><strong>OpenAI published an update on securing frontier model training:</strong> The company emphasized security around its frontier-model training environment, a growing concern as model weights, training infrastructure, and proprietary datasets become strategic assets. This supports an Enterprise Production Readiness lens: large customers and regulators are likely to scrutinize security controls before relying on increasingly capable systems. (Source: OpenAI)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>State-level data center legislation is increasingly focused on local authority:</strong> MultiState flagged legislative activity around who controls data center siting and oversight. This matters because permitting, land use, water, power access, and local tax negotiations can become gating factors for AI infrastructure growth, creating project-timing risk even when demand is strong. (Source: MultiState)</li>
+<li><strong>Nvidia’s CEO urged Europe to accelerate AI and data center buildout:</strong> Broadband Breakfast reported that Jensen Huang encouraged Europe to expand AI infrastructure capacity. The read-through is that regional AI competitiveness is now tied to sovereign compute capacity, with implications for cloud providers, chip demand, energy infrastructure, and industrial policy. (Source: Broadband Breakfast)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Bloomberg reported that Gulf AI ambitions face domestic and international risks:</strong> The story points to the increasing role of sovereign AI strategies, where capital availability alone may not overcome geopolitical, technology-transfer, energy, or execution constraints. For portfolios, the implication is to monitor whether state-backed AI infrastructure plans translate into durable demand or create concentration and policy risk. (Source: Bloomberg)</li>
+<li><strong>The day’s strongest capital-markets signal came from AI infrastructure scale rather than a single financing event:</strong> Reuters’ BofA spending forecast and fuel-cell reporting together show that the AI capex cycle is pulling in broader infrastructure categories. Advisors can frame this as an expanding opportunity set, while emphasizing that capital intensity can pressure free cash flow and make execution risk more important. (Source: Reuters)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>California cities are reportedly restricting data center activity as rules lag the buildout:</strong> The San Mateo Daily Journal reported that some cities are pulling back on data centers amid concerns that state regulations have not scaled fast enough. This reinforces that AI infrastructure is becoming a local political issue, with permitting delays and community opposition capable of reshaping where capacity gets built. (Source: San Mateo Daily Journal)</li>
+<li><strong>Anthropic published an alignment assessment related to a UK AI Safety Institute cybertesting incident:</strong> While available details were limited, the publication signals that frontier labs are being drawn into more formalized safety, testing, and public-accountability processes. For advisors, governance quality is becoming part of the competitive landscape, especially for vendors seeking enterprise and government trust. (Source: Anthropic)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>No major commercial Physical AI or robotics developments surfaced:</strong> Continue monitoring robotics, autonomous systems, lab automation, industrial automation, and AI-enabled manufacturing for signs that pilots are moving into real deployment. (Source: Full article set)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Data center capex durability:</strong> Watch whether hyperscalers and large enterprises maintain elevated AI infrastructure spending as financing costs, utilization rates, and power constraints become more visible.</li>
+<li><strong>Power procurement and onsite generation:</strong> Track fuel cells, grid interconnection queues, power purchase agreements, and backup generation as leading indicators of where AI capacity can actually come online.</li>
+<li><strong>Local permitting risk:</strong> Monitor state and municipal data center rules, moratoriums, tax negotiations, and water or land-use disputes that could delay projects.</li>
+<li><strong>Enterprise agent conversion:</strong> Look for evidence that AI agents are moving from demos to paid, governed workflow deployments with measurable productivity or cost outcomes.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming an infrastructure story:</strong> The next phase is not just better models; it is power, storage, networking, cooling, permitting, and secure operations.</li>
+<li><strong>Usage scale matters:</strong> A billion-user AI product can create real infrastructure demand, but it also raises questions about cost, reliability, and monetization.</li>
+<li><strong>Power is a portfolio issue:</strong> AI data centers are pulling energy technologies into the conversation, from utilities and grid equipment to onsite generation such as fuel cells.</li>
+<li><strong>Regulation is moving closer to the physical layer:</strong> Data centers and advanced robots are now facing local, national, and cybersecurity-driven policy scrutiny.</li>
+<li><strong>Enterprise AI needs workflows, not just chatbots:</strong> The most durable business value may come when AI agents are embedded into governed processes that companies already rely on.</li>
+</ul>
