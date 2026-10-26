@@ -1,0 +1,55 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>October 26, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s strongest signal is that the AI investment cycle is broadening from model development into the physical, network, and operating layers required to make AI useful at scale. For advisors, the conversation is shifting toward which companies can fund AI infrastructure, convert spending into monetization, secure enterprise workflows, and manage policy or power constraints without eroding returns.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Verizon raised forecasts and signed a $2 billion-plus AI infrastructure deal with AWS:</strong> The agreement ties telecom capacity more directly to cloud AI demand and shows AI infrastructure spending moving beyond semiconductors into connectivity, networking, and enterprise delivery. The advisor read-through is that AI capex beneficiaries may include carriers, cloud partners, power equipment, and data-center-adjacent suppliers, but execution and margin discipline remain central. (Source: Reuters)</li>
+<li><strong>Tata Communications committed $450 million to AI connectivity infrastructure:</strong> The planned investment reinforces that AI workloads require not just chips and data centers, but high-capacity, low-latency global networks. This supports the view that the AI buildout is becoming a multi-layer infrastructure cycle, with connectivity providers increasingly positioned as strategic enablers rather than commodity bandwidth vendors. (Source: Reuters)</li>
+<li><strong>Big Tech earnings faced renewed scrutiny over AI spending intensity:</strong> Bloomberg reported that investor concerns about AI-related capital spending could overshadow otherwise strong large-cap technology earnings. The key portfolio question is no longer whether companies are investing in AI, but whether those investments can produce visible revenue, productivity, or platform-lock-in returns quickly enough to justify the cash outlay. (Source: Bloomberg)</li>
+<li><strong>Teradyne Robotics partnered with Sereact to scale physical AI in retail, logistics, and manufacturing:</strong> The companies are combining Sereact’s Cortex platform with Universal Robots arms, with hundreds of UR robots reportedly already shipped in dual-arm systems to live customers. This is a practical physical-AI adoption signal: AI is moving from software copilots into warehouse, retail, and factory workflows where reliability, safety, and integration determine commercial value. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>CrowdStrike and NVIDIA expanded AI agent security from software to silicon:</strong> The collaboration points to rising enterprise demand for security controls as AI agents move from experiments into production workflows that can access data, systems, and business processes. For advisors, this supports the Enterprise Production Readiness lens: governance, identity, monitoring, and security may become monetizable layers of the AI stack. (Source: CrowdStrike)</li>
+<li><strong>Only 35% of open-source projects reportedly have a GenAI policy:</strong> Express Computer highlighted a governance gap as AI-generated code flows into open-source software used across enterprise technology stacks. The implication is that AI productivity gains in software development may come with rising compliance, provenance, security, and legal-risk monitoring needs. (Source: Express Computer)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>New Jersey Democrats reportedly considered data-center and AI regulation if Congress changes hands:</strong> The report points to growing political attention on the local costs of AI infrastructure, including power demand, permitting, land use, and community impact. Investors should monitor whether data-center regulation becomes a more material constraint on deployment timelines and infrastructure economics. (Source: News From The States)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Reports of a potential $40 billion chips-related debt financing underscored AI’s capital intensity:</strong> Bloomberg reported that Elon Musk claimed the financing had closed while talks were still ongoing, making the status uncertain but the scale notable. The investment implication is that frontier AI and compute buildouts increasingly resemble infrastructure finance, where access to debt, counterparties, collateral, and cash-flow visibility can shape competitive positioning. (Source: Bloomberg)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>Anthropic’s CEO called for stronger AI regulation:</strong> The ABC News report adds to evidence that leading AI developers are engaging directly in policy debates around safety and oversight. For advisors, the policy lens matters because regulation could affect model-developer costs, enterprise adoption confidence, liability standards, and the competitive gap between well-capitalized platforms and smaller labs. (Source: ABC News)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>beRobox unveiled a robotic palletizer safety system with “3D Dynamic Safety”:</strong> The system mounts 3D detection directly on the robot arm so the safety zone moves with the machine, using Sonair’s safety-certified ADAR One 3D ultrasonic sensor. This is a niche but relevant commercialization signal because more adaptive safety systems can reduce deployment friction for industrial robots in flexible warehouse and manufacturing environments. (Source: Robotics & Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>AI capex conversion:</strong> Track whether hyperscalers, telecoms, and enterprise software vendors can show revenue, margin, retention, or productivity gains tied to AI infrastructure spending.</li>
+<li><strong>Connectivity and power constraints:</strong> Watch for new deals in fiber, data-center interconnect, grid equipment, cooling, and energy procurement as AI workloads scale.</li>
+<li><strong>Agent security and governance:</strong> Monitor whether security spending follows AI agent deployment into production, especially around identity, permissions, audit trails, and code provenance.</li>
+<li><strong>Policy pressure on data centers:</strong> Follow state and federal proposals that could affect siting, permitting, energy use, and disclosure requirements for AI infrastructure.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>“AI is becoming an infrastructure story as much as a software story.”</strong> Today’s developments show spending moving into networks, telecom partnerships, data-center capacity, and physical automation.</li>
+<li><strong>“The market is asking for proof, not just ambition.”</strong> Strong earnings may not be enough if investors cannot see how AI spending turns into monetization or durable productivity.</li>
+<li><strong>“Enterprise AI adoption depends on trust and control.”</strong> Security, governance, and policy around AI agents and AI-generated code are becoming part of the production checklist.</li>
+<li><strong>“Physical AI is moving from demos to workflows.”</strong> Robotics partnerships and safety improvements suggest AI-enabled automation is beginning to reach retail, logistics, and manufacturing use cases.</li>
+</ul>
