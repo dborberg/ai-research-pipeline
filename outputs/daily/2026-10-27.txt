@@ -1,0 +1,54 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>October 27, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>AI investment momentum is broadening from models and chips into the physical systems needed to deploy intelligence at scale: power, edge computing, industrial automation, and autonomous equipment. For advisor conversations, the key point is that the AI cycle is becoming less purely software-led and more dependent on execution in infrastructure, energy access, factory floors, and capital-intensive real-world deployment.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+<li><strong>Bedrock Robotics funding:</strong> Bedrock Robotics raised $600 million in Series C funding at a $4.1 billion valuation, bringing total funding to nearly $1 billion as it scales autonomous heavy equipment for construction sites. The deal is a major physical-AI capital-markets signal and highlights investor interest in applying autonomy to labor-constrained, asset-heavy industries beyond data centers and software workflows. (Source: The Robot Report)</li>
+<li><strong>AI power constraint moves to microgrids:</strong> Reuters reported that the AI scaling race is accelerating investment in microgrid technology as data center operators look for more reliable and flexible power supply. The read-through is that AI infrastructure spending is increasingly tied to grid resilience, distributed power, controls, and energy equipment rather than compute hardware alone. (Source: Reuters)</li>
+<li><strong>AI chip demand lifts a national macro print:</strong> South Korea’s third-quarter GDP beat forecasts as the AI chip boom boosted exports and investment. The report shows that AI infrastructure demand is already large enough to influence macro outcomes in semiconductor-linked economies, while also reminding advisors that the cycle has exposure to export demand, memory pricing, and capex volatility. (Source: Reuters)</li>
+<li><strong>Industrial edge AI consolidation:</strong> OMRON agreed to acquire 100% of OnLogic for $675 million to combine industrial automation, control, robotics, safety, and rugged edge-computing capabilities. The transaction points to platform convergence in manufacturing, where AI value may depend on running models close to machines, sensors, and safety-critical workflows. (Source: The Robot Report)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+<li><strong>AWS full-stack AI tooling:</strong> AWS highlighted updates including the Amazon Polly Generative engine and TorchNeuron for Trainium in its October 26 weekly roundup. The update reinforces hyperscaler competition around enterprise production readiness, where cloud providers are bundling models, developer tooling, custom silicon, and workflow services to reduce deployment friction. (Source: AWS News Blog)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+<li><strong>Infrastructure focus remains concentrated in top stories:</strong> The strongest new infrastructure development in the source window was the Reuters report on microgrid investment tied to AI data center power demand, which is covered in Top Stories. Continue monitoring whether power procurement, permitting, and interconnection delays become larger constraints on AI deployment timelines than chip availability. (Source: Full article set)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+<li><strong>Capital formation favors physical AI and industrial AI:</strong> The most material capital-markets events in the source window were Bedrock Robotics’ $600 million financing and OMRON’s $675 million OnLogic acquisition, both covered in Top Stories. Together, they suggest private and strategic capital is targeting AI deployment layers where software, machinery, sensors, and edge compute intersect. (Source: Full article set)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+<li><strong>AI oversight enters state political races:</strong> Bloomberg Law reported that AI and Big Tech regulation are emerging as selling points in attorney general campaigns. This matters because state attorneys general can shape enforcement risk around privacy, consumer protection, competition, and AI harms even when federal AI legislation remains uneven. (Source: Bloomberg Law News)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+<li><strong>AI infrastructure and humanoid manufacturing converge:</strong> Generative Bionics plans to develop an AI data center and a humanoid robotics factory in Italy. The announcement is another signal that physical-AI ambitions are being paired with dedicated compute infrastructure, though investors should distinguish announced capacity plans from proven commercial deployment. (Source: Data Center Dynamics)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+<li><strong>Power availability:</strong> Track whether microgrid, onsite generation, and utility interconnection announcements begin translating into signed data center capacity and shorter deployment timelines.</li>
+<li><strong>Physical-AI commercialization:</strong> Watch whether autonomous heavy-equipment and industrial robotics companies disclose paying customers, utilization rates, safety records, and fleet-level economics.</li>
+<li><strong>Edge AI adoption:</strong> Monitor industrial automation vendors for evidence that AI-capable edge devices are moving from pilots into factory-standard architectures.</li>
+<li><strong>State-level enforcement:</strong> Follow attorney general races and state policy proposals for early signs of fragmented AI compliance requirements across U.S. jurisdictions.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+<li><strong>AI is becoming a physical infrastructure story:</strong> The next phase is not just better models; it is power, edge compute, factories, machines, and permitting.</li>
+<li><strong>Capital is following deployment bottlenecks:</strong> Large funding and M&A activity around robotics and edge AI suggest investors are looking for where AI leaves the screen and enters operations.</li>
+<li><strong>Macro exposure is real:</strong> South Korea’s GDP beat shows AI chip demand can influence national export and investment data, not just company earnings.</li>
+<li><strong>Governance risk is moving local:</strong> AI regulation may increasingly come through state attorneys general and local enforcement, creating a more fragmented compliance backdrop.</li>
+</ul>
