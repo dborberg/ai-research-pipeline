@@ -1,0 +1,57 @@
+<h2>Beyond the Horizon: Daily Riffs from the Gen AI Songbook</h2>
+<p><strong>October 28, 2026</strong></p>
+
+<h3>TOP THEME OF THE DAY</h3>
+<p>Today’s AI signal is that the investment cycle is becoming more physical, regulated, and workflow-specific. AI demand is now visible in equipment spending and data-center site selection, while enterprise platforms are racing to embed assistants into daily work and regulated industries are exposing the limits of readiness, sovereignty, and governance.</p>
+
+<h3>TOP STORIES</h3>
+<ul>
+  <li><strong>AI capex showed up in macro data:</strong> Reuters reported that the AI investment boom helped power U.S. business spending on equipment in September. For advisors, this supports the view that AI is moving beyond narrative and into measurable real-economy demand, with read-throughs to hardware, electrical equipment, data-center supply chains, and industrial suppliers. (Source: Reuters)</li>
+  <li><strong>Nvidia targeted former nuclear sites for AI infrastructure:</strong> Nvidia partnered with PreussenElektra to explore AI data-center deployments at former nuclear sites in Germany. The move reinforces that power access, grid interconnection, land use, and political acceptance are becoming core bottlenecks in the AI buildout, not just chip availability. (Source: Data Center Dynamics)</li>
+  <li><strong>OpenAI pushed ChatGPT deeper into enterprise applications:</strong> OpenAI announced an expanded partnership with Oracle to bring Oracle apps into ChatGPT, though the available summary did not specify timing, terms, or app-level detail. The strategic read-through is platform convergence: AI assistants are being positioned as workflow front ends for enterprise systems rather than standalone chat tools. (Source: OpenAI)</li>
+  <li><strong>Bank AI adoption faced a sovereignty gap:</strong> Temenos’ CEO said European sovereign AI and cloud offerings are not yet ready for major banks. That is a reminder that regulated financial institutions may adopt AI more slowly than consumer or general enterprise markets, creating opportunity for vendors that can solve auditability, residency, resilience, and compliance requirements. (Source: Reuters)</li>
+</ul>
+
+<h3>ENTERPRISE ADOPTION AND LABOR</h3>
+<ul>
+  <li><strong>ServiceNow and Google Cloud advanced agentic workflows:</strong> ServiceNow and Google Cloud announced an effort to develop agentic AI for industry workflows. The implication is that enterprise AI competition is increasingly shifting toward orchestration of multi-step work across existing systems, where distribution, integration depth, and governance may matter as much as model quality. (Source: ServiceNow Newsroom)</li>
+  <li><strong>Oracle and Snowflake tightened data-platform integration:</strong> Snowflake said Oracle is expanding native AI and data services on Oracle Cloud Infrastructure through Snowflake-related offerings. This matters because enterprise AI production readiness depends on access to governed data where workloads already reside, making cloud-data partnerships a key watchpoint for monetization. (Source: Snowflake)</li>
+</ul>
+
+<h3>INFRASTRUCTURE, POWER AND PHYSICAL BOTTLENECKS</h3>
+<ul>
+  <li><strong>Local data-center permitting resistance widened:</strong> San Diego imposed a moratorium on new data centers, and Mountain Home approved an emergency moratorium on data-center applications and permits. These local actions show how AI infrastructure growth can run into community, land-use, water, power, and permitting constraints, which may affect project timing and regional capacity assumptions. (Source: cbs8.com; KTVB)</li>
+</ul>
+
+<h3>CAPITAL MARKETS AND INVESTMENT IMPLICATIONS</h3>
+<ul>
+  <li><strong>Google’s AI product news moved the stock:</strong> Google shares reportedly rose more than 2% after the company unveiled its Genie 4 world model ahead of earnings. The market reaction underscores that investors remain sensitive to large-platform AI announcements, but advisors should distinguish product capability headlines from evidence of durable revenue, margin, and distribution advantages. (Source: TradingKey)</li>
+</ul>
+
+<h3>REGULATION, GOVERNANCE AND POLICY</h3>
+<ul>
+  <li><strong>The UK funded an AI biosecurity institution:</strong> The UK announced a £100 million AI Biosecurity Lab with backing from OpenAI and Anthropic. The development points to governments moving from abstract AI-risk debate toward funded oversight capacity, which could raise the importance of safety testing, model access rules, and public-private governance partnerships. (Source: EdTech Innovation Hub)</li>
+</ul>
+
+<h3>PHYSICAL AI AND ROBOTICS</h3>
+<ul>
+  <li><strong>Xpanner launched an autonomous solar construction robot:</strong> Xpanner introduced the X1 Piling R6, an autonomous pile-driving system for utility-scale solar and battery storage projects that can be supervised by a single operator. This is a practical example of physical AI addressing labor and construction bottlenecks in energy infrastructure, with relevance to automation, renewables buildout, and project-cost execution. (Source: The Robot Report)</li>
+  <li><strong>Teradyne Robotics and Sereact partnered on physical AI:</strong> The companies announced a collaboration combining Sereact’s physical AI platform with Universal Robots’ collaborative robots for retail, logistics, and manufacturing use cases. The key investment lens is whether adaptable AI-enabled robots can move from controlled demos into repeatable deployments in warehouses, stores, and factories. (Source: Robotics &amp; Automation News)</li>
+</ul>
+
+<h3>WHAT TO WATCH</h3>
+<ul>
+  <li><strong>Capex confirmation:</strong> Watch whether hyperscaler and enterprise earnings confirm that AI-related equipment spending is translating into revenue for power, networking, cooling, and industrial suppliers.</li>
+  <li><strong>Permitting and power constraints:</strong> Track additional local moratoria, grid interconnection delays, nuclear-site reuse proposals, and utility rate cases tied to data-center demand.</li>
+  <li><strong>Enterprise workflow monetization:</strong> Monitor whether Oracle, ServiceNow, Google Cloud, Snowflake, and OpenAI disclose usage, seat growth, attach rates, or workflow-specific productivity evidence.</li>
+  <li><strong>Regulated-industry readiness:</strong> Look for bank, insurer, and public-sector AI deployments that satisfy sovereignty, audit, and compliance requirements rather than remaining in pilot mode.</li>
+</ul>
+
+<h3>ADVISOR / WHOLESALER SOUNDBITES</h3>
+<ul>
+  <li><strong>AI is becoming a capex cycle, not just a software story:</strong> The latest signals show demand flowing into equipment, power, sites, and construction capacity.</li>
+  <li><strong>The bottleneck is shifting from models to deployment:</strong> Enterprises need data access, workflow integration, compliance, and measurable productivity before AI becomes fully embedded.</li>
+  <li><strong>Power and permitting are now investment variables:</strong> Data-center growth increasingly depends on local politics, grid capacity, and credible energy strategies.</li>
+  <li><strong>Regulated industries may be slower but more durable adopters:</strong> Banks and governments will not move fastest, but their requirements can shape the next generation of enterprise AI infrastructure.</li>
+  <li><strong>Physical AI is moving into real-world bottlenecks:</strong> Robotics for solar construction, logistics, and manufacturing shows how AI may extend from knowledge work into labor-constrained physical operations.</li>
+</ul>
